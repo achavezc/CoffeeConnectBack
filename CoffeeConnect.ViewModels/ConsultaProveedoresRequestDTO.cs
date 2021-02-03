@@ -18,7 +18,7 @@ namespace CoffeeConnect.DTO
 
         public String CodigoSocio { get; set; }
 
-        
+        public int EmpresaId { get; set; }
 
     }
 }
