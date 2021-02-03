@@ -5,7 +5,7 @@ namespace CoffeeConnect.DTO
     public class ConsultaDetalleTablaBE
     {
 
-        public string Codigo;
+        public string Codigo { get; set; }
 
         public string CodigoTabla { get; set; }
 
