@@ -14,7 +14,7 @@ namespace CoffeeConnect.DTO
         public string @Class { get; set; }
         public string Badge { get; set; }
         public bool IsExternalLink { get; set; }
-
-
+        public List<MenuItemBE> Submenu { get; set; }
+        
     }
 }
