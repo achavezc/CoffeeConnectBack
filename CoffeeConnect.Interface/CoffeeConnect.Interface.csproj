@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoffeeConnect.Models\CoffeeConnect.Models.csproj" />
+    <ProjectReference Include="..\CoffeeConnect.ViewModels\CoffeeConnect.DTO.csproj" />
+  </ItemGroup>
+
+</Project>

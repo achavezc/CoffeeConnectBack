@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>1230fed4-13d0-49ca-b7da-31df9da14847</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoffeeConnect.Concrete\CoffeeConnect.Service.csproj" />
+    <ProjectReference Include="..\CoffeeConnect.Interface\CoffeeConnect.Interface.csproj" />
+    <ProjectReference Include="..\CoffeeConnect.Models\CoffeeConnect.Models.csproj" />
+    <ProjectReference Include="..\CoffeeConnect.Repository\CoffeeConnect.Repository.csproj" />
+    <ProjectReference Include="..\CoffeeConnect.ViewModels\CoffeeConnect.DTO.csproj" />
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj" />
+    <ProjectReference Include="..\Core.Utils\Core.Utils.csproj" />
+  </ItemGroup>
+
+
+</Project>
