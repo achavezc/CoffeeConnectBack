@@ -60,7 +60,24 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-        
+        public ConsultaGuiaRecepcionMateriaPrimaPorIdBE ConsultarGuiaRecepcionMateriaPrimaPorId(int guiaRecepcionMateriaPrimaId)
+        {
+            ConsultaGuiaRecepcionMateriaPrimaPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);    
+            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaGuiaRecepcionMateriaPrimaPorIdBE>("uspGuiaRecepcionMateriaPrimaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+                
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
 
     }
 }
