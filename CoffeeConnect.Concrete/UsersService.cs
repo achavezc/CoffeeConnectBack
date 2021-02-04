@@ -327,16 +327,8 @@ namespace CoffeeConnect.Service
 
             loginDTO.Opciones = opciones;
 
-
-            return loginDTO;
-
-           
+            return loginDTO;           
 
         }
-
-
-
-
-
     }
 }

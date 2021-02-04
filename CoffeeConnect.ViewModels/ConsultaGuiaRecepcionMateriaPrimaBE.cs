@@ -30,11 +30,11 @@ namespace CoffeeConnect.DTO
 
 
         public string NombreRazonSocialProveedor { get; set; }
-        public string TipoProducto { get; set; }
-        public string SubTipoProducto { get; set; }
-        public DateTime FechaHoraPesado { get; set; }
+        public string Producto { get; set; }
+        public string SubProducto { get; set; }
+        public DateTime FechaPesado { get; set; }
 
-        public DateTime? FechaHoraCalidad { get; set; }
+        public DateTime? FechaCalidad { get; set; }
 
         public string UsuarioPesado { get; set; }
        
