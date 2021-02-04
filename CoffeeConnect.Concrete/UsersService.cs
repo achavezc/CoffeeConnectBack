@@ -137,7 +137,7 @@ namespace CoffeeConnect.Service
         isExternalLink: false,
         submenu: [
           {
-            path: '/uikit/feather',
+            path: '/acopio/operaciones/guiarecepcionmateriaprima-list',
             title: 'Acopio.Operaciones.RecepcionMateriaPrima.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',

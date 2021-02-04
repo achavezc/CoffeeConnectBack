@@ -18,14 +18,30 @@ namespace CoffeeConnect.Service
         {
             _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrima;          
         }
-        public List<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO consultaGuiaRecepcionMateriaPrimaRequestDTO)       
+        public List<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO request)       
         {
             //if (string.IsNullOrEmpty(consultaGuiaRemisionRequestDTO.NumeroDocumento) && string.IsNullOrEmpty(consultaGuiaRemisionRequestDTO.NumeroDocumento))
             //    throw new ResultException(new Result { ErrCode = "-20", Message = "Especifique un Número de BL o Contenedor" });
 
-            var guiaGuiaRecepcionMateriaPrimaList = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrima(consultaGuiaRecepcionMateriaPrimaRequestDTO);
+            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial)) 
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionSeleccioneMinimoUnFiltro.Label" });
+
+          
+            var timeSpan = request.FechaFin - request.FechaInicio;
+
+            if(timeSpan.Days>730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionRangoFechaMayor2anios.Label" });
+
+
+
+            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionSeleccioneMinimoUnFiltro.Label" });
+
+
+
+            var list = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrima(request);
             
-            return guiaGuiaRecepcionMateriaPrimaList.ToList();
+            return list.ToList();
         }
 
        
