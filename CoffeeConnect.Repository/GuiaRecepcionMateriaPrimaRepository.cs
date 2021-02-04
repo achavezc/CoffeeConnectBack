@@ -29,6 +29,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("Numero", request.Numero);
             parameters.Add("NombreRazonSocial", request.NombreRazonSocial);
             parameters.Add("TipoDocumentoId", request.TipoDocumentoId);
+            parameters.Add("ProductoId", request.ProductoId);
             parameters.Add("NumeroDocumento", request.NumeroDocumento);
             parameters.Add("CodigoSocio", request.CodigoSocio);
             parameters.Add("EstadoId", request.EstadoId);

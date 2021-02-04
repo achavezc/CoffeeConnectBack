@@ -13,6 +13,9 @@ namespace CoffeeConnect.DTO
 
         public string TipoProvedor { get; set; }
 
+        public string ProductoId { get; set; }
+        public string SubProductoId { get; set; }
+
         public int? SocioId { get; set; }
 
         public string CodigoSocio { get; set; }
