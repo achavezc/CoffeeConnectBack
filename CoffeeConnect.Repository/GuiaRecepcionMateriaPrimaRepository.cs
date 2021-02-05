@@ -80,5 +80,97 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+
+        //public int Insert(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima)
+        //{
+        //    int result = 0;
+
+        //    var parameters = new DynamicParameters();            
+        //    parameters.Add("@EmpresaId", guiaRecepcionMateriaPrima.EmpresaId);
+        //    parameters.Add("@Numero", guiaRecepcionMateriaPrima.Numero);
+        //    parameters.Add("@TipoProvedorId", guiaRecepcionMateriaPrima.TipoProvedorId);
+        //    parameters.Add("@SocioId", guiaRecepcionMateriaPrima.SocioId);
+        //    parameters.Add("@TerceroId", guiaRecepcionMateriaPrima.TerceroId);
+        //    parameters.Add("@IntermediarioId", guiaRecepcionMateriaPrima.IntermediarioId);
+        //    parameters.Add("@ProductoId", guiaRecepcionMateriaPrima.ProductoId);
+        //    parameters.Add("@SubProductoId", guiaRecepcionMateriaPrima.SubProductoId);
+        //    parameters.Add("@FechaCosecha", guiaRecepcionMateriaPrima.FechaCosecha);
+        //    parameters.Add("@FechaPesado", guiaRecepcionMateriaPrima.FechaPesado);
+        //    parameters.Add("@UsuarioPesado", guiaRecepcionMateriaPrima.UsuarioPesado);
+        //    parameters.Add("@UnidadMedidaIdPesado", guiaRecepcionMateriaPrima.UnidadMedidaIdPesado);
+        //    parameters.Add("@CantidadPesado", guiaRecepcionMateriaPrima.CantidadPesado);
+        //    parameters.Add("@KilosBrutosPesado", guiaRecepcionMateriaPrima.KilosBrutosPesado);
+        //    parameters.Add("@TaraPesado", guiaRecepcionMateriaPrima.TaraPesado);
+        //    parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);
+        //    parameters.Add("@ExportableGramosAnalisisFisico", guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico);
+        //    parameters.Add("@ExportablePorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.ExportablePorcentajeAnalisisFisico);
+        //    parameters.Add("@DescarteGramosAnalisisFisico", guiaRecepcionMateriaPrima.DescarteGramosAnalisisFisico);
+        //    parameters.Add("@DescartePorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.DescartePorcentajeAnalisisFisico);
+        //    parameters.Add("@CascarillaGramosAnalisisFisico", guiaRecepcionMateriaPrima.CascarillaGramosAnalisisFisico);
+        //    parameters.Add("@CascarillaPorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.CascarillaPorcentajeAnalisisFisico);
+        //    parameters.Add("@TotalGramosAnalisisFisico", guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico);
+        //    parameters.Add("@TotalPorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico);
+        //    parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico);
+        //    parameters.Add("@ObservacionAnalisisFisico", guiaRecepcionMateriaPrima.ObservacionAnalisisFisico);
+        //    parameters.Add("@FechaCalidad", guiaRecepcionMateriaPrima.FechaCalidad);
+        //    parameters.Add("@UsuarioCalidad", guiaRecepcionMateriaPrima.UsuarioCalidad);
+        //    parameters.Add("@ObservacionRegistroTostado", guiaRecepcionMateriaPrima.ObservacionRegistroTostado);
+        //    parameters.Add("@ObservacionAnalisisSensorial", guiaRecepcionMateriaPrima.ObservacionAnalisisSensorial);
+        //    parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);
+        //    parameters.Add("@FechaRegistro", guiaRecepcionMateriaPrima.FechaRegistro);
+        //    parameters.Add("@UsuarioRegistro", guiaRecepcionMateriaPrima.UsuarioRegistro);
+        //    parameters.Add("@FechaUltimaActualizacion", guiaRecepcionMateriaPrima.FechaUltimaActualizacion);
+        //    parameters.Add("@UsuarioUltimaActualizacion", guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion);
+        //    parameters.Add("@Activo", guiaRecepcionMateriaPrima.Activo);
+        //    parameters.Add("@GuiaRecepcionMateriaPrimaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+
+        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+        //    {
+        //        result = db.Execute("uspGuiaRecepcionMateriaPrimaInsertar", parameters, commandType: CommandType.StoredProcedure);
+        //    }
+
+        //    int id = parameters.Get<int>("GuiaRecepcionMateriaPrimaId");
+
+        //    return id;
+        //}
+
+        public int Insert(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", guiaRecepcionMateriaPrima.EmpresaId);
+            parameters.Add("@Numero", guiaRecepcionMateriaPrima.Numero);
+            parameters.Add("@TipoProvedorId", guiaRecepcionMateriaPrima.TipoProvedorId);
+            parameters.Add("@SocioId", guiaRecepcionMateriaPrima.SocioId);
+            parameters.Add("@TerceroId", guiaRecepcionMateriaPrima.TerceroId);
+            parameters.Add("@IntermediarioId", guiaRecepcionMateriaPrima.IntermediarioId);
+            parameters.Add("@ProductoId", guiaRecepcionMateriaPrima.ProductoId);
+            parameters.Add("@SubProductoId", guiaRecepcionMateriaPrima.SubProductoId);
+            parameters.Add("@FechaCosecha", guiaRecepcionMateriaPrima.FechaCosecha);
+            parameters.Add("@FechaPesado", guiaRecepcionMateriaPrima.FechaPesado);
+            parameters.Add("@UsuarioPesado", guiaRecepcionMateriaPrima.UsuarioPesado);
+            parameters.Add("@UnidadMedidaIdPesado", guiaRecepcionMateriaPrima.UnidadMedidaIdPesado);
+            parameters.Add("@CantidadPesado", guiaRecepcionMateriaPrima.CantidadPesado);
+            parameters.Add("@KilosBrutosPesado", guiaRecepcionMateriaPrima.KilosBrutosPesado);
+            parameters.Add("@TaraPesado", guiaRecepcionMateriaPrima.TaraPesado);
+            parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);            
+            parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);
+            parameters.Add("@FechaRegistro", guiaRecepcionMateriaPrima.FechaRegistro);
+            parameters.Add("@UsuarioRegistro", guiaRecepcionMateriaPrima.UsuarioRegistro);            
+            
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            int id = parameters.Get<int>("GuiaRecepcionMateriaPrimaId");
+
+            return id;
+        }
     }
 }
