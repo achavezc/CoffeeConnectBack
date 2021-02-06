@@ -172,5 +172,40 @@ namespace CoffeeConnect.Repository
 
             return id;
         }
+
+
+        public int ActualizarAnalisisCalidad(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@ExportableGramosAnalisisFisico", guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico);
+            parameters.Add("@ExportablePorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.ExportablePorcentajeAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", guiaRecepcionMateriaPrima.DescarteGramosAnalisisFisico);
+            parameters.Add("@DescartePorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.DescartePorcentajeAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", guiaRecepcionMateriaPrima.CascarillaGramosAnalisisFisico);
+            parameters.Add("@CascarillaPorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.CascarillaPorcentajeAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico);
+            parameters.Add("@TotalPorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@ObservacionAnalisisFisico", guiaRecepcionMateriaPrima.ObservacionAnalisisFisico);
+            parameters.Add("@FechaCalidad", guiaRecepcionMateriaPrima.FechaCalidad);
+            parameters.Add("@UsuarioCalidad", guiaRecepcionMateriaPrima.UsuarioCalidad);
+            parameters.Add("@ObservacionRegistroTostado", guiaRecepcionMateriaPrima.ObservacionRegistroTostado);
+            parameters.Add("@ObservacionAnalisisSensorial", guiaRecepcionMateriaPrima.ObservacionAnalisisSensorial);
+            parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);            
+            parameters.Add("@FechaUltimaActualizacion", guiaRecepcionMateriaPrima.FechaCalidad);
+            parameters.Add("@UsuarioUltimaActualizacion", guiaRecepcionMateriaPrima.UsuarioCalidad);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaCalidadActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }            
+
+            return result;
+        }
     }
 }

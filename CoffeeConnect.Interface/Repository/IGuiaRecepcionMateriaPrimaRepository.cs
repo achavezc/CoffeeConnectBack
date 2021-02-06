@@ -12,6 +12,7 @@ namespace CoffeeConnect.Interface.Repository
         int AnularGuiaRecepcionMateriaPrima(int guiaRecepcionMateriaPrimaId, DateTime fecha,string usuario,string estadoId);
         ConsultaGuiaRecepcionMateriaPrimaPorIdBE ConsultarGuiaRecepcionMateriaPrimaPorId(int guiaRecepcionMateriaPrimaId);
         int Insert(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima);
+        int ActualizarAnalisisCalidad(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima);
 
     }
 }
