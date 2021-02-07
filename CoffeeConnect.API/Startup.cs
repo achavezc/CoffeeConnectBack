@@ -76,6 +76,9 @@ namespace CoffeeConnect.API
             services.AddTransient<IProveedorService, ProveedorService>();
             services.AddTransient<IProveedorRepository, ProveedorRepository>();
 
+            services.AddTransient<INotaCompraService, NotaCompraService>();
+            services.AddTransient<INotaCompraRepository, NotaCompraRepository>();
+
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
                     .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
