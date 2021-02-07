@@ -5,8 +5,12 @@ namespace CoffeeConnect.Interface.Service
 {
     public interface INotaCompraService
     {
-        int RegistrarNotaCompra(RegistrarNotaCompraRequestDTO request);
+        int RegistrarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request);
 
+        int ActualizarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request);
 
+        int AnularNotaCompra(AnularNotaCompraRequestDTO request);
+
+        int LiquidarNotaCompra(LiquidarNotaCompraRequestDTO request);
     }
 }

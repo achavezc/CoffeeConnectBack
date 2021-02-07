@@ -161,9 +161,21 @@ namespace CoffeeConnect.Models
 		public string UsuarioUltimaActualizacion
 		{ get; set; }
 
+
+		public string UsuarioLiquidacion
+		{ get; set; }
+
+		public DateTime? FechaLiquidacion
+		{ get; set; }
+
+
+
 		/// <summary>
 		/// Gets or sets the Activo value.
 		/// </summary>
+		/// 
+
+
 		public bool Activo
 		{ get; set; }
 

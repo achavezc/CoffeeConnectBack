@@ -24,7 +24,7 @@ namespace CoffeeConnect.Service
        		
 			
         
-        public int RegistrarNotaCompra(RegistrarNotaCompraRequestDTO request)
+        public int RegistrarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request)
         {
             NotaCompra notaCompra = new NotaCompra();
 
@@ -52,12 +52,60 @@ namespace CoffeeConnect.Service
             notaCompra.FechaRegistro = DateTime.Now;
             notaCompra.UsuarioRegistro = request.UsuarioNotaCompra;  
 
-            int affected = _INotaCompraRepository.Insert(notaCompra);
+            int affected = _INotaCompraRepository.Insertar(notaCompra);
+
+            return affected;
+        }
+
+        public int ActualizarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request)
+        {
+            NotaCompra notaCompra = new NotaCompra();
+
+            notaCompra.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
+            notaCompra.NotaCompraId = request.NotaCompraId;
+            notaCompra.EmpresaId = request.EmpresaId;
+            notaCompra.Numero = request.Numero;
+            notaCompra.UnidadMedidaIdPesado = request.UnidadMedidaIdPesado;
+            notaCompra.CantidadPesado = request.CantidadPesado;
+            notaCompra.KilosBrutosPesado = request.KilosBrutosPesado;
+            notaCompra.TaraPesado = request.TaraPesado;
+            notaCompra.KilosNetosPesado = request.KilosNetosPesado;
+            notaCompra.DescuentoPorHumedad = request.DescuentoPorHumedad;
+            notaCompra.KilosNetosDescontar = request.KilosNetosDescontar;
+            notaCompra.KilosNetosPagar = request.KilosNetosPagar;
+            notaCompra.QQ55 = request.QQ55;
+            notaCompra.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
+            notaCompra.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
+            notaCompra.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
+            notaCompra.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
+            notaCompra.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
+            notaCompra.TipoId = request.TipoId;
+            notaCompra.PrecioDia = request.PrecioDia;
+            notaCompra.Importe = request.Importe;
+            notaCompra.EstadoId = NotaCompraEstados.PorLiquidar;
+            notaCompra.FechaUltimaActualizacion = DateTime.Now;
+            notaCompra.UsuarioUltimaActualizacion = request.UsuarioNotaCompra;
+
+            int affected = _INotaCompraRepository.Actualizar(notaCompra);
+
+            return affected;
+        }
+
+        public int AnularNotaCompra(AnularNotaCompraRequestDTO request)
+        {
+            int affected = _INotaCompraRepository.Anular(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.Anulado);
+
+            return affected;
+        }
+
+        public int LiquidarNotaCompra(LiquidarNotaCompraRequestDTO request)
+        {
+            int affected = _INotaCompraRepository.Liquidar(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.Liquidado,request.PrecioDia, request.Importe);
 
             return affected;
         }
 
 
-      
+
     }
 }

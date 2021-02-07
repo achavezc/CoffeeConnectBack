@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class RegistrarNotaCompraRequestDTO
+   public class RegistrarActualizarNotaCompraRequestDTO
 	{
+		public int NotaCompraId
+		{ get; set; }
+
 		public int GuiaRecepcionMateriaPrimaId
 		{ get; set; }
 
