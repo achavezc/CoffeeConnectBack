@@ -6,6 +6,7 @@ namespace CoffeeConnect.Interface.Service
     public interface IMaestroService
     {
         List<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId);
+        List<ConsultaUbigeoBE> ConsultaUbibeo();
 
     }
 }
