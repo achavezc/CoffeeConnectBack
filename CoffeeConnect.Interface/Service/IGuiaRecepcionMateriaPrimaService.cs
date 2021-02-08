@@ -12,7 +12,7 @@ namespace CoffeeConnect.Interface.Service
         int RegistrarGuiaRecepcionMateriaPrima(RegistrarGuiaRecepcionMateriaPrimaRequestDTO request);
         int ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidad(ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadRequestDTO request);
 
-        int EnviarGuardiolaGuiaRecepcionMateriaPrima(EnviarGuardiolaGuiaRecepcionMateriaPrimaRequestDTO request);
+        //int EnviarGuardiolaGuiaRecepcionMateriaPrima(EnviarGuardiolaGuiaRecepcionMateriaPrimaRequestDTO request);
 
     }
 }
