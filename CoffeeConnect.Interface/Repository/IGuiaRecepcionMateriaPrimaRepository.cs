@@ -14,5 +14,7 @@ namespace CoffeeConnect.Interface.Repository
         int Insert(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima);
         int ActualizarAnalisisCalidad(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima);
 
+        int EnviarGuardiolaGuiaRecepcionMateriaPrima(int guiaRecepcionMateriaPrimaId, DateTime fecha, string usuario, string estadoId);
+
     }
 }

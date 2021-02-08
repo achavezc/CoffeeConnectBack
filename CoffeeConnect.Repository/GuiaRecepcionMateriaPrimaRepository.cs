@@ -80,7 +80,6 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
-
         public int Insert(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima)
         {
             int result = 0;
@@ -119,7 +118,6 @@ namespace CoffeeConnect.Repository
             return id;
         }
 
-
         public int ActualizarAnalisisCalidad(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima)
         {
             int result = 0;
@@ -152,6 +150,24 @@ namespace CoffeeConnect.Repository
             }            
 
             return result;
+        }
+
+        public int EnviarGuardiolaGuiaRecepcionMateriaPrima(int guiaRecepcionMateriaPrimaId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspGuiaRecepcionMateriaPrimaEnviarGuardiola", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
         }
     }
 }
