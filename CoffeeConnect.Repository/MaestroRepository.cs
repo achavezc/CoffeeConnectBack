@@ -37,5 +37,14 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ConsultaUbigeoBE> ConsultaUbibeo()
+        {
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaUbigeoBE>("uspUbigeoConsulta", null, commandType: CommandType.StoredProcedure);
+            }
+        }
+
     }
 }

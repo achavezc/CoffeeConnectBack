@@ -22,10 +22,16 @@ namespace CoffeeConnect.Service
             
             return lista.ToList();
         }
+        public List<ConsultaUbigeoBE> ConsultaUbibeo()
+        {
+            var lista = _IMaestroRepository.ConsultaUbibeo();
+
+            return lista.ToList();
+        }
 
 
-        
 
-        
+
+
     }
 }
