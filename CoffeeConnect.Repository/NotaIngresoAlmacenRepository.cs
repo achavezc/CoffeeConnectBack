@@ -52,6 +52,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@CascarillaPorcentajeAnalisisFisico", notaIngresoAlmacen.CascarillaPorcentajeAnalisisFisico);
 			parameters.Add("@TotalGramosAnalisisFisico", notaIngresoAlmacen.TotalGramosAnalisisFisico);
 			parameters.Add("@TotalPorcentajeAnalisisFisico", notaIngresoAlmacen.TotalPorcentajeAnalisisFisico);
+			parameters.Add("@TotalAnalisisSensorial", notaIngresoAlmacen.TotalAnalisisSensorial);
 			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico);
 			parameters.Add("@Observacion", notaIngresoAlmacen.Observacion);
 			parameters.Add("@EstadoId", notaIngresoAlmacen.EstadoId);

@@ -134,6 +134,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TotalGramosAnalisisFisico", guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico);
             parameters.Add("@TotalPorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico);
             parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TotalAnalisisSensorial", guiaRecepcionMateriaPrima.TotalAnalisisSensorial);
+
             parameters.Add("@ObservacionAnalisisFisico", guiaRecepcionMateriaPrima.ObservacionAnalisisFisico);
             parameters.Add("@FechaCalidad", guiaRecepcionMateriaPrima.FechaCalidad);
             parameters.Add("@UsuarioCalidad", guiaRecepcionMateriaPrima.UsuarioCalidad);

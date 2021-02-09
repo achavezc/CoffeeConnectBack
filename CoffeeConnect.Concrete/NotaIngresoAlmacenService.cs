@@ -77,6 +77,7 @@ namespace CoffeeConnect.Service
 			notaIngresoAlmacen.CascarillaPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.CascarillaPorcentajeAnalisisFisico;
 			notaIngresoAlmacen.TotalGramosAnalisisFisico = guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico;
 			notaIngresoAlmacen.TotalPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico;
+			notaIngresoAlmacen.TotalAnalisisSensorial = guiaRecepcionMateriaPrima.TotalAnalisisSensorial;
 			notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico;
 			//notaIngresoAlmacen.Observacion = guiaRecepcionMateriaPrima.Observacion;
 			notaIngresoAlmacen.EstadoId = guiaRecepcionMateriaPrima.EstadoId;	

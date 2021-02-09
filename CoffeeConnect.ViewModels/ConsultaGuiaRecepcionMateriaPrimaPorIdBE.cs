@@ -233,6 +233,12 @@ namespace CoffeeConnect.DTO
 		public decimal TotalPorcentajeAnalisisFisico
 		{ get; set; }
 
+		public decimal TotalAnalisisSensorial
+		{ get; set; }
+
+		
+
+
 		/// <summary>
 		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
 		/// </summary>
