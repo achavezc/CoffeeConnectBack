@@ -15,19 +15,72 @@ namespace CoffeeConnect.Service
     {
        
         private INotaIngresoAlmacenRepository _INotaIngresoAlmacenRepository;
-       
-        public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository)
-        {
-            _INotaIngresoAlmacenRepository = notaIngresoAlmacenRepository;          
-        }
-       
-              
 
-        public int Registrar(EnviarAlmacenGuiaRecepcionMateriaPrimaRequestDTO request)
+        private IGuiaRecepcionMateriaPrimaRepository _IGuiaRecepcionMateriaPrimaRepository;
+
+
+        public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrimaRepository)
         {
+
+
+
+
+            _INotaIngresoAlmacenRepository = notaIngresoAlmacenRepository;
+            _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrimaRepository;
+        }
+
+		/*
+         
+ 
+	
+	
+			parameters.Add("@TotalGramosAnalisisFisico", notaIngresoAlmacen.TotalGramosAnalisisFisico);
+			parameters.Add("@TotalPorcentajeAnalisisFisico", notaIngresoAlmacen.TotalPorcentajeAnalisisFisico);
+			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico);
+			parameters.Add("@Observacion", notaIngresoAlmacen.Observacion);
+			parameters.Add("@EstadoId", notaIngresoAlmacen.EstadoId);
+			parameters.Add("@FechaRegistro", notaIngresoAlmacen.FechaRegistro);
+			parameters.Add("@UsuarioRegistro", notaIngresoAlmacen.UsuarioRegistro);
+			parameters.Add("@FechaUltimaActualizacion", notaIngresoAlmacen.FechaUltimaActualizacion);
+			parameters.Add("@UsuarioUltimaActualizacion", notaIngresoAlmacen.UsuarioUltimaActualizacion);
+			parameters.Add("@Activo", notaIngresoAlmacen.Activo);
+ 
+         */
+
+		public int Registrar(EnviarAlmacenGuiaRecepcionMateriaPrimaRequestDTO request)
+        {
+            ConsultaGuiaRecepcionMateriaPrimaPorIdBE guiaRecepcionMateriaPrima = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(request.GuiaRecepcionMateriaPrimaId);
+
             NotaIngresoAlmacen notaIngresoAlmacen = new NotaIngresoAlmacen();
             notaIngresoAlmacen.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
-            notaIngresoAlmacen.UsuarioRegistro = request.Usuario;
+
+			notaIngresoAlmacen.EmpresaId = guiaRecepcionMateriaPrima.EmpresaId;
+			notaIngresoAlmacen.Numero = guiaRecepcionMateriaPrima.Numero;
+			notaIngresoAlmacen.AlmacenId = null;
+			notaIngresoAlmacen.TipoProvedorId = guiaRecepcionMateriaPrima.TipoProvedorId;
+			notaIngresoAlmacen.SocioId = guiaRecepcionMateriaPrima.SocioId;
+			notaIngresoAlmacen.TerceroId = guiaRecepcionMateriaPrima.TerceroId;
+			notaIngresoAlmacen.IntermediarioId = guiaRecepcionMateriaPrima.IntermediarioId;
+			notaIngresoAlmacen.ProductoId = guiaRecepcionMateriaPrima.ProductoId;
+			notaIngresoAlmacen.SubProductoId = guiaRecepcionMateriaPrima.SubProductoId;
+			notaIngresoAlmacen.UnidadMedidaIdPesado = guiaRecepcionMateriaPrima.UnidadMedidaIdPesado;
+			notaIngresoAlmacen.CantidadPesado = guiaRecepcionMateriaPrima.CantidadPesado;
+			notaIngresoAlmacen.KilosBrutosPesado = guiaRecepcionMateriaPrima.KilosBrutosPesado;
+			notaIngresoAlmacen.TaraPesado = guiaRecepcionMateriaPrima.TaraPesado;
+			notaIngresoAlmacen.KilosNetosPesado = guiaRecepcionMateriaPrima.KilosBrutosPesado - notaIngresoAlmacen.TaraPesado;
+			notaIngresoAlmacen.QQ55 = notaIngresoAlmacen.KilosNetosPesado /  Convert.ToDecimal(55.2);
+			notaIngresoAlmacen.ExportableGramosAnalisisFisico = guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico;
+			notaIngresoAlmacen.ExportablePorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.ExportablePorcentajeAnalisisFisico;
+			notaIngresoAlmacen.DescarteGramosAnalisisFisico = guiaRecepcionMateriaPrima.DescarteGramosAnalisisFisico;
+			notaIngresoAlmacen.DescartePorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.DescartePorcentajeAnalisisFisico;
+			notaIngresoAlmacen.CascarillaGramosAnalisisFisico = guiaRecepcionMateriaPrima.CascarillaGramosAnalisisFisico;
+			notaIngresoAlmacen.CascarillaPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.CascarillaPorcentajeAnalisisFisico;
+			notaIngresoAlmacen.TotalGramosAnalisisFisico = guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico;
+			notaIngresoAlmacen.TotalPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico;
+			notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico;
+			//notaIngresoAlmacen.Observacion = guiaRecepcionMateriaPrima.Observacion;
+			notaIngresoAlmacen.EstadoId = guiaRecepcionMateriaPrima.EstadoId;	
+			notaIngresoAlmacen.UsuarioRegistro = request.Usuario;
             notaIngresoAlmacen.FechaRegistro = DateTime.Now;
             notaIngresoAlmacen.EstadoId = NotaIngresoAlmacenEstados.Ingresado;
 

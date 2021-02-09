@@ -16,13 +16,13 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the EmpresaId value.
 		/// </summary>
-		public int? EmpresaId
+		public int EmpresaId
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the AlmacenId value.
 		/// </summary>
-		public int AlmacenId
+		public int? AlmacenId
 		{ get; set; }
 
 		/// <summary>
@@ -46,19 +46,19 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the SocioId value.
 		/// </summary>
-		public int SocioId
+		public int? SocioId
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the TerceroId value.
 		/// </summary>
-		public int TerceroId
+		public int? TerceroId
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the IntermediarioId value.
 		/// </summary>
-		public int IntermediarioId
+		public int? IntermediarioId
 		{ get; set; }
 
 		/// <summary>
@@ -112,49 +112,49 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the ExportableGramosAnalisisFisico value.
 		/// </summary>
-		public decimal ExportableGramosAnalisisFisico
+		public decimal? ExportableGramosAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the ExportablePorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal ExportablePorcentajeAnalisisFisico
+		public decimal? ExportablePorcentajeAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the DescarteGramosAnalisisFisico value.
 		/// </summary>
-		public decimal DescarteGramosAnalisisFisico
+		public decimal? DescarteGramosAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the DescartePorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal DescartePorcentajeAnalisisFisico
+		public decimal? DescartePorcentajeAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the CascarillaGramosAnalisisFisico value.
 		/// </summary>
-		public decimal CascarillaGramosAnalisisFisico
+		public decimal? CascarillaGramosAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the CascarillaPorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal CascarillaPorcentajeAnalisisFisico
+		public decimal? CascarillaPorcentajeAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the TotalGramosAnalisisFisico value.
 		/// </summary>
-		public decimal TotalGramosAnalisisFisico
+		public decimal? TotalGramosAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the TotalPorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal TotalPorcentajeAnalisisFisico
+		public decimal? TotalPorcentajeAnalisisFisico
 		{ get; set; }
 
 		/// <summary>

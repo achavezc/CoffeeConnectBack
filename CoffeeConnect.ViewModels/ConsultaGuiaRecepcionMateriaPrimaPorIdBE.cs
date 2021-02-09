@@ -86,7 +86,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the ZonaId value.
 		/// </summary>
-		public int? ZonaId
+		public string ZonaId
 		{ get; set; }
 
 		/// <summary>
@@ -110,7 +110,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the TipoDocumentoId value.
 		/// </summary>
-		public int TipoDocumentoId
+		public string TipoDocumentoId
 		{ get; set; }
 
 		/// <summary>

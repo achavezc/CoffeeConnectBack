@@ -57,15 +57,13 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@EstadoId", notaIngresoAlmacen.EstadoId);
 			parameters.Add("@FechaRegistro", notaIngresoAlmacen.FechaRegistro);
 			parameters.Add("@UsuarioRegistro", notaIngresoAlmacen.UsuarioRegistro);
-			parameters.Add("@FechaUltimaActualizacion", notaIngresoAlmacen.FechaUltimaActualizacion);
-			parameters.Add("@UsuarioUltimaActualizacion", notaIngresoAlmacen.UsuarioUltimaActualizacion);
-			parameters.Add("@Activo", notaIngresoAlmacen.Activo);
+			
 
 
 
 			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
 			{
-				result = db.Execute("NotaIngresoAlmacenInsertar", parameters, commandType: CommandType.StoredProcedure);
+				result = db.Execute("uspNotaIngresoAlmacenInsertar", parameters, commandType: CommandType.StoredProcedure);
 			}
 
 			return result;
