@@ -45,7 +45,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
 			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
 			parameters.Add("@TipoId", notaCompra.TipoId);
-			parameters.Add("@PrecioDia", notaCompra.PrecioDia);
+			parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
 			parameters.Add("@Importe", notaCompra.Importe);
 			parameters.Add("@EstadoId", notaCompra.EstadoId);
 			parameters.Add("@FechaRegistro", notaCompra.FechaRegistro);
@@ -86,7 +86,8 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
 			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
 			parameters.Add("@TipoId", notaCompra.TipoId);
-			parameters.Add("@PrecioDia", notaCompra.PrecioDia);
+			parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
+			parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);
 			parameters.Add("@Importe", notaCompra.Importe);
 			parameters.Add("@EstadoId", notaCompra.EstadoId);
 			parameters.Add("@FechaUltimaActualizacion", notaCompra.FechaUltimaActualizacion);

@@ -122,7 +122,10 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the PrecioDia value.
 		/// </summary>
-		public decimal? PrecioDia
+		public decimal? PrecioGuardado
+		{ get; set; }
+
+		public decimal? PrecioPagado
 		{ get; set; }
 
 		/// <summary>

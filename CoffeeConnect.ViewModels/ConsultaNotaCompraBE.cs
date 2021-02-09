@@ -50,6 +50,10 @@ namespace CoffeeConnect.DTO
 
         public decimal KilosNetosPagar { get; set; }
 
+        public decimal? PrecioGuardado { get; set; }
+
+        public decimal? PrecioPagado { get; set; }
+
         public decimal? Importe { get; set; }
 
     }

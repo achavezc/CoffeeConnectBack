@@ -46,7 +46,8 @@ namespace CoffeeConnect.Service
             notaCompra.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
             notaCompra.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
             notaCompra.TipoId = request.TipoId;
-            notaCompra.PrecioDia = request.PrecioDia;
+            notaCompra.PrecioGuardado = request.PrecioGuardado;
+            notaCompra.PrecioPagado = request.PrecioPagado;
             notaCompra.Importe = request.Importe;
             notaCompra.EstadoId = NotaCompraEstados.PorLiquidar;          
             notaCompra.FechaRegistro = DateTime.Now;
@@ -80,7 +81,8 @@ namespace CoffeeConnect.Service
             notaCompra.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
             notaCompra.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
             notaCompra.TipoId = request.TipoId;
-            notaCompra.PrecioDia = request.PrecioDia;
+            notaCompra.PrecioGuardado = request.PrecioGuardado;
+            notaCompra.PrecioPagado = request.PrecioPagado;
             notaCompra.Importe = request.Importe;
             notaCompra.EstadoId = NotaCompraEstados.PorLiquidar;
             notaCompra.FechaUltimaActualizacion = DateTime.Now;
