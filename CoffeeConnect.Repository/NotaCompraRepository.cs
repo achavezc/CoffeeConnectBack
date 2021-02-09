@@ -22,7 +22,6 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
         public int Insertar(NotaCompra notaCompra)
         {
             int result = 0;
@@ -104,7 +103,6 @@ namespace CoffeeConnect.Repository
 			return result;
 		}
 
-
 		public int Anular(int notaCompraId, DateTime fecha, string usuario, string estadoId)
 		{
 			int affected = 0;
@@ -142,6 +140,27 @@ namespace CoffeeConnect.Repository
 
 			return affected;
 		}
+
+		public IEnumerable<ConsultaNotaCompraBE> ConsultarNotaCompra(ConsultaNotaCompraRequestDTO request)
+		{
+			var parameters = new DynamicParameters();
+			parameters.Add("Numero", request.Numero);
+			parameters.Add("NumeroGuiaRecepcion", request.NumeroGuiaRecepcion);
+			parameters.Add("NombreRazonSocial", request.NombreRazonSocial);
+			parameters.Add("TipoDocumentoId", request.TipoDocumentoId);			
+			parameters.Add("NumeroDocumento", request.NumeroDocumento);
+			parameters.Add("CodigoSocio", request.CodigoSocio);
+			parameters.Add("EstadoId", request.EstadoId);
+			parameters.Add("FechaInicio", request.FechaInicio);
+			parameters.Add("FechaFin", request.FechaFin);
+
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				return db.Query<ConsultaNotaCompraBE>("uspNotaCompraConsulta", parameters, commandType: CommandType.StoredProcedure);
+			}
+		}
+
 
 	}
 }

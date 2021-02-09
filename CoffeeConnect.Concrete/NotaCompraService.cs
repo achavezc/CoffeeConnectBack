@@ -106,6 +106,23 @@ namespace CoffeeConnect.Service
         }
 
 
+        public List<ConsultaNotaCompraBE> ConsultarNotaCompra(ConsultaNotaCompraRequestDTO request)
+        {
+            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionSeleccioneMinimoUnFiltro.Label" });
+
+
+            var timeSpan = request.FechaFin - request.FechaInicio;
+
+            if (timeSpan.Days > 730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionRangoFechaMayor2anios.Label" });
+
+
+
+            var list = _INotaCompraRepository.ConsultarNotaCompra(request);
+
+            return list.ToList();
+        }
 
     }
 }
