@@ -179,6 +179,9 @@ namespace CoffeeConnect.Models
 		public string UsuarioUltimaActualizacion
 		{ get; set; }
 
+		public DateTime FechaCosecha
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the Activo value.
 		/// </summary>

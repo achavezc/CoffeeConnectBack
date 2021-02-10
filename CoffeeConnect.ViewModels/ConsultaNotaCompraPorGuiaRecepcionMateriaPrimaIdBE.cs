@@ -153,6 +153,12 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaRegistro
 		{ get; set; }
 
+		public DateTime FechaCosecha
+		{ get; set; }
+
+		
+
+
 		/// <summary>
 		/// Gets or sets the UsuarioRegistro value.
 		/// </summary>
