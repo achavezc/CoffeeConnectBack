@@ -17,5 +17,7 @@ namespace CoffeeConnect.Interface.Repository
         int Liquidar(int notaCompraId, DateTime fecha, string usuario, string estadoId, decimal? precioDia, decimal? importe);
 
         IEnumerable<ConsultaNotaCompraBE> ConsultarNotaCompra(ConsultaNotaCompraRequestDTO request);
+
+        ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(int guiaRecepcionMateriaPrimaId);
     }
 }

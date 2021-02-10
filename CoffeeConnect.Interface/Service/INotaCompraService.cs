@@ -14,5 +14,7 @@ namespace CoffeeConnect.Interface.Service
         int LiquidarNotaCompra(LiquidarNotaCompraRequestDTO request);
 
         List<ConsultaNotaCompraBE> ConsultarNotaCompra(ConsultaNotaCompraRequestDTO request);
+
+        ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request);
     }
 }

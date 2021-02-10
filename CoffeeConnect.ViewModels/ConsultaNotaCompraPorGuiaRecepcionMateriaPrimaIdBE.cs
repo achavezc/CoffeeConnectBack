@@ -1,8 +1,8 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class NotaCompra
+	public class ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE
 	{
 		#region Properties
 		/// <summary>
@@ -20,9 +20,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the EmpresaId value.
 		/// </summary>
-		public int EmpresaId
-		{ get; set; }
-
+		
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
@@ -33,6 +31,9 @@ namespace CoffeeConnect.Models
 		/// Gets or sets the UnidadMedidaIdPesado value.
 		/// </summary>
 		public string UnidadMedidaIdPesado
+		{ get; set; }
+
+		public string UnidadMedida
 		{ get; set; }
 
 		/// <summary>
@@ -119,6 +120,9 @@ namespace CoffeeConnect.Models
 		public string TipoId
 		{ get; set; }
 
+		public string Tipo
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the PrecioGuardado value.
 		/// </summary>
@@ -140,7 +144,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the EstadoId value.
 		/// </summary>
-		public string EstadoId
+		public string Estado
 		{ get; set; }
 
 		/// <summary>
@@ -167,24 +171,7 @@ namespace CoffeeConnect.Models
 		public DateTime? FechaLiquidacion
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the FechaUltimaActualizacion value.
-		/// </summary>
-		public DateTime? FechaUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioUltimaActualizacion value.
-		/// </summary>
-		public string UsuarioUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
-		{ get; set; }
-
+		
 		#endregion
 	}
 }
