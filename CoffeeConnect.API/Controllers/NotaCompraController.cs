@@ -217,16 +217,17 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-        [Route("GenerarPDF")]
-        [HttpPost]
-        public IActionResult GenerarPDF([FromBody] ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request)
+        private IActionResult generar(int id)
         {
             Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
 
             ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdResponseDTO response = new ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdResponseDTO();
             try
             {
+                ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request = new ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO();
+                request.GuiaRecepcionMateriaPrimaId = id;
+
                 ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE item = _notaCompraService.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(request);
 
                 List<ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE> lista = new List<ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>();
@@ -237,7 +238,6 @@ namespace Integracion.Deuda.Controller
                 var path = $"{this._webHostEnvironment.ContentRootPath}\\Reportes\\NotaCompra.rdlc";
 
 
-
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
@@ -246,7 +246,6 @@ namespace Integracion.Deuda.Controller
 
 
                 return File(result.MainStream, "application/pdf");
-
 
 
             }
@@ -263,6 +262,21 @@ namespace Integracion.Deuda.Controller
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
+        }
+
+
+        [Route("GenerarPDF")]
+        [HttpGet]
+        public IActionResult GenerarPDF(int id)
+        {
+            return this.generar(id);
+        }
+
+        [Route("GenerarPDFPost")]
+        [HttpPost]
+        public IActionResult GenerarPDFPost([FromBody] ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request)
+        {
+            return this.generar(request.GuiaRecepcionMateriaPrimaId);
         }
 
     }
