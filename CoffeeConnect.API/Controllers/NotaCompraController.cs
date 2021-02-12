@@ -228,9 +228,9 @@ namespace Integracion.Deuda.Controller
                 ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request = new ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO();
                 request.GuiaRecepcionMateriaPrimaId = id;
 
-                ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE item = _notaCompraService.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(request);
+                ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE item = _notaCompraService.ConsultarImpresionNotaCompraPorGuiaRecepcionMateriaPrimaId(request);
 
-                List<ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE> lista = new List<ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>();
+                List<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE> lista = new List<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>();
                 lista.Add(item);
 
                 string mimetype = "";
@@ -241,7 +241,7 @@ namespace Integracion.Deuda.Controller
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                lr.AddDataSource("dsUsers", Util.ToDataTable<ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>(lista));
+                lr.AddDataSource("dsUsers", Util.ToDataTable<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>(lista));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
 

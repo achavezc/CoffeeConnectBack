@@ -181,6 +181,24 @@ namespace CoffeeConnect.Repository
 			return itemBE;
 		}
 
+		public ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarImpresionNotaCompraPorGuiaRecepcionMateriaPrimaId(int guiaRecepcionMateriaPrimaId)
+		{
+			ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE itemBE = null;
+
+			var parameters = new DynamicParameters();
+			parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
+
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				var list = db.Query<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>("uspNotaCompraConsultaImpresionPorGuiaRecepcionMateriaPrimaId", parameters, commandType: CommandType.StoredProcedure);
+
+				if (list.Any())
+					itemBE = list.First();
+			}
+
+			return itemBE;
+		}
 
 	}
 }
