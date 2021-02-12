@@ -1,4 +1,5 @@
 ﻿using CoffeeConnect.DTO;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace CoffeeConnect.Interface.Service
@@ -16,5 +17,7 @@ namespace CoffeeConnect.Interface.Service
         List<ConsultaNotaCompraBE> ConsultarNotaCompra(ConsultaNotaCompraRequestDTO request);
 
         ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request);
+
+
     }
 }

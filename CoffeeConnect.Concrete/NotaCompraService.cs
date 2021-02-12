@@ -4,6 +4,8 @@ using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,13 @@ namespace CoffeeConnect.Service
     {
        
         private INotaCompraRepository _INotaCompraRepository;
-       
+
+        
+
         public NotaCompraService(INotaCompraRepository notaCompraRepository)
         {
-            _INotaCompraRepository = notaCompraRepository;          
+            _INotaCompraRepository = notaCompraRepository;
+           
         }
 
        		
@@ -132,6 +137,8 @@ namespace CoffeeConnect.Service
             return _INotaCompraRepository.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(request.GuiaRecepcionMateriaPrimaId);
         }
 
+       
+       
 
     }
 }

@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Reflection;
+using AspNetCore.Reporting;
 using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
+using Core.Common;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Integracion.Deuda.Controller
@@ -12,10 +18,13 @@ namespace Integracion.Deuda.Controller
     {
         private INotaCompraService _notaCompraService;
         private Core.Common.Logger.ILog _log;
-        public NotaCompraController(INotaCompraService notaCompraService, Core.Common.Logger.ILog log)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public NotaCompraController(INotaCompraService notaCompraService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
             _notaCompraService = notaCompraService;
             _log = log;
+            _webHostEnvironment = webHostEnvironment;
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
         [HttpGet("version")]
@@ -191,6 +200,54 @@ namespace Integracion.Deuda.Controller
                 response.Result.Data = _notaCompraService.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(request);
 
                 response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("GenerarPDF")]
+        [HttpPost]
+        public IActionResult GenerarPDF([FromBody] ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdResponseDTO response = new ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdResponseDTO();
+            try
+            {
+                ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE item = _notaCompraService.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(request);
+
+                List<ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE> lista = new List<ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>();
+                lista.Add(item);
+
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{this._webHostEnvironment.ContentRootPath}\\Reportes\\NotaCompra.rdlc";
+
+
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                lr.AddDataSource("dsUsers", Util.ToDataTable<ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>(lista));
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+
+                return File(result.MainStream, "application/pdf");
+
+
 
             }
             catch (ResultException ex)
