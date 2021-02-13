@@ -123,17 +123,38 @@ namespace CoffeeConnect.DTO
 		public string Tipo
 		{ get; set; }
 
+		public string Departamento
+		{ get; set; }
+
+		public string Provincia
+		{ get; set; }
+
+		public string Distrito
+		{ get; set; }
+
+		public string Zona
+		{ get; set; }
+
+		public string PredioFinca
+		{ get; set; }
+
+		public string MonedaId
+		{ get; set; }
+
+		public string Moneda
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the PrecioGuardado value.
 		/// </summary>
-		public decimal? PrecioGuardado
+		public decimal? Precio
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the PrecioPagado value.
 		/// </summary>
-		public decimal? PrecioPagado
-		{ get; set; }
+		//public decimal? PrecioPagado
+		//{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the Importe value.
