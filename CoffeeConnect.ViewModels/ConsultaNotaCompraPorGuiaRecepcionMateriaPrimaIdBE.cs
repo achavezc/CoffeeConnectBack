@@ -18,13 +18,33 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the EmpresaId value.
-		/// </summary>
-		
-		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
 		public string Numero
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the EstadoId value.
+		/// </summary>
+		public string EstadoId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Estado value.
+		/// </summary>
+		public string Estado
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TipoId value.
+		/// </summary>
+		public string TipoId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Tipo value.
+		/// </summary>
+		public string Tipo
 		{ get; set; }
 
 		/// <summary>
@@ -33,6 +53,9 @@ namespace CoffeeConnect.DTO
 		public string UnidadMedidaIdPesado
 		{ get; set; }
 
+		/// <summary>
+		/// Gets or sets the UnidadMedida value.
+		/// </summary>
 		public string UnidadMedida
 		{ get; set; }
 
@@ -115,36 +138,27 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the TipoId value.
+		/// Gets or sets the Moneda value.
 		/// </summary>
-		public string TipoId
-		{ get; set; }
-
-		public string Tipo
+		public string Moneda
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the PrecioGuardado value.
 		/// </summary>
-		public decimal? PrecioGuardado
+		public decimal PrecioGuardado
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the PrecioPagado value.
 		/// </summary>
-		public decimal? PrecioPagado
+		public decimal PrecioPagado
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the Importe value.
 		/// </summary>
-		public decimal? Importe
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the EstadoId value.
-		/// </summary>
-		public string Estado
+		public decimal Importe
 		{ get; set; }
 
 		/// <summary>
@@ -152,12 +166,6 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public DateTime FechaRegistro
 		{ get; set; }
-
-		public DateTime FechaCosecha
-		{ get; set; }
-
-		
-
 
 		/// <summary>
 		/// Gets or sets the UsuarioRegistro value.
@@ -174,10 +182,27 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the FechaLiquidacion value.
 		/// </summary>
-		public DateTime? FechaLiquidacion
+		public DateTime FechaLiquidacion
 		{ get; set; }
 
-		
+		/// <summary>
+		/// Gets or sets the FechaUltimaActualizacion value.
+		/// </summary>
+		public DateTime FechaUltimaActualizacion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioUltimaActualizacion value.
+		/// </summary>
+		public string UsuarioUltimaActualizacion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Activo value.
+		/// </summary>
+		public bool Activo
+		{ get; set; }
+
 		#endregion
 	}
 }

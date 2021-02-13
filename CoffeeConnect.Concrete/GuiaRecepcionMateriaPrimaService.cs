@@ -15,10 +15,13 @@ namespace CoffeeConnect.Service
     {
        
         private IGuiaRecepcionMateriaPrimaRepository _IGuiaRecepcionMateriaPrimaRepository;
-       
-        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima)
+
+        private INotaCompraRepository _INotaCompraRepository;
+
+        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima, INotaCompraRepository notaCompraRepository)
         {
-            _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrima;          
+            _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrima;
+            _INotaCompraRepository = notaCompraRepository;
         }
         public List<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO request)       
         {           
@@ -74,6 +77,9 @@ namespace CoffeeConnect.Service
             consultaGuiaRecepcionMateriaPrimaPorIdBE.AnalisisSensorialDefectoDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
 
             consultaGuiaRecepcionMateriaPrimaPorIdBE.RegistroTostadoIndicadorDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
+
+            ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE consultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE = _INotaCompraRepository.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(guiaRecepcionMateriaPrimaId);
+
 
 
             return consultaGuiaRecepcionMateriaPrimaPorIdBE;

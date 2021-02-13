@@ -352,6 +352,31 @@ namespace CoffeeConnect.DTO
 		public bool Activo
 		{ get; set; }
 
+		//public int? NotaCompraId
+		//{ get; set; }
+
+		//public decimal? DescuentoPorHumedad
+		//{ get; set; }
+
+		//public decimal? KilosNetosDescontar
+		//{ get; set; }
+
+		//public decimal? KilosNetosPagar
+		//{ get; set; }
+
+		//public decimal? QQ55
+		//{ get; set; }
+
+		//public decimal? PrecioGuardado
+		//{ get; set; }
+
+		//public decimal? PrecioPagado
+		//{ get; set; }
+
+		//public decimal? Importe
+		//{ get; set; }
+
+
 		public List<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
 		{ get; set; }
 
@@ -374,8 +399,9 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
+		public ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE NotaCompra
+		{ get; set; }
 
-		
 
 
 		#endregion
