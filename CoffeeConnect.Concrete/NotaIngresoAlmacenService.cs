@@ -78,7 +78,7 @@ namespace CoffeeConnect.Service
 			notaIngresoAlmacen.TotalGramosAnalisisFisico = guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico;
 			notaIngresoAlmacen.TotalPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico;
 			notaIngresoAlmacen.TotalAnalisisSensorial = guiaRecepcionMateriaPrima.TotalAnalisisSensorial;
-			notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico;
+			notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico.Value;
 			//notaIngresoAlmacen.Observacion = guiaRecepcionMateriaPrima.Observacion;
 			notaIngresoAlmacen.EstadoId = guiaRecepcionMateriaPrima.EstadoId;	
 			notaIngresoAlmacen.UsuarioRegistro = request.Usuario;

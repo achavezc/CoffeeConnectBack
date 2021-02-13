@@ -1,4 +1,6 @@
+using CoffeeConnect.Models;
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -11,34 +13,85 @@ namespace CoffeeConnect.DTO
 		public int GuiaRecepcionMateriaPrimaId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the EmpresaId value.
-		/// </summary>
 		public int EmpresaId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the RazonSocial value.
-		/// </summary>
-		public string RazonSocial
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Ruc value.
-		/// </summary>
-		public string Ruc
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Direccion value.
-		/// </summary>
-		public string Direccion
-		{ get; set; }
+		{ get; set; }		
 
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
 		public string Numero
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the NumeroReferencia value.
+		/// </summary>
+		public string NumeroReferencia
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ProductoId value.
+		/// </summary>
+		public string ProductoId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Producto value.
+		/// </summary>
+		public string Producto
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the SubProductoId value.
+		/// </summary>
+		public string SubProductoId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the SubProducto value.
+		/// </summary>
+		public string SubProducto
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaCosecha value.
+		/// </summary>
+		public DateTime FechaCosecha
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the EstadoId value.
+		/// </summary>
+		public string EstadoId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Estado value.
+		/// </summary>
+		public string Estado
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaRegistro value.
+		/// </summary>
+		public DateTime FechaRegistro
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioRegistro value.
+		/// </summary>
+		public string UsuarioRegistro
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaUltimaActualizacion value.
+		/// </summary>
+		public DateTime? FechaUltimaActualizacion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioUltimaActualizacion value.
+		/// </summary>
+		public string UsuarioUltimaActualizacion
 		{ get; set; }
 
 		/// <summary>
@@ -48,33 +101,27 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the TipoProvedor value.
+		/// Gets or sets the TipoProveedor value.
 		/// </summary>
-		public string TipoProvedor
+		public string TipoProveedor
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the SocioId value.
 		/// </summary>
-		public int? SocioId
+		public int SocioId
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the TerceroId value.
 		/// </summary>
-		public int? TerceroId
+		public int TerceroId
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the IntermediarioId value.
 		/// </summary>
-		public int? IntermediarioId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the NombreRazonSocial value.
-		/// </summary>
-		public string NombreRazonSocial
+		public int IntermediarioId
 		{ get; set; }
 
 		/// <summary>
@@ -84,27 +131,9 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the ZonaId value.
+		/// Gets or sets the NombreRazonSocial value.
 		/// </summary>
-		public string ZonaId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Zona value.
-		/// </summary>
-		public string Zona
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PredioFinca value.
-		/// </summary>
-		public string PredioFinca
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ProductoId value.
-		/// </summary>
-		public string ProductoId
+		public string NombreRazonSocial
 		{ get; set; }
 
 		/// <summary>
@@ -120,45 +149,75 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the NombreProducto value.
+		/// Gets or sets the NumeroDocumento value.
 		/// </summary>
-		public string Producto
+		public string NumeroDocumento
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the NombreSubProducto value.
+		/// Gets or sets the Departamento value.
 		/// </summary>
-		public string SubProducto
+		public string Departamento
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the SubProductoId value.
+		/// Gets or sets the Provincia value.
 		/// </summary>
-		public string SubProductoId
+		public string Provincia
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the FechaCosecha value.
+		/// Gets or sets the Distrito value.
 		/// </summary>
-		public DateTime FechaCosecha
+		public string Distrito
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the FechaPesado value.
+		/// Gets or sets the Zona value.
 		/// </summary>
-		public DateTime FechaPesado
+		public string Zona
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the UsuarioPesado value.
+		/// Gets or sets the PredioFinca value.
 		/// </summary>
-		public string UsuarioPesado
+		public string PredioFinca
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the RazonSocial value.
+		/// </summary>
+		public string RazonSocial
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Ruc value.
+		/// </summary>
+		public string Ruc
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Logo value.
+		/// </summary>
+		public string Logo
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Direccion value.
+		/// </summary>
+		public string Direccion
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the UnidadMedidaIdPesado value.
 		/// </summary>
 		public string UnidadMedidaIdPesado
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UnidadMedida value.
+		/// </summary>
+		public string UnidadMedida
 		{ get; set; }
 
 		/// <summary>
@@ -188,67 +247,79 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the ExportableGramosAnalisisFisico value.
 		/// </summary>
-		public decimal ExportableGramosAnalisisFisico
+		public decimal? ExportableGramosAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the ExportablePorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal ExportablePorcentajeAnalisisFisico
+		public decimal? ExportablePorcentajeAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the DescarteGramosAnalisisFisico value.
 		/// </summary>
-		public decimal DescarteGramosAnalisisFisico
+		public decimal? DescarteGramosAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the DescartePorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal DescartePorcentajeAnalisisFisico
+		public decimal? DescartePorcentajeAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the CascarillaGramosAnalisisFisico value.
 		/// </summary>
-		public decimal CascarillaGramosAnalisisFisico
+		public decimal? CascarillaGramosAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the CascarillaPorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal CascarillaPorcentajeAnalisisFisico
+		public decimal? CascarillaPorcentajeAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the TotalGramosAnalisisFisico value.
 		/// </summary>
-		public decimal TotalGramosAnalisisFisico
+		public decimal? TotalGramosAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the TotalPorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal TotalPorcentajeAnalisisFisico
+		public decimal? TotalPorcentajeAnalisisFisico
 		{ get; set; }
 
-		public decimal TotalAnalisisSensorial
+		/// <summary>
+		/// Gets or sets the TotalAnalisisSensorial value.
+		/// </summary>
+		public decimal? TotalAnalisisSensorial
 		{ get; set; }
-
-		
-
 
 		/// <summary>
 		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
 		/// </summary>
-		public decimal HumedadPorcentajeAnalisisFisico
+		public decimal? HumedadPorcentajeAnalisisFisico
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the ObservacionAnalisisFisico value.
 		/// </summary>
 		public string ObservacionAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaPesado value.
+		/// </summary>
+		public DateTime FechaPesado
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioPesado value.
+		/// </summary>
+		public string UsuarioPesado
 		{ get; set; }
 
 		/// <summary>
@@ -276,40 +347,36 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the EstadoId value.
-		/// </summary>
-		public string EstadoId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaRegistro value.
-		/// </summary>
-		public DateTime FechaRegistro
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioRegistro value.
-		/// </summary>
-		public string UsuarioRegistro
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaUltimaActualizacion value.
-		/// </summary>
-		public DateTime FechaUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioUltimaActualizacion value.
-		/// </summary>
-		public string UsuarioUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
 		/// Gets or sets the Activo value.
 		/// </summary>
 		public bool Activo
 		{ get; set; }
+
+		public List<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
+		{ get; set; }
+
+		public List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalle> AnalisisFisicoDefectoPrimarioDetalle
+		{ get; set; }
+
+		public List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalle> AnalisisFisicoDefectoSecundarioDetalle
+		{ get; set; }
+
+		public List<GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalle> AnalisisFisicoOlorDetalle
+		{ get; set; }
+
+		public List<GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalle> AnalisisSensorialAtributoDetalle
+		{ get; set; }
+
+		public List<GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalle> AnalisisSensorialDefectoDetalle
+		{ get; set; }
+
+		public List<GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalle> RegistroTostadoIndicadorDetalle
+		{ get; set; }
+
+
+
+		
+
 
 		#endregion
 	}
