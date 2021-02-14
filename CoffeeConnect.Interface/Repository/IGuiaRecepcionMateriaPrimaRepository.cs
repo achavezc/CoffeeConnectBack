@@ -37,16 +37,16 @@ namespace CoffeeConnect.Interface.Repository
         int ActualizarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalle(List<GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleTipo> request, int GuiaRecepcionMateriaPrimaId);
 
 
+        int ActualizarEstado(int guiaRecepcionMateriaPrimaId, DateTime fecha, string usuario, string estadoId);
 
 
 
-        
         //IEnumerable<GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetallePorId(int guiaRecepcionMateriaPrimaId);
-        
+
         //IEnumerable<GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetallePorId(int guiaRecepcionMateriaPrimaId);
 
         //IEnumerable<GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalle> ConsultarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetallePorId(int guiaRecepcionMateriaPrimaId);
-        
+
 
     }
 }

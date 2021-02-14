@@ -396,6 +396,25 @@ namespace CoffeeConnect.Repository
             return result;
 
         }
+
+
+        public int ActualizarEstado(int guiaRecepcionMateriaPrimaId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspGuiaRecepcionMateriaPrimaActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
     }
 
 
