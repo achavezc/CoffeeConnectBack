@@ -15,10 +15,13 @@ namespace CoffeeConnect.Service
     {
        
         private IGuiaRecepcionMateriaPrimaRepository _IGuiaRecepcionMateriaPrimaRepository;
-       
-        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima)
+
+        private INotaCompraRepository _INotaCompraRepository;
+
+        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima, INotaCompraRepository notaCompraRepository)
         {
-            _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrima;          
+            _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrima;
+            _INotaCompraRepository = notaCompraRepository;
         }
         public List<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO request)       
         {           
@@ -56,7 +59,31 @@ namespace CoffeeConnect.Service
 
         public ConsultaGuiaRecepcionMateriaPrimaPorIdBE ConsultarGuiaRecepcionMateriaPrimaPorId(ConsultaGuiaRecepcionMateriaPrimaPorIdRequestDTO request)
         {
-            return _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(request.GuiaRecepcionMateriaPrimaId);            
+            int guiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
+
+
+            ConsultaGuiaRecepcionMateriaPrimaPorIdBE consultaGuiaRecepcionMateriaPrimaPorIdBE = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(request.GuiaRecepcionMateriaPrimaId);
+            
+            consultaGuiaRecepcionMateriaPrimaPorIdBE.AnalisisFisicoColorDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
+
+            consultaGuiaRecepcionMateriaPrimaPorIdBE.AnalisisFisicoOlorDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
+
+            consultaGuiaRecepcionMateriaPrimaPorIdBE.AnalisisFisicoDefectoPrimarioDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
+
+            consultaGuiaRecepcionMateriaPrimaPorIdBE.AnalisisFisicoDefectoSecundarioDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
+
+            consultaGuiaRecepcionMateriaPrimaPorIdBE.AnalisisSensorialAtributoDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
+
+            consultaGuiaRecepcionMateriaPrimaPorIdBE.AnalisisSensorialDefectoDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
+
+            consultaGuiaRecepcionMateriaPrimaPorIdBE.RegistroTostadoIndicadorDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
+
+            ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE consultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE = _INotaCompraRepository.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(guiaRecepcionMateriaPrimaId);
+
+
+
+            return consultaGuiaRecepcionMateriaPrimaPorIdBE;
+
         }
 
         public int RegistrarGuiaRecepcionMateriaPrima(RegistrarGuiaRecepcionMateriaPrimaRequestDTO request)

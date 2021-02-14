@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Reflection;
-using AspNetCore.Reporting;
+﻿using AspNetCore.Reporting;
 using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace Integracion.Deuda.Controller
 {
@@ -62,7 +60,6 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
 
         [Route("Actualizar")]
         [HttpPost]
@@ -123,7 +120,6 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
 
         [Route("Liquidar")]
         [HttpPost]
@@ -186,7 +182,6 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-
         [Route("ConsultarPorGuiaRecepcionMateriaPrimaId")]
         [HttpPost]
         public IActionResult ConsultarPorGuiaRecepcionMateriaPrimaId([FromBody] ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request)
@@ -241,13 +236,10 @@ namespace Integracion.Deuda.Controller
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                lr.AddDataSource("dsUsers", Util.ToDataTable<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>(lista));
+                lr.AddDataSource("dsNotaCompra", Util.ToDataTable(lista));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
-
                 return File(result.MainStream, "application/pdf");
-
-
             }
             catch (ResultException ex)
             {
@@ -263,7 +255,6 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
 
         [Route("GenerarPDF")]
         [HttpGet]

@@ -155,7 +155,6 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-
         public IEnumerable<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetallePorId(int guiaRecepcionMateriaPrimaId)
         {     
             var parameters = new DynamicParameters();
