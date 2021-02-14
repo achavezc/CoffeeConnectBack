@@ -152,6 +152,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("NumeroDocumento", request.NumeroDocumento);
 			parameters.Add("CodigoSocio", request.CodigoSocio);
 			parameters.Add("EstadoId", request.EstadoId);
+			parameters.Add("ProductoId", request.ProductoId);
 			parameters.Add("TipoId", request.TipoId);
 			parameters.Add("EmpresaId", request.EmpresaId);
 			parameters.Add("FechaInicio", request.FechaInicio);
