@@ -4,18 +4,18 @@ namespace CoffeeConnect.Models
 {
 	public class GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo
 	{
-		#region Properties
-		
-		/// <summary>
-		/// Gets or sets the GuiaRecepcionMateriaPrimaId value.
-		/// </summary>
-		public int GuiaRecepcionMateriaPrimaId
-		{ get; set; }
+        #region Properties
 
-		/// <summary>
-		/// Gets or sets the ColorDetalleId value.
-		/// </summary>
-		public string ColorDetalleId
+        /// <summary>
+        /// Gets or sets the GuiaRecepcionMateriaPrimaId value.
+        /// </summary>
+        public int GuiaRecepcionMateriaPrimaId
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ColorDetalleId value.
+        /// </summary>
+        public string ColorDetalleId
 		{ get; set; }
 
 		/// <summary>

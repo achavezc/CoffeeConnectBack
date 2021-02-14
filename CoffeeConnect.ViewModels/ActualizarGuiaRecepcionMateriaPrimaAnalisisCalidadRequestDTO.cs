@@ -97,6 +97,8 @@ namespace CoffeeConnect.DTO
 		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleRequestDTO> AnalisisFisicoDefectoSecundarioDetalleList { get; set; }
 		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleRequestDTO> AnalisisFisicoOlorDetalleList { get; set; }
 		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleRequestDTO> AnalisisSensorialAtributoDetalleList { get; set; }
+		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleRequestDTO> AnalisisSensorialDefectoDetalleList { get; set; }
+
 		public List<ActualizarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleRequestDTO> RegistroTostadoIndicadorDetalleList { get; set; }
 
 		public ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadRequestDTO() {
@@ -106,6 +108,7 @@ namespace CoffeeConnect.DTO
 			AnalisisFisicoDefectoSecundarioDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleRequestDTO>();
 			AnalisisFisicoOlorDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleRequestDTO>();
 			AnalisisSensorialAtributoDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleRequestDTO>();
+			AnalisisSensorialDefectoDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleRequestDTO>();
 			RegistroTostadoIndicadorDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleRequestDTO>();
 
 		}

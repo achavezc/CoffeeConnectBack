@@ -8,8 +8,8 @@ namespace CoffeeConnect.DTO
 {
    public class ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleRequestDTO
 	{
-		public int GuiaRecepcionMateriaPrimaId
-		{ get; set; }
+		//public int GuiaRecepcionMateriaPrimaId
+		//{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the DefectoDetalleId value.

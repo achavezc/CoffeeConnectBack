@@ -143,7 +143,9 @@ namespace CoffeeConnect.Service
 
             int affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarAnalisisCalidad(guiaRecepcionMateriaPrima);
 
-            if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null) {
+            #region "Analisis Fisico Color"
+            if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)
+            {
 
                 List<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo> AnalisisFisicoColorDetalleList = new List<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo>();
 
@@ -151,14 +153,17 @@ namespace CoffeeConnect.Service
                     GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo item = new GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo();
                     item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
                     item.ColorDetalleId = z.ColorDetalleId;
-                    item.GuiaRecepcionMateriaPrimaId = z.GuiaRecepcionMateriaPrimaId;
+                    item.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoColorDetalleList.Add(item);
                 });
 
                 affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.GuiaRecepcionMateriaPrimaId);
             }
+            #endregion
 
+
+            #region Analisis Fisico Defecto Primario
             if (request.AnalisisFisicoDefectoPrimarioDetalleList.FirstOrDefault() != null)
             {
                 List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleTipo> AnalisisFisicoDefectoPrimarioDetalleList = new List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleTipo>();
@@ -168,14 +173,16 @@ namespace CoffeeConnect.Service
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
                     item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
-                    item.GuiaRecepcionMateriaPrimaId = z.GuiaRecepcionMateriaPrimaId;
+                    item.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoDefectoPrimarioDetalleList.Add(item);
                 });
 
                 affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalle(AnalisisFisicoDefectoPrimarioDetalleList, request.GuiaRecepcionMateriaPrimaId);
             }
+            #endregion
 
+            #region "Analisis Fisico Defecto Secundario Detalle"
             if (request.AnalisisFisicoDefectoSecundarioDetalleList.FirstOrDefault() != null)
             {
                 List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleTipo>();
@@ -185,20 +192,23 @@ namespace CoffeeConnect.Service
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
                     item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
-                    item.GuiaRecepcionMateriaPrimaId = z.GuiaRecepcionMateriaPrimaId;
+                    item.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
                 });
 
                 affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.GuiaRecepcionMateriaPrimaId);
             }
+            #endregion
+
+            #region "Analisis Fisico Olor Detalle"
             if (request.AnalisisFisicoOlorDetalleList.FirstOrDefault() != null)
             {
                 List<GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleTipo>();
 
                 request.AnalisisFisicoOlorDetalleList.ForEach(z => {
                     GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleTipo item = new GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleTipo();
-                    item.GuiaRecepcionMateriaPrimaId = z.GuiaRecepcionMateriaPrimaId;
+                    item.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
                     item.OlorDetalleDescripcion = z.OlorDetalleDescripcion;
                     item.OlorDetalleId = z.OlorDetalleId;
                     item.Valor = z.Valor;
@@ -207,13 +217,16 @@ namespace CoffeeConnect.Service
 
                 affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.GuiaRecepcionMateriaPrimaId);
             }
+            #endregion
+
+            #region "Analisis Sensorial Atributo"
             if (request.AnalisisSensorialAtributoDetalleList.FirstOrDefault() != null)
             {
                 List<GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo>();
 
                 request.AnalisisSensorialAtributoDetalleList.ForEach(z => {
                     GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo item = new GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo();
-                    item.GuiaRecepcionMateriaPrimaId = z.GuiaRecepcionMateriaPrimaId;
+                    item.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
                     item.AtributoDetalleDescripcion = z.AtributoDetalleDescripcion;
                     item.AtributoDetalleId = z.AtributoDetalleId;
                     item.Valor = z.Valor;
@@ -222,6 +235,26 @@ namespace CoffeeConnect.Service
 
                 affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalle(AnalisisSensorialAtributoDetalle, request.GuiaRecepcionMateriaPrimaId);
             }
+            #endregion
+
+            if (request.AnalisisSensorialDefectoDetalleList.FirstOrDefault() != null)
+            {
+                List<GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleTipo>();
+
+                request.AnalisisSensorialDefectoDetalleList.ForEach(z => {
+                    GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleTipo item = new GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleTipo();
+                    item.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
+                    item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                    item.DefectoDetalleId = z.DefectoDetalleId;
+                    
+                    item.Valor = z.Valor;
+                    AnalisisSensorialDefectoDetalle.Add(item);
+                });
+
+                affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.GuiaRecepcionMateriaPrimaId);
+            }
+            
+
             if (request.RegistroTostadoIndicadorDetalleList.FirstOrDefault() != null)
             {
                 List<GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleTipo> RegistroTostadoIndicadorDetalle = new List<GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleTipo>();
@@ -229,7 +262,7 @@ namespace CoffeeConnect.Service
                 request.RegistroTostadoIndicadorDetalleList.ForEach(z => {
                     
                     GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleTipo item = new GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleTipo();
-                    item.GuiaRecepcionMateriaPrimaId = z.GuiaRecepcionMateriaPrimaId;
+                    item.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
                     item.IndicadorDetalleDescripcion = z.IndicadorDetalleDescripcion;
                     item.IndicadorDetalleId = z.IndicadorDetalleId;
                     item.Valor = z.Valor;

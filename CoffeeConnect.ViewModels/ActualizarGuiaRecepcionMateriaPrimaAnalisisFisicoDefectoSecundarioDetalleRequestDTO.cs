@@ -13,8 +13,8 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the GuiaRecepcionMateriaPrimaId value.
 		/// </summary>
-		public int GuiaRecepcionMateriaPrimaId
-		{ get; set; }
+		//public int GuiaRecepcionMateriaPrimaId
+		//{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the DefectoDetalleId value.

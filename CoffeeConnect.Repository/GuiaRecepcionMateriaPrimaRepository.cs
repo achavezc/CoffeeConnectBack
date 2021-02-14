@@ -363,9 +363,9 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
 
             parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
-            parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+            parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
-
+          
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
