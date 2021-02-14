@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
+using Core.Utils;
 using CoffeeConnect.DTO;
 
 namespace CoffeeConnect.Repository
@@ -247,6 +248,154 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle(List<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo> request, int GuiaRecepcionMateriaPrimaId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+            
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+           
+        }
+
+        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalle(List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleTipo> request, int GuiaRecepcionMateriaPrimaId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+
+        }
+
+        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalle(List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleTipo> request, int GuiaRecepcionMateriaPrimaId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+
+        }
+        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalle(List<GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleTipo> request, int GuiaRecepcionMateriaPrimaId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            
+            return result;
+
+        }
+        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalle(List<GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo> request, int GuiaRecepcionMateriaPrimaId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+            
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalle(List<GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleTipo> request, int GuiaRecepcionMateriaPrimaId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalle(List<GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleTipo> request, int GuiaRecepcionMateriaPrimaId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@GuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
     }
 
 

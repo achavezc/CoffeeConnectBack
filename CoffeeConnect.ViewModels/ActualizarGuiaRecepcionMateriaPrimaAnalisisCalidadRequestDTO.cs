@@ -8,8 +8,6 @@ namespace CoffeeConnect.DTO
 {
    public class ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadRequestDTO
 	{
-
-		
 		/// <summary>
 		/// Gets or sets the GuiaRecepcionMateriaPrimaId value.
 		/// </summary>
@@ -93,6 +91,24 @@ namespace CoffeeConnect.DTO
 		public string ObservacionAnalisisSensorial
 		{ get; set; }
 
+        public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleRequestDTO> AnalisisFisicoColorDetalleList { get; set; }
+
+        public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleRequestDTO>  AnalisisFisicoDefectoPrimarioDetalleList{ get; set; }
+		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleRequestDTO> AnalisisFisicoDefectoSecundarioDetalleList { get; set; }
+		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleRequestDTO> AnalisisFisicoOlorDetalleList { get; set; }
+		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleRequestDTO> AnalisisSensorialAtributoDetalleList { get; set; }
+		public List<ActualizarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleRequestDTO> RegistroTostadoIndicadorDetalleList { get; set; }
+
+		public ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadRequestDTO() {
+
+			AnalisisFisicoColorDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleRequestDTO>();
+			AnalisisFisicoDefectoPrimarioDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleRequestDTO>();
+			AnalisisFisicoDefectoSecundarioDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleRequestDTO>();
+			AnalisisFisicoOlorDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleRequestDTO>();
+			AnalisisSensorialAtributoDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleRequestDTO>();
+			RegistroTostadoIndicadorDetalleList = new List<ActualizarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetalleRequestDTO>();
+
+		}
 
 	}
 }
