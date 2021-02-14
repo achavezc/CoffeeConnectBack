@@ -166,6 +166,10 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public decimal PrecioPagado
 		{ get; set; }
+		public decimal KilosNetosPagar
+		{ get; set; }
+
+		
 
 		/// <summary>
 		/// Gets or sets the Importe value.
