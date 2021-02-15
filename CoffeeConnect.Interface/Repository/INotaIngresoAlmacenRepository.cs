@@ -8,7 +8,9 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface INotaIngresoAlmacenRepository
     {       
-        int Insertar(NotaIngresoAlmacen notaIngresoAlmacen);       
+        int Insertar(NotaIngresoAlmacen notaIngresoAlmacen);
+
+        IEnumerable<ConsultaNotaIngresoAlmacenBE> ConsultarNotaIngresoAlmacen(ConsultaNotaIngresoAlmacenRequestDTO request);
 
     }
 }

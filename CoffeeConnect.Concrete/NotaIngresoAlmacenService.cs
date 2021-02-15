@@ -91,7 +91,23 @@ namespace CoffeeConnect.Service
 			return affected;
         }
 
+		public List<ConsultaNotaIngresoAlmacenBE> ConsultarNotaIngresoAlmacen(ConsultaNotaIngresoAlmacenRequestDTO request)
+		{
+			if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
+				throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 
-    }
+			var timeSpan = request.FechaFin - request.FechaInicio;
+
+			if (timeSpan.Days > 730)
+				throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
+
+
+
+			var list = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacen(request);
+
+			return list.ToList();
+		}
+
+	}
 }
