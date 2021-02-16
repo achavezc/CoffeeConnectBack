@@ -79,12 +79,16 @@ namespace CoffeeConnect.Service
 			notaIngresoAlmacen.TotalPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico;
 			notaIngresoAlmacen.TotalAnalisisSensorial = guiaRecepcionMateriaPrima.TotalAnalisisSensorial;
 			notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico.Value;
+			notaIngresoAlmacen.RendimientoPorcentaje = (guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico / guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico) * 100;
 			//notaIngresoAlmacen.Observacion = guiaRecepcionMateriaPrima.Observacion;
 			notaIngresoAlmacen.UsuarioRegistro = request.Usuario;
             notaIngresoAlmacen.FechaRegistro = DateTime.Now;
             notaIngresoAlmacen.EstadoId = NotaIngresoAlmacenEstados.Ingresado;
 
-            int affected = _INotaIngresoAlmacenRepository.Insertar(notaIngresoAlmacen);
+			
+
+
+			int affected = _INotaIngresoAlmacenRepository.Insertar(notaIngresoAlmacen);
 
 			_IGuiaRecepcionMateriaPrimaRepository.ActualizarEstado(request.GuiaRecepcionMateriaPrimaId, DateTime.Now, request.Usuario, GuiaRecepcionMateriaPrimaEstados.EnviadoAlmacen);
 

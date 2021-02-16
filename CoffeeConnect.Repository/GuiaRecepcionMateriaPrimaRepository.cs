@@ -23,7 +23,6 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
         public IEnumerable<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -169,7 +168,7 @@ namespace CoffeeConnect.Repository
 
             
         }
-
+        
         public IEnumerable<GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetallePorId(int guiaRecepcionMateriaPrimaId)
         {          
 

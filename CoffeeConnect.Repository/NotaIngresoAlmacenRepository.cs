@@ -11,6 +11,7 @@ using Dapper;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using CoffeeConnect.DTO;
+using Core.Common;
 
 namespace CoffeeConnect.Repository
 {
@@ -55,12 +56,10 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@TotalAnalisisSensorial", notaIngresoAlmacen.TotalAnalisisSensorial);
 			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico);
 			parameters.Add("@Observacion", notaIngresoAlmacen.Observacion);
+			parameters.Add("@RendimientoPorcentaje", notaIngresoAlmacen.RendimientoPorcentaje);
 			parameters.Add("@EstadoId", notaIngresoAlmacen.EstadoId);
 			parameters.Add("@FechaRegistro", notaIngresoAlmacen.FechaRegistro);
-			parameters.Add("@UsuarioRegistro", notaIngresoAlmacen.UsuarioRegistro);
-			
-
-
+			parameters.Add("@UsuarioRegistro", notaIngresoAlmacen.UsuarioRegistro);	
 
 			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
 			{
@@ -92,5 +91,37 @@ namespace CoffeeConnect.Repository
 				return db.Query<ConsultaNotaIngresoAlmacenBE>("uspNotaIngresoAlmacenConsulta", parameters, commandType: CommandType.StoredProcedure);
 			}
 		}
+
+		public IEnumerable<NotaIngresoAlmacen> ConsultarNotaIngresoPorIds(List<TablaIdsTipo> request)
+		{
+			var parameters = new DynamicParameters();
+			parameters.Add("@TablaIdsTipo", request.ToDataTable().AsTableValuedParameter());
+			
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				return db.Query<NotaIngresoAlmacen>("uspNotaIngresoAlmacenConsultarPorIds", parameters, commandType: CommandType.StoredProcedure);
+			}
+		}
+
+
+		public int ActualizarEstado(int notaIngresoAlmacenId, DateTime fecha, string usuario, string estadoId)
+		{
+			int affected = 0;
+
+			var parameters = new DynamicParameters();
+			parameters.Add("@NotaIngresoAlmacenId", notaIngresoAlmacenId);
+			parameters.Add("@Fecha", fecha);
+			parameters.Add("@Usuario", usuario);
+			parameters.Add("@EstadoId", estadoId);
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				affected = db.Execute("uspNotaIngresoAlmacenActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
+			}
+
+			return affected;
+		}
+
 	}
 }
