@@ -11,7 +11,10 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO request);
         int AnularGuiaRecepcionMateriaPrima(int guiaRecepcionMateriaPrimaId, DateTime fecha, string usuario, string estadoId);
         ConsultaGuiaRecepcionMateriaPrimaPorIdBE ConsultarGuiaRecepcionMateriaPrimaPorId(int guiaRecepcionMateriaPrimaId);
-        int Insert(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima);
+        int InsertarPesado(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima);
+
+        int ActualizarPesado(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima);
+
         int ActualizarAnalisisCalidad(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima);
        
         IEnumerable<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetallePorId(int guiaRecepcionMateriaPrimaId);

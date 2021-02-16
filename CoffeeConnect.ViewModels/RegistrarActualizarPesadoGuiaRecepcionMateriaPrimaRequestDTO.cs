@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class RegistrarGuiaRecepcionMateriaPrimaRequestDTO
+   public class RegistrarActualizarPesadoGuiaRecepcionMateriaPrimaRequestDTO
     {
+		public int GuiaRecepcionMateriaPrimaId
+		{ get; set; }
+
 		
+
 		/// <summary>
 		/// Gets or sets the EmpresaId value.
 		/// </summary>
@@ -18,8 +22,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
-		public string Numero
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the TipoProvedorId value.

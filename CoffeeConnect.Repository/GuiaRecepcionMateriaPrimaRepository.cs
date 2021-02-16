@@ -81,13 +81,14 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
-        public int Insert(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima)
+        public int ActualizarPesado(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima)
         {
             int result = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@EmpresaId", guiaRecepcionMateriaPrima.EmpresaId);
-            parameters.Add("@Numero", guiaRecepcionMateriaPrima.Numero);
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@NumeroReferencia", guiaRecepcionMateriaPrima.NumeroReferencia);
+            parameters.Add("@EmpresaId", guiaRecepcionMateriaPrima.EmpresaId);            
             parameters.Add("@TipoProvedorId", guiaRecepcionMateriaPrima.TipoProvedorId);
             parameters.Add("@SocioId", guiaRecepcionMateriaPrima.SocioId);
             parameters.Add("@TerceroId", guiaRecepcionMateriaPrima.TerceroId);
@@ -103,15 +104,53 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TaraPesado", guiaRecepcionMateriaPrima.TaraPesado);
             parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);            
             parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", guiaRecepcionMateriaPrima.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion); 
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaPesadoActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+          
+
+            return result;
+        }
+
+
+        public int InsertarPesado(GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", guiaRecepcionMateriaPrima.EmpresaId);
+            parameters.Add("@Numero", guiaRecepcionMateriaPrima.Numero);
+            parameters.Add("@NumeroReferencia", guiaRecepcionMateriaPrima.NumeroReferencia);            
+            parameters.Add("@TipoProvedorId", guiaRecepcionMateriaPrima.TipoProvedorId);
+            parameters.Add("@SocioId", guiaRecepcionMateriaPrima.SocioId);
+            parameters.Add("@TerceroId", guiaRecepcionMateriaPrima.TerceroId);
+            parameters.Add("@IntermediarioId", guiaRecepcionMateriaPrima.IntermediarioId);
+            parameters.Add("@ProductoId", guiaRecepcionMateriaPrima.ProductoId);
+            parameters.Add("@SubProductoId", guiaRecepcionMateriaPrima.SubProductoId);
+            parameters.Add("@FechaCosecha", guiaRecepcionMateriaPrima.FechaCosecha);
+            parameters.Add("@FechaPesado", guiaRecepcionMateriaPrima.FechaPesado);
+            parameters.Add("@UsuarioPesado", guiaRecepcionMateriaPrima.UsuarioPesado);
+            parameters.Add("@UnidadMedidaIdPesado", guiaRecepcionMateriaPrima.UnidadMedidaIdPesado);
+            parameters.Add("@CantidadPesado", guiaRecepcionMateriaPrima.CantidadPesado);
+            parameters.Add("@KilosBrutosPesado", guiaRecepcionMateriaPrima.KilosBrutosPesado);
+            parameters.Add("@TaraPesado", guiaRecepcionMateriaPrima.TaraPesado);
+            parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);
+            parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);
             parameters.Add("@FechaRegistro", guiaRecepcionMateriaPrima.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", guiaRecepcionMateriaPrima.UsuarioRegistro);            
-            
+            parameters.Add("@UsuarioRegistro", guiaRecepcionMateriaPrima.UsuarioRegistro);
+
             parameters.Add("@GuiaRecepcionMateriaPrimaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspGuiaRecepcionMateriaPrimaInsertar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspGuiaRecepcionMateriaPrimaPesadoInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             int id = parameters.Get<int>("GuiaRecepcionMateriaPrimaId");

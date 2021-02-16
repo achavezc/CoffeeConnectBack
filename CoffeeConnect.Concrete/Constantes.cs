@@ -14,6 +14,19 @@ namespace CoffeeConnect.Service
         public static String Anulado { get { return "00"; } }
     }
 
+    public static class Documentos
+    {
+        public static String GuiaRecepcion { get { return "GuiaRecepcion"; } }
+        public static String NotaCompra { get { return "NotaCompra"; } }
+
+        public static String NotaIngresoAlmacen { get { return "NotaIngresoAlmacen"; } }
+
+        public static String Lote { get { return "Lote"; } }
+
+      
+
+    }
+
     public static class NotaCompraEstados
     {
         public static String PorLiquidar { get { return "01"; } }

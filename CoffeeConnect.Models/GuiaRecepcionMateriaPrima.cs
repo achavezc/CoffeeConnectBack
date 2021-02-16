@@ -23,6 +23,9 @@ namespace CoffeeConnect.Models
 		public string Numero
 		{ get; set; }
 
+		public string NumeroReferencia
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the TipoProvedorId value.
 		/// </summary>

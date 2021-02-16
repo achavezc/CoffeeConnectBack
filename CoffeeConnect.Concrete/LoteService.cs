@@ -18,10 +18,13 @@ namespace CoffeeConnect.Service
 
         private INotaIngresoAlmacenRepository _INotaIngresoAlmacenRepository;
 
-        public LoteService(ILoteRepository loteRepository, INotaIngresoAlmacenRepository notaIngresoAlmacenRepository)
+        private ICorrelativoRepository _ICorrelativoRepository;
+
+        public LoteService(ILoteRepository loteRepository, INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, ICorrelativoRepository correlativoRepository)
         {
             _ILoteRepository = loteRepository;
             _INotaIngresoAlmacenRepository = notaIngresoAlmacenRepository;
+            _ICorrelativoRepository = correlativoRepository;
         }
        
 
@@ -32,7 +35,7 @@ namespace CoffeeConnect.Service
         {
             Lote lote = new Lote();
             lote.EmpresaId = request.EmpresaId;
-            lote.Numero = "";
+            lote.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.Lote);
             lote.EstadoId = LoteEstados.Ingresado;
             lote.AlmacenId = request.AlmacenId;
             lote.FechaRegistro = DateTime.Now;

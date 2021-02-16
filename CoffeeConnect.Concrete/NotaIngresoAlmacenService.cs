@@ -18,16 +18,15 @@ namespace CoffeeConnect.Service
 
         private IGuiaRecepcionMateriaPrimaRepository _IGuiaRecepcionMateriaPrimaRepository;
 
+		private ICorrelativoRepository _ICorrelativoRepository;
 
-        public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrimaRepository)
+
+		public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrimaRepository, ICorrelativoRepository correlativoRepository)
         {
-
-
-
-
             _INotaIngresoAlmacenRepository = notaIngresoAlmacenRepository;
             _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrimaRepository;
-        }
+			_ICorrelativoRepository = correlativoRepository;
+		}
 
 		/*
          
@@ -55,7 +54,7 @@ namespace CoffeeConnect.Service
             notaIngresoAlmacen.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
 
 			notaIngresoAlmacen.EmpresaId = guiaRecepcionMateriaPrima.EmpresaId;
-			notaIngresoAlmacen.Numero = guiaRecepcionMateriaPrima.Numero;
+			notaIngresoAlmacen.Numero = _ICorrelativoRepository.Obtener(guiaRecepcionMateriaPrima.EmpresaId, Documentos.NotaIngresoAlmacen);
 			notaIngresoAlmacen.AlmacenId = null;
 			notaIngresoAlmacen.TipoProvedorId = guiaRecepcionMateriaPrima.TipoProvedorId;
 			notaIngresoAlmacen.SocioId = guiaRecepcionMateriaPrima.SocioId;

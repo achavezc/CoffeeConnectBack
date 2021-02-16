@@ -18,10 +18,13 @@ namespace CoffeeConnect.Service
 
         private INotaCompraRepository _INotaCompraRepository;
 
-        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima, INotaCompraRepository notaCompraRepository)
+        private ICorrelativoRepository _ICorrelativoRepository;
+
+        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima, INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository)
         {
             _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrima;
             _INotaCompraRepository = notaCompraRepository;
+            _ICorrelativoRepository = correlativoRepository;
         }
         public List<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO request)       
         {           
@@ -86,12 +89,12 @@ namespace CoffeeConnect.Service
 
         }
 
-        public int RegistrarGuiaRecepcionMateriaPrima(RegistrarGuiaRecepcionMateriaPrimaRequestDTO request)
+        public int RegistrarPesadoGuiaRecepcionMateriaPrima(RegistrarActualizarPesadoGuiaRecepcionMateriaPrimaRequestDTO request)
         {
             GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima = new GuiaRecepcionMateriaPrima();
             
             guiaRecepcionMateriaPrima.EmpresaId = request.EmpresaId;
-            guiaRecepcionMateriaPrima.Numero = request.Numero;
+            guiaRecepcionMateriaPrima.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRecepcion);     
             guiaRecepcionMateriaPrima.TipoProvedorId = request.TipoProvedorId;
             guiaRecepcionMateriaPrima.SocioId = request.SocioId;
             guiaRecepcionMateriaPrima.TerceroId = request.TerceroId;
@@ -110,7 +113,36 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.FechaRegistro = DateTime.Now;
             guiaRecepcionMateriaPrima.UsuarioRegistro = request.UsuarioPesado;  
 
-            int affected = _IGuiaRecepcionMateriaPrimaRepository.Insert(guiaRecepcionMateriaPrima);
+            int affected = _IGuiaRecepcionMateriaPrimaRepository.InsertarPesado(guiaRecepcionMateriaPrima);
+
+            return affected;
+        }
+
+        public int ActualizarPesadoGuiaRecepcionMateriaPrima(RegistrarActualizarPesadoGuiaRecepcionMateriaPrimaRequestDTO request)
+        {
+            GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima = new GuiaRecepcionMateriaPrima();
+
+            guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
+            guiaRecepcionMateriaPrima.EmpresaId = request.EmpresaId;
+            guiaRecepcionMateriaPrima.TipoProvedorId = request.TipoProvedorId;
+            guiaRecepcionMateriaPrima.SocioId = request.SocioId;
+            guiaRecepcionMateriaPrima.TerceroId = request.TerceroId;
+            guiaRecepcionMateriaPrima.IntermediarioId = request.IntermediarioId;
+            guiaRecepcionMateriaPrima.ProductoId = request.ProductoId;
+            guiaRecepcionMateriaPrima.SubProductoId = request.SubProductoId;
+            guiaRecepcionMateriaPrima.FechaCosecha = request.FechaCosecha;
+            guiaRecepcionMateriaPrima.FechaPesado = DateTime.Now;
+            guiaRecepcionMateriaPrima.UsuarioPesado = request.UsuarioPesado;
+            guiaRecepcionMateriaPrima.UnidadMedidaIdPesado = request.UnidadMedidaIdPesado;
+            guiaRecepcionMateriaPrima.CantidadPesado = request.CantidadPesado;
+            guiaRecepcionMateriaPrima.KilosBrutosPesado = request.KilosBrutosPesado;
+            guiaRecepcionMateriaPrima.TaraPesado = request.TaraPesado;
+            guiaRecepcionMateriaPrima.ObservacionPesado = request.ObservacionPesado;
+            guiaRecepcionMateriaPrima.EstadoId = GuiaRecepcionMateriaPrimaEstados.Pesado;
+            guiaRecepcionMateriaPrima.FechaUltimaActualizacion = DateTime.Now;
+            guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion = request.UsuarioPesado;
+
+            int affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarPesado(guiaRecepcionMateriaPrima);
 
             return affected;
         }
@@ -121,7 +153,7 @@ namespace CoffeeConnect.Service
         
 
             GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima = new GuiaRecepcionMateriaPrima();
-
+           
             guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
             guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
             guiaRecepcionMateriaPrima.ExportablePorcentajeAnalisisFisico = request.ExportablePorcentajeAnalisisFisico;

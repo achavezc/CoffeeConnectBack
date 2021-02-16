@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class RegistrarGuiaRecepcionMateriaPrimaResponseDTO
+   public class RegistrarActualizarPesadoGuiaRecepcionMateriaPrimaResponseDTO
 	{
 
-		public RegistrarGuiaRecepcionMateriaPrimaResponseDTO()
+		public RegistrarActualizarPesadoGuiaRecepcionMateriaPrimaResponseDTO()
 		{
 			this.Result = new Result();
 		}

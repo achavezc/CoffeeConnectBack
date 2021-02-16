@@ -14,7 +14,9 @@ namespace CoffeeConnect.DTO
 		public int GuiaRecepcionMateriaPrimaId
 		{ get; set; }
 
-		
+		public int EmpresaId
+		{ get; set; }
+
 		public decimal ExportableGramosAnalisisFisico
 		{ get; set; }
 
