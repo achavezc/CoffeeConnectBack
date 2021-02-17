@@ -22,7 +22,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the AlmacenId value.
 		/// </summary>
-		public int? AlmacenId
+		public string AlmacenId
 		{ get; set; }
 
 		/// <summary>
