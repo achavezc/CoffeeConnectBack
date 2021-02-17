@@ -148,6 +148,18 @@ namespace CoffeeConnect.Service
               
             ]
           },
+        {
+            path: '/acopio/operaciones/notasdecompra-list',
+            title: 'Acopio.Operaciones.LiquidacionCompra.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          },
           {
             path: '/uikit/font-awesome',
             title: 'Acopio.Operaciones.RecepcionProductoTerminado.Label',
