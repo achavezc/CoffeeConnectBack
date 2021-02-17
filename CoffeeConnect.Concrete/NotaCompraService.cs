@@ -100,7 +100,7 @@ namespace CoffeeConnect.Service
 
         public int AnularNotaCompra(AnularNotaCompraRequestDTO request)
         {
-            int affected = _INotaCompraRepository.Anular(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.Anulado);
+            int affected = _INotaCompraRepository.Anular(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.PorLiquidar);
 
             return affected;
         }
