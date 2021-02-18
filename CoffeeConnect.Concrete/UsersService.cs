@@ -161,8 +161,8 @@ namespace CoffeeConnect.Service
             ]
           },
           {
-            path: '/uikit/font-awesome',
-            title: 'Acopio.Operaciones.RecepcionProductoTerminado.Label',
+            path: '/acopio/operaciones/ingresoalmacen-list',
+            title: 'Acopio.Operaciones.IngresoAlmacen.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
             badge: '',

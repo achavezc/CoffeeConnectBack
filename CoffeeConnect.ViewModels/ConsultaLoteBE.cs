@@ -1,8 +1,8 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class Lote
+	public class ConsultaLoteBE
 	{
 		#region Properties
 		/// <summary>
@@ -29,10 +29,16 @@ namespace CoffeeConnect.Models
 		public string EstadoId
 		{ get; set; }
 
+		public string Estado
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the AlmacenId value.
 		/// </summary>
 		public string AlmacenId
+		{ get; set; }
+
+		public string Almacen
 		{ get; set; }
 
 		/// <summary>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class ConsultaNotaIngresoAlmacenRequestDTO
+   public class ConsultaLoteRequestDTO
     {
 
         public String Numero { get; set; }

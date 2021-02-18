@@ -6,5 +6,8 @@ namespace CoffeeConnect.Interface.Service
     public interface ILoteService
     {
         int GenerarLote(GenerarLoteRequestDTO request);
+
+        List<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request);
+
     }
 }

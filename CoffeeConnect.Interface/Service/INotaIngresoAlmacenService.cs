@@ -8,7 +8,7 @@ namespace CoffeeConnect.Interface.Service
        
         int Registrar(EnviarAlmacenGuiaRecepcionMateriaPrimaRequestDTO request);
 
-        public List<ConsultaNotaIngresoAlmacenBE> ConsultarNotaIngresoAlmacen(ConsultaNotaIngresoAlmacenRequestDTO request);
+        List<ConsultaNotaIngresoAlmacenBE> ConsultarNotaIngresoAlmacen(ConsultaNotaIngresoAlmacenRequestDTO request);
 
     }
 }

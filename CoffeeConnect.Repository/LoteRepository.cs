@@ -69,6 +69,29 @@ namespace CoffeeConnect.Repository
 
             return result;
         }
+
+        public IEnumerable<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("Numero", request.Numero);
+            parameters.Add("NombreRazonSocial", request.NombreRazonSocial);
+            parameters.Add("TipoDocumentoId", request.TipoDocumentoId);
+            parameters.Add("NumeroDocumento", request.NumeroDocumento);
+            parameters.Add("CodigoSocio", request.CodigoSocio);
+            parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("ProductoId", request.ProductoId);
+            parameters.Add("SubProductoId", request.SubProductoId);
+            parameters.Add("AlmacenId", request.AlmacenId);
+            parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("FechaInicio", request.FechaInicio);
+            parameters.Add("FechaFin", request.FechaFin);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaLoteBE>("uspLoteConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 
 
