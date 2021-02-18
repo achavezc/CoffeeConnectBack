@@ -92,6 +92,39 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaLoteBE>("uspLoteConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public IEnumerable<LoteDetalle> ConsultarLoteDetallePorId(int loteId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("LoteId", loteId);
+            
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteDetalle>("uspLoteDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public int ActualizarEstado(int loteId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", loteId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspLoteActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        
     }
 
 

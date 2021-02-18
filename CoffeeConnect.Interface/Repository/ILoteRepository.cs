@@ -12,5 +12,7 @@ namespace CoffeeConnect.Interface.Repository
         int InsertarLoteDetalle(List<LoteDetalle> request);
         IEnumerable<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request);
 
+        int ActualizarEstado(int loteId, DateTime fecha, string usuario, string estadoId);
+        
     }
 }

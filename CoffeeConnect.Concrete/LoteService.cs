@@ -121,5 +121,12 @@ namespace CoffeeConnect.Service
 
             return list.ToList();
         }
+
+        public int AnularLote(AnularLoteRequestDTO request)
+        {
+            int affected = _ILoteRepository.ActualizarEstado(request.LoteId, DateTime.Now, request.Usuario, LoteEstados.Ingresado);
+
+            return affected;
+        }
     }
 }

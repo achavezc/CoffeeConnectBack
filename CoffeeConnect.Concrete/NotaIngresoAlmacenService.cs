@@ -112,5 +112,11 @@ namespace CoffeeConnect.Service
 			return list.ToList();
 		}
 
+		public int AnularNotaIngresoAlmacen(AnularNotaIngresoAlmacenRequestDTO request)
+		{
+			int affected = _INotaIngresoAlmacenRepository.ActualizarEstado(request.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, LoteEstados.Ingresado);
+
+			return affected;
+		}
 	}
 }

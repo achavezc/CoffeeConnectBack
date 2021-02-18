@@ -9,5 +9,7 @@ namespace CoffeeConnect.Interface.Service
 
         List<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request);
 
+        int AnularLote(AnularLoteRequestDTO request);
+
     }
 }

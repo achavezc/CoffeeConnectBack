@@ -10,5 +10,6 @@ namespace CoffeeConnect.Interface.Service
 
         List<ConsultaNotaIngresoAlmacenBE> ConsultarNotaIngresoAlmacen(ConsultaNotaIngresoAlmacenRequestDTO request);
 
+        int AnularNotaIngresoAlmacen(AnularNotaIngresoAlmacenRequestDTO request);
     }
 }
