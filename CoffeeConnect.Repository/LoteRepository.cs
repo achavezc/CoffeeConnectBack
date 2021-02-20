@@ -35,6 +35,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", lote.EstadoId);
             parameters.Add("@AlmacenId", lote.AlmacenId);
             parameters.Add("@TotalKilosNetosPesado", lote.TotalKilosNetosPesado);
+            parameters.Add("@UnidadMedidaId", lote.UnidadMedidaId);
+            parameters.Add("@Cantidad", lote.Cantidad);
             parameters.Add("@PromedioRendimientoPorcentaje", lote.PromedioRendimientoPorcentaje);
             parameters.Add("@PromedioHumedadPorcentaje", lote.PromedioHumedadPorcentaje);
             parameters.Add("@FechaRegistro", lote.FechaRegistro);

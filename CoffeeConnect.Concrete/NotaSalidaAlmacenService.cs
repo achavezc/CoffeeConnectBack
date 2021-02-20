@@ -13,17 +13,18 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
-    public partial class NotaSalidaService : INotaSalidaService
+    public partial class NotaSalidaAlmacenService : INotaSalidaAlmacenService
     {
        
-        private INotaSalidaRepository _INotaSalidaRepository;
+        private INotaSalidaAlmacenRepository _INotaSalidaAlmacenRepository;
 
-        
+        private IUsersRepository _UsersRepository;
 
-        public NotaSalidaService(INotaSalidaRepository notaSalidaRepository)
+        public NotaSalidaAlmacenService(INotaSalidaAlmacenRepository notaSalidaAlmacenRepository, IUsersRepository usersRepository)
         {
-            _INotaSalidaRepository = notaSalidaRepository;
-           
+            _INotaSalidaAlmacenRepository = notaSalidaAlmacenRepository;
+
+            _UsersRepository = usersRepository;
         }
 
        		
@@ -58,7 +59,7 @@ namespace CoffeeConnect.Service
             notaCompra.FechaRegistro = DateTime.Now;
             notaCompra.UsuarioRegistro = request.UsuarioNotaCompra;  
 
-            int affected = _INotaSalidaRepository.Insertar(notaCompra);
+            int affected = _INotaSalidaAlmacenRepository.Insertar(notaCompra);
 
             return affected;
         }
@@ -93,21 +94,21 @@ namespace CoffeeConnect.Service
             notaCompra.FechaUltimaActualizacion = DateTime.Now;
             notaCompra.UsuarioUltimaActualizacion = request.UsuarioNotaCompra;
 
-            int affected = _INotaSalidaRepository.Actualizar(notaCompra);
+            int affected = _INotaSalidaAlmacenRepository.Actualizar(notaCompra);
 
             return affected;
         }
 
         public int AnularNotaCompra(AnularNotaCompraRequestDTO request)
         {
-            int affected = _INotaSalidaRepository.Anular(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.PorLiquidar);
+            int affected = _INotaSalidaAlmacenRepository.Anular(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.PorLiquidar);
 
             return affected;
         }
 
       
 
-        public List<ConsultaNotaSalidaBE> ConsultarNotaSalida(ConsultaNotaSalidaRequestDTO request)
+        public List<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalidaAlmacen(ConsultaNotaSalidaAlmacenRequestDTO request)
         {
             //if (string.IsNullOrEmpty(request.Numero) 
             //    && string.IsNullOrEmpty(request.NumeroGuiaRecepcion) 
@@ -124,13 +125,34 @@ namespace CoffeeConnect.Service
 
 
 
-            var list = _INotaSalidaRepository.ConsultarNotaSalida(request);
+            var list = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacen(request);
 
             return list.ToList();
         }
 
+        public ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO ConsultarImpresionListaProductoresPorNotaSalidaAlmacen(int notaSalidaAlmacenId)
+        {
+            int empresaId = 0;
+
+            var empresaList = _UsersRepository.ObtenerEmpresaPorId(empresaId);
+
+            ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO = new ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO();
+            
+            if (empresaList.Any())
+            {
+                var empresa = empresaList.First();
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.RazonSocialEmpresa = empresa.RazonSocial;
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.RucEmpresa = empresa.Ruc;
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.DireccionEmpresa = empresa.Direccion;
+                
+            }
+
+            consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.ListaProductores = _INotaSalidaAlmacenRepository.ConsultarImpresionListaProductoresPorNotaSalida(notaSalidaAlmacenId).ToList();
+            
+
+            return consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO;
+        }
 
 
-       
-}
+    }
 }

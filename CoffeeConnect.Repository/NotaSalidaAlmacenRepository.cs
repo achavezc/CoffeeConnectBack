@@ -12,140 +12,181 @@ using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using Core.Utils;
 using CoffeeConnect.DTO;
+using Core.Common;
 
 namespace CoffeeConnect.Repository
 {
-    public class NotaSalidaRepository : INotaSalidaRepository
-	{
+    public class NotaSalidaAlmacenRepository : INotaSalidaAlmacenRepository
+    {
         public IOptions<ConnectionString> _connectionString;
-        public NotaSalidaRepository(IOptions<ConnectionString> connectionString)
+        public NotaSalidaAlmacenRepository(IOptions<ConnectionString> connectionString)
         {
             _connectionString = connectionString;
         }
+
 
         public int Insertar(NotaCompra notaCompra)
         {
             int result = 0;
 
-			var parameters = new DynamicParameters();			
-			parameters.Add("@NotaSalidaAlmacenId", notaCompra.NotaSalidaAlmacenId);
-			parameters.Add("@EmpresaId", notaCompra.EmpresaId);
-			parameters.Add("@Numero", notaCompra.Numero);
-			parameters.Add("@UnidadMedidaIdPesado", notaCompra.UnidadMedidaIdPesado);
-			parameters.Add("@CantidadPesado", notaCompra.CantidadPesado);
-			parameters.Add("@KilosBrutosPesado", notaCompra.KilosBrutosPesado);
-			parameters.Add("@TaraPesado", notaCompra.TaraPesado);
-			parameters.Add("@KilosNetosPesado", notaCompra.KilosNetosPesado);
-			parameters.Add("@DescuentoPorHumedad", notaCompra.DescuentoPorHumedad);
-			parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
-			parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
-			parameters.Add("@QQ55", notaCompra.QQ55);
-			parameters.Add("@ExportableGramosAnalisisFisico", notaCompra.ExportableGramosAnalisisFisico);
-			parameters.Add("@DescarteGramosAnalisisFisico", notaCompra.DescarteGramosAnalisisFisico);
-			parameters.Add("@CascarillaGramosAnalisisFisico", notaCompra.CascarillaGramosAnalisisFisico);
-			parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
-			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
-			parameters.Add("@TipoId", notaCompra.TipoId);
-			parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
-			parameters.Add("@Importe", notaCompra.Importe);
-			parameters.Add("@EstadoId", notaCompra.EstadoId);
-			parameters.Add("@FechaRegistro", notaCompra.FechaRegistro);
-			parameters.Add("@UsuarioRegistro", notaCompra.UsuarioRegistro);
-	
-		
+            var parameters = new DynamicParameters();
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", notaCompra.GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@EmpresaId", notaCompra.EmpresaId);
+            parameters.Add("@Numero", notaCompra.Numero);
+            parameters.Add("@UnidadMedidaIdPesado", notaCompra.UnidadMedidaIdPesado);
+            parameters.Add("@CantidadPesado", notaCompra.CantidadPesado);
+            parameters.Add("@KilosBrutosPesado", notaCompra.KilosBrutosPesado);
+            parameters.Add("@TaraPesado", notaCompra.TaraPesado);
+            parameters.Add("@KilosNetosPesado", notaCompra.KilosNetosPesado);
+            parameters.Add("@DescuentoPorHumedad", notaCompra.DescuentoPorHumedad);
+            parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
+            parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
+            parameters.Add("@QQ55", notaCompra.QQ55);
+            parameters.Add("@ExportableGramosAnalisisFisico", notaCompra.ExportableGramosAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", notaCompra.DescarteGramosAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", notaCompra.CascarillaGramosAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TipoId", notaCompra.TipoId);
+            parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
+            parameters.Add("@Importe", notaCompra.Importe);
+            parameters.Add("@EstadoId", notaCompra.EstadoId);
+            parameters.Add("@FechaRegistro", notaCompra.FechaRegistro);
+            parameters.Add("@UsuarioRegistro", notaCompra.UsuarioRegistro);
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspNotaCompraInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
-           
+
+
 
             return result;
         }
 
-		public int Actualizar(NotaCompra notaCompra)
-		{
-			int result = 0;
 
-			var parameters = new DynamicParameters();
-			parameters.Add("@NotaCompraId", notaCompra.NotaCompraId);
-			parameters.Add("@NotaSalidaAlmacenId", notaCompra.NotaSalidaAlmacenId);
-			parameters.Add("@EmpresaId", notaCompra.EmpresaId);
-			parameters.Add("@Numero", notaCompra.Numero);
-			parameters.Add("@UnidadMedidaIdPesado", notaCompra.UnidadMedidaIdPesado);
-			parameters.Add("@CantidadPesado", notaCompra.CantidadPesado);
-			parameters.Add("@KilosBrutosPesado", notaCompra.KilosBrutosPesado);
-			parameters.Add("@TaraPesado", notaCompra.TaraPesado);
-			parameters.Add("@KilosNetosPesado", notaCompra.KilosNetosPesado);
-			parameters.Add("@DescuentoPorHumedad", notaCompra.DescuentoPorHumedad);
-			parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
-			parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
-			parameters.Add("@QQ55", notaCompra.QQ55);
-			parameters.Add("@ExportableGramosAnalisisFisico", notaCompra.ExportableGramosAnalisisFisico);
-			parameters.Add("@DescarteGramosAnalisisFisico", notaCompra.DescarteGramosAnalisisFisico);
-			parameters.Add("@CascarillaGramosAnalisisFisico", notaCompra.CascarillaGramosAnalisisFisico);
-			parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
-			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
-			parameters.Add("@TipoId", notaCompra.TipoId);
-			parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
-			parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);
-			parameters.Add("@Importe", notaCompra.Importe);
-			parameters.Add("@EstadoId", notaCompra.EstadoId);
-			parameters.Add("@FechaUltimaActualizacion", notaCompra.FechaUltimaActualizacion);
-			parameters.Add("@UsuarioUltimaActualizacion", notaCompra.UsuarioUltimaActualizacion);
+        public int Actualizar(NotaCompra notaCompra)
+        {
+            int result = 0;
 
-
-
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				result = db.Execute("uspNotaCompraActualizar", parameters, commandType: CommandType.StoredProcedure);
-			}
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaCompraId", notaCompra.NotaCompraId);
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", notaCompra.GuiaRecepcionMateriaPrimaId);
+            parameters.Add("@EmpresaId", notaCompra.EmpresaId);
+            parameters.Add("@Numero", notaCompra.Numero);
+            parameters.Add("@UnidadMedidaIdPesado", notaCompra.UnidadMedidaIdPesado);
+            parameters.Add("@CantidadPesado", notaCompra.CantidadPesado);
+            parameters.Add("@KilosBrutosPesado", notaCompra.KilosBrutosPesado);
+            parameters.Add("@TaraPesado", notaCompra.TaraPesado);
+            parameters.Add("@KilosNetosPesado", notaCompra.KilosNetosPesado);
+            parameters.Add("@DescuentoPorHumedad", notaCompra.DescuentoPorHumedad);
+            parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
+            parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
+            parameters.Add("@QQ55", notaCompra.QQ55);
+            parameters.Add("@ExportableGramosAnalisisFisico", notaCompra.ExportableGramosAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", notaCompra.DescarteGramosAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", notaCompra.CascarillaGramosAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TipoId", notaCompra.TipoId);
+            parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
+            parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);
+            parameters.Add("@Importe", notaCompra.Importe);
+            parameters.Add("@EstadoId", notaCompra.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", notaCompra.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", notaCompra.UsuarioUltimaActualizacion);
 
 
-			return result;
-		}
 
-		public int Anular(int notaCompraId, DateTime fecha, string usuario, string estadoId)
-		{
-			int affected = 0;
-
-			var parameters = new DynamicParameters();
-			parameters.Add("@NotaCompraId", notaCompraId);
-			parameters.Add("@Fecha", fecha);
-			parameters.Add("@Usuario", usuario);
-			parameters.Add("@EstadoId", estadoId);
-
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				affected = db.Execute("uspNotaCompraAnular", parameters, commandType: CommandType.StoredProcedure);
-			}
-
-			return affected;
-		}
-
-		public IEnumerable<ConsultaNotaSalidaBE> ConsultarNotaSalida(ConsultaNotaSalidaRequestDTO request)
-		{
-			var parameters = new DynamicParameters();
-			parameters.Add("@Numero", request.Numero);
-			parameters.Add("@EmpresaIdDestino", request.EmpresaIdDestino);
-			parameters.Add("@EmpresaTransporteId", request.EmpresaTransporteId);
-			parameters.Add("@AlmacenId", request.AlmacenId);			
-			parameters.Add("@MotivoTrasladoId", request.MotivoTrasladoId);
-			parameters.Add("@EmpresaId", request.EmpresaId);
-			parameters.Add("@FechaInicio", request.FechaInicio);
-			parameters.Add("@FechaFin", request.FechaFin);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaCompraActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
 
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				return db.Query<ConsultaNotaSalidaBE>("uspNotaSalidaConsulta", parameters, commandType: CommandType.StoredProcedure);
-			}
-		}
+            return result;
+        }
+
+        public int Anular(int notaCompraId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaCompraId", notaCompraId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspNotaCompraAnular", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        public IEnumerable<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalidaAlmacen(ConsultaNotaSalidaAlmacenRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Numero", request.Numero);
+            parameters.Add("@EmpresaIdDestino", request.EmpresaIdDestino);
+            parameters.Add("@EmpresaTransporteId", request.EmpresaTransporteId);
+            parameters.Add("@AlmacenId", request.AlmacenId);
+            parameters.Add("@MotivoTrasladoId", request.MotivoTrasladoId);
+            parameters.Add("@EmpresaId", request.EmpresaId);
+            parameters.Add("@FechaInicio", request.FechaInicio);
+            parameters.Add("@FechaFin", request.FechaFin);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaNotaSalidaAlmacenBE>("uspNotaSalidaAlmacenConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
+        public IEnumerable<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenIdBE> ConsultarImpresionListaProductoresPorNotaSalida(int notaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("NotaSalidaAlmacenId", notaSalidaAlmacenId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenIdBE>("uspListaProductoresConsultaImpresionPorNotaSalidaAlmacenId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public ConsultaNotaSalidaAlmacenPorIdBE ConsultarNotaSalidaAlmacenPorId(int notaSalidaAlmacenId)
+        {
+            ConsultaNotaSalidaAlmacenPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", notaSalidaAlmacenId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaNotaSalidaAlmacenPorIdBE>("uspNotaSalidaAlmacenObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
+
 
         public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoColorDetallePorId(int NotaSalidaAlmacenId)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -159,6 +200,7 @@ namespace CoffeeConnect.Repository
         public IEnumerable<NotaSalidaAlmacenAnalisisFisicoOlorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoOlorDetallePorId(int NotaSalidaAlmacenId)
         {
 
+
             var parameters = new DynamicParameters();
             parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
 
@@ -166,6 +208,11 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<NotaSalidaAlmacenAnalisisFisicoOlorDetalle>("uspNotaSalidaAlmacenAnalisisFisicoOlorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+
+
+
+
 
             }
         }
@@ -387,4 +434,7 @@ namespace CoffeeConnect.Repository
 
 
     }
+
+
+
 }

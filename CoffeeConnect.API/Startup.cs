@@ -79,6 +79,7 @@ namespace CoffeeConnect.API
             services.AddTransient<ILoteService, LoteService>();
             services.AddTransient<ILoteRepository, LoteRepository>();
 
+            services.AddTransient<INotaSalidaAlmacenRepository, NotaSalidaAlmacenRepository>();
             services.AddTransient<ICorrelativoRepository, CorrelativoRepository>();
 
             services.AddTransient<INotaCompraService, NotaCompraService>();
@@ -87,8 +88,8 @@ namespace CoffeeConnect.API
             services.AddTransient<INotaIngresoAlmacenService, NotaIngresoAlmacenService>();
             services.AddTransient<INotaIngresoAlmacenRepository, NotaIngresoAlmacenRepository>();
 
-            services.AddTransient<INotaSalidaService, NotaSalidaService>();
-            services.AddTransient<INotaSalidaRepository, NotaSalidaRepository>();
+            services.AddTransient<INotaSalidaAlmacenService, NotaSalidaAlmacenService>();
+            services.AddTransient<INotaSalidaAlmacenRepository, NotaSalidaAlmacenRepository>();
 
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })

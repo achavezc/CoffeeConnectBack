@@ -2,7 +2,7 @@ using System;
 
 namespace CoffeeConnect.DTO
 {
-    public class ConsultaNotaSalidaBE
+    public class ConsultaNotaSalidaAlmacenBE
     {
         public int NotaSalidaAlmacenId { get; set; }
         public String Numero { get; set; }

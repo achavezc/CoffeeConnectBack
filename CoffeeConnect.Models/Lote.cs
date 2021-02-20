@@ -41,6 +41,17 @@ namespace CoffeeConnect.Models
 		public decimal TotalKilosNetosPesado
 		{ get; set; }
 
+
+		public string UnidadMedidaId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalKilosNetosPesado value.
+		/// </summary>
+		public decimal Cantidad
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the PromedioRendimientoPorcentaje value.
 		/// </summary>
