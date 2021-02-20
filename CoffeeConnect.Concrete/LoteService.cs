@@ -41,6 +41,8 @@ namespace CoffeeConnect.Service
             int loteId = 0;
 
             decimal totalKilosNetosPesado = 0;
+            decimal totalCantidad = 0;
+            string unidadMedidaId = String.Empty;
             decimal totalRendimientoPorcentaje = 0;
             decimal totalHumedadPorcentaje = 0;
                             
@@ -49,6 +51,7 @@ namespace CoffeeConnect.Service
 
             if (notasIngreso!=null)
             {
+               
                 List<LoteDetalle> lotesDetalle = new List<LoteDetalle>();
 
                 notasIngreso.ForEach(notaingreso =>
@@ -74,7 +77,8 @@ namespace CoffeeConnect.Service
                     totalKilosNetosPesado = totalKilosNetosPesado + item.KilosNetosPesado;
                     totalRendimientoPorcentaje = totalRendimientoPorcentaje + item.RendimientoPorcentaje.Value;
                     totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
-                    
+                    totalCantidad = totalCantidad + item.CantidadPesado;
+                    unidadMedidaId = item.UnidadMedidaIdPesado;
 
                     lotesDetalle.Add(item);
                 });
@@ -83,6 +87,8 @@ namespace CoffeeConnect.Service
                 lote.TotalKilosNetosPesado = totalKilosNetosPesado;
                 lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje/ lotesDetalle.Count;
                 lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
+                lote.UnidadMedidaId = unidadMedidaId;
+                lote.Cantidad = totalCantidad;
 
                 loteId = _ILoteRepository.Insertar(lote);
 
