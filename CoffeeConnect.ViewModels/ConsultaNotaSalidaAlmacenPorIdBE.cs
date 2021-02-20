@@ -27,9 +27,9 @@ namespace CoffeeConnect.DTO
 		public String CantidadLotes { get; set; }
 		public decimal PesoNeto { get; set; }
 		public String EstadoId { get; set; }
-		public datetime FechaRegistro { get; set; }
+		public DateTime FechaRegistro { get; set; }
 		public String UsuarioRegistro { get; set; }
-		public datetime FechaUltimaActualizacion { get; set; }
+		public DateTime FechaUltimaActualizacion { get; set; }
 		public String UsuarioUltimaActualizacion { get; set; }
 		public bool Activo { get; set; }
 

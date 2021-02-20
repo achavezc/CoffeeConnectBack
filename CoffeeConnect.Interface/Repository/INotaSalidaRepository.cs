@@ -14,7 +14,7 @@ namespace CoffeeConnect.Interface.Repository
 
         int Anular(int notaCompraId, DateTime fecha, string usuario, string estadoId);
 
-        IEnumerable<ConsultaNotaSalidaBE> ConsultarNotaSalida(ConsultaNotaSalidaRequestDTO request);
+        IEnumerable<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalida(ConsultaNotaSalidaAlmacenRequestDTO request);
 
         IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoColorDetallePorId(int NotaSalidaAlmacenId);
         IEnumerable<NotaSalidaAlmacenAnalisisFisicoOlorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoOlorDetallePorId(int NotaSalidaAlmacenId);
