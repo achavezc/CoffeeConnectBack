@@ -88,6 +88,8 @@ namespace CoffeeConnect.API
             services.AddTransient<INotaIngresoAlmacenService, NotaIngresoAlmacenService>();
             services.AddTransient<INotaIngresoAlmacenRepository, NotaIngresoAlmacenRepository>();
 
+            services.AddTransient<INotaSalidaService, NotaSalidaService>();
+            services.AddTransient<INotaSalidaRepository, NotaSalidaRepository>();
 
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
