@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CoffeeConnect.Interface.Service
 {
-    public interface INotaSalidaService
+    public interface INotaSalidaAlmacenService
     {
         int RegistrarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request);
 
@@ -13,9 +13,10 @@ namespace CoffeeConnect.Interface.Service
         int AnularNotaCompra(AnularNotaCompraRequestDTO request);
 
         
-        List<ConsultaNotaSalidaBE> ConsultarNotaSalida(ConsultaNotaSalidaRequestDTO request);
+        List<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalidaAlmacen(ConsultaNotaSalidaAlmacenRequestDTO request);
 
-
+        ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO ConsultarImpresionListaProductoresPorNotaSalidaAlmacen(int notaSalidaAlmacenId);
+        
 
     }
 }
