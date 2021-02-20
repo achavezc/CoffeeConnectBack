@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
+using Core.Utils;
 using CoffeeConnect.DTO;
 
 namespace CoffeeConnect.Repository
@@ -27,7 +28,7 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
 			var parameters = new DynamicParameters();			
-			parameters.Add("@GuiaRecepcionMateriaPrimaId", notaCompra.GuiaRecepcionMateriaPrimaId);
+			parameters.Add("@NotaSalidaAlmacenId", notaCompra.NotaSalidaAlmacenId);
 			parameters.Add("@EmpresaId", notaCompra.EmpresaId);
 			parameters.Add("@Numero", notaCompra.Numero);
 			parameters.Add("@UnidadMedidaIdPesado", notaCompra.UnidadMedidaIdPesado);
@@ -68,7 +69,7 @@ namespace CoffeeConnect.Repository
 
 			var parameters = new DynamicParameters();
 			parameters.Add("@NotaCompraId", notaCompra.NotaCompraId);
-			parameters.Add("@GuiaRecepcionMateriaPrimaId", notaCompra.GuiaRecepcionMateriaPrimaId);
+			parameters.Add("@NotaSalidaAlmacenId", notaCompra.NotaSalidaAlmacenId);
 			parameters.Add("@EmpresaId", notaCompra.EmpresaId);
 			parameters.Add("@Numero", notaCompra.Numero);
 			parameters.Add("@UnidadMedidaIdPesado", notaCompra.UnidadMedidaIdPesado);
@@ -141,8 +142,249 @@ namespace CoffeeConnect.Repository
 			}
 		}
 
-		
+        public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoColorDetallePorId(int NotaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenAnalisisFisicoColorDetalle>("uspNotaSalidaAlmacenAnalisisFisicoColorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
 
 
-	}
+        }
+
+        public IEnumerable<NotaSalidaAlmacenAnalisisFisicoOlorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoOlorDetallePorId(int NotaSalidaAlmacenId)
+        {
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenAnalisisFisicoOlorDetalle>("uspNotaSalidaAlmacenAnalisisFisicoOlorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
+        }
+
+        public IEnumerable<NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetallePorId(int NotaSalidaAlmacenId)
+        {
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalle>("uspNotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+
+            }
+
+
+        }
+
+        public IEnumerable<NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetallePorId(int NotaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalle>("uspNotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
+
+
+        }
+
+        public IEnumerable<NotaSalidaAlmacenAnalisisSensorialAtributoDetalle> ConsultarNotaSalidaAlmacenAnalisisSensorialAtributoDetallePorId(int NotaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenAnalisisSensorialAtributoDetalle>("uspNotaSalidaAlmacenAnalisisSensorialAtributoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<NotaSalidaAlmacenAnalisisSensorialDefectoDetalle> ConsultarNotaSalidaAlmacenAnalisisSensorialDefectoDetallePorId(int NotaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenAnalisisSensorialDefectoDetalle>("uspNotaSalidaAlmacenAnalisisSensorialDefectoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<NotaSalidaAlmacenRegistroTostadoIndicadorDetalle> ConsultarNotaSalidaAlmacenRegistroTostadoIndicadorDetallePorId(int NotaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenRegistroTostadoIndicadorDetalle>("uspNotaSalidaAlmacenRegistroTostadoIndicadorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public int ActualizarNotaSalidaAlmacenAnalisisFisicoColorDetalle(List<NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo> request, int NotaSalidaAlmacenId)
+        {
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+            parameters.Add("@NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public int ActualizarNotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalle(List<NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalleTipo> request, int NotaSalidaAlmacenId)
+        {
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+            parameters.Add("@NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+
+        }
+
+        public int ActualizarNotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalle(List<NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalleTipo> request, int NotaSalidaAlmacenId)
+        {
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+            parameters.Add("@NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+
+        }
+        public int ActualizarNotaSalidaAlmacenAnalisisFisicoOlorDetalle(List<NotaSalidaAlmacenAnalisisFisicoOlorDetalleTipo> request, int NotaSalidaAlmacenId)
+        {
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+            parameters.Add("@NotaSalidaAlmacenAnalisisFisicoOlorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenAnalisisFisicoOlorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarNotaSalidaAlmacenAnalisisSensorialAtributoDetalle(List<NotaSalidaAlmacenAnalisisSensorialAtributoDetalleTipo> request, int NotaSalidaAlmacenId)
+        {
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+            parameters.Add("@NotaSalidaAlmacenAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenAnalisisSensorialAtributoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarNotaSalidaAlmacenAnalisisSensorialDefectoDetalle(List<NotaSalidaAlmacenAnalisisSensorialDefectoDetalleTipo> request, int NotaSalidaAlmacenId)
+        {
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+            parameters.Add("@NotaSalidaAlmacenAnalisisSensorialDefectoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenAnalisisSensorialDefectoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarNotaSalidaAlmacenRegistroTostadoIndicadorDetalle(List<NotaSalidaAlmacenRegistroTostadoIndicadorDetalleTipo> request, int NotaSalidaAlmacenId)
+        {
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+            parameters.Add("@NotaSalidaAlmacenRegistroTostadoIndicadorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenRegistroTostadoIndicadorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+
+
+
+    }
 }
