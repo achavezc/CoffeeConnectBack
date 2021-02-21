@@ -181,17 +181,19 @@ namespace Integracion.Deuda.Controller
                 ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO impresionListaProductores = _notaSalidaAlmacenService.ConsultarImpresionListaProductoresPorNotaSalidaAlmacen(id);
 
                 impresionListaProductores.FechaImpresion = DateTime.Now;
+                List<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO> reportCabecera = new List<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO>();
+                reportCabecera.Add(impresionListaProductores);
 
                 string mimetype = "";
                 int extension = 1;
                 var path = $"{this._webHostEnvironment.ContentRootPath}\\Reportes\\ListaProductoresPorNotaSalidaAlmacen.rdlc";
 
-
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
                 //TODO: impresionListaProductores
-                //lr.AddDataSource("dsNotaCompra", Util.ToDataTable(lista));
+                lr.AddDataSource("dsCabeceraLP", reportCabecera);
+                lr.AddDataSource("dsDetalleLP", Util.ToDataTable(impresionListaProductores.ListaProductores));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
                 return File(result.MainStream, "application/pdf");
