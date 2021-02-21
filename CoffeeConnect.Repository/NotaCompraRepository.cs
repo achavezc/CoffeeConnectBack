@@ -170,7 +170,7 @@ namespace CoffeeConnect.Repository
 			ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE itemBE = null;
 
 			var parameters = new DynamicParameters();
-			parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
+			parameters.Add("GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
 
 
 			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

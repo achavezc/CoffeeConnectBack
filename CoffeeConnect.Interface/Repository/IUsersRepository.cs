@@ -10,6 +10,6 @@ namespace CoffeeConnect.Interface.Repository
     {
         IEnumerable<Usuario> AuthenticateUsers(string username, string password);
 
-        IEnumerable<Empresa> ObtenerEmpresaPorId(int empresaId);
+        
     }
 }

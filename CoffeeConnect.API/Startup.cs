@@ -79,6 +79,12 @@ namespace CoffeeConnect.API
             services.AddTransient<ILoteService, LoteService>();
             services.AddTransient<ILoteRepository, LoteRepository>();
 
+            services.AddTransient<IEmpresaService, EmpresaService>();
+            services.AddTransient<IEmpresaRepository, EmpresaRepository>();
+
+            services.AddTransient<IEmpresaTransporteService, EmpresaTransporteService>();
+            services.AddTransient<IEmpresaTransporteRepository, EmpresaTransporteRepository>();
+
             services.AddTransient<INotaSalidaAlmacenRepository, NotaSalidaAlmacenRepository>();
             services.AddTransient<ICorrelativoRepository, CorrelativoRepository>();
 

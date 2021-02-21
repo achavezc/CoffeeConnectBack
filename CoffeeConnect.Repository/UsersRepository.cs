@@ -341,17 +341,7 @@ namespace CoffeeConnect.Repository
             }
         }
 
-
-        public IEnumerable<Empresa> ObtenerEmpresaPorId(int empresaId)
-        {
-            var parameters = new DynamicParameters();
-            parameters.Add("@EmpresaId", empresaId);           
-
-            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-            {
-                return db.Query<Empresa>("uspEmpresaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
-            }
-        }
+        
 
     }
 }

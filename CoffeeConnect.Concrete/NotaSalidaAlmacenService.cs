@@ -20,11 +20,15 @@ namespace CoffeeConnect.Service
 
         private IUsersRepository _UsersRepository;
 
-        public NotaSalidaAlmacenService(INotaSalidaAlmacenRepository notaSalidaAlmacenRepository, IUsersRepository usersRepository)
+        private IEmpresaRepository _EmpresaRepository;
+
+        public NotaSalidaAlmacenService(INotaSalidaAlmacenRepository notaSalidaAlmacenRepository, IUsersRepository usersRepository, IEmpresaRepository empresaRepository)
         {
             _INotaSalidaAlmacenRepository = notaSalidaAlmacenRepository;
 
             _UsersRepository = usersRepository;
+
+            _EmpresaRepository = empresaRepository;
         }
 
        		
@@ -134,7 +138,7 @@ namespace CoffeeConnect.Service
         {
             int empresaId = 0;
 
-            var empresaList = _UsersRepository.ObtenerEmpresaPorId(empresaId);
+            var empresaList = _EmpresaRepository.ObtenerEmpresaPorId(empresaId);
 
             ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO = new ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO();
             

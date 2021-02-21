@@ -13,10 +13,12 @@ namespace CoffeeConnect.Service
     public class UsersService : IUsersService
     {
         private IUsersRepository _UsersRepository;
+        private IEmpresaRepository _EmpresaRepository;
 
-        public UsersService(IUsersRepository usersRepository)
+        public UsersService(IUsersRepository usersRepository, IEmpresaRepository empresaRepository)
         {
             _UsersRepository = usersRepository;
+            _EmpresaRepository = empresaRepository;
         }
 
 
@@ -323,7 +325,7 @@ namespace CoffeeConnect.Service
             loginDTO.NombreUsuario = usuario.UserName;
             loginDTO.NombreCompletoUsuario = usuario.FullName;
 
-            var empresaList = _UsersRepository.ObtenerEmpresaPorId(usuario.EmpresaId);
+            var empresaList = _EmpresaRepository.ObtenerEmpresaPorId(usuario.EmpresaId);
 
             if (empresaList.Any())
             {
