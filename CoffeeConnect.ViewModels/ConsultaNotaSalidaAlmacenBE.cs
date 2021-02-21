@@ -9,7 +9,7 @@ namespace CoffeeConnect.DTO
         public String AlmacenId { get; set; }
         public String Almacen { get; set; }
         public int EmpresaIdDestino { get; set; }
-        public String RazonSocial { get; set; }
+        public String Destinatario { get; set; }
         public int MotivoTrasladoId { get; set; }
         public String Motivo { get; set; }
         public int EmpresaTransporteId { get; set; }
