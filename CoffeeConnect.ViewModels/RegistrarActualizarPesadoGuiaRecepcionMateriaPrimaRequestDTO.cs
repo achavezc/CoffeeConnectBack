@@ -54,6 +54,9 @@ namespace CoffeeConnect.DTO
 		public string ProductoId
 		{ get; set; }
 
+		public string NumeroReferencia
+		{ get; set; }
+		
 		/// <summary>
 		/// Gets or sets the SubProductoId value.
 		/// </summary>
