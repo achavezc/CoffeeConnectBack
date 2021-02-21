@@ -325,11 +325,10 @@ namespace CoffeeConnect.Service
             loginDTO.NombreUsuario = usuario.UserName;
             loginDTO.NombreCompletoUsuario = usuario.FullName;
 
-            var empresaList = _EmpresaRepository.ObtenerEmpresaPorId(usuario.EmpresaId);
+            var empresa = _EmpresaRepository.ObtenerEmpresaPorId(usuario.EmpresaId);
 
-            if (empresaList.Any())
-            {
-                var empresa = empresaList.First();
+            if (empresa!= null)
+            {               
                 loginDTO.RazonSocialEmpresa = empresa.RazonSocial;
                 loginDTO.RucEmpresa = empresa.Ruc;
                 loginDTO.DireccionEmpresa = empresa.Direccion;

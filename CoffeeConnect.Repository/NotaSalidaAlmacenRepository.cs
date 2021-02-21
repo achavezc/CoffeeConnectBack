@@ -166,7 +166,7 @@ namespace CoffeeConnect.Repository
             ConsultaNotaSalidaAlmacenPorIdBE itemBE = null;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@GuiaRecepcionMateriaPrimaId", notaSalidaAlmacenId);
+            parameters.Add("NotaSalidaAlmacenId", notaSalidaAlmacenId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

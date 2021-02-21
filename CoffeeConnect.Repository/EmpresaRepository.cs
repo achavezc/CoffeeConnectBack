@@ -27,15 +27,23 @@ namespace CoffeeConnect.Repository
        
 
 
-        public IEnumerable<Empresa> ObtenerEmpresaPorId(int empresaId)
+        public Empresa ObtenerEmpresaPorId(int empresaId)
         {
+            Empresa itemBE = null;
+
             var parameters = new DynamicParameters();
             parameters.Add("@EmpresaId", empresaId);           
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<Empresa>("uspEmpresaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+                var list = db.Query<Empresa>("uspEmpresaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+
             }
+
+            return itemBE;
         }
 
         public IEnumerable<EmpresaBE> ConsultarEmpresa(int empresaId)

@@ -16,6 +16,8 @@ namespace CoffeeConnect.DTO
 
 		public string NumeroNotaSalidaAlmacen
 		{ get; set; }
+		public string UsuarioNotaSalidaAlmacen
+		{ get; set; }
 
 		public DateTime FechaNotaSalidaAlmacen
 		{ get; set; }
