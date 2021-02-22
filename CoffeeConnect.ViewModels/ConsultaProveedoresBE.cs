@@ -8,6 +8,10 @@ namespace CoffeeConnect.DTO
         public int ProveedorId { get; set; }
         public int ProductorId { get; set; }
 
+        public string TipoProveedorId { get; set; }
+
+        
+
         public string NombreRazonSocial { get; set; }
 
         public string TipoDocumentoId { get; set; }
