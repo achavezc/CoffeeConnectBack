@@ -21,12 +21,7 @@ namespace CoffeeConnect.Repository
         {
             _connectionString = connectionString;
         }
-
-
         
-       
-
-
 
         public IEnumerable<EmpresaTransporteBE> ConsultarEmpresaTransporte(int empresaId)
         {
@@ -36,6 +31,19 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<EmpresaTransporteBE>("uspEmpresaTransporteConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<ConsultaTransportistaBE> ConsultarTransportista(ConsultaTransportistaRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("RazonSocial", request.RazonSocial);
+            parameters.Add("Ruc", request.Ruc);
+            parameters.Add("EmpresaId", request.EmpresaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaTransportistaBE>("uspTransportistaConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 

@@ -22,5 +22,13 @@ namespace CoffeeConnect.Service
             
             return lista.ToList();
         }
+
+        public List<ConsultaTransportistaBE> ConsultarTransportista(ConsultaTransportistaRequestDTO request)
+        {
+            var lista = _IEmpresaTransporteRepository.ConsultarTransportista(request);
+
+            return lista.ToList();
+        }
+
     }
 }
