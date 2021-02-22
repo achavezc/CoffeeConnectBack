@@ -94,6 +94,9 @@ namespace CoffeeConnect.API
             services.AddTransient<INotaIngresoAlmacenService, NotaIngresoAlmacenService>();
             services.AddTransient<INotaIngresoAlmacenRepository, NotaIngresoAlmacenRepository>();
 
+            services.AddTransient<IOrdenServicioControlCalidadService, OrdenServicioControlCalidadService>();
+            services.AddTransient<IOrdenServicioControlCalidadRepository, OrdenServicioControlCalidadRepository>();
+
             services.AddTransient<INotaSalidaAlmacenService, NotaSalidaAlmacenService>();
             services.AddTransient<INotaSalidaAlmacenRepository, NotaSalidaAlmacenRepository>();
 

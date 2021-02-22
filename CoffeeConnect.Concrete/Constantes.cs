@@ -54,4 +54,12 @@ namespace CoffeeConnect.Service
         public static String Ingresado { get { return "01"; } }
         public static String Anulado { get { return "00"; } }
     }
+
+    public static class OrdenServicioControlCalidadEstados
+    {
+        public static String Ingresado { get { return "01"; } }
+        public static String Anulado { get { return "00"; } }
+
+        public static String Analizado { get { return "02"; } }
+    }
 }
