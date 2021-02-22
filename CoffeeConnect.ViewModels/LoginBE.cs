@@ -9,6 +9,8 @@ namespace CoffeeConnect.DTO
     public class LoginBE
     {
         public int IdUsuario { get; set; }
+        public int EmpresaId { get; set; }
+        
         public string NombreUsuario { get; set; }
         public string NombreCompletoUsuario { get; set; }
         

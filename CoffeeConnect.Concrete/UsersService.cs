@@ -331,6 +331,7 @@ namespace CoffeeConnect.Service
             {               
                 loginDTO.RazonSocialEmpresa = empresa.RazonSocial;
                 loginDTO.RucEmpresa = empresa.Ruc;
+                loginDTO.EmpresaId = empresa.EmpresaId;
                 loginDTO.DireccionEmpresa = empresa.Direccion;
                 loginDTO.LogoEmpresa = empresa.Logo;
             }
