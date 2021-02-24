@@ -94,6 +94,9 @@ namespace CoffeeConnect.Models
 		public string NumeroTelefonoFijo
 		{ get; set; }
 
+		public string CorreoElectronico
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the NumeroTelefonoCelular value.
 		/// </summary>

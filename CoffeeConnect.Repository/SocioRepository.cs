@@ -81,6 +81,25 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-     
+
+        public ConsultaSocioPorIdBE ConsultarSocioPorId(int socioId)
+        {
+            ConsultaSocioPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@SocioId", socioId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaSocioPorIdBE>("uspSocioObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
+
     }
 }

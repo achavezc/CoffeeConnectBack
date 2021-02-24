@@ -26,6 +26,9 @@ namespace CoffeeConnect.DTO
 		public string TipoDocumentoId
 		{ get; set; }
 
+		public string TipoDocumento
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the NumeroDocumento value.
 		/// </summary>

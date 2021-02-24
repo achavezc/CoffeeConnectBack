@@ -72,5 +72,13 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
+
+        public ConsultaSocioPorIdBE ConsultarSocioPorId(ConsultaSocioPorIdRequestDTO request)
+        { 
+            ConsultaSocioPorIdBE consultaSocioPorIdBE = _ISocioRepository.ConsultarSocioPorId(request.SocioId);
+
+            return consultaSocioPorIdBE;
+
+        }
     }
 }   

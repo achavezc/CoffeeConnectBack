@@ -12,6 +12,6 @@ namespace CoffeeConnect.Interface.Service
 
         List<ConsultaSocioBE> ConsultarSocio(ConsultaSocioRequestDTO request);
 
-       
+        ConsultaSocioPorIdBE ConsultarSocioPorId(ConsultaSocioPorIdRequestDTO request);
     }
 }

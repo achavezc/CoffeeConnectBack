@@ -104,6 +104,9 @@ namespace CoffeeConnect.DTO
 		public string NumeroTelefonoCelular
 		{ get; set; }
 
+		public string CorreoElectronico
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the FechaNacimiento value.
 		/// </summary>

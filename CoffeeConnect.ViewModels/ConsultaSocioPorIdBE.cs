@@ -2,19 +2,22 @@ using System;
 
 namespace CoffeeConnect.DTO
 {
-	public class ConsultaProductorBE
+	public class ConsultaSocioPorIdBE
 	{
 		#region Properties
 		/// <summary>
 		/// Gets or sets the ProductorId value.
 		/// </summary>
-		public int ProductorId
+		public int SocioId
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
-		public string Numero
+		public string NumeroProductor
+		{ get; set; }
+
+		public string Codigo
 		{ get; set; }
 
 		/// <summary>
@@ -25,6 +28,7 @@ namespace CoffeeConnect.DTO
 
 		public string TipoDocumento
 		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the NumeroDocumento value.
 		/// </summary>
@@ -85,15 +89,6 @@ namespace CoffeeConnect.DTO
 		public string Zona
 		{ get; set; }
 
-		public string Direccion
-		{ get; set; }
-
-		public string NumeroTelefonoCelular
-		{ get; set; }
-
-		public string NumeroTelefonoFijo
-		{ get; set; }
-
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
 		/// </summary>
@@ -108,6 +103,14 @@ namespace CoffeeConnect.DTO
 
 		public string Estado
 		{ get; set; }
+
+		public string NumeroTelefonoCelular
+		{ get; set; }
+
+		public string NumeroTelefonoFijo
+		{ get; set; }
+
+
 
 		#endregion
 	}

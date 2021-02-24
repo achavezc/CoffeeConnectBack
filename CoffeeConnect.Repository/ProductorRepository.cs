@@ -61,6 +61,8 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@ZonaId", productor.ZonaId);			
 			parameters.Add("@NumeroTelefonoFijo", productor.NumeroTelefonoFijo);
 			parameters.Add("@NumeroTelefonoCelular", productor.NumeroTelefonoCelular);
+			parameters.Add("@CorreoElectronico", productor.CorreoElectronico);
+			
 			parameters.Add("@FechaNacimiento", productor.FechaNacimiento);
 			parameters.Add("@LugarNacimiento", productor.LugarNacimiento);
 			parameters.Add("@EstadoCivilId", productor.EstadoCivilId);
@@ -113,6 +115,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@ZonaId", productor.ZonaId);			
 			parameters.Add("@NumeroTelefonoFijo", productor.NumeroTelefonoFijo);
 			parameters.Add("@NumeroTelefonoCelular", productor.NumeroTelefonoCelular);
+			parameters.Add("@CorreoElectronico", productor.CorreoElectronico);
 			parameters.Add("@FechaNacimiento", productor.FechaNacimiento);
 			parameters.Add("@LugarNacimiento", productor.LugarNacimiento);
 			parameters.Add("@EstadoCivilId", productor.EstadoCivilId);
