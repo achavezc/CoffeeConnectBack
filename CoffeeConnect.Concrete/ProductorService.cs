@@ -57,12 +57,11 @@ namespace CoffeeConnect.Service
             Productor productor = _Mapper.Map<Productor>(request);
             productor.FechaRegistro = DateTime.Now;
             productor.UsuarioRegistro = request.Usuario;
+            productor.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Productor);
 
             int affected = _IProductorRepository.Insertar(productor);
 
-            return affected;
-
-           
+            return affected;           
         }
 
         public int ActualizarProductor(RegistrarActualizarProductorRequestDTO request)
@@ -74,8 +73,6 @@ namespace CoffeeConnect.Service
             int affected = _IProductorRepository.Actualizar(productor);
 
             return affected;
-
-
         }
     }
 }   

@@ -8,7 +8,7 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface ICorrelativoRepository
     {
-        string Obtener(int empresaId, string documento);
+        string Obtener(int? empresaId, string documento);
 
     }
 }

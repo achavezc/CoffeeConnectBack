@@ -22,7 +22,7 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-        public string Obtener(int empresaId,string documento)
+        public string Obtener(int? empresaId,string documento)
         {
             string result = String.Empty;
 

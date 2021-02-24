@@ -18,12 +18,12 @@ namespace CoffeeConnect.Service
        
         private INotaCompraRepository _INotaCompraRepository;
 
-        
+        private ICorrelativoRepository _ICorrelativoRepository;
 
-        public NotaCompraService(INotaCompraRepository notaCompraRepository)
+        public NotaCompraService(INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository)
         {
             _INotaCompraRepository = notaCompraRepository;
-           
+            _ICorrelativoRepository = correlativoRepository;
         }
 
        		
@@ -36,6 +36,7 @@ namespace CoffeeConnect.Service
             notaCompra.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
             notaCompra.EmpresaId = request.EmpresaId;
             notaCompra.Numero = request.Numero;
+            notaCompra.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaCompra);
             notaCompra.UnidadMedidaIdPesado = request.UnidadMedidaIdPesado;
             notaCompra.CantidadPesado = request.CantidadPesado;
             notaCompra.KilosBrutosPesado = request.KilosBrutosPesado;

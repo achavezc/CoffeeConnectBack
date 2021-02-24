@@ -23,7 +23,9 @@ namespace CoffeeConnect.Service
 
         public static String Lote { get { return "Lote"; } }
 
-      
+        public static String Productor { get { return "Productor"; } }
+
+        public static String Socio { get { return "Socio"; } }
 
     }
 

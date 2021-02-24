@@ -179,10 +179,7 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the PredioFinca value.
-		/// </summary>
-		public string PredioFinca
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the RazonSocial value.
