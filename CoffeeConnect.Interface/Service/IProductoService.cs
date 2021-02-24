@@ -5,8 +5,10 @@ namespace CoffeeConnect.Interface.Service
 {
     public interface IProductorService
     {
-       
-        
+
+        int RegistrarProductor(RegistrarActualizarProductorRequestDTO request);
+        int ActualizarProductor(RegistrarActualizarProductorRequestDTO request);
+
 
         List<ConsultaProductorBE> ConsultarProductor(ConsultaProductorRequestDTO request);
 

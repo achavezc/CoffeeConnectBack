@@ -1,7 +1,9 @@
+using AutoMapper;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Repository;
 using CoffeeConnect.Service;
+using CoffeeConnect.Service.MappingConfigurations;
 using Core.Common.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -27,7 +29,12 @@ namespace CoffeeConnect.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
+
+            var mappingConfiguration = new MapperConfiguration(config => config.AddProfile(new MappingProfile()));
+            IMapper mapper = mappingConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
 
             var jwtOptions = new JwtOptions();
             var section = Configuration.GetSection("jwt");

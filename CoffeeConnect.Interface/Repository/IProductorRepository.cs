@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace CoffeeConnect.Interface.Repository
 {
     public interface IProductorRepository
-    {       
-      
+    {
+        int Insertar(Productor lote);
+
+        int Actualizar(Productor lote);
 
         IEnumerable<ConsultaProductorBE> ConsultarProductor(ConsultaProductorRequestDTO request);
 }
