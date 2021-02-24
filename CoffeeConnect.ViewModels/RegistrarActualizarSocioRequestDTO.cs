@@ -17,12 +17,6 @@ namespace CoffeeConnect.DTO
 		public int ProductorId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Codigo value.
-		/// </summary>
-		public string Codigo
-		{ get; set; }
-
 		
 		/// <summary>
 		/// Gets or sets the UsuarioRegistro value.
@@ -30,7 +24,7 @@ namespace CoffeeConnect.DTO
 		public string Usuario
 		{ get; set; }
 
-		
+
 
 		/// <summary>
 		/// Gets or sets the Activo value.

@@ -8,8 +8,9 @@ namespace CoffeeConnect.Service.MappingConfigurations
     {
         public MappingProfile()
         {
-           
-            CreateMap<RegistrarActualizarProductorRequestDTO, Productor> ();
+
+            CreateMap<RegistrarActualizarProductorRequestDTO, Productor>();
+            CreateMap < RegistrarActualizarSocioRequestDTO, Socio>();
 
         }
     }
