@@ -32,9 +32,7 @@ namespace CoffeeConnect.DTO
 
         public int? ZonaId { get; set; }
 
-        public string Zona { get; set; }
-
-        public string PredioFinca { get; set; }
+        public string Zona { get; set; }       
 
         public string DistritoId { get; set; }
         public string Distrito { get; set; }
