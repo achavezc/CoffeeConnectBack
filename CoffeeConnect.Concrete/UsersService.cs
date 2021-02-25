@@ -38,41 +38,6 @@ namespace CoffeeConnect.Service
     submenu: [
       {
         path: '',
-        title: 'Productor.Operaciones.Label',
-        icon: 'ft-arrow-right submenu-icon',
-        class: 'has-sub',
-        badge: '',
-        badgeClass: '',
-        isExternalLink: false,
-        submenu: [
-          {
-            path: '/uikit/feather',
-            title: 'Productor.Operaciones.RegistroActividades.Label',
-            icon: 'ft-arrow-right submenu-icon',
-            class: '',
-            badge: '',
-            badgeClass: '',
-            isExternalLink: false,
-            submenu: [
-              
-            ]
-          },
-          {
-            path: '/uikit/font-awesome',
-            title: 'Productor.Operaciones.RegistroCosechas.Label',
-            icon: 'ft-arrow-right submenu-icon',
-            class: '',
-            badge: '',
-            badgeClass: '',
-            isExternalLink: false,
-            submenu: [
-              
-            ]
-          }
-        ]
-      },
-      {
-        path: '',
         title: 'Productor.Administracion.Label',
         icon: 'ft-arrow-right submenu-icon',
         class: 'has-sub',
@@ -83,18 +48,6 @@ namespace CoffeeConnect.Service
           {
             path: '/uikit/feather',
             title: 'Productor.Administracion.Productor.Label',
-            icon: 'ft-arrow-right submenu-icon',
-            class: '',
-            badge: '',
-            badgeClass: '',
-            isExternalLink: false,
-            submenu: [
-              
-            ]
-          },
-          {
-            path: '/uikit/font-awesome',
-            title: 'Productor.Administracion.EntidadesCertificadoras.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
             badge: '',
@@ -150,7 +103,7 @@ namespace CoffeeConnect.Service
               
             ]
           },
-        {
+          {
             path: '/acopio/operaciones/notasdecompra-list',
             title: 'Acopio.Operaciones.LiquidacionCompra.Label',
             icon: 'ft-arrow-right submenu-icon',
@@ -173,6 +126,42 @@ namespace CoffeeConnect.Service
             submenu: [
               
             ]
+          },
+          {
+            path: '/acopio/operaciones/lotes-list',
+            title: 'Acopio.Operaciones.Lotes.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          },
+          {
+            path: '/acopio/operaciones/notasalida-list',
+            title: 'Acopio.Operaciones.SalidaAlmacen.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          },
+          {
+            path: '/acopio/operaciones/orderservicio-controlcalidadexterna-list',
+            title: 'Acopio.Operaciones.ControlCalidadExterna.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
           }
         ]
       },
@@ -185,18 +174,6 @@ namespace CoffeeConnect.Service
         badgeClass: '',
         isExternalLink: false,
         submenu: [
-          {
-            path: '/uikit/feather',
-            title: 'Acopio.Administracion.Proveedores.Label',
-            icon: 'ft-arrow-right submenu-icon',
-            class: '',
-            badge: '',
-            badgeClass: '',
-            isExternalLink: false,
-            submenu: [
-              
-            ]
-          },
           {
             path: '/uikit/font-awesome',
             title: 'Acopio.Administracion.Terceros.Label',
@@ -211,7 +188,77 @@ namespace CoffeeConnect.Service
           },
           {
             path: '/uikit/font-awesome',
+            title: 'Acopio.Administracion.Intermediario.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          },
+          {
+            path: '/uikit/font-awesome',
             title: 'Acopio.Administracion.MaestrosGenerales.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    path: '',
+    title: 'Agropecuario.Label',
+    icon: 'ft-home',
+    class: 'has-sub',
+    badge: '',
+    badgeClass: '',
+    isExternalLink: false,
+    submenu: [
+      {
+        path: '',
+        title: 'Agropecuario.Operaciones.Label',
+        icon: 'ft-arrow-right submenu-icon',
+        class: 'has-sub',
+        badge: '',
+        badgeClass: '',
+        isExternalLink: false,
+        submenu: [
+          {
+            path: '/uikit/feather',
+            title: 'Agropecuario.Operaciones.Socio.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          },
+          
+        ]
+      },
+      {
+        path: '',
+        title: 'Planta.Administracion.Label',
+        icon: 'ft-arrow-right submenu-icon',
+        class: 'has-sub',
+        badge: '',
+        badgeClass: '',
+        isExternalLink: false,
+        submenu: [
+          {
+            path: '/uikit/font-awesome',
+            title: 'Planta.Administracion.MaestrosGenerales.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
             badge: '',
@@ -266,7 +313,6 @@ namespace CoffeeConnect.Service
         badgeClass: '',
         isExternalLink: false,
         submenu: [
-          
           {
             path: '/uikit/font-awesome',
             title: 'Planta.Administracion.MaestrosGenerales.Label',
@@ -283,7 +329,7 @@ namespace CoffeeConnect.Service
       }
     ]
   },
-{
+  {
     path: '',
     title: 'Exportador.Label',
     icon: 'ft-life-buoy',
@@ -295,7 +341,7 @@ namespace CoffeeConnect.Service
       
     ]
   },
-{
+  {
     path: '',
     title: 'Transporte.Label',
     icon: 'ft-book',
