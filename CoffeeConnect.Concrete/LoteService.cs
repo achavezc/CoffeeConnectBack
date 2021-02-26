@@ -130,7 +130,14 @@ namespace CoffeeConnect.Service
 
         public int AnularLote(AnularLoteRequestDTO request)
         {
-            int affected = _ILoteRepository.ActualizarEstado(request.LoteId, DateTime.Now, request.Usuario, LoteEstados.Ingresado);
+            int affected = _ILoteRepository.ActualizarEstado(request.LoteId, DateTime.Now, request.Usuario, LoteEstados.Anulado);
+
+            List<LoteDetalle> lotesDetalle = _ILoteRepository.ConsultarLoteDetallePorId(request.LoteId).ToList();
+
+            lotesDetalle.ForEach(loteDetalle =>
+            {
+                _INotaIngresoAlmacenRepository.ActualizarEstado(loteDetalle.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, NotaIngresoAlmacenEstados.Ingresado);
+            });
 
             return affected;
         }

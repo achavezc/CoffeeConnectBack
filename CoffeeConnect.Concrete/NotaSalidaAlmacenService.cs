@@ -103,12 +103,6 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
-        public int AnularNotaCompra(AnularNotaCompraRequestDTO request)
-        {
-            int affected = _INotaSalidaAlmacenRepository.Anular(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.PorLiquidar);
-
-            return affected;
-        }
 
       
 
@@ -163,6 +157,11 @@ namespace CoffeeConnect.Service
             return consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO;
         }
 
+        public int AnularNotaSalidaAlmacen(AnularNotaSalidaAlmacenRequestDTO request)
+        {
+            int affected = _INotaSalidaAlmacenRepository.Anular(request.NotaSalidaAlmacenId, DateTime.Now, request.Usuario, NotaSalidaAlmacenEstados.Ingresado);
 
+            return affected;
+        }
     }
 }

@@ -114,7 +114,17 @@ namespace CoffeeConnect.Service
 
 		public int AnularNotaIngresoAlmacen(AnularNotaIngresoAlmacenRequestDTO request)
 		{
-			int affected = _INotaIngresoAlmacenRepository.ActualizarEstado(request.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, LoteEstados.Ingresado);
+			ConsultaNotaIngresoAlmacenPorIdBE consultaNotaIngresoAlmacenPorIdBE = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacenPorId(request.NotaIngresoAlmacenId);
+
+			int affected = 0;
+
+			if (consultaNotaIngresoAlmacenPorIdBE!=null)
+            {
+				affected = _INotaIngresoAlmacenRepository.ActualizarEstado(request.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, LoteEstados.Anulado);
+
+				_IGuiaRecepcionMateriaPrimaRepository.ActualizarEstado(consultaNotaIngresoAlmacenPorIdBE.GuiaRecepcionMateriaPrimaId, DateTime.Now,request.Usuario, GuiaRecepcionMateriaPrimaEstados.Analizado);
+
+			}
 
 			return affected;
 		}

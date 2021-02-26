@@ -141,5 +141,25 @@ namespace CoffeeConnect.Repository
 			return affected;
 		}
 
+
+		public ConsultaNotaIngresoAlmacenPorIdBE ConsultarNotaIngresoAlmacenPorId(int notaIngresoAlmacenId)
+		{
+			ConsultaNotaIngresoAlmacenPorIdBE itemBE = null;
+
+			var parameters = new DynamicParameters();
+			parameters.Add("@NotaIngresoAlmacenId", notaIngresoAlmacenId);
+
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				var list = db.Query<ConsultaNotaIngresoAlmacenPorIdBE>("uspNotaIngresoAlmacenObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+
+				if (list.Any())
+					itemBE = list.First();
+			}
+
+			return itemBE;
+		}
+
 	}
 }

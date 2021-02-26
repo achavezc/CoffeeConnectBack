@@ -10,7 +10,7 @@ namespace CoffeeConnect.Interface.Service
 
         int ActualizarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request);
 
-        int AnularNotaCompra(AnularNotaCompraRequestDTO request);
+        int AnularNotaSalidaAlmacen(AnularNotaSalidaAlmacenRequestDTO request);
 
         
         List<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalidaAlmacen(ConsultaNotaSalidaAlmacenRequestDTO request);

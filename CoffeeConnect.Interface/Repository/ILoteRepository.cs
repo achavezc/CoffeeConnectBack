@@ -13,6 +13,6 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request);
 
         int ActualizarEstado(int loteId, DateTime fecha, string usuario, string estadoId);
-        
+        IEnumerable<LoteDetalle> ConsultarLoteDetallePorId(int loteId);
     }
 }
