@@ -74,4 +74,23 @@ namespace CoffeeConnect.Service
 
         public static String Analizado { get { return "02"; } }
     }
+
+
+    public static class ProductorEstados
+    {
+        public static String Activo { get { return "01"; } }
+
+        public static String Anulado { get { return "00"; } }
+
+
+    }
+
+    public static class SocioEstados
+    {
+        public static String Activo { get { return "01"; } }
+
+        public static String Anulado { get { return "00"; } }
+
+
+    }
 }

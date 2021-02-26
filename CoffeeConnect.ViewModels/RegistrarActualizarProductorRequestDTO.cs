@@ -217,12 +217,9 @@ namespace CoffeeConnect.DTO
 		public string Usuario
 		{ get; set; }
 
-		
 
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
+
+		public string EstadoId
 		{ get; set; }
 
 		#endregion

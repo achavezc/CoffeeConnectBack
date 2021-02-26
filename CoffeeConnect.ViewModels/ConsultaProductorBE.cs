@@ -103,7 +103,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the Activo value.
 		/// </summary>
-		public bool Activo
+		public string EstadoId
 		{ get; set; }
 
 		public string Estado

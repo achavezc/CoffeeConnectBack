@@ -32,7 +32,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductorId", socio.ProductorId);
             parameters.Add("@UsuarioUltimaActualizacion", socio.UsuarioUltimaActualizacion);
             parameters.Add("@FechaUltimaActualizacion", socio.FechaUltimaActualizacion);
-            parameters.Add("@Activo", socio.Activo);
+            parameters.Add("@EstadoId", socio.EstadoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -69,6 +69,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Codigo", socio.Codigo);
             parameters.Add("@ProductorId", socio.ProductorId);
             parameters.Add("@UsuarioRegistro", socio.UsuarioRegistro);
+            parameters.Add("@EstadoId", socio.EstadoId);
             parameters.Add("@FechaRegistro", socio.FechaRegistro);         
 
 

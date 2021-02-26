@@ -95,11 +95,7 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaRegistro
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
-		{ get; set; }
+		public string EstadoId { get; set; }
 
 		public string Estado
 		{ get; set; }

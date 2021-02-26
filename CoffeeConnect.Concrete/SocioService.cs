@@ -56,7 +56,7 @@ namespace CoffeeConnect.Service
             socio.FechaRegistro = DateTime.Now;
             socio.UsuarioRegistro = request.Usuario;
             socio.Codigo = _ICorrelativoRepository.Obtener(null, Documentos.Socio);
-
+            socio.EstadoId = SocioEstados.Activo;
             int affected = _ISocioRepository.Insertar(socio);
 
             return affected;

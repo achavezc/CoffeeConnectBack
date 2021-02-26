@@ -17,7 +17,7 @@ namespace CoffeeConnect.DTO
 
         public String NumeroDocumento { get; set; }       
 
-        public int? EstadoId { get; set; }
+        public String EstadoId { get; set; }
 
         public DateTime FechaInicio { get; set; }
 

@@ -47,11 +47,9 @@ namespace CoffeeConnect.Models
 		public string UsuarioUltimaActualizacion
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
-		{ get; set; }
+		
+
+		public string EstadoId { get; set; }
 
 		#endregion
 	}
