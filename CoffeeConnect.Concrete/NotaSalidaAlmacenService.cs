@@ -18,17 +18,21 @@ namespace CoffeeConnect.Service
        
         private INotaSalidaAlmacenRepository _INotaSalidaAlmacenRepository;
 
+        private ILoteRepository _LoteRepository;
+
         private IUsersRepository _UsersRepository;
 
         private IEmpresaRepository _EmpresaRepository;
 
-        public NotaSalidaAlmacenService(INotaSalidaAlmacenRepository notaSalidaAlmacenRepository, IUsersRepository usersRepository, IEmpresaRepository empresaRepository)
+        public NotaSalidaAlmacenService(INotaSalidaAlmacenRepository notaSalidaAlmacenRepository, IUsersRepository usersRepository, IEmpresaRepository empresaRepository, ILoteRepository loteRepository)
         {
             _INotaSalidaAlmacenRepository = notaSalidaAlmacenRepository;
 
             _UsersRepository = usersRepository;
 
             _EmpresaRepository = empresaRepository;
+
+            _LoteRepository = loteRepository;
         }
 
        		
@@ -160,6 +164,13 @@ namespace CoffeeConnect.Service
         public int AnularNotaSalidaAlmacen(AnularNotaSalidaAlmacenRequestDTO request)
         {
             int affected = _INotaSalidaAlmacenRepository.Anular(request.NotaSalidaAlmacenId, DateTime.Now, request.Usuario, NotaSalidaAlmacenEstados.Ingresado);
+
+            List<NotaSalidaAlmacenDetalle> notaSalidaAlmacenDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenDetallePorId(request.NotaSalidaAlmacenId).ToList();
+
+            notaSalidaAlmacenDetalle.ForEach(notaSalidaDetalle =>
+            {
+                _LoteRepository.ActualizarEstado(notaSalidaDetalle.LoteId, DateTime.Now, request.Usuario, LoteEstados.Ingresado);
+            });
 
             return affected;
         }

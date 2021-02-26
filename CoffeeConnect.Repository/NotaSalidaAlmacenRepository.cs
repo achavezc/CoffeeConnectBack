@@ -180,6 +180,20 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+        public IEnumerable<NotaSalidaAlmacenDetalle> ConsultarNotaSalidaAlmacenDetallePorId(int notaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("NotaSalidaAlmacenId", notaSalidaAlmacenId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenDetalle>("uspNotaSalidaAlmacenDetallePorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        
 
         public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoColorDetallePorId(int NotaSalidaAlmacenId)
         {

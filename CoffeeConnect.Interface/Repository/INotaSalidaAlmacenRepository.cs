@@ -37,6 +37,8 @@ namespace CoffeeConnect.Interface.Repository
         int ActualizarNotaSalidaAlmacenAnalisisSensorialDefectoDetalle(List<NotaSalidaAlmacenAnalisisSensorialDefectoDetalleTipo> request, int NotaSalidaAlmacenId);
         int ActualizarNotaSalidaAlmacenRegistroTostadoIndicadorDetalle(List<NotaSalidaAlmacenRegistroTostadoIndicadorDetalleTipo> request, int NotaSalidaAlmacenId);
 
+        IEnumerable<NotaSalidaAlmacenDetalle> ConsultarNotaSalidaAlmacenDetallePorId(int notaSalidaAlmacenId);
+
 
 
     }
