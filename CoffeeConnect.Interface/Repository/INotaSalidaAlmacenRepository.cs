@@ -12,7 +12,8 @@ namespace CoffeeConnect.Interface.Repository
 
         int Actualizar(NotaCompra notaCompra);
 
-        int Anular(int notaCompraId, DateTime fecha, string usuario, string estadoId);
+        int ActualizarEstado(int notaSalidaAlmacenId, DateTime fecha, string usuario, string estadoId);
+
 
         IEnumerable<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalidaAlmacen(ConsultaNotaSalidaAlmacenRequestDTO request);
         IEnumerable<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenIdBE> ConsultarImpresionListaProductoresPorNotaSalida(int notaSalidaAlmacenId);

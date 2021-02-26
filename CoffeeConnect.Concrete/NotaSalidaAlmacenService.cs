@@ -163,7 +163,7 @@ namespace CoffeeConnect.Service
 
         public int AnularNotaSalidaAlmacen(AnularNotaSalidaAlmacenRequestDTO request)
         {
-            int affected = _INotaSalidaAlmacenRepository.Anular(request.NotaSalidaAlmacenId, DateTime.Now, request.Usuario, NotaSalidaAlmacenEstados.Ingresado);
+            int affected = _INotaSalidaAlmacenRepository.ActualizarEstado(request.NotaSalidaAlmacenId, DateTime.Now, request.Usuario, NotaSalidaAlmacenEstados.Anulado);
 
             List<NotaSalidaAlmacenDetalle> notaSalidaAlmacenDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenDetallePorId(request.NotaSalidaAlmacenId).ToList();
 

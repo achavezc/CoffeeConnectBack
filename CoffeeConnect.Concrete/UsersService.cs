@@ -46,7 +46,7 @@ namespace CoffeeConnect.Service
         isExternalLink: false,
         submenu: [
           {
-            path: '/uikit/feather',
+            path: '/productor/administracion/productor-list',
             title: 'Productor.Administracion.Productor.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
@@ -58,7 +58,7 @@ namespace CoffeeConnect.Service
             ]
           },
           {
-            path: '/uikit/font-awesome',
+            path: '/productor/administracion/maestros-list',
             title: 'Productor.Administracion.MaestrosGenerales.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
@@ -233,7 +233,7 @@ namespace CoffeeConnect.Service
         isExternalLink: false,
         submenu: [
           {
-            path: '/uikit/feather',
+            path: '/agropecuario/socio-list',
             title: 'Agropecuario.Operaciones.Socio.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
@@ -249,7 +249,7 @@ namespace CoffeeConnect.Service
       },
       {
         path: '',
-        title: 'Planta.Administracion.Label',
+        title: 'Agropecuario.Administracion.Label',
         icon: 'ft-arrow-right submenu-icon',
         class: 'has-sub',
         badge: '',
@@ -258,7 +258,7 @@ namespace CoffeeConnect.Service
         submenu: [
           {
             path: '/uikit/font-awesome',
-            title: 'Planta.Administracion.MaestrosGenerales.Label',
+            title: 'Agropecuario.Administracion.MaestrosGenerales.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
             badge: '',

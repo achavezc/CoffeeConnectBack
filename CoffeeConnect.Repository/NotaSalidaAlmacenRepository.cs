@@ -109,19 +109,19 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-        public int Anular(int notaCompraId, DateTime fecha, string usuario, string estadoId)
+        public int ActualizarEstado(int notaSalidaAlmacenId, DateTime fecha, string usuario, string estadoId)
         {
             int affected = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaCompraId", notaCompraId);
+            parameters.Add("@NotaSalidaAlmacenId", notaSalidaAlmacenId);
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
             parameters.Add("@EstadoId", estadoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                affected = db.Execute("uspNotaCompraAnular", parameters, commandType: CommandType.StoredProcedure);
+                affected = db.Execute("uspNotaSalidaAlmacenActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;

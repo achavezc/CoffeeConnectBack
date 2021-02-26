@@ -65,7 +65,7 @@ namespace CoffeeConnect.Service
 
 		public int AnularOrdenServicioControlCalidad(AnularOrdenServicioControlCalidadRequestDTO request)
 		{
-			int affected = _IOrdenServicioControlCalidadRepository.ActualizarEstado(request.OrdenServicioControlCalidadId, DateTime.Now, request.Usuario, OrdenServicioControlCalidadEstados.Ingresado);
+			int affected = _IOrdenServicioControlCalidadRepository.ActualizarEstado(request.OrdenServicioControlCalidadId, DateTime.Now, request.Usuario, OrdenServicioControlCalidadEstados.Anulado);
 
 			return affected;
 		}

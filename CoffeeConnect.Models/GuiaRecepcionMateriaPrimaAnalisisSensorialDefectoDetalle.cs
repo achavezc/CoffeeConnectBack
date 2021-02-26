@@ -32,7 +32,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the Valor value.
 		/// </summary>
-		public decimal Valor
+		public bool Valor
 		{ get; set; }
 
 		#endregion
