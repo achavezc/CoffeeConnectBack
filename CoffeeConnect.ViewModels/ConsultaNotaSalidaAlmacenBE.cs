@@ -17,6 +17,7 @@ namespace CoffeeConnect.DTO
         public decimal? CantidadLotes { get; set; }
         public decimal? PesoNeto { get; set; }
 
-
+        public String EstadoId { get; set; }
+        public String Estado { get; set; }
     }
 }
