@@ -18,6 +18,11 @@ namespace CoffeeConnect.DTO
         public string RucEmpresa { get; set; }
         public string DireccionEmpresa { get; set; }
         public string LogoEmpresa { get; set; }
-        public List<MenuBE> Opciones { get; set; }        
+        public List<MenuBE> Opciones { get; set; }
+
+        public List<ProductoPrecioDiaBE> ProductoPreciosDia { get; set; }
+
+        public string MonedaId { get; set; }
+        public string Moneda { get; set; }
     }
 }
