@@ -1,4 +1,5 @@
 ﻿using CoffeeConnect.DTO;
+using CoffeeConnect.Models;
 using System.Collections.Generic;
 
 namespace CoffeeConnect.Interface.Service
@@ -7,6 +8,8 @@ namespace CoffeeConnect.Interface.Service
     {
         List<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId);
         List<ConsultaUbigeoBE> ConsultaUbibeo();
+        List<Zona> ConsultarZona(string codigoDistrito);
+
 
     }
 }

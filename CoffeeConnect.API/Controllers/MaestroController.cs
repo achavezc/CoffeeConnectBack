@@ -5,6 +5,7 @@ using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Collections.Generic;
+using CoffeeConnect.Models;
 
 namespace Integracion.Deuda.Controller
 {
@@ -171,5 +172,37 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
+
+        [Route("ConsultarZona")]
+        [HttpPost]
+        public IActionResult ConsultarZona([FromBody] ConsultaZonaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
+            try
+            {
+                List<Zona> lista = _maestroService.ConsultarZona(request.CodigoDistrito);
+
+                response.Result.Data = lista;
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            //_log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
     }
 }

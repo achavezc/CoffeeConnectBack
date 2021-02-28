@@ -46,7 +46,7 @@ namespace CoffeeConnect.Service
         isExternalLink: false,
         submenu: [
           {
-            path: '/productor/administracion/productor-list',
+            path: '/productor/administracion/productor/list',
             title: 'Productor.Administracion.Productor.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
@@ -233,7 +233,7 @@ namespace CoffeeConnect.Service
         isExternalLink: false,
         submenu: [
           {
-            path: '/agropecuario/socio-list',
+            path: '/agropecuario/operaciones/socio/list',
             title: 'Agropecuario.Operaciones.Socio.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
