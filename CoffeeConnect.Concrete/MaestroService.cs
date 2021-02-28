@@ -1,6 +1,7 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
+using CoffeeConnect.Models;
 using Core.Common.Domain.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,12 @@ namespace CoffeeConnect.Service
             return lista.ToList();
         }
 
+        public List<Zona> ConsultarZona(string codigoDistrito)
+        {
+            var lista = _IMaestroRepository.ConsultarZona(codigoDistrito);
 
+            return lista.ToList();
+        }
 
 
 

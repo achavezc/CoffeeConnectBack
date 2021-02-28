@@ -46,5 +46,16 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<Zona> ConsultarZona(string codigoDistrito)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("DistritoId", codigoDistrito);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<Zona>("uspZonaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
     }
 }

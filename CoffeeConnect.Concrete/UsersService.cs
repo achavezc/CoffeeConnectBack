@@ -46,7 +46,7 @@ namespace CoffeeConnect.Service
         isExternalLink: false,
         submenu: [
           {
-            path: '/productor/administracion/productor-list',
+            path: '/productor/administracion/productor/list',
             title: 'Productor.Administracion.Productor.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
@@ -233,7 +233,7 @@ namespace CoffeeConnect.Service
         isExternalLink: false,
         submenu: [
           {
-            path: '/agropecuario/socio-list',
+            path: '/agropecuario/operaciones/socio/list',
             title: 'Agropecuario.Operaciones.Socio.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
@@ -380,6 +380,31 @@ namespace CoffeeConnect.Service
                 loginDTO.EmpresaId = empresa.EmpresaId;
                 loginDTO.DireccionEmpresa = empresa.Direccion;
                 loginDTO.LogoEmpresa = empresa.Logo;
+                loginDTO.MonedaId = "01";
+                loginDTO.Moneda = "Soles";
+
+                List<ProductoPrecioDiaBE> precios = new List<ProductoPrecioDiaBE>();
+
+                ProductoPrecioDiaBE precioCafePergaminoMote = new ProductoPrecioDiaBE();
+                precioCafePergaminoMote.ProductoId = "01";
+                precioCafePergaminoMote.SubProductoId = "01";
+                precioCafePergaminoMote.PrecioDia = 5.00M;
+                precios.Add(precioCafePergaminoMote);
+
+                ProductoPrecioDiaBE precioCafePergaminoSeco = new ProductoPrecioDiaBE();
+                precioCafePergaminoSeco.ProductoId = "01";
+                precioCafePergaminoSeco.SubProductoId = "02";
+                precioCafePergaminoSeco.PrecioDia = 6.80M;
+                precios.Add(precioCafePergaminoSeco);
+
+                ProductoPrecioDiaBE precioCafePergaminoEstandar = new ProductoPrecioDiaBE();
+                precioCafePergaminoEstandar.ProductoId = "01";
+                precioCafePergaminoEstandar.SubProductoId = "03";
+                precioCafePergaminoEstandar.PrecioDia = 6.80M;
+                precios.Add(precioCafePergaminoEstandar);
+
+                loginDTO.ProductoPreciosDia = precios;
+
             }
 
 
