@@ -146,10 +146,28 @@ namespace CoffeeConnect.Repository
 			{
 				result = db.Execute("uspProductorActualizar", parameters, commandType: CommandType.StoredProcedure);
 			}
-
-
-
 			return result;
 		}
+
+		public ConsultaProductorIdBE ConsultarProductorId(int productorId)
+		{
+			ConsultaProductorIdBE itemBE = null;
+
+			var parameters = new DynamicParameters();
+			parameters.Add("@ProductorId", productorId);
+
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				var list = db.Query<ConsultaProductorIdBE>("uspProductorObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+
+				if (list.Any())
+					itemBE = list.First();
+			}
+
+			return itemBE;
+		}
+
+
 	}
 }

@@ -74,5 +74,11 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
+
+        public ConsultaProductorIdBE ConsultarProductorId(ConsultaProductorIdRequestDTO request)
+        {
+            return _IProductorRepository.ConsultarProductorId(request.ProductorId);
+        }
+
     }
 }   

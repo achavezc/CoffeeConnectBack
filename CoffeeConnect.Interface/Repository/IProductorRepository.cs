@@ -13,5 +13,7 @@ namespace CoffeeConnect.Interface.Repository
         int Actualizar(Productor lote);
 
         IEnumerable<ConsultaProductorBE> ConsultarProductor(ConsultaProductorRequestDTO request);
+        
+        ConsultaProductorIdBE ConsultarProductorId(int productorId);
 }
 }

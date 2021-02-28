@@ -11,7 +11,8 @@ namespace CoffeeConnect.Interface.Service
 
 
         List<ConsultaProductorBE> ConsultarProductor(ConsultaProductorRequestDTO request);
+        ConsultaProductorIdBE ConsultarProductorId(ConsultaProductorIdRequestDTO request);
 
-       
+
     }
 }
