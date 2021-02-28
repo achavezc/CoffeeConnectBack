@@ -136,7 +136,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the GradoEstudios value.
 		/// </summary>
-		public string GradoEstudios
+		public string GradoEstudiosId
 		{ get; set; }
 
 		/// <summary>
@@ -203,6 +203,9 @@ namespace CoffeeConnect.Models
 		/// Gets or sets the LugarNacimientoConyuge value.
 		/// </summary>
 		public string LugarNacimientoConyuge
+		{ get; set; }
+
+		public string GradoEstudiosIdConyuge
 		{ get; set; }
 
 		/// <summary>

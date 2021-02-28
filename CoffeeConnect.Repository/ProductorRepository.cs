@@ -68,7 +68,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@EstadoCivilId", productor.EstadoCivilId);
 			parameters.Add("@ReligionId", productor.ReligionId);
 			parameters.Add("@GeneroId", productor.GeneroId);
-			parameters.Add("@GradoEstudios", productor.GradoEstudios);
+			parameters.Add("@GradoEstudiosId", productor.GradoEstudiosId);
 			parameters.Add("@CantidadHijos", productor.CantidadHijos);
 			parameters.Add("@Idiomas", productor.Idiomas);
 			parameters.Add("@Dialecto", productor.Dialecto);
@@ -83,6 +83,8 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@FechaRegistro", productor.FechaRegistro);
 			parameters.Add("@UsuarioRegistro", productor.UsuarioRegistro);
 			parameters.Add("@EstadoId", productor.EstadoId);
+			parameters.Add("@GradoEstudiosIdConyuge", productor.GradoEstudiosIdConyuge);
+			
 
 			parameters.Add("@ProductorId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -121,7 +123,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@EstadoCivilId", productor.EstadoCivilId);
 			parameters.Add("@ReligionId", productor.ReligionId);
 			parameters.Add("@GeneroId", productor.GeneroId);
-			parameters.Add("@GradoEstudios", productor.GradoEstudios);
+			parameters.Add("@GradoEstudiosId", productor.GradoEstudiosId);
 			parameters.Add("@CantidadHijos", productor.CantidadHijos);
 			parameters.Add("@Idiomas", productor.Idiomas);
 			parameters.Add("@Dialecto", productor.Dialecto);
@@ -132,9 +134,11 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@ApellidosConyuge", productor.ApellidosConyuge);
 			parameters.Add("@NumeroTelefonoCelularConyuge", productor.NumeroTelefonoCelularConyuge);
 			parameters.Add("@FechaNacimientoConyuge", productor.FechaNacimientoConyuge);
-			parameters.Add("@LugarNacimientoConyuge", productor.LugarNacimientoConyuge);			
+			parameters.Add("@LugarNacimientoConyuge", productor.LugarNacimientoConyuge);
+			parameters.Add("@GradoEstudiosIdConyuge", productor.GradoEstudiosIdConyuge);
 			parameters.Add("@FechaUltimaActualizacion", productor.FechaUltimaActualizacion);
 			parameters.Add("@UsuarioUltimaActualizacion", productor.UsuarioUltimaActualizacion);
+
 			parameters.Add("@EstadoId", productor.EstadoId);
 
 
