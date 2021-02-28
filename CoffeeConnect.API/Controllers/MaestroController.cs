@@ -1,10 +1,10 @@
-﻿using System;
-using CoffeeConnect.DTO;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Integracion.Deuda.Controller
 {
@@ -36,10 +36,10 @@ namespace Integracion.Deuda.Controller
 
             ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
             try
-            {                
+            {
                 List<ConsultaDetalleTablaBE> lista = _maestroService.ConsultarDetalleTablaDeTablas(request.EmpresaId);
 
-                response.Result.Data = lista.Where(a => a.CodigoTabla == request.CodigoTabla).ToList();
+                response.Result.Data = lista.Where(a => a.CodigoTabla.Trim().Equals(request.CodigoTabla.Trim())).ToList();
 
                 response.Result.Success = true;
 
@@ -58,7 +58,7 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-        
+
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("ConsultarDepartamento")]
         [HttpPost]
@@ -104,10 +104,10 @@ namespace Integracion.Deuda.Controller
             try
             {
                 List<ConsultaUbigeoBE> lista = _maestroService.ConsultaUbibeo();
-                string prefijoDepartamento = !String.IsNullOrEmpty(request.CodigoDepartamento.ToString()) 
+                string prefijoDepartamento = !String.IsNullOrEmpty(request.CodigoDepartamento.ToString())
                                                 && request.CodigoDepartamento.Length >= 2 ? request.CodigoDepartamento.Substring(0, 2) : "-";
 
-                response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("00") 
+                response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("00")
                                                 && a.Codigo.StartsWith(prefijoDepartamento)
                                                 && !a.Codigo.EndsWith("0000"))
                                         .ToList();
@@ -148,8 +148,8 @@ namespace Integracion.Deuda.Controller
                 string prefijoProvincia = !String.IsNullOrEmpty(request.CodigoProvincia.ToString())
                                                 && request.CodigoProvincia.Length >= 4 ? request.CodigoProvincia.Substring(0, 4) : "-";
 
-                response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais 
-                                                        && !a.Codigo.EndsWith("00") 
+                response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais
+                                                        && !a.Codigo.EndsWith("00")
                                                         && a.Codigo.StartsWith(prefijoProvincia))
                                         .ToList();
 
