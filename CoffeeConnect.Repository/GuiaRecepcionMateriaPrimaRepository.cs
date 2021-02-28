@@ -104,6 +104,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TaraPesado", guiaRecepcionMateriaPrima.TaraPesado);
             parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);            
             parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);
+            parameters.Add("@SocioFincaId", guiaRecepcionMateriaPrima.SocioFincaId);
+            parameters.Add("@TerceroFincaId", guiaRecepcionMateriaPrima.TerceroFincaId);
+            parameters.Add("@IntermediarioFinca", guiaRecepcionMateriaPrima.IntermediarioFinca);
             parameters.Add("@FechaUltimaActualizacion", guiaRecepcionMateriaPrima.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion); 
 
@@ -142,6 +145,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TaraPesado", guiaRecepcionMateriaPrima.TaraPesado);
             parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);
             parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);
+            parameters.Add("@SocioFincaId", guiaRecepcionMateriaPrima.SocioFincaId);
+            parameters.Add("@TerceroFincaId", guiaRecepcionMateriaPrima.TerceroFincaId);
+            parameters.Add("@IntermediarioFinca", guiaRecepcionMateriaPrima.IntermediarioFinca);
             parameters.Add("@FechaRegistro", guiaRecepcionMateriaPrima.FechaRegistro);
             parameters.Add("@UsuarioRegistro", guiaRecepcionMateriaPrima.UsuarioRegistro);
 

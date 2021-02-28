@@ -41,7 +41,7 @@ namespace CoffeeConnect.DTO
 
         public string CodigoSocio { get; set; }
 
-
-        
+        public int? FincaId { get; set; }
+        public string Finca { get; set; }
     }
 }

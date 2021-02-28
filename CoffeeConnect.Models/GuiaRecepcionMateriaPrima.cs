@@ -197,6 +197,16 @@ namespace CoffeeConnect.Models
 		public string ObservacionAnalisisSensorial
 		{ get; set; }
 
+
+		public int? SocioFincaId
+		{ get; set; }
+
+		public int? TerceroFincaId
+		{ get; set; }
+
+		public string IntermediarioFinca
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the EstadoId value.
 		/// </summary>
