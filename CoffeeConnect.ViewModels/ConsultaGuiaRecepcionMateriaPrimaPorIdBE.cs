@@ -349,6 +349,16 @@ namespace CoffeeConnect.DTO
 		public bool Activo
 		{ get; set; }
 
+		public int? SocioFincaId
+		{ get; set; }
+
+		public int? TerceroFincaId
+		{ get; set; }
+
+		public string Finca
+		{ get; set; }
+
+
 		//public int? NotaCompraId
 		//{ get; set; }
 
