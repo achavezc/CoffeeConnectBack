@@ -46,6 +46,10 @@ namespace CoffeeConnect.DTO
 		public string SubProductoId
 		{ get; set; }
 
+		public int? TipoProduccionId
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the SubProducto value.
 		/// </summary>

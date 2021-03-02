@@ -135,6 +135,7 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
             guiaRecepcionMateriaPrima.EmpresaId = request.EmpresaId;
             guiaRecepcionMateriaPrima.TipoProvedorId = request.TipoProvedorId;
+            guiaRecepcionMateriaPrima.NumeroReferencia = request.NumeroReferencia;
             guiaRecepcionMateriaPrima.SocioId = request.SocioId;
             guiaRecepcionMateriaPrima.TerceroId = request.TerceroId;
             guiaRecepcionMateriaPrima.IntermediarioId = request.IntermediarioId;

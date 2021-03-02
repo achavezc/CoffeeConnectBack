@@ -50,6 +50,10 @@ namespace CoffeeConnect.Models
 		public int? IntermediarioId
 		{ get; set; }
 
+		public int? TipoProduccionId
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the ProductoId value.
 		/// </summary>

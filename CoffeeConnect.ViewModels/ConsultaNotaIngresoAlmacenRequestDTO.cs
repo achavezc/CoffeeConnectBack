@@ -33,5 +33,11 @@ namespace CoffeeConnect.DTO
 
         public string AlmacenId { get; set; }
 
+        public decimal? RendimientoPorcentajeInicio
+        { get; set; }
+
+        public decimal? RendimientoPorcentajeFin
+        { get; set; }
+
     }
 }
