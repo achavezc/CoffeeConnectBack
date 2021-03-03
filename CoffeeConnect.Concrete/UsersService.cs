@@ -382,7 +382,7 @@ namespace CoffeeConnect.Service
                 loginDTO.LogoEmpresa = empresa.Logo;
                 loginDTO.MonedaId = "01";
                 loginDTO.Moneda = "Soles";
-
+                
                 List<ProductoPrecioDiaBE> precios = new List<ProductoPrecioDiaBE>();
 
                 ProductoPrecioDiaBE precioCafePergaminoMote = new ProductoPrecioDiaBE();

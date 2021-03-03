@@ -116,6 +116,11 @@ namespace CoffeeConnect.DTO
 		public string TipoId
 		{ get; set; }
 
+
+		public string MonedaId
+		{ get; set; }
+		
+
 		/// <summary>
 		/// Gets or sets the PrecioDia value.
 		/// </summary>

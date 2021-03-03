@@ -144,6 +144,10 @@ namespace CoffeeConnect.DTO
         { get; set; }
         public int NotaIngresoAlmacenId { get; set; }
 
+        public decimal? RendimientoPorcentaje
+        { get; set; }
+
+      
         #endregion
     }
 

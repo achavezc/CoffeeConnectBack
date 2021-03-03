@@ -11,14 +11,16 @@ namespace CoffeeConnect.DTO
 
         public int NotaCompraId { get; set; }
         public String Usuario { get; set; }
-		
-		public decimal? PrecioDia
+
+		public String MonedaId { get; set; }
+
+		public decimal PrecioPagado
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the Importe value.
 		/// </summary>
-		public decimal? Importe
+		public decimal Importe
 		{ get; set; }
 
 

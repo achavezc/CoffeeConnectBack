@@ -108,8 +108,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TerceroFincaId", guiaRecepcionMateriaPrima.TerceroFincaId);
             parameters.Add("@IntermediarioFinca", guiaRecepcionMateriaPrima.IntermediarioFinca);
             parameters.Add("@FechaUltimaActualizacion", guiaRecepcionMateriaPrima.FechaUltimaActualizacion);
-            parameters.Add("@UsuarioUltimaActualizacion", guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion); 
-
+            parameters.Add("@UsuarioUltimaActualizacion", guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion);
+            parameters.Add("@TipoProduccionId", guiaRecepcionMateriaPrima.TipoProduccionId);
+            
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -150,6 +151,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@IntermediarioFinca", guiaRecepcionMateriaPrima.IntermediarioFinca);
             parameters.Add("@FechaRegistro", guiaRecepcionMateriaPrima.FechaRegistro);
             parameters.Add("@UsuarioRegistro", guiaRecepcionMateriaPrima.UsuarioRegistro);
+            parameters.Add("@TipoProduccionId", guiaRecepcionMateriaPrima.TipoProduccionId);
 
             parameters.Add("@GuiaRecepcionMateriaPrimaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 

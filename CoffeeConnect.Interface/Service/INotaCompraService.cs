@@ -19,5 +19,8 @@ namespace CoffeeConnect.Interface.Service
         ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request);
 
         ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarImpresionNotaCompraPorGuiaRecepcionMateriaPrimaId(ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request);
+
+        ConsultaNotaCompraPorIdBE ConsultarNotaCompraPorId(ConsultaNotaCompraPorIdRequestDTO request);
+
     }
 }

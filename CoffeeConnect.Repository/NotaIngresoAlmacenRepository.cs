@@ -82,6 +82,8 @@ namespace CoffeeConnect.Repository
 			parameters.Add("SubProductoId", request.SubProductoId);
 			parameters.Add("AlmacenId", request.AlmacenId);
 			parameters.Add("EmpresaId", request.EmpresaId);
+			parameters.Add("RendimientoPorcentajeInicio", request.RendimientoPorcentajeInicio);
+			parameters.Add("RendimientoPorcentajeFin", request.RendimientoPorcentajeFin);
 			parameters.Add("FechaInicio", request.FechaInicio);
 			parameters.Add("FechaFin", request.FechaFin);
 

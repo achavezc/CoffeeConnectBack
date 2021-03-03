@@ -100,6 +100,7 @@ namespace CoffeeConnect.Service
             GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima = new GuiaRecepcionMateriaPrima();
             
             guiaRecepcionMateriaPrima.EmpresaId = request.EmpresaId;
+            guiaRecepcionMateriaPrima.NumeroReferencia = request.NumeroReferencia;
             guiaRecepcionMateriaPrima.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRecepcion);     
             guiaRecepcionMateriaPrima.TipoProvedorId = request.TipoProvedorId;
             guiaRecepcionMateriaPrima.SocioId = request.SocioId;
@@ -134,6 +135,7 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
             guiaRecepcionMateriaPrima.EmpresaId = request.EmpresaId;
             guiaRecepcionMateriaPrima.TipoProvedorId = request.TipoProvedorId;
+            guiaRecepcionMateriaPrima.NumeroReferencia = request.NumeroReferencia;
             guiaRecepcionMateriaPrima.SocioId = request.SocioId;
             guiaRecepcionMateriaPrima.TerceroId = request.TerceroId;
             guiaRecepcionMateriaPrima.IntermediarioId = request.IntermediarioId;
