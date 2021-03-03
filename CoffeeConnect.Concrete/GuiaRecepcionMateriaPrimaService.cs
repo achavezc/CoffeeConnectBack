@@ -119,6 +119,7 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.SocioFincaId = request.SocioFincaId;
             guiaRecepcionMateriaPrima.IntermediarioFinca = request.IntermediarioFinca;
             guiaRecepcionMateriaPrima.TerceroFincaId = request.TerceroFincaId;
+            guiaRecepcionMateriaPrima.TipoProduccionId = request.TipoProduccionId;
             guiaRecepcionMateriaPrima.EstadoId = GuiaRecepcionMateriaPrimaEstados.Pesado;
             guiaRecepcionMateriaPrima.FechaRegistro = DateTime.Now;
             guiaRecepcionMateriaPrima.UsuarioRegistro = request.UsuarioPesado;  
@@ -152,6 +153,7 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.SocioFincaId = request.SocioFincaId;
             guiaRecepcionMateriaPrima.IntermediarioFinca = request.IntermediarioFinca;
             guiaRecepcionMateriaPrima.TerceroFincaId = request.TerceroFincaId;
+            guiaRecepcionMateriaPrima.TipoProduccionId = request.TipoProduccionId;
             guiaRecepcionMateriaPrima.EstadoId = GuiaRecepcionMateriaPrimaEstados.Pesado;
             guiaRecepcionMateriaPrima.FechaUltimaActualizacion = DateTime.Now;
             guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion = request.UsuarioPesado;

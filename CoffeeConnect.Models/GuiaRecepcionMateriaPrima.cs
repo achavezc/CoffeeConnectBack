@@ -50,7 +50,7 @@ namespace CoffeeConnect.Models
 		public int? IntermediarioId
 		{ get; set; }
 
-		public int? TipoProduccionId
+		public string TipoProduccionId
 		{ get; set; }
 
 

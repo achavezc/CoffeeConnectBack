@@ -124,6 +124,9 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the UsuarioRegistro value.
 		/// </summary>
 
+		public string TipoProduccionId
+		{ get; set; }
+		
 
 	}
 }
