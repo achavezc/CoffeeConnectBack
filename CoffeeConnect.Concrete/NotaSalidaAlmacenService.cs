@@ -54,11 +54,7 @@ namespace CoffeeConnect.Service
             notaCompra.KilosNetosDescontar = request.KilosNetosDescontar;
             notaCompra.KilosNetosPagar = request.KilosNetosPagar;
             notaCompra.QQ55 = request.QQ55;
-            notaCompra.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;   
-            notaCompra.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
-            notaCompra.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
-            notaCompra.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
-            notaCompra.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
+            
             notaCompra.TipoId = request.TipoId;
             notaCompra.PrecioGuardado = request.PrecioGuardado;
             notaCompra.PrecioPagado = request.PrecioPagado;
@@ -89,11 +85,7 @@ namespace CoffeeConnect.Service
             notaCompra.KilosNetosDescontar = request.KilosNetosDescontar;
             notaCompra.KilosNetosPagar = request.KilosNetosPagar;
             notaCompra.QQ55 = request.QQ55;
-            notaCompra.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
-            notaCompra.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
-            notaCompra.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
-            notaCompra.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
-            notaCompra.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
+            
             notaCompra.TipoId = request.TipoId;
             notaCompra.PrecioGuardado = request.PrecioGuardado;
             notaCompra.PrecioPagado = request.PrecioPagado;

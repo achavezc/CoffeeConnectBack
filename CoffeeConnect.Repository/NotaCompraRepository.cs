@@ -38,13 +38,10 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@DescuentoPorHumedad", notaCompra.DescuentoPorHumedad);
 			parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
 			parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
-			parameters.Add("@QQ55", notaCompra.QQ55);
-			parameters.Add("@ExportableGramosAnalisisFisico", notaCompra.ExportableGramosAnalisisFisico);
-			parameters.Add("@DescarteGramosAnalisisFisico", notaCompra.DescarteGramosAnalisisFisico);
-			parameters.Add("@CascarillaGramosAnalisisFisico", notaCompra.CascarillaGramosAnalisisFisico);
-			parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
-			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
+			parameters.Add("@QQ55", notaCompra.QQ55);			
 			parameters.Add("@TipoId", notaCompra.TipoId);
+			parameters.Add("@MonedaId", notaCompra.MonedaId);
+			parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);
 			parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
 			parameters.Add("@Importe", notaCompra.Importe);
 			parameters.Add("@EstadoId", notaCompra.EstadoId);
@@ -80,14 +77,11 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
 			parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
 			parameters.Add("@QQ55", notaCompra.QQ55);
-			parameters.Add("@ExportableGramosAnalisisFisico", notaCompra.ExportableGramosAnalisisFisico);
-			parameters.Add("@DescarteGramosAnalisisFisico", notaCompra.DescarteGramosAnalisisFisico);
-			parameters.Add("@CascarillaGramosAnalisisFisico", notaCompra.CascarillaGramosAnalisisFisico);
-			parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
-			parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
+			
 			parameters.Add("@TipoId", notaCompra.TipoId);
-			parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
+			parameters.Add("@MonedaId", notaCompra.MonedaId);
 			parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);
+			parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
 			parameters.Add("@Importe", notaCompra.Importe);
 			parameters.Add("@EstadoId", notaCompra.EstadoId);
 			parameters.Add("@FechaUltimaActualizacion", notaCompra.FechaUltimaActualizacion);
@@ -122,7 +116,7 @@ namespace CoffeeConnect.Repository
 			return affected;
 		}
 
-		public int Liquidar(int notaCompraId, DateTime fecha, string usuario, string estadoId,decimal? precioDia, decimal? importe)
+		public int Liquidar(int notaCompraId, DateTime fecha, string usuario, string estadoId, string monedaId, decimal precioPagado, decimal importe)
 		{
 			int affected = 0;
 
@@ -130,8 +124,9 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@NotaCompraId", notaCompraId);
 			parameters.Add("@Fecha", fecha);
 			parameters.Add("@Usuario", usuario);
-			parameters.Add("@EstadoId", estadoId);				
-			parameters.Add("@PrecioDia", precioDia);
+			parameters.Add("@EstadoId", estadoId);
+			parameters.Add("@MonedaId", monedaId);
+			parameters.Add("@PrecioPagado", precioPagado);
 			parameters.Add("@Importe", importe);
 
 			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -195,6 +190,25 @@ namespace CoffeeConnect.Repository
 			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
 			{
 				var list = db.Query<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>("uspNotaCompraConsultaImpresionPorGuiaRecepcionMateriaPrimaId", parameters, commandType: CommandType.StoredProcedure);
+
+				if (list.Any())
+					itemBE = list.First();
+			}
+
+			return itemBE;
+		}
+
+		public ConsultaNotaCompraPorIdBE ConsultarNotaCompraPorId(int notaCompraId)
+		{
+			ConsultaNotaCompraPorIdBE itemBE = null;
+
+			var parameters = new DynamicParameters();
+			parameters.Add("NotaCompraId", notaCompraId);
+
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				var list = db.Query<ConsultaNotaCompraPorIdBE>("uspNotaCompraObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
 
 				if (list.Any())
 					itemBE = list.First();

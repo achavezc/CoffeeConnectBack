@@ -42,11 +42,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
             parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
             parameters.Add("@QQ55", notaCompra.QQ55);
-            parameters.Add("@ExportableGramosAnalisisFisico", notaCompra.ExportableGramosAnalisisFisico);
-            parameters.Add("@DescarteGramosAnalisisFisico", notaCompra.DescarteGramosAnalisisFisico);
-            parameters.Add("@CascarillaGramosAnalisisFisico", notaCompra.CascarillaGramosAnalisisFisico);
-            parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
-            parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
+          
             parameters.Add("@TipoId", notaCompra.TipoId);
             parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
             parameters.Add("@Importe", notaCompra.Importe);
@@ -85,11 +81,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
             parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
             parameters.Add("@QQ55", notaCompra.QQ55);
-            parameters.Add("@ExportableGramosAnalisisFisico", notaCompra.ExportableGramosAnalisisFisico);
-            parameters.Add("@DescarteGramosAnalisisFisico", notaCompra.DescarteGramosAnalisisFisico);
-            parameters.Add("@CascarillaGramosAnalisisFisico", notaCompra.CascarillaGramosAnalisisFisico);
-            parameters.Add("@TotalGramosAnalisisFisico", notaCompra.TotalGramosAnalisisFisico);
-            parameters.Add("@HumedadPorcentajeAnalisisFisico", notaCompra.HumedadPorcentajeAnalisisFisico);
+       
             parameters.Add("@TipoId", notaCompra.TipoId);
             parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
             parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);

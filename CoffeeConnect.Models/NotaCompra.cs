@@ -83,42 +83,19 @@ namespace CoffeeConnect.Models
 		public decimal QQ55
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the ExportableGramosAnalisisFisico value.
-		/// </summary>
-		public decimal ExportableGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the DescarteGramosAnalisisFisico value.
-		/// </summary>
-		public decimal DescarteGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CascarillaGramosAnalisisFisico value.
-		/// </summary>
-		public decimal CascarillaGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TotalGramosAnalisisFisico value.
-		/// </summary>
-		public decimal TotalGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal HumedadPorcentajeAnalisisFisico
-		{ get; set; }
-
+		
 		/// <summary>
 		/// Gets or sets the TipoId value.
 		/// </summary>
 		public string TipoId
 		{ get; set; }
 
+
+		/// <summary>
+		/// Gets or sets the MonedaId value.
+		/// </summary>
+		public string MonedaId
+		{ get; set; }
 		/// <summary>
 		/// Gets or sets the PrecioGuardado value.
 		/// </summary>
