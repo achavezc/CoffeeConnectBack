@@ -5,197 +5,76 @@ using System.Collections.Generic;
 namespace CoffeeConnect.DTO
 {
 	public class ConsultaNotaSalidaAlmacenPorIdBE
-	{		
+	{
 
 		#region Properties
-		/// <summary>
-		/// Gets or sets the NotaSalidaAlmacenId value.
-		/// </summary>
-		public int NotaSalidaAlmacenId
+
+
+
+		public int NotaSalidaAlmacenId { set; get; }
+		public int EmpresaId { set; get; }
+		public String AlmacenId { set; get; }
+		public String Almacen { set; get; }
+		public String Numero { set; get; }
+		public String MotivoTrasladoId { set; get; }
+		public String Motivo { set; get; }
+		public int EmpresaIdDestino { set; get; }
+		public String Destinatario { set; get; }
+		public String RucDestinatario    {set;get;}
+	public String DireccionPartida { set; get; }
+	public String DireccionDestino { set; get; }
+	public int TransporteId { set; get; }
+	public int EmpresaTransporteId { set; get; }
+	public String Transportista { set; get; }
+	public String DireccionTransportista { set; get; }
+	public String RucTransportista { set; get; }
+	public String Conductor { set; get; }
+	public String LicenciaConductor { set; get; }
+	public String MarcaCarretaId { set; get; }
+	public String MarcaCarreta { set; get; }
+	public String MarcaTractorId { set; get; }
+	public String MarcaTractor { set; get; }
+	public String PlacaTractor { set; get; }
+	public String PlacaCarreta { set; get; }
+	public String NumeroConstanciaMTC { set; get; }
+	public String Observacion { set; get; }
+	public Decimal CantidadLotes { set; get; }
+	public Decimal PesoNeto { set; get; }
+	public Decimal PromedioRendimientoPorcentaje { set; get; }
+	public String MonedaId { set; get; }
+	public Decimal PrecioDia { set; get; }
+	public Decimal Importe { set; get; }
+	public String EstadoId { set; get; }
+	public DateTime FechaRegistro { set; get; }
+	public String UsuarioRegistro { set; get; }
+	public DateTime FechaUltimaActualizacion { set; get; }
+	public String UsuarioUltimaActualizacion { set; get; }
+	public bool Activo { set; get; }
+
+		public ConsultaNotaSalidaAlmacenPorIdBE() {
+			
+		}
+
+
+	    public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the EmpresaId value.
-		/// </summary>
-		public int EmpresaId
+		public IEnumerable<NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalle> AnalisisFisicoDefectoPrimarioDetalle
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the AlmacenId value.
-		/// </summary>
-		public string AlmacenId
+		public IEnumerable<NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalle> AnalisisFisicoDefectoSecundarioDetalle
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Numero value.
-		/// </summary>
-		public string Numero
+		public IEnumerable<NotaSalidaAlmacenAnalisisFisicoOlorDetalle> AnalisisFisicoOlorDetalle
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the MotivoTrasladoId value.
-		/// </summary>
-		public string MotivoTrasladoId
+		public IEnumerable<NotaSalidaAlmacenAnalisisSensorialAtributoDetalle> AnalisisSensorialAtributoDetalle
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the EmpresaIdDestino value.
-		/// </summary>
-		public int EmpresaIdDestino
+		public IEnumerable<NotaSalidaAlmacenAnalisisSensorialDefectoDetalle> AnalisisSensorialDefectoDetalle
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the EmpresaTransporteId value.
-		/// </summary>
-		public int EmpresaTransporteId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TransporteId value.
-		/// </summary>
-		public int TransporteId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the NumeroConstanciaMTC value.
-		/// </summary>
-		public string NumeroConstanciaMTC
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the MarcaTractorId value.
-		/// </summary>
-		public string MarcaTractorId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PlacaTractor value.
-		/// </summary>
-		public string PlacaTractor
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the MarcaCarretaId value.
-		/// </summary>
-		public string MarcaCarretaId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PlacaCarreta value.
-		/// </summary>
-		public string PlacaCarreta
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Conductor value.
-		/// </summary>
-		public string Conductor
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Licencia value.
-		/// </summary>
-		public string Licencia
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Observacion value.
-		/// </summary>
-		public string Observacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CantidadLotes value.
-		/// </summary>
-		public decimal CantidadLotes
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PesoNeto value.
-		/// </summary>
-		public decimal PesoNeto
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PromedioRendimientoPorcentaje value.
-		/// </summary>
-		public decimal PromedioRendimientoPorcentaje
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the MonedaId value.
-		/// </summary>
-		public string MonedaId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PrecioDia value.
-		/// </summary>
-		public decimal PrecioDia
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Importe value.
-		/// </summary>
-		public decimal Importe
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the EstadoId value.
-		/// </summary>
-		public string EstadoId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaRegistro value.
-		/// </summary>
-		public DateTime FechaRegistro
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioRegistro value.
-		/// </summary>
-		public string UsuarioRegistro
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaUltimaActualizacion value.
-		/// </summary>
-		public DateTime FechaUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioUltimaActualizacion value.
-		/// </summary>
-		public string UsuarioUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
-		{ get; set; }
-	
-
-		public List<NotaSalidaAlmacenAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
-		{ get; set; }
-
-		public List<NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalle> AnalisisFisicoDefectoPrimarioDetalle
-		{ get; set; }
-
-		public List<NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalle> AnalisisFisicoDefectoSecundarioDetalle
-		{ get; set; }
-
-		public List<NotaSalidaAlmacenAnalisisFisicoOlorDetalle> AnalisisFisicoOlorDetalle
-		{ get; set; }
-
-		public List<NotaSalidaAlmacenAnalisisSensorialAtributoDetalle> AnalisisSensorialAtributoDetalle
-		{ get; set; }
-
-		public List<NotaSalidaAlmacenAnalisisSensorialDefectoDetalle> AnalisisSensorialDefectoDetalle
-		{ get; set; }
-
-		public List<NotaSalidaAlmacenRegistroTostadoIndicadorDetalle> RegistroTostadoIndicadorDetalle
+		public IEnumerable<NotaSalidaAlmacenRegistroTostadoIndicadorDetalle> RegistroTostadoIndicadorDetalle
 		{ get; set; }
 
 
