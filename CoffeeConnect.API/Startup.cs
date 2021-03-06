@@ -113,6 +113,9 @@ namespace CoffeeConnect.API
             services.AddTransient<INotaSalidaAlmacenService, NotaSalidaAlmacenService>();
             services.AddTransient<INotaSalidaAlmacenRepository, NotaSalidaAlmacenRepository>();
 
+            services.AddTransient<IProductorFincaService, ProductorFincaService>();
+            services.AddTransient<IProductorFincaRepository, ProductorFincaRepository>();
+
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
                     .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);

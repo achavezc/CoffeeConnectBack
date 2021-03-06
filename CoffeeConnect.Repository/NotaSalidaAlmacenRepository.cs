@@ -287,6 +287,17 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<NotaSalidaAlmacenDetalleLotes> ConsultarNotaSalidaAlmacenDetalleLotesPorId(int NotaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenDetalleLotes>("uspNotaSalidaAlmacenDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public int ActualizarNotaSalidaAlmacenAnalisisFisicoColorDetalle(List<NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo> request, int NotaSalidaAlmacenId)
         {
             //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
