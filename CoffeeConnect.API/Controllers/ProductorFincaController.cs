@@ -31,15 +31,15 @@ namespace Integracion.Deuda.Controller
 
         [Route("Registrar")]
         [HttpPost]
-        public IActionResult Registrar([FromBody] RegistrarActualizarProductorRequestDTO request)
+        public IActionResult Registrar([FromBody] RegistrarActualizarProductorFincaRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            RegistrarActualizarProductorResponseDTO response = new RegistrarActualizarProductorResponseDTO();
+            RegistrarActualizarProductorFincaResponseDTO response = new RegistrarActualizarProductorFincaResponseDTO();
             try
             {
-                response.Result.Data = _productorService.RegistrarProductor(request);
+                response.Result.Data = _productorService.RegistrarProductorFinca(request);
 
                 response.Result.Success = true;
 
@@ -61,15 +61,15 @@ namespace Integracion.Deuda.Controller
 
         [Route("Actualizar")]
         [HttpPost]
-        public IActionResult Actualizar([FromBody] RegistrarActualizarProductorRequestDTO request)
+        public IActionResult Actualizar([FromBody] RegistrarActualizarProductorFincaRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            RegistrarActualizarProductorResponseDTO response = new RegistrarActualizarProductorResponseDTO();
+            RegistrarActualizarProductorFincaResponseDTO response = new RegistrarActualizarProductorFincaResponseDTO();
             try
             {
-                response.Result.Data = _productorService.ActualizarProductor(request);
+                response.Result.Data = _productorService.ActualizarProductorFinca(request);
 
                 response.Result.Success = true;
 
@@ -99,7 +99,7 @@ namespace Integracion.Deuda.Controller
             ConsultaProductorPorIdResponseDTO response = new ConsultaProductorPorIdResponseDTO();
             try
             {
-                response.Result.Data = _productorService.ConsultarProductorFincaIdProductor(request);
+                response.Result.Data = _productorService.ConsultarProductorFincaPorProductorId(request);
 
                 response.Result.Success = true;
 

@@ -6,9 +6,9 @@ namespace CoffeeConnect.Interface.Service
     public interface IProductorFincaService
     {
 
-        int RegistrarProductor(RegistrarActualizarProductorRequestDTO request);
-        int ActualizarProductor(RegistrarActualizarProductorRequestDTO request);
+        int RegistrarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request);
+        int ActualizarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request);
 
-        IEnumerable<ConsultaProductorFincaProductorIdBE> ConsultarProductorFincaIdProductor(ConsultaProductorFincaProductorIdRequestDTO request);
+        IEnumerable<ConsultaProductorFincaProductorIdBE> ConsultarProductorFincaPorProductorId(ConsultaProductorFincaProductorIdRequestDTO request);
     }
 }

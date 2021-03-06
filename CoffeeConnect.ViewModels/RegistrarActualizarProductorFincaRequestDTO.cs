@@ -1,8 +1,12 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class ProductorFinca
+	public class RegistrarActualizarProductorFincaRequestDTO
 	{
 		#region Properties
 		/// <summary>
@@ -131,28 +135,12 @@ namespace CoffeeConnect.Models
 		public string Suelo
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the FechaRegistro value.
-		/// </summary>
-		public DateTime FechaRegistro
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioRegistro value.
-		/// </summary>
-		public string UsuarioRegistro
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaUltimaActualizacion value.
-		/// </summary>
-		public DateTime? FechaUltimaActualizacion
-		{ get; set; }
-
+		
+		
 		/// <summary>
 		/// Gets or sets the UsuarioUltimaActualizacion value.
 		/// </summary>
-		public string UsuarioUltimaActualizacion
+		public string Usuario
 		{ get; set; }
 
 		/// <summary>
@@ -161,7 +149,7 @@ namespace CoffeeConnect.Models
 		public string EstadoId
 		{ get; set; }
 
-		
+
 
 		#endregion
 	}

@@ -115,6 +115,8 @@ namespace CoffeeConnect.DTO
 		public string Moneda
 		{ get; set; }
 
+		public string MonedaId
+		{ get; set; }
 		/// <summary>
 		/// Gets or sets the PrecioGuardado value.
 		/// </summary>
@@ -124,7 +126,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the PrecioPagado value.
 		/// </summary>
-		public decimal PrecioPagado
+		public decimal? PrecioPagado
 		{ get; set; }
 
 		/// <summary>
@@ -154,13 +156,13 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the FechaLiquidacion value.
 		/// </summary>
-		public DateTime FechaLiquidacion
+		public DateTime? FechaLiquidacion
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the FechaUltimaActualizacion value.
 		/// </summary>
-		public DateTime FechaUltimaActualizacion
+		public DateTime? FechaUltimaActualizacion
 		{ get; set; }
 
 		/// <summary>
@@ -169,11 +171,7 @@ namespace CoffeeConnect.DTO
 		public string UsuarioUltimaActualizacion
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
-		{ get; set; }
+		
 
 		#endregion
 	}

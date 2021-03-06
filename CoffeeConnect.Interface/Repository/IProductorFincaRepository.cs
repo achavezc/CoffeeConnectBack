@@ -8,10 +8,10 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface IProductorFincaRepository
     {
-        int Insertar(Productor lote);
+        int Insertar(ProductorFinca productorFinca);
 
-        int Actualizar(Productor lote);
+        int Actualizar(ProductorFinca productorFinca);
 
-        IEnumerable<ConsultaProductorFincaProductorIdBE> ConsultarProductorFincaIdProductor(int productorId);
+        IEnumerable<ConsultaProductorFincaProductorIdBE> ConsultarProductorFincaPorProductorId(int productorId);
     }
 }

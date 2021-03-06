@@ -35,32 +35,32 @@ namespace CoffeeConnect.Service
 
 
 
-        public int RegistrarProductor(RegistrarActualizarProductorRequestDTO request)
+        public int RegistrarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request)
         {
-            Productor productor = _Mapper.Map<Productor>(request);
-            productor.FechaRegistro = DateTime.Now;
-            productor.UsuarioRegistro = request.Usuario;
-            productor.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Productor);
+            ProductorFinca productorFinca = _Mapper.Map<ProductorFinca>(request);
+            productorFinca.FechaRegistro = DateTime.Now;
+            productorFinca.UsuarioRegistro = request.Usuario;
+            
 
-            int affected = _IProductorRepository.Insertar(productor);
+            int affected = _IProductorRepository.Insertar(productorFinca);
 
             return affected;           
         }
 
-        public int ActualizarProductor(RegistrarActualizarProductorRequestDTO request)
+        public int ActualizarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request)
         {
-            Productor productor = _Mapper.Map<Productor>(request);
-            productor.FechaUltimaActualizacion = DateTime.Now;
-            productor.UsuarioUltimaActualizacion = request.Usuario;
+            ProductorFinca productorFinca = _Mapper.Map<ProductorFinca>(request);
+            productorFinca.FechaUltimaActualizacion = DateTime.Now;
+            productorFinca.UsuarioUltimaActualizacion = request.Usuario;
 
-            int affected = _IProductorRepository.Actualizar(productor);
+            int affected = _IProductorRepository.Actualizar(productorFinca);
 
             return affected;
         }
 
-        public IEnumerable<ConsultaProductorFincaProductorIdBE> ConsultarProductorFincaIdProductor(ConsultaProductorFincaProductorIdRequestDTO request)
+        public IEnumerable<ConsultaProductorFincaProductorIdBE> ConsultarProductorFincaPorProductorId(ConsultaProductorFincaProductorIdRequestDTO request)
         {
-            return _IProductorRepository.ConsultarProductorFincaIdProductor(request.ProductorId);
+            return _IProductorRepository.ConsultarProductorFincaPorProductorId(request.ProductorId);
         }
 
     }

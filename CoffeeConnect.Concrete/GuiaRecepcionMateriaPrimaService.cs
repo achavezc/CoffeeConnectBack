@@ -85,7 +85,13 @@ namespace CoffeeConnect.Service
 
                     consultaGuiaRecepcionMateriaPrimaPorIdBE.RegistroTostadoIndicadorDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaRegistroTostadoIndicadorDetallePorId(guiaRecepcionMateriaPrimaId).ToList();
 
-                    ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE consultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE = _INotaCompraRepository.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(guiaRecepcionMateriaPrimaId);
+                    if (consultaGuiaRecepcionMateriaPrimaPorIdBE.EstadoId == GuiaRecepcionMateriaPrimaEstados.Analizado)
+                    {
+
+                        consultaGuiaRecepcionMateriaPrimaPorIdBE.NotaCompra = _INotaCompraRepository.ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(guiaRecepcionMateriaPrimaId);
+
+                    }
+
                 }
             }
 
