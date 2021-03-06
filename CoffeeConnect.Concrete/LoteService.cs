@@ -141,5 +141,24 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
+
+        public ConsultaLoteBandejaBE ConsultarLoteDetallePorLoteId(ConsultaLoteDetallePorLoteIdRequestDTO request)
+        {
+            ConsultaLoteBandejaBE response = new ConsultaLoteBandejaBE();
+            IEnumerable<LoteDetalleConsulta> resultado= _ILoteRepository.ConsultarBandejaLoteDetallePorId(request.LoteId);
+            
+            response.listaDetalle = resultado.ToList();
+
+            
+            if (resultado.Any()) {
+                response.TotalPesoNeto = resultado.Sum(x => x.KilosNetosPesado);
+                response.PromedioHumedad = resultado.Average(x => x.HumedadPorcentaje);
+                response.PromedioRendimiento = resultado.Average(x => x.RendimientoPorcentaje);
+            }
+            response.LoteId = request.LoteId;
+
+
+            return response;
+        }
     }
 }

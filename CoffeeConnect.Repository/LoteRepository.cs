@@ -126,7 +126,17 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-        
+        public IEnumerable<LoteDetalleConsulta> ConsultarBandejaLoteDetallePorId(int loteId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("LoteId", loteId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteDetalleConsulta>("uspLotesConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
     }
 
 

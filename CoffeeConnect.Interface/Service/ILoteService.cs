@@ -1,4 +1,5 @@
 ﻿using CoffeeConnect.DTO;
+using CoffeeConnect.Models;
 using System.Collections.Generic;
 
 namespace CoffeeConnect.Interface.Service
@@ -10,6 +11,8 @@ namespace CoffeeConnect.Interface.Service
         List<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request);
 
         int AnularLote(AnularLoteRequestDTO request);
+
+        ConsultaLoteBandejaBE ConsultarLoteDetallePorLoteId(ConsultaLoteDetallePorLoteIdRequestDTO request);
 
     }
 }
