@@ -353,6 +353,15 @@ namespace CoffeeConnect.DTO
 		public bool Activo
 		{ get; set; }
 
+		public string TipoProduccionId
+		{ get; set; }
+
+		public string TipoProduccion
+		{ get; set; }
+
+		
+		
+
 		#endregion
 	}
 }

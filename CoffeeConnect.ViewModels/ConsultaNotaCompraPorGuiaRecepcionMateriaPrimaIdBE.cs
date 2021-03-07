@@ -171,7 +171,14 @@ namespace CoffeeConnect.DTO
 		public string UsuarioUltimaActualizacion
 		{ get; set; }
 
-		
+		public string TipoProduccionId
+		{ get; set; }
+
+		public string TipoProduccion
+		{ get; set; }
+
+		public string Finca
+		{ get; set; }
 
 		#endregion
 	}
