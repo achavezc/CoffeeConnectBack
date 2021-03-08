@@ -15,5 +15,7 @@ namespace CoffeeConnect.Interface.Service
         //ConsultaLoteBandejaBE ConsultarLoteDetallePorLoteId(ConsultaLoteDetallePorLoteIdRequestDTO request);
         ConsultaLoteBandejaBE ConsultarLotePorId(ConsultaLoteDetallePorLoteIdRequestDTO request);
 
+        int ActualizarLote(ActualizarLoteRequestDTO request);
+
     }
 }

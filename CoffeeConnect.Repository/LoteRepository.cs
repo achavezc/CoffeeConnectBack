@@ -156,6 +156,24 @@ namespace CoffeeConnect.Repository
             return lote;
         }
 
+        public int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", loteId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@AlmacenId", almacenId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspLoteActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
 
     }
 
