@@ -8,23 +8,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace CoffeeConnect.Service
 {
     public partial class LoteService : ILoteService
     {
-       
+
+        private readonly IMapper _Mapper;
         private ILoteRepository _ILoteRepository;
 
         private INotaIngresoAlmacenRepository _INotaIngresoAlmacenRepository;
 
         private ICorrelativoRepository _ICorrelativoRepository;
 
-        public LoteService(ILoteRepository loteRepository, INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, ICorrelativoRepository correlativoRepository)
+        public LoteService(ILoteRepository loteRepository, INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
         {
             _ILoteRepository = loteRepository;
             _INotaIngresoAlmacenRepository = notaIngresoAlmacenRepository;
             _ICorrelativoRepository = correlativoRepository;
+            _Mapper = mapper;
         }
        
 
@@ -142,20 +145,74 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
-        public ConsultaLoteBandejaBE ConsultarLoteDetallePorLoteId(ConsultaLoteDetallePorLoteIdRequestDTO request)
-        {
-            ConsultaLoteBandejaBE response = new ConsultaLoteBandejaBE();
-            IEnumerable<LoteDetalleConsulta> resultado= _ILoteRepository.ConsultarBandejaLoteDetallePorId(request.LoteId);
+        //public ConsultaLoteBandejaBE ConsultarLoteDetallePorLoteId(ConsultaLoteDetallePorLoteIdRequestDTO request)
+        //{
+        //    ConsultaLoteBandejaBE response = new ConsultaLoteBandejaBE();
+        //    IEnumerable<LoteDetalleConsulta> resultado= _ILoteRepository.ConsultarBandejaLoteDetallePorId(request.LoteId);
             
-            response.listaDetalle = resultado.ToList();
+        //    response.listaDetalle = resultado.ToList();
 
             
-            if (resultado.Any()) {
-                response.TotalPesoNeto = resultado.Sum(x => x.KilosNetosPesado);
-                response.PromedioHumedad = resultado.Average(x => x.HumedadPorcentaje);
-                response.PromedioRendimiento = resultado.Average(x => x.RendimientoPorcentaje);
-            }
-            response.LoteId = request.LoteId;
+        //    if (resultado.Any()) {
+        //        response.TotalPesoNeto = resultado.Sum(x => x.KilosNetosPesado);
+        //        response.PromedioHumedad = resultado.Average(x => x.HumedadPorcentaje);
+        //        response.PromedioRendimiento = resultado.Average(x => x.RendimientoPorcentaje);
+        //    }
+        //    response.LoteId = request.LoteId;
+
+
+        //    return response;
+        //}
+
+        public ConsultaLoteBandejaBE ConsultarLotePorId(ConsultaLoteDetallePorLoteIdRequestDTO request)
+        {
+            
+            LotesBE Lote =_ILoteRepository.ConsultarLotePorId(request.LoteId);
+            ConsultaLoteBandejaBE response = new ConsultaLoteBandejaBE();
+            //ConsultaLoteBandejaBE response= _Mapper.Map<ConsultaLoteBandejaBE>(Lote);
+            IEnumerable<LoteDetalleConsulta> resultado = _ILoteRepository.ConsultarBandejaLoteDetallePorId(request.LoteId);
+
+            response.LoteId = Lote.LoteId;
+            response.Numero = Lote.Numero;
+            response.EmpresaId = Lote.EmpresaId;
+            response.RazonSocial = Lote.RazonSocial;
+            response.Ruc = Lote.Ruc;
+            response.Direccion = Lote.Direccion;
+            response.Logo = Lote.Logo;
+            response.DepartamentoId = Lote.DepartamentoId;
+            response.Departamento = Lote.Departamento;
+            response.ProvinciaId = Lote.ProvinciaId;
+            response.Provincia = Lote.Provincia;
+            response.DistritoId = Lote.DistritoId;
+            response.Distrito = Lote.Distrito;
+            response.EstadoId = Lote.EstadoId;
+            response.Estado = Lote.Estado;
+            response.AlmacenId = Lote.AlmacenId;
+            response.Almacen = Lote.Almacen;
+            response.UnidadMedidaId = Lote.UnidadMedidaId;
+            response.UnidadMedida = Lote.UnidadMedida;
+            response.Cantidad = Lote.Cantidad;
+            response.TotalKilosNetosPesado = Lote.TotalKilosNetosPesado;
+            response.PromedioRendimientoPorcentaje = Lote.PromedioRendimientoPorcentaje;
+            response.PromedioHumedadPorcentaje = Lote.PromedioHumedadPorcentaje;
+            response.FechaRegistro = Lote.FechaRegistro;
+            response.UsuarioRegistro = Lote.UsuarioRegistro;
+            response.FechaUltimaActualizacion = Lote.FechaUltimaActualizacion;
+            response.UsuarioUltimaActualizacion = Lote.UsuarioUltimaActualizacion;
+            response.Activo = Lote.Activo;
+
+
+
+            response.listaDetalle = resultado.ToList();
+
+
+            //if (resultado.Any())
+            //{
+            //    response.TotalPesoNeto = resultado.Sum(x => x.KilosNetosPesado);
+            //    response.PromedioHumedad = resultado.Average(x => x.HumedadPorcentaje);
+            //    response.PromedioRendimiento = resultado.Average(x => x.RendimientoPorcentaje);
+            //}
+            //response.LoteId = request.LoteId;
 
 
             return response;

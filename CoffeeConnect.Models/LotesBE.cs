@@ -1,16 +1,10 @@
-using CoffeeConnect.Models;
 using System;
-using System.Collections.Generic;
 
-namespace CoffeeConnect.DTO
+namespace CoffeeConnect.Models
 {
-	public class ConsultaLoteBandejaBE
+	public class LotesBE
 	{
-        public ConsultaLoteBandejaBE() {
-            listaDetalle = new List<LoteDetalleConsulta>();
-        }
-        public List<LoteDetalleConsulta> listaDetalle { get; set; }
-        public int LoteId { get; set; }
+		public int LoteId { get; set; }
 		public String Numero { get; set; }
 		public String EmpresaId { get; set; }
 		public String RazonSocial { get; set; }
@@ -38,6 +32,5 @@ namespace CoffeeConnect.DTO
 		public DateTime? FechaUltimaActualizacion { get; set; }
 		public String UsuarioUltimaActualizacion { get; set; }
 		public bool Activo { get; set; }
-
 	}
 }

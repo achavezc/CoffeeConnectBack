@@ -126,11 +126,36 @@ namespace Integracion.Deuda.Controller
             ConsultaLoteDetallePorLoteIdResponseDTO response = new ConsultaLoteDetallePorLoteIdResponseDTO();
             try
             {
-                var resultado = _loteService.ConsultarLoteDetallePorLoteId(request);
+                var resultado = _loteService.ConsultarLotePorId(request);
                 response.Result.Data = resultado.listaDetalle;
-                response.TotalPesoNeto = resultado.TotalPesoNeto;
-                response.PromedioHumedad = resultado.PromedioHumedad;
-                response.PromedioRendimiento = resultado.PromedioRendimiento;
+                response.LoteId = resultado.LoteId;
+                response.Numero = resultado.Numero;
+                response.EmpresaId = resultado.EmpresaId;
+                response.RazonSocial = resultado.RazonSocial;
+                response.Ruc = resultado.Ruc;
+                response.Direccion = resultado.Direccion;
+                response.Logo = resultado.Logo;
+                response.DepartamentoId = resultado.DepartamentoId;
+                response.Departamento = resultado.Departamento;
+                response.ProvinciaId = resultado.ProvinciaId;
+                response.Provincia = resultado.Provincia;
+                response.DistritoId = resultado.DistritoId;
+                response.Distrito = resultado.Distrito;
+                response.EstadoId = resultado.EstadoId;
+                response.Estado = resultado.Estado;
+                response.AlmacenId = resultado.AlmacenId;
+                response.Almacen = resultado.Almacen;
+                response.UnidadMedidaId = resultado.UnidadMedidaId;
+                response.UnidadMedida = resultado.UnidadMedida;
+                response.Cantidad = resultado.Cantidad;
+                response.TotalKilosNetosPesado = resultado.TotalKilosNetosPesado;
+                response.PromedioRendimientoPorcentaje = resultado.PromedioRendimientoPorcentaje;
+                response.PromedioHumedadPorcentaje = resultado.PromedioHumedadPorcentaje;
+                response.FechaRegistro = resultado.FechaRegistro;
+                response.UsuarioRegistro = resultado.UsuarioRegistro;
+                response.FechaUltimaActualizacion = resultado.FechaUltimaActualizacion;
+                response.UsuarioUltimaActualizacion = resultado.UsuarioUltimaActualizacion;
+                response.Activo = resultado.Activo;
 
                 response.Result.Success = true;
 

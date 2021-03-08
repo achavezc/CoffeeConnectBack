@@ -12,7 +12,8 @@ namespace CoffeeConnect.Interface.Service
 
         int AnularLote(AnularLoteRequestDTO request);
 
-        ConsultaLoteBandejaBE ConsultarLoteDetallePorLoteId(ConsultaLoteDetallePorLoteIdRequestDTO request);
+        //ConsultaLoteBandejaBE ConsultarLoteDetallePorLoteId(ConsultaLoteDetallePorLoteIdRequestDTO request);
+        ConsultaLoteBandejaBE ConsultarLotePorId(ConsultaLoteDetallePorLoteIdRequestDTO request);
 
     }
 }
