@@ -125,6 +125,25 @@ namespace CoffeeConnect.Repository
 			return affected;
 		}
 
+
+		public int Actualizar(int notaIngresoAlmacenId, DateTime fecha, string usuario, string almacenId)
+		{
+			int affected = 0;
+
+			var parameters = new DynamicParameters();
+			parameters.Add("@NotaIngresoAlmacenId", notaIngresoAlmacenId);
+			parameters.Add("@Fecha", fecha);
+			parameters.Add("@Usuario", usuario);
+			parameters.Add("@AlmacenId", almacenId);
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				affected = db.Execute("uspNotaIngresoAlmacenActualizar", parameters, commandType: CommandType.StoredProcedure);
+			}
+
+			return affected;
+		}
+
 		public int ActualizarEstadoPorIds(List<TablaIdsTipo> ids, DateTime fecha, string usuario, string estadoId)
 		{
 			int affected = 0;

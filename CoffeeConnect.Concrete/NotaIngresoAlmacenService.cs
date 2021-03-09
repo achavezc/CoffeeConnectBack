@@ -128,5 +128,17 @@ namespace CoffeeConnect.Service
 
 			return affected;
 		}
+
+		public int ActualizarNotaIngresoAlmacen(ActualizarNotaIngresoAlmacenRequestDTO request)
+		{
+			int affected = 0;
+
+			
+			affected = _INotaIngresoAlmacenRepository.Actualizar(request.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, request.AlmacenId);
+
+			
+
+			return affected;
+		}
 	}
 }

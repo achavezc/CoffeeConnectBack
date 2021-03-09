@@ -17,5 +17,7 @@ namespace CoffeeConnect.Interface.Repository
         int ActualizarEstado(int notaIngresoAlmacenId, DateTime fecha, string usuario, string estadoId);
 
         ConsultaNotaIngresoAlmacenPorIdBE ConsultarNotaIngresoAlmacenPorId(int notaIngresoAlmacenId);
+
+        int Actualizar(int notaIngresoAlmacenId, DateTime fecha, string usuario, string almacenId);
     }
 }
