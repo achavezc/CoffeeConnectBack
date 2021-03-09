@@ -8,9 +8,9 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface INotaSalidaAlmacenRepository
     {
-        int Insertar(NotaCompra notaCompra);
+        int Insertar(NotaSalidaAlmacen notaSalidaAlmacen);
 
-        int Actualizar(NotaCompra notaCompra);
+        int Actualizar(NotaSalidaAlmacen notaSalidaAlmacen);
 
         int ActualizarEstado(int notaSalidaAlmacenId, DateTime fecha, string usuario, string estadoId);
 
@@ -40,7 +40,8 @@ namespace CoffeeConnect.Interface.Repository
 
         IEnumerable<NotaSalidaAlmacenDetalle> ConsultarNotaSalidaAlmacenDetallePorId(int notaSalidaAlmacenId);
         IEnumerable<NotaSalidaAlmacenDetalleLotes> ConsultarNotaSalidaAlmacenDetalleLotesPorId(int NotaSalidaAlmacenId);
-        
+
+        int ActualizarNotaSalidaAlmacenDetalle(List<NotaSalidaAlmacenDetalle> request, int NotaSalidaAlmacenId);
 
     }
 }

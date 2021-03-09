@@ -6,9 +6,9 @@ namespace CoffeeConnect.Interface.Service
 {
     public interface INotaSalidaAlmacenService
     {
-        int RegistrarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request);
+        int RegistrarNotaSalidaAlmacen(RegistrarNotaSalidaAlmacenRequestDTO request);
 
-        int ActualizarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request);
+        int ActualizarNotaSalidaAlmacen(RegistrarNotaSalidaAlmacenRequestDTO request);
 
         int AnularNotaSalidaAlmacen(AnularNotaSalidaAlmacenRequestDTO request);
 
@@ -18,5 +18,7 @@ namespace CoffeeConnect.Interface.Service
         ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO ConsultarImpresionListaProductoresPorNotaSalidaAlmacen(int notaSalidaAlmacenId);
 
         ConsultaNotaSalidaAlmacenPorIdBE ConsultarNotaSalidaAlmacenPorId(ConsultaNotaSalidaAlmacenPorIdRequestDTO request);
+
+        int ActualizarNotaSalidaAlmacenDetalle(RegistrarNotaSalidaAlmacenDetalleRequestDTO request);
     }
 }

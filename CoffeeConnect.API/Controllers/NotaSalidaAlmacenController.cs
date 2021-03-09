@@ -31,65 +31,65 @@ namespace Integracion.Deuda.Controller
             return Ok("NotaSalidaAlmacen Service. version: 1.20.01.03");
         }
 
-        //[Route("Registrar")]
-        //[HttpPost]
-        //public IActionResult Registrar([FromBody] RegistrarActualizarNotaCompraRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+        [Route("Registrar")]
+        [HttpPost]
+        public IActionResult Registrar([FromBody] RegistrarNotaSalidaAlmacenRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    RegistrarNotaCompraResponseDTO response = new RegistrarNotaCompraResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _notaSalidaService.RegistrarNotaCompra(request);
+            RegistrarNotaCompraResponseDTO response = new RegistrarNotaCompraResponseDTO();
+            try
+            {
+                response.Result.Data = _notaSalidaAlmacenService.RegistrarNotaSalidaAlmacen(request);
 
-        //        response.Result.Success = true;
+                response.Result.Success = true;
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
-        //[Route("Actualizar")]
-        //[HttpPost]
-        //public IActionResult Actualizar([FromBody] RegistrarActualizarNotaCompraRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+        [Route("Actualizar")]
+        [HttpPost]
+        public IActionResult Actualizar([FromBody] RegistrarNotaSalidaAlmacenRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    RegistrarNotaCompraResponseDTO response = new RegistrarNotaCompraResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _notaSalidaService.ActualizarNotaCompra(request);
+            RegistrarNotaCompraResponseDTO response = new RegistrarNotaCompraResponseDTO();
+            try
+            {
+                response.Result.Data = _notaSalidaAlmacenService.ActualizarNotaSalidaAlmacen(request);
 
-        //        response.Result.Success = true;
+                response.Result.Success = true;
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
         [Route("Anular")]
         [HttpPost]
@@ -243,6 +243,34 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
+        [Route("ActualizarDetalle")]
+        [HttpPost]
+        public IActionResult ActualizarDetalle([FromBody] RegistrarNotaSalidaAlmacenDetalleRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
+            RegistrarNotaCompraResponseDTO response = new RegistrarNotaCompraResponseDTO();
+            try
+            {
+                response.Result.Data = _notaSalidaAlmacenService.ActualizarNotaSalidaAlmacenDetalle(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
     }
 }

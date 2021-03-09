@@ -25,76 +25,89 @@ namespace CoffeeConnect.Repository
         }
 
 
-        public int Insertar(NotaCompra notaCompra)
+        public int Insertar(NotaSalidaAlmacen notaSalidaAlmacen)
         {
             int result = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@GuiaRecepcionMateriaPrimaId", notaCompra.GuiaRecepcionMateriaPrimaId);
-            parameters.Add("@EmpresaId", notaCompra.EmpresaId);
-            parameters.Add("@Numero", notaCompra.Numero);
-            parameters.Add("@UnidadMedidaIdPesado", notaCompra.UnidadMedidaIdPesado);
-            parameters.Add("@CantidadPesado", notaCompra.CantidadPesado);
-            parameters.Add("@KilosBrutosPesado", notaCompra.KilosBrutosPesado);
-            parameters.Add("@TaraPesado", notaCompra.TaraPesado);
-            parameters.Add("@KilosNetosPesado", notaCompra.KilosNetosPesado);
-            parameters.Add("@DescuentoPorHumedad", notaCompra.DescuentoPorHumedad);
-            parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
-            parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
-            parameters.Add("@QQ55", notaCompra.QQ55);
-          
-            parameters.Add("@TipoId", notaCompra.TipoId);
-            parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
-            parameters.Add("@Importe", notaCompra.Importe);
-            parameters.Add("@EstadoId", notaCompra.EstadoId);
-            parameters.Add("@FechaRegistro", notaCompra.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", notaCompra.UsuarioRegistro);
 
+            parameters.Add("@EmpresaId", notaSalidaAlmacen.EmpresaId);
+            parameters.Add("@AlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
+            parameters.Add("@Numero", notaSalidaAlmacen.Numero);
+            parameters.Add("@MotivoTrasladoId", notaSalidaAlmacen.MotivoTrasladoId);
+            parameters.Add("@EmpresaIdDestino", notaSalidaAlmacen.EmpresaIdDestino);
+            parameters.Add("@EmpresaTransporteId", notaSalidaAlmacen.EmpresaTransporteId);
+            parameters.Add("@TransporteId", notaSalidaAlmacen.TransporteId);
+            parameters.Add("@NumeroConstanciaMTC", notaSalidaAlmacen.NumeroConstanciaMTC);
+            parameters.Add("@MarcaTractorId", notaSalidaAlmacen.MarcaTractorId);
+            parameters.Add("@PlacaTractor", notaSalidaAlmacen.PlacaTractor);
+            parameters.Add("@MarcaCarretaId", notaSalidaAlmacen.MarcaCarretaId);
+            parameters.Add("@PlacaCarreta", notaSalidaAlmacen.PlacaCarreta);
+            parameters.Add("@Conductor", notaSalidaAlmacen.Conductor);
+            parameters.Add("@Licencia", notaSalidaAlmacen.Licencia);
+            parameters.Add("@Observacion", notaSalidaAlmacen.Observacion);
+            parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
+            parameters.Add("@PesoNeto", notaSalidaAlmacen.PesoNeto);
+            parameters.Add("@PromedioRendimientoPorcentaje", notaSalidaAlmacen.PromedioRendimientoPorcentaje);
+            parameters.Add("@MonedaId", notaSalidaAlmacen.MonedaId);
+            parameters.Add("@PrecioDia", notaSalidaAlmacen.PrecioDia);
+            parameters.Add("@Importe", notaSalidaAlmacen.Importe);
+            parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
+            parameters.Add("@FechaRegistro", notaSalidaAlmacen.FechaRegistro);
+            parameters.Add("@UsuarioRegistro", notaSalidaAlmacen.UsuarioRegistro);
+            parameters.Add("@Activo", notaSalidaAlmacen.Activo);
 
+            parameters.Add("@NotaSalidaAlmacenId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaCompraInsertar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspNotaSalidaAlmacenInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
+            result = parameters.Get<int>("NotaSalidaAlmacenId");
 
 
             return result;
         }
 
 
-        public int Actualizar(NotaCompra notaCompra)
+        public int Actualizar(NotaSalidaAlmacen notaSalidaAlmacen)
         {
             int result = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaCompraId", notaCompra.NotaCompraId);
-            parameters.Add("@GuiaRecepcionMateriaPrimaId", notaCompra.GuiaRecepcionMateriaPrimaId);
-            parameters.Add("@EmpresaId", notaCompra.EmpresaId);
-            parameters.Add("@Numero", notaCompra.Numero);
-            parameters.Add("@UnidadMedidaIdPesado", notaCompra.UnidadMedidaIdPesado);
-            parameters.Add("@CantidadPesado", notaCompra.CantidadPesado);
-            parameters.Add("@KilosBrutosPesado", notaCompra.KilosBrutosPesado);
-            parameters.Add("@TaraPesado", notaCompra.TaraPesado);
-            parameters.Add("@KilosNetosPesado", notaCompra.KilosNetosPesado);
-            parameters.Add("@DescuentoPorHumedad", notaCompra.DescuentoPorHumedad);
-            parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
-            parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
-            parameters.Add("@QQ55", notaCompra.QQ55);
-       
-            parameters.Add("@TipoId", notaCompra.TipoId);
-            parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
-            parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);
-            parameters.Add("@Importe", notaCompra.Importe);
-            parameters.Add("@EstadoId", notaCompra.EstadoId);
-            parameters.Add("@FechaUltimaActualizacion", notaCompra.FechaUltimaActualizacion);
-            parameters.Add("@UsuarioUltimaActualizacion", notaCompra.UsuarioUltimaActualizacion);
+            parameters.Add("@NotaSalidaAlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
+            parameters.Add("@EmpresaId", notaSalidaAlmacen.EmpresaId);
+            parameters.Add("@AlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
+            parameters.Add("@Numero", notaSalidaAlmacen.Numero);
+            parameters.Add("@MotivoTrasladoId", notaSalidaAlmacen.MotivoTrasladoId);
+            parameters.Add("@EmpresaIdDestino", notaSalidaAlmacen.EmpresaIdDestino);
+            parameters.Add("@EmpresaTransporteId", notaSalidaAlmacen.EmpresaTransporteId);
+            parameters.Add("@TransporteId", notaSalidaAlmacen.TransporteId);
+            parameters.Add("@NumeroConstanciaMTC", notaSalidaAlmacen.NumeroConstanciaMTC);
+            parameters.Add("@MarcaTractorId", notaSalidaAlmacen.MarcaTractorId);
+            parameters.Add("@PlacaTractor", notaSalidaAlmacen.PlacaTractor);
+            parameters.Add("@MarcaCarretaId", notaSalidaAlmacen.MarcaCarretaId);
+            parameters.Add("@PlacaCarreta", notaSalidaAlmacen.PlacaCarreta);
+            parameters.Add("@Conductor", notaSalidaAlmacen.Conductor);
+            parameters.Add("@Licencia", notaSalidaAlmacen.Licencia);
+            parameters.Add("@Observacion", notaSalidaAlmacen.Observacion);
+            parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
+            parameters.Add("@PesoNeto", notaSalidaAlmacen.PesoNeto);
+            parameters.Add("@PromedioRendimientoPorcentaje", notaSalidaAlmacen.PromedioRendimientoPorcentaje);
+            parameters.Add("@MonedaId", notaSalidaAlmacen.MonedaId);
+            parameters.Add("@PrecioDia", notaSalidaAlmacen.PrecioDia);
+            parameters.Add("@Importe", notaSalidaAlmacen.Importe);
+            parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", notaSalidaAlmacen.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", notaSalidaAlmacen.UsuarioUltimaActualizacion);
+            parameters.Add("@Activo", notaSalidaAlmacen.Activo);
 
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaCompraActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspNotaSalidaAlmacenActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
 
@@ -118,6 +131,7 @@ namespace CoffeeConnect.Repository
 
             return affected;
         }
+
 
         public IEnumerable<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalidaAlmacen(ConsultaNotaSalidaAlmacenRequestDTO request)
         {
@@ -441,6 +455,27 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspNotaSalidaAlmacenRegistroTostadoIndicadorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public int ActualizarNotaSalidaAlmacenDetalle(List<NotaSalidaAlmacenDetalle> request, int NotaSalidaAlmacenId)
+        {
+            //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+            parameters.Add("@NotaSalidaAlmacenDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;

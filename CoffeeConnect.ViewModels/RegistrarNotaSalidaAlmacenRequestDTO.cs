@@ -1,8 +1,12 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class NotaSalidaAlmacen
+   public class RegistrarNotaSalidaAlmacenRequestDTO
 	{
 		public int NotaSalidaAlmacenId { get; set; }
 		public int EmpresaId { get; set; }
@@ -27,12 +31,8 @@ namespace CoffeeConnect.Models
 		public Decimal PrecioDia { get; set; }
 		public Decimal Importe { get; set; }
 		public String EstadoId { get; set; }
-		public DateTime FechaRegistro { get; set; }
-		public String UsuarioRegistro { get; set; }
-		public DateTime? FechaUltimaActualizacion { get; set; }
-		public String UsuarioUltimaActualizacion { get; set; }
+		public String UsuarioNotaSalidaAlmacen { get; set; }
+		
 		public String Activo { get; set; }
-
-
 	}
 }

@@ -38,63 +38,73 @@ namespace CoffeeConnect.Service
        		
 			
         
-        public int RegistrarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request)
+        public int RegistrarNotaSalidaAlmacen(RegistrarNotaSalidaAlmacenRequestDTO request)
         {
-            NotaCompra notaCompra = new NotaCompra();
+            NotaSalidaAlmacen notaSalidaAlmacen = new NotaSalidaAlmacen();
 
-            notaCompra.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
-            notaCompra.EmpresaId = request.EmpresaId;
-            notaCompra.Numero = request.Numero;
-            notaCompra.UnidadMedidaIdPesado = request.UnidadMedidaIdPesado;
-            notaCompra.CantidadPesado = request.CantidadPesado;
-            notaCompra.KilosBrutosPesado = request.KilosBrutosPesado;
-            notaCompra.TaraPesado = request.TaraPesado;
-            notaCompra.KilosNetosPesado = request.KilosNetosPesado;
-            notaCompra.DescuentoPorHumedad = request.DescuentoPorHumedad;
-            notaCompra.KilosNetosDescontar = request.KilosNetosDescontar;
-            notaCompra.KilosNetosPagar = request.KilosNetosPagar;
-            notaCompra.QQ55 = request.QQ55;
-            
-            notaCompra.TipoId = request.TipoId;
-            notaCompra.PrecioGuardado = request.PrecioGuardado;
-            notaCompra.PrecioPagado = request.PrecioPagado;
-            notaCompra.Importe = request.Importe;
-            notaCompra.EstadoId = NotaCompraEstados.PorLiquidar;          
-            notaCompra.FechaRegistro = DateTime.Now;
-            notaCompra.UsuarioRegistro = request.UsuarioNotaCompra;  
+            notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+            notaSalidaAlmacen.EmpresaId = request.EmpresaId;
+            notaSalidaAlmacen.AlmacenId = request.AlmacenId;
+            notaSalidaAlmacen.Numero = request.Numero;
+            notaSalidaAlmacen.MotivoTrasladoId = request.MotivoTrasladoId;
+            notaSalidaAlmacen.EmpresaIdDestino = request.EmpresaIdDestino;
+            notaSalidaAlmacen.EmpresaTransporteId = request.EmpresaTransporteId;
+            notaSalidaAlmacen.TransporteId = request.TransporteId;
+            notaSalidaAlmacen.NumeroConstanciaMTC = request.NumeroConstanciaMTC;
+            notaSalidaAlmacen.MarcaTractorId = request.MarcaTractorId;
+            notaSalidaAlmacen.PlacaTractor = request.PlacaTractor;
+            notaSalidaAlmacen.MarcaCarretaId = request.MarcaCarretaId;
+            notaSalidaAlmacen.PlacaCarreta = request.PlacaCarreta;
+            notaSalidaAlmacen.Conductor = request.Conductor;
+            notaSalidaAlmacen.Licencia = request.Licencia;
+            notaSalidaAlmacen.Observacion = request.Observacion;
+            notaSalidaAlmacen.CantidadLotes = request.CantidadLotes;
+            notaSalidaAlmacen.PesoNeto = request.PesoNeto;
+            notaSalidaAlmacen.PromedioRendimientoPorcentaje = request.PromedioRendimientoPorcentaje;
+            notaSalidaAlmacen.MonedaId = request.MonedaId;
+            notaSalidaAlmacen.PrecioDia = request.PrecioDia;
+            notaSalidaAlmacen.Importe = request.Importe;
+            notaSalidaAlmacen.EstadoId = NotaSalidaAlmacenEstados.Ingresado;          
+            notaSalidaAlmacen.FechaRegistro = DateTime.Now;
+            notaSalidaAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;  
 
-            int affected = _INotaSalidaAlmacenRepository.Insertar(notaCompra);
+            int affected = _INotaSalidaAlmacenRepository.Insertar(notaSalidaAlmacen);
 
             return affected;
         }
 
-        public int ActualizarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request)
+        public int ActualizarNotaSalidaAlmacen(RegistrarNotaSalidaAlmacenRequestDTO request)
         {
-            NotaCompra notaCompra = new NotaCompra();
+            NotaSalidaAlmacen notaSalidaAlmacen = new NotaSalidaAlmacen();
 
-            notaCompra.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
-            notaCompra.NotaCompraId = request.NotaCompraId;
-            notaCompra.EmpresaId = request.EmpresaId;
-            notaCompra.Numero = request.Numero;
-            notaCompra.UnidadMedidaIdPesado = request.UnidadMedidaIdPesado;
-            notaCompra.CantidadPesado = request.CantidadPesado;
-            notaCompra.KilosBrutosPesado = request.KilosBrutosPesado;
-            notaCompra.TaraPesado = request.TaraPesado;
-            notaCompra.KilosNetosPesado = request.KilosNetosPesado;
-            notaCompra.DescuentoPorHumedad = request.DescuentoPorHumedad;
-            notaCompra.KilosNetosDescontar = request.KilosNetosDescontar;
-            notaCompra.KilosNetosPagar = request.KilosNetosPagar;
-            notaCompra.QQ55 = request.QQ55;
+            notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+            notaSalidaAlmacen.EmpresaId = request.EmpresaId;
+            notaSalidaAlmacen.AlmacenId = request.AlmacenId;
+            notaSalidaAlmacen.Numero = request.Numero;
+            notaSalidaAlmacen.MotivoTrasladoId = request.MotivoTrasladoId;
+            notaSalidaAlmacen.EmpresaIdDestino = request.EmpresaIdDestino;
+            notaSalidaAlmacen.EmpresaTransporteId = request.EmpresaTransporteId;
+            notaSalidaAlmacen.TransporteId = request.TransporteId;
+            notaSalidaAlmacen.NumeroConstanciaMTC = request.NumeroConstanciaMTC;
+            notaSalidaAlmacen.MarcaTractorId = request.MarcaTractorId;
+            notaSalidaAlmacen.PlacaTractor = request.PlacaTractor;
+            notaSalidaAlmacen.MarcaCarretaId = request.MarcaCarretaId;
+            notaSalidaAlmacen.PlacaCarreta = request.PlacaCarreta;
+            notaSalidaAlmacen.Conductor = request.Conductor;
+            notaSalidaAlmacen.Licencia = request.Licencia;
+            notaSalidaAlmacen.Observacion = request.Observacion;
+            notaSalidaAlmacen.CantidadLotes = request.CantidadLotes;
+            notaSalidaAlmacen.PesoNeto = request.PesoNeto;
+            notaSalidaAlmacen.PromedioRendimientoPorcentaje = request.PromedioRendimientoPorcentaje;
+            notaSalidaAlmacen.MonedaId = request.MonedaId;
+            notaSalidaAlmacen.PrecioDia = request.PrecioDia;
+            notaSalidaAlmacen.Importe = request.Importe;
+            notaSalidaAlmacen.EstadoId = request.EstadoId;
+            notaSalidaAlmacen.FechaUltimaActualizacion = DateTime.Now;
+            notaSalidaAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacen;
             
-            notaCompra.TipoId = request.TipoId;
-            notaCompra.PrecioGuardado = request.PrecioGuardado;
-            notaCompra.PrecioPagado = request.PrecioPagado;
-            notaCompra.Importe = request.Importe;
-            notaCompra.EstadoId = NotaCompraEstados.PorLiquidar;
-            notaCompra.FechaUltimaActualizacion = DateTime.Now;
-            notaCompra.UsuarioUltimaActualizacion = request.UsuarioNotaCompra;
 
-            int affected = _INotaSalidaAlmacenRepository.Actualizar(notaCompra);
+            int affected = _INotaSalidaAlmacenRepository.Actualizar(notaSalidaAlmacen);
 
             return affected;
         }
@@ -187,6 +197,25 @@ namespace CoffeeConnect.Service
 
             return notaSalidaAlmacenPorIdBE;
 
+        }
+
+        public int ActualizarNotaSalidaAlmacenDetalle(RegistrarNotaSalidaAlmacenDetalleRequestDTO request)
+        {
+            List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
+
+            request.ListNotaSalidaAlmacenDetalle.ForEach(x => {
+                NotaSalidaAlmacenDetalle obj = new NotaSalidaAlmacenDetalle();
+                obj.LoteId = x.LoteId;
+                obj.NotaSalidaAlmacenDetalleId = x.NotaSalidaAlmacenDetalleId;
+                obj.NotaSalidaAlmacenId = x.NotaSalidaAlmacenId;
+
+                lstnotaSalidaAlmacen.Add(obj);
+            });
+
+
+            int affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen,request.NotaSalidaAlmacenId);
+
+            return affected;
         }
 
 
