@@ -173,6 +173,15 @@ namespace CoffeeConnect.Service
         //    return response;
         //}
 
+
+        public List<LoteDetalleConsulta> ConsultaLoteDetalleBusquedaPorLoteId(ConsultaLoteDetalleBusquedaPorLoteIdRequestDTO request)
+        {           
+            var resultado = _ILoteRepository.ConsultarBandejaLoteDetallePorId(request.LoteId).ToList();
+
+            return resultado;
+        }
+
+
         public ConsultaLoteBandejaBE ConsultarLotePorId(ConsultaLoteDetallePorLoteIdRequestDTO request)
         {
             
