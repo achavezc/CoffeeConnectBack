@@ -39,5 +39,11 @@ namespace CoffeeConnect.DTO
         public decimal? RendimientoPorcentajeFin
         { get; set; }
 
+        public decimal? PuntajeAnalisisSensorialInicio
+        { get; set; }
+
+        public decimal? PuntajeAnalisisSensorialFin
+        { get; set; }
+
     }
 }

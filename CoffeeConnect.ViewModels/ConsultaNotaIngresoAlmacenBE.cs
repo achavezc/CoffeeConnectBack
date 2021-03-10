@@ -147,7 +147,12 @@ namespace CoffeeConnect.DTO
         public decimal? RendimientoPorcentaje
         { get; set; }
 
-      
+        public decimal? TotalAnalisisSensorial
+        { get; set; }
+
+        public string DefectosAnalisisSensorial
+        { get; set; }
+
         #endregion
     }
 
