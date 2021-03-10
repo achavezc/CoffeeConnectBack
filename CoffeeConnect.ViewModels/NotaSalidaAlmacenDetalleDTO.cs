@@ -10,7 +10,7 @@ namespace CoffeeConnect.DTO
 	{
 		public int LoteId { get; set; }
 		public int NotaSalidaAlmacenDetalleId { get; set; }
-		public int NotaSalidaAlmacenId { get; set; }
+		
 
 
 	}

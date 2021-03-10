@@ -41,6 +41,8 @@ namespace CoffeeConnect.Service
         public int RegistrarNotaSalidaAlmacen(RegistrarNotaSalidaAlmacenRequestDTO request)
         {
             NotaSalidaAlmacen notaSalidaAlmacen = new NotaSalidaAlmacen();
+            List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
+            int affected = 0;
 
             notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
             notaSalidaAlmacen.EmpresaId = request.EmpresaId;
@@ -68,7 +70,24 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.FechaRegistro = DateTime.Now;
             notaSalidaAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;  
 
-            int affected = _INotaSalidaAlmacenRepository.Insertar(notaSalidaAlmacen);
+            affected = _INotaSalidaAlmacenRepository.Insertar(notaSalidaAlmacen);
+            notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId = affected;
+            
+
+
+            if (affected != 0) {
+                request.ListNotaSalidaAlmacenDetalle.ForEach(x => {
+                    NotaSalidaAlmacenDetalle obj = new NotaSalidaAlmacenDetalle();
+                    obj.LoteId = x.LoteId;
+                    obj.NotaSalidaAlmacenDetalleId = x.NotaSalidaAlmacenDetalleId;
+                    obj.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+
+                    lstnotaSalidaAlmacen.Add(obj);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen, request.NotaSalidaAlmacenId);
+
+            }
 
             return affected;
         }
@@ -76,6 +95,8 @@ namespace CoffeeConnect.Service
         public int ActualizarNotaSalidaAlmacen(RegistrarNotaSalidaAlmacenRequestDTO request)
         {
             NotaSalidaAlmacen notaSalidaAlmacen = new NotaSalidaAlmacen();
+            List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
+            int affected = 0;
 
             notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
             notaSalidaAlmacen.EmpresaId = request.EmpresaId;
@@ -104,8 +125,21 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacen;
             
 
-            int affected = _INotaSalidaAlmacenRepository.Actualizar(notaSalidaAlmacen);
+            affected = _INotaSalidaAlmacenRepository.Actualizar(notaSalidaAlmacen);
+            
+            if (affected != 0)
+            {
+                request.ListNotaSalidaAlmacenDetalle.ForEach(x => {
+                    NotaSalidaAlmacenDetalle obj = new NotaSalidaAlmacenDetalle();
+                    obj.LoteId = x.LoteId;
+                    obj.NotaSalidaAlmacenDetalleId = x.NotaSalidaAlmacenDetalleId;
+                    obj.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
 
+                    lstnotaSalidaAlmacen.Add(obj);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen, request.NotaSalidaAlmacenId);
+              }
             return affected;
         }
 
@@ -199,24 +233,24 @@ namespace CoffeeConnect.Service
 
         }
 
-        public int ActualizarNotaSalidaAlmacenDetalle(RegistrarNotaSalidaAlmacenDetalleRequestDTO request)
-        {
-            List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
+        //public int ActualizarNotaSalidaAlmacenDetalle(RegistrarNotaSalidaAlmacenDetalleRequestDTO request)
+        //{
+        //    List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
 
-            request.ListNotaSalidaAlmacenDetalle.ForEach(x => {
-                NotaSalidaAlmacenDetalle obj = new NotaSalidaAlmacenDetalle();
-                obj.LoteId = x.LoteId;
-                obj.NotaSalidaAlmacenDetalleId = x.NotaSalidaAlmacenDetalleId;
-                obj.NotaSalidaAlmacenId = x.NotaSalidaAlmacenId;
+        //    request.ListNotaSalidaAlmacenDetalle.ForEach(x => {
+        //        NotaSalidaAlmacenDetalle obj = new NotaSalidaAlmacenDetalle();
+        //        obj.LoteId = x.LoteId;
+        //        obj.NotaSalidaAlmacenDetalleId = x.NotaSalidaAlmacenDetalleId;
+        //        obj.NotaSalidaAlmacenId = x.NotaSalidaAlmacenId;
 
-                lstnotaSalidaAlmacen.Add(obj);
-            });
+        //        lstnotaSalidaAlmacen.Add(obj);
+        //    });
 
 
-            int affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen,request.NotaSalidaAlmacenId);
+        //    int affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen,request.NotaSalidaAlmacenId);
 
-            return affected;
-        }
+        //    return affected;
+        //}
 
 
     }
