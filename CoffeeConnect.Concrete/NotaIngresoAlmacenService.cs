@@ -140,5 +140,11 @@ namespace CoffeeConnect.Service
 
 			return affected;
 		}
+
+		public ConsultaNotaIngresoAlmacenPorIdBE ConsultarNotaIngresoAlmacenPorId(ConsultaNotaIngresoAlmacenPorIdRequestDTO request)
+		{
+			return _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacenPorId(request.NotaIngresoAlmacenId);
+		}
+
 	}
 }
