@@ -11,6 +11,11 @@ namespace CoffeeConnect.DTO
 		public int SocioId
 		{ get; set; }
 
+		public int ProductorId
+		{ get; set; }
+		
+
+
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
