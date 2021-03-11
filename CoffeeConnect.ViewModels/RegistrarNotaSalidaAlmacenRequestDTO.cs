@@ -8,7 +8,7 @@ namespace CoffeeConnect.DTO
 {
    public class RegistrarNotaSalidaAlmacenRequestDTO
 	{
-		public int NotaSalidaAlmacenId { get; set; }
+		public int? NotaSalidaAlmacenId { get; set; }
 		public int EmpresaId { get; set; }
 		public String AlmacenId { get; set; }
 		public String Numero { get; set; }
@@ -32,7 +32,7 @@ namespace CoffeeConnect.DTO
 		public Decimal Importe { get; set; }
 		public String EstadoId { get; set; }
 		public String UsuarioNotaSalidaAlmacen { get; set; }
-		public String Activo { get; set; }
+		//public String Activo { get; set; }
 		public List<NotaSalidaAlmacenDetalleDTO> ListNotaSalidaAlmacenDetalle { get; set; }
 		public RegistrarNotaSalidaAlmacenRequestDTO() {
 			ListNotaSalidaAlmacenDetalle = new List<NotaSalidaAlmacenDetalleDTO>();

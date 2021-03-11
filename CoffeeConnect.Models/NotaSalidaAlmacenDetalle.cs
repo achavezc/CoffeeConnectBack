@@ -8,25 +8,18 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the LoteDetalleId value.
 		/// </summary>
-		
-
+		public int? NotaSalidaAlmacenDetalleId
+		{ get; set; }
+		public int? NotaSalidaAlmacenId
+		{ get; set; }
 		/// <summary>
 		/// Gets or sets the LoteId value.
 		/// </summary>
 		public int LoteId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the NotaIngresoAlmacenId value.
-		/// </summary>
-		public int NotaSalidaAlmacenId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Numero value.
-		/// </summary>
-		public int NotaSalidaAlmacenDetalleId
-		{ get; set; }
+	
+		
 
 		
 

@@ -41,7 +41,7 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<NotaSalidaAlmacenDetalle> ConsultarNotaSalidaAlmacenDetallePorId(int notaSalidaAlmacenId);
         IEnumerable<NotaSalidaAlmacenDetalleLotes> ConsultarNotaSalidaAlmacenDetalleLotesPorId(int NotaSalidaAlmacenId);
 
-        int ActualizarNotaSalidaAlmacenDetalle(List<NotaSalidaAlmacenDetalle> request, int NotaSalidaAlmacenId);
+        int ActualizarNotaSalidaAlmacenDetalle(List<NotaSalidaAlmacenDetalle> request, int? NotaSalidaAlmacenId);
 
     }
 }

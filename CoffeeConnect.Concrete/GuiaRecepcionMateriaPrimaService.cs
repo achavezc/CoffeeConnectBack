@@ -170,44 +170,23 @@ namespace CoffeeConnect.Service
         }
 
 
-        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidad(ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadRequestDTO request)
+        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidad(ActualizarNotaSalidaAnalisisCalidadRequestDTO request)
         {
         
 
-            GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima = new GuiaRecepcionMateriaPrima();
-           
-            guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
-            guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
-            guiaRecepcionMateriaPrima.ExportablePorcentajeAnalisisFisico = request.ExportablePorcentajeAnalisisFisico;
-            guiaRecepcionMateriaPrima.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
-            guiaRecepcionMateriaPrima.DescartePorcentajeAnalisisFisico = request.DescartePorcentajeAnalisisFisico;
-            guiaRecepcionMateriaPrima.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
-            guiaRecepcionMateriaPrima.CascarillaPorcentajeAnalisisFisico = request.CascarillaPorcentajeAnalisisFisico;
-            guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
-            guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico = request.TotalPorcentajeAnalisisFisico;            
-            guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
-            guiaRecepcionMateriaPrima.ObservacionAnalisisFisico = request.ObservacionAnalisisFisico;
-            guiaRecepcionMateriaPrima.UsuarioCalidad = request.UsuarioCalidad;
-            guiaRecepcionMateriaPrima.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
-            guiaRecepcionMateriaPrima.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
-            guiaRecepcionMateriaPrima.UsuarioCalidad = request.UsuarioCalidad;
-            guiaRecepcionMateriaPrima.EstadoId = GuiaRecepcionMateriaPrimaEstados.Analizado;
-            guiaRecepcionMateriaPrima.FechaCalidad = DateTime.Now;
-         
-
-            int affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarAnalisisCalidad(guiaRecepcionMateriaPrima);
+            
 
             #region "Analisis Fisico Color"
             if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)
             {
 
-                List<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo> AnalisisFisicoColorDetalleList = new List<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo>();
+                List<NotaSalidaAlmacenAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalleList = new List<NotaSalidaAlmacenAnalisisFisicoColorDetalle>();
 
                 request.AnalisisFisicoColorDetalleList.ForEach(z => {
-                    GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo item = new GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo();
+                    NotaSalidaAlmacenAnalisisFisicoColorDetalle item = new NotaSalidaAlmacenAnalisisFisicoColorDetalle();
                     item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
                     item.ColorDetalleId = z.ColorDetalleId;
-                    item.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
+                    item.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
                     item.Valor = z.Valor;
                     AnalisisFisicoColorDetalleList.Add(item);
                 });

@@ -21,7 +21,7 @@ namespace Integracion.Deuda.Controller
         [HttpGet("version")]
         public IActionResult Version()
         {
-            return Ok("GuiaRecepcionMateriaPrima Service. version: 1.20.01.03");
+            return Ok("Proveedor Service. version: 1.20.01.03");
         }
 
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

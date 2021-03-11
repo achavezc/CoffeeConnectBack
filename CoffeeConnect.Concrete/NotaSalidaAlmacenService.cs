@@ -253,5 +253,144 @@ namespace CoffeeConnect.Service
         //}
 
 
+        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidad(ActualizarNotaSalidaAnalisisCalidadRequestDTO request)
+        {
+            int affected=0;
+
+
+            #region "Analisis Fisico Color"
+            if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)
+            {
+
+                List<NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo> AnalisisFisicoColorDetalleList = new List<NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo>();
+
+                request.AnalisisFisicoColorDetalleList.ForEach(z => {
+                    NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo item = new NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo();
+                    item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
+                    item.ColorDetalleId = z.ColorDetalleId;
+                    item.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+                    item.Valor = z.Valor;
+                    AnalisisFisicoColorDetalleList.Add(item);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.NotaSalidaAlmacenId);
+            }
+            #endregion
+
+
+            #region Analisis Fisico Defecto Primario
+            if (request.AnalisisFisicoDefectoPrimarioDetalleList.FirstOrDefault() != null)
+            {
+                List<NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalleTipo> AnalisisFisicoDefectoPrimarioDetalleList = new List<NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalleTipo>();
+
+                request.AnalisisFisicoDefectoPrimarioDetalleList.ForEach(z => {
+                    NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalleTipo item = new NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalleTipo();
+                    item.DefectoDetalleId = z.DefectoDetalleId;
+                    item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                    item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
+                    item.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+                    item.Valor = z.Valor;
+                    AnalisisFisicoDefectoPrimarioDetalleList.Add(item);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalle(AnalisisFisicoDefectoPrimarioDetalleList, request.NotaSalidaAlmacenId);
+            }
+            #endregion
+
+            #region "Analisis Fisico Defecto Secundario Detalle"
+            if (request.AnalisisFisicoDefectoSecundarioDetalleList.FirstOrDefault() != null)
+            {
+                List<NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalleTipo>();
+
+                request.AnalisisFisicoDefectoSecundarioDetalleList.ForEach(z => {
+                    NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalleTipo item = new NotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalleTipo();
+                    item.DefectoDetalleId = z.DefectoDetalleId;
+                    item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                    item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
+                    item.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+                    item.Valor = z.Valor;
+                    AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.NotaSalidaAlmacenId);
+            }
+            #endregion
+
+            #region "Analisis Fisico Olor Detalle"
+            if (request.AnalisisFisicoOlorDetalleList.FirstOrDefault() != null)
+            {
+                List<NotaSalidaAlmacenAnalisisFisicoOlorDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<NotaSalidaAlmacenAnalisisFisicoOlorDetalleTipo>();
+
+                request.AnalisisFisicoOlorDetalleList.ForEach(z => {
+                    NotaSalidaAlmacenAnalisisFisicoOlorDetalleTipo item = new NotaSalidaAlmacenAnalisisFisicoOlorDetalleTipo();
+                    item.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+                    item.OlorDetalleDescripcion = z.OlorDetalleDescripcion;
+                    item.OlorDetalleId = z.OlorDetalleId;
+                    item.Valor = z.Valor;
+                    AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisFisicoOlorDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.NotaSalidaAlmacenId);
+            }
+            #endregion
+
+            #region "Analisis Sensorial Atributo"
+            if (request.AnalisisSensorialAtributoDetalleList.FirstOrDefault() != null)
+            {
+                List<NotaSalidaAlmacenAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<NotaSalidaAlmacenAnalisisSensorialAtributoDetalleTipo>();
+
+                request.AnalisisSensorialAtributoDetalleList.ForEach(z => {
+                    NotaSalidaAlmacenAnalisisSensorialAtributoDetalleTipo item = new NotaSalidaAlmacenAnalisisSensorialAtributoDetalleTipo();
+                    item.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+                    item.AtributoDetalleDescripcion = z.AtributoDetalleDescripcion;
+                    item.AtributoDetalleId = z.AtributoDetalleId;
+                    item.Valor = z.Valor;
+                    AnalisisSensorialAtributoDetalle.Add(item);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisSensorialAtributoDetalle(AnalisisSensorialAtributoDetalle, request.NotaSalidaAlmacenId);
+            }
+            #endregion
+
+            if (request.AnalisisSensorialDefectoDetalleList.FirstOrDefault() != null)
+            {
+                List<NotaSalidaAlmacenAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<NotaSalidaAlmacenAnalisisSensorialDefectoDetalleTipo>();
+
+                request.AnalisisSensorialDefectoDetalleList.ForEach(z => {
+                    NotaSalidaAlmacenAnalisisSensorialDefectoDetalleTipo item = new NotaSalidaAlmacenAnalisisSensorialDefectoDetalleTipo();
+                    item.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+                    item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                    item.DefectoDetalleId = z.DefectoDetalleId;
+
+                    item.Valor = z.Valor;
+                    AnalisisSensorialDefectoDetalle.Add(item);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.NotaSalidaAlmacenId);
+            }
+
+
+            if (request.RegistroTostadoIndicadorDetalleList.FirstOrDefault() != null)
+            {
+                List<NotaSalidaAlmacenRegistroTostadoIndicadorDetalleTipo> RegistroTostadoIndicadorDetalle = new List<NotaSalidaAlmacenRegistroTostadoIndicadorDetalleTipo>();
+
+                request.RegistroTostadoIndicadorDetalleList.ForEach(z => {
+
+                    NotaSalidaAlmacenRegistroTostadoIndicadorDetalleTipo item = new NotaSalidaAlmacenRegistroTostadoIndicadorDetalleTipo();
+                    item.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+                    item.IndicadorDetalleDescripcion = z.IndicadorDetalleDescripcion;
+                    item.IndicadorDetalleId = z.IndicadorDetalleId;
+                    item.Valor = z.Valor;
+
+                    RegistroTostadoIndicadorDetalle.Add(item);
+                });
+
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, request.NotaSalidaAlmacenId);
+            }
+
+            return affected;
+        }
+
+
     }
 }

@@ -32,7 +32,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
 
             parameters.Add("@EmpresaId", notaSalidaAlmacen.EmpresaId);
-            parameters.Add("@AlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
+            parameters.Add("@AlmacenId", notaSalidaAlmacen.AlmacenId);
             parameters.Add("@Numero", notaSalidaAlmacen.Numero);
             parameters.Add("@MotivoTrasladoId", notaSalidaAlmacen.MotivoTrasladoId);
             parameters.Add("@EmpresaIdDestino", notaSalidaAlmacen.EmpresaIdDestino);
@@ -55,7 +55,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
             parameters.Add("@FechaRegistro", notaSalidaAlmacen.FechaRegistro);
             parameters.Add("@UsuarioRegistro", notaSalidaAlmacen.UsuarioRegistro);
-            parameters.Add("@Activo", notaSalidaAlmacen.Activo);
+            //parameters.Add("@Activo", notaSalidaAlmacen.Activo);
 
             parameters.Add("@NotaSalidaAlmacenId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -78,7 +78,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@NotaSalidaAlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
             parameters.Add("@EmpresaId", notaSalidaAlmacen.EmpresaId);
-            parameters.Add("@AlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
+            parameters.Add("@AlmacenId", notaSalidaAlmacen.AlmacenId);
             parameters.Add("@Numero", notaSalidaAlmacen.Numero);
             parameters.Add("@MotivoTrasladoId", notaSalidaAlmacen.MotivoTrasladoId);
             parameters.Add("@EmpresaIdDestino", notaSalidaAlmacen.EmpresaIdDestino);
@@ -101,7 +101,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
             parameters.Add("@FechaUltimaActualizacion", notaSalidaAlmacen.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", notaSalidaAlmacen.UsuarioUltimaActualizacion);
-            parameters.Add("@Activo", notaSalidaAlmacen.Activo);
+            //parameters.Add("@Activo", notaSalidaAlmacen.Activo);
 
 
 
@@ -461,7 +461,7 @@ namespace CoffeeConnect.Repository
 
         }
 
-        public int ActualizarNotaSalidaAlmacenDetalle(List<NotaSalidaAlmacenDetalle> request, int NotaSalidaAlmacenId)
+        public int ActualizarNotaSalidaAlmacenDetalle(List<NotaSalidaAlmacenDetalle> request, int? NotaSalidaAlmacenId)
         {
             //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
             int result = 0;

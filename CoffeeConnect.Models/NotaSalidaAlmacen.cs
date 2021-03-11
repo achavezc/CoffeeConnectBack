@@ -4,7 +4,7 @@ namespace CoffeeConnect.Models
 {
 	public class NotaSalidaAlmacen
 	{
-		public int NotaSalidaAlmacenId { get; set; }
+		public int? NotaSalidaAlmacenId { get; set; }
 		public int EmpresaId { get; set; }
 		public String AlmacenId { get; set; }
 		public String Numero { get; set; }
@@ -31,7 +31,7 @@ namespace CoffeeConnect.Models
 		public String UsuarioRegistro { get; set; }
 		public DateTime? FechaUltimaActualizacion { get; set; }
 		public String UsuarioUltimaActualizacion { get; set; }
-		public String Activo { get; set; }
+		//public String Activo { get; set; }
 
 
 	}

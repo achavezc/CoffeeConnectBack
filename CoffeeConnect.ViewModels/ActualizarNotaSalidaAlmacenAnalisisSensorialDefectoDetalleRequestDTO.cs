@@ -26,7 +26,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the Valor value.
 		/// </summary>
-		public bool? Valor
+		public decimal? Valor
 		{ get; set; }
 	}
 }
