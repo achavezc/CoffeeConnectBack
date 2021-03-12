@@ -46,7 +46,7 @@ namespace CoffeeConnect.DTO
 		public string SubProductoId
 		{ get; set; }
 
-		public int? TipoProduccionId
+		public string TipoProduccionId
 		{ get; set; }
 
 
