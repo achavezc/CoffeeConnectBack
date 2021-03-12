@@ -193,6 +193,24 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.EstadoId = GuiaRecepcionMateriaPrimaEstados.Analizado;
             guiaRecepcionMateriaPrima.FechaCalidad = DateTime.Now;
 
+            decimal totalAnalisisSensorial = 0;
+
+            if (request.AnalisisSensorialAtributoDetalleList.FirstOrDefault() != null)
+            {
+                List<GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo>();
+
+                request.AnalisisSensorialAtributoDetalleList.ForEach(z => {
+                    if (z.Valor.HasValue)
+                    {
+                        totalAnalisisSensorial = totalAnalisisSensorial + z.Valor.Value;
+                    }
+                });
+
+            }
+
+            
+
+            guiaRecepcionMateriaPrima.TotalAnalisisSensorial = totalAnalisisSensorial;
 
             int affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarAnalisisCalidad(guiaRecepcionMateriaPrima);
 
