@@ -63,5 +63,10 @@ namespace CoffeeConnect.Service
             return _IProductorRepository.ConsultarProductorFincaPorProductorId(request.ProductorId);
         }
 
+        public ConsultaProductorFincaPorIdBE ConsultarProductorFincaPorId(ConsultaProductorFincaPorIdRequestDTO request)
+        {
+            return _IProductorRepository.ConsultarProductorFincaPorId(request.ProductorFincaId);
+        }
+
     }
 }   

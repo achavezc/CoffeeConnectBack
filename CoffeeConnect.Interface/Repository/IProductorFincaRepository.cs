@@ -13,5 +13,7 @@ namespace CoffeeConnect.Interface.Repository
         int Actualizar(ProductorFinca productorFinca);
 
         IEnumerable<ConsultaProductorFincaProductorIdBE> ConsultarProductorFincaPorProductorId(int productorId);
+
+        ConsultaProductorFincaPorIdBE ConsultarProductorFincaPorId(int productorFincaId);
     }
 }

@@ -10,5 +10,7 @@ namespace CoffeeConnect.Interface.Service
         int ActualizarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request);
 
         IEnumerable<ConsultaProductorFincaProductorIdBE> ConsultarProductorFincaPorProductorId(ConsultaProductorFincaProductorIdRequestDTO request);
+
+        ConsultaProductorFincaPorIdBE ConsultarProductorFincaPorId(ConsultaProductorFincaPorIdRequestDTO request);
     }
 }

@@ -126,6 +126,23 @@ namespace CoffeeConnect.Repository
 			
 		}
 
+		public ConsultaProductorFincaPorIdBE ConsultarProductorFincaPorId(int productorFincaId)
+		{
+			ConsultaProductorFincaPorIdBE itemBE = null;
 
+			var parameters = new DynamicParameters();
+			parameters.Add("@ProductorFincaId", productorFincaId);
+
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+			{
+				var list = db.Query<ConsultaProductorFincaPorIdBE>("uspProductoFincaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+				if (list.Any())
+					itemBE = list.First();
+			}
+
+			return itemBE;
+		}
 	}
 }
