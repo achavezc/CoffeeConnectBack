@@ -21,7 +21,7 @@ namespace CoffeeConnect.DTO
 		public String NumeroTelefonoFijo { get; set; }
 		public String NumeroTelefonoCelular { get; set; }
 		public String CorreoElectronico { get; set; }
-		public DateTime FechaNacimiento { get; set; }
+		public DateTime? FechaNacimiento { get; set; }
 		public String LugarNacimiento { get; set; }
 		public String EstadoCivilId { get; set; }
 		public String ReligionId { get; set; }
@@ -29,17 +29,17 @@ namespace CoffeeConnect.DTO
 		public int CantidadHijos { get; set; }
 		public String Idiomas { get; set; }
 		public String Dialecto { get; set; }
-		public int AnioIngresoZona { get; set; }
+		public int? AnioIngresoZona { get; set; }
 		public String TipoDocumentoIdConyuge { get; set; }
 		public String NumeroDocumentoConyuge { get; set; }
 		public String NombresConyuge { get; set; }
 		public String ApellidosConyuge { get; set; }
 		public String NumeroTelefonoCelularConyuge { get; set; }
-		public DateTime FechaNacimientoConyuge { get; set; }
+		public DateTime? FechaNacimientoConyuge { get; set; }
 		public String LugarNacimientoConyuge { get; set; }
 		public DateTime FechaRegistro { get; set; }
 		public String UsuarioRegistro { get; set; }
-		public DateTime FechaUltimaActualizacion { get; set; }
+		public DateTime? FechaUltimaActualizacion { get; set; }
 		public String UsuarioUltimaActualizacion { get; set; }
 		public String EstadoId { get; set; }
 		public bool Activo { get; set; }

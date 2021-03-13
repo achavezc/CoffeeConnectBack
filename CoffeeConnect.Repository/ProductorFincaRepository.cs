@@ -33,6 +33,7 @@ namespace CoffeeConnect.Repository
 			
 			parameters.Add("@ProductorId", productorFinca.ProductorId);
 			parameters.Add("@Nombre", productorFinca.Nombre);
+			parameters.Add("@Direccion", productorFinca.Direccion);
 			parameters.Add("@DepartamentoId", productorFinca.DepartamentoId);
 			parameters.Add("@ProvinciaId", productorFinca.ProvinciaId);
 			parameters.Add("@DistritoId", productorFinca.DistritoId);
@@ -74,6 +75,7 @@ namespace CoffeeConnect.Repository
 			var parameters = new DynamicParameters();
 			parameters.Add("@ProductorFincaId", productorFinca.ProductorFincaId);
 			parameters.Add("@ProductorId", productorFinca.ProductorId);
+			parameters.Add("@Direccion", productorFinca.Direccion);
 			parameters.Add("@Nombre", productorFinca.Nombre);
 			parameters.Add("@DepartamentoId", productorFinca.DepartamentoId);
 			parameters.Add("@ProvinciaId", productorFinca.ProvinciaId);
