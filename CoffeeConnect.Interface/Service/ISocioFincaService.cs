@@ -6,8 +6,8 @@ namespace CoffeeConnect.Interface.Service
     public interface ISocioFincaService
     {
 
-        //int RegistrarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request);
-        //int ActualizarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request);
+        int RegistrarSocioFinca(RegistrarActualizarSocioFincaRequestDTO request);
+        int ActualizarSocioFinca(RegistrarActualizarSocioFincaRequestDTO request);
 
         IEnumerable<ConsultaSocioFincaPorSocioIdBE> ConsultarSocioFincaPorSocioId(ConsultaSocioFincaPorSocioIdRequestDTO request);
 

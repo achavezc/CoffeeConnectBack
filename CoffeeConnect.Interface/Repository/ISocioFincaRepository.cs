@@ -8,9 +8,9 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface ISocioFincaRepository
     {
-        //int Insertar(ProductorFinca productorFinca);
+        int Insertar(SocioFinca productorFinca);
 
-        //int Actualizar(ProductorFinca productorFinca);
+        int Actualizar(SocioFinca productorFinca);
 
         IEnumerable<ConsultaSocioFincaPorSocioIdBE> ConsultarSocioFincaPorSocioId(int socioId);
 

@@ -34,28 +34,28 @@ namespace CoffeeConnect.Service
 
 
 
-        //public int RegistrarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request)
-        //{
-        //    ProductorFinca productorFinca = _Mapper.Map<ProductorFinca>(request);
-        //    productorFinca.FechaRegistro = DateTime.Now;
-        //    productorFinca.UsuarioRegistro = request.Usuario;
-            
+        public int RegistrarSocioFinca(RegistrarActualizarSocioFincaRequestDTO request)
+        {
+            SocioFinca socioFinca = _Mapper.Map<SocioFinca>(request);
+            socioFinca.FechaRegistro = DateTime.Now;
+            socioFinca.UsuarioRegistro = request.Usuario;
 
-        //    int affected = _IProductorRepository.Insertar(productorFinca);
 
-        //    return affected;           
-        //}
+            int affected = _ISocioFincaRepository.Insertar(socioFinca);
 
-        //public int ActualizarProductorFinca(RegistrarActualizarProductorFincaRequestDTO request)
-        //{
-        //    ProductorFinca productorFinca = _Mapper.Map<ProductorFinca>(request);
-        //    productorFinca.FechaUltimaActualizacion = DateTime.Now;
-        //    productorFinca.UsuarioUltimaActualizacion = request.Usuario;
+            return affected;
+        }
 
-        //    int affected = _IProductorRepository.Actualizar(productorFinca);
+        public int ActualizarSocioFinca(RegistrarActualizarSocioFincaRequestDTO request)
+        {
+            SocioFinca socioFinca = _Mapper.Map<SocioFinca>(request);
+            socioFinca.FechaUltimaActualizacion = DateTime.Now;
+            socioFinca.UsuarioUltimaActualizacion = request.Usuario;
 
-        //    return affected;
-        //}
+            int affected = _ISocioFincaRepository.Actualizar(socioFinca);
+
+            return affected;
+        }
 
         public IEnumerable<ConsultaSocioFincaPorSocioIdBE> ConsultarSocioFincaPorSocioId(ConsultaSocioFincaPorSocioIdRequestDTO request)
         {
