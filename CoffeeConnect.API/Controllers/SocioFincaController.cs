@@ -25,69 +25,69 @@ namespace Integracion.Deuda.Controller
             return Ok("Productor Finca Service. version: 1.20.01.03");
         }
 
-        
 
-      
 
-        //[Route("Registrar")]
-        //[HttpPost]
-        //public IActionResult Registrar([FromBody] RegistrarActualizarProductorFincaRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    RegistrarActualizarProductorFincaResponseDTO response = new RegistrarActualizarProductorFincaResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _productorService.RegistrarProductorFinca(request);
 
-        //        response.Result.Success = true;
+        [Route("Registrar")]
+        [HttpPost]
+        public IActionResult Registrar([FromBody] RegistrarActualizarSocioFincaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            RegistrarActualizarSocioFincaResponseDTO response = new RegistrarActualizarSocioFincaResponseDTO();
+            try
+            {
+                response.Result.Data = _socioFincaService.RegistrarSocioFinca(request);
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+                response.Result.Success = true;
 
-        //    return Ok(response);
-        //}
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //[Route("Actualizar")]
-        //[HttpPost]
-        //public IActionResult Actualizar([FromBody] RegistrarActualizarProductorFincaRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
-        //    RegistrarActualizarProductorFincaResponseDTO response = new RegistrarActualizarProductorFincaResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _productorService.ActualizarProductorFinca(request);
+            return Ok(response);
+        }
 
-        //        response.Result.Success = true;
+        [Route("Actualizar")]
+        [HttpPost]
+        public IActionResult Actualizar([FromBody] RegistrarActualizarSocioFincaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            RegistrarActualizarSocioFincaResponseDTO response = new RegistrarActualizarSocioFincaResponseDTO();
+            try
+            {
+                response.Result.Data = _socioFincaService.ActualizarSocioFinca(request);
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+                response.Result.Success = true;
 
-        //    return Ok(response);
-        //}
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
 
         [Route("ConsultarPorSocioId")]
         [HttpPost]

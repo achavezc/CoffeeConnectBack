@@ -23,93 +23,71 @@ namespace CoffeeConnect.Repository
 			_connectionString = connectionString;
 		}
 
-       
 
-  //      public int Insertar(SocioFinca productorFinca)
-  //      {
-  //          int result = 0;
 
-		//	var parameters = new DynamicParameters();
+        public int Insertar(SocioFinca socioFinca)
+        {
+            int result = 0;
+
+			var parameters = new DynamicParameters();
 			
-		//	parameters.Add("@ProductorId", productorFinca.ProductorId);
-		//	parameters.Add("@Nombre", productorFinca.Nombre);
-		//	parameters.Add("@Direccion", productorFinca.Direccion);
-		//	parameters.Add("@DepartamentoId", productorFinca.DepartamentoId);
-		//	parameters.Add("@ProvinciaId", productorFinca.ProvinciaId);
-		//	parameters.Add("@DistritoId", productorFinca.DistritoId);
-		//	parameters.Add("@ZonaId", productorFinca.ZonaId);
-		//	parameters.Add("@Latitud", productorFinca.Latitud);
-		//	parameters.Add("@Longuitud", productorFinca.Longuitud);
-		//	parameters.Add("@Altitud", productorFinca.Altitud);
-		//	parameters.Add("@FuenteEnergiaId", productorFinca.FuenteEnergiaId);
-		//	parameters.Add("@FuenteAguaId", productorFinca.FuenteAguaId);
-		//	parameters.Add("@InternetId", productorFinca.InternetId);
-		//	parameters.Add("@SenialTelefonicaId", productorFinca.SenialTelefonicaId);
-		//	parameters.Add("@EstablecimientoSaludId", productorFinca.EstablecimientoSaludId);
-		//	parameters.Add("@CentroEducativoId", productorFinca.CentroEducativoId);
-		//	parameters.Add("@CentroEducativoNivel", productorFinca.CentroEducativoNivel);
-		//	parameters.Add("@TiempoTotalEstablecimientoSalud", productorFinca.TiempoTotalEstablecimientoSalud);
-		//	parameters.Add("@CantidadAnimalesMenores", productorFinca.CantidadAnimalesMenores);
-		//	parameters.Add("@MaterialVivienda", productorFinca.MaterialVivienda);
-		//	parameters.Add("@Suelo", productorFinca.Suelo);
-		//	parameters.Add("@FechaRegistro", productorFinca.FechaRegistro);
-		//	parameters.Add("@UsuarioRegistro", productorFinca.UsuarioRegistro);
-		//	parameters.Add("@EstadoId", productorFinca.EstadoId);
+			parameters.Add("@SocioId", socioFinca.SocioId);
+			parameters.Add("@ProductorFincaId", socioFinca.ProductorFincaId);
+			parameters.Add("@ViasAccesoCentroAcopio", socioFinca.ViasAccesoCentroAcopio);
+			parameters.Add("@DistanciaKilometrosCentroAcopio", socioFinca.DistanciaKilometrosCentroAcopio);
+			parameters.Add("@TiempoTotalFincaCentroAcopio", socioFinca.TiempoTotalFincaCentroAcopio);
+			parameters.Add("@MedioTransporte", socioFinca.MedioTransporte);
+			parameters.Add("@Cultivo", socioFinca.Cultivo);
+			parameters.Add("@Precipitacion", socioFinca.Precipitacion);
+			parameters.Add("@CantidadPersonalCosecha", socioFinca.CantidadPersonalCosecha);
+			parameters.Add("@FechaRegistro", socioFinca.FechaRegistro);
+			parameters.Add("@UsuarioRegistro", socioFinca.UsuarioRegistro);			
+			parameters.Add("@EstadoId", socioFinca.EstadoId);
+			
+
+
+
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspSocioFincaInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+
+
+            return result;
+        }
+
+        public int Actualizar(SocioFinca socioFinca)
+        {
+            int result = 0;
+
+			var parameters = new DynamicParameters();
+			parameters.Add("@SocioFincaId", socioFinca.SocioFincaId);
+			parameters.Add("@SocioId", socioFinca.SocioId);
+			parameters.Add("@ProductorFincaId", socioFinca.ProductorFincaId);
+			parameters.Add("@ViasAccesoCentroAcopio", socioFinca.ViasAccesoCentroAcopio);
+			parameters.Add("@DistanciaKilometrosCentroAcopio", socioFinca.DistanciaKilometrosCentroAcopio);
+			parameters.Add("@TiempoTotalFincaCentroAcopio", socioFinca.TiempoTotalFincaCentroAcopio);
+			parameters.Add("@MedioTransporte", socioFinca.MedioTransporte);
+			parameters.Add("@Cultivo", socioFinca.Cultivo);
+			parameters.Add("@Precipitacion", socioFinca.Precipitacion);
+			parameters.Add("@CantidadPersonalCosecha", socioFinca.CantidadPersonalCosecha);
+			parameters.Add("@FechaUltimaActualizacion", socioFinca.FechaUltimaActualizacion);
+			parameters.Add("@UsuarioUltimaActualizacion", socioFinca.UsuarioUltimaActualizacion);
+			parameters.Add("@EstadoId", socioFinca.EstadoId);
 	
 
 
-		//	using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-  //          {
-  //              result = db.Execute("uspProductorFincaInsertar", parameters, commandType: CommandType.StoredProcedure);
-  //          }
 
-           
-
-  //          return result;
-  //      }
-
-		//public int Actualizar(ProductorFinca productorFinca)
-		//{
-		//	int result = 0;
-
-		//	var parameters = new DynamicParameters();
-		//	parameters.Add("@ProductorFincaId", productorFinca.ProductorFincaId);
-		//	parameters.Add("@ProductorId", productorFinca.ProductorId);
-		//	parameters.Add("@Direccion", productorFinca.Direccion);
-		//	parameters.Add("@Nombre", productorFinca.Nombre);
-		//	parameters.Add("@DepartamentoId", productorFinca.DepartamentoId);
-		//	parameters.Add("@ProvinciaId", productorFinca.ProvinciaId);
-		//	parameters.Add("@DistritoId", productorFinca.DistritoId);
-		//	parameters.Add("@ZonaId", productorFinca.ZonaId);
-		//	parameters.Add("@Latitud", productorFinca.Latitud);
-		//	parameters.Add("@Longuitud", productorFinca.Longuitud);
-		//	parameters.Add("@Altitud", productorFinca.Altitud);
-		//	parameters.Add("@FuenteEnergiaId", productorFinca.FuenteEnergiaId);
-		//	parameters.Add("@FuenteAguaId", productorFinca.FuenteAguaId);
-		//	parameters.Add("@InternetId", productorFinca.InternetId);
-		//	parameters.Add("@SenialTelefonicaId", productorFinca.SenialTelefonicaId);
-		//	parameters.Add("@EstablecimientoSaludId", productorFinca.EstablecimientoSaludId);
-		//	parameters.Add("@CentroEducativoId", productorFinca.CentroEducativoId);
-		//	parameters.Add("@CentroEducativoNivel", productorFinca.CentroEducativoNivel);
-		//	parameters.Add("@TiempoTotalEstablecimientoSalud", productorFinca.TiempoTotalEstablecimientoSalud);
-		//	parameters.Add("@CantidadAnimalesMenores", productorFinca.CantidadAnimalesMenores);
-		//	parameters.Add("@MaterialVivienda", productorFinca.MaterialVivienda);
-		//	parameters.Add("@Suelo", productorFinca.Suelo);
-		//	parameters.Add("@FechaUltimaActualizacion", productorFinca.FechaUltimaActualizacion);
-		//	parameters.Add("@UsuarioUltimaActualizacion", productorFinca.UsuarioUltimaActualizacion);
-		//	parameters.Add("@EstadoId", productorFinca.EstadoId);
-			
+			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspSocioFincaActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
 
 
-		//	using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-		//	{
-		//		result = db.Execute("uspProductorFincaActualizar", parameters, commandType: CommandType.StoredProcedure);
-		//	}
-		//	return result;
-		//}
-
-
-		public IEnumerable<ConsultaSocioFincaPorSocioIdBE> ConsultarSocioFincaPorSocioId(int socioId)
+        public IEnumerable<ConsultaSocioFincaPorSocioIdBE> ConsultarSocioFincaPorSocioId(int socioId)
 		{
 			
 			var parameters = new DynamicParameters();
