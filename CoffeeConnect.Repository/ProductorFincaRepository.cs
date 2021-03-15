@@ -118,7 +118,7 @@ namespace CoffeeConnect.Repository
 
 			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
 			{
-				return db.Query<ConsultaProductorFincaProductorIdBE>("uspProductoFincaConsultaPorProductorId", parameters, commandType: CommandType.StoredProcedure);
+				return db.Query<ConsultaProductorFincaProductorIdBE>("uspProductorFincaConsultaPorProductorId", parameters, commandType: CommandType.StoredProcedure);
 
 				
 			}

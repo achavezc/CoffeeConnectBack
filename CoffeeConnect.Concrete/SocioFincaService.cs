@@ -39,7 +39,7 @@ namespace CoffeeConnect.Service
             SocioFinca socioFinca = _Mapper.Map<SocioFinca>(request);
             socioFinca.FechaRegistro = DateTime.Now;
             socioFinca.UsuarioRegistro = request.Usuario;
-
+            
 
             int affected = _ISocioFincaRepository.Insertar(socioFinca);
 
