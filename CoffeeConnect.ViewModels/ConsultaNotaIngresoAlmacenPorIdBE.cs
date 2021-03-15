@@ -1,4 +1,6 @@
+using CoffeeConnect.Models;
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -338,6 +340,9 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the Finca value.
 		/// </summary>
 		public string Finca
+		{ get; set; }
+
+		public List<GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalle> AnalisisSensorialDefectoDetalle
 		{ get; set; }
 
 		#endregion

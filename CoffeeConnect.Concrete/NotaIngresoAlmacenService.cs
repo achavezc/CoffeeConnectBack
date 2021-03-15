@@ -143,7 +143,11 @@ namespace CoffeeConnect.Service
 
 		public ConsultaNotaIngresoAlmacenPorIdBE ConsultarNotaIngresoAlmacenPorId(ConsultaNotaIngresoAlmacenPorIdRequestDTO request)
 		{
-			return _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacenPorId(request.NotaIngresoAlmacenId);
+			ConsultaNotaIngresoAlmacenPorIdBE consultaNotaIngresoAlmacenPorIdBE = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacenPorId(request.NotaIngresoAlmacenId);
+
+			consultaNotaIngresoAlmacenPorIdBE.AnalisisSensorialDefectoDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetallePorId(consultaNotaIngresoAlmacenPorIdBE.GuiaRecepcionMateriaPrimaId).ToList();
+
+			return consultaNotaIngresoAlmacenPorIdBE;
 		}
 
 	}
