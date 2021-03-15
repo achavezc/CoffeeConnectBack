@@ -90,5 +90,130 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
+        //------------------------------
+
+        [Route("Registrar")]
+        [HttpPost]
+        public IActionResult Registrar([FromBody] RegistrarActualizarOrdenServicioControlCalidadRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            RegistrarNotaCompraResponseDTO response = new RegistrarNotaCompraResponseDTO();
+            try
+            {
+                response.Result.Data = _ordenServicioControlCalidadService.RegistrarOrdenServicioControlCalidad(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("Actualizar")]
+        [HttpPost]
+        public IActionResult Actualizar([FromBody] RegistrarActualizarOrdenServicioControlCalidadRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            RegistrarNotaCompraResponseDTO response = new RegistrarNotaCompraResponseDTO();
+            try
+            {
+                response.Result.Data = _ordenServicioControlCalidadService.ActualizarOrdenServicioControlCalidad(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        
+
+        [Route("ConsultarPorId")]
+        [HttpPost]
+        public IActionResult ConsultarPorId([FromBody] ConsultaOrdenServicioCalidadServicioPorIdRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaNotaSalidaAlmacenPorIdResponseDTO response = new ConsultaNotaSalidaAlmacenPorIdResponseDTO();
+            try
+            {
+                response.Result.Data = _ordenServicioControlCalidadService.ConsultarOrdenServicioControlCalidadPorId(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("ActualizarAnalisisCalidad")]
+        [HttpPost]
+        public IActionResult ActualizarAnalisisCalidad([FromBody] ActualizarOrderServicioControlCalidadRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadResponseDTO response = new ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadResponseDTO();
+            try
+            {
+                response.Result.Data = _ordenServicioControlCalidadService.ActualizarOrdenServicioControlCalidadSeccionCalidad(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
     }
 }
