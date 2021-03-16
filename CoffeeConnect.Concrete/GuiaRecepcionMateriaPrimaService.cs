@@ -215,7 +215,6 @@ namespace CoffeeConnect.Service
             int affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarAnalisisCalidad(guiaRecepcionMateriaPrima);
 
 
-
             #region "Analisis Fisico Color"
             if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)
             {
@@ -234,7 +233,6 @@ namespace CoffeeConnect.Service
                 affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.GuiaRecepcionMateriaPrimaId);
             }
             #endregion
-
 
             #region Analisis Fisico Defecto Primario
             if (request.AnalisisFisicoDefectoPrimarioDetalleList.FirstOrDefault() != null)

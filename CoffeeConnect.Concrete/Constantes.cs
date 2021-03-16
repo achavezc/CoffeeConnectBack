@@ -57,7 +57,7 @@ namespace CoffeeConnect.Service
       
         public static String Anulado { get { return "00"; } }
 
-        
+        public static String Analizado { get { return "02"; } }
     }
 
     public static class LoteEstados

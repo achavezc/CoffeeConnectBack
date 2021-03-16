@@ -20,6 +20,6 @@ namespace CoffeeConnect.Interface.Service
         ConsultaNotaSalidaAlmacenPorIdBE ConsultarNotaSalidaAlmacenPorId(ConsultaNotaSalidaAlmacenPorIdRequestDTO request);
 
         //int ActualizarNotaSalidaAlmacenDetalle(RegistrarNotaSalidaAlmacenDetalleRequestDTO request);
-        int ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidad(ActualizarNotaSalidaAnalisisCalidadRequestDTO request);
+        int ActualizarNotaSalidaAlmacenAnalisisCalidad(ActualizarNotaSalidaAnalisisCalidadRequestDTO request);
     }
 }

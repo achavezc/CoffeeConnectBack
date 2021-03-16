@@ -43,5 +43,9 @@ namespace CoffeeConnect.Interface.Repository
 
         int ActualizarNotaSalidaAlmacenDetalle(List<NotaSalidaAlmacenDetalle> request, int? NotaSalidaAlmacenId);
 
+        int ActualizarNotaSalidaAlmacenAnalisisCalidad(NotaSalidaAlmacen notaSalidaAlmacen);
+
+
+        
     }
 }

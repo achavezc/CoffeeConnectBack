@@ -44,7 +44,7 @@ namespace CoffeeConnect.Service
             List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
             int affected = 0;
 
-            notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+            
             notaSalidaAlmacen.EmpresaId = request.EmpresaId;
             notaSalidaAlmacen.AlmacenId = request.AlmacenId;
             notaSalidaAlmacen.Numero = request.Numero;
@@ -61,17 +61,15 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.Licencia = request.Licencia;
             notaSalidaAlmacen.Observacion = request.Observacion;
             notaSalidaAlmacen.CantidadLotes = request.CantidadLotes;
-            notaSalidaAlmacen.PesoNeto = request.PesoNeto;
-            notaSalidaAlmacen.PromedioRendimientoPorcentaje = request.PromedioRendimientoPorcentaje;
-            notaSalidaAlmacen.MonedaId = request.MonedaId;
-            notaSalidaAlmacen.PrecioDia = request.PrecioDia;
-            notaSalidaAlmacen.Importe = request.Importe;
+            notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
+            notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
+            
             notaSalidaAlmacen.EstadoId = NotaSalidaAlmacenEstados.Ingresado;          
             notaSalidaAlmacen.FechaRegistro = DateTime.Now;
             notaSalidaAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;  
 
             affected = _INotaSalidaAlmacenRepository.Insertar(notaSalidaAlmacen);
-            notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId = affected;
+            notaSalidaAlmacen.NotaSalidaAlmacenId = affected;
             
 
 
@@ -115,11 +113,8 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.Licencia = request.Licencia;
             notaSalidaAlmacen.Observacion = request.Observacion;
             notaSalidaAlmacen.CantidadLotes = request.CantidadLotes;
-            notaSalidaAlmacen.PesoNeto = request.PesoNeto;
-            notaSalidaAlmacen.PromedioRendimientoPorcentaje = request.PromedioRendimientoPorcentaje;
-            notaSalidaAlmacen.MonedaId = request.MonedaId;
-            notaSalidaAlmacen.PrecioDia = request.PrecioDia;
-            notaSalidaAlmacen.Importe = request.Importe;
+            notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
+            notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
             notaSalidaAlmacen.EstadoId = request.EstadoId;
             notaSalidaAlmacen.FechaUltimaActualizacion = DateTime.Now;
             notaSalidaAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacen;
@@ -253,9 +248,32 @@ namespace CoffeeConnect.Service
         //}
 
 
-        public int ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidad(ActualizarNotaSalidaAnalisisCalidadRequestDTO request)
+        public int ActualizarNotaSalidaAlmacenAnalisisCalidad(ActualizarNotaSalidaAnalisisCalidadRequestDTO request)
         {
-            int affected=0;
+            NotaSalidaAlmacen notaSalidaAlmacen = new NotaSalidaAlmacen();
+
+            notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+            notaSalidaAlmacen.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
+            notaSalidaAlmacen.ExportablePorcentajeAnalisisFisico = request.ExportablePorcentajeAnalisisFisico;
+            notaSalidaAlmacen.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
+            notaSalidaAlmacen.DescartePorcentajeAnalisisFisico = request.DescartePorcentajeAnalisisFisico;
+            notaSalidaAlmacen.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
+            notaSalidaAlmacen.CascarillaPorcentajeAnalisisFisico = request.CascarillaPorcentajeAnalisisFisico;
+            notaSalidaAlmacen.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
+            notaSalidaAlmacen.TotalPorcentajeAnalisisFisico = request.TotalPorcentajeAnalisisFisico;
+            notaSalidaAlmacen.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
+            notaSalidaAlmacen.ObservacionAnalisisFisico = request.ObservacionAnalisisFisico;
+            notaSalidaAlmacen.UsuarioCalidad = request.UsuarioCalidad;
+            notaSalidaAlmacen.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
+            notaSalidaAlmacen.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
+            notaSalidaAlmacen.TotalAnalisisSensorial = request.TotalAnalisisSensorial;
+            notaSalidaAlmacen.UsuarioCalidad = request.UsuarioCalidad;
+            notaSalidaAlmacen.EstadoId = NotaSalidaAlmacenEstados.Analizado;
+            notaSalidaAlmacen.FechaCalidad = DateTime.Now;
+
+
+            int affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisCalidad(notaSalidaAlmacen);
+
 
 
             #region "Analisis Fisico Color"
@@ -276,7 +294,6 @@ namespace CoffeeConnect.Service
                 affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.NotaSalidaAlmacenId);
             }
             #endregion
-
 
             #region Analisis Fisico Defecto Primario
             if (request.AnalisisFisicoDefectoPrimarioDetalleList.FirstOrDefault() != null)

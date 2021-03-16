@@ -47,15 +47,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", notaSalidaAlmacen.Licencia);
             parameters.Add("@Observacion", notaSalidaAlmacen.Observacion);
             parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
-            parameters.Add("@PesoNeto", notaSalidaAlmacen.PesoNeto);
-            parameters.Add("@PromedioRendimientoPorcentaje", notaSalidaAlmacen.PromedioRendimientoPorcentaje);
-            parameters.Add("@MonedaId", notaSalidaAlmacen.MonedaId);
-            parameters.Add("@PrecioDia", notaSalidaAlmacen.PrecioDia);
-            parameters.Add("@Importe", notaSalidaAlmacen.Importe);
+            parameters.Add("@PesoKilosBrutos", notaSalidaAlmacen.PesoKilosBrutos);
+            parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);       
             parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
             parameters.Add("@FechaRegistro", notaSalidaAlmacen.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", notaSalidaAlmacen.UsuarioRegistro);
-            //parameters.Add("@Activo", notaSalidaAlmacen.Activo);
+            parameters.Add("@UsuarioRegistro", notaSalidaAlmacen.UsuarioRegistro);           
 
             parameters.Add("@NotaSalidaAlmacenId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -69,7 +65,6 @@ namespace CoffeeConnect.Repository
 
             return result;
         }
-
 
         public int Actualizar(NotaSalidaAlmacen notaSalidaAlmacen)
         {
@@ -93,11 +88,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", notaSalidaAlmacen.Licencia);
             parameters.Add("@Observacion", notaSalidaAlmacen.Observacion);
             parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
-            parameters.Add("@PesoNeto", notaSalidaAlmacen.PesoNeto);
-            parameters.Add("@PromedioRendimientoPorcentaje", notaSalidaAlmacen.PromedioRendimientoPorcentaje);
-            parameters.Add("@MonedaId", notaSalidaAlmacen.MonedaId);
-            parameters.Add("@PrecioDia", notaSalidaAlmacen.PrecioDia);
-            parameters.Add("@Importe", notaSalidaAlmacen.Importe);
+            parameters.Add("@PesoKilosBrutos", notaSalidaAlmacen.PesoKilosBrutos);
+            parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);       
             parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
             parameters.Add("@FechaUltimaActualizacion", notaSalidaAlmacen.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", notaSalidaAlmacen.UsuarioUltimaActualizacion);
@@ -110,6 +102,42 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspNotaSalidaAlmacenActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
+
+            return result;
+        }
+
+
+        public int ActualizarNotaSalidaAlmacenAnalisisCalidad(NotaSalidaAlmacen notaSalidaAlmacen)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
+            parameters.Add("@ExportableGramosAnalisisFisico", notaSalidaAlmacen.ExportableGramosAnalisisFisico);
+            parameters.Add("@ExportablePorcentajeAnalisisFisico", notaSalidaAlmacen.ExportablePorcentajeAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", notaSalidaAlmacen.DescarteGramosAnalisisFisico);
+            parameters.Add("@DescartePorcentajeAnalisisFisico", notaSalidaAlmacen.DescartePorcentajeAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", notaSalidaAlmacen.CascarillaGramosAnalisisFisico);
+            parameters.Add("@CascarillaPorcentajeAnalisisFisico", notaSalidaAlmacen.CascarillaPorcentajeAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", notaSalidaAlmacen.TotalGramosAnalisisFisico);
+            parameters.Add("@TotalPorcentajeAnalisisFisico", notaSalidaAlmacen.TotalPorcentajeAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", notaSalidaAlmacen.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TotalAnalisisSensorial", notaSalidaAlmacen.TotalAnalisisSensorial);
+            parameters.Add("@ObservacionAnalisisFisico", notaSalidaAlmacen.ObservacionAnalisisFisico);
+            parameters.Add("@FechaCalidad", notaSalidaAlmacen.FechaCalidad);
+            parameters.Add("@UsuarioCalidad", notaSalidaAlmacen.UsuarioCalidad);
+            parameters.Add("@ObservacionRegistroTostado", notaSalidaAlmacen.ObservacionRegistroTostado);
+            parameters.Add("@ObservacionAnalisisSensorial", notaSalidaAlmacen.ObservacionAnalisisSensorial);
+            parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", notaSalidaAlmacen.FechaCalidad);
+            parameters.Add("@UsuarioUltimaActualizacion", notaSalidaAlmacen.UsuarioCalidad);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenCalidadActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
 
             return result;
         }
@@ -132,7 +160,6 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-
         public IEnumerable<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalidaAlmacen(ConsultaNotaSalidaAlmacenRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -151,8 +178,6 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaNotaSalidaAlmacenBE>("uspNotaSalidaAlmacenConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
-
-
 
         public IEnumerable<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenIdBE> ConsultarImpresionListaProductoresPorNotaSalida(int notaSalidaAlmacenId)
         {
@@ -197,9 +222,7 @@ namespace CoffeeConnect.Repository
             {
                 return db.Query<NotaSalidaAlmacenDetalle>("uspNotaSalidaAlmacenDetallePorId", parameters, commandType: CommandType.StoredProcedure);
             }
-        }
-
-        
+        }        
 
         public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoColorDetallePorId(int NotaSalidaAlmacenId)
         {
@@ -380,6 +403,7 @@ namespace CoffeeConnect.Repository
             //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
 
         }
+        
         public int ActualizarNotaSalidaAlmacenAnalisisFisicoOlorDetalle(List<NotaSalidaAlmacenAnalisisFisicoOlorDetalleTipo> request, int NotaSalidaAlmacenId)
         {
             //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
@@ -400,6 +424,7 @@ namespace CoffeeConnect.Repository
             return result;
 
         }
+       
         public int ActualizarNotaSalidaAlmacenAnalisisSensorialAtributoDetalle(List<NotaSalidaAlmacenAnalisisSensorialAtributoDetalleTipo> request, int NotaSalidaAlmacenId)
         {
             //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
@@ -420,6 +445,7 @@ namespace CoffeeConnect.Repository
             return result;
 
         }
+       
         public int ActualizarNotaSalidaAlmacenAnalisisSensorialDefectoDetalle(List<NotaSalidaAlmacenAnalisisSensorialDefectoDetalleTipo> request, int NotaSalidaAlmacenId)
         {
             //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
@@ -440,6 +466,7 @@ namespace CoffeeConnect.Repository
             return result;
 
         }
+       
         public int ActualizarNotaSalidaAlmacenRegistroTostadoIndicadorDetalle(List<NotaSalidaAlmacenRegistroTostadoIndicadorDetalleTipo> request, int NotaSalidaAlmacenId)
         {
             //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
@@ -482,9 +509,7 @@ namespace CoffeeConnect.Repository
 
         }
 
-
-
-
+        
     }
 
 

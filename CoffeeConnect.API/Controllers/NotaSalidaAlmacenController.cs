@@ -284,7 +284,7 @@ namespace Integracion.Deuda.Controller
             ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadResponseDTO response = new ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadResponseDTO();
             try
             {
-                response.Result.Data = _notaSalidaAlmacenService.ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidad(request);
+                response.Result.Data = _notaSalidaAlmacenService.ActualizarNotaSalidaAlmacenAnalisisCalidad(request);
 
                 response.Result.Success = true;
 
