@@ -4,11 +4,8 @@ using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
-using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
@@ -17,14 +14,14 @@ namespace CoffeeConnect.Service
         private readonly IMapper _Mapper;
 
         private ISocioFincaRepository _ISocioFincaRepository;
-      
-		
 
 
-		public SocioFincaService(ISocioFincaRepository socioFincaRepository, IMapper mapper)
+
+
+        public SocioFincaService(ISocioFincaRepository socioFincaRepository, IMapper mapper)
         {
-            _ISocioFincaRepository = socioFincaRepository;            
-			
+            _ISocioFincaRepository = socioFincaRepository;
+
 
             _Mapper = mapper;
 
@@ -39,7 +36,7 @@ namespace CoffeeConnect.Service
             SocioFinca socioFinca = _Mapper.Map<SocioFinca>(request);
             socioFinca.FechaRegistro = DateTime.Now;
             socioFinca.UsuarioRegistro = request.Usuario;
-            
+
 
             int affected = _ISocioFincaRepository.Insertar(socioFinca);
 
@@ -68,4 +65,4 @@ namespace CoffeeConnect.Service
         }
 
     }
-}   
+}

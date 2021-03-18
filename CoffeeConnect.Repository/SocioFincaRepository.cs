@@ -1,27 +1,22 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
 using Dapper;
-using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using CoffeeConnect.DTO;
-using Core.Common;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
-	public class SocioFincaRepository : ISocioFincaRepository
-	{
-		public IOptions<ConnectionString> _connectionString;
-		public SocioFincaRepository(IOptions<ConnectionString> connectionString)
-		{
-			_connectionString = connectionString;
-		}
+    public class SocioFincaRepository : ISocioFincaRepository
+    {
+        public IOptions<ConnectionString> _connectionString;
+        public SocioFincaRepository(IOptions<ConnectionString> connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
 
 
@@ -29,25 +24,25 @@ namespace CoffeeConnect.Repository
         {
             int result = 0;
 
-			var parameters = new DynamicParameters();
-			
-			parameters.Add("@SocioId", socioFinca.SocioId);
-			parameters.Add("@ProductorFincaId", socioFinca.ProductorFincaId);
-			parameters.Add("@ViasAccesoCentroAcopio", socioFinca.ViasAccesoCentroAcopio);
-			parameters.Add("@DistanciaKilometrosCentroAcopio", socioFinca.DistanciaKilometrosCentroAcopio);
-			parameters.Add("@TiempoTotalFincaCentroAcopio", socioFinca.TiempoTotalFincaCentroAcopio);
-			parameters.Add("@MedioTransporte", socioFinca.MedioTransporte);
-			parameters.Add("@Cultivo", socioFinca.Cultivo);
-			parameters.Add("@Precipitacion", socioFinca.Precipitacion);
-			parameters.Add("@CantidadPersonalCosecha", socioFinca.CantidadPersonalCosecha);
-			parameters.Add("@FechaRegistro", socioFinca.FechaRegistro);
-			parameters.Add("@UsuarioRegistro", socioFinca.UsuarioRegistro);			
-			parameters.Add("@EstadoId", socioFinca.EstadoId);
-			
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@SocioId", socioFinca.SocioId);
+            parameters.Add("@ProductorFincaId", socioFinca.ProductorFincaId);
+            parameters.Add("@ViasAccesoCentroAcopio", socioFinca.ViasAccesoCentroAcopio);
+            parameters.Add("@DistanciaKilometrosCentroAcopio", socioFinca.DistanciaKilometrosCentroAcopio);
+            parameters.Add("@TiempoTotalFincaCentroAcopio", socioFinca.TiempoTotalFincaCentroAcopio);
+            parameters.Add("@MedioTransporte", socioFinca.MedioTransporte);
+            parameters.Add("@Cultivo", socioFinca.Cultivo);
+            parameters.Add("@Precipitacion", socioFinca.Precipitacion);
+            parameters.Add("@CantidadPersonalCosecha", socioFinca.CantidadPersonalCosecha);
+            parameters.Add("@FechaRegistro", socioFinca.FechaRegistro);
+            parameters.Add("@UsuarioRegistro", socioFinca.UsuarioRegistro);
+            parameters.Add("@EstadoId", socioFinca.EstadoId);
 
 
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspSocioFincaInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
@@ -61,25 +56,25 @@ namespace CoffeeConnect.Repository
         {
             int result = 0;
 
-			var parameters = new DynamicParameters();
-			parameters.Add("@SocioFincaId", socioFinca.SocioFincaId);
-			parameters.Add("@SocioId", socioFinca.SocioId);
-			parameters.Add("@ProductorFincaId", socioFinca.ProductorFincaId);
-			parameters.Add("@ViasAccesoCentroAcopio", socioFinca.ViasAccesoCentroAcopio);
-			parameters.Add("@DistanciaKilometrosCentroAcopio", socioFinca.DistanciaKilometrosCentroAcopio);
-			parameters.Add("@TiempoTotalFincaCentroAcopio", socioFinca.TiempoTotalFincaCentroAcopio);
-			parameters.Add("@MedioTransporte", socioFinca.MedioTransporte);
-			parameters.Add("@Cultivo", socioFinca.Cultivo);
-			parameters.Add("@Precipitacion", socioFinca.Precipitacion);
-			parameters.Add("@CantidadPersonalCosecha", socioFinca.CantidadPersonalCosecha);
-			parameters.Add("@FechaUltimaActualizacion", socioFinca.FechaUltimaActualizacion);
-			parameters.Add("@UsuarioUltimaActualizacion", socioFinca.UsuarioUltimaActualizacion);
-			parameters.Add("@EstadoId", socioFinca.EstadoId);
-	
+            var parameters = new DynamicParameters();
+            parameters.Add("@SocioFincaId", socioFinca.SocioFincaId);
+            parameters.Add("@SocioId", socioFinca.SocioId);
+            parameters.Add("@ProductorFincaId", socioFinca.ProductorFincaId);
+            parameters.Add("@ViasAccesoCentroAcopio", socioFinca.ViasAccesoCentroAcopio);
+            parameters.Add("@DistanciaKilometrosCentroAcopio", socioFinca.DistanciaKilometrosCentroAcopio);
+            parameters.Add("@TiempoTotalFincaCentroAcopio", socioFinca.TiempoTotalFincaCentroAcopio);
+            parameters.Add("@MedioTransporte", socioFinca.MedioTransporte);
+            parameters.Add("@Cultivo", socioFinca.Cultivo);
+            parameters.Add("@Precipitacion", socioFinca.Precipitacion);
+            parameters.Add("@CantidadPersonalCosecha", socioFinca.CantidadPersonalCosecha);
+            parameters.Add("@FechaUltimaActualizacion", socioFinca.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", socioFinca.UsuarioUltimaActualizacion);
+            parameters.Add("@EstadoId", socioFinca.EstadoId);
 
 
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspSocioFincaActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
@@ -88,39 +83,33 @@ namespace CoffeeConnect.Repository
 
 
         public IEnumerable<ConsultaSocioFincaPorSocioIdBE> ConsultarSocioFincaPorSocioId(int socioId)
-		{
-			
-			var parameters = new DynamicParameters();
-			parameters.Add("@SocioId", socioId);
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@SocioId", socioId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaSocioFincaPorSocioIdBE>("uspSocioFincaConsultaPorSocioId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public ConsultaSocioFincaPorIdBE ConsultarSocioFincaPorId(int socioFincaId)
+        {
+            ConsultaSocioFincaPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@SocioFincaId", socioFincaId);
 
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				return db.Query<ConsultaSocioFincaPorSocioIdBE>("uspSocioFincaConsultaPorSocioId", parameters, commandType: CommandType.StoredProcedure);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaSocioFincaPorIdBE>("uspSocioFincaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
 
-				
-			}
+                if (list.Any())
+                    itemBE = list.First();
+            }
 
-			
-		}
-
-		public ConsultaSocioFincaPorIdBE ConsultarSocioFincaPorId(int socioFincaId)
-		{
-			ConsultaSocioFincaPorIdBE itemBE = null;
-
-			var parameters = new DynamicParameters();
-			parameters.Add("@SocioFincaId", socioFincaId);
-
-
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				var list = db.Query<ConsultaSocioFincaPorIdBE>("uspSocioFincaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
-
-				if (list.Any())
-					itemBE = list.First();
-			}
-
-			return itemBE;
-		}
-	}
+            return itemBE;
+        }
+    }
 }
