@@ -49,6 +49,7 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.AlmacenId = request.AlmacenId;
             notaSalidaAlmacen.Numero = request.Numero;
             notaSalidaAlmacen.MotivoTrasladoId = request.MotivoTrasladoId;
+            notaSalidaAlmacen.MotivoTrasladoReferencia = request.MotivoTrasladoReferencia;
             notaSalidaAlmacen.EmpresaIdDestino = request.EmpresaIdDestino;
             notaSalidaAlmacen.EmpresaTransporteId = request.EmpresaTransporteId;
             notaSalidaAlmacen.TransporteId = request.TransporteId;
@@ -61,8 +62,10 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.Licencia = request.Licencia;
             notaSalidaAlmacen.Observacion = request.Observacion;
             notaSalidaAlmacen.CantidadLotes = request.CantidadLotes;
-            notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
             notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
+            notaSalidaAlmacen.CantidadTotal = request.CantidadTotal;
+            notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
+            
             
             notaSalidaAlmacen.EstadoId = NotaSalidaAlmacenEstados.Ingresado;          
             notaSalidaAlmacen.FechaRegistro = DateTime.Now;
@@ -86,6 +89,7 @@ namespace CoffeeConnect.Service
                 affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen, request.NotaSalidaAlmacenId);
 
             }
+            affected = notaSalidaAlmacen.NotaSalidaAlmacenId;
 
             return affected;
         }
@@ -101,6 +105,7 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.AlmacenId = request.AlmacenId;
             notaSalidaAlmacen.Numero = request.Numero;
             notaSalidaAlmacen.MotivoTrasladoId = request.MotivoTrasladoId;
+            notaSalidaAlmacen.MotivoTrasladoReferencia = request.MotivoTrasladoReferencia;
             notaSalidaAlmacen.EmpresaIdDestino = request.EmpresaIdDestino;
             notaSalidaAlmacen.EmpresaTransporteId = request.EmpresaTransporteId;
             notaSalidaAlmacen.TransporteId = request.TransporteId;
@@ -113,8 +118,10 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.Licencia = request.Licencia;
             notaSalidaAlmacen.Observacion = request.Observacion;
             notaSalidaAlmacen.CantidadLotes = request.CantidadLotes;
-            notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
             notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
+            notaSalidaAlmacen.CantidadTotal = request.CantidadTotal;
+            notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
+
             notaSalidaAlmacen.EstadoId = request.EstadoId;
             notaSalidaAlmacen.FechaUltimaActualizacion = DateTime.Now;
             notaSalidaAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacen;

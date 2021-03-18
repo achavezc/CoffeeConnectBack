@@ -35,6 +35,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@AlmacenId", notaSalidaAlmacen.AlmacenId);
             parameters.Add("@Numero", notaSalidaAlmacen.Numero);
             parameters.Add("@MotivoTrasladoId", notaSalidaAlmacen.MotivoTrasladoId);
+            parameters.Add("@MotivoTrasladoReferencia", notaSalidaAlmacen.MotivoTrasladoReferencia);
             parameters.Add("@EmpresaIdDestino", notaSalidaAlmacen.EmpresaIdDestino);
             parameters.Add("@EmpresaTransporteId", notaSalidaAlmacen.EmpresaTransporteId);
             parameters.Add("@TransporteId", notaSalidaAlmacen.TransporteId);
@@ -47,8 +48,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", notaSalidaAlmacen.Licencia);
             parameters.Add("@Observacion", notaSalidaAlmacen.Observacion);
             parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
+            parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);
+            parameters.Add("@CantidadTotal", notaSalidaAlmacen.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", notaSalidaAlmacen.PesoKilosBrutos);
-            parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);       
             parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
             parameters.Add("@FechaRegistro", notaSalidaAlmacen.FechaRegistro);
             parameters.Add("@UsuarioRegistro", notaSalidaAlmacen.UsuarioRegistro);           
@@ -76,6 +78,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@AlmacenId", notaSalidaAlmacen.AlmacenId);
             parameters.Add("@Numero", notaSalidaAlmacen.Numero);
             parameters.Add("@MotivoTrasladoId", notaSalidaAlmacen.MotivoTrasladoId);
+            parameters.Add("@MotivoTrasladoReferencia", notaSalidaAlmacen.MotivoTrasladoReferencia);
             parameters.Add("@EmpresaIdDestino", notaSalidaAlmacen.EmpresaIdDestino);
             parameters.Add("@EmpresaTransporteId", notaSalidaAlmacen.EmpresaTransporteId);
             parameters.Add("@TransporteId", notaSalidaAlmacen.TransporteId);
@@ -88,14 +91,14 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", notaSalidaAlmacen.Licencia);
             parameters.Add("@Observacion", notaSalidaAlmacen.Observacion);
             parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
+            parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);
+            parameters.Add("@CantidadTotal", notaSalidaAlmacen.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", notaSalidaAlmacen.PesoKilosBrutos);
-            parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);       
+            
             parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
             parameters.Add("@FechaUltimaActualizacion", notaSalidaAlmacen.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", notaSalidaAlmacen.UsuarioUltimaActualizacion);
             //parameters.Add("@Activo", notaSalidaAlmacen.Activo);
-
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
