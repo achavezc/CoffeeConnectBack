@@ -509,7 +509,21 @@ namespace CoffeeConnect.Repository
 
         }
 
-        
+
+        public IEnumerable<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(int notaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("NotaSalidaAlmacenId", notaSalidaAlmacenId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE>("uspConsultaNotaSalidaAlmacenLotesDetallePorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
     }
 
 

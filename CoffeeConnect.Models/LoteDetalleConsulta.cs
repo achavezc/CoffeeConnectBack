@@ -6,7 +6,7 @@ namespace CoffeeConnect.Models
 	{
 		public int LoteDetalleId { get; set; }
 		public int LoteId { get; set; }
-		public String NumeroGuia { get; set; }
+		public String NumeroNotaIngresoAlmacen { get; set; }
 		public DateTime FechaIngresoAlmacen { get; set; }
 		public String AlmacenId { get; set; }
 		public String Almacen { get; set; }
@@ -24,6 +24,8 @@ namespace CoffeeConnect.Models
 		public Decimal KilosNetosPesado { get; set; }
 		public Decimal RendimientoPorcentaje { get; set; }
 		public Decimal HumedadPorcentaje { get; set; }
+
+		public Decimal TotalAnalisisSensorial { get; set; }
 
 	}
 }

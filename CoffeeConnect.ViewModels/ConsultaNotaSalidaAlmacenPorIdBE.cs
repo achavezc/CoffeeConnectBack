@@ -6,57 +6,242 @@ namespace CoffeeConnect.DTO
 {
 	public class ConsultaNotaSalidaAlmacenPorIdBE
 	{
-
 		#region Properties
+		/// <summary>
+		/// Gets or sets the NotaSalidaAlmacenId value.
+		/// </summary>
+		public int NotaSalidaAlmacenId
+		{ get; set; }
 
+		/// <summary>
+		/// Gets or sets the AlmacenId value.
+		/// </summary>
+		public string AlmacenId
+		{ get; set; }
 
+		/// <summary>
+		/// Gets or sets the Almacen value.
+		/// </summary>
+		public string Almacen
+		{ get; set; }
 
-		public int NotaSalidaAlmacenId { set; get; }
-		public int EmpresaId { set; get; }
-		public String AlmacenId { set; get; }
-		public String Almacen { set; get; }
-		public String Numero { set; get; }
-		public String MotivoTrasladoId { set; get; }
-		public String Motivo { set; get; }
-		public int EmpresaIdDestino { set; get; }
-		public String Destinatario { set; get; }
-		public String RucDestinatario    {set;get;}
-	public String DireccionPartida { set; get; }
-	public String DireccionDestino { set; get; }
-	public int TransporteId { set; get; }
-	public int EmpresaTransporteId { set; get; }
-	public String Transportista { set; get; }
-	public String DireccionTransportista { set; get; }
-	public String RucTransportista { set; get; }
-	public String Conductor { set; get; }
-	public String LicenciaConductor { set; get; }
-	public String MarcaCarretaId { set; get; }
-	public String MarcaCarreta { set; get; }
-	public String MarcaTractorId { set; get; }
-	public String MarcaTractor { set; get; }
-	public String PlacaTractor { set; get; }
-	public String PlacaCarreta { set; get; }
-	public String NumeroConstanciaMTC { set; get; }
-	public String Observacion { set; get; }
-	public Decimal CantidadLotes { set; get; }
-	public Decimal PesoNeto { set; get; }
-	public Decimal PromedioRendimientoPorcentaje { set; get; }
-	public String MonedaId { set; get; }
-	public Decimal PrecioDia { set; get; }
-	public Decimal Importe { set; get; }
-	public String EstadoId { set; get; }
-	public DateTime FechaRegistro { set; get; }
-	public String UsuarioRegistro { set; get; }
-	public DateTime FechaUltimaActualizacion { set; get; }
-	public String UsuarioUltimaActualizacion { set; get; }
-	public bool Activo { set; get; }
+		/// <summary>
+		/// Gets or sets the Numero value.
+		/// </summary>
+		public string Numero
+		{ get; set; }
 
-		public ConsultaNotaSalidaAlmacenPorIdBE() {
-			
-		}
+		/// <summary>
+		/// Gets or sets the MotivoTrasladoId value.
+		/// </summary>
+		public string MotivoTrasladoId
+		{ get; set; }
 
+		/// <summary>
+		/// Gets or sets the MotivoTrasladoReferencia value.
+		/// </summary>
+		public string MotivoTrasladoReferencia
+		{ get; set; }
 
-	    public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
+		/// <summary>
+		/// Gets or sets the Motivo value.
+		/// </summary>
+		public string Motivo
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the EmpresaId value.
+		/// </summary>
+		public int EmpresaId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the RazonSocialEmpresa value.
+		/// </summary>
+		public string RazonSocialEmpresa
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the RucEmpresa value.
+		/// </summary>
+		public string RucEmpresa
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the EmpresaIdDestino value.
+		/// </summary>
+		public int EmpresaIdDestino
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Destinatario value.
+		/// </summary>
+		public string Destinatario
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the RucDestinatario value.
+		/// </summary>
+		public string RucDestinatario
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the DireccionPartida value.
+		/// </summary>
+		public string DireccionPartida
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the DireccionDestino value.
+		/// </summary>
+		public string DireccionDestino
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the EmpresaTransporteId value.
+		/// </summary>
+		public int EmpresaTransporteId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Transportista value.
+		/// </summary>
+		public string Transportista
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the DireccionTransportista value.
+		/// </summary>
+		public string DireccionTransportista
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the RucTransportista value.
+		/// </summary>
+		public string RucTransportista
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Conductor value.
+		/// </summary>
+		public string Conductor
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the LicenciaConductor value.
+		/// </summary>
+		public string LicenciaConductor
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TransporteId value.
+		/// </summary>
+		public int TransporteId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the MarcaCarretaId value.
+		/// </summary>
+		public string MarcaCarretaId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the MarcaCarreta value.
+		/// </summary>
+		public string MarcaCarreta
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the MarcaTractorId value.
+		/// </summary>
+		public string MarcaTractorId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the MarcaTractor value.
+		/// </summary>
+		public string MarcaTractor
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the PlacaTractor value.
+		/// </summary>
+		public string PlacaTractor
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the PlacaCarreta value.
+		/// </summary>
+		public string PlacaCarreta
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the NumeroConstanciaMTC value.
+		/// </summary>
+		public string NumeroConstanciaMTC
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Observacion value.
+		/// </summary>
+		public string Observacion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CantidadLotes value.
+		/// </summary>
+		public int CantidadLotes
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the PesoKilosBrutos value.
+		/// </summary>
+		public decimal PesoKilosBrutos
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the PromedioPorcentajeRendimiento value.
+		/// </summary>
+		public decimal PromedioPorcentajeRendimiento
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CantidadTotal value.
+		/// </summary>
+		public int CantidadTotal
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the EstadoId value.
+		/// </summary>
+		public string EstadoId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaRegistro value.
+		/// </summary>
+		public DateTime FechaRegistro
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioRegistro value.
+		/// </summary>
+		public string UsuarioRegistro
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaUltimaActualizacion value.
+		/// </summary>
+		public DateTime? FechaUltimaActualizacion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioUltimaActualizacion value.
+		/// </summary>
+		public string UsuarioUltimaActualizacion
+		{ get; set; }
+
+		public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
 		{ get; set; }
 
 		public IEnumerable<NotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetalle> AnalisisFisicoDefectoPrimarioDetalle
@@ -77,8 +262,18 @@ namespace CoffeeConnect.DTO
 		public IEnumerable<NotaSalidaAlmacenRegistroTostadoIndicadorDetalle> RegistroTostadoIndicadorDetalle
 		{ get; set; }
 
-		public IEnumerable<NotaSalidaAlmacenDetalleLotes> DetalleLotes
+		public IEnumerable<NotaSalidaAlmacenDetalle> Detalle
 		{ get; set; }
+
+
+		//public IEnumerable<NotaSalidaAlmacenDetalleLotes> DetalleLotes
+		//{ get; set; }
+
+
+		public IEnumerable<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> DetalleLotes
+		{ get; set; }
+
+	
 
 		#endregion
 	}
