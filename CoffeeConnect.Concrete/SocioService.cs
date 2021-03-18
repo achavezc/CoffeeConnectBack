@@ -8,7 +8,6 @@ using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
@@ -17,15 +16,14 @@ namespace CoffeeConnect.Service
         private readonly IMapper _Mapper;
 
         private ISocioRepository _ISocioRepository;
-      
-		private ICorrelativoRepository _ICorrelativoRepository;
 
+        private ICorrelativoRepository _ICorrelativoRepository;
 
-		public SocioService(ISocioRepository socioRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
+        public SocioService(ISocioRepository socioRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
         {
             _ISocioRepository = socioRepository;
-            
-			_ICorrelativoRepository = correlativoRepository;
+
+            _ICorrelativoRepository = correlativoRepository;
 
             _Mapper = mapper;
 
@@ -33,22 +31,21 @@ namespace CoffeeConnect.Service
 
         }
 
-
         public List<ConsultaSocioBE> ConsultarSocio(ConsultaSocioRequestDTO request)
-		{
-			if (string.IsNullOrEmpty(request.Codigo) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.NombreRazonSocial))
-				throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+        {
+            if (string.IsNullOrEmpty(request.Codigo) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.NombreRazonSocial))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 
-			var timeSpan = request.FechaFin - request.FechaInicio;
+            var timeSpan = request.FechaFin - request.FechaInicio;
 
-			if (timeSpan.Days > 730)
-				throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
+            if (timeSpan.Days > 730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
-			var list = _ISocioRepository.ConsultarSocio(request);
+            var list = _ISocioRepository.ConsultarSocio(request);
 
-			return list.ToList();
-		}
+            return list.ToList();
+        }
 
         public int RegistrarSocio(RegistrarActualizarSocioRequestDTO request)
         {
@@ -74,11 +71,11 @@ namespace CoffeeConnect.Service
         }
 
         public ConsultaSocioPorIdBE ConsultarSocioPorId(ConsultaSocioPorIdRequestDTO request)
-        { 
+        {
             ConsultaSocioPorIdBE consultaSocioPorIdBE = _ISocioRepository.ConsultarSocioPorId(request.SocioId);
 
             return consultaSocioPorIdBE;
 
         }
     }
-}   
+}
