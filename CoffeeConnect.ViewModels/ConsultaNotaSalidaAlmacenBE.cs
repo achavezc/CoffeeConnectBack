@@ -15,7 +15,7 @@ namespace CoffeeConnect.DTO
         public int EmpresaTransporteId { get; set; }
         public String Transportista { get; set; }
         public decimal? CantidadLotes { get; set; }
-        public decimal? PesoNeto { get; set; }
+        public decimal? PesoKilosBrutos { get; set; }
 
         public String EstadoId { get; set; }
         public String Estado { get; set; }
