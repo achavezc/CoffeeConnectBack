@@ -162,7 +162,9 @@ namespace CoffeeConnect.Models
 
 		public decimal? RendimientoPorcentaje
 		{ get; set; }
-		
+
+	
+
 
 		/// <summary>
 		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.

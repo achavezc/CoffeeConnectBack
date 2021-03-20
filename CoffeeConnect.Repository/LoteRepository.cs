@@ -39,6 +39,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Cantidad", lote.Cantidad);
             parameters.Add("@PromedioRendimientoPorcentaje", lote.PromedioRendimientoPorcentaje);
             parameters.Add("@PromedioHumedadPorcentaje", lote.PromedioHumedadPorcentaje);
+            parameters.Add("@PromedioTotalAnalisisSensorial", lote.PromedioTotalAnalisisSensorial);
+            
             parameters.Add("@FechaRegistro", lote.FechaRegistro);
             parameters.Add("@UsuarioRegistro", lote.UsuarioRegistro);        
 

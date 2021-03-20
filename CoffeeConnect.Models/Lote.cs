@@ -58,6 +58,10 @@ namespace CoffeeConnect.Models
 		public decimal PromedioRendimientoPorcentaje
 		{ get; set; }
 
+		public decimal PromedioTotalAnalisisSensorial
+		{ get; set; }
+		
+
 		/// <summary>
 		/// Gets or sets the PromedioHumedadPorcentaje value.
 		/// </summary>

@@ -47,8 +47,9 @@ namespace CoffeeConnect.Service
             decimal totalCantidad = 0;
             string unidadMedidaId = String.Empty;
             decimal totalRendimientoPorcentaje = 0;
+            decimal totalAnalisisSensorial = 0;
             decimal totalHumedadPorcentaje = 0;
-                            
+            
 
             List<NotaIngresoAlmacen> notasIngreso = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoPorIds(request.NotasIngresoAlmacenId).ToList();
 
@@ -74,11 +75,13 @@ namespace CoffeeConnect.Service
                     item.KilosNetosPesado = notaingreso.KilosNetosPesado;
                     item.RendimientoPorcentaje = notaingreso.RendimientoPorcentaje;
                     item.HumedadPorcentaje = notaingreso.HumedadPorcentajeAnalisisFisico;
-
+                    item.TotalAnalisisSensorial = notaingreso.TotalAnalisisSensorial.Value;
+                    
 
                     item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
                     totalKilosNetosPesado = totalKilosNetosPesado + item.KilosNetosPesado;
                     totalRendimientoPorcentaje = totalRendimientoPorcentaje + item.RendimientoPorcentaje.Value;
+                    totalAnalisisSensorial = totalAnalisisSensorial + item.TotalAnalisisSensorial;
                     totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
                     totalCantidad = totalCantidad + item.CantidadPesado;
                     unidadMedidaId = item.UnidadMedidaIdPesado;
@@ -91,6 +94,8 @@ namespace CoffeeConnect.Service
                 lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje/ lotesDetalle.Count;
                 lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
                 lote.UnidadMedidaId = unidadMedidaId;
+                lote.PromedioTotalAnalisisSensorial = totalAnalisisSensorial / lotesDetalle.Count;
+                
                 lote.Cantidad = totalCantidad;
 
                 loteId = _ILoteRepository.Insertar(lote);

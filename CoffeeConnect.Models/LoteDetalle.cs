@@ -94,6 +94,11 @@ namespace CoffeeConnect.Models
 		public decimal HumedadPorcentaje
 		{ get; set; }
 
+		public decimal TotalAnalisisSensorial
+		{ get; set; }
+
+		
+
 		#endregion
 	}
 }
