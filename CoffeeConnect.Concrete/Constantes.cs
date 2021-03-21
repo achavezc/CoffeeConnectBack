@@ -27,6 +27,11 @@ namespace CoffeeConnect.Service
 
         public static String Socio { get { return "Socio"; } }
 
+        public static String NotaSalidaAlmacen { get { return "NotaSalidaAlmacen"; } }
+
+        public static String GuiaRemisionAlmacen { get { return "GuiaRemisionAlmacen"; } }
+
+
     }
 
     public static class NotaCompraEstados
