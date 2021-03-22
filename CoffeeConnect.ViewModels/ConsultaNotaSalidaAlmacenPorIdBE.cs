@@ -550,7 +550,14 @@ namespace CoffeeConnect.DTO
 		public string UsuarioUltimaActualizacion
 		{ get; set; }
 
+		public string UsuarioCalidad
+		{ get; set; }
 
+		/// <summary>
+		/// Gets or sets the FechaUltimaActualizacion value.
+		/// </summary>
+		public DateTime? FechaCalidad
+		{ get; set; }
 
 		public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
 		{ get; set; }
