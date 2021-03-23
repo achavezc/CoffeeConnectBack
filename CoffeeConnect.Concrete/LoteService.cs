@@ -1,4 +1,5 @@
 ﻿
+using AutoMapper;
 using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
@@ -7,8 +8,6 @@ using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
 
 namespace CoffeeConnect.Service
 {
@@ -29,7 +28,6 @@ namespace CoffeeConnect.Service
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
         }
-       
 
         public int GenerarLote(GenerarLoteRequestDTO request)
         {
@@ -49,13 +47,13 @@ namespace CoffeeConnect.Service
             decimal totalRendimientoPorcentaje = 0;
             decimal totalAnalisisSensorial = 0;
             decimal totalHumedadPorcentaje = 0;
-            
+
 
             List<NotaIngresoAlmacen> notasIngreso = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoPorIds(request.NotasIngresoAlmacenId).ToList();
 
-            if (notasIngreso!=null)
+            if (notasIngreso != null)
             {
-               
+
                 List<LoteDetalle> lotesDetalle = new List<LoteDetalle>();
 
                 notasIngreso.ForEach(notaingreso =>
@@ -76,7 +74,7 @@ namespace CoffeeConnect.Service
                     item.RendimientoPorcentaje = notaingreso.RendimientoPorcentaje;
                     item.HumedadPorcentaje = notaingreso.HumedadPorcentajeAnalisisFisico;
                     item.TotalAnalisisSensorial = notaingreso.TotalAnalisisSensorial.Value;
-                    
+
 
                     item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
                     totalKilosNetosPesado = totalKilosNetosPesado + item.KilosNetosPesado;
@@ -91,29 +89,29 @@ namespace CoffeeConnect.Service
 
 
                 lote.TotalKilosNetosPesado = totalKilosNetosPesado;
-                lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje/ lotesDetalle.Count;
+                lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje / lotesDetalle.Count;
                 lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
                 lote.UnidadMedidaId = unidadMedidaId;
                 lote.PromedioTotalAnalisisSensorial = totalAnalisisSensorial / lotesDetalle.Count;
-                
+
                 lote.Cantidad = totalCantidad;
 
                 loteId = _ILoteRepository.Insertar(lote);
 
                 lotesDetalle.ForEach(loteDetalle =>
-                {                    
-                    loteDetalle.LoteId = loteId;                    
+                {
+                    loteDetalle.LoteId = loteId;
 
                 });
 
-                int    affected = _ILoteRepository.InsertarLoteDetalle(lotesDetalle);
+                int affected = _ILoteRepository.InsertarLoteDetalle(lotesDetalle);
 
                 notasIngreso.ForEach(notaingreso =>
                 {
-                    _INotaIngresoAlmacenRepository.ActualizarEstado(notaingreso.NotaIngresoAlmacenId,DateTime.Now, request.Usuario, NotaIngresoAlmacenEstados.Lotizado);
+                    _INotaIngresoAlmacenRepository.ActualizarEstado(notaingreso.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, NotaIngresoAlmacenEstados.Lotizado);
                 });
 
-            }       
+            }
 
             return loteId;
         }
@@ -178,19 +176,17 @@ namespace CoffeeConnect.Service
         //    return response;
         //}
 
-
         public List<LoteDetalleConsulta> ConsultaLoteDetalleBusquedaPorLoteId(ConsultaLoteDetalleBusquedaPorLoteIdRequestDTO request)
-        {           
+        {
             var resultado = _ILoteRepository.ConsultarBandejaLoteDetallePorId(request.LoteId).ToList();
 
             return resultado;
         }
 
-
         public ConsultaLoteBandejaBE ConsultarLotePorId(ConsultaLoteDetallePorLoteIdRequestDTO request)
         {
-            
-            LotesBE Lote =_ILoteRepository.ConsultarLotePorId(request.LoteId);
+
+            LotesBE Lote = _ILoteRepository.ConsultarLotePorId(request.LoteId);
             ConsultaLoteBandejaBE response = new ConsultaLoteBandejaBE();
             //ConsultaLoteBandejaBE response= _Mapper.Map<ConsultaLoteBandejaBE>(Lote);
             IEnumerable<LoteDetalleConsulta> resultado = _ILoteRepository.ConsultarBandejaLoteDetallePorId(request.LoteId);
@@ -223,11 +219,8 @@ namespace CoffeeConnect.Service
             response.FechaUltimaActualizacion = Lote.FechaUltimaActualizacion;
             response.UsuarioUltimaActualizacion = Lote.UsuarioUltimaActualizacion;
             response.Activo = Lote.Activo;
-
-
-
+            response.PromedioTotalAnalisisSensorial = Lote.PromedioTotalAnalisisSensorial;
             response.listaDetalle = resultado.ToList();
-
 
             //if (resultado.Any())
             //{
@@ -236,7 +229,6 @@ namespace CoffeeConnect.Service
             //    response.PromedioRendimiento = resultado.Average(x => x.RendimientoPorcentaje);
             //}
             //response.LoteId = request.LoteId;
-
 
             return response;
         }

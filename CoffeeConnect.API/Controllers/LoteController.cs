@@ -1,8 +1,8 @@
-﻿using System;
-using CoffeeConnect.DTO;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Integracion.Deuda.Controller
 {
@@ -34,7 +34,7 @@ namespace Integracion.Deuda.Controller
 
             GenerarLoteResponseDTO response = new GenerarLoteResponseDTO();
             try
-            {                
+            {
                 response.Result.Data = _loteService.GenerarLote(request);
 
                 response.Result.Success = true;
@@ -186,7 +186,7 @@ namespace Integracion.Deuda.Controller
                 response.FechaUltimaActualizacion = resultado.FechaUltimaActualizacion;
                 response.UsuarioUltimaActualizacion = resultado.UsuarioUltimaActualizacion;
                 response.Activo = resultado.Activo;
-
+                response.PromedioTotalAnalisisSensorial = resultado.PromedioTotalAnalisisSensorial;
                 response.Result.Success = true;
 
             }
