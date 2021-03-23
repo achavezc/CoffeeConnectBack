@@ -752,10 +752,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>Tipo Producción</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -798,24 +799,26 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox55">
+                    <Textbox Name="TipoProduccion">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!TipoProduccion.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox55</rd:DefaultName>
+                      <rd:DefaultName>TipoProduccion</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -847,6 +850,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -4442,7 +4446,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -4498,7 +4501,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -4558,7 +4560,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -4614,7 +4615,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -4631,7 +4631,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Precio del día</Value>
+                              <Value>Precio</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -4674,7 +4674,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -4730,7 +4729,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -4790,7 +4788,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -4846,7 +4843,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -5503,10 +5499,14 @@
           <DataField>TipoProveedorId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="TipoProduccion">
+          <DataField>TipoProduccion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>NotaCompra</rd:DataSetName>
-        <rd:SchemaPath>D:\JORDAN\FL\MR\CoreRDLCReport-master\RDLCDesign\NotaCompra.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\jdavilat\MR\CoreRDLCReport-master\RDLCDesign\NotaCompra.xsd</rd:SchemaPath>
         <rd:TableName>NotaCompra</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
