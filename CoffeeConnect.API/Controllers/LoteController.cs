@@ -179,14 +179,17 @@ namespace Integracion.Deuda.Controller
                 response.UnidadMedida = resultado.UnidadMedida;
                 response.Cantidad = resultado.Cantidad;
                 response.TotalKilosNetosPesado = resultado.TotalKilosNetosPesado;
+                response.TotalKilosBrutosPesado = resultado.TotalKilosBrutosPesado;
+                response.PromedioRendimientoPorcentaje = resultado.PromedioRendimientoPorcentaje;
                 response.PromedioRendimientoPorcentaje = resultado.PromedioRendimientoPorcentaje;
                 response.PromedioHumedadPorcentaje = resultado.PromedioHumedadPorcentaje;
+                response.PromedioTotalAnalisisSensorial = resultado.PromedioTotalAnalisisSensorial;
+                
                 response.FechaRegistro = resultado.FechaRegistro;
                 response.UsuarioRegistro = resultado.UsuarioRegistro;
                 response.FechaUltimaActualizacion = resultado.FechaUltimaActualizacion;
                 response.UsuarioUltimaActualizacion = resultado.UsuarioUltimaActualizacion;
                 response.Activo = resultado.Activo;
-                response.PromedioTotalAnalisisSensorial = resultado.PromedioTotalAnalisisSensorial;
                 response.Result.Success = true;
 
             }
