@@ -23,6 +23,10 @@ namespace CoffeeConnect.Models
 		public String Licencia { get; set; }
 		public int CantidadLotes { get; set; }
 		public Decimal PromedioPorcentajeRendimiento { get; set; }
+
+		public string NumeroConstanciaMTC
+		{ get; set; }
+
 		public int CantidadTotal { get; set; }
 		public Decimal PesoKilosBrutos { get; set; }
 		public String EstadoId { get; set; }

@@ -44,6 +44,7 @@ namespace CoffeeConnect.Service
             int loteId = 0;
 
             decimal totalKilosNetosPesado = 0;
+            decimal totalKilosBrutosPesado = 0;
             decimal totalCantidad = 0;
             string unidadMedidaId = String.Empty;
             decimal totalRendimientoPorcentaje = 0;
@@ -73,6 +74,7 @@ namespace CoffeeConnect.Service
                     item.UnidadMedidaIdPesado = notaingreso.UnidadMedidaIdPesado;
                     item.CantidadPesado = notaingreso.CantidadPesado;
                     item.KilosNetosPesado = notaingreso.KilosNetosPesado;
+                    item.KilosBrutosPesado = notaingreso.KilosBrutosPesado;
                     item.RendimientoPorcentaje = notaingreso.RendimientoPorcentaje;
                     item.HumedadPorcentaje = notaingreso.HumedadPorcentajeAnalisisFisico;
                     item.TotalAnalisisSensorial = notaingreso.TotalAnalisisSensorial.Value;
@@ -80,6 +82,7 @@ namespace CoffeeConnect.Service
 
                     item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
                     totalKilosNetosPesado = totalKilosNetosPesado + item.KilosNetosPesado;
+                    totalKilosBrutosPesado = totalKilosBrutosPesado + item.KilosBrutosPesado;
                     totalRendimientoPorcentaje = totalRendimientoPorcentaje + item.RendimientoPorcentaje.Value;
                     totalAnalisisSensorial = totalAnalisisSensorial + item.TotalAnalisisSensorial;
                     totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
@@ -91,6 +94,7 @@ namespace CoffeeConnect.Service
 
 
                 lote.TotalKilosNetosPesado = totalKilosNetosPesado;
+                lote.TotalKilosBrutosPesado = totalKilosBrutosPesado;
                 lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje/ lotesDetalle.Count;
                 lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
                 lote.UnidadMedidaId = unidadMedidaId;
@@ -216,8 +220,10 @@ namespace CoffeeConnect.Service
             response.UnidadMedida = Lote.UnidadMedida;
             response.Cantidad = Lote.Cantidad;
             response.TotalKilosNetosPesado = Lote.TotalKilosNetosPesado;
+            response.TotalKilosBrutosPesado = Lote.TotalKilosBrutosPesado;
             response.PromedioRendimientoPorcentaje = Lote.PromedioRendimientoPorcentaje;
             response.PromedioHumedadPorcentaje = Lote.PromedioHumedadPorcentaje;
+            response.PromedioTotalAnalisisSensorial = Lote.PromedioTotalAnalisisSensorial;
             response.FechaRegistro = Lote.FechaRegistro;
             response.UsuarioRegistro = Lote.UsuarioRegistro;
             response.FechaUltimaActualizacion = Lote.FechaUltimaActualizacion;

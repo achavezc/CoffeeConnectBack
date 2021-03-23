@@ -82,6 +82,10 @@ namespace CoffeeConnect.Models
 		public decimal KilosNetosPesado
 		{ get; set; }
 
+
+		public decimal KilosBrutosPesado
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the RendimientoPorcentaje value.
 		/// </summary>

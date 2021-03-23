@@ -31,8 +31,11 @@ namespace CoffeeConnect.DTO
 		public String UnidadMedida { get; set; }
 		public Decimal? Cantidad { get; set; }
 		public Decimal? TotalKilosNetosPesado { get; set; }
+		public Decimal? TotalKilosBrutosPesado { get; set; }
 		public Decimal? PromedioRendimientoPorcentaje { get; set; }
 		public Decimal? PromedioHumedadPorcentaje { get; set; }
+
+		public Decimal? PromedioTotalAnalisisSensorial { get; set; }
 		public DateTime FechaRegistro { get; set; }
 		public String UsuarioRegistro { get; set; }
 		public DateTime? FechaUltimaActualizacion { get; set; }

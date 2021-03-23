@@ -55,7 +55,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", guiaRemisionAlmacen.FechaRegistro);
             parameters.Add("@UsuarioRegistro", guiaRemisionAlmacen.UsuarioRegistro);
             
-            parameters.Add("@GuiaRemisionId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@GuiaRemisionAlmacenId", dbType: DbType.Int32, direction: ParameterDirection.Output);
             
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -63,7 +63,7 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspGuiaRemisionAlmacenInsertarActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-            result = parameters.Get<int>("GuiaRemisionId");
+            result = parameters.Get<int>("GuiaRemisionAlmacenId");
 
 
             return result;

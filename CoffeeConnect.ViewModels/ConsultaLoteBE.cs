@@ -47,6 +47,11 @@ namespace CoffeeConnect.DTO
 		public decimal TotalKilosNetosPesado
 		{ get; set; }
 
+		public decimal TotalKilosBrutosPesado
+		{ get; set; }
+
+		
+
 		/// <summary>
 		/// Gets or sets the PromedioRendimientoPorcentaje value.
 		/// </summary>
@@ -58,6 +63,10 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public decimal PromedioHumedadPorcentaje
 		{ get; set; }
+
+		public decimal PromedioTotalAnalisisSensorial
+		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
