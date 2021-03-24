@@ -267,7 +267,7 @@ namespace Integracion.Deuda.Controller
 
                 //ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE item = _notaCompraService.ConsultarImpresionNotaCompraPorGuiaRecepcionMateriaPrimaId(request);
 
-                List<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE> lista = new List<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>();
+                List<ConsultaImpresionLotePorIdBE> lista = _loteService.ConsultarImpresionLotePorId(id);
                 //lista.Add(item);
 
                 var path = $"{this._webHostEnvironment.ContentRootPath}\\Reportes\\rptEtiquetas.rdlc";

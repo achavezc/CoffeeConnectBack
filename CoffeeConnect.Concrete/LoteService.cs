@@ -120,6 +120,18 @@ namespace CoffeeConnect.Service
             return loteId;
         }
 
+
+       
+
+
+        public List<ConsultaImpresionLotePorIdBE> ConsultarImpresionLotePorId(int loteId)
+        {
+
+            var list = _ILoteRepository.ConsultarImpresionLotePorId(loteId);
+
+            return list.ToList();
+        }
+
         public List<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request)
         {
             if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))

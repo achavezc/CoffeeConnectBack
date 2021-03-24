@@ -17,5 +17,7 @@ namespace CoffeeConnect.Interface.Service
 
         int ActualizarLote(ActualizarLoteRequestDTO request);
         List<LoteDetalleConsulta> ConsultaLoteDetalleBusquedaPorLoteId(ConsultaLoteDetalleBusquedaPorLoteIdRequestDTO request);
+
+        List<ConsultaImpresionLotePorIdBE> ConsultarImpresionLotePorId(int loteId);
     }
 }

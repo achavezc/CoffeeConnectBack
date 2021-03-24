@@ -99,6 +99,20 @@ namespace CoffeeConnect.Repository
             }
         }
 
+
+        public IEnumerable<ConsultaImpresionLotePorIdBE> ConsultarImpresionLotePorId(int loteId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("LoteId", loteId);
+           
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaImpresionLotePorIdBE>("uspLotesDetalleConsultarImpresionPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public IEnumerable<LoteDetalle> ConsultarLoteDetallePorId(int loteId)
         {
             var parameters = new DynamicParameters();
