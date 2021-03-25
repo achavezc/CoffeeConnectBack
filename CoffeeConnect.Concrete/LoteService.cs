@@ -134,7 +134,7 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request)
         {
-            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
+            if (string.IsNullOrEmpty(request.ProductoId))
                 throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 

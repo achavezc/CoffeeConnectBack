@@ -83,27 +83,26 @@ namespace CoffeeConnect.Service
             
             notaSalidaAlmacen.EstadoId = NotaSalidaAlmacenEstados.Ingresado;          
             notaSalidaAlmacen.FechaRegistro = DateTime.Now;
-            notaSalidaAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;  
+            notaSalidaAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;
 
-            affected = _INotaSalidaAlmacenRepository.Insertar(notaSalidaAlmacen);
-            notaSalidaAlmacen.NotaSalidaAlmacenId = affected;
+            notaSalidaAlmacen.NotaSalidaAlmacenId = _INotaSalidaAlmacenRepository.Insertar(notaSalidaAlmacen);
+            
             
 
 
-            if (affected != 0) {
+            if (notaSalidaAlmacen.NotaSalidaAlmacenId != 0) {
                 request.ListNotaSalidaAlmacenDetalle.ForEach(x => {
                     NotaSalidaAlmacenDetalle obj = new NotaSalidaAlmacenDetalle();
-                    obj.LoteId = x.LoteId;
-                    obj.NotaSalidaAlmacenDetalleId = x.NotaSalidaAlmacenDetalleId;
-                    obj.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
+                    obj.LoteId = x.LoteId;                   
+                    obj.NotaSalidaAlmacenId = notaSalidaAlmacen.NotaSalidaAlmacenId;
 
                     lstnotaSalidaAlmacen.Add(obj);
                 });
 
-                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen, request.NotaSalidaAlmacenId);
+                affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenId);
 
             }
-            affected = notaSalidaAlmacen.NotaSalidaAlmacenId;
+           
 
             #region Guia Remision
             int guiaRemisionAlmacenId;

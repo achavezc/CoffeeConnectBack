@@ -268,6 +268,16 @@ namespace CoffeeConnect.DTO
 		public string MotivoTrasladoId
 		{ get; set; }
 
+		public string ConfiguracionVehicularId
+		{ get; set; }
+
+		public string ConfiguracionVehicular
+		{ get; set; }
+
+
+	
+
+
 		/// <summary>
 		/// Gets or sets the MotivoTrasladoReferencia value.
 		/// </summary>

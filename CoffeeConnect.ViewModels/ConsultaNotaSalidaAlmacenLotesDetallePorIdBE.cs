@@ -17,6 +17,10 @@ namespace CoffeeConnect.DTO
 		public int LoteId
 		{ get; set; }
 
+		public string NumeroLote
+		{ get; set; }
+		
+
 		/// <summary>
 		/// Gets or sets the NumeroNotaIngresoAlmacen value.
 		/// </summary>
