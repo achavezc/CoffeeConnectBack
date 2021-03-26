@@ -93,9 +93,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
             parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);
             parameters.Add("@CantidadTotal", notaSalidaAlmacen.CantidadTotal);
-            parameters.Add("@PesoKilosBrutos", notaSalidaAlmacen.PesoKilosBrutos);
+            parameters.Add("@PesoKilosBrutos", notaSalidaAlmacen.PesoKilosBrutos);           
             
-            parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
             parameters.Add("@FechaUltimaActualizacion", notaSalidaAlmacen.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", notaSalidaAlmacen.UsuarioUltimaActualizacion);
             //parameters.Add("@Activo", notaSalidaAlmacen.Activo);

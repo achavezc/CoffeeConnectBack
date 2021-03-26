@@ -136,7 +136,7 @@ namespace CoffeeConnect.Service
             #endregion
 
 
-            guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.ActualizarGuiaRemisionAlmacen(guiaRemisionAlmacen);
+            guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
 
             if (guiaRemisionAlmacenId != 0)
             {
@@ -192,7 +192,7 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.CantidadTotal = request.CantidadTotal;
             notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
 
-            notaSalidaAlmacen.EstadoId = request.EstadoId;
+            //notaSalidaAlmacen.EstadoId = request.EstadoId;
             notaSalidaAlmacen.FechaUltimaActualizacion = DateTime.Now;
             notaSalidaAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacen;
             
@@ -223,11 +223,22 @@ namespace CoffeeConnect.Service
             if (guiaRemisionPivot == null)
             {
                 guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacen);
+
+                guiaRemisionAlmacen.FechaRegistro = DateTime.Now;
+                guiaRemisionAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;
+
+                guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
             }
+            else
+            {
+                guiaRemisionAlmacen.FechaUltimaActualizacion = DateTime.Now;
+                guiaRemisionAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacen;
 
+                _IGuiaRemisionAlmacenRepository.Actualizar(guiaRemisionAlmacen);
 
-
-            guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.ActualizarGuiaRemisionAlmacen(guiaRemisionAlmacen);
+                guiaRemisionAlmacenId = guiaRemisionPivot.GuiaRemisionAlmacenId;
+            }
+            
 
             if (guiaRemisionAlmacenId != 0)
             {
