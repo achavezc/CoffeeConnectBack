@@ -337,8 +337,10 @@ namespace CoffeeConnect.Service
                 notaSalidaAlmacenPorIdBE.AnalisisSensorialDefectoDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisSensorialDefectoDetallePorId(request.NotaSalidaAlmacenId);
                 notaSalidaAlmacenPorIdBE.DetalleLotes = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(request.NotaSalidaAlmacenId);
                 notaSalidaAlmacenPorIdBE.Detalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenDetallePorId(request.NotaSalidaAlmacenId).ToList();
+                notaSalidaAlmacenPorIdBE.RegistroTostadoIndicadorDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenRegistroTostadoIndicadorDetallePorId(request.NotaSalidaAlmacenId).ToList();
+                
 
-               
+
             }
 
 
