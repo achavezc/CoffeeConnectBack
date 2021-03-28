@@ -48,6 +48,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", guiaRemisionAlmacen.Licencia);
             parameters.Add("@CantidadLotes", guiaRemisionAlmacen.CantidadLotes);
             parameters.Add("@PromedioPorcentajeRendimiento", guiaRemisionAlmacen.PromedioPorcentajeRendimiento);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);
             parameters.Add("@CantidadTotal", guiaRemisionAlmacen.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", guiaRemisionAlmacen.PesoKilosBrutos);
             parameters.Add("@EstadoId", guiaRemisionAlmacen.EstadoId);
@@ -90,6 +91,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", guiaRemisionAlmacen.Licencia);
             parameters.Add("@CantidadLotes", guiaRemisionAlmacen.CantidadLotes);
             parameters.Add("@PromedioPorcentajeRendimiento", guiaRemisionAlmacen.PromedioPorcentajeRendimiento);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);
             parameters.Add("@CantidadTotal", guiaRemisionAlmacen.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", guiaRemisionAlmacen.PesoKilosBrutos);
             parameters.Add("@FechaUltimaActualizacion", guiaRemisionAlmacen.FechaUltimaActualizacion);
