@@ -120,10 +120,6 @@ namespace CoffeeConnect.Service
             return loteId;
         }
 
-
-       
-
-
         public List<ConsultaImpresionLotePorIdBE> ConsultarImpresionLotePorId(int loteId)
         {
 

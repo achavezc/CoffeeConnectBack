@@ -28,23 +28,23 @@ namespace CoffeeConnect.Repository
         {
             int result = 0;
 
-            var parameters = new DynamicParameters();       
-           
+            var parameters = new DynamicParameters();
+
             parameters.Add("@EmpresaId", lote.EmpresaId);
             parameters.Add("@Numero", lote.Numero);
             parameters.Add("@EstadoId", lote.EstadoId);
             parameters.Add("@AlmacenId", lote.AlmacenId);
             parameters.Add("@TotalKilosNetosPesado", lote.TotalKilosNetosPesado);
             parameters.Add("@TotalKilosBrutosPesado", lote.TotalKilosBrutosPesado);
-            
+
             parameters.Add("@UnidadMedidaId", lote.UnidadMedidaId);
             parameters.Add("@Cantidad", lote.Cantidad);
             parameters.Add("@PromedioRendimientoPorcentaje", lote.PromedioRendimientoPorcentaje);
             parameters.Add("@PromedioHumedadPorcentaje", lote.PromedioHumedadPorcentaje);
             parameters.Add("@PromedioTotalAnalisisSensorial", lote.PromedioTotalAnalisisSensorial);
-            
+
             parameters.Add("@FechaRegistro", lote.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", lote.UsuarioRegistro);        
+            parameters.Add("@UsuarioRegistro", lote.UsuarioRegistro);
 
             parameters.Add("@LoteId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -65,7 +65,7 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
-                        
+
             parameters.Add("@LoteDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -104,8 +104,6 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("LoteId", loteId);
-           
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -117,7 +115,7 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("LoteId", loteId);
-            
+
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -165,8 +163,9 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result= db.Query<LotesBE>("uspLotesConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
-                if (result.Any()) {
+                result = db.Query<LotesBE>("uspLotesConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+                if (result.Any())
+                {
                     lote = result.First();
                 }
             }

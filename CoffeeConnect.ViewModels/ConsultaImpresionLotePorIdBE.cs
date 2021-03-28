@@ -47,6 +47,8 @@ namespace CoffeeConnect.DTO
         public string Certificacion
         { get; set; }
 
+        public long SocioId { get; set; }
+
 
         #endregion
     }
