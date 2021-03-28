@@ -130,8 +130,12 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request)
         {
-            if (string.IsNullOrEmpty(request.ProductoId))
+
+            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.ProductoId))
                 throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+
+
+           
 
 
             var timeSpan = request.FechaFin - request.FechaInicio;
@@ -223,7 +227,7 @@ namespace CoffeeConnect.Service
             response.UnidadMedidaId = Lote.UnidadMedidaId;
             response.UnidadMedida = Lote.UnidadMedida;
             response.Cantidad = Lote.Cantidad;
-            response.TotalKilosNetosPesado = Lote.TotalKilosNetosPesado;
+            response.TotalKilosNetosPesado = Lote.TotalKilosBrutosPesado;
             response.TotalKilosBrutosPesado = Lote.TotalKilosBrutosPesado;
             response.PromedioRendimientoPorcentaje = Lote.PromedioRendimientoPorcentaje;
             response.PromedioHumedadPorcentaje = Lote.PromedioHumedadPorcentaje;
