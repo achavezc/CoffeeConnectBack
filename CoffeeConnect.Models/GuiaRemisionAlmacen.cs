@@ -24,6 +24,10 @@ namespace CoffeeConnect.Models
 		public int CantidadLotes { get; set; }
 		public Decimal PromedioPorcentajeRendimiento { get; set; }
 
+		public Decimal HumedadPorcentajeAnalisisFisico { get; set; }
+
+		
+
 		public string NumeroConstanciaMTC
 		{ get; set; }
 

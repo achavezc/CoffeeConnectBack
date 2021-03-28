@@ -47,7 +47,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Conductor", guiaRemisionAlmacen.Conductor);
             parameters.Add("@Licencia", guiaRemisionAlmacen.Licencia);
             parameters.Add("@CantidadLotes", guiaRemisionAlmacen.CantidadLotes);
+            parameters.Add("@NumeroConstanciaMTC", guiaRemisionAlmacen.NumeroConstanciaMTC);
+            
             parameters.Add("@PromedioPorcentajeRendimiento", guiaRemisionAlmacen.PromedioPorcentajeRendimiento);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);
             parameters.Add("@CantidadTotal", guiaRemisionAlmacen.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", guiaRemisionAlmacen.PesoKilosBrutos);
             parameters.Add("@EstadoId", guiaRemisionAlmacen.EstadoId);
@@ -88,8 +91,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PlacaCarreta", guiaRemisionAlmacen.PlacaCarreta);
             parameters.Add("@Conductor", guiaRemisionAlmacen.Conductor);
             parameters.Add("@Licencia", guiaRemisionAlmacen.Licencia);
+            parameters.Add("@NumeroConstanciaMTC", guiaRemisionAlmacen.NumeroConstanciaMTC);
+            
             parameters.Add("@CantidadLotes", guiaRemisionAlmacen.CantidadLotes);
             parameters.Add("@PromedioPorcentajeRendimiento", guiaRemisionAlmacen.PromedioPorcentajeRendimiento);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);
             parameters.Add("@CantidadTotal", guiaRemisionAlmacen.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", guiaRemisionAlmacen.PesoKilosBrutos);
             parameters.Add("@FechaUltimaActualizacion", guiaRemisionAlmacen.FechaUltimaActualizacion);
@@ -106,6 +112,27 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+
+        public int ActualizarDatosCalidad(GuiaRemisionAlmacen guiaRemisionAlmacen)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);           
+            parameters.Add("@FechaUltimaActualizacion", guiaRemisionAlmacen.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", guiaRemisionAlmacen.UsuarioUltimaActualizacion);
+            parameters.Add("@GuiaRemisionAlmacenId", guiaRemisionAlmacen.GuiaRemisionId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspGuiaRemisionAlmacenActualizarDatosCalidad", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+
+            return result;
+        }
 
         public int ActualizarGuiaRemisionAlmacenDetalle(List<GuiaRemisionAlmacenDetalleTipo> guiaRemisionAlmacenDetalle)
         {
