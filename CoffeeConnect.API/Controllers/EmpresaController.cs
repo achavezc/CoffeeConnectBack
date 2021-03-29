@@ -5,6 +5,7 @@ using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Collections.Generic;
+using CoffeeConnect.Service;
 
 namespace Integracion.Deuda.Controller
 {
@@ -13,10 +14,13 @@ namespace Integracion.Deuda.Controller
     public class EmpresaController : ControllerBase
     {
         private IEmpresaService _empresaService;
+        private IEmpresaProveedoraAcreedoraService _empresaProveedoraAcreedoraService;
+
         private Core.Common.Logger.ILog _log;
-        public EmpresaController(IEmpresaService empresaService, Core.Common.Logger.ILog log)
+        public EmpresaController(IEmpresaService empresaService, IEmpresaProveedoraAcreedoraService empresaProveedoraAcreedoraService, Core.Common.Logger.ILog log)
         {
             _empresaService = empresaService;
+            _empresaProveedoraAcreedoraService = empresaProveedoraAcreedoraService;
             _log = log;
         }
 
@@ -34,10 +38,18 @@ namespace Integracion.Deuda.Controller
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            ConsultaEmpresaResponseDTO response = new ConsultaEmpresaResponseDTO();
+            //ConsultaEmpresaResponseDTO response = new ConsultaEmpresaResponseDTO();
+
+            ConsultaEmpresaProveedoraAcreedoraResponseDTO response = new ConsultaEmpresaProveedoraAcreedoraResponseDTO();
+
             try
-            {                
-                List<EmpresaBE> lista = _empresaService.ConsultarEmpresa(request.EmpresaId);
+            {
+                ConsultaEmpresaProveedoraAcreedoraRequestDTO consultaEmpresaProveedoraAcreedoraRequestDTO = new ConsultaEmpresaProveedoraAcreedoraRequestDTO();
+                consultaEmpresaProveedoraAcreedoraRequestDTO.EmpresaId = request.EmpresaId;
+                consultaEmpresaProveedoraAcreedoraRequestDTO.EstadoId = MaestroEstados.Activo;
+
+                //List<EmpresaBE> lista = _empresaService.ConsultarEmpresa(request.EmpresaId);
+                List<ConsultaEmpresaProveedoraAcreedoraBE> lista = _empresaProveedoraAcreedoraService.ConsultarEmpresaProveedoraAcreedora(consultaEmpresaProveedoraAcreedoraRequestDTO);
 
                 response.Result.Data = lista;
 
