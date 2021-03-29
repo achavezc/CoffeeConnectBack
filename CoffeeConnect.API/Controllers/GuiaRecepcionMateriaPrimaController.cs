@@ -1,8 +1,9 @@
-﻿using System;
-using CoffeeConnect.DTO;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Integracion.Deuda.Controller
 {
@@ -12,6 +13,7 @@ namespace Integracion.Deuda.Controller
     {
         private IGuiaRecepcionMateriaPrimaService _guiaRecepcionMateriaPrimaService;
         private Core.Common.Logger.ILog _log;
+
         public GuiaRecepcionMateriaPrimaController(IGuiaRecepcionMateriaPrimaService guiaRecepcionMateriaPrimaService, Core.Common.Logger.ILog log)
         {
             _guiaRecepcionMateriaPrimaService = guiaRecepcionMateriaPrimaService;
@@ -34,7 +36,7 @@ namespace Integracion.Deuda.Controller
 
             ConsultaGuiaRecepcionMateriaPrimaResponseDTO response = new ConsultaGuiaRecepcionMateriaPrimaResponseDTO();
             try
-            {                
+            {
                 response.Result.Data = _guiaRecepcionMateriaPrimaService.ConsultarGuiaRecepcionMateriaPrima(request);
 
                 response.Result.Success = true;

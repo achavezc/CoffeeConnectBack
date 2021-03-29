@@ -1,0 +1,67 @@
+﻿using Core.Common.Domain.Model;
+using System;
+using System.Collections.Generic;
+
+namespace CoffeeConnect.DTO
+{
+    public class GenerarPDFGuiaRemisionResponseDTO
+    {
+        public GenerarPDFGuiaRemisionResponseDTO()
+        {
+            Result = new Result();
+            Cabecera = new List<CabeceraGuiaRemision>();
+            listaDetalleGM = new List<GuiaRemisionListaDetalle>();
+            detalleGM = new List<GuiaRemisionDetalle>();
+        }
+
+        public Result Result { get; set; }
+        public IList<CabeceraGuiaRemision> Cabecera { get; set; }
+        public IList<GuiaRemisionListaDetalle> listaDetalleGM { get; set; }
+        public IList<GuiaRemisionDetalle> detalleGM { get; set; }
+    }
+
+    public class CabeceraGuiaRemision
+    {
+        public string RazonSocial { get; set; }
+        public string NumeroGuiaRemision { get; set; }
+        public string Direccion { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Ruc { get; set; }
+        public string Almacen { get; set; }
+        public string Destinatario { get; set; }
+        public string RucDestinatario { get; set; }
+        public string DireccionPartida { get; set; }
+        public string DireccionDestino { get; set; }
+    }
+
+    public class GuiaRemisionListaDetalle
+    {
+        public int correlativo { get; set; }
+        public string NumeroLote { get; set; }
+        public string NotaIngreso { get; set; }
+        public string TipoProducto { get; set; }
+        public string UnidadMedida { get; set; }
+        public long Cantidad { get; set; }
+        public decimal PesoBruto { get; set; }
+    }
+
+    public class GuiaRemisionDetalle
+    {
+        public long TotalLotes { get; set; }
+        public decimal Rendimiento { get; set; }
+        public decimal PorcentajeHumedad { get; set; }
+        public long CantidadTotal { get; set; }
+        public decimal TotalKGBrutos { get; set; }
+        public string MotivoTraslado { get; set; }
+        public string MotivoDetalleTraslado { get; set; }
+        public string PropietarioTransportista { get; set; }
+        public string TransportistaDomicilio { get; set; }
+        public string TransportistaCodigoVehicular { get; set; }
+        public string TransportistaMarca { get; set; }
+        public string TransportistaRUC { get; set; }
+        public string TransportistaPlaca { get; set; }
+        public string TransportistaConductor { get; set; }
+        public string TransportistaConstancia { get; set; }
+        public string TransportistaBrevete { get; set; }
+    }
+}
