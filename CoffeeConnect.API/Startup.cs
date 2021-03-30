@@ -5,6 +5,8 @@ using CoffeeConnect.Repository;
 using CoffeeConnect.Service;
 using CoffeeConnect.Service.MappingConfigurations;
 using Core.Common.Auth;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +37,7 @@ namespace CoffeeConnect.API
             var mappingConfiguration = new MapperConfiguration(config => config.AddProfile(new MappingProfile()));
             IMapper mapper = mappingConfiguration.CreateMapper();
             services.AddSingleton(mapper);
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
             var jwtOptions = new JwtOptions();
             var section = Configuration.GetSection("jwt");
@@ -75,14 +78,14 @@ namespace CoffeeConnect.API
 
             services.AddTransient<IMaestroService, MaestroService>();
             services.AddTransient<IMaestroRepository, MaestroRepository>();
-            
+
 
             services.AddTransient<IGuiaRecepcionMateriaPrimaService, GuiaRecepcionMateriaPrimaService>();
             services.AddTransient<IGuiaRecepcionMateriaPrimaRepository, GuiaRecepcionMateriaPrimaRepository>();
 
             services.AddTransient<IProveedorService, ProveedorService>();
             services.AddTransient<IProveedorRepository, ProveedorRepository>();
-            
+
             services.AddTransient<ILoteService, LoteService>();
             services.AddTransient<ILoteRepository, LoteRepository>();
 
@@ -126,7 +129,7 @@ namespace CoffeeConnect.API
             services.AddTransient<IGuiaRemisionAlmacenRepository, GuiaRemisionAlmacenRepository>();
 
 
-            
+
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
                     .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);

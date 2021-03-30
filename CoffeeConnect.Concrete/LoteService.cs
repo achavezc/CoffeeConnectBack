@@ -8,6 +8,7 @@ using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace CoffeeConnect.Service
 {
@@ -134,16 +135,10 @@ namespace CoffeeConnect.Service
             if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.ProductoId))
                 throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
-
-           
-
-
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
-
-
 
             var list = _ILoteRepository.ConsultarLote(request);
 
@@ -249,6 +244,36 @@ namespace CoffeeConnect.Service
             //response.LoteId = request.LoteId;
 
             return response;
+        }
+
+        public string ObtenerHTMLReporteEtiquetasLotes(List<ConsultaImpresionLotePorIdBE> listaEtiquetasLotes)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (listaEtiquetasLotes != null && listaEtiquetasLotes.Count > 0)
+            {
+                ConsultaImpresionLotePorIdBE impresionLote = new ConsultaImpresionLotePorIdBE();
+                decimal cantidadTotal = listaEtiquetasLotes.Sum(x => x.Cantidad);
+                decimal cantTotalxSocio = 0;
+
+                IEnumerable<long> codigosSocios = listaEtiquetasLotes.Select(x => x.SocioId).Distinct();
+
+                sb.Append("<div>");
+
+                for (int i = 0; i < codigosSocios.Count(); i++)
+                {
+                    impresionLote = listaEtiquetasLotes.Where(x => x.SocioId == codigosSocios.ElementAt(i)).FirstOrDefault();
+                    cantTotalxSocio = listaEtiquetasLotes.Where(x => x.SocioId == codigosSocios.ElementAt(i)).Sum(x => x.Cantidad);
+                    if (impresionLote != null)
+                    {
+                        for (int j = 0; j < cantTotalxSocio; j++)
+                        {
+                            sb.Append($"<table border='1' style='width: 100%; height: 50%; margin-top: 15px;'><tr><td style='margin: 0;'><img src='http://localhost:4200/assets/img/LogoJuanSantosAtahualpa.jpg' width='120' height='160'></ td><td style='text-align: center;font-weight: bold;'>COOPERATIVA AGROECOLOGICA INDUSTRIAL JUAN SANTOS ATAHUALPA<br/>SISTEMA DE TRAZABILIDAD DE CALIDAD DE CAFÉ</td></tr><tr><td colspan='2'><table border='1' style='width: 100%; height: 100%;'><tr style='padding: 20px;'><td style='background-color: #AED6F1;font-weight: bold;'>LOTE</td><td style='text-align: center;'>{impresionLote.Numero.Trim()}</td><td style='background-color: #AED6F1;font-weight: bold;'>CÓDIGO</td><td style='text-align: center;'>{impresionLote.CodigoSocio.Trim()}</td><td colspan='2' style='background-color: #AED6F1;font-weight: bold;'>AGENCIA CERTIFICADORA</td><td style='text-align: center;'>{impresionLote.AgenciaCertificadora}</td></tr><tr><td colspan='2' style='background-color: #AED6F1;font-weight: bold;'>FECHA</td><td colspan='5'>{DateTime.Now.ToString("dd/MM/yyyy")}</td></tr><tr><td colspan='2'>PRODUCTOR</td><td colspan='5'>{impresionLote.Socio.Trim()}</td></tr><tr><td colspan='2' style='font-weight: bold;'>ZONA</td><td colspan='5'>{impresionLote.Zona.Trim()}</td></tr><tr><td colspan='2'>FINCA</td><td colspan='5'>{impresionLote.Finca.Trim()}</td></tr><tr><td style='background-color: #AED6F1;font-weight: bold;'>HUMEDAD</td><td>{impresionLote.PromedioHumedadPorcentaje}</td><td colspan='2' style='background-color: #AED6F1;font-weight: bold;'>RENDIMIENTO</td><td colspan='3'>{impresionLote.PromedioRendimientoPorcentaje}</td></tr><tr><td style='background-color: #AED6F1;font-weight: bold;'>SACOS</td><td colspan='3'>{cantidadTotal}</td><td style='background-color: #AED6F1;font-weight: bold;'>KILOS BRUTOS</td><td colspan='2'>{impresionLote.TotalKilosBrutosPesado}</td></tr><tr></tr><tr><td colspan='3' style='background-color: #AED6F1;font-weight: bold;'>TIPO DE PRODUCCIÓN</td><td colspan='4'>{impresionLote.TipoProduccion.Trim()}</td></tr><tr><td colspan='2' style='background-color: #AED6F1;font-weight: bold;'>CERTIFICACIÓN</td><td colspan='5'>{impresionLote.Certificacion.Trim()}</td></tr></table></td></tr><tr><td colspan='2' style='text-align: center; font-weight: bold;'>Este producto cumple con el reglamento técnico para productos orgánicos</td></tr></table>");
+                        }
+                    }
+                }
+                sb.Append("</div>");
+            }
+            return sb.ToString();
         }
     }
 }
