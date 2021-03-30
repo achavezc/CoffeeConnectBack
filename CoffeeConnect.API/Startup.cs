@@ -95,6 +95,9 @@ namespace CoffeeConnect.API
             services.AddTransient<ISocioService, SocioService>();
             services.AddTransient<ISocioRepository, SocioRepository>();
 
+            services.AddTransient<ISocioFincaCertificacionService, SocioFincaCertificacionService>();
+            services.AddTransient<ISocioFincaCertificacionRepository, SocioFincaCertificacionRepository>();
+
             services.AddTransient<IEmpresaTransporteService, EmpresaTransporteService>();
             services.AddTransient<IEmpresaTransporteRepository, EmpresaTransporteRepository>();
 
