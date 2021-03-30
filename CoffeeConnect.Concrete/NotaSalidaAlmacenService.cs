@@ -406,7 +406,21 @@ namespace CoffeeConnect.Service
 
             int affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenAnalisisCalidad(notaSalidaAlmacen);
 
+            ConsultaGuiaRemisionAlmacen guiaRemisionPivot = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenPorNotaSalidaAlmacenId(notaSalidaAlmacen.NotaSalidaAlmacenId);
 
+            if (guiaRemisionPivot == null)
+            {
+                GuiaRemisionAlmacen guiaRemisionAlmacen = new GuiaRemisionAlmacen();
+                guiaRemisionAlmacen.FechaUltimaActualizacion = DateTime.Now;
+                guiaRemisionAlmacen.UsuarioUltimaActualizacion = request.UsuarioCalidad;
+                guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
+                guiaRemisionAlmacen.GuiaRemisionId = guiaRemisionPivot.GuiaRemisionAlmacenId;
+                _IGuiaRemisionAlmacenRepository.ActualizarDatosCalidad(guiaRemisionAlmacen);
+            }
+                
+
+
+             
 
             #region "Analisis Fisico Color"
             if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)

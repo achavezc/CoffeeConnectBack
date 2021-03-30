@@ -98,4 +98,14 @@ namespace CoffeeConnect.Service
 
 
     }
+
+
+    public static class MaestroEstados
+    {
+        public static String Activo { get { return "01"; } }
+
+        public static String Anulado { get { return "00"; } }
+
+
+    }
 }
