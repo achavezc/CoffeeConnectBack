@@ -300,16 +300,14 @@ namespace Integracion.Deuda.Controller
                     Orientation = Orientation.Portrait,
                     PaperSize = PaperKind.A4,
                     Margins = new MarginSettings { Top = 10 },
-                    DocumentTitle = "Etiquetas Lotes",
-                    //Out = @"D:\PDFCreator\Employee_Report.pdf"
+                    DocumentTitle = "Etiquetas Lotes"
                 };
                 var objectSettings = new ObjectSettings
                 {
                     PagesCount = true,
                     HtmlContent = html,
                     WebSettings = { DefaultEncoding = "utf-8" },
-                    HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Page [page] of [toPage]" },
-                    //FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Report Footer" }
+                    HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Página [page] de [toPage]" }
                 };
                 var pdf = new HtmlToPdfDocument()
                 {
