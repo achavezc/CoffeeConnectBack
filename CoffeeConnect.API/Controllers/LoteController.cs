@@ -1,6 +1,8 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,12 +16,14 @@ namespace Integracion.Deuda.Controller
         private ILoteService _loteService;
         private Core.Common.Logger.ILog _log;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private IConverter _converter;
 
-        public LoteController(ILoteService loteService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
+        public LoteController(ILoteService loteService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment, IConverter converter)
         {
             _loteService = loteService;
             _log = log;
             _webHostEnvironment = webHostEnvironment;
+            _converter = converter;
         }
 
         [HttpGet("version")]
@@ -267,6 +271,64 @@ namespace Integracion.Deuda.Controller
             }
 
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("GenerarPDFEtiquetasLote")]
+        [HttpGet]
+        public IActionResult GenerarPDFEtiquetasLote(int id)
+        {
+            return GenerarPDF(id);
+        }
+
+        IActionResult GenerarPDF(int id)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
+
+            GenerarPDFEtiquetasLoteResponseDTO response = new GenerarPDFEtiquetasLoteResponseDTO();
+            try
+            {
+                GenerarPDFEtiquetasLoteRequestDTO request = new GenerarPDFEtiquetasLoteRequestDTO { LoteId = id };
+                response.Result.Data = _loteService.ConsultarImpresionLotePorId(request.LoteId);
+                string html = _loteService.ObtenerHTMLReporteEtiquetasLotes(response.Result.Data);
+
+                var globalSettings = new GlobalSettings
+                {
+                    ColorMode = ColorMode.Color,
+                    Orientation = Orientation.Portrait,
+                    PaperSize = PaperKind.A4,
+                    Margins = new MarginSettings { Top = 10 },
+                    DocumentTitle = "Etiquetas Lotes"
+                };
+                var objectSettings = new ObjectSettings
+                {
+                    PagesCount = true,
+                    HtmlContent = html,
+                    WebSettings = { DefaultEncoding = "utf-8" },
+                    HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Página [page] de [toPage]" }
+                };
+                var pdf = new HtmlToPdfDocument()
+                {
+                    GlobalSettings = globalSettings,
+                    Objects = { objectSettings }
+                };
+                var file = _converter.Convert(pdf);
+
+                return File(file, "application/pdf");
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
         }
