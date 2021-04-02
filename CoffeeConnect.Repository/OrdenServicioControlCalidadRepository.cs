@@ -76,6 +76,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadPesado", OrdenServicioControlCalidad.CantidadPesado);
             parameters.Add("@ProductoId", OrdenServicioControlCalidad.ProductoId);
             parameters.Add("@SubProductoId", OrdenServicioControlCalidad.SubProductoId);
+            parameters.Add("@TipoProduccionId", OrdenServicioControlCalidad.TipoProduccionId);
+
+            
             parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);
             parameters.Add("@ExportableGramosAnalisisFisico", OrdenServicioControlCalidad.ExportableGramosAnalisisFisico);
             parameters.Add("@ExportablePorcentajeAnalisisFisico", OrdenServicioControlCalidad.ExportablePorcentajeAnalisisFisico);
@@ -123,6 +126,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadPesado", OrdenServicioControlCalidad.CantidadPesado);
             parameters.Add("@ProductoId", OrdenServicioControlCalidad.ProductoId);
             parameters.Add("@SubProductoId", OrdenServicioControlCalidad.SubProductoId);
+            parameters.Add("@TipoProduccionId", OrdenServicioControlCalidad.TipoProduccionId);
             parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);
             parameters.Add("@ExportableGramosAnalisisFisico", OrdenServicioControlCalidad.ExportableGramosAnalisisFisico);
             parameters.Add("@ExportablePorcentajeAnalisisFisico", OrdenServicioControlCalidad.ExportablePorcentajeAnalisisFisico);
