@@ -194,7 +194,7 @@ namespace Integracion.Deuda.Controller
             ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadResponseDTO response = new ActualizarGuiaRecepcionMateriaPrimaAnalisisCalidadResponseDTO();
             try
             {
-                response.Result.Data = _ordenServicioControlCalidadService.ActualizarOrdenServicioControlCalidadSeccionCalidad(request);
+                response.Result.Data = _ordenServicioControlCalidadService.ActualizarOrdenServicioControlCalidadAnalisisCalidad(request);
 
                 response.Result.Success = true;
 

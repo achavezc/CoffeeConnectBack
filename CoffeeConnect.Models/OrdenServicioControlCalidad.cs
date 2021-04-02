@@ -35,5 +35,14 @@ namespace CoffeeConnect.Models
 		public DateTime? FechaUltimaActualizacion { get; set; }
 		public String UsuarioUltimaActualizacion { get; set; }
 
+		public DateTime? FechaCalidad
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioCalidad value.
+		/// </summary>
+		public string UsuarioCalidad
+		{ get; set; }
+
 	}
 }

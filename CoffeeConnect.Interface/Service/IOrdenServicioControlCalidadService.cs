@@ -13,7 +13,7 @@ namespace CoffeeConnect.Interface.Service
         int RegistrarOrdenServicioControlCalidad(RegistrarActualizarOrdenServicioControlCalidadRequestDTO request);
         int ActualizarOrdenServicioControlCalidad(RegistrarActualizarOrdenServicioControlCalidadRequestDTO request);
         ConsultaOrdenServicioControlCalidadPorIdBE ConsultarOrdenServicioControlCalidadPorId(ConsultaOrdenServicioCalidadServicioPorIdRequestDTO request);
-        int ActualizarOrdenServicioControlCalidadSeccionCalidad(ActualizarOrderServicioControlCalidadRequestDTO request);
+        int ActualizarOrdenServicioControlCalidadAnalisisCalidad(ActualizarOrderServicioControlCalidadRequestDTO request);
 
     }
 }

@@ -12,6 +12,9 @@ namespace CoffeeConnect.Interface.Repository
         int ActualizarEstado(int ordenServicioControlCalidadId, DateTime fecha, string usuario, string estadoId);
         int Insertar(OrdenServicioControlCalidad OrdenServicioControlCalidad);
         int Actualizar(OrdenServicioControlCalidad OrdenServicioControlCalidad);
+
+        int ActualizarAnalisisCalidad(OrdenServicioControlCalidad OrdenServicioControlCalidad);
+
         ConsultaOrdenServicioControlCalidadPorIdBE ConsultarOrdenServicioControlCalidadPorId(int OrdenServicioControlCalidadId);
         IEnumerable<OrdenServicioControlCalidadAnalisisFisicoColorDetalle> ConsultarOrdenServicioControlCalidadAnalisisFisicoColorDetallePorId(int OrdenServicioControlCalidadId);
         IEnumerable<OrdenServicioControlCalidadAnalisisFisicoOlorDetalle> ConsultarOrdenServicioControlCalidadAnalisisFisicoOlorDetallePorId(int OrdenServicioControlCalidadId);

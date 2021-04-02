@@ -31,6 +31,15 @@ namespace CoffeeConnect.Service
 
         public static String GuiaRemisionAlmacen { get { return "GuiaRemisionAlmacen"; } }
 
+        public static String OrdenServicioControlCalidad { get { return "OrdenServicioControlCalidad"; } }
+
+        public static String OrdenProceso { get { return "OrdenProceso"; } }
+
+        public static String Cliente { get { return "Cliente"; } }
+
+        public static String Contrato { get { return "Contrato"; } }
+
+
 
     }
 

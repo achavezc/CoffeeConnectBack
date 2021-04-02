@@ -76,23 +76,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadPesado", OrdenServicioControlCalidad.CantidadPesado);
             parameters.Add("@ProductoId", OrdenServicioControlCalidad.ProductoId);
             parameters.Add("@SubProductoId", OrdenServicioControlCalidad.SubProductoId);
-            parameters.Add("@TipoProduccionId", OrdenServicioControlCalidad.TipoProduccionId);
-
-            
-            parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);
-            parameters.Add("@ExportableGramosAnalisisFisico", OrdenServicioControlCalidad.ExportableGramosAnalisisFisico);
-            parameters.Add("@ExportablePorcentajeAnalisisFisico", OrdenServicioControlCalidad.ExportablePorcentajeAnalisisFisico);
-            parameters.Add("@DescarteGramosAnalisisFisico", OrdenServicioControlCalidad.DescarteGramosAnalisisFisico);
-            parameters.Add("@DescartePorcentajeAnalisisFisico", OrdenServicioControlCalidad.DescartePorcentajeAnalisisFisico);
-            parameters.Add("@CascarillaGramosAnalisisFisico", OrdenServicioControlCalidad.CascarillaGramosAnalisisFisico);
-            parameters.Add("@CascarillaPorcentajeAnalisisFisico", OrdenServicioControlCalidad.CascarillaPorcentajeAnalisisFisico);
-            parameters.Add("@TotalGramosAnalisisFisico", OrdenServicioControlCalidad.TotalGramosAnalisisFisico);
-            parameters.Add("@TotalPorcentajeAnalisisFisico", OrdenServicioControlCalidad.TotalPorcentajeAnalisisFisico);
-            parameters.Add("@HumedadPorcentajeAnalisisFisico", OrdenServicioControlCalidad.HumedadPorcentajeAnalisisFisico);
-            parameters.Add("@ObservacionAnalisisFisico", OrdenServicioControlCalidad.ObservacionAnalisisFisico);
-            parameters.Add("@ObservacionRegistroTostado", OrdenServicioControlCalidad.ObservacionRegistroTostado);
-            parameters.Add("@TotalAnalisisSensorial", OrdenServicioControlCalidad.TotalAnalisisSensorial);
-            parameters.Add("@ObservacionAnalisisSensorial", OrdenServicioControlCalidad.ObservacionAnalisisSensorial);
+            parameters.Add("@TipoProduccionId", OrdenServicioControlCalidad.TipoProduccionId);            
+            parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);            
             parameters.Add("@EstadoId", OrdenServicioControlCalidad.EstadoId);
             parameters.Add("@FechaRegistro", OrdenServicioControlCalidad.FechaRegistro);
             parameters.Add("@UsuarioRegistro", OrdenServicioControlCalidad.UsuarioRegistro);
@@ -120,28 +105,13 @@ namespace CoffeeConnect.Repository
 
             parameters.Add("@OrdenServicioControlCalidadId", OrdenServicioControlCalidad.OrdenServicioControlCalidadId);
             parameters.Add("@EmpresaId", OrdenServicioControlCalidad.EmpresaId);
-            parameters.Add("@EmpresaProcesadoraId", OrdenServicioControlCalidad.EmpresaProcesadoraId);
-            parameters.Add("@Numero", OrdenServicioControlCalidad.Numero);
+            parameters.Add("@EmpresaProcesadoraId", OrdenServicioControlCalidad.EmpresaProcesadoraId);            
             parameters.Add("@UnidadMedidaId", OrdenServicioControlCalidad.UnidadMedidaId);
             parameters.Add("@CantidadPesado", OrdenServicioControlCalidad.CantidadPesado);
             parameters.Add("@ProductoId", OrdenServicioControlCalidad.ProductoId);
             parameters.Add("@SubProductoId", OrdenServicioControlCalidad.SubProductoId);
             parameters.Add("@TipoProduccionId", OrdenServicioControlCalidad.TipoProduccionId);
-            parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);
-            parameters.Add("@ExportableGramosAnalisisFisico", OrdenServicioControlCalidad.ExportableGramosAnalisisFisico);
-            parameters.Add("@ExportablePorcentajeAnalisisFisico", OrdenServicioControlCalidad.ExportablePorcentajeAnalisisFisico);
-            parameters.Add("@DescarteGramosAnalisisFisico", OrdenServicioControlCalidad.DescarteGramosAnalisisFisico);
-            parameters.Add("@DescartePorcentajeAnalisisFisico", OrdenServicioControlCalidad.DescartePorcentajeAnalisisFisico);
-            parameters.Add("@CascarillaGramosAnalisisFisico", OrdenServicioControlCalidad.CascarillaGramosAnalisisFisico);
-            parameters.Add("@CascarillaPorcentajeAnalisisFisico", OrdenServicioControlCalidad.CascarillaPorcentajeAnalisisFisico);
-            parameters.Add("@TotalGramosAnalisisFisico", OrdenServicioControlCalidad.TotalGramosAnalisisFisico);
-            parameters.Add("@TotalPorcentajeAnalisisFisico", OrdenServicioControlCalidad.TotalPorcentajeAnalisisFisico);
-            parameters.Add("@HumedadPorcentajeAnalisisFisico", OrdenServicioControlCalidad.HumedadPorcentajeAnalisisFisico);
-            parameters.Add("@ObservacionAnalisisFisico", OrdenServicioControlCalidad.ObservacionAnalisisFisico);
-            parameters.Add("@ObservacionRegistroTostado", OrdenServicioControlCalidad.ObservacionRegistroTostado);
-            parameters.Add("@TotalAnalisisSensorial", OrdenServicioControlCalidad.TotalAnalisisSensorial);
-            parameters.Add("@ObservacionAnalisisSensorial", OrdenServicioControlCalidad.ObservacionAnalisisSensorial);
-            parameters.Add("@EstadoId", OrdenServicioControlCalidad.EstadoId);
+            parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);  
             parameters.Add("@FechaUltimaActualizacion", OrdenServicioControlCalidad.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", OrdenServicioControlCalidad.UsuarioUltimaActualizacion);
 
@@ -154,6 +124,45 @@ namespace CoffeeConnect.Repository
 
             return result;
         }
+
+
+        public int ActualizarAnalisisCalidad(OrdenServicioControlCalidad ordenServicioControlCalidad)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@OrdenServicioControlCalidadId", ordenServicioControlCalidad.OrdenServicioControlCalidadId);
+            parameters.Add("@ExportableGramosAnalisisFisico", ordenServicioControlCalidad.ExportableGramosAnalisisFisico);
+            parameters.Add("@ExportablePorcentajeAnalisisFisico", ordenServicioControlCalidad.ExportablePorcentajeAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", ordenServicioControlCalidad.DescarteGramosAnalisisFisico);
+            parameters.Add("@DescartePorcentajeAnalisisFisico", ordenServicioControlCalidad.DescartePorcentajeAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", ordenServicioControlCalidad.CascarillaGramosAnalisisFisico);
+            parameters.Add("@CascarillaPorcentajeAnalisisFisico", ordenServicioControlCalidad.CascarillaPorcentajeAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", ordenServicioControlCalidad.TotalGramosAnalisisFisico);
+            parameters.Add("@TotalPorcentajeAnalisisFisico", ordenServicioControlCalidad.TotalPorcentajeAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", ordenServicioControlCalidad.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TotalAnalisisSensorial", ordenServicioControlCalidad.TotalAnalisisSensorial);
+
+            parameters.Add("@ObservacionAnalisisFisico", ordenServicioControlCalidad.ObservacionAnalisisFisico);
+            parameters.Add("@FechaCalidad", ordenServicioControlCalidad.FechaCalidad);
+            parameters.Add("@UsuarioCalidad", ordenServicioControlCalidad.UsuarioCalidad);
+            parameters.Add("@ObservacionRegistroTostado", ordenServicioControlCalidad.ObservacionRegistroTostado);
+            parameters.Add("@ObservacionAnalisisSensorial", ordenServicioControlCalidad.ObservacionAnalisisSensorial);
+            parameters.Add("@EstadoId", ordenServicioControlCalidad.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", ordenServicioControlCalidad.FechaCalidad);
+            parameters.Add("@UsuarioUltimaActualizacion", ordenServicioControlCalidad.UsuarioCalidad);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspOrdenServicioControlCalidadActualizarCalidad", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
+
 
         public ConsultaOrdenServicioControlCalidadPorIdBE ConsultarOrdenServicioControlCalidadPorId(int OrdenServicioControlCalidadId)
         {

@@ -36,9 +36,11 @@ namespace CoffeeConnect.DTO
 		public Decimal? CascarillaPorcentajeAnalisisFisico { get; set; }
 		public Decimal? TotalGramosAnalisisFisico { get; set; }
 		public Decimal? TotalPorcentajeAnalisisFisico { get; set; }
+
+
 		public Decimal? HumedadPorcentajeAnalisisFisico { get; set; }
-		public Decimal? ObservacionAnalisisFisico { get; set; }
-		public Decimal? ObservacionRegistroTostado { get; set; }
+		public string ObservacionAnalisisFisico { get; set; }
+		public string ObservacionRegistroTostado { get; set; }
 		public Decimal? TotalAnalisisSensorial { get; set; }
 		public String ObservacionAnalisisSensorial { get; set; }
 		public String EstadoId { get; set; }
@@ -47,6 +49,18 @@ namespace CoffeeConnect.DTO
 		public String UsuarioRegistro { get; set; }
 		public DateTime? FechaUltimaActualizacion { get; set; }
 		public String UsuarioUltimaActualizacion { get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaCalidad value.
+		/// </summary>
+		public DateTime? FechaCalidad
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioCalidad value.
+		/// </summary>
+		public string UsuarioCalidad
+		{ get; set; }
 		public bool Activo { get; set; }
 
 

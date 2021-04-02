@@ -71,40 +71,24 @@ namespace CoffeeConnect.Service
 		}
 
 
-        public int RegistrarOrdenServicioControlCalidad(RegistrarActualizarOrdenServicioControlCalidadRequestDTO request)
+        public int  RegistrarOrdenServicioControlCalidad(RegistrarActualizarOrdenServicioControlCalidadRequestDTO request)
         {
             OrdenServicioControlCalidad OrdenServicioControlCalidad = new OrdenServicioControlCalidad();
             
             int affected = 0;
 
-
             OrdenServicioControlCalidad.EmpresaId = request.EmpresaId;
-            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;
-            OrdenServicioControlCalidad.Numero = request.Numero;
+            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;            
+            OrdenServicioControlCalidad.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.OrdenServicioControlCalidad);
             OrdenServicioControlCalidad.UnidadMedidaId = request.UnidadMedidaId;
             OrdenServicioControlCalidad.CantidadPesado = request.CantidadPesado;
             OrdenServicioControlCalidad.ProductoId = request.ProductoId;
             OrdenServicioControlCalidad.SubProductoId = request.SubProductoId;
-            OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje = request.RendimientoEsperadoPorcentaje;
-            OrdenServicioControlCalidad.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
-            OrdenServicioControlCalidad.ExportablePorcentajeAnalisisFisico = request.ExportablePorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
-            OrdenServicioControlCalidad.DescartePorcentajeAnalisisFisico = request.DescartePorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
-            OrdenServicioControlCalidad.CascarillaPorcentajeAnalisisFisico = request.CascarillaPorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
-            OrdenServicioControlCalidad.TotalPorcentajeAnalisisFisico = request.TotalPorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.ObservacionAnalisisFisico = request.ObservacionAnalisisFisico;
-            OrdenServicioControlCalidad.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
-            OrdenServicioControlCalidad.TotalAnalisisSensorial = request.TotalAnalisisSensorial;
-            OrdenServicioControlCalidad.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
-            OrdenServicioControlCalidad.EstadoId = OrdenServicioControlCalidadEstados.Ingresado;
-            
+            OrdenServicioControlCalidad.TipoProduccionId = request.TipoProduccionId;
+            OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje = request.RendimientoEsperadoPorcentaje;            
+            OrdenServicioControlCalidad.EstadoId = OrdenServicioControlCalidadEstados.Ingresado;            
             OrdenServicioControlCalidad.FechaRegistro = DateTime.Now;
-            OrdenServicioControlCalidad.UsuarioRegistro = request.UsuarioOrdenServicioControlCalidad;
-            
-            
+            OrdenServicioControlCalidad.UsuarioRegistro = request.UsuarioOrdenServicioControlCalidad;     
 
             affected = _IOrdenServicioControlCalidadRepository.Insertar(OrdenServicioControlCalidad);
             OrdenServicioControlCalidad.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId = affected;
@@ -120,27 +104,13 @@ namespace CoffeeConnect.Service
 
             OrdenServicioControlCalidad.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId;
             OrdenServicioControlCalidad.EmpresaId = request.EmpresaId;
-            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;
-            OrdenServicioControlCalidad.Numero = request.Numero;
+            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;           
             OrdenServicioControlCalidad.UnidadMedidaId = request.UnidadMedidaId;
             OrdenServicioControlCalidad.CantidadPesado = request.CantidadPesado;
             OrdenServicioControlCalidad.ProductoId = request.ProductoId;
             OrdenServicioControlCalidad.SubProductoId = request.SubProductoId;
-            OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje = request.RendimientoEsperadoPorcentaje;
-            OrdenServicioControlCalidad.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
-            OrdenServicioControlCalidad.ExportablePorcentajeAnalisisFisico = request.ExportablePorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
-            OrdenServicioControlCalidad.DescartePorcentajeAnalisisFisico = request.DescartePorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
-            OrdenServicioControlCalidad.CascarillaPorcentajeAnalisisFisico = request.CascarillaPorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
-            OrdenServicioControlCalidad.TotalPorcentajeAnalisisFisico = request.TotalPorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
-            OrdenServicioControlCalidad.ObservacionAnalisisFisico = request.ObservacionAnalisisFisico;
-            OrdenServicioControlCalidad.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
-            OrdenServicioControlCalidad.TotalAnalisisSensorial = request.TotalAnalisisSensorial;
-            OrdenServicioControlCalidad.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
-            OrdenServicioControlCalidad.EstadoId = request.EstadoId;
+            OrdenServicioControlCalidad.TipoProduccionId = request.TipoProduccionId;
+            OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje = request.RendimientoEsperadoPorcentaje;            
             OrdenServicioControlCalidad.FechaUltimaActualizacion = DateTime.Now;
             OrdenServicioControlCalidad.UsuarioUltimaActualizacion = request.UsuarioOrdenServicioControlCalidad;
 
@@ -179,6 +149,8 @@ namespace CoffeeConnect.Service
                 OrdenServicioControlCalidadPorIdBE.AnalisisFisicoOlorDetalle = _IOrdenServicioControlCalidadRepository.ConsultarOrdenServicioControlCalidadAnalisisFisicoOlorDetallePorId(request.OrdenServicioControlCalidadId);
                 OrdenServicioControlCalidadPorIdBE.AnalisisSensorialAtributoDetalle = _IOrdenServicioControlCalidadRepository.ConsultarOrdenServicioControlCalidadAnalisisSensorialAtributoDetallePorId(request.OrdenServicioControlCalidadId);
                 OrdenServicioControlCalidadPorIdBE.AnalisisSensorialDefectoDetalle = _IOrdenServicioControlCalidadRepository.ConsultarOrdenServicioControlCalidadAnalisisSensorialDefectoDetallePorId(request.OrdenServicioControlCalidadId);
+                OrdenServicioControlCalidadPorIdBE.RegistroTostadoIndicadorDetalle = _IOrdenServicioControlCalidadRepository.ConsultarOrdenServicioControlCalidadRegistroTostadoIndicadorDetallePorId(request.OrdenServicioControlCalidadId);
+
             }
 
 
@@ -190,10 +162,32 @@ namespace CoffeeConnect.Service
        
 
 
-        public int ActualizarOrdenServicioControlCalidadSeccionCalidad(ActualizarOrderServicioControlCalidadRequestDTO request)
+        public int ActualizarOrdenServicioControlCalidadAnalisisCalidad(ActualizarOrderServicioControlCalidadRequestDTO request)
         {
-            int affected = 0;
+            OrdenServicioControlCalidad ordenServicioControlCalidad = new OrdenServicioControlCalidad();
 
+            ordenServicioControlCalidad.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId;
+            ordenServicioControlCalidad.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
+            ordenServicioControlCalidad.ExportablePorcentajeAnalisisFisico = request.ExportablePorcentajeAnalisisFisico;
+            ordenServicioControlCalidad.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
+            ordenServicioControlCalidad.DescartePorcentajeAnalisisFisico = request.DescartePorcentajeAnalisisFisico;
+            ordenServicioControlCalidad.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
+            ordenServicioControlCalidad.CascarillaPorcentajeAnalisisFisico = request.CascarillaPorcentajeAnalisisFisico;
+            ordenServicioControlCalidad.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
+            ordenServicioControlCalidad.TotalPorcentajeAnalisisFisico = request.TotalPorcentajeAnalisisFisico;
+            ordenServicioControlCalidad.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
+            ordenServicioControlCalidad.ObservacionAnalisisFisico = request.ObservacionAnalisisFisico;
+            ordenServicioControlCalidad.UsuarioCalidad = request.UsuarioCalidad;
+            ordenServicioControlCalidad.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
+            ordenServicioControlCalidad.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
+            ordenServicioControlCalidad.UsuarioCalidad = request.UsuarioCalidad;
+            ordenServicioControlCalidad.EstadoId = GuiaRecepcionMateriaPrimaEstados.Analizado;
+            ordenServicioControlCalidad.FechaCalidad = DateTime.Now;
+            ordenServicioControlCalidad.TotalAnalisisSensorial = request.TotalAnalisisSensorial;
+
+           
+
+            int affected = _IOrdenServicioControlCalidadRepository.ActualizarAnalisisCalidad(ordenServicioControlCalidad);
 
             #region "Analisis Fisico Color"
             if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)
@@ -289,6 +283,8 @@ namespace CoffeeConnect.Service
             }
             #endregion
 
+            #region "Analisis Sensorial Defecto Detalle"
+
             if (request.AnalisisSensorialDefectoDetalleList.FirstOrDefault() != null)
             {
                 List<OrdenServicioControlCalidadAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<OrdenServicioControlCalidadAnalisisSensorialDefectoDetalleTipo>();
@@ -306,6 +302,9 @@ namespace CoffeeConnect.Service
                 affected = _IOrdenServicioControlCalidadRepository.ActualizarOrdenServicioControlCalidadAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.OrdenServicioControlCalidadId);
             }
 
+            #endregion
+
+            #region "Registro Tostado Indicador Detalle"
 
             if (request.RegistroTostadoIndicadorDetalleList.FirstOrDefault() != null)
             {
@@ -324,6 +323,8 @@ namespace CoffeeConnect.Service
 
                 affected = _IOrdenServicioControlCalidadRepository.ActualizarOrdenServicioControlCalidadRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, request.OrdenServicioControlCalidadId);
             }
+
+            #endregion
 
             return affected;
         }

@@ -16,6 +16,9 @@ namespace CoffeeConnect.DTO
 		public Decimal CantidadPesado { get; set; }
 		public String ProductoId { get; set; }
 		public String SubProductoId { get; set; }
+		public String TipoProduccionId { get; set; }
+
+		
 		public Decimal? RendimientoEsperadoPorcentaje { get; set; }
 		public Decimal? ExportableGramosAnalisisFisico { get; set; }
 		public Decimal? ExportablePorcentajeAnalisisFisico { get; set; }
