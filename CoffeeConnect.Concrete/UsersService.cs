@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CoffeeConnect.DTO;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CoffeeConnect.Service
 {
@@ -20,11 +18,6 @@ namespace CoffeeConnect.Service
             _UsersRepository = usersRepository;
             _EmpresaRepository = empresaRepository;
         }
-
-
-        
-
-
 
         string dataMenu = @"[
   {
@@ -142,18 +135,6 @@ namespace CoffeeConnect.Service
           {
             path: '/acopio/operaciones/notasalida-list',
             title: 'Acopio.Operaciones.SalidaAlmacen.Label',
-            icon: 'ft-arrow-right submenu-icon',
-            class: '',
-            badge: '',
-            badgeClass: '',
-            isExternalLink: false,
-            submenu: [
-              
-            ]
-          },
-          {
-            path: '/acopio/operaciones/orderservicio-controlcalidadexterna-list',
-            title: 'Acopio.Operaciones.ControlCalidadExterna.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
             badge: '',
@@ -338,7 +319,18 @@ namespace CoffeeConnect.Service
     badgeClass: '',
     isExternalLink: true,
     submenu: [
-      
+      {
+            path: '/acopio/operaciones/orderservicio-controlcalidadexterna-list',
+            title: 'Acopio.Operaciones.ControlCalidadExterna.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          }
     ]
   },
   {
@@ -359,12 +351,12 @@ namespace CoffeeConnect.Service
         {
             LoginBE loginDTO = new LoginBE();
 
-            var usuariosList = _UsersRepository.AuthenticateUsers(username,  password);
+            var usuariosList = _UsersRepository.AuthenticateUsers(username, password);
 
             if (!usuariosList.Any())
                 throw new ResultException(new Result { ErrCode = "02", Message = "Login.UsuarioPasswordIncorrecto" });
 
-            
+
             var usuario = usuariosList.First();
 
             loginDTO.IdUsuario = usuario.UserId;
@@ -373,8 +365,8 @@ namespace CoffeeConnect.Service
 
             var empresa = _EmpresaRepository.ObtenerEmpresaPorId(usuario.EmpresaId);
 
-            if (empresa!= null)
-            {               
+            if (empresa != null)
+            {
                 loginDTO.RazonSocialEmpresa = empresa.RazonSocial;
                 loginDTO.RucEmpresa = empresa.Ruc;
                 loginDTO.EmpresaId = empresa.EmpresaId;
@@ -382,7 +374,7 @@ namespace CoffeeConnect.Service
                 loginDTO.LogoEmpresa = empresa.Logo;
                 loginDTO.MonedaId = "01";
                 loginDTO.Moneda = "Soles";
-                
+
                 List<ProductoPrecioDiaBE> precios = new List<ProductoPrecioDiaBE>();
 
                 ProductoPrecioDiaBE precioCafePergaminoMote = new ProductoPrecioDiaBE();
@@ -412,7 +404,7 @@ namespace CoffeeConnect.Service
 
             loginDTO.Opciones = opciones;
 
-            return loginDTO;           
+            return loginDTO;
 
         }
     }

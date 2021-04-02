@@ -114,7 +114,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>B</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1651,7 +1651,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>¿Faros neblineros?</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2194,7 +2194,7 @@
         </TablixRowHierarchy>
         <Top>3.67583in</Top>
         <Left>0.13417in</Left>
-        <Height>2.66618in</Height>
+        <Height>2.66616in</Height>
         <Width>6.03125in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -2918,7 +2918,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>¿Transporta aceites?</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -3258,7 +3258,7 @@
         </TablixRowHierarchy>
         <Top>6.41146in</Top>
         <Left>0.13417in</Left>
-        <Height>1.21875in</Height>
+        <Height>1.21872in</Height>
         <Width>6.03125in</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -3403,7 +3403,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>¿Cómo separo el café de estos productos?</Value>
+                              <Value>¿Cómo separa el café de estos productos?</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -3474,7 +3474,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>Explique las medidas de separación física que empleo</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -3558,7 +3558,7 @@
         </TablixRowHierarchy>
         <Top>7.73889in</Top>
         <Left>0.13418in</Left>
-        <Height>0.79167in</Height>
+        <Height>0.79168in</Height>
         <Width>6.03125in</Width>
         <ZIndex>3</ZIndex>
         <Style>
