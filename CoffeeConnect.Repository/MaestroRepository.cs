@@ -57,5 +57,13 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ConsultaPaisBE> ConsultarPais()
+        {
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaPaisBE>("uspPaisConsulta",commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

@@ -10,6 +10,6 @@ namespace CoffeeConnect.Interface.Service
         List<ConsultaUbigeoBE> ConsultaUbibeo();
         List<Zona> ConsultarZona(string codigoDistrito);
 
-
+        List<ConsultaPaisBE> ConsultarPais();
     }
 }

@@ -11,5 +11,7 @@ namespace CoffeeConnect.Interface.Repository
 
         IEnumerable<Zona> ConsultarZona(string codigoDistrito);
 
+        IEnumerable<ConsultaPaisBE> ConsultarPais();
+
     }
 }

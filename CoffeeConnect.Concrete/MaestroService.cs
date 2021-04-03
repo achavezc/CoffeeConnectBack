@@ -37,7 +37,12 @@ namespace CoffeeConnect.Service
             return lista.ToList();
         }
 
+        public List<ConsultaPaisBE> ConsultarPais()
+        {
+            var lista = _IMaestroRepository.ConsultarPais();
 
+            return lista.ToList();
+        }
 
     }
 }
