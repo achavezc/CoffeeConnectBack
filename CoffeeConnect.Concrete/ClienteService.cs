@@ -36,14 +36,14 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request)
 		{
-			//if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.NombreRazonSocial))
-			//	throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Cliente.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 
-			var timeSpan = request.FechaFin - request.FechaInicio;
+            var timeSpan = request.FechaFin - request.FechaInicio;
 
 			if (timeSpan.Days > 730)
-				throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
+				throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Cliente.ValidacionRangoFechaMayor2anios.Label" });
 
 
 
@@ -52,33 +52,33 @@ namespace CoffeeConnect.Service
 			return list.ToList();
 		}
 
-        //public int RegistrarProductor(RegistrarActualizarProductorRequestDTO request)
-        //{
-        //    Productor productor = _Mapper.Map<Productor>(request);
-        //    productor.FechaRegistro = DateTime.Now;
-        //    productor.UsuarioRegistro = request.Usuario;
-        //    productor.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Productor);
+        public int RegistrarCliente(RegistrarActualizarClienteRequestDTO request)
+        {
+            Cliente cliente = _Mapper.Map<Cliente>(request);
+            cliente.FechaRegistro = DateTime.Now;
+            cliente.UsuarioRegistro = request.Usuario;
+            cliente.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Cliente);
 
-        //    int affected = _IProductorRepository.Insertar(productor);
+            int affected = _IClienteRepository.Insertar(cliente);
 
-        //    return affected;           
-        //}
+            return affected;
+        }
 
-        //public int ActualizarProductor(RegistrarActualizarProductorRequestDTO request)
-        //{
-        //    Productor productor = _Mapper.Map<Productor>(request);
-        //    productor.FechaUltimaActualizacion = DateTime.Now;
-        //    productor.UsuarioUltimaActualizacion = request.Usuario;
+        public int ActualizarCliente(RegistrarActualizarClienteRequestDTO request)
+        {
+            Cliente cliente = _Mapper.Map<Cliente>(request);
+            cliente.FechaUltimaActualizacion = DateTime.Now;
+            cliente.UsuarioUltimaActualizacion = request.Usuario;
 
-        //    int affected = _IProductorRepository.Actualizar(productor);
+            int affected = _IClienteRepository.Actualizar(cliente);
 
-        //    return affected;
-        //}
+            return affected;
+        }
 
-        //public ConsultaProductorIdBE ConsultarProductorId(ConsultaProductorIdRequestDTO request)
-        //{
-        //    return _IProductorRepository.ConsultarProductorId(request.ProductorId);
-        //}
+        public ConsultaClientePorIdBE ConsultarClientePorId(ConsultaClientePorIdRequestDTO request)
+        {
+            return _IClienteRepository.ConsultarClientePorId(request.ClienteId);
+        }
 
     }
 }   

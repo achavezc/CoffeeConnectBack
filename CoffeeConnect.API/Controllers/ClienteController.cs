@@ -59,95 +59,95 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-        //[Route("Registrar")]
-        //[HttpPost]
-        //public IActionResult Registrar([FromBody] RegistrarActualizarProductorRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+        [Route("Registrar")]
+        [HttpPost]
+        public IActionResult Registrar([FromBody] RegistrarActualizarClienteRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    RegistrarActualizarProductorResponseDTO response = new RegistrarActualizarProductorResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _productorService.RegistrarProductor(request);
+            RegistrarActualizarClienteResponseDTO response = new RegistrarActualizarClienteResponseDTO();
+            try
+            {
+                response.Result.Data = _clienteService.RegistrarCliente(request);
 
-        //        response.Result.Success = true;
+                response.Result.Success = true;
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
-        //[Route("Actualizar")]
-        //[HttpPost]
-        //public IActionResult Actualizar([FromBody] RegistrarActualizarProductorRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+        [Route("Actualizar")]
+        [HttpPost]
+        public IActionResult Actualizar([FromBody] RegistrarActualizarClienteRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    RegistrarActualizarProductorResponseDTO response = new RegistrarActualizarProductorResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _productorService.ActualizarProductor(request);
+            RegistrarActualizarClienteResponseDTO response = new RegistrarActualizarClienteResponseDTO();
+            try
+            {
+                response.Result.Data = _clienteService.ActualizarCliente(request);
 
-        //        response.Result.Success = true;
+                response.Result.Success = true;
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
-        //[Route("ConsultarPorId")]
-        //[HttpPost]
-        //public IActionResult ConsultarPorId([FromBody] ConsultaProductorIdRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+        [Route("ConsultarPorId")]
+        [HttpPost]
+        public IActionResult ConsultarPorId([FromBody] ConsultaClientePorIdRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    ConsultaProductorPorIdResponseDTO response = new ConsultaProductorPorIdResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _productorService.ConsultarProductorId(request);
+            ConsultaClientePorIdResponseDTO response = new ConsultaClientePorIdResponseDTO();
+            try
+            {
+                response.Result.Data = _clienteService.ConsultarClientePorId(request);
 
-        //        response.Result.Success = true;
+                response.Result.Success = true;
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
     }
 }

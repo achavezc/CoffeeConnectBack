@@ -8,12 +8,12 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface IClienteRepository
     {
-        //int Insertar(Productor lote);
+        int Insertar(Cliente cliente);
 
-        //int Actualizar(Productor lote);
+        int Actualizar(Cliente cliente);
 
         IEnumerable<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request);
 
-        //        ConsultaProductorIdBE ConsultarProductorId(int productorId);
+        ConsultaClientePorIdBE ConsultarClientePorId(int clienteId);
     }
 }

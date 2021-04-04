@@ -6,12 +6,12 @@ namespace CoffeeConnect.Interface.Service
     public interface IClienteService
     {
 
-        //int RegistrarProductor(RegistrarActualizarProductorRequestDTO request);
-        //int ActualizarProductor(RegistrarActualizarProductorRequestDTO request);
+        int RegistrarCliente(RegistrarActualizarClienteRequestDTO request);
+        int ActualizarCliente(RegistrarActualizarClienteRequestDTO request);
 
 
         List<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request);
-        //ConsultaProductorIdBE ConsultarProductorId(ConsultaProductorIdRequestDTO request);
+        ConsultaClientePorIdBE ConsultarClientePorId(ConsultaClientePorIdRequestDTO request);
 
 
     }

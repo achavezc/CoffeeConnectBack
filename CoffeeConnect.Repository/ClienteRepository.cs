@@ -44,131 +44,98 @@ namespace CoffeeConnect.Repository
 			}
 		}
 
-  //      public int Insertar(Productor productor)
-  //      {
-  //          int result = 0;
+        public int Insertar(Cliente cliente)
+        {
+            int result = 0;
 
-		//	var parameters = new DynamicParameters();			
-		//	parameters.Add("@Numero", productor.Numero);
-		//	parameters.Add("@RazonSocial", productor.RazonSocial);
-		//	parameters.Add("@TipoDocumentoId", productor.TipoDocumentoId);
-		//	parameters.Add("@NumeroDocumento", productor.NumeroDocumento);
-		//	parameters.Add("@Nombres", productor.Nombres);
-		//	parameters.Add("@Apellidos", productor.Apellidos);
-		//	parameters.Add("@Direccion", productor.Direccion);
-		//	parameters.Add("@DepartamentoId", productor.DepartamentoId);
-		//	parameters.Add("@ProvinciaId", productor.ProvinciaId);
-		//	parameters.Add("@DistritoId", productor.DistritoId);
-		//	parameters.Add("@ZonaId", productor.ZonaId);			
-		//	parameters.Add("@NumeroTelefonoFijo", productor.NumeroTelefonoFijo);
-		//	parameters.Add("@NumeroTelefonoCelular", productor.NumeroTelefonoCelular);
-		//	parameters.Add("@CorreoElectronico", productor.CorreoElectronico);
-			
-		//	parameters.Add("@FechaNacimiento", productor.FechaNacimiento);
-		//	parameters.Add("@LugarNacimiento", productor.LugarNacimiento);
-		//	parameters.Add("@EstadoCivilId", productor.EstadoCivilId);
-		//	parameters.Add("@ReligionId", productor.ReligionId);
-		//	parameters.Add("@GeneroId", productor.GeneroId);
-		//	parameters.Add("@GradoEstudiosId", productor.GradoEstudiosId);
-		//	parameters.Add("@CantidadHijos", productor.CantidadHijos);
-		//	parameters.Add("@Idiomas", productor.Idiomas);
-		//	parameters.Add("@Dialecto", productor.Dialecto);
-		//	parameters.Add("@AnioIngresoZona", productor.AnioIngresoZona);
-		//	parameters.Add("@TipoDocumentoIdConyuge", productor.TipoDocumentoIdConyuge);
-		//	parameters.Add("@NumeroDocumentoConyuge", productor.NumeroDocumentoConyuge);
-		//	parameters.Add("@NombresConyuge", productor.NombresConyuge);
-		//	parameters.Add("@ApellidosConyuge", productor.ApellidosConyuge);
-		//	parameters.Add("@NumeroTelefonoCelularConyuge", productor.NumeroTelefonoCelularConyuge);
-		//	parameters.Add("@FechaNacimientoConyuge", productor.FechaNacimientoConyuge);
-		//	parameters.Add("@LugarNacimientoConyuge", productor.LugarNacimientoConyuge);
-		//	parameters.Add("@FechaRegistro", productor.FechaRegistro);
-		//	parameters.Add("@UsuarioRegistro", productor.UsuarioRegistro);
-		//	parameters.Add("@EstadoId", productor.EstadoId);
-		//	parameters.Add("@GradoEstudiosIdConyuge", productor.GradoEstudiosIdConyuge);
-			
-
-		//	parameters.Add("@ProductorId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            
+            var parameters = new DynamicParameters();
+            
+            parameters.Add("@Numero", cliente.Numero);
+            parameters.Add("@TipoClienteId", cliente.TipoClienteId);
+            parameters.Add("@Ruc", cliente.Ruc);
+            parameters.Add("@RazonSocial", cliente.RazonSocial);
+            parameters.Add("@Direccion", cliente.Direccion);
+            parameters.Add("@PaisId", cliente.PaisId);
+            parameters.Add("@DepartamentoId", cliente.DepartamentoId);
+            parameters.Add("@ProvinciaId", cliente.ProvinciaId);
+            parameters.Add("@DistritoId", cliente.DistritoId);
+            parameters.Add("@NumeroTelefono", cliente.NumeroTelefono);
+            parameters.Add("@CorreoElectronico", cliente.CorreoElectronico);
+            parameters.Add("@GerenteGeneral", cliente.GerenteGeneral);
+            parameters.Add("@GerenteGeneralNumero", cliente.GerenteGeneralNumero);
+            parameters.Add("@Presidente", cliente.Presidente);
+            parameters.Add("@PresidenteNumero", cliente.PresidenteNumero);
+            parameters.Add("@FechaRegistro", cliente.FechaRegistro);
+            parameters.Add("@UsuarioRegistro", cliente.UsuarioRegistro);        
+            parameters.Add("@EstadoId", cliente.EstadoId);
+        
 
 
-  //          using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-  //          {
-  //              result = db.Execute("uspProductorInsertar", parameters, commandType: CommandType.StoredProcedure);
-  //          }
-
-  //          int id = parameters.Get<int>("ProductorId");
-
-  //          return id;
-  //      }
-
-		//public int Actualizar(Productor productor)
-		//{
-		//	int result = 0;
-
-		//	var parameters = new DynamicParameters();
-		//	parameters.Add("@ProductorId", productor.ProductorId);	
-		//	parameters.Add("@TipoDocumentoId", productor.TipoDocumentoId);
-		//	parameters.Add("@NumeroDocumento", productor.NumeroDocumento);
-		//	parameters.Add("@RazonSocial", productor.RazonSocial);
-		//	parameters.Add("@Nombres", productor.Nombres);
-		//	parameters.Add("@Apellidos", productor.Apellidos);
-		//	parameters.Add("@Direccion", productor.Direccion);
-		//	parameters.Add("@DepartamentoId", productor.DepartamentoId);
-		//	parameters.Add("@ProvinciaId", productor.ProvinciaId);
-		//	parameters.Add("@DistritoId", productor.DistritoId);
-		//	parameters.Add("@ZonaId", productor.ZonaId);			
-		//	parameters.Add("@NumeroTelefonoFijo", productor.NumeroTelefonoFijo);
-		//	parameters.Add("@NumeroTelefonoCelular", productor.NumeroTelefonoCelular);
-		//	parameters.Add("@CorreoElectronico", productor.CorreoElectronico);
-		//	parameters.Add("@FechaNacimiento", productor.FechaNacimiento);
-		//	parameters.Add("@LugarNacimiento", productor.LugarNacimiento);
-		//	parameters.Add("@EstadoCivilId", productor.EstadoCivilId);
-		//	parameters.Add("@ReligionId", productor.ReligionId);
-		//	parameters.Add("@GeneroId", productor.GeneroId);
-		//	parameters.Add("@GradoEstudiosId", productor.GradoEstudiosId);
-		//	parameters.Add("@CantidadHijos", productor.CantidadHijos);
-		//	parameters.Add("@Idiomas", productor.Idiomas);
-		//	parameters.Add("@Dialecto", productor.Dialecto);
-		//	parameters.Add("@AnioIngresoZona", productor.AnioIngresoZona);
-		//	parameters.Add("@TipoDocumentoIdConyuge", productor.TipoDocumentoIdConyuge);
-		//	parameters.Add("@NumeroDocumentoConyuge", productor.NumeroDocumentoConyuge);
-		//	parameters.Add("@NombresConyuge", productor.NombresConyuge);
-		//	parameters.Add("@ApellidosConyuge", productor.ApellidosConyuge);
-		//	parameters.Add("@NumeroTelefonoCelularConyuge", productor.NumeroTelefonoCelularConyuge);
-		//	parameters.Add("@FechaNacimientoConyuge", productor.FechaNacimientoConyuge);
-		//	parameters.Add("@LugarNacimientoConyuge", productor.LugarNacimientoConyuge);
-		//	parameters.Add("@GradoEstudiosIdConyuge", productor.GradoEstudiosIdConyuge);
-		//	parameters.Add("@FechaUltimaActualizacion", productor.FechaUltimaActualizacion);
-		//	parameters.Add("@UsuarioUltimaActualizacion", productor.UsuarioUltimaActualizacion);
-
-		//	parameters.Add("@EstadoId", productor.EstadoId);
+            parameters.Add("@ClienteId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 
-		//	using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-		//	{
-		//		result = db.Execute("uspProductorActualizar", parameters, commandType: CommandType.StoredProcedure);
-		//	}
-		//	return result;
-		//}
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspClienteInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
 
-		//public ConsultaProductorIdBE ConsultarProductorId(int productorId)
-		//{
-		//	ConsultaProductorIdBE itemBE = null;
+            int id = parameters.Get<int>("ClienteId");
 
-		//	var parameters = new DynamicParameters();
-		//	parameters.Add("@ProductorId", productorId);
+            return id;
+        }
+
+        public int Actualizar(Cliente cliente)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ClienteId", cliente.ClienteId);          
+            parameters.Add("@TipoClienteId", cliente.TipoClienteId);
+            parameters.Add("@Ruc", cliente.Ruc);
+            parameters.Add("@RazonSocial", cliente.RazonSocial);
+            parameters.Add("@Direccion", cliente.Direccion);
+            parameters.Add("@PaisId", cliente.PaisId);
+            parameters.Add("@DepartamentoId", cliente.DepartamentoId);
+            parameters.Add("@ProvinciaId", cliente.ProvinciaId);
+            parameters.Add("@DistritoId", cliente.DistritoId);
+            parameters.Add("@NumeroTelefono", cliente.NumeroTelefono);
+            parameters.Add("@CorreoElectronico", cliente.CorreoElectronico);
+            parameters.Add("@GerenteGeneral", cliente.GerenteGeneral);
+            parameters.Add("@GerenteGeneralNumero", cliente.GerenteGeneralNumero);
+            parameters.Add("@Presidente", cliente.Presidente);
+            parameters.Add("@PresidenteNumero", cliente.PresidenteNumero);           
+            parameters.Add("@FechaUltimaActualizacion", cliente.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", cliente.UsuarioUltimaActualizacion); 
+            parameters.Add("@EstadoId",cliente.EstadoId);
 
 
-		//	using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-		//	{
-		//		var list = db.Query<ConsultaProductorIdBE>("uspProductorObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspClienteActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
 
-		//		if (list.Any())
-		//			itemBE = list.First();
-		//	}
+        public ConsultaClientePorIdBE ConsultarClientePorId(int clienteId)
+        {
+            ConsultaClientePorIdBE itemBE = null;
 
-		//	return itemBE;
-		//}
+            var parameters = new DynamicParameters();
+            parameters.Add("@ClienteId", clienteId);
 
 
-	}
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaClientePorIdBE>("uspClienteConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
+
+
+    }
 }
