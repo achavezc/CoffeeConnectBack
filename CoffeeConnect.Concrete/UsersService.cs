@@ -341,7 +341,7 @@ namespace CoffeeConnect.Service
             ]
           },
 		  {
-            path: '/exportador/cliente/list',
+            path: '/exportador/operaciones/cliente/list',
             title: 'Exportador.Operaciones.Cliente.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
@@ -353,7 +353,7 @@ namespace CoffeeConnect.Service
             ]
           },
 		  {
-            path: '/exportador/contrato/list',
+            path: '/exportador/operaciones/contrato/list',
             title: 'Exportador.Operaciones.Contrato.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
