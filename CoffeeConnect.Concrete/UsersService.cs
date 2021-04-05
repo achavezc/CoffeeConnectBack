@@ -20,7 +20,7 @@ namespace CoffeeConnect.Service
         }
 
         string dataMenu = @"[
-  {
+{
     path: '',
     title: 'Productor.Label',
     icon: 'ft-home',
@@ -313,12 +313,21 @@ namespace CoffeeConnect.Service
   {
     path: '',
     title: 'Exportador.Label',
-    icon: 'ft-life-buoy',
-    class: '',
-    badge: '',
-    badgeClass: '',
-    isExternalLink: true,
-    submenu: [
+     icon: 'ft-life-buoy',
+	class: 'has-sub',
+	badge: '',
+	badgeClass: '',
+	isExternalLink: false,
+	submenu: [
+      {
+        path: '',
+        title: 'Exportador.Operaciones.Label',
+        icon: 'ft-arrow-right submenu-icon',
+        class: 'has-sub',
+        badge: '',
+        badgeClass: '',
+        isExternalLink: false,
+        submenu: [
       {
             path: '/acopio/operaciones/orderservicio-controlcalidadexterna-list',
             title: 'Acopio.Operaciones.ControlCalidadExterna.Label',
@@ -330,22 +339,56 @@ namespace CoffeeConnect.Service
             submenu: [
               
             ]
+          },
+		  {
+            path: '/exportador/cliente/list',
+            title: 'Exportador.Operaciones.Cliente.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          },
+		  {
+            path: '/exportador/contrato/list',
+            title: 'Exportador.Operaciones.Contrato.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
           }
     ]
+      }
+    ]
+	
+	
+	
+    
   },
   {
     path: '',
     title: 'Transporte.Label',
-    icon: 'ft-book',
-    class: '',
-    badge: '',
-    badgeClass: '',
-    isExternalLink: true,
+     icon: 'ft-book',
+	class: 'has-sub',
+	badge: '',
+	badgeClass: '',
+	isExternalLink: false,
     submenu: [
-      
+    
     ]
   }
-]";
+
+]
+  
+  
+  ";
 
         public LoginBE AuthenticateUsers(string username, string password)
         {
