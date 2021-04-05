@@ -330,7 +330,7 @@ namespace CoffeeConnect.Service
         submenu: [
       {
             path: '/acopio/operaciones/orderservicio-controlcalidadexterna-list',
-            title: 'Acopio.Operaciones.ControlCalidadExterna.Label',
+            title: 'Exportador.Operaciones.ControlCalidadExterna.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
             badge: '',
