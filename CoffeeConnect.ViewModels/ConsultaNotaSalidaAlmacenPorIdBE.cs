@@ -536,6 +536,9 @@ namespace CoffeeConnect.DTO
 		public string EstadoId
 		{ get; set; }
 
+		public string Estado
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
 		/// </summary>
