@@ -15,11 +15,16 @@ namespace Integracion.Deuda.Controller
     public class NotaSalidaAlmacenController : ControllerBase
     {
         private INotaSalidaAlmacenService _notaSalidaAlmacenService;
+        private IGuiaRemisionAlmacenService _guiaRemisionAlmacenService;
+
+
         private Core.Common.Logger.ILog _log;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public NotaSalidaAlmacenController(INotaSalidaAlmacenService notaSalidaAlmacenService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
+        public NotaSalidaAlmacenController(INotaSalidaAlmacenService notaSalidaAlmacenService, IGuiaRemisionAlmacenService guiaRemisionAlmacenService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
             _notaSalidaAlmacenService = notaSalidaAlmacenService;
+            _guiaRemisionAlmacenService = guiaRemisionAlmacenService;
+
             _log = log;
             _webHostEnvironment = webHostEnvironment;
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -341,7 +346,7 @@ namespace Integracion.Deuda.Controller
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
 
-            GenerarPDFGuiaRemisionResponseDTO response = new GenerarPDFGuiaRemisionResponseDTO();
+            GenerarPDFGuiaRemisionResponseDTO response = _guiaRemisionAlmacenService.GenerarPDFGuiaRemisionPorNotaSalidaAlmacenId(id);
 
             try
             {

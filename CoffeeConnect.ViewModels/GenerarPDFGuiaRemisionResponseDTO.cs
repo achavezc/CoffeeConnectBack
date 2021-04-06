@@ -41,16 +41,16 @@ namespace CoffeeConnect.DTO
         public string NotaIngreso { get; set; }
         public string TipoProducto { get; set; }
         public string UnidadMedida { get; set; }
-        public long Cantidad { get; set; }
+        public decimal Cantidad { get; set; }
         public decimal PesoBruto { get; set; }
     }
 
     public class GuiaRemisionDetalle
     {
-        public long TotalLotes { get; set; }
+        public decimal TotalLotes { get; set; }
         public decimal Rendimiento { get; set; }
         public decimal PorcentajeHumedad { get; set; }
-        public long CantidadTotal { get; set; }
+        public decimal CantidadTotal { get; set; }
         public decimal TotalKGBrutos { get; set; }
         public string MotivoTraslado { get; set; }
         public string MotivoDetalleTraslado { get; set; }

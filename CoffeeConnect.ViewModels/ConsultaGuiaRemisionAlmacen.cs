@@ -37,9 +37,14 @@ namespace CoffeeConnect.DTO
 		public String PlacaCarreta { get; set; }
 		public String NumeroConstanciaMTC { get; set; }
 		public String Observacion { get; set; }
-		public String CantidadLotes { get; set; }
+		public Decimal CantidadLotes { get; set; }
 		public Decimal PromedioPorcentajeRendimiento { get; set; }
-		public String CantidadTotal { get; set; }
+
+		public Decimal PromedioHumedadPorcentaje { get; set; }
+
+		
+
+		public Decimal CantidadTotal { get; set; }
 		public Decimal PesoKilosBrutos { get; set; }
 		public String EstadoId { get; set; }
 		public DateTime FechaRegistro { get; set; }

@@ -132,8 +132,8 @@ namespace CoffeeConnect.Service
         public List<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request)
         {
 
-            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.ProductoId))
-                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.ProductoId))
+            //    throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
