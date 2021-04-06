@@ -1,56 +1,49 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
 using Dapper;
-using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using CoffeeConnect.DTO;
-using Core.Common;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
-	public class ClienteRepository : IClienteRepository
-	{
-		public IOptions<ConnectionString> _connectionString;
-		public ClienteRepository(IOptions<ConnectionString> connectionString)
-		{
-			_connectionString = connectionString;
-		}
-
-       
+    public class ClienteRepository : IClienteRepository
+    {
+        public IOptions<ConnectionString> _connectionString;
+        public ClienteRepository(IOptions<ConnectionString> connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public IEnumerable<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request)
-		{
-			var parameters = new DynamicParameters();
-			parameters.Add("Numero", request.Numero);		
-			parameters.Add("RazonSocial", request.RazonSocial);
-			parameters.Add("TipoClienteId", request.TipoClienteId);
-			parameters.Add("PaisId", request.PaisId);
-			parameters.Add("Ruc", request.Ruc);			
-			parameters.Add("EstadoId", request.EstadoId);			
-			parameters.Add("FechaInicio", request.FechaInicio);
-			parameters.Add("FechaFin", request.FechaFin);
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("Numero", request.Numero);
+            parameters.Add("RazonSocial", request.RazonSocial);
+            parameters.Add("TipoClienteId", request.TipoClienteId);
+            parameters.Add("PaisId", request.PaisId);
+            parameters.Add("Ruc", request.Ruc);
+            parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("FechaInicio", request.FechaInicio);
+            parameters.Add("FechaFin", request.FechaFin);
 
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				return db.Query<ConsultaClienteBE>("uspClienteConsulta", parameters, commandType: CommandType.StoredProcedure);
-			}
-		}
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaClienteBE>("uspClienteConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
         public int Insertar(Cliente cliente)
         {
             int result = 0;
 
-            
+
             var parameters = new DynamicParameters();
-            
+
             parameters.Add("@Numero", cliente.Numero);
             parameters.Add("@TipoClienteId", cliente.TipoClienteId);
             parameters.Add("@Ruc", cliente.Ruc);
@@ -67,9 +60,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Presidente", cliente.Presidente);
             parameters.Add("@PresidenteNumero", cliente.PresidenteNumero);
             parameters.Add("@FechaRegistro", cliente.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", cliente.UsuarioRegistro);        
+            parameters.Add("@UsuarioRegistro", cliente.UsuarioRegistro);
             parameters.Add("@EstadoId", cliente.EstadoId);
-        
+
 
 
             parameters.Add("@ClienteId", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -90,7 +83,7 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@ClienteId", cliente.ClienteId);          
+            parameters.Add("@ClienteId", cliente.ClienteId);
             parameters.Add("@TipoClienteId", cliente.TipoClienteId);
             parameters.Add("@Ruc", cliente.Ruc);
             parameters.Add("@RazonSocial", cliente.RazonSocial);
@@ -104,10 +97,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@GerenteGeneral", cliente.GerenteGeneral);
             parameters.Add("@GerenteGeneralNumero", cliente.GerenteGeneralNumero);
             parameters.Add("@Presidente", cliente.Presidente);
-            parameters.Add("@PresidenteNumero", cliente.PresidenteNumero);           
+            parameters.Add("@PresidenteNumero", cliente.PresidenteNumero);
             parameters.Add("@FechaUltimaActualizacion", cliente.FechaUltimaActualizacion);
-            parameters.Add("@UsuarioUltimaActualizacion", cliente.UsuarioUltimaActualizacion); 
-            parameters.Add("@EstadoId",cliente.EstadoId);
+            parameters.Add("@UsuarioUltimaActualizacion", cliente.UsuarioUltimaActualizacion);
+            parameters.Add("@EstadoId", cliente.EstadoId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -135,7 +128,5 @@ namespace CoffeeConnect.Repository
 
             return itemBE;
         }
-
-
     }
 }

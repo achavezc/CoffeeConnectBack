@@ -316,7 +316,7 @@ namespace Integracion.Deuda.Controller
                 };
                 var file = _converter.Convert(pdf);
 
-                return File(file, "application/pdf");
+                return File(file, "application/pdf", $"EtiquetasLotes_{DateTime.Now.ToString("yyyyMMddhhmmss")}.pdf");
             }
             catch (ResultException ex)
             {
