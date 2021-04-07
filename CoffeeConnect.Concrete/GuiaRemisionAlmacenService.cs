@@ -43,7 +43,7 @@ namespace CoffeeConnect.Service
 
             detalleGuiaRemision.ForEach(z => {
                 GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
-                guiaRemisionListaDetalle.correlativo = 1;
+                
                 guiaRemisionListaDetalle.NumeroLote = z.NumeroLote;
                 guiaRemisionListaDetalle.NotaIngreso = z.NumeroNotaIngreso;
                 guiaRemisionListaDetalle.TipoProducto = z.Producto;
@@ -77,16 +77,8 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.CantidadTotal = consultaImpresionGuiaRemision.CantidadTotal;
             guiaRemisionDetalle.TotalKGBrutos = consultaImpresionGuiaRemision.PesoKilosBrutos;
 
-            generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);
-
-            GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
-
-
-
-            if (consultaImpresionGuiaRemision != null)
-            {
-                consultaImpresionGuiaRemision.lstConsultaGuiaRemisionAlmacenDetalle = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(consultaImpresionGuiaRemision.GuiaRemisionAlmacenId);
-            }
+            generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);          
+            
 
             return generarPDFGuiaRemisionResponseDTO;
         }
