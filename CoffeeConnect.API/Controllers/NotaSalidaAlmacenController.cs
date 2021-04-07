@@ -358,9 +358,9 @@ namespace Integracion.Deuda.Controller
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                lr.AddDataSource("dsGuiaRemision", Util.ToDataTable(response.Cabecera));
-                lr.AddDataSource("dsGuiaRemision", Util.ToDataTable(response.listaDetalleGM));
-                lr.AddDataSource("dsGuiaRemision", Util.ToDataTable(response.detalleGM));
+                lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));
+                lr.AddDataSource("dsGRListaDetalle", Util.ToDataTable(response.listaDetalleGM));
+                lr.AddDataSource("dsGRDetalle", Util.ToDataTable(response.detalleGM));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
                 return File(result.MainStream, "application/pdf");
