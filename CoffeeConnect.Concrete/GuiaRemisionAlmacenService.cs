@@ -2,35 +2,24 @@
 using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
-using CoffeeConnect.Models;
-using Core.Common.Domain.Model;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
     public partial class GuiaRemisionAlmacenService : IGuiaRemisionAlmacenService
     {
         private readonly IMapper _Mapper;
-     
 
         private IGuiaRemisionAlmacenRepository _IGuiaRemisionAlmacenRepository;
 
-
         public GuiaRemisionAlmacenService(IGuiaRemisionAlmacenRepository IGuiaRemisionAlmacenRepository,
             IMapper mapper)
-        {       
+        {
             _IGuiaRemisionAlmacenRepository = IGuiaRemisionAlmacenRepository;
 
             _Mapper = mapper;
         }
-
-
-
 
         public GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaSalidaAlmacenId(int notaSalidaAlmacenIdId)
         {
@@ -39,11 +28,12 @@ namespace CoffeeConnect.Service
             ConsultaGuiaRemisionAlmacen consultaImpresionGuiaRemision = new ConsultaGuiaRemisionAlmacen();
             consultaImpresionGuiaRemision = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenPorNotaSalidaAlmacenId(notaSalidaAlmacenIdId);
 
-            List<ConsultaGuiaRemisionAlmacenDetalle> detalleGuiaRemision =  _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(consultaImpresionGuiaRemision.GuiaRemisionAlmacenId).ToList();
+            List<ConsultaGuiaRemisionAlmacenDetalle> detalleGuiaRemision = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(consultaImpresionGuiaRemision.GuiaRemisionAlmacenId).ToList();
 
-            detalleGuiaRemision.ForEach(z => {
+            detalleGuiaRemision.ForEach(z =>
+            {
                 GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
-                
+
                 guiaRemisionListaDetalle.NumeroLote = z.NumeroLote;
                 guiaRemisionListaDetalle.NotaIngreso = z.NumeroNotaIngreso;
                 guiaRemisionListaDetalle.TipoProducto = z.Producto;
@@ -77,8 +67,8 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.CantidadTotal = consultaImpresionGuiaRemision.CantidadTotal;
             guiaRemisionDetalle.TotalKGBrutos = consultaImpresionGuiaRemision.PesoKilosBrutos;
 
-            generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);          
-            
+            generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);
+
 
             return generarPDFGuiaRemisionResponseDTO;
         }
