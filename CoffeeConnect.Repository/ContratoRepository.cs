@@ -1,55 +1,48 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
 using Dapper;
-using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using CoffeeConnect.DTO;
-using Core.Common;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
-	public class ContratoRepository : IContratoRepository
+    public class ContratoRepository : IContratoRepository
     {
-		public IOptions<ConnectionString> _connectionString;
-		public ContratoRepository(IOptions<ConnectionString> connectionString)
-		{
-			_connectionString = connectionString;
-		}
-
-       
+        public IOptions<ConnectionString> _connectionString;
+        public ContratoRepository(IOptions<ConnectionString> connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public IEnumerable<ConsultaContratoBE> ConsultarContrato(ConsultaContratoRequestDTO request)
-		{
-			var parameters = new DynamicParameters();
-			parameters.Add("Numero", request.Numero);		
-			parameters.Add("RazonSocial", request.RazonSocial);
-			parameters.Add("TipoProduccionId", request.TipoProduccionId);
-			parameters.Add("ProductoId", request.ProductoId);
-			parameters.Add("CalidadId", request.CalidadId);
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("Numero", request.Numero);
+            parameters.Add("RazonSocial", request.RazonSocial);
+            parameters.Add("TipoProduccionId", request.TipoProduccionId);
+            parameters.Add("ProductoId", request.ProductoId);
+            parameters.Add("CalidadId", request.CalidadId);
             parameters.Add("NumeroCliente", request.NumeroCliente);
-            parameters.Add("EstadoId", request.EstadoId);			
-			parameters.Add("FechaInicio", request.FechaInicio);
-			parameters.Add("FechaFin", request.FechaFin);
+            parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("FechaInicio", request.FechaInicio);
+            parameters.Add("FechaFin", request.FechaFin);
 
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				return db.Query<ConsultaContratoBE>("uspContratoConsulta", parameters, commandType: CommandType.StoredProcedure);
-			}
-		}
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaContratoBE>("uspContratoConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
         public int Insertar(Contrato contrato)
         {
             int result = 0;
 
-            var parameters = new DynamicParameters();           
+            var parameters = new DynamicParameters();
             parameters.Add("@Numero", contrato.Numero);
             parameters.Add("@ClienteId", contrato.ClienteId);
             parameters.Add("@FloId", contrato.FloId);
@@ -78,8 +71,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
             parameters.Add("@FechaRegistro", contrato.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", contrato.UsuarioRegistro);           
-            parameters.Add("@EstadoId", contrato.EstadoId);          
+            parameters.Add("@UsuarioRegistro", contrato.UsuarioRegistro);
+            parameters.Add("@EstadoId", contrato.EstadoId);
 
             parameters.Add("@ContratoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -126,10 +119,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MuestraEnviadaCliente", contrato.MuestraEnviadaCliente);
             parameters.Add("@MuestraEnviadaAnalisisGlifosato", contrato.MuestraEnviadaAnalisisGlifosato);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
-            parameters.Add("@PathArchivo", contrato.PathArchivo);           
+            parameters.Add("@PathArchivo", contrato.PathArchivo);
             parameters.Add("@FechaUltimaActualizacion", contrato.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", contrato.UsuarioUltimaActualizacion);
-            parameters.Add("@EstadoId", contrato.EstadoId);  
+            parameters.Add("@EstadoId", contrato.EstadoId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -157,7 +150,5 @@ namespace CoffeeConnect.Repository
 
             return itemBE;
         }
-
-
     }
 }

@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class ConsultaContratoRequestDTO
-    {       
-        
+    public class ConsultaContratoRequestDTO
+    {
+
         public String Numero { get; set; }
 
         public String NumeroCliente { get; set; }
@@ -21,11 +17,11 @@ namespace CoffeeConnect.DTO
 
         public String CalidadId { get; set; }
 
-        public String EstadoId { get; set; }       
+        public String EstadoId { get; set; }
 
         public DateTime FechaInicio { get; set; }
 
-        public DateTime FechaFin { get; set; }       
+        public DateTime FechaFin { get; set; }
 
     }
 }

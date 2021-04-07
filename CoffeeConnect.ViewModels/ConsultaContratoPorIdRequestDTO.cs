@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CoffeeConnect.DTO
+﻿namespace CoffeeConnect.DTO
 {
-   public class ConsultaContratoPorIdRequestDTO
+    public class ConsultaContratoPorIdRequestDTO
     {
 
         public int ContratoId { get; set; }
-     
+
     }
 }

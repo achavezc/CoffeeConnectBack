@@ -8,7 +8,6 @@ using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
@@ -17,15 +16,14 @@ namespace CoffeeConnect.Service
         private readonly IMapper _Mapper;
 
         private IContratoRepository _IContratoRepository;
-      
-		private ICorrelativoRepository _ICorrelativoRepository;
 
+        private ICorrelativoRepository _ICorrelativoRepository;
 
-		public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
+        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
         {
             _IContratoRepository = contratoRepository;
-            
-			_ICorrelativoRepository = correlativoRepository;
+
+            _ICorrelativoRepository = correlativoRepository;
 
             _Mapper = mapper;
 
@@ -33,24 +31,23 @@ namespace CoffeeConnect.Service
 
         }
 
-
         public List<ConsultaContratoBE> ConsultarContrato(ConsultaContratoRequestDTO request)
-		{
+        {
             //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
             //    throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Cliente.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
-			if (timeSpan.Days > 730)
-				throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionRangoFechaMayor2anios.Label" });
+            if (timeSpan.Days > 730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionRangoFechaMayor2anios.Label" });
 
 
 
-			var list = _IContratoRepository.ConsultarContrato(request);
+            var list = _IContratoRepository.ConsultarContrato(request);
 
-			return list.ToList();
-		}
+            return list.ToList();
+        }
 
         public int RegistrarContrato(RegistrarActualizarContratoRequestDTO request)
         {
@@ -79,6 +76,5 @@ namespace CoffeeConnect.Service
         {
             return _IContratoRepository.ConsultarContratoPorId(request.ContratoId);
         }
-
     }
-}   
+}
