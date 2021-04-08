@@ -2227,7 +2227,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(LCase(First(Fields!MotivoTraslado.Value, "dsGRDetalle")).Equals("transformacion"), First(Fields!MotivoDetalleTraslado.Value, "dsGRDetalle"), "")</Value>
+                              <Value>=IIF(LCase(First(Fields!MotivoDetalleTraslado.Value, "dsGRDetalle")).Equals("transformacion"), First(Fields!MotivoDetalleTraslado.Value, "dsGRDetalle"), "")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>

@@ -83,6 +83,7 @@ namespace CoffeeConnect.Service
             cabeceraGuiaRemision.Certificacion = certificacion;
             cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
 
+
             generarPDFGuiaRemisionResponseDTO.Cabecera.Add(cabeceraGuiaRemision);
 
 
@@ -104,6 +105,8 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TransportistaConductor = consultaImpresionGuiaRemision.Conductor;
             guiaRemisionDetalle.TransportistaConstancia = consultaImpresionGuiaRemision.NumeroConstanciaMTC;
             guiaRemisionDetalle.TransportistaBrevete = consultaImpresionGuiaRemision.LicenciaConductor;
+            guiaRemisionDetalle.Observaciones = consultaImpresionGuiaRemision.Observacion;
+            guiaRemisionDetalle.Responsable = consultaImpresionGuiaRemision.UsuarioRegistro;
 
 
             generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);
