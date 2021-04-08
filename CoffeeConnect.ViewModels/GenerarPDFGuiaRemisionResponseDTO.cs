@@ -57,6 +57,7 @@ namespace CoffeeConnect.DTO
         public decimal CantidadTotal { get; set; }
         public decimal TotalKGBrutos { get; set; }
         public string MotivoTraslado { get; set; }
+        public string MotivoTrasladoId { get; set; }
         public string MotivoDetalleTraslado { get; set; }
         public string PropietarioTransportista { get; set; }
         public string TransportistaDomicilio { get; set; }

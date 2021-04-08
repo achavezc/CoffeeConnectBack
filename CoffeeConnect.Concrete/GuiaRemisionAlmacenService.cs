@@ -95,6 +95,7 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TotalKGBrutos = consultaImpresionGuiaRemision.PesoKilosBrutos;
 
             guiaRemisionDetalle.MotivoTraslado = consultaImpresionGuiaRemision.Motivo;
+            guiaRemisionDetalle.MotivoTrasladoId = consultaImpresionGuiaRemision.MotivoTrasladoId;
             guiaRemisionDetalle.MotivoDetalleTraslado = consultaImpresionGuiaRemision.MotivoTrasladoReferencia;
             guiaRemisionDetalle.PropietarioTransportista = consultaImpresionGuiaRemision.Transportista;
             guiaRemisionDetalle.TransportistaDomicilio = consultaImpresionGuiaRemision.DireccionTransportista;
