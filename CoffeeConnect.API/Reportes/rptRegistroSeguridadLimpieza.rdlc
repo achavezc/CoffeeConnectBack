@@ -3576,7 +3576,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.8in</Height>
+              <Height>0.6in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3674,7 +3674,7 @@
         </TablixRowHierarchy>
         <Top>8.6in</Top>
         <Left>0.39458in</Left>
-        <Height>1.05in</Height>
+        <Height>0.85in</Height>
         <Width>1.84375in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -3692,7 +3692,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.8in</Height>
+              <Height>0.6in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3790,7 +3790,7 @@
         </TablixRowHierarchy>
         <Top>8.6in</Top>
         <Left>3.77562in</Left>
-        <Height>1.05in</Height>
+        <Height>0.85in</Height>
         <Width>1.84375in</Width>
         <ZIndex>5</ZIndex>
         <Style>
@@ -4830,7 +4830,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>9.69in</Height>
+    <Height>9.45in</Height>
     <Style>
       <Border>
         <Style>Solid</Style>
