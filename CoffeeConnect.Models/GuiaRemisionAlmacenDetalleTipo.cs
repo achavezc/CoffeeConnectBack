@@ -7,6 +7,10 @@ namespace CoffeeConnect.Models
 		#region Properties
 		public int GuiaRemisionAlmacenId { get; set; }
 		public int LoteId { get; set; }
+
+		public int NotaIngresoAlmacenId { get; set; }
+
+		
 		public String NumeroLote { get; set; }
 		public String NumeroNotaIngreso { get; set; }
 		public String ProductoId { get; set; }

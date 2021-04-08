@@ -35,12 +35,18 @@ namespace CoffeeConnect.DTO
 		public String MarcaTractor { get; set; }
 		public String PlacaTractor { get; set; }
 		public String PlacaCarreta { get; set; }
+
+		public String ConfiguracionVehicularId { get; set; }
+
+		public String ConfiguracionVehicular { get; set; }
+
+		
 		public String NumeroConstanciaMTC { get; set; }
 		public String Observacion { get; set; }
 		public Decimal CantidadLotes { get; set; }
 		public Decimal PromedioPorcentajeRendimiento { get; set; }
 
-		public Decimal PromedioHumedadPorcentaje { get; set; }
+		public Decimal HumedadPorcentajeAnalisisFisico { get; set; }
 
 		
 

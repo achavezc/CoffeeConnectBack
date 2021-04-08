@@ -32,6 +32,10 @@ namespace CoffeeConnect.DTO
         public string RucDestinatario { get; set; }
         public string DireccionPartida { get; set; }
         public string DireccionDestino { get; set; }
+
+        public string Certificacion { get; set; }
+
+        public string Certificadora { get; set; }
     }
 
     public class GuiaRemisionListaDetalle

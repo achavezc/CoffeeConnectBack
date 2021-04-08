@@ -149,6 +149,7 @@ namespace CoffeeConnect.Service
                         GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
                         item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
                         item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
+                        item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
 
                         listaDetalle.Add(item);
                     });
@@ -251,7 +252,7 @@ namespace CoffeeConnect.Service
                         GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
                         item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
                         item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
-
+                        item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
                         listaDetalle.Add(item);
                     });
 
