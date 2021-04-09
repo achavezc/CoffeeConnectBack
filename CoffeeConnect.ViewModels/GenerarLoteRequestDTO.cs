@@ -17,6 +17,14 @@ namespace CoffeeConnect.DTO
 
         public int EmpresaId { get; set; }
         public string AlmacenId { get; set; }
-        
+
+
+        public string ProductoId
+        { get; set; }
+
+
+        public string TipoCertificacionId
+        { get; set; }
+
     }
 }

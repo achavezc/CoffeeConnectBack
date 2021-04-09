@@ -185,6 +185,12 @@ namespace Integracion.Deuda.Controller
                 response.Almacen = resultado.Almacen;
                 response.UnidadMedidaId = resultado.UnidadMedidaId;
                 response.UnidadMedida = resultado.UnidadMedida;
+
+                response.ProductoId = resultado.ProductoId;
+                response.Producto = resultado.Producto;
+                response.TipoCertificacionId = resultado.TipoCertificacionId;
+                response.TipoCertificacion = resultado.TipoCertificacion;
+
                 response.Cantidad = resultado.Cantidad;
                 response.TotalKilosNetosPesado = resultado.TotalKilosNetosPesado;
                 response.TotalKilosBrutosPesado = resultado.TotalKilosBrutosPesado;

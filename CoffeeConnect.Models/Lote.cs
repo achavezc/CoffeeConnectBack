@@ -101,6 +101,14 @@ namespace CoffeeConnect.Models
 		public bool Activo
 		{ get; set; }
 
+
+		public string ProductoId
+		{ get; set; }
+
+
+		public string TipoCertificacionId
+		{ get; set; }
+
 		#endregion
 	}
 }

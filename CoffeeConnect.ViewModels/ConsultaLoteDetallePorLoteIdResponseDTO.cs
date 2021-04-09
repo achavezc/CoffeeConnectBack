@@ -39,7 +39,23 @@ namespace CoffeeConnect.DTO
 
 		public Decimal? PromedioTotalAnalisisSensorial { get; set; }
 
-		
+
+        public string ProductoId
+        { get; set; }
+
+
+        public string TipoCertificacionId
+        { get; set; }
+
+
+        public string Producto
+        { get; set; }
+
+
+        public string TipoCertificacion
+        { get; set; }
+
+
         public DateTime FechaRegistro { get; set; }
         public String UsuarioRegistro { get; set; }
         public DateTime? FechaUltimaActualizacion { get; set; }

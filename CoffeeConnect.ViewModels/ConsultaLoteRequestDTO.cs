@@ -17,6 +17,8 @@ namespace CoffeeConnect.DTO
 
         public String ProductoId { get; set; }
 
+        public String TipoCertificacionId { get; set; }
+
         public String SubProductoId { get; set; }
 
         public String NumeroDocumento { get; set; }

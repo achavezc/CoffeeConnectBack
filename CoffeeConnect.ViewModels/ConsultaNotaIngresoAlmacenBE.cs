@@ -153,6 +153,12 @@ namespace CoffeeConnect.DTO
         public string DefectosAnalisisSensorial
         { get; set; }
 
+        public string TipoCertificacionId
+        { get; set; }
+
+        public string Certificacion
+        { get; set; }
+
         #endregion
     }
 

@@ -39,6 +39,8 @@ namespace CoffeeConnect.Service
             lote.AlmacenId = request.AlmacenId;
             lote.FechaRegistro = DateTime.Now;
             lote.UsuarioRegistro = request.Usuario;
+            lote.ProductoId = request.ProductoId;
+            lote.TipoCertificacionId = request.TipoCertificacionId;
 
             int loteId = 0;
 
@@ -233,6 +235,11 @@ namespace CoffeeConnect.Service
             response.UsuarioUltimaActualizacion = Lote.UsuarioUltimaActualizacion;
             response.Activo = Lote.Activo;
             response.PromedioTotalAnalisisSensorial = Lote.PromedioTotalAnalisisSensorial;
+            response.ProductoId = Lote.ProductoId;
+            response.Producto = Lote.Producto;
+            response.TipoCertificacionId = Lote.TipoCertificacionId;
+            response.TipoCertificacion = Lote.TipoCertificacion;
+
             response.listaDetalle = resultado.ToList();
 
             //if (resultado.Any())
