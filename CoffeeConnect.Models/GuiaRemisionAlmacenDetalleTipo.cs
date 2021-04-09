@@ -8,7 +8,7 @@ namespace CoffeeConnect.Models
 		public int GuiaRemisionAlmacenId { get; set; }
 		public int LoteId { get; set; }
 
-		public int NotaIngresoAlmacenId { get; set; }
+		
 
 		
 		public String NumeroLote { get; set; }
@@ -20,6 +20,8 @@ namespace CoffeeConnect.Models
 		public Decimal KilosNetosPesado { get; set; }
 		public Decimal RendimientoPorcentaje { get; set; }
 		public Decimal HumedadPorcentaje { get; set; }
+
+		public int NotaIngresoAlmacenId { get; set; }
 		#endregion
 	}
 }
