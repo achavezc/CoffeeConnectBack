@@ -45,5 +45,8 @@ namespace CoffeeConnect.DTO
         public decimal? PuntajeAnalisisSensorialFin
         { get; set; }
 
+        public string TipoCertificacionId
+        { get; set; }
+
     }
 }

@@ -149,6 +149,7 @@ namespace CoffeeConnect.Service
                         GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
                         item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
                         item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
+                        item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
 
                         listaDetalle.Add(item);
                     });
@@ -251,7 +252,7 @@ namespace CoffeeConnect.Service
                         GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
                         item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
                         item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
-
+                        item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
                         listaDetalle.Add(item);
                     });
 
@@ -303,6 +304,12 @@ namespace CoffeeConnect.Service
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.FechaNotaSalidaAlmacen = notaSalidaAlmacenPorIdBE.FechaRegistro;
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.NumeroNotaSalidaAlmacen = notaSalidaAlmacenPorIdBE.Numero;
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.UsuarioNotaSalidaAlmacen = notaSalidaAlmacenPorIdBE.UsuarioRegistro;
+
+                //TODO:Setear Valores Correctos
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Certificacion = "";
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Producto = "";
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.TipoProduccion = "";
+
 
                 Empresa empresa = _EmpresaRepository.ObtenerEmpresaPorId(notaSalidaAlmacenPorIdBE.EmpresaId);
 

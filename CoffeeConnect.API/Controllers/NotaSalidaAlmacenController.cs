@@ -380,6 +380,7 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
+
         [Route("GenerarPDFRegistroSeguridad")]
         [HttpGet]
         public IActionResult GenerarPDFRegistroSeguridad(int id)

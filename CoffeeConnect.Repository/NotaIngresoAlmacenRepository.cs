@@ -80,6 +80,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("EstadoId", request.EstadoId);
 			parameters.Add("ProductoId", request.ProductoId);
 			parameters.Add("SubProductoId", request.SubProductoId);
+			parameters.Add("TipoCertificacionId", request.TipoCertificacionId);
 			parameters.Add("AlmacenId", request.AlmacenId);
 			parameters.Add("EmpresaId", request.EmpresaId);
 			parameters.Add("RendimientoPorcentajeInicio", request.RendimientoPorcentajeInicio);

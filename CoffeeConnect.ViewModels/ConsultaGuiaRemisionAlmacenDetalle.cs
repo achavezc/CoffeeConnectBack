@@ -22,6 +22,12 @@ namespace CoffeeConnect.DTO
 		public Decimal KilosNetosPesado { get; set; }
 		public Decimal RendimientoPorcentaje { get; set; }
 		public Decimal HumedadPorcentaje { get; set; }
+
+		public String AgenciaCertificadora { get; set; }
+
+		public String Certificacion { get; set; }
+
+
 		#endregion
 	}
 }

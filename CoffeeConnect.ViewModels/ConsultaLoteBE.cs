@@ -96,6 +96,22 @@ namespace CoffeeConnect.DTO
 
         public decimal? PromedioTotalAnalisisSensorial { get; set; }
 
+        public string ProductoId
+        { get; set; }
+
+
+        public string TipoCertificacionId
+        { get; set; }
+
+
+        public string Producto
+        { get; set; }
+
+
+        public string Certificacion
+        { get; set; }
+
+
         #endregion
     }
 }
