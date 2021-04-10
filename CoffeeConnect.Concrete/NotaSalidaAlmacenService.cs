@@ -305,6 +305,12 @@ namespace CoffeeConnect.Service
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.NumeroNotaSalidaAlmacen = notaSalidaAlmacenPorIdBE.Numero;
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.UsuarioNotaSalidaAlmacen = notaSalidaAlmacenPorIdBE.UsuarioRegistro;
 
+                //TODO:Setear Valores Correctos
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Certificacion = "";
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Producto = "";
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.TipoProduccion = "";
+
+
                 Empresa empresa = _EmpresaRepository.ObtenerEmpresaPorId(notaSalidaAlmacenPorIdBE.EmpresaId);
 
                 if (empresa != null)

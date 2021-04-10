@@ -108,7 +108,7 @@ namespace CoffeeConnect.DTO
         { get; set; }
 
 
-        public string TipoCertificacion
+        public string Certificacion
         { get; set; }
 
 

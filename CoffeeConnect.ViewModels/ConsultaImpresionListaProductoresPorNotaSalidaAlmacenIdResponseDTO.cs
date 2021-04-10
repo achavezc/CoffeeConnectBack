@@ -25,6 +25,16 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaImpresion
 		{ get; set; }
 
+		public string Producto
+		{ get; set; }
+
+		public string TipoProduccion
+		{ get; set; }
+
+		public string Certificacion
+		{ get; set; }
+
+
 		public List<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenIdBE> ListaProductores
 		{ get; set; }
 	}
