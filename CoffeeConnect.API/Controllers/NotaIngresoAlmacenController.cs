@@ -1,8 +1,8 @@
-﻿using System;
-using CoffeeConnect.DTO;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Integracion.Deuda.Controller
 {
@@ -24,8 +24,6 @@ namespace Integracion.Deuda.Controller
         {
             return Ok("NotaIngresoAlmacen Service. version: 1.20.01.03");
         }
-
-        
 
         [Route("Registrar")]
         [HttpPost]
@@ -118,7 +116,6 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-
         [Route("Actualizar")]
         [HttpPost]
         public IActionResult Actualizar([FromBody] ActualizarNotaIngresoAlmacenRequestDTO request)
@@ -149,7 +146,6 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-
         [Route("ConsultarPorId")]
         [HttpPost]
         public IActionResult ConsultarPorId([FromBody] ConsultaNotaIngresoAlmacenPorIdRequestDTO request)
@@ -179,6 +175,5 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
     }
 }

@@ -25,10 +25,6 @@ namespace Integracion.Deuda.Controller
             return Ok("Productor Finca Service. version: 1.20.01.03");
         }
 
-
-
-
-
         [Route("Registrar")]
         [HttpPost]
         public IActionResult Registrar([FromBody] RegistrarActualizarSocioFincaCertificacionRequestDTO request)
@@ -148,6 +144,5 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
     }
 }

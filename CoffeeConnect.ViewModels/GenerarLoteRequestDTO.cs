@@ -1,9 +1,6 @@
 ﻿using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
@@ -11,20 +8,12 @@ namespace CoffeeConnect.DTO
     {
         public List<TablaIdsTipo> NotasIngresoAlmacenId { get; set; }
 
-        
-
         public String Usuario { get; set; }
-
         public int EmpresaId { get; set; }
         public string AlmacenId { get; set; }
-
-
         public string ProductoId
         { get; set; }
-
-
         public string TipoCertificacionId
         { get; set; }
-
     }
 }

@@ -17,7 +17,6 @@ namespace Integracion.Deuda.Controller
         private INotaSalidaAlmacenService _notaSalidaAlmacenService;
         private IGuiaRemisionAlmacenService _guiaRemisionAlmacenService;
 
-
         private Core.Common.Logger.ILog _log;
         private readonly IWebHostEnvironment _webHostEnvironment;
         public NotaSalidaAlmacenController(INotaSalidaAlmacenService notaSalidaAlmacenService, IGuiaRemisionAlmacenService guiaRemisionAlmacenService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
@@ -278,7 +277,6 @@ namespace Integracion.Deuda.Controller
         //    return Ok(response);
         //}
 
-
         [Route("ActualizarAnalisisCalidad")]
         [HttpPost]
         public IActionResult ActualizarAnalisisCalidad([FromBody] ActualizarNotaSalidaAnalisisCalidadRequestDTO request)
@@ -379,7 +377,6 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
 
         [Route("GenerarPDFRegistroSeguridad")]
         [HttpGet]

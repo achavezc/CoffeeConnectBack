@@ -1,9 +1,8 @@
-﻿using System;
-using CoffeeConnect.DTO;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using System;
 using System.Collections.Generic;
 
 namespace Integracion.Deuda.Controller
@@ -36,7 +35,7 @@ namespace Integracion.Deuda.Controller
 
             ConsultaEmpresaTransporteResponseDTO response = new ConsultaEmpresaTransporteResponseDTO();
             try
-            {                
+            {
                 List<EmpresaTransporteBE> lista = _empresaTransporteService.ConsultarEmpresaTransporte(request.EmpresaId);
 
                 response.Result.Data = lista;
@@ -90,7 +89,5 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
-
     }
 }
