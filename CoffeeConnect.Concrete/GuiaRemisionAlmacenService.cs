@@ -32,42 +32,42 @@ namespace CoffeeConnect.Service
             
             int contador = 1;            
 
-            string[] agenciasTotal= { };
-            string[] certificacionTotal = { };
+            //string[] agenciasTotal= { };
+            //string[] certificacionTotal = { };
 
             detalleGuiaRemision.ForEach(z =>
             {
                 GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
                 guiaRemisionListaDetalle.correlativo = contador;
                 contador++;
-                string[] agencias = z.AgenciaCertificadora.Split("|");
-                string[] certificaciones = z.Certificacion.Split("|");
+                //string[] agencias = z.AgenciaCertificadora.Split("|");
+                //string[] certificaciones = z.Certificacion.Split("|");
 
-                agenciasTotal = agenciasTotal.Concat(agencias).ToArray();
-                certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
+                //agenciasTotal = agenciasTotal.Concat(agencias).ToArray();
+                //certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
 
                 guiaRemisionListaDetalle.NumeroLote = z.NumeroLote;
                 guiaRemisionListaDetalle.NotaIngreso = z.NumeroNotaIngreso;
                 guiaRemisionListaDetalle.TipoProducto = z.Producto;
                 guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida;
                 guiaRemisionListaDetalle.Cantidad = z.CantidadPesado;
-                guiaRemisionListaDetalle.PesoBruto = z.KilosNetosPesado;
+                guiaRemisionListaDetalle.PesoBruto = z.KilosBrutosPesado;
 
                 generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
 
             });
 
-            agenciasTotal = agenciasTotal.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
-            certificacionTotal = certificacionTotal.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+            //agenciasTotal = agenciasTotal.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+            //certificacionTotal = certificacionTotal.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
-            agenciasTotal = agenciasTotal.Distinct().ToArray();
+            //agenciasTotal = agenciasTotal.Distinct().ToArray();
 
-            certificacionTotal = certificacionTotal.Distinct().ToArray();
+            //certificacionTotal = certificacionTotal.Distinct().ToArray();
 
-            string separator = ", ";
+            //string separator = ", ";
 
-            string agenciaCertificadora = string.Join(separator, agenciasTotal);
-            string certificacion = string.Join(separator, certificacionTotal);
+            //string agenciaCertificadora = string.Join(separator, agenciasTotal);
+            //string certificacion = string.Join(separator, certificacionTotal);
             
 
             CabeceraGuiaRemision cabeceraGuiaRemision = new CabeceraGuiaRemision();
@@ -80,8 +80,9 @@ namespace CoffeeConnect.Service
             cabeceraGuiaRemision.RucDestinatario = consultaImpresionGuiaRemision.RucDestinatario;
             cabeceraGuiaRemision.DireccionPartida = consultaImpresionGuiaRemision.DireccionPartida;
             cabeceraGuiaRemision.DireccionDestino = consultaImpresionGuiaRemision.DireccionDestino;
-            cabeceraGuiaRemision.Certificacion = certificacion;
-            cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
+            cabeceraGuiaRemision.Certificacion = consultaImpresionGuiaRemision.Certificacion;
+            cabeceraGuiaRemision.TipoProduccion = consultaImpresionGuiaRemision.TipoProduccion;
+            //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
 
 
             generarPDFGuiaRemisionResponseDTO.Cabecera.Add(cabeceraGuiaRemision);

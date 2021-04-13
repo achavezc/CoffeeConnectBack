@@ -35,6 +35,7 @@ namespace CoffeeConnect.DTO
 		public string NumeroNotaCompra
 		{ get; set; }
 
+		
 		/// <summary>
 		/// Gets or sets the NombreRazonSocial value.
 		/// </summary>
@@ -96,7 +97,10 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the KilosNetosPesado value.
 		/// </summary>
-		public decimal KilosNetosPesado
+		public decimal KilosBrutosPesado
+		{ get; set; }
+
+		public string Producto
 		{ get; set; }
 
 		#endregion

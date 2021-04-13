@@ -693,7 +693,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Peso Neto</Value>
+                              <Value>Peso Bruto</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1350,14 +1350,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="KilosNetosPesado">
+                    <Textbox Name="KilosBrutosPesado">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!KilosNetosPesado.Value</Value>
+                              <Value>=Fields!KilosBrutosPesado.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -1367,7 +1367,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>KilosNetosPesado</rd:DefaultName>
+                      <rd:DefaultName>KilosBrutosPesado</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -2220,8 +2220,8 @@
           <DataField>FechaNotaIngresoAlmacen</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="KilosNetosPesado">
-          <DataField>KilosNetosPesado</DataField>
+        <Field Name="KilosBrutosPesado">
+          <DataField>KilosBrutosPesado</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="NombreRazonSocial">
@@ -2250,6 +2250,10 @@
         </Field>
         <Field Name="TipoDocumento">
           <DataField>TipoDocumento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		 <Field Name="Producto">
+          <DataField>Producto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TipoDocumentoId">

@@ -111,6 +111,8 @@ namespace CoffeeConnect.Service
             GuiaRemisionAlmacen guiaRemisionAlmacen = _Mapper.Map<GuiaRemisionAlmacen>(notaSalidaAlmacen);
             guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacen);
 
+            
+
             #region comentado
             //guiaRemisionAlmacen.NotaSalidaAlmacenId = notaSalidaAlmacen.NotaSalidaAlmacenId;
             //guiaRemisionAlmacen.AlmacenId = notaSalidaAlmacen.AlmacenId;
@@ -134,13 +136,27 @@ namespace CoffeeConnect.Service
             //guiaRemisionAlmacen.TransporteId = notaSalidaAlmacen.TransporteId;
             //guiaRemisionAlmacen.UsuarioRegistro = notaSalidaAlmacen.UsuarioRegistro;
             #endregion
+            string tipoProduccionId = String.Empty;
+            string tipoCertificacionId = String.Empty;
+
+            List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
+
+
+            if (NotaSalidaDetalle.Count > 0)
+            {
+                tipoProduccionId = NotaSalidaDetalle[0].TipoProduccionId;
+                tipoCertificacionId = NotaSalidaDetalle[0].TipoCertificacionId;
+
+            }
+
+            guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
+            guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
 
 
             guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
 
             if (guiaRemisionAlmacenId != 0)
             {
-                List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
                 List<GuiaRemisionAlmacenDetalleTipo> listaDetalle = new List<GuiaRemisionAlmacenDetalleTipo>();
                 if (NotaSalidaDetalle.Any())
                 {
@@ -150,7 +166,7 @@ namespace CoffeeConnect.Service
                         item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
                         item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
                         item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
-
+                        item.KilosBrutosPesado = x.KilosNetosPesado;
                         listaDetalle.Add(item);
                     });
 
@@ -221,6 +237,22 @@ namespace CoffeeConnect.Service
             GuiaRemisionAlmacen guiaRemisionAlmacen = _Mapper.Map<GuiaRemisionAlmacen>(notaSalidaAlmacen);
             ConsultaGuiaRemisionAlmacen guiaRemisionPivot = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenPorNotaSalidaAlmacenId(notaSalidaAlmacen.NotaSalidaAlmacenId);
 
+            string tipoProduccionId = String.Empty;
+            string tipoCertificacionId = String.Empty;
+
+            List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
+
+
+            if (NotaSalidaDetalle.Count > 0)
+            {
+                tipoProduccionId = NotaSalidaDetalle[0].TipoProduccionId;
+                tipoCertificacionId = NotaSalidaDetalle[0].TipoCertificacionId;
+
+            }
+
+            guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
+            guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
+
             if (guiaRemisionPivot == null)
             {
                 guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacen);
@@ -243,7 +275,7 @@ namespace CoffeeConnect.Service
 
             if (guiaRemisionAlmacenId != 0)
             {
-                List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
+                //List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
                 List<GuiaRemisionAlmacenDetalleTipo> listaDetalle = new List<GuiaRemisionAlmacenDetalleTipo>();
                 if (NotaSalidaDetalle.Any())
                 {
@@ -297,21 +329,24 @@ namespace CoffeeConnect.Service
 
             ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO = new ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO();
 
-            ConsultaNotaSalidaAlmacenPorIdBE notaSalidaAlmacenPorIdBE =  _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenPorId(notaSalidaAlmacenId);
+        
+            ConsultaGuiaRemisionAlmacen consultaImpresionGuiaRemision = new ConsultaGuiaRemisionAlmacen();
+            consultaImpresionGuiaRemision = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenPorNotaSalidaAlmacenId(notaSalidaAlmacenId);
 
-            if(notaSalidaAlmacenPorIdBE!=null)
+
+            if (consultaImpresionGuiaRemision != null)
             {
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.FechaNotaSalidaAlmacen = notaSalidaAlmacenPorIdBE.FechaRegistro;
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.NumeroNotaSalidaAlmacen = notaSalidaAlmacenPorIdBE.Numero;
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.UsuarioNotaSalidaAlmacen = notaSalidaAlmacenPorIdBE.UsuarioRegistro;
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.FechaNotaSalidaAlmacen = consultaImpresionGuiaRemision.FechaRegistro;
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.NumeroNotaSalidaAlmacen = consultaImpresionGuiaRemision.Numero;
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.UsuarioNotaSalidaAlmacen = consultaImpresionGuiaRemision.UsuarioRegistro;
 
-                //TODO:Setear Valores Correctos
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Certificacion = "";
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Producto = "";
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.TipoProduccion = "";
+                
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Certificacion = consultaImpresionGuiaRemision.Certificacion; ;
+             
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.TipoProduccion = consultaImpresionGuiaRemision.TipoProduccion; ;
 
 
-                Empresa empresa = _EmpresaRepository.ObtenerEmpresaPorId(notaSalidaAlmacenPorIdBE.EmpresaId);
+                Empresa empresa = _EmpresaRepository.ObtenerEmpresaPorId(consultaImpresionGuiaRemision.EmpresaId);
 
                 if (empresa != null)
                 {
@@ -320,7 +355,20 @@ namespace CoffeeConnect.Service
                     consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.DireccionEmpresa = empresa.Direccion;
                 }
 
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.ListaProductores = _INotaSalidaAlmacenRepository.ConsultarImpresionListaProductoresPorNotaSalida(notaSalidaAlmacenId).ToList();
+              
+
+                List<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenIdBE> listaProductores = _INotaSalidaAlmacenRepository.ConsultarImpresionListaProductoresPorNotaSalida(notaSalidaAlmacenId).ToList();
+
+                string producto = String.Empty;
+
+                if (listaProductores.Any())
+                {
+                    producto = listaProductores[0].Producto;
+                }
+
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Producto = producto;
+
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.ListaProductores = listaProductores;
             }
             
 

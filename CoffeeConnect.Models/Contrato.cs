@@ -125,10 +125,15 @@ namespace CoffeeConnect.Models
 		public string GradoId
 		{ get; set; }
 
+
+		public string CalculoContratoId
+		{ get; set; }
+		
+
 		/// <summary>
 		/// Gets or sets the Cantidad value.
 		/// </summary>
-		public decimal Cantidad
+		public decimal CantidadPorSaco
 		{ get; set; }
 
 		/// <summary>
