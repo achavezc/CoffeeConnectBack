@@ -1,8 +1,14 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Integracion.Deuda.Controller
 {
@@ -28,18 +34,21 @@ namespace Integracion.Deuda.Controller
 
 
 
-
+        //[Consumes("multipart/form-data")]
         [Route("Registrar")]
         [HttpPost]
-        public IActionResult Registrar([FromBody] RegistrarActualizarSocioFincaCertificacionRequestDTO request)
+        //public IActionResult Registrar([FromBody] RegistrarActualizarSocioFincaCertificacionRequestDTO request, List<IFormFile> files)
+        public IActionResult Registrar(IFormFile file, [FromForm] string request)
         {
             Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
             RegistrarActualizarSocioFincaCertificacionResponseDTO response = new RegistrarActualizarSocioFincaCertificacionResponseDTO();
             try
             {
-                response.Result.Data = _socioFincaService.RegistrarSocioFincaCertificacion(request);
+             
+                var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarSocioFincaCertificacionRequestDTO>(request);
+                response.Result.Data = _socioFincaService.RegistrarSocioFincaCertificacion(myJsonObject, file);
 
                 response.Result.Success = true;
 
@@ -57,6 +66,7 @@ namespace Integracion.Deuda.Controller
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
+            
         }
 
         [Route("Actualizar")]

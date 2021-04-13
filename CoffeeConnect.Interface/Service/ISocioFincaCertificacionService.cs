@@ -1,4 +1,5 @@
 ﻿using CoffeeConnect.DTO;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 
 namespace CoffeeConnect.Interface.Service
@@ -6,7 +7,7 @@ namespace CoffeeConnect.Interface.Service
     public interface ISocioFincaCertificacionService
     {
 
-        int RegistrarSocioFincaCertificacion(RegistrarActualizarSocioFincaCertificacionRequestDTO request);
+        int RegistrarSocioFincaCertificacion(RegistrarActualizarSocioFincaCertificacionRequestDTO request, IFormFile file);
         int ActualizarSocioFincaCertificacion(RegistrarActualizarSocioFincaCertificacionRequestDTO request);
 
         IEnumerable<ConsultaSocioFincaCertificacionPorSocioFincaId> ConsultarSocioFincaCertificacionPorSocioFincaId(ConsultaSocioFincaCertificacionPorSocioFincaIdRequestDTO request);
