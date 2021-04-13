@@ -8,7 +8,6 @@ using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
@@ -17,15 +16,14 @@ namespace CoffeeConnect.Service
         private readonly IMapper _Mapper;
 
         private IClienteRepository _IClienteRepository;
-      
-		private ICorrelativoRepository _ICorrelativoRepository;
 
+        private ICorrelativoRepository _ICorrelativoRepository;
 
-		public ClienteService(IClienteRepository clienteRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
+        public ClienteService(IClienteRepository clienteRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
         {
             _IClienteRepository = clienteRepository;
-            
-			_ICorrelativoRepository = correlativoRepository;
+
+            _ICorrelativoRepository = correlativoRepository;
 
             _Mapper = mapper;
 
@@ -33,24 +31,23 @@ namespace CoffeeConnect.Service
 
         }
 
-
         public List<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request)
-		{
+        {
             if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
                 throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Cliente.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
-			if (timeSpan.Days > 730)
-				throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Cliente.ValidacionRangoFechaMayor2anios.Label" });
+            if (timeSpan.Days > 730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Cliente.ValidacionRangoFechaMayor2anios.Label" });
 
 
 
-			var list = _IClienteRepository.ConsultarCliente(request);
+            var list = _IClienteRepository.ConsultarCliente(request);
 
-			return list.ToList();
-		}
+            return list.ToList();
+        }
 
         public int RegistrarCliente(RegistrarActualizarClienteRequestDTO request)
         {
@@ -81,4 +78,4 @@ namespace CoffeeConnect.Service
         }
 
     }
-}   
+}

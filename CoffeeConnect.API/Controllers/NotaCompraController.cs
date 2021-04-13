@@ -243,7 +243,6 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-
         private IActionResult generar(int id)
         {
             Guid guid = Guid.NewGuid();

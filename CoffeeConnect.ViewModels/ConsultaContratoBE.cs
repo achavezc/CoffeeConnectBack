@@ -1,12 +1,14 @@
+using System;
+
 namespace CoffeeConnect.DTO
 {
-    public class ConsultaClienteBE
+    public class ConsultaContratoBE
     {
         #region Properties
         /// <summary>
         /// Gets or sets the ProductorId value.
         /// </summary>
-        public int ClienteId
+        public int ContratoId
         { get; set; }
 
         /// <summary>
@@ -15,36 +17,41 @@ namespace CoffeeConnect.DTO
         public string Numero
         { get; set; }
 
+        public int ClienteId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the TipoDocumentoId value.
         /// </summary>
-        public string TipoClienteId
-        { get; set; }
-
-
-        public string Ruc
+        public string NumeroCliente
         { get; set; }
 
         /// <summary>
         /// Gets or sets the NombreRazonSocial value.
         /// </summary>
-        public string RazonSocial
+        public string Cliente
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the DepartamentoId value.
-        /// </summary>
-        public int PaisId
+        public DateTime FechaEmbarque
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the ProvinciaId value.
-        /// </summary>
-        public string Pais
+        public string ProductoId
+        { get; set; }
+
+        public string Producto
+        { get; set; }
+
+        public string TipoProduccionId
+        { get; set; }
+
+        public string TipoProduccion
         { get; set; }
 
 
-        public string Direccion
+        public string CalidadId
+        { get; set; }
+
+        public string Calidad
         { get; set; }
 
         /// <summary>
@@ -55,8 +62,6 @@ namespace CoffeeConnect.DTO
 
         public string Estado
         { get; set; }
-
-        public string TipoCliente { get; set; }
 
         #endregion
     }

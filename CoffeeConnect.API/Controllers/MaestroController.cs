@@ -1,11 +1,11 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
+using CoffeeConnect.Models;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CoffeeConnect.Models;
 
 namespace Integracion.Deuda.Controller
 {
@@ -172,7 +172,6 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-
         [Route("ConsultarZona")]
         [HttpPost]
         public IActionResult ConsultarZona([FromBody] ConsultaZonaRequestDTO request)
@@ -210,7 +209,7 @@ namespace Integracion.Deuda.Controller
         public IActionResult ConsultarPais()
         {
             Guid guid = Guid.NewGuid();
-           // _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(Str)}");
+            // _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(Str)}");
 
             ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
             try

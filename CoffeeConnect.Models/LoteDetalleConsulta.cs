@@ -31,5 +31,12 @@ namespace CoffeeConnect.Models
         public Decimal HumedadPorcentaje { get; set; }
         public Decimal TotalAnalisisSensorial { get; set; }
         public decimal? KilosBrutosPesado { get; set; }
+
+        public string TipoCertificacionId
+        { get; set; }
+
+
+        public string TipoCertificacion
+        { get; set; }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -117,7 +116,6 @@ namespace Integracion.Deuda.Controller
         //    return Ok(response);
         //}
 
-
         [Route("ConsultarPorId")]
         [HttpPost]
         public IActionResult ConsultarPorId([FromBody] ConsultaGuiaRecepcionMateriaPrimaPorIdRequestDTO request)
@@ -207,7 +205,6 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
 
         [Route("ActualizarAnalisisCalidad")]
         [HttpPost]

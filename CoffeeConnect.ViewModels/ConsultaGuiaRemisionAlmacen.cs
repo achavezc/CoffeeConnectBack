@@ -16,6 +16,21 @@ namespace CoffeeConnect.DTO
 		public String AlmacenId { get; set; }
 		public String Almacen { get; set; }
 		public String MotivoTrasladoId { get; set; }
+
+		public String TipoProduccionId { get; set; }
+
+
+		public String TipoProduccion { get; set; }
+
+
+
+		public String TipoCertificacionId { get; set; }
+
+
+		public String Certificacion { get; set; }
+
+
+
 		public String MotivoTrasladoReferencia { get; set; }
 		public String Motivo { get; set; }
 		public String Destinatario { get; set; }
@@ -35,11 +50,22 @@ namespace CoffeeConnect.DTO
 		public String MarcaTractor { get; set; }
 		public String PlacaTractor { get; set; }
 		public String PlacaCarreta { get; set; }
+
+		public String ConfiguracionVehicularId { get; set; }
+
+		public String ConfiguracionVehicular { get; set; }
+
+		
 		public String NumeroConstanciaMTC { get; set; }
 		public String Observacion { get; set; }
-		public String CantidadLotes { get; set; }
+		public Decimal CantidadLotes { get; set; }
 		public Decimal PromedioPorcentajeRendimiento { get; set; }
-		public String CantidadTotal { get; set; }
+
+		public Decimal HumedadPorcentajeAnalisisFisico { get; set; }
+
+		
+
+		public Decimal CantidadTotal { get; set; }
 		public Decimal PesoKilosBrutos { get; set; }
 		public String EstadoId { get; set; }
 		public DateTime FechaRegistro { get; set; }

@@ -33,6 +33,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", lote.EmpresaId);
             parameters.Add("@Numero", lote.Numero);
             parameters.Add("@EstadoId", lote.EstadoId);
+            parameters.Add("@ProductoId", lote.ProductoId);
+            parameters.Add("@TipoCertificacionId", lote.TipoCertificacionId);
             parameters.Add("@AlmacenId", lote.AlmacenId);
             parameters.Add("@TotalKilosNetosPesado", lote.TotalKilosNetosPesado);
             parameters.Add("@TotalKilosBrutosPesado", lote.TotalKilosBrutosPesado);
@@ -86,6 +88,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("CodigoSocio", request.CodigoSocio);
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("ProductoId", request.ProductoId);
+            parameters.Add("TipoCertificacionId", request.TipoCertificacionId);
             parameters.Add("SubProductoId", request.SubProductoId);
             parameters.Add("AlmacenId", request.AlmacenId);
             parameters.Add("EmpresaId", request.EmpresaId);

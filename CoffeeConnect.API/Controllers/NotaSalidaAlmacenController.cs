@@ -15,11 +15,15 @@ namespace Integracion.Deuda.Controller
     public class NotaSalidaAlmacenController : ControllerBase
     {
         private INotaSalidaAlmacenService _notaSalidaAlmacenService;
+        private IGuiaRemisionAlmacenService _guiaRemisionAlmacenService;
+
         private Core.Common.Logger.ILog _log;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public NotaSalidaAlmacenController(INotaSalidaAlmacenService notaSalidaAlmacenService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
+        public NotaSalidaAlmacenController(INotaSalidaAlmacenService notaSalidaAlmacenService, IGuiaRemisionAlmacenService guiaRemisionAlmacenService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
             _notaSalidaAlmacenService = notaSalidaAlmacenService;
+            _guiaRemisionAlmacenService = guiaRemisionAlmacenService;
+
             _log = log;
             _webHostEnvironment = webHostEnvironment;
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -273,7 +277,6 @@ namespace Integracion.Deuda.Controller
         //    return Ok(response);
         //}
 
-
         [Route("ActualizarAnalisisCalidad")]
         [HttpPost]
         public IActionResult ActualizarAnalisisCalidad([FromBody] ActualizarNotaSalidaAnalisisCalidadRequestDTO request)
@@ -341,7 +344,7 @@ namespace Integracion.Deuda.Controller
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
 
-            GenerarPDFGuiaRemisionResponseDTO response = new GenerarPDFGuiaRemisionResponseDTO();
+            GenerarPDFGuiaRemisionResponseDTO response = _guiaRemisionAlmacenService.GenerarPDFGuiaRemisionPorNotaSalidaAlmacenId(id);
 
             try
             {
@@ -353,9 +356,49 @@ namespace Integracion.Deuda.Controller
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                lr.AddDataSource("dsGuiaRemision", Util.ToDataTable(response.Cabecera));
-                lr.AddDataSource("dsGuiaRemision", Util.ToDataTable(response.listaDetalleGM));
-                lr.AddDataSource("dsGuiaRemision", Util.ToDataTable(response.detalleGM));
+                lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));
+                lr.AddDataSource("dsGRListaDetalle", Util.ToDataTable(response.listaDetalleGM));
+                lr.AddDataSource("dsGRDetalle", Util.ToDataTable(response.detalleGM));
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+                return File(result.MainStream, "application/pdf");
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("GenerarPDFRegistroSeguridad")]
+        [HttpGet]
+        public IActionResult GenerarPDFRegistroSeguridad(int id)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
+
+            //ES MOMENTANEO SE DEBE ELIMINAR
+            GenerarPDFGuiaRemisionResponseDTO response = _guiaRemisionAlmacenService.GenerarPDFGuiaRemisionPorNotaSalidaAlmacenId(id);
+
+            try
+            {
+                GenerarPDFGuiaRemisionRequestDTO request = new GenerarPDFGuiaRemisionRequestDTO { LoteId = id };
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptRegistroSeguridadLimpieza.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                lr.AddDataSource("dsRegSeguridadLimpieza", Util.ToDataTable(response.Cabecera));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
                 return File(result.MainStream, "application/pdf");

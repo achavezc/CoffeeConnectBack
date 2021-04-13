@@ -48,7 +48,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", guiaRemisionAlmacen.Licencia);
             parameters.Add("@CantidadLotes", guiaRemisionAlmacen.CantidadLotes);
             parameters.Add("@NumeroConstanciaMTC", guiaRemisionAlmacen.NumeroConstanciaMTC);
-            
+
+            parameters.Add("@TipoProduccionId", guiaRemisionAlmacen.TipoProduccionId);
+            parameters.Add("@TipoCertificacionId", guiaRemisionAlmacen.TipoCertificacionId);
+
             parameters.Add("@PromedioPorcentajeRendimiento", guiaRemisionAlmacen.PromedioPorcentajeRendimiento);
             parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);
             parameters.Add("@CantidadTotal", guiaRemisionAlmacen.CantidadTotal);
@@ -92,7 +95,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Conductor", guiaRemisionAlmacen.Conductor);
             parameters.Add("@Licencia", guiaRemisionAlmacen.Licencia);
             parameters.Add("@NumeroConstanciaMTC", guiaRemisionAlmacen.NumeroConstanciaMTC);
-            
+            parameters.Add("@TipoProduccionId", guiaRemisionAlmacen.TipoProduccionId);
+            parameters.Add("@TipoCertificacionId", guiaRemisionAlmacen.TipoCertificacionId);
+
             parameters.Add("@CantidadLotes", guiaRemisionAlmacen.CantidadLotes);
             parameters.Add("@PromedioPorcentajeRendimiento", guiaRemisionAlmacen.PromedioPorcentajeRendimiento);
             parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);
@@ -160,7 +165,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                var list = db.Query<ConsultaGuiaRemisionAlmacen>("uspGuiaRemisionAlacenConsultaIdNotaSalida", parameters, commandType: CommandType.StoredProcedure);
+                var list = db.Query<ConsultaGuiaRemisionAlmacen>("uspGuiaRemisionAlmacenConsultaIdNotaSalida", parameters, commandType: CommandType.StoredProcedure);
 
                 if (list.Any())
                     itemBE = list.First();
@@ -168,6 +173,8 @@ namespace CoffeeConnect.Repository
 
             return itemBE;
         }
+
+       
 
         public IEnumerable<ConsultaGuiaRemisionAlmacenDetalle> ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(int guiaRemisionAlmacenId)
         {

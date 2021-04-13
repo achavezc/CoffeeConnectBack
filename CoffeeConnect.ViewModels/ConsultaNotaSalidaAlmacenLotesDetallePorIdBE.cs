@@ -17,6 +17,10 @@ namespace CoffeeConnect.DTO
 		public int LoteId
 		{ get; set; }
 
+
+		public int NotaIngresoAlmacenId { get; set; }
+
+
 		public string NumeroLote
 		{ get; set; }
 		
@@ -67,6 +71,12 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the UnidadMedidaIdPesado value.
 		/// </summary>
 		public string UnidadMedidaIdPesado
+		{ get; set; }
+
+		public string TipoCertificacionId
+		{ get; set; }
+
+		public string TipoProduccionId
 		{ get; set; }
 
 		/// <summary>

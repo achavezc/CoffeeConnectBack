@@ -10,13 +10,14 @@ namespace CoffeeConnect.Service.MappingConfigurations
         {
 
             CreateMap<RegistrarActualizarProductorRequestDTO, Productor>();
-            CreateMap < RegistrarActualizarSocioRequestDTO, Socio>();
+            CreateMap<RegistrarActualizarSocioRequestDTO, Socio>();
             CreateMap<RegistrarActualizarProductorFincaRequestDTO, ProductorFinca>();
             CreateMap<RegistrarActualizarSocioFincaRequestDTO, SocioFinca>();
             CreateMap<RegistrarActualizarSocioFincaCertificacionRequestDTO, SocioFincaCertificacion>();
             CreateMap<NotaSalidaAlmacen, GuiaRemisionAlmacen>();
             CreateMap<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE, GuiaRemisionAlmacenDetalleTipo>();
             CreateMap<RegistrarActualizarClienteRequestDTO, Cliente>();
+            CreateMap<RegistrarActualizarContratoRequestDTO, Contrato>();
         }
     }
 

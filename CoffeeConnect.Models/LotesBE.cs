@@ -28,8 +28,22 @@ namespace CoffeeConnect.Models
 
 		public Decimal? TotalKilosBrutosPesado { get; set; }
 
-		
-			
+
+        public string ProductoId
+        { get; set; }
+
+
+        public string TipoCertificacionId
+        { get; set; }
+
+
+        public string Producto
+        { get; set; }
+
+
+        public string TipoCertificacion
+        { get; set; }
+
 
         public Decimal? PromedioRendimientoPorcentaje { get; set; }
         public Decimal? PromedioHumedadPorcentaje { get; set; }

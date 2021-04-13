@@ -6,40 +6,40 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.80465in</Width>
+              <Width>0.78938in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.8159in</Width>
+              <Width>0.64806in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.2984in</Width>
+              <Width>1.28313in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.8159in</Width>
+              <Width>0.80063in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.51049in</Width>
+              <Width>0.99354in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.71174in</Width>
+              <Width>0.69647in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.92007in</Width>
+              <Width>0.9048in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.96174in</Width>
+              <Width>0.79395in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.80549in</Width>
+              <Width>0.79022in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.57632in</Width>
+              <Width>0.56105in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.58882in</Width>
+              <Width>0.57355in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.68049in</Width>
+              <Width>0.66522in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -94,7 +94,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -152,7 +152,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -210,7 +210,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -268,7 +268,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -287,7 +287,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Tipo </Value>
+                              <Value>Tipo Documento </Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -326,7 +326,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -384,7 +384,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -442,7 +442,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -500,7 +500,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -558,7 +558,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -616,7 +616,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -674,7 +674,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -693,7 +693,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Peso Neto</Value>
+                              <Value>Peso Bruto</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -732,7 +732,7 @@
                           <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
-                        <BackgroundColor>SeaGreen</BackgroundColor>
+                        <BackgroundColor>#479d9c</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1350,14 +1350,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="KilosNetosPesado">
+                    <Textbox Name="KilosBrutosPesado">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!KilosNetosPesado.Value</Value>
+                              <Value>=Fields!KilosBrutosPesado.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -1367,7 +1367,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>KilosNetosPesado</rd:DefaultName>
+                      <rd:DefaultName>KilosBrutosPesado</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -1435,7 +1435,7 @@
         <Top>0.14583in</Top>
         <Left>0.1in</Left>
         <Height>0.5in</Height>
-        <Width>9.49in</Width>
+        <Width>9.5in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1443,7 +1443,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>0.79167in</Height>
     <Style />
   </Body>
   <Width>9.69in</Width>
@@ -1510,7 +1510,6 @@
               </Paragraphs>
               <rd:DefaultName>DireccionEmpresa</rd:DefaultName>
               <Top>0.19in</Top>
-              <Left>0in</Left>
               <Height>0.19in</Height>
               <Width>6.12937in</Width>
               <ZIndex>1</ZIndex>
@@ -1544,7 +1543,6 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>0.38in</Top>
-              <Left>0in</Left>
               <Height>0.19in</Height>
               <Width>0.35in</Width>
               <ZIndex>2</ZIndex>
@@ -1618,13 +1616,16 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox5</rd:DefaultName>
-                  <Height>0.19in</Height>
+                  <Height>0.25in</Height>
                   <Width>2.04333in</Width>
                   <Style>
                     <Border>
                       <Style>None</Style>
                     </Border>
-                    <BackgroundColor>SeaGreen</BackgroundColor>
+                    <BottomBorder>
+                      <Style>Solid</Style>
+                    </BottomBorder>
+                    <BackgroundColor>#479d9c</BackgroundColor>
                     <VerticalAlign>Middle</VerticalAlign>
                     <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>2pt</PaddingRight>
@@ -1653,8 +1654,8 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox6</rd:DefaultName>
-                  <Top>0.2in</Top>
-                  <Height>0.19in</Height>
+                  <Top>0.25in</Top>
+                  <Height>0.25in</Height>
                   <Width>0.53125in</Width>
                   <ZIndex>1</ZIndex>
                   <Style>
@@ -1668,17 +1669,6 @@
                     <PaddingBottom>2pt</PaddingBottom>
                   </Style>
                 </Textbox>
-                <Line Name="Line1">
-                  <Top>0.19in</Top>
-                  <Height>0.01in</Height>
-                  <Width>2.04333in</Width>
-                  <ZIndex>2</ZIndex>
-                  <Style>
-                    <Border>
-                      <Style>Solid</Style>
-                    </Border>
-                  </Style>
-                </Line>
                 <Textbox Name="FechaImpresion">
                   <CanGrow>true</CanGrow>
                   <KeepTogether>true</KeepTogether>
@@ -1694,16 +1684,16 @@
                         </TextRun>
                       </TextRuns>
                       <Style>
-                        <TextAlign>Left</TextAlign>
+                        <TextAlign>Center</TextAlign>
                       </Style>
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>FechaImpresion</rd:DefaultName>
-                  <Top>0.2in</Top>
+                  <Top>0.25in</Top>
                   <Left>0.53125in</Left>
-                  <Height>0.19in</Height>
+                  <Height>0.25in</Height>
                   <Width>1.28125in</Width>
-                  <ZIndex>3</ZIndex>
+                  <ZIndex>2</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -1717,9 +1707,9 @@
                 </Textbox>
               </ReportItems>
               <KeepTogether>true</KeepTogether>
-              <Top>0.17in</Top>
-              <Left>7.44667in</Left>
-              <Height>0.39in</Height>
+              <Top>0.12611in</Top>
+              <Left>7.30415in</Left>
+              <Height>0.5in</Height>
               <Width>2.04333in</Width>
               <ZIndex>4</ZIndex>
               <Style>
@@ -1733,7 +1723,7 @@
           <Top>0.1in</Top>
           <Left>0.1in</Left>
           <Height>0.71125in</Height>
-          <Width>9.49in</Width>
+          <Width>9.5in</Width>
           <Style>
             <Border>
               <Style>Solid</Style>
@@ -1836,7 +1826,7 @@
               <Top>0.3in</Top>
               <Left>1.52in</Left>
               <Height>0.19in</Height>
-              <Width>1.71667in</Width>
+              <Width>1.03346in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1870,10 +1860,226 @@
               </Paragraphs>
               <rd:DefaultName>NumeroNotaSalidaAlmacen</rd:DefaultName>
               <Top>0.1in</Top>
-              <Left>1.52in</Left>
+              <Left>1.51389in</Left>
+              <Height>0.19in</Height>
+              <Width>1.03958in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox10">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Tipo Producción:</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox9</rd:DefaultName>
+              <Top>0.32499in</Top>
+              <Left>6.87491cm</Left>
+              <Height>0.19in</Height>
+              <Width>1.35417in</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox11">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Producto:</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox8</rd:DefaultName>
+              <Top>0.125in</Top>
+              <Left>6.87491cm</Left>
+              <Height>0.19in</Height>
+              <Width>1.35417in</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Producto">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Producto.Value, "dsCabeceraLP")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.125in</Top>
+              <Left>4.10165in</Left>
               <Height>0.19in</Height>
               <Width>1.71667in</Width>
-              <ZIndex>3</ZIndex>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="TipoProduccion">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!TipoProduccion.Value, "dsCabeceraLP")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.32499in</Top>
+              <Left>4.10165in</Left>
+              <Height>0.19in</Height>
+              <Width>1.71667in</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Certificacion">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Certificacion.Value, "dsCabeceraLP")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.14812in</Top>
+              <Left>7.35165in</Left>
+              <Height>0.19in</Height>
+              <Width>1.59334in</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox13">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Certificación:</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox8</rd:DefaultName>
+              <Top>0.14812in</Top>
+              <Left>14.81242cm</Left>
+              <Height>0.19in</Height>
+              <Width>1.5in</Width>
+              <ZIndex>9</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1890,7 +2096,7 @@
           <Top>0.81125in</Top>
           <Left>0.1in</Left>
           <Height>0.59375in</Height>
-          <Width>9.49in</Width>
+          <Width>9.5in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1901,7 +2107,7 @@
       </ReportItems>
       <Style>
         <Border>
-          <Style>None</Style>
+          <Style>Solid</Style>
         </Border>
       </Style>
     </PageHeader>
@@ -1966,6 +2172,18 @@
           <DataField>ListaProductores</DataField>
           <rd:TypeName>System.Object</rd:TypeName>
         </Field>
+        <Field Name="Producto">
+          <DataField>Producto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TipoProduccion">
+          <DataField>TipoProduccion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Certificacion">
+          <DataField>Certificacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsImpresionListaProductores</rd:DataSetName>
@@ -1990,6 +2208,10 @@
           <DataField>CodigoSocio</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Certificacion">
+          <DataField>Certificacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="FechaGuiaRecepcionMateriaPrima">
           <DataField>FechaGuiaRecepcionMateriaPrima</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -1998,8 +2220,8 @@
           <DataField>FechaNotaIngresoAlmacen</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="KilosNetosPesado">
-          <DataField>KilosNetosPesado</DataField>
+        <Field Name="KilosBrutosPesado">
+          <DataField>KilosBrutosPesado</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="NombreRazonSocial">
@@ -2028,6 +2250,10 @@
         </Field>
         <Field Name="TipoDocumento">
           <DataField>TipoDocumento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		 <Field Name="Producto">
+          <DataField>Producto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TipoDocumentoId">

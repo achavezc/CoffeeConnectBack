@@ -3576,7 +3576,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.8in</Height>
+              <Height>0.6in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3674,7 +3674,7 @@
         </TablixRowHierarchy>
         <Top>8.6in</Top>
         <Left>0.39458in</Left>
-        <Height>1.05in</Height>
+        <Height>0.85in</Height>
         <Width>1.84375in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -3692,7 +3692,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.8in</Height>
+              <Height>0.6in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3790,7 +3790,7 @@
         </TablixRowHierarchy>
         <Top>8.6in</Top>
         <Left>3.77562in</Left>
-        <Height>1.05in</Height>
+        <Height>0.85in</Height>
         <Width>1.84375in</Width>
         <ZIndex>5</ZIndex>
         <Style>
@@ -4426,7 +4426,7 @@
         <Top>2.06472in</Top>
         <Left>3.04736in</Left>
         <Height>0.25in</Height>
-        <Width>0.39931in</Width>
+        <Width>0.57292in</Width>
         <ZIndex>23</ZIndex>
         <Style>
           <Border>
@@ -4745,9 +4745,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox191</rd:DefaultName>
         <Top>2.06472in</Top>
-        <Left>3.50223in</Left>
+        <Left>3.68972in</Left>
         <Height>0.25in</Height>
-        <Width>2.39582in</Width>
+        <Width>2.20833in</Width>
         <ZIndex>32</ZIndex>
         <Style>
           <Border>
@@ -4830,7 +4830,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>9.69in</Height>
+    <Height>9.45in</Height>
     <Style>
       <Border>
         <Style>Solid</Style>

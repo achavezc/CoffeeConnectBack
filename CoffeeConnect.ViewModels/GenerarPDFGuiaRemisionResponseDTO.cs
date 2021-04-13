@@ -32,6 +32,10 @@ namespace CoffeeConnect.DTO
         public string RucDestinatario { get; set; }
         public string DireccionPartida { get; set; }
         public string DireccionDestino { get; set; }
+
+        public string Certificacion { get; set; }
+
+        public string TipoProduccion { get; set; }
     }
 
     public class GuiaRemisionListaDetalle
@@ -41,18 +45,19 @@ namespace CoffeeConnect.DTO
         public string NotaIngreso { get; set; }
         public string TipoProducto { get; set; }
         public string UnidadMedida { get; set; }
-        public long Cantidad { get; set; }
+        public decimal Cantidad { get; set; }
         public decimal PesoBruto { get; set; }
     }
 
     public class GuiaRemisionDetalle
     {
-        public long TotalLotes { get; set; }
+        public decimal TotalLotes { get; set; }
         public decimal Rendimiento { get; set; }
         public decimal PorcentajeHumedad { get; set; }
-        public long CantidadTotal { get; set; }
+        public decimal CantidadTotal { get; set; }
         public decimal TotalKGBrutos { get; set; }
         public string MotivoTraslado { get; set; }
+        public string MotivoTrasladoId { get; set; }
         public string MotivoDetalleTraslado { get; set; }
         public string PropietarioTransportista { get; set; }
         public string TransportistaDomicilio { get; set; }
@@ -63,5 +68,10 @@ namespace CoffeeConnect.DTO
         public string TransportistaConductor { get; set; }
         public string TransportistaConstancia { get; set; }
         public string TransportistaBrevete { get; set; }
+
+        public string Observaciones { get; set; }
+
+        public string Responsable { get; set; }
+
     }
 }

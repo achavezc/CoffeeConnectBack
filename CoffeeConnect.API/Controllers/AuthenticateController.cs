@@ -1,9 +1,9 @@
-﻿using System;
-using CoffeeConnect.DTO;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
 using Core.Common.Encryption;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace CoffeeConnect.API.Controller
 {
@@ -22,28 +22,28 @@ namespace CoffeeConnect.API.Controller
         }
 
 
-//        if (ModelState.IsValid)
-//                {
-//                    var loginstatus = _usersService.AuthenticateUsers(request.UserName, EncryptionLibrary.EncryptText(request.Password));
+        //        if (ModelState.IsValid)
+        //                {
+        //                    var loginstatus = _usersService.AuthenticateUsers(request.UserName, EncryptionLibrary.EncryptText(request.Password));
 
-//                    if (loginstatus)
-//                    {
-//                        //var loginResponse = _usersService.GetUserDetailsbyCredentials(request.UserName);
-//                    }
-//                    else
-//                    {
-//                        response.Result = new Result() { Success = true, ErrCode = "02", Message = "Login.UsuarioPasswordIncorrecto" };
-//}
+        //                    if (loginstatus)
+        //                    {
+        //                        //var loginResponse = _usersService.GetUserDetailsbyCredentials(request.UserName);
+        //                    }
+        //                    else
+        //                    {
+        //                        response.Result = new Result() { Success = true, ErrCode = "02", Message = "Login.UsuarioPasswordIncorrecto" };
+        //}
 
-//response.Result.Success = true;
-//                }
-//                else
-//{
-//    response.Result = new Result() { Success = true, ErrCode = "01", Message = "Login.CamposRequeridos" };
-//}
+        //response.Result.Success = true;
+        //                }
+        //                else
+        //{
+        //    response.Result = new Result() { Success = true, ErrCode = "01", Message = "Login.CamposRequeridos" };
+        //}
 
 
-[HttpGet("version")]
+        [HttpGet("version")]
         public IActionResult Version()
         {
             return Ok("Authenticate Service. version: 1.20.01.03");
@@ -59,8 +59,8 @@ namespace CoffeeConnect.API.Controller
 
             LoginResponseDTO response = new LoginResponseDTO();
             try
-            {          
-                   
+            {
+
                 response.Result.Data = _usersService.AuthenticateUsers(request.UserName, EncryptionLibrary.EncryptText(request.Password));
 
                 response.Result.Success = true;
@@ -80,7 +80,7 @@ namespace CoffeeConnect.API.Controller
 
             return Ok(response);
 
-            
+
         }
     }
 }

@@ -145,6 +145,5 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
     }
 }

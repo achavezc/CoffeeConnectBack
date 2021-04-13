@@ -16,6 +16,12 @@ namespace CoffeeConnect.Models
 		public int EmpresaTransporteId { get; set; }
 		public int TransporteId { get; set; }
 		public String MarcaTractorId { get; set; }
+
+		public String TipoProduccionId { get; set; }
+
+		public String TipoCertificacionId { get; set; }
+
+
 		public String PlacaTractor { get; set; }
 		public String MarcaCarretaId { get; set; }
 		public String PlacaCarreta { get; set; }

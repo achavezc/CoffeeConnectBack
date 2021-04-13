@@ -185,6 +185,12 @@ namespace Integracion.Deuda.Controller
                 response.Almacen = resultado.Almacen;
                 response.UnidadMedidaId = resultado.UnidadMedidaId;
                 response.UnidadMedida = resultado.UnidadMedida;
+
+                response.ProductoId = resultado.ProductoId;
+                response.Producto = resultado.Producto;
+                response.TipoCertificacionId = resultado.TipoCertificacionId;
+                response.Certificacion = resultado.TipoCertificacion;
+
                 response.Cantidad = resultado.Cantidad;
                 response.TotalKilosNetosPesado = resultado.TotalKilosNetosPesado;
                 response.TotalKilosBrutosPesado = resultado.TotalKilosBrutosPesado;
@@ -316,7 +322,7 @@ namespace Integracion.Deuda.Controller
                 };
                 var file = _converter.Convert(pdf);
 
-                return File(file, "application/pdf");
+                return File(file, "application/pdf", $"EtiquetasLotes_{DateTime.Now.ToString("yyyyMMddhhmmss")}.pdf");
             }
             catch (ResultException ex)
             {

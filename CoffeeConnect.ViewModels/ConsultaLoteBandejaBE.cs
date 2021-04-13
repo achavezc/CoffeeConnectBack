@@ -42,5 +42,21 @@ namespace CoffeeConnect.DTO
         public DateTime? FechaUltimaActualizacion { get; set; }
         public String UsuarioUltimaActualizacion { get; set; }
         public bool Activo { get; set; }
+
+
+        public string ProductoId
+        { get; set; }
+
+
+        public string TipoCertificacionId
+        { get; set; }
+
+
+        public string Producto
+        { get; set; }
+
+
+        public string TipoCertificacion
+        { get; set; }
     }
 }

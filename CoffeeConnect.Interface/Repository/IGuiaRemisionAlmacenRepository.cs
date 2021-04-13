@@ -17,5 +17,7 @@ namespace CoffeeConnect.Interface.Repository
         int Actualizar(GuiaRemisionAlmacen guiaRemisionAlmacen);
 
         int ActualizarDatosCalidad(GuiaRemisionAlmacen guiaRemisionAlmacen);
+
+        //ConsultaGuiaRemisionAlmacen ConsultaGuiaRemisionAlmacenPorId(int guiaRemisionAlmacenId);
     }
 }
