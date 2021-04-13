@@ -2,8 +2,6 @@
 {
     public class ConsultaContratoPorIdRequestDTO
     {
-
         public int ContratoId { get; set; }
-
     }
 }
