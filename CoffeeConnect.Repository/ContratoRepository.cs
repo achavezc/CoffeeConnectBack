@@ -58,11 +58,12 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Monto", contrato.Monto);
             parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);
             parameters.Add("@UnidadMedidaId", contrato.UnidadMedidaId);
+            parameters.Add("@CalculoContratoId", contrato.CalculoContratoId);
             parameters.Add("@EntidadCertificadoraId", contrato.EntidadCertificadoraId);
             parameters.Add("@TipoCertificacionId", contrato.TipoCertificacionId);
             parameters.Add("@CalidadId", contrato.CalidadId);
             parameters.Add("@GradoId", contrato.GradoId);
-            parameters.Add("@Cantidad", contrato.Cantidad);
+            parameters.Add("@CantidadPorSaco", contrato.CantidadPorSaco);
             parameters.Add("@PesoPorSaco", contrato.PesoPorSaco);
             parameters.Add("@PreparacionCantidadDefectos", contrato.PreparacionCantidadDefectos);
             parameters.Add("@RequiereAprobacionMuestra", contrato.RequiereAprobacionMuestra);
@@ -110,9 +111,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UnidadMedidaId", contrato.UnidadMedidaId);
             parameters.Add("@EntidadCertificadoraId", contrato.EntidadCertificadoraId);
             parameters.Add("@TipoCertificacionId", contrato.TipoCertificacionId);
+            parameters.Add("@CalculoContratoId", contrato.CalculoContratoId);
             parameters.Add("@CalidadId", contrato.CalidadId);
             parameters.Add("@GradoId", contrato.GradoId);
-            parameters.Add("@Cantidad", contrato.Cantidad);
+            parameters.Add("@CantidadPorSaco", contrato.CantidadPorSaco);
             parameters.Add("@PesoPorSaco", contrato.PesoPorSaco);
             parameters.Add("@PreparacionCantidadDefectos", contrato.PreparacionCantidadDefectos);
             parameters.Add("@RequiereAprobacionMuestra", contrato.RequiereAprobacionMuestra);

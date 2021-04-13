@@ -35,7 +35,7 @@ namespace CoffeeConnect.DTO
 
         public string Certificacion { get; set; }
 
-        public string Certificadora { get; set; }
+        public string TipoProduccion { get; set; }
     }
 
     public class GuiaRemisionListaDetalle

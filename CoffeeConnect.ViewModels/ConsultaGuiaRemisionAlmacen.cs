@@ -16,6 +16,21 @@ namespace CoffeeConnect.DTO
 		public String AlmacenId { get; set; }
 		public String Almacen { get; set; }
 		public String MotivoTrasladoId { get; set; }
+
+		public String TipoProduccionId { get; set; }
+
+
+		public String TipoProduccion { get; set; }
+
+
+
+		public String TipoCertificacionId { get; set; }
+
+
+		public String Certificacion { get; set; }
+
+
+
 		public String MotivoTrasladoReferencia { get; set; }
 		public String Motivo { get; set; }
 		public String Destinatario { get; set; }

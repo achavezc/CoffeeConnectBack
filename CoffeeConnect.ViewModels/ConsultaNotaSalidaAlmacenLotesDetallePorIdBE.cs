@@ -73,6 +73,12 @@ namespace CoffeeConnect.DTO
 		public string UnidadMedidaIdPesado
 		{ get; set; }
 
+		public string TipoCertificacionId
+		{ get; set; }
+
+		public string TipoProduccionId
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the UnidadMedida value.
 		/// </summary>

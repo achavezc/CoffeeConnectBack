@@ -1600,7 +1600,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -2660,6 +2659,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox60</rd:DefaultName>
+              <Top>0.03528cm</Top>
               <Height>0.35in</Height>
               <Width>1.37in</Width>
               <Style>
@@ -2714,7 +2714,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox61</rd:DefaultName>
-              <Top>0.35in</Top>
+              <Top>0.36389in</Top>
               <Height>0.35in</Height>
               <Width>1.37in</Width>
               <ZIndex>1</ZIndex>
@@ -2770,7 +2770,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox62</rd:DefaultName>
-              <Top>0.7in</Top>
+              <Top>0.71389in</Top>
               <Height>0.35in</Height>
               <Width>1.37in</Width>
               <ZIndex>2</ZIndex>
@@ -2826,7 +2826,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox63</rd:DefaultName>
-              <Top>1.05in</Top>
+              <Top>1.06389in</Top>
               <Height>0.35in</Height>
               <Width>1.37in</Width>
               <ZIndex>3</ZIndex>
@@ -2880,6 +2880,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox64</rd:DefaultName>
+              <Top>0.03528cm</Top>
               <Left>1.38in</Left>
               <Height>0.35in</Height>
               <Width>2.1in</Width>
@@ -2933,7 +2934,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox65</rd:DefaultName>
-              <Top>0.35in</Top>
+              <Top>0.36389in</Top>
               <Left>1.38in</Left>
               <Height>0.35in</Height>
               <Width>2.1in</Width>
@@ -2987,7 +2988,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox66</rd:DefaultName>
-              <Top>0.7in</Top>
+              <Top>0.71389in</Top>
               <Left>1.38in</Left>
               <Height>0.35in</Height>
               <Width>2.1in</Width>
@@ -3041,7 +3042,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox67</rd:DefaultName>
-              <Top>1.05in</Top>
+              <Top>1.06389in</Top>
               <Left>1.38in</Left>
               <Height>0.35in</Height>
               <Width>2.1in</Width>
@@ -3084,7 +3085,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>CERTIFICACIÓN</Value>
+                      <Value>PRODUCCIÓN</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -3099,6 +3100,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox84</rd:DefaultName>
+              <Top>0.03528cm</Top>
               <Left>3.47in</Left>
               <Height>0.35in</Height>
               <Width>0.94in</Width>
@@ -3122,7 +3124,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>CERTIFICADORA</Value>
+                      <Value>CERTIFICACIÓN</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -3137,7 +3139,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox85</rd:DefaultName>
-              <Top>0.35in</Top>
+              <Top>0.36389in</Top>
               <Left>3.47in</Left>
               <Height>0.35in</Height>
               <Width>0.94in</Width>
@@ -3154,7 +3156,7 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox86">
+            <Textbox Name="Textbox87">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -3173,7 +3175,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Textbox86</rd:DefaultName>
+              <rd:DefaultName>Textbox87</rd:DefaultName>
+              <Top>0.36389in</Top>
               <Left>4.41in</Left>
               <Height>0.35in</Height>
               <Width>1.56333in</Width>
@@ -3189,14 +3192,14 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox87">
+            <Textbox Name="Textbox88">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Certificadora.Value, "dsGRCabecera")</Value>
+                      <Value>=First(Fields!TipoProduccion.Value, "dsGRCabecera")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -3209,7 +3212,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox87</rd:DefaultName>
-              <Top>0.35in</Top>
+              <Top>0.01389in</Top>
               <Left>4.41in</Left>
               <Height>0.35in</Height>
               <Width>1.56333in</Width>
@@ -3227,9 +3230,9 @@
             </Textbox>
           </ReportItems>
           <KeepTogether>true</KeepTogether>
-          <Top>0.95708in</Top>
+          <Top>0.94319in</Top>
           <Left>0.18625in</Left>
-          <Height>1.4in</Height>
+          <Height>1.41389in</Height>
           <Width>5.97333in</Width>
           <ZIndex>1</ZIndex>
           <Style>
@@ -3310,6 +3313,14 @@
           <DataField>Ruc</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="TipoProduccion">
+          <DataField>TipoProduccion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Certificacion">
+          <DataField>Certificacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Almacen">
           <DataField>Almacen</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -3330,14 +3341,8 @@
           <DataField>DireccionDestino</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Certificacion">
-          <DataField>Certificacion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Certificadora">
-          <DataField>Certificadora</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
+        
+        
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsReportes</rd:DataSetName>
