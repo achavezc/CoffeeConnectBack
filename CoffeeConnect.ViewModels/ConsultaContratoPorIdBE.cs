@@ -201,7 +201,8 @@ namespace CoffeeConnect.DTO
         public string EstadoId
         { get; set; }
 
-
+        public string NumeroCliente { get; set; }
+        public string Cliente { get; set; }
 
         #endregion
     }
