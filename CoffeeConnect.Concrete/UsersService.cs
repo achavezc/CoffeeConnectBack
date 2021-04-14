@@ -383,12 +383,21 @@ namespace CoffeeConnect.Service
     submenu: [
     
     ]
+  },
+{
+    path: '',
+    title: 'Cliente.Label',
+     icon: 'ft-life-buoy',
+	class: 'has-sub',
+	badge: '',
+	badgeClass: '',
+	isExternalLink: false,
+    submenu: [
+    
+    ]
   }
-
 ]
-  
-  
-  ";
+ ";
 
         public LoginBE AuthenticateUsers(string username, string password)
         {
