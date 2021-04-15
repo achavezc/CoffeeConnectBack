@@ -33,6 +33,13 @@ namespace CoffeeConnect.Models
         { get; set; }
 
 
+        public string SubProductoId
+        { get; set; }
+
+
+        public string SubProducto
+        { get; set; }
+
         public string TipoCertificacionId
         { get; set; }
 

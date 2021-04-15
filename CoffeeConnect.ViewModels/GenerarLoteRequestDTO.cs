@@ -13,6 +13,10 @@ namespace CoffeeConnect.DTO
         public string AlmacenId { get; set; }
         public string ProductoId
         { get; set; }
+
+        public string SubProductoId
+        { get; set; }
+
         public string TipoCertificacionId
         { get; set; }
     }

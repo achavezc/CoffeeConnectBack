@@ -188,6 +188,11 @@ namespace Integracion.Deuda.Controller
 
                 response.ProductoId = resultado.ProductoId;
                 response.Producto = resultado.Producto;
+
+                response.SubProductoId = resultado.SubProductoId;
+                response.SubProducto = resultado.SubProducto;
+
+
                 response.TipoCertificacionId = resultado.TipoCertificacionId;
                 response.Certificacion = resultado.TipoCertificacion;
 
