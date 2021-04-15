@@ -55,7 +55,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the PaisDestinoId value.
         /// </summary>
-        public int PaisDestinoId
+        public string PaisDestinoId
         { get; set; }
 
         public string CalculoContratoId
