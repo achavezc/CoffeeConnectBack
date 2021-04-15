@@ -95,12 +95,12 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
             parameters.Add("@ContratoId", contrato.ContratoId);
-            parameters.Add("@Numero", contrato.Numero);
+            //parameters.Add("@Numero", contrato.Numero);
             parameters.Add("@ClienteId", contrato.ClienteId);
             parameters.Add("@FloId", contrato.FloId);
             parameters.Add("@CondicionEmbarqueId", contrato.CondicionEmbarqueId);
             parameters.Add("@FechaEmbarque", contrato.FechaEmbarque);
-            parameters.Add("@Fechcontrato", contrato.FechaContrato);
+            parameters.Add("@FechaContrato", contrato.FechaContrato);
             parameters.Add("@FechaFacturacion", contrato.FechaFacturacion);
             parameters.Add("@PaisDestinoId", contrato.PaisDestinoId);
             parameters.Add("@DepartamentoDestinoId", contrato.DepartamentoDestinoId);
