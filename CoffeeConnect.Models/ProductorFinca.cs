@@ -66,6 +66,15 @@ namespace CoffeeConnect.Models
 		public decimal Longuitud
 		{ get; set; }
 
+		public decimal LatitudDms
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Longuitud value.
+		/// </summary>
+		public decimal LonguitudDms
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the Altitud value.
 		/// </summary>

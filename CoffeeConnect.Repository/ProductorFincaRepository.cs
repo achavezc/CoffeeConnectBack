@@ -40,6 +40,8 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@ZonaId", productorFinca.ZonaId);
 			parameters.Add("@Latitud", productorFinca.Latitud);
 			parameters.Add("@Longuitud", productorFinca.Longuitud);
+			parameters.Add("@LatitudDms", productorFinca.LatitudDms);
+			parameters.Add("@LonguitudDms", productorFinca.LonguitudDms);
 			parameters.Add("@Altitud", productorFinca.Altitud);
 			parameters.Add("@FuenteEnergiaId", productorFinca.FuenteEnergiaId);
 			parameters.Add("@FuenteAguaId", productorFinca.FuenteAguaId);
@@ -83,6 +85,8 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@ZonaId", productorFinca.ZonaId);
 			parameters.Add("@Latitud", productorFinca.Latitud);
 			parameters.Add("@Longuitud", productorFinca.Longuitud);
+			parameters.Add("@LatitudDms", productorFinca.LatitudDms);
+			parameters.Add("@LonguitudDms", productorFinca.LonguitudDms);
 			parameters.Add("@Altitud", productorFinca.Altitud);
 			parameters.Add("@FuenteEnergiaId", productorFinca.FuenteEnergiaId);
 			parameters.Add("@FuenteAguaId", productorFinca.FuenteAguaId);

@@ -59,6 +59,12 @@ namespace CoffeeConnect.DTO
 		public decimal? Longuitud
 		{ get; set; }
 
+		public decimal? LatitudDms
+		{ get; set; }
+
+		public decimal? LonguitudDms
+		{ get; set; }
+
 		public decimal? Altitud
 		{ get; set; }
 
