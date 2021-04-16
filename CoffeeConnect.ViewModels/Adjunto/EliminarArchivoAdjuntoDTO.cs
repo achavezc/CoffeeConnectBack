@@ -23,7 +23,7 @@
         /// <br/><b>Tipo:</b> string 
         /// <br/><b>Longitud:</b> 3
         /// </summary>
-        public string SociedadPropietaria { get; set; }
+        public string pathFile { get; set; }
 
     }
 }
