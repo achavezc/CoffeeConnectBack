@@ -169,6 +169,9 @@ namespace CoffeeConnect.DTO
         public string NombreArchivo
         { get; set; }
 
+        public string DescripcionArchivo
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the PathArchivo value.
         /// </summary>
