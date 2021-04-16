@@ -78,7 +78,7 @@ namespace CoffeeConnect.Service
             int affected = 0;
 
             OrdenServicioControlCalidad.EmpresaId = request.EmpresaId;
-            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;            
+            OrdenServicioControlCalidad.EmpresaProcesadoraId = 1;// request.EmpresaProcesadoraId;            
             OrdenServicioControlCalidad.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.OrdenServicioControlCalidad);
             OrdenServicioControlCalidad.UnidadMedidaId = request.UnidadMedidaId;
             OrdenServicioControlCalidad.CantidadPesado = request.CantidadPesado;

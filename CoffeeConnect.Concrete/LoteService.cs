@@ -40,6 +40,7 @@ namespace CoffeeConnect.Service
             lote.FechaRegistro = DateTime.Now;
             lote.UsuarioRegistro = request.Usuario;
             lote.ProductoId = request.ProductoId;
+            lote.SubProductoId = request.SubProductoId;
             lote.TipoCertificacionId = request.TipoCertificacionId;
 
             int loteId = 0;
@@ -237,6 +238,8 @@ namespace CoffeeConnect.Service
             response.PromedioTotalAnalisisSensorial = Lote.PromedioTotalAnalisisSensorial;
             response.ProductoId = Lote.ProductoId;
             response.Producto = Lote.Producto;
+            response.SubProductoId = Lote.SubProductoId;
+            response.SubProducto = Lote.SubProducto;
             response.TipoCertificacionId = Lote.TipoCertificacionId;
             response.TipoCertificacion = Lote.TipoCertificacion;
 

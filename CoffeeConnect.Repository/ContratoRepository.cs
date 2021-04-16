@@ -3,6 +3,7 @@ using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
 using Dapper;
 using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -48,7 +49,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FloId", contrato.FloId);
             parameters.Add("@CondicionEmbarqueId", contrato.CondicionEmbarqueId);
             parameters.Add("@FechaEmbarque", contrato.FechaEmbarque);
-            parameters.Add("@Fechcontrato", contrato.FechaContrato);
+            parameters.Add("@FechaContrato", contrato.FechaContrato);
             parameters.Add("@FechaFacturacion", contrato.FechaFacturacion);
             parameters.Add("@PaisDestinoId", contrato.PaisDestinoId);
             parameters.Add("@DepartamentoDestinoId", contrato.DepartamentoDestinoId);
@@ -58,7 +59,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Monto", contrato.Monto);
             parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);
             parameters.Add("@UnidadMedidaId", contrato.UnidadMedidaId);
-            parameters.Add("@CalculoContratoId", contrato.CalculoContratoId);
+            parameters.Add("@CalculoContratoId", contrato.CalculoContratoId ?? string.Empty);
             parameters.Add("@EntidadCertificadoraId", contrato.EntidadCertificadoraId);
             parameters.Add("@TipoCertificacionId", contrato.TipoCertificacionId);
             parameters.Add("@CalidadId", contrato.CalidadId);
@@ -70,6 +71,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MuestraEnviadaCliente", contrato.MuestraEnviadaCliente);
             parameters.Add("@MuestraEnviadaAnalisisGlifosato", contrato.MuestraEnviadaAnalisisGlifosato);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
+            parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
             parameters.Add("@FechaRegistro", contrato.FechaRegistro);
             parameters.Add("@UsuarioRegistro", contrato.UsuarioRegistro);
@@ -94,12 +96,12 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
             parameters.Add("@ContratoId", contrato.ContratoId);
-            parameters.Add("@Numero", contrato.Numero);
+            //parameters.Add("@Numero", contrato.Numero);
             parameters.Add("@ClienteId", contrato.ClienteId);
             parameters.Add("@FloId", contrato.FloId);
             parameters.Add("@CondicionEmbarqueId", contrato.CondicionEmbarqueId);
             parameters.Add("@FechaEmbarque", contrato.FechaEmbarque);
-            parameters.Add("@Fechcontrato", contrato.FechaContrato);
+            parameters.Add("@FechaContrato", contrato.FechaContrato);
             parameters.Add("@FechaFacturacion", contrato.FechaFacturacion);
             parameters.Add("@PaisDestinoId", contrato.PaisDestinoId);
             parameters.Add("@DepartamentoDestinoId", contrato.DepartamentoDestinoId);
@@ -121,6 +123,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MuestraEnviadaCliente", contrato.MuestraEnviadaCliente);
             parameters.Add("@MuestraEnviadaAnalisisGlifosato", contrato.MuestraEnviadaAnalisisGlifosato);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
+            parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
             parameters.Add("@FechaUltimaActualizacion", contrato.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", contrato.UsuarioUltimaActualizacion);

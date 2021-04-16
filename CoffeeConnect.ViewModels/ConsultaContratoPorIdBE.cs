@@ -54,7 +54,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the PaisDestinoId value.
         /// </summary>
-        public int PaisDestinoId
+        public string PaisDestinoId
         { get; set; }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the Cantidad value.
         /// </summary>
-        public decimal Cantidad
+        public decimal CantidadPorSaco
         { get; set; }
 
         /// <summary>
@@ -165,6 +165,10 @@ namespace CoffeeConnect.DTO
         public string NombreArchivo
         { get; set; }
 
+        public string DescripcionArchivo
+        { get; set; }
+        
+
         /// <summary>
         /// Gets or sets the PathArchivo value.
         /// </summary>
@@ -201,7 +205,8 @@ namespace CoffeeConnect.DTO
         public string EstadoId
         { get; set; }
 
-
+        public string NumeroCliente { get; set; }
+        public string Cliente { get; set; }
 
         #endregion
     }
