@@ -211,6 +211,12 @@ namespace CoffeeConnect.Models
 		public string IntermediarioFinca
 		{ get; set; }
 
+		public string SocioFincaCertificacion
+		{ get; set; }
+
+
+
+		
 		/// <summary>
 		/// Gets or sets the EstadoId value.
 		/// </summary>

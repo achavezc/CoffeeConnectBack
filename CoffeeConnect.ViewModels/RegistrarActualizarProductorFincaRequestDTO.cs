@@ -72,6 +72,15 @@ namespace CoffeeConnect.DTO
 		public decimal Altitud
 		{ get; set; }
 
+		public decimal LatitudDms
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Longuitud value.
+		/// </summary>
+		public decimal LonguitudDms
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the FuenteEnergiaId value.
 		/// </summary>

@@ -1,4 +1,6 @@
+using CoffeeConnect.Models;
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -53,10 +55,13 @@ namespace CoffeeConnect.DTO
         public string Cultivo
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Precipitacion value.
-        /// </summary>
-        public string Precipitacion
+        public List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> FincaEstimado
+        { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Precipitacion value.
+    /// </summary>
+    public string Precipitacion
         { get; set; }
 
         /// <summary>
@@ -104,5 +109,8 @@ namespace CoffeeConnect.DTO
         public int ProductorId { get; set; }
 
         #endregion
+         
+        
+
     }
 }
