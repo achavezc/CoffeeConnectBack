@@ -28,6 +28,11 @@ namespace CoffeeConnect.DTO
 		public string NumeroReferencia
 		{ get; set; }
 
+		public string SocioFincaCertificacion
+		{ get; set; }
+		
+
+
 		/// <summary>
 		/// Gets or sets the ProductoId value.
 		/// </summary>

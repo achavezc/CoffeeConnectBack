@@ -15,5 +15,10 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaSocioFincaPorSocioIdBE> ConsultarSocioFincaPorSocioId(int socioId);
 
         ConsultaSocioFincaPorIdBE ConsultarSocioFincaPorId(int socioFincaId);
+
+
+        IEnumerable<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> ConsultarSocioFincaEstimadoPorSocioFincaId(int socioId);
+
+        int ActualizarSocioFincaEstimado(List<SocioFincaEstimadoTipo> request, int socioFincaId);
     }
 }
