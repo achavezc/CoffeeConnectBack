@@ -1,7 +1,9 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 
 namespace Integracion.Deuda.Controller
@@ -58,7 +60,8 @@ namespace Integracion.Deuda.Controller
 
         [Route("Registrar")]
         [HttpPost]
-        public IActionResult Registrar([FromBody] RegistrarActualizarContratoRequestDTO request)
+        //public IActionResult Registrar([FromBody] RegistrarActualizarContratoRequestDTO request)
+        public IActionResult Registrar(IFormFile file, [FromForm] string request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
@@ -66,7 +69,8 @@ namespace Integracion.Deuda.Controller
             RegistrarActualizarContratoResponseDTO response = new RegistrarActualizarContratoResponseDTO();
             try
             {
-                response.Result.Data = _contratoService.RegistrarContrato(request);
+                var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarContratoRequestDTO>(request);
+                response.Result.Data = _contratoService.RegistrarContrato(myJsonObject, file);
 
                 response.Result.Success = true;
 
