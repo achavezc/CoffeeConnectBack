@@ -21,6 +21,6 @@ namespace CoffeeConnect.DTO.Adjunto
         /// <br/><b>Tipo:</b> string 
         /// <br/><b>Longitud:</b> 4
         ///</summary>
-        public string SociedadPropietaria { get; set; }
+        public string pathFile { get; set; }
     }
 }

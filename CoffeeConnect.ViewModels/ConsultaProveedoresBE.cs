@@ -43,5 +43,9 @@ namespace CoffeeConnect.DTO
 
         public int? FincaId { get; set; }
         public string Finca { get; set; }
+
+        public string Certificacion { get; set; }
+
+       
     }
 }

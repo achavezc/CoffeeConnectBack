@@ -6,6 +6,7 @@ using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CoffeeConnect.Service
 {
@@ -38,9 +39,23 @@ namespace CoffeeConnect.Service
             socioFinca.UsuarioRegistro = request.Usuario;
 
 
-            int affected = _ISocioFincaRepository.Insertar(socioFinca);
+            int id = _ISocioFincaRepository.Insertar(socioFinca);
 
-            return affected;
+
+            List<SocioFincaEstimadoTipo> socioFincaEstimadoTipoList = new List<SocioFincaEstimadoTipo>();
+
+            request.FincaEstimado.ForEach(z => {
+                SocioFincaEstimadoTipo item = new SocioFincaEstimadoTipo();
+                item.Anio = z.Anio;
+                item.Estimado = z.Estimado;
+                item.SocioFincaId = id;
+                item.ProductoId = "02"; //Pergamino;
+                socioFincaEstimadoTipoList.Add(item);
+            });
+
+
+            _ISocioFincaRepository.ActualizarSocioFincaEstimado(socioFincaEstimadoTipoList, id);
+            return id;
         }
 
         public int ActualizarSocioFinca(RegistrarActualizarSocioFincaRequestDTO request)
@@ -61,7 +76,12 @@ namespace CoffeeConnect.Service
 
         public ConsultaSocioFincaPorIdBE ConsultarSocioFincaPorId(ConsultaSocioFincaPorIdRequestDTO request)
         {
-            return _ISocioFincaRepository.ConsultarSocioFincaPorId(request.SocioFincaId);
+            ConsultaSocioFincaPorIdBE consultaSocioFincaPorIdBE = _ISocioFincaRepository.ConsultarSocioFincaPorId(request.SocioFincaId);
+
+            consultaSocioFincaPorIdBE.FincaEstimado = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(request.SocioFincaId).ToList();
+
+
+            return consultaSocioFincaPorIdBE;
         }
 
     }

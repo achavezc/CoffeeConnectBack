@@ -82,6 +82,7 @@ namespace CoffeeConnect.DTO
 		public string EstadoId
 		{ get; set; }
 
+		public List<ActualizarFincaEstimadoRequestDTO> FincaEstimado { get; set; }
 
 
 		#endregion

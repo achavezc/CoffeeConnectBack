@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-
+using Core.Utils;
 namespace CoffeeConnect.Repository
 {
     public class SocioFincaRepository : ISocioFincaRepository
@@ -38,8 +38,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", socioFinca.FechaRegistro);
             parameters.Add("@UsuarioRegistro", socioFinca.UsuarioRegistro);
             parameters.Add("@EstadoId", socioFinca.EstadoId);
+        
 
-
+            parameters.Add("@SocioFincaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -47,9 +48,9 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspSocioFincaInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
+            int id = parameters.Get<int>("SocioFincaId");
 
-
-            return result;
+            return id;
         }
 
         public int Actualizar(SocioFinca socioFinca)
@@ -93,6 +94,17 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> ConsultarSocioFincaEstimadoPorSocioFincaId(int socioId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@SocioFincaId", socioId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaSocioFincaEstimadoPorSocioFincaIdBE>("uspSocioFincaEstimadoConsultaPorFincaId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public ConsultaSocioFincaPorIdBE ConsultarSocioFincaPorId(int socioFincaId)
         {
             ConsultaSocioFincaPorIdBE itemBE = null;
@@ -110,6 +122,27 @@ namespace CoffeeConnect.Repository
             }
 
             return itemBE;
+        }
+
+        public int ActualizarSocioFincaEstimado(List<SocioFincaEstimadoTipo> request, int socioFincaId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@SocioFincaId", socioFincaId);
+            parameters.Add("@SocioFincaEstimadoTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspSocioFincaEstimadoActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
         }
     }
 }

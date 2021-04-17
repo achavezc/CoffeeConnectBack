@@ -8,17 +8,36 @@ using System.Transactions;
 using System.Web;
 using System.IO.IsolatedStorage;
 using CoffeeConnect.DTO.Adjunto;
+using Microsoft.Extensions.Options;
 
 namespace CoffeeConnect.Service.Adjunto
 {
     public class AdjuntarArchivosBL
     {
 
-        private String getRutaFisica()
+        public IOptions<FileServerSettings> _fileServerSettings;
+        public AdjuntarArchivosBL(IOptions<FileServerSettings> fileServerSettings)
+        {
+            _fileServerSettings = fileServerSettings;
+        }
+
+
+        private String getRutaFisica(string pathFile)
         {
             //return Helper.GetAppSetting("RUTAFISICA");
             //return "D:\\COMPARTIDO\\ArchivosDemo";
-            return "D:\\COMPARTIDO\\ArchivosDemo";
+            string path = _fileServerSettings.Value.RutaPrincipal + pathFile;
+            if (Directory.Exists(path))
+            {
+                Console.WriteLine("That path exists already.");
+                return path;
+            }
+            else
+            {
+                Directory.CreateDirectory(path);
+                return path;
+            }
+            
         }
 
         public String getRutaLogica()
@@ -46,13 +65,14 @@ namespace CoffeeConnect.Service.Adjunto
                     //filtro.filename = fileName;
                     //la ruta fisica donde se guardará
                     String nombreInterno = getNombreInterno(fileName);
-                    String rutaReal = Path.Combine(getRutaFisica(), nombreInterno);
+                    String rutaReal = Path.Combine(getRutaFisica(request.pathFile), nombreInterno);
 
                     var memoryStream = new MemoryStream(filtro.archivoStream);
 
                     //----------------------------------------------------
                     try
                     {
+                        
                         FileStream file = new FileStream(rutaReal, FileMode.Create, System.IO.FileAccess.Write);
                         byte[] bytes = new byte[memoryStream.Length];
                         memoryStream.Read(bytes, 0, (int)memoryStream.Length);
@@ -100,7 +120,7 @@ namespace CoffeeConnect.Service.Adjunto
                 try
                 {
                     //String nombreInterno = getNombreInterno(request.SociedadPropietaria, item);
-                    String rutaReal = Path.Combine(getRutaFisica(), item);
+                    String rutaReal = Path.Combine(getRutaFisica(request.pathFile), item);
 
                     System.IO.File.Delete(rutaReal);
                 }
@@ -120,11 +140,7 @@ namespace CoffeeConnect.Service.Adjunto
         {
             try
             {
-                //using (var Contexto = new ContextoParaBaseDatos())
-                //{
-                //RepositorioDocumentoAdjunto repo = new RepositorioDocumentoAdjunto(Contexto);
-                //var registro = repo.ObtenerPorFicheroVisual(request.ArchivoVisual);
-                String rutaReal = Path.Combine(getRutaFisica(), request.ArchivoVisual.Replace("\\", ""));
+                String rutaReal = Path.Combine(getRutaFisica(request.PathFile), request.ArchivoVisual.Replace("\\", ""));
 
                 if (File.Exists(rutaReal))
                 {

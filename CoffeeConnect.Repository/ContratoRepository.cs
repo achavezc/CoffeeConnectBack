@@ -71,6 +71,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MuestraEnviadaCliente", contrato.MuestraEnviadaCliente);
             parameters.Add("@MuestraEnviadaAnalisisGlifosato", contrato.MuestraEnviadaAnalisisGlifosato);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
+            parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
             parameters.Add("@FechaRegistro", contrato.FechaRegistro);
             parameters.Add("@UsuarioRegistro", contrato.UsuarioRegistro);
@@ -122,6 +123,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MuestraEnviadaCliente", contrato.MuestraEnviadaCliente);
             parameters.Add("@MuestraEnviadaAnalisisGlifosato", contrato.MuestraEnviadaAnalisisGlifosato);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
+            parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
             parameters.Add("@FechaUltimaActualizacion", contrato.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", contrato.UsuarioUltimaActualizacion);
