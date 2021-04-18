@@ -21,6 +21,8 @@ namespace CoffeeConnect.Interface.Service
 
         List<ConsultaImpresionLotePorIdBE> ConsultarImpresionLotePorId(int loteId);
 
+        int ActualizarLoteAnalisisCalidad(ActualizarLoteAnalisisCalidadRequestDTO request);
+
         string ObtenerHTMLReporteEtiquetasLotes(List<ConsultaImpresionLotePorIdBE> listaEtiquetasLotes);
     }
 }

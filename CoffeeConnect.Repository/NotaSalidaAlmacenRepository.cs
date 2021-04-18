@@ -109,40 +109,7 @@ namespace CoffeeConnect.Repository
         }
 
 
-        public int ActualizarNotaSalidaAlmacenAnalisisCalidad(NotaSalidaAlmacen notaSalidaAlmacen)
-        {
-            int result = 0;
-
-            var parameters = new DynamicParameters();
-
-            parameters.Add("@NotaSalidaAlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
-            parameters.Add("@ExportableGramosAnalisisFisico", notaSalidaAlmacen.ExportableGramosAnalisisFisico);
-            parameters.Add("@ExportablePorcentajeAnalisisFisico", notaSalidaAlmacen.ExportablePorcentajeAnalisisFisico);
-            parameters.Add("@DescarteGramosAnalisisFisico", notaSalidaAlmacen.DescarteGramosAnalisisFisico);
-            parameters.Add("@DescartePorcentajeAnalisisFisico", notaSalidaAlmacen.DescartePorcentajeAnalisisFisico);
-            parameters.Add("@CascarillaGramosAnalisisFisico", notaSalidaAlmacen.CascarillaGramosAnalisisFisico);
-            parameters.Add("@CascarillaPorcentajeAnalisisFisico", notaSalidaAlmacen.CascarillaPorcentajeAnalisisFisico);
-            parameters.Add("@TotalGramosAnalisisFisico", notaSalidaAlmacen.TotalGramosAnalisisFisico);
-            parameters.Add("@TotalPorcentajeAnalisisFisico", notaSalidaAlmacen.TotalPorcentajeAnalisisFisico);
-            parameters.Add("@HumedadPorcentajeAnalisisFisico", notaSalidaAlmacen.HumedadPorcentajeAnalisisFisico);
-            parameters.Add("@TotalAnalisisSensorial", notaSalidaAlmacen.TotalAnalisisSensorial);
-            parameters.Add("@ObservacionAnalisisFisico", notaSalidaAlmacen.ObservacionAnalisisFisico);
-            parameters.Add("@FechaCalidad", notaSalidaAlmacen.FechaCalidad);
-            parameters.Add("@UsuarioCalidad", notaSalidaAlmacen.UsuarioCalidad);
-            parameters.Add("@ObservacionRegistroTostado", notaSalidaAlmacen.ObservacionRegistroTostado);
-            parameters.Add("@ObservacionAnalisisSensorial", notaSalidaAlmacen.ObservacionAnalisisSensorial);
-            parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
-            parameters.Add("@FechaUltimaActualizacion", notaSalidaAlmacen.FechaCalidad);
-            parameters.Add("@UsuarioUltimaActualizacion", notaSalidaAlmacen.UsuarioCalidad);
-
-
-            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-            {
-                result = db.Execute("uspNotaSalidaAlmacenCalidadActualizar", parameters, commandType: CommandType.StoredProcedure);
-            }
-
-            return result;
-        }
+       
 
         public int ActualizarEstado(int notaSalidaAlmacenId, DateTime fecha, string usuario, string estadoId)
         {
@@ -224,7 +191,53 @@ namespace CoffeeConnect.Repository
             {
                 return db.Query<NotaSalidaAlmacenDetalle>("uspNotaSalidaAlmacenDetallePorId", parameters, commandType: CommandType.StoredProcedure);
             }
-        }        
+        }
+
+        public int ActualizarNotaSalidaAlmacenAnalisisCalidad(NotaSalidaAlmacen notaSalidaAlmacen)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenId", notaSalidaAlmacen.NotaSalidaAlmacenId);
+            parameters.Add("@ExportableGramosAnalisisFisico", notaSalidaAlmacen.ExportableGramosAnalisisFisico);
+            parameters.Add("@ExportablePorcentajeAnalisisFisico", notaSalidaAlmacen.ExportablePorcentajeAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", notaSalidaAlmacen.DescarteGramosAnalisisFisico);
+            parameters.Add("@DescartePorcentajeAnalisisFisico", notaSalidaAlmacen.DescartePorcentajeAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", notaSalidaAlmacen.CascarillaGramosAnalisisFisico);
+            parameters.Add("@CascarillaPorcentajeAnalisisFisico", notaSalidaAlmacen.CascarillaPorcentajeAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", notaSalidaAlmacen.TotalGramosAnalisisFisico);
+            parameters.Add("@TotalPorcentajeAnalisisFisico", notaSalidaAlmacen.TotalPorcentajeAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", notaSalidaAlmacen.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TotalAnalisisSensorial", notaSalidaAlmacen.TotalAnalisisSensorial);
+            parameters.Add("@ObservacionAnalisisFisico", notaSalidaAlmacen.ObservacionAnalisisFisico);
+            parameters.Add("@FechaCalidad", notaSalidaAlmacen.FechaCalidad);
+            parameters.Add("@UsuarioCalidad", notaSalidaAlmacen.UsuarioCalidad);
+            parameters.Add("@ObservacionRegistroTostado", notaSalidaAlmacen.ObservacionRegistroTostado);
+            parameters.Add("@ObservacionAnalisisSensorial", notaSalidaAlmacen.ObservacionAnalisisSensorial);
+            parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", notaSalidaAlmacen.FechaCalidad);
+            parameters.Add("@UsuarioUltimaActualizacion", notaSalidaAlmacen.UsuarioCalidad);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenCalidadActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
+        public IEnumerable<NotaSalidaAlmacenDetalleLotes> ConsultarNotaSalidaAlmacenDetalleLotesPorId(int NotaSalidaAlmacenId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaSalidaAlmacenDetalleLotes>("uspNotaSalidaAlmacenDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
         public IEnumerable<NotaSalidaAlmacenAnalisisFisicoColorDetalle> ConsultarNotaSalidaAlmacenAnalisisFisicoColorDetallePorId(int NotaSalidaAlmacenId)
         {
@@ -326,16 +339,7 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        public IEnumerable<NotaSalidaAlmacenDetalleLotes> ConsultarNotaSalidaAlmacenDetalleLotesPorId(int NotaSalidaAlmacenId)
-        {
-            var parameters = new DynamicParameters();
-            parameters.Add("@NotaSalidaAlmacenId", NotaSalidaAlmacenId);
-
-            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-            {
-                return db.Query<NotaSalidaAlmacenDetalleLotes>("uspNotaSalidaAlmacenDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
-            }
-        }
+        
 
         public int ActualizarNotaSalidaAlmacenAnalisisFisicoColorDetalle(List<NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo> request, int NotaSalidaAlmacenId)
         {

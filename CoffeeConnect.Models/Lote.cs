@@ -112,6 +112,128 @@ namespace CoffeeConnect.Models
 		public string TipoCertificacionId
 		{ get; set; }
 
+
+
+		/// <summary>
+		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal? HumedadPorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ExportableGramosAnalisisFisico value.
+		/// </summary>
+		public decimal? ExportableGramosAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ExportablePorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal? ExportablePorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the DescarteGramosAnalisisFisico value.
+		/// </summary>
+		public decimal? DescarteGramosAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the DescartePorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal? DescartePorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CascarillaGramosAnalisisFisico value.
+		/// </summary>
+		public decimal? CascarillaGramosAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CascarillaPorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal? CascarillaPorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalGramosAnalisisFisico value.
+		/// </summary>
+		public decimal? TotalGramosAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalPorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal? TotalPorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Observacion value.
+		/// </summary>
+		public string Observacion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ObservacionAnalisisFisico value.
+		/// </summary>
+		public string ObservacionAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ObservacionRegistroTostado value.
+		/// </summary>
+		public string ObservacionRegistroTostado
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ObservacionAnalisisSensorial value.
+		/// </summary>
+		public string ObservacionAnalisisSensorial
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalAnalisisSensorial value.
+		/// </summary>
+		public decimal? TotalAnalisisSensorial
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalLote value.
+		/// </summary>
+		public int CantidadLotes
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalPromedioPorcentajeRendimiento value.
+		/// </summary>
+		public decimal PromedioPorcentajeRendimiento
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CantidadTotal value.
+		/// </summary>
+		public int CantidadTotal
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalKilosBrutos value.
+		/// </summary>
+		public decimal PesoKilosBrutos
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioCalidad value.
+		/// </summary>
+		public string UsuarioCalidad
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaCalidad value.
+		/// </summary>
+		public DateTime FechaCalidad
+		{ get; set; }
+
 		#endregion
 	}
 }
