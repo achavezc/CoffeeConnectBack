@@ -1,12 +1,17 @@
 ﻿
 using AutoMapper;
 using CoffeeConnect.DTO;
+using CoffeeConnect.DTO.Adjunto;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
+using CoffeeConnect.Service.Adjunto;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace CoffeeConnect.Service
@@ -19,9 +24,13 @@ namespace CoffeeConnect.Service
 
         private ICorrelativoRepository _ICorrelativoRepository;
 
-        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
+        public IOptions<FileServerSettings> _fileServerSettings;
+
+        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
         {
             _IContratoRepository = contratoRepository;
+
+            _fileServerSettings = fileServerSettings;
 
             _ICorrelativoRepository = correlativoRepository;
 
@@ -29,6 +38,11 @@ namespace CoffeeConnect.Service
 
 
 
+        }
+
+        private String getRutaFisica(string pathFile)
+        {
+            return _fileServerSettings.Value.RutaPrincipal + pathFile;
         }
 
         public List<ConsultaContratoBE> ConsultarContrato(ConsultaContratoRequestDTO request)
@@ -49,12 +63,37 @@ namespace CoffeeConnect.Service
             return list.ToList();
         }
 
-        public int RegistrarContrato(RegistrarActualizarContratoRequestDTO request)
+        public int RegistrarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+            byte[] fileBytes = null;
+            if (file.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    fileBytes = ms.ToArray();
+                    string s = Convert.ToBase64String(fileBytes);
+                    // act on the Base64 data
+                }
+            } 
+
             Contrato contrato = _Mapper.Map<Contrato>(request);
             contrato.FechaRegistro = DateTime.Now;
+            contrato.NombreArchivo = file.FileName;
             contrato.UsuarioRegistro = request.Usuario;
             contrato.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Contrato);
+
+            //Adjuntos
+            ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+            {
+                filtros = new AdjuntarArchivosDTO()
+                {
+                    archivoStream = fileBytes,
+                    filename = file.FileName,
+                }
+            });
+            contrato.PathArchivo = response.ficheroReal;
 
             int affected = _IContratoRepository.Insertar(contrato);
 
