@@ -8,6 +8,7 @@ using CoffeeConnect.Models;
 using CoffeeConnect.Service.Adjunto;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,9 +24,13 @@ namespace CoffeeConnect.Service
 
         private ICorrelativoRepository _ICorrelativoRepository;
 
-        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
+        public IOptions<FileServerSettings> _fileServerSettings;
+
+        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
         {
             _IContratoRepository = contratoRepository;
+
+            _fileServerSettings = fileServerSettings;
 
             _ICorrelativoRepository = correlativoRepository;
 
@@ -33,6 +38,11 @@ namespace CoffeeConnect.Service
 
 
 
+        }
+
+        private String getRutaFisica(string pathFile)
+        {
+            return _fileServerSettings.Value.RutaPrincipal + pathFile;
         }
 
         public List<ConsultaContratoBE> ConsultarContrato(ConsultaContratoRequestDTO request)
@@ -55,7 +65,7 @@ namespace CoffeeConnect.Service
 
         public int RegistrarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
-            var AdjuntoBl = new AdjuntarArchivosBL();
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;
             if (file.Length > 0)
             {
