@@ -245,6 +245,16 @@ namespace CoffeeConnect.Service
 
             response.listaDetalle = resultado.ToList();
 
+            response.AnalisisFisicoColorDetalle = _ILoteRepository.ConsultarLoteAnalisisFisicoColorDetallePorId(request.LoteId);
+            response.AnalisisFisicoDefectoPrimarioDetalle = _ILoteRepository.ConsultarLoteAnalisisFisicoDefectoPrimarioDetallePorId(request.LoteId);
+            response.AnalisisFisicoDefectoSecundarioDetalle = _ILoteRepository.ConsultarLoteAnalisisFisicoDefectoSecundarioDetallePorId(request.LoteId);
+            response.AnalisisFisicoOlorDetalle = _ILoteRepository.ConsultarLoteAnalisisFisicoOlorDetallePorId(request.LoteId);
+            response.AnalisisSensorialAtributoDetalle = _ILoteRepository.ConsultarLoteAnalisisSensorialAtributoDetallePorId(request.LoteId);
+            response.AnalisisSensorialDefectoDetalle = _ILoteRepository.ConsultarLoteAnalisisSensorialDefectoDetallePorId(request.LoteId);
+            response.RegistroTostadoIndicadorDetalle = _ILoteRepository.ConsultarLoteRegistroTostadoIndicadorDetallePorId(request.LoteId).ToList();
+
+
+
             //if (resultado.Any())
             //{
             //    response.TotalPesoNeto = resultado.Sum(x => x.KilosNetosPesado);
@@ -284,6 +294,165 @@ namespace CoffeeConnect.Service
                 sb.Append("</div>");
             }
             return sb.ToString();
+        }
+
+        public int ActualizarLoteAnalisisCalidad(ActualizarLoteAnalisisCalidadRequestDTO request)
+        {
+            Lote Lote = new Lote();
+
+            Lote.LoteId = request.LoteId;
+            Lote.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
+            Lote.ExportablePorcentajeAnalisisFisico = request.ExportablePorcentajeAnalisisFisico;
+            Lote.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
+            Lote.DescartePorcentajeAnalisisFisico = request.DescartePorcentajeAnalisisFisico;
+            Lote.CascarillaGramosAnalisisFisico = request.CascarillaGramosAnalisisFisico;
+            Lote.CascarillaPorcentajeAnalisisFisico = request.CascarillaPorcentajeAnalisisFisico;
+            Lote.TotalGramosAnalisisFisico = request.TotalGramosAnalisisFisico;
+            Lote.TotalPorcentajeAnalisisFisico = request.TotalPorcentajeAnalisisFisico;
+            Lote.HumedadPorcentajeAnalisisFisico = request.HumedadPorcentajeAnalisisFisico;
+            Lote.ObservacionAnalisisFisico = request.ObservacionAnalisisFisico;
+            Lote.UsuarioCalidad = request.UsuarioCalidad;
+            Lote.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
+            Lote.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
+            Lote.TotalAnalisisSensorial = request.TotalAnalisisSensorial;
+            Lote.UsuarioCalidad = request.UsuarioCalidad;
+            Lote.EstadoId = LoteEstados.Analizado;
+            Lote.FechaCalidad = DateTime.Now;
+
+
+            int affected = _ILoteRepository.ActualizarLoteAnalisisCalidad(Lote);
+
+
+            #region "Analisis Fisico Color"
+            if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)
+            {
+
+                List<LoteAnalisisFisicoColorDetalleTipo> AnalisisFisicoColorDetalleList = new List<LoteAnalisisFisicoColorDetalleTipo>();
+
+                request.AnalisisFisicoColorDetalleList.ForEach(z => {
+                    LoteAnalisisFisicoColorDetalleTipo item = new LoteAnalisisFisicoColorDetalleTipo();
+                    item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
+                    item.ColorDetalleId = z.ColorDetalleId;
+                    item.LoteId = request.LoteId;
+                    item.Valor = z.Valor;
+                    AnalisisFisicoColorDetalleList.Add(item);
+                });
+
+                affected = _ILoteRepository.ActualizarLoteAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.LoteId);
+            }
+            #endregion
+
+            #region Analisis Fisico Defecto Primario
+            if (request.AnalisisFisicoDefectoPrimarioDetalleList.FirstOrDefault() != null)
+            {
+                List<LoteAnalisisFisicoDefectoPrimarioDetalleTipo> AnalisisFisicoDefectoPrimarioDetalleList = new List<LoteAnalisisFisicoDefectoPrimarioDetalleTipo>();
+
+                request.AnalisisFisicoDefectoPrimarioDetalleList.ForEach(z => {
+                    LoteAnalisisFisicoDefectoPrimarioDetalleTipo item = new LoteAnalisisFisicoDefectoPrimarioDetalleTipo();
+                    item.DefectoDetalleId = z.DefectoDetalleId;
+                    item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                    item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
+                    item.LoteId = request.LoteId;
+                    item.Valor = z.Valor;
+                    AnalisisFisicoDefectoPrimarioDetalleList.Add(item);
+                });
+
+                affected = _ILoteRepository.ActualizarLoteAnalisisFisicoDefectoPrimarioDetalle(AnalisisFisicoDefectoPrimarioDetalleList, request.LoteId);
+            }
+            #endregion
+
+            #region "Analisis Fisico Defecto Secundario Detalle"
+            if (request.AnalisisFisicoDefectoSecundarioDetalleList.FirstOrDefault() != null)
+            {
+                List<LoteAnalisisFisicoDefectoSecundarioDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<LoteAnalisisFisicoDefectoSecundarioDetalleTipo>();
+
+                request.AnalisisFisicoDefectoSecundarioDetalleList.ForEach(z => {
+                    LoteAnalisisFisicoDefectoSecundarioDetalleTipo item = new LoteAnalisisFisicoDefectoSecundarioDetalleTipo();
+                    item.DefectoDetalleId = z.DefectoDetalleId;
+                    item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                    item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
+                    item.LoteId = request.LoteId;
+                    item.Valor = z.Valor;
+                    AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
+                });
+
+                affected = _ILoteRepository.ActualizarLoteAnalisisFisicoDefectoSecundarioDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.LoteId);
+            }
+            #endregion
+
+            #region "Analisis Fisico Olor Detalle"
+            if (request.AnalisisFisicoOlorDetalleList.FirstOrDefault() != null)
+            {
+                List<LoteAnalisisFisicoOlorDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<LoteAnalisisFisicoOlorDetalleTipo>();
+
+                request.AnalisisFisicoOlorDetalleList.ForEach(z => {
+                    LoteAnalisisFisicoOlorDetalleTipo item = new LoteAnalisisFisicoOlorDetalleTipo();
+                    item.LoteId = request.LoteId;
+                    item.OlorDetalleDescripcion = z.OlorDetalleDescripcion;
+                    item.OlorDetalleId = z.OlorDetalleId;
+                    item.Valor = z.Valor;
+                    AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
+                });
+
+                affected = _ILoteRepository.ActualizarLoteAnalisisFisicoOlorDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.LoteId);
+            }
+            #endregion
+
+            #region "Analisis Sensorial Atributo"
+            if (request.AnalisisSensorialAtributoDetalleList.FirstOrDefault() != null)
+            {
+                List<LoteAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<LoteAnalisisSensorialAtributoDetalleTipo>();
+
+                request.AnalisisSensorialAtributoDetalleList.ForEach(z => {
+                    LoteAnalisisSensorialAtributoDetalleTipo item = new LoteAnalisisSensorialAtributoDetalleTipo();
+                    item.LoteId = request.LoteId;
+                    item.AtributoDetalleDescripcion = z.AtributoDetalleDescripcion;
+                    item.AtributoDetalleId = z.AtributoDetalleId;
+                    item.Valor = z.Valor;
+                    AnalisisSensorialAtributoDetalle.Add(item);
+                });
+
+                affected = _ILoteRepository.ActualizarLoteAnalisisSensorialAtributoDetalle(AnalisisSensorialAtributoDetalle, request.LoteId);
+            }
+            #endregion
+
+            if (request.AnalisisSensorialDefectoDetalleList.FirstOrDefault() != null)
+            {
+                List<LoteAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<LoteAnalisisSensorialDefectoDetalleTipo>();
+
+                request.AnalisisSensorialDefectoDetalleList.ForEach(z => {
+                    LoteAnalisisSensorialDefectoDetalleTipo item = new LoteAnalisisSensorialDefectoDetalleTipo();
+                    item.LoteId = request.LoteId;
+                    item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                    item.DefectoDetalleId = z.DefectoDetalleId;
+
+                    item.Valor = z.Valor;
+                    AnalisisSensorialDefectoDetalle.Add(item);
+                });
+
+                affected = _ILoteRepository.ActualizarLoteAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.LoteId);
+            }
+
+
+            if (request.RegistroTostadoIndicadorDetalleList.FirstOrDefault() != null)
+            {
+                List<LoteRegistroTostadoIndicadorDetalleTipo> RegistroTostadoIndicadorDetalle = new List<LoteRegistroTostadoIndicadorDetalleTipo>();
+
+                request.RegistroTostadoIndicadorDetalleList.ForEach(z => {
+
+                    LoteRegistroTostadoIndicadorDetalleTipo item = new LoteRegistroTostadoIndicadorDetalleTipo();
+                    item.LoteId = request.LoteId;
+                    item.IndicadorDetalleDescripcion = z.IndicadorDetalleDescripcion;
+                    item.IndicadorDetalleId = z.IndicadorDetalleId;
+                    item.Valor = z.Valor;
+
+                    RegistroTostadoIndicadorDetalle.Add(item);
+                });
+
+                affected = _ILoteRepository.ActualizarLoteRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, request.LoteId);
+            }
+
+            return affected;
         }
     }
 }

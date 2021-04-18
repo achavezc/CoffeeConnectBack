@@ -195,8 +195,301 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+        public int ActualizarLoteAnalisisCalidad(Lote Lote)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@LoteId", Lote.LoteId);
+            parameters.Add("@ExportableGramosAnalisisFisico", Lote.ExportableGramosAnalisisFisico);
+            parameters.Add("@ExportablePorcentajeAnalisisFisico", Lote.ExportablePorcentajeAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", Lote.DescarteGramosAnalisisFisico);
+            parameters.Add("@DescartePorcentajeAnalisisFisico", Lote.DescartePorcentajeAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", Lote.CascarillaGramosAnalisisFisico);
+            parameters.Add("@CascarillaPorcentajeAnalisisFisico", Lote.CascarillaPorcentajeAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", Lote.TotalGramosAnalisisFisico);
+            parameters.Add("@TotalPorcentajeAnalisisFisico", Lote.TotalPorcentajeAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", Lote.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TotalAnalisisSensorial", Lote.TotalAnalisisSensorial);
+            parameters.Add("@ObservacionAnalisisFisico", Lote.ObservacionAnalisisFisico);
+            parameters.Add("@FechaCalidad", Lote.FechaCalidad);
+            parameters.Add("@UsuarioCalidad", Lote.UsuarioCalidad);
+            parameters.Add("@ObservacionRegistroTostado", Lote.ObservacionRegistroTostado);
+            parameters.Add("@ObservacionAnalisisSensorial", Lote.ObservacionAnalisisSensorial);
+            parameters.Add("@EstadoId", Lote.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", Lote.FechaCalidad);
+            parameters.Add("@UsuarioUltimaActualizacion", Lote.UsuarioCalidad);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteCalidadActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
+        public IEnumerable<LoteAnalisisFisicoColorDetalle> ConsultarLoteAnalisisFisicoColorDetallePorId(int LoteId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", LoteId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteAnalisisFisicoColorDetalle>("uspLoteAnalisisFisicoColorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
+
+
+        }
+
+        public IEnumerable<LoteAnalisisFisicoOlorDetalle> ConsultarLoteAnalisisFisicoOlorDetallePorId(int LoteId)
+        {
+
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", LoteId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteAnalisisFisicoOlorDetalle>("uspLoteAnalisisFisicoOlorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+
+
+
+
+
+            }
+        }
+
+        public IEnumerable<LoteAnalisisFisicoDefectoPrimarioDetalle> ConsultarLoteAnalisisFisicoDefectoPrimarioDetallePorId(int LoteId)
+        {
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", LoteId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteAnalisisFisicoDefectoPrimarioDetalle>("uspLoteAnalisisFisicoDefectoPrimarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+
+            }
+
+
+        }
+
+        public IEnumerable<LoteAnalisisFisicoDefectoSecundarioDetalle> ConsultarLoteAnalisisFisicoDefectoSecundarioDetallePorId(int LoteId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", LoteId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteAnalisisFisicoDefectoSecundarioDetalle>("uspLoteAnalisisFisicoDefectoSecundarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
+
+
+        }
+
+        public IEnumerable<LoteAnalisisSensorialAtributoDetalle> ConsultarLoteAnalisisSensorialAtributoDetallePorId(int LoteId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", LoteId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteAnalisisSensorialAtributoDetalle>("uspLoteAnalisisSensorialAtributoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<LoteAnalisisSensorialDefectoDetalle> ConsultarLoteAnalisisSensorialDefectoDetallePorId(int LoteId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", LoteId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteAnalisisSensorialDefectoDetalle>("uspLoteAnalisisSensorialDefectoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<LoteRegistroTostadoIndicadorDetalle> ConsultarLoteRegistroTostadoIndicadorDetallePorId(int LoteId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@LoteId", LoteId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<LoteRegistroTostadoIndicadorDetalle>("uspLoteRegistroTostadoIndicadorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
+        public int ActualizarLoteAnalisisFisicoColorDetalle(List<LoteAnalisisFisicoColorDetalleTipo> request, int LoteId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@LoteId", LoteId);
+            parameters.Add("@LoteAnalisisFisicoColorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteAnalisisFisicoColorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public int ActualizarLoteAnalisisFisicoDefectoPrimarioDetalle(List<LoteAnalisisFisicoDefectoPrimarioDetalleTipo> request, int LoteId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@LoteId", LoteId);
+            parameters.Add("@LoteAnalisisFisicoDefectoPrimarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteAnalisisFisicoDefectoPrimarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+
+        }
+
+        public int ActualizarLoteAnalisisFisicoDefectoSecundarioDetalle(List<LoteAnalisisFisicoDefectoSecundarioDetalleTipo> request, int LoteId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@LoteId", LoteId);
+            parameters.Add("@LoteAnalisisFisicoDefectoSecundarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteAnalisisFisicoDefectoSecundarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+
+        }
+
+        public int ActualizarLoteAnalisisFisicoOlorDetalle(List<LoteAnalisisFisicoOlorDetalleTipo> request, int LoteId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@LoteId", LoteId);
+            parameters.Add("@LoteAnalisisFisicoOlorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteAnalisisFisicoOlorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public int ActualizarLoteAnalisisSensorialAtributoDetalle(List<LoteAnalisisSensorialAtributoDetalleTipo> request, int LoteId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@LoteId", LoteId);
+            parameters.Add("@LoteAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteAnalisisSensorialAtributoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public int ActualizarLoteAnalisisSensorialDefectoDetalle(List<LoteAnalisisSensorialDefectoDetalleTipo> request, int LoteId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@LoteId", LoteId);
+            parameters.Add("@LoteAnalisisSensorialDefectoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteAnalisisSensorialDefectoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public int ActualizarLoteRegistroTostadoIndicadorDetalle(List<LoteRegistroTostadoIndicadorDetalleTipo> request, int LoteId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@LoteId", LoteId);
+            parameters.Add("@LoteRegistroTostadoIndicadorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteRegistroTostadoIndicadorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+
+
 
     }
+
 
 
 }
