@@ -12,6 +12,10 @@ namespace CoffeeConnect.Models
         public String Almacen { get; set; }
         public String TipoProvedorId { get; set; }
         public String TipoProvedor { get; set; }
+
+        public String Certificadora { get; set; }
+
+        
         public int ProveedorId { get; set; }
         public String CodigoSocio { get; set; }
         public String ProductoId { get; set; }
