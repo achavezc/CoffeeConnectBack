@@ -97,10 +97,10 @@ namespace CoffeeConnect.Service
 
                 lote.TotalKilosNetosPesado = totalKilosNetosPesado;
                 lote.TotalKilosBrutosPesado = totalKilosBrutosPesado;
-                lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje / lotesDetalle.Count;
-                lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
+                //lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje / lotesDetalle.Count;
+                //lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
                 lote.UnidadMedidaId = unidadMedidaId;
-                lote.PromedioTotalAnalisisSensorial = totalAnalisisSensorial / lotesDetalle.Count;
+                //lote.PromedioTotalAnalisisSensorial = totalAnalisisSensorial / lotesDetalle.Count;
 
                 lote.Cantidad = totalCantidad;
 
@@ -200,48 +200,48 @@ namespace CoffeeConnect.Service
         public ConsultaLoteBandejaBE ConsultarLotePorId(ConsultaLoteDetallePorLoteIdRequestDTO request)
         {
 
-            LotesBE Lote = _ILoteRepository.ConsultarLotePorId(request.LoteId);
-            ConsultaLoteBandejaBE response = new ConsultaLoteBandejaBE();
+            ConsultaLoteBandejaBE response = _ILoteRepository.ConsultarLotePorId(request.LoteId);
+            //ConsultaLoteBandejaBE response = new ConsultaLoteBandejaBE();
             //ConsultaLoteBandejaBE response= _Mapper.Map<ConsultaLoteBandejaBE>(Lote);
             IEnumerable<LoteDetalleConsulta> resultado = _ILoteRepository.ConsultarBandejaLoteDetallePorId(request.LoteId);
 
-            response.LoteId = Lote.LoteId;
-            response.Numero = Lote.Numero;
-            response.EmpresaId = Lote.EmpresaId;
-            response.RazonSocial = Lote.RazonSocial;
-            response.Ruc = Lote.Ruc;
-            response.Direccion = Lote.Direccion;
-            response.Logo = Lote.Logo;
-            response.DepartamentoId = Lote.DepartamentoId;
-            response.Departamento = Lote.Departamento;
-            response.ProvinciaId = Lote.ProvinciaId;
-            response.Provincia = Lote.Provincia;
-            response.DistritoId = Lote.DistritoId;
-            response.Distrito = Lote.Distrito;
-            response.EstadoId = Lote.EstadoId;
-            response.Estado = Lote.Estado;
-            response.AlmacenId = Lote.AlmacenId;
-            response.Almacen = Lote.Almacen;
-            response.UnidadMedidaId = Lote.UnidadMedidaId;
-            response.UnidadMedida = Lote.UnidadMedida;
-            response.Cantidad = Lote.Cantidad;
-            response.TotalKilosNetosPesado = Lote.TotalKilosBrutosPesado;
-            response.TotalKilosBrutosPesado = Lote.TotalKilosBrutosPesado;
-            response.PromedioRendimientoPorcentaje = Lote.PromedioRendimientoPorcentaje;
-            response.PromedioHumedadPorcentaje = Lote.PromedioHumedadPorcentaje;
-            response.PromedioTotalAnalisisSensorial = Lote.PromedioTotalAnalisisSensorial;
-            response.FechaRegistro = Lote.FechaRegistro;
-            response.UsuarioRegistro = Lote.UsuarioRegistro;
-            response.FechaUltimaActualizacion = Lote.FechaUltimaActualizacion;
-            response.UsuarioUltimaActualizacion = Lote.UsuarioUltimaActualizacion;
-            response.Activo = Lote.Activo;
-            response.PromedioTotalAnalisisSensorial = Lote.PromedioTotalAnalisisSensorial;
-            response.ProductoId = Lote.ProductoId;
-            response.Producto = Lote.Producto;
-            response.SubProductoId = Lote.SubProductoId;
-            response.SubProducto = Lote.SubProducto;
-            response.TipoCertificacionId = Lote.TipoCertificacionId;
-            response.TipoCertificacion = Lote.TipoCertificacion;
+            //response.LoteId = Lote.LoteId;
+            //response.Numero = Lote.Numero;
+            //response.EmpresaId = Lote.EmpresaId;
+            //response.RazonSocial = Lote.RazonSocial;
+            //response.Ruc = Lote.Ruc;
+            //response.Direccion = Lote.Direccion;
+            //response.Logo = Lote.Logo;
+            //response.DepartamentoId = Lote.DepartamentoId;
+            //response.Departamento = Lote.Departamento;
+            //response.ProvinciaId = Lote.ProvinciaId;
+            //response.Provincia = Lote.Provincia;
+            //response.DistritoId = Lote.DistritoId;
+            //response.Distrito = Lote.Distrito;
+            //response.EstadoId = Lote.EstadoId;
+            //response.Estado = Lote.Estado;
+            //response.AlmacenId = Lote.AlmacenId;
+            //response.Almacen = Lote.Almacen;
+            //response.UnidadMedidaId = Lote.UnidadMedidaId;
+            //response.UnidadMedida = Lote.UnidadMedida;
+            //response.Cantidad = Lote.Cantidad;
+            //response.TotalKilosNetosPesado = Lote.TotalKilosBrutosPesado;
+            //response.TotalKilosBrutosPesado = Lote.TotalKilosBrutosPesado;
+            //response.PromedioRendimientoPorcentaje = Lote.PromedioRendimientoPorcentaje;
+            //response.PromedioHumedadPorcentaje = Lote.PromedioHumedadPorcentaje;
+            //response.PromedioTotalAnalisisSensorial = Lote.PromedioTotalAnalisisSensorial;
+            //response.FechaRegistro = Lote.FechaRegistro;
+            //response.UsuarioRegistro = Lote.UsuarioRegistro;
+            //response.FechaUltimaActualizacion = Lote.FechaUltimaActualizacion;
+            //response.UsuarioUltimaActualizacion = Lote.UsuarioUltimaActualizacion;
+            //response.Activo = Lote.Activo;
+            //response.PromedioTotalAnalisisSensorial = Lote.PromedioTotalAnalisisSensorial;
+            //response.ProductoId = Lote.ProductoId;
+            //response.Producto = Lote.Producto;
+            //response.SubProductoId = Lote.SubProductoId;
+            //response.SubProducto = Lote.SubProducto;
+            //response.TipoCertificacionId = Lote.TipoCertificacionId;
+            //response.TipoCertificacion = Lote.TipoCertificacion;
 
             response.listaDetalle = resultado.ToList();
 

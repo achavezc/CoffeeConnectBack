@@ -42,9 +42,9 @@ namespace CoffeeConnect.Repository
 
             parameters.Add("@UnidadMedidaId", lote.UnidadMedidaId);
             parameters.Add("@Cantidad", lote.Cantidad);
-            parameters.Add("@PromedioRendimientoPorcentaje", lote.PromedioRendimientoPorcentaje);
-            parameters.Add("@PromedioHumedadPorcentaje", lote.PromedioHumedadPorcentaje);
-            parameters.Add("@PromedioTotalAnalisisSensorial", lote.PromedioTotalAnalisisSensorial);
+            //parameters.Add("@PromedioRendimientoPorcentaje", lote.PromedioRendimientoPorcentaje);
+            //parameters.Add("@PromedioHumedadPorcentaje", lote.PromedioHumedadPorcentaje);
+            //parameters.Add("@PromedioTotalAnalisisSensorial", lote.PromedioTotalAnalisisSensorial);
 
             parameters.Add("@FechaRegistro", lote.FechaRegistro);
             parameters.Add("@UsuarioRegistro", lote.UsuarioRegistro);
@@ -157,17 +157,17 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        public LotesBE ConsultarLotePorId(int loteId)
+        public ConsultaLoteBandejaBE ConsultarLotePorId(int loteId)
         {
             var parameters = new DynamicParameters();
             parameters.Add("LoteId", loteId);
 
-            IEnumerable<LotesBE> result;
-            LotesBE lote = new LotesBE();
+            IEnumerable<ConsultaLoteBandejaBE> result;
+            ConsultaLoteBandejaBE lote = new ConsultaLoteBandejaBE();
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Query<LotesBE>("uspLotesConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Query<ConsultaLoteBandejaBE>("uspLotesConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
                 if (result.Any())
                 {
                     lote = result.First();

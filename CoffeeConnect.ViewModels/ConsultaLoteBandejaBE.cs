@@ -33,10 +33,7 @@ namespace CoffeeConnect.DTO
         public Decimal? Cantidad { get; set; }
         public Decimal? TotalKilosNetosPesado { get; set; }
 		public Decimal? TotalKilosBrutosPesado { get; set; }
-        public Decimal? PromedioRendimientoPorcentaje { get; set; }
-        public Decimal? PromedioHumedadPorcentaje { get; set; }
-
-		public Decimal? PromedioTotalAnalisisSensorial { get; set; }
+ 
         public DateTime FechaRegistro { get; set; }
         public String UsuarioRegistro { get; set; }
         public DateTime? FechaUltimaActualizacion { get; set; }
@@ -65,7 +62,112 @@ namespace CoffeeConnect.DTO
         public string TipoCertificacion
         { get; set; }
 
-        public IEnumerable<LoteAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
+		
+
+
+		public decimal HumedadPorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ExportableGramosAnalisisFisico value.
+		/// </summary>
+		public decimal ExportableGramosAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ExportablePorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal ExportablePorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the DescarteGramosAnalisisFisico value.
+		/// </summary>
+		public decimal DescarteGramosAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the DescartePorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal DescartePorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CascarillaGramosAnalisisFisico value.
+		/// </summary>
+		public decimal CascarillaGramosAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CascarillaPorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal CascarillaPorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalGramosAnalisisFisico value.
+		/// </summary>
+		public decimal TotalGramosAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalPorcentajeAnalisisFisico value.
+		/// </summary>
+		public decimal TotalPorcentajeAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Observacion value.
+		/// </summary>
+		public string Observacion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ObservacionAnalisisFisico value.
+		/// </summary>
+		public string ObservacionAnalisisFisico
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ObservacionRegistroTostado value.
+		/// </summary>
+		public string ObservacionRegistroTostado
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ObservacionAnalisisSensorial value.
+		/// </summary>
+		public string ObservacionAnalisisSensorial
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the TotalAnalisisSensorial value.
+		/// </summary>
+		public decimal TotalAnalisisSensorial
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CantidadLotes value.
+		/// </summary>
+		public int CantidadLotes
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the PromedioPorcentajeRendimiento value.
+		/// </summary>
+		public decimal RendimientoPorcentaje
+		{ get; set; }
+
+		public string UsuarioCalidad
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaUltimaActualizacion value.
+		/// </summary>
+		public DateTime? FechaCalidad
+		{ get; set; }
+
+		public IEnumerable<LoteAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
         { get; set; }
 
         public IEnumerable<LoteAnalisisFisicoDefectoPrimarioDetalle> AnalisisFisicoDefectoPrimarioDetalle

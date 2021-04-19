@@ -58,18 +58,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the PromedioRendimientoPorcentaje value.
 		/// </summary>
-		public decimal PromedioRendimientoPorcentaje
-		{ get; set; }
-
-		public decimal PromedioTotalAnalisisSensorial
-		{ get; set; }
 		
-
-		/// <summary>
-		/// Gets or sets the PromedioHumedadPorcentaje value.
-		/// </summary>
-		public decimal PromedioHumedadPorcentaje
-		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
@@ -81,6 +70,9 @@ namespace CoffeeConnect.Models
 		/// Gets or sets the UsuarioRegistro value.
 		/// </summary>
 		public string UsuarioRegistro
+		{ get; set; }
+
+		public int CantidadLotes
 		{ get; set; }
 
 		/// <summary>
@@ -198,11 +190,7 @@ namespace CoffeeConnect.Models
 		public decimal? TotalAnalisisSensorial
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the TotalLote value.
-		/// </summary>
-		public int CantidadLotes
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the TotalPromedioPorcentajeRendimiento value.
@@ -210,18 +198,7 @@ namespace CoffeeConnect.Models
 		public decimal PromedioPorcentajeRendimiento
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the CantidadTotal value.
-		/// </summary>
-		public int CantidadTotal
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TotalKilosBrutos value.
-		/// </summary>
-		public decimal PesoKilosBrutos
-		{ get; set; }
-
+		
 		/// <summary>
 		/// Gets or sets the UsuarioCalidad value.
 		/// </summary>
