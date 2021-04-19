@@ -55,13 +55,13 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the PromedioRendimientoPorcentaje value.
         /// </summary>
-        public decimal PromedioRendimientoPorcentaje
+        public decimal RendimientoPorcentaje
         { get; set; }
 
         /// <summary>
         /// Gets or sets the PromedioHumedadPorcentaje value.
         /// </summary>
-        public decimal PromedioHumedadPorcentaje
+        public decimal HumedadPorcentajeAnalisisFisico
         { get; set; }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace CoffeeConnect.DTO
         public bool Activo
         { get; set; }
 
-        public decimal? PromedioTotalAnalisisSensorial { get; set; }
+        public decimal? TotalAnalisisSensorial { get; set; }
 
         public string ProductoId
         { get; set; }
