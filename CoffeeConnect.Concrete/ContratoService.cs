@@ -84,28 +84,104 @@ namespace CoffeeConnect.Service
             contrato.UsuarioRegistro = request.Usuario;
             contrato.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Contrato);
 
-            //Adjuntos
-            ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+            if (file != null)
             {
-                filtros = new AdjuntarArchivosDTO()
+                if (file.Length > 0)
                 {
-                    archivoStream = fileBytes,
-                    filename = file.FileName,
+                    //Adjuntos
+                    ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+                    {
+                        filtros = new AdjuntarArchivosDTO()
+                        {
+                            archivoStream = fileBytes,
+                            filename = file.FileName,
+                        },
+                        pathFile = _fileServerSettings.Value.FincasCertificacion
+                    });
+                    contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
-            });
-            contrato.PathArchivo = response.ficheroReal;
+            }
 
             int affected = _IContratoRepository.Insertar(contrato);
 
             return affected;
         }
-
-        public int ActualizarContrato(RegistrarActualizarContratoRequestDTO request)
+        public ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request)
         {
+            try
+            {
+                String rutaReal = Path.Combine(getRutaFisica(request.PathFile));
+
+                if (File.Exists(rutaReal))
+                {
+
+                    Byte[] archivoBytes = System.IO.File.ReadAllBytes(rutaReal);
+                    return new ResponseDescargarArchivoDTO()
+                    {
+                        archivoBytes = archivoBytes,
+                        errores = new Dictionary<string, string>(),
+                        ficheroVisual = request.ArchivoVisual
+                    };
+                }
+                else
+                {
+                    var resp = new ResponseDescargarArchivoDTO()
+                    {
+                        archivoBytes = null,
+                        errores = new Dictionary<string, string>(),
+                        ficheroVisual = ""
+                    };
+                    resp.errores.Add("Error", "El Archivo solicitado no existe");
+                    return resp;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public int ActualizarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
+        {
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+            byte[] fileBytes = null;
+            if (file != null)
+            {
+                if (file.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        fileBytes = ms.ToArray();
+                        string s = Convert.ToBase64String(fileBytes);
+                        // act on the Base64 data
+                    }
+                }
+            }
             Contrato contrato = _Mapper.Map<Contrato>(request);
+            contrato.NombreArchivo = request.NombreArchivo;
+            contrato.PathArchivo = request.PathArchivo;
             contrato.FechaUltimaActualizacion = DateTime.Now;
             contrato.UsuarioUltimaActualizacion = request.Usuario;
+            //Adjuntos
+            if (file != null)
+            {
+                if (file.Length > 0)
+                {
+                    contrato.NombreArchivo = file.FileName;
+                    ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+                    {
+                        filtros = new AdjuntarArchivosDTO()
+                        {
+                            archivoStream = fileBytes,
+                            filename = file.FileName,
+                        },
+                        pathFile = _fileServerSettings.Value.FincasCertificacion
 
+                    });
+
+                    contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+                }
+            }
             int affected = _IContratoRepository.Actualizar(contrato);
 
             return affected;

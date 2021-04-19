@@ -165,6 +165,8 @@ namespace CoffeeConnect.Models
 		public bool Activo
 		{ get; set; }
 
+		public string Observaciones
+		{ get; set; }
 		#endregion
 	}
 }

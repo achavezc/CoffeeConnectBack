@@ -359,8 +359,9 @@ namespace CoffeeConnect.DTO
 		public string TipoProduccion
 		{ get; set; }
 
-		
-		
+
+		public string Observaciones
+		{ get; set; }
 
 		#endregion
 	}

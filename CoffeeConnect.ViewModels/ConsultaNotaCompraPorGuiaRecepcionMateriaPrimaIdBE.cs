@@ -180,6 +180,9 @@ namespace CoffeeConnect.DTO
 		public string Finca
 		{ get; set; }
 
+		public string Observaciones
+		{ get; set; }
+
 		#endregion
 	}
 }

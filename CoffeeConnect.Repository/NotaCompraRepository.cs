@@ -47,8 +47,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@EstadoId", notaCompra.EstadoId);
 			parameters.Add("@FechaRegistro", notaCompra.FechaRegistro);
 			parameters.Add("@UsuarioRegistro", notaCompra.UsuarioRegistro);
-	
-		
+			parameters.Add("@Observaciones", notaCompra.Observaciones);
 
 			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -86,7 +85,7 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@EstadoId", notaCompra.EstadoId);
 			parameters.Add("@FechaUltimaActualizacion", notaCompra.FechaUltimaActualizacion);
 			parameters.Add("@UsuarioUltimaActualizacion", notaCompra.UsuarioUltimaActualizacion);
-
+			parameters.Add("@Observaciones", notaCompra.Observaciones);
 
 
 			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

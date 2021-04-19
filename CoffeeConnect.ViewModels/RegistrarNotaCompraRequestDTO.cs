@@ -143,5 +143,8 @@ namespace CoffeeConnect.DTO
 		public string UsuarioNotaCompra
 		{ get; set; }
 
+		public string Observaciones 
+		{ get; set; }
+
 	}
 }
