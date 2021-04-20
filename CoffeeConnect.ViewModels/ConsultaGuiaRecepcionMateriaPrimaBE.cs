@@ -16,6 +16,28 @@ namespace CoffeeConnect.DTO
         public string ProductoId { get; set; }
         public string SubProductoId { get; set; }
 
+        public string UnidadMedida { get; set; }
+
+
+        public decimal CantidadPesado
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the KilosBrutosPesado value.
+        /// </summary>
+        public decimal KilosBrutosPesado
+        { get; set; }
+
+        public decimal KilosNetosPesado
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the TaraPesado value.
+        /// </summary>
+        public decimal TaraPesado
+        { get; set; }
+
+
         public int? SocioId { get; set; }
 
         public string CodigoSocio { get; set; }

@@ -94,7 +94,7 @@ namespace CoffeeConnect.DTO
         public bool Activo
         { get; set; }
 
-        public decimal? TotalAnalisisSensorial { get; set; }
+        public decimal TotalAnalisisSensorial { get; set; }
 
         public string ProductoId
         { get; set; }
