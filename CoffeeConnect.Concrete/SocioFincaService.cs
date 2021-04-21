@@ -84,5 +84,20 @@ namespace CoffeeConnect.Service
             return consultaSocioFincaPorIdBE;
         }
 
+       
+
+        public ConsultaSocioFincaEstimadoPorSocioFincaIdBE ConsultarSocioFincaEstimadoPorSocioFincaId(ConsultaSocioFincaEstimadoPorSocioFincaIdRequest request)
+        {  
+            List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(request.SocioFincaId).ToList();
+
+            int anioActual = DateTime.Now.Year;
+
+            ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();           
+
+            return fincaEstima;
+        }
+
+
+        
     }
 }

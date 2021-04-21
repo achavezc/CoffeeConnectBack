@@ -363,6 +363,19 @@ namespace CoffeeConnect.Service
             submenu: [
               
             ]
+          },
+		  
+		  {
+            path: '/exportador/operaciones/ordenproceso/list',
+            title: 'Exportador.Operaciones.OrdenProceso.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
           }
     ]
       }

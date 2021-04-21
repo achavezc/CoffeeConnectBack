@@ -33,7 +33,8 @@ namespace CoffeeConnect.DTO
         public decimal Estimado
         { get; set; }
 
-      
+        public decimal SaldoPendiente
+        { get; set; }
 
         #endregion
     }
