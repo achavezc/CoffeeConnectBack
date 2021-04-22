@@ -69,7 +69,7 @@ namespace CoffeeConnect.Service
                 SocioFincaEstimadoTipo item = new SocioFincaEstimadoTipo();
                 item.Anio = z.Anio;
                 item.Estimado = z.Estimado;
-                item.SaldoPendiente = z.SaldoPendiente;
+                item.Consumido = z.Consumido;
                 item.SocioFincaId = request.SocioFincaId;
                 item.ProductoId = "02"; //Pergamino;
                 socioFincaEstimadoTipoList.Add(item);
@@ -102,7 +102,7 @@ namespace CoffeeConnect.Service
             int anioActual = DateTime.Now.Year;
 
             ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
-
+            fincaEstima.SaldoPendiente = fincaEstima.Estimado - fincaEstima.Consumido;
             return fincaEstima;
         }
     }

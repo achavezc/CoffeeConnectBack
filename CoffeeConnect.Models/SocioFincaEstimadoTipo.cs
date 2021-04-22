@@ -33,7 +33,7 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 
-		public decimal SaldoPendiente
+		public decimal Consumido
 		{ get; set; }
 		
 
