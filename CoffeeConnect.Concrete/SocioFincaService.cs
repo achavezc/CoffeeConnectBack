@@ -69,6 +69,7 @@ namespace CoffeeConnect.Service
                 SocioFincaEstimadoTipo item = new SocioFincaEstimadoTipo();
                 item.Anio = z.Anio;
                 item.Estimado = z.Estimado;
+                item.SaldoPendiente = z.SaldoPendiente;
                 item.SocioFincaId = request.SocioFincaId;
                 item.ProductoId = "02"; //Pergamino;
                 socioFincaEstimadoTipoList.Add(item);

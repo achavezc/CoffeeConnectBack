@@ -8,5 +8,9 @@ namespace CoffeeConnect.Service
     {
         public string RutaPrincipal { get; set; }
         public string FincasCertificacion { get; set; }
+
+        public string Contrato { get; set; }
+
+        public string FincasMapa { get; set; }
     }
 }

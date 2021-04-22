@@ -65,29 +65,31 @@ namespace CoffeeConnect.Service
 
         public int RegistrarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
-            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-            byte[] fileBytes = null;
-            if (file.Length > 0)
-            {
-                using (var ms = new MemoryStream())
-                {
-                    file.CopyTo(ms);
-                    fileBytes = ms.ToArray();
-                    string s = Convert.ToBase64String(fileBytes);
-                    // act on the Base64 data
-                }
-            } 
+           
 
             Contrato contrato = _Mapper.Map<Contrato>(request);
             contrato.FechaRegistro = DateTime.Now;
-            contrato.NombreArchivo = file.FileName;
+            //contrato.NombreArchivo = file.FileName;
             contrato.UsuarioRegistro = request.Usuario;
             contrato.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Contrato);
 
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+            byte[] fileBytes = null;
+
             if (file != null)
             {
+
                 if (file.Length > 0)
                 {
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        fileBytes = ms.ToArray();
+                        string s = Convert.ToBase64String(fileBytes);
+                        // act on the Base64 data
+                    }
+
+                    contrato.NombreArchivo = file.FileName;
                     //Adjuntos
                     ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
                     {
@@ -96,11 +98,30 @@ namespace CoffeeConnect.Service
                             archivoStream = fileBytes,
                             filename = file.FileName,
                         },
-                        pathFile = _fileServerSettings.Value.FincasCertificacion
+                        pathFile = _fileServerSettings.Value.Contrato
                     });
                     contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
+
             }
+
+            //if (file != null)
+            //{
+            //    if (file.Length > 0)
+            //    {
+            //        //Adjuntos
+            //        ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+            //        {
+            //            filtros = new AdjuntarArchivosDTO()
+            //            {
+            //                archivoStream = fileBytes,
+            //                filename = file.FileName,
+            //            },
+            //            pathFile = _fileServerSettings.Value.FincasCertificacion
+            //        });
+            //        contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+            //    }
+            //}
 
             int affected = _IContratoRepository.Insertar(contrato);
 
@@ -142,6 +163,9 @@ namespace CoffeeConnect.Service
         }
         public int ActualizarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
+            
+            Contrato contrato = _Mapper.Map<Contrato>(request);
+
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;
             if (file != null)
@@ -155,18 +179,7 @@ namespace CoffeeConnect.Service
                         string s = Convert.ToBase64String(fileBytes);
                         // act on the Base64 data
                     }
-                }
-            }
-            Contrato contrato = _Mapper.Map<Contrato>(request);
-            contrato.NombreArchivo = request.NombreArchivo;
-            contrato.PathArchivo = request.PathArchivo;
-            contrato.FechaUltimaActualizacion = DateTime.Now;
-            contrato.UsuarioUltimaActualizacion = request.Usuario;
-            //Adjuntos
-            if (file != null)
-            {
-                if (file.Length > 0)
-                {
+
                     contrato.NombreArchivo = file.FileName;
                     ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
                     {
@@ -182,6 +195,31 @@ namespace CoffeeConnect.Service
                     contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
             }
+
+
+            
+            contrato.FechaUltimaActualizacion = DateTime.Now;
+            contrato.UsuarioUltimaActualizacion = request.Usuario;
+            ////Adjuntos
+            //if (file != null)
+            //{
+            //    if (file.Length > 0)
+            //    {
+            //        contrato.NombreArchivo = file.FileName;
+            //        ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+            //        {
+            //            filtros = new AdjuntarArchivosDTO()
+            //            {
+            //                archivoStream = fileBytes,
+            //                filename = file.FileName,
+            //            },
+            //            pathFile = _fileServerSettings.Value.FincasCertificacion
+
+            //        });
+
+            //        contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+            //    }
+            //}
             int affected = _IContratoRepository.Actualizar(contrato);
 
             return affected;

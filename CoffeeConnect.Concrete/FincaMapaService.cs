@@ -14,19 +14,19 @@ using System.IO;
 
 namespace CoffeeConnect.Service
 {
-    public partial class SocioFincaCertificacionService : ISocioFincaCertificacionService
+    public partial class FincaMapaService : IFincaMapaService
     {
         private readonly IMapper _Mapper;
        
 
-        private ISocioFincaCertificacionRepository _ISocioFincaRepository;
+        private IFincaMapaRepository _IFincaMapaRepository;
 
 
         public IOptions<FileServerSettings> _fileServerSettings;
      
-        public SocioFincaCertificacionService(ISocioFincaCertificacionRepository socioFincaRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
+        public FincaMapaService(IFincaMapaRepository fincaMapaRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
         {
-            _ISocioFincaRepository = socioFincaRepository;
+            _IFincaMapaRepository = fincaMapaRepository;
             _fileServerSettings = fileServerSettings;
             _Mapper = mapper;
 
@@ -38,17 +38,17 @@ namespace CoffeeConnect.Service
             return _fileServerSettings.Value.RutaPrincipal + pathFile;
         }
 
-        public int RegistrarSocioFincaCertificacion(RegistrarActualizarSocioFincaCertificacionRequestDTO request, IFormFile file)
+        public int RegistrarFincaMapa(RegistrarActualizarFincaMapaRequestDTO request, IFormFile file)
         {
-            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-            byte[] fileBytes = null ;
-
-            SocioFincaCertificacion socioFinca = _Mapper.Map<SocioFincaCertificacion>(request);
+            FincaMapa socioFinca = _Mapper.Map<FincaMapa>(request);
             socioFinca.FechaRegistro = DateTime.Now;
             socioFinca.UsuarioRegistro = request.Usuario;
 
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+            byte[] fileBytes = null ;
             if (file != null)
             {
+
                 if (file.Length > 0)
                 {
                     using (var ms = new MemoryStream())
@@ -59,8 +59,7 @@ namespace CoffeeConnect.Service
                         // act on the Base64 data
                     }
 
-                    //Adjuntos
-                    socioFinca.NombreArchivo = file.FileName;
+                    socioFinca.Nombre = file.FileName;
                     ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
                     {
                         filtros = new AdjuntarArchivosDTO()
@@ -68,10 +67,10 @@ namespace CoffeeConnect.Service
                             archivoStream = fileBytes,
                             filename = file.FileName,
                         },
-                        pathFile = _fileServerSettings.Value.FincasCertificacion
+                        pathFile = _fileServerSettings.Value.FincasMapa
 
                     });
-                    socioFinca.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+                    socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
             }
 
@@ -82,7 +81,7 @@ namespace CoffeeConnect.Service
             //    if (file.Length > 0)
             //    {
             //        //Adjuntos
-            //        socioFinca.NombreArchivo = file.FileName;
+            //        socioFinca.Nombre = file.FileName;
             //        ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
             //        {
             //            filtros = new AdjuntarArchivosDTO()
@@ -93,11 +92,11 @@ namespace CoffeeConnect.Service
             //            pathFile = _fileServerSettings.Value.FincasCertificacion
 
             //        });
-            //        socioFinca.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+            //        socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
             //    }
             //}
 
-            int affected = _ISocioFincaRepository.Insertar(socioFinca);
+            int affected = _IFincaMapaRepository.Insertar(socioFinca);
 
             return affected;
         }
@@ -137,17 +136,15 @@ namespace CoffeeConnect.Service
             }
         }
 
-        public int ActualizarSocioFincaCertificacion(RegistrarActualizarSocioFincaCertificacionRequestDTO request, IFormFile file)
+        public int ActualizarFincaMapa(RegistrarActualizarFincaMapaRequestDTO request, IFormFile file)
         {
-            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-
-            SocioFincaCertificacion socioFinca = _Mapper.Map<SocioFincaCertificacion>(request);
-            //socioFinca.NombreArchivo = request.NombreArchivo;
-            //socioFinca.PathArchivo = request.PathArchivo;
+            FincaMapa socioFinca = _Mapper.Map<FincaMapa>(request);
+            //socioFinca.Nombre = request.Nombre;
+            //socioFinca.Path = request.Path;
             socioFinca.FechaUltimaActualizacion = DateTime.Now;
             socioFinca.UsuarioUltimaActualizacion = request.Usuario;
 
-
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;
             if (file != null)
             {
@@ -161,7 +158,7 @@ namespace CoffeeConnect.Service
                         // act on the Base64 data
                     }
 
-                    socioFinca.NombreArchivo = file.FileName;
+                    socioFinca.Nombre = file.FileName;
                     ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
                     {
                         filtros = new AdjuntarArchivosDTO()
@@ -169,21 +166,21 @@ namespace CoffeeConnect.Service
                             archivoStream = fileBytes,
                             filename = file.FileName,
                         },
-                        pathFile = _fileServerSettings.Value.FincasCertificacion
+                        pathFile = _fileServerSettings.Value.FincasMapa
 
                     });
 
-                    socioFinca.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+                    socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
             }
-            
+           
 
-            //Adjuntos
+            ////Adjuntos
             //if (file != null)
             //{
             //    if (file.Length > 0)
             //    {
-            //        socioFinca.NombreArchivo = file.FileName;
+            //        socioFinca.Nombre = file.FileName;
             //        ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
             //        {
             //            filtros = new AdjuntarArchivosDTO()
@@ -195,23 +192,23 @@ namespace CoffeeConnect.Service
 
             //        });
 
-            //        socioFinca.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+            //        socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
             //    }
             //}
 
-            int affected = _ISocioFincaRepository.Actualizar(socioFinca);
+            int affected = _IFincaMapaRepository.Actualizar(socioFinca);
 
             return affected;
         }
 
-        public IEnumerable<ConsultaSocioFincaCertificacionPorSocioFincaId> ConsultarSocioFincaCertificacionPorSocioFincaId(ConsultaSocioFincaCertificacionPorSocioFincaIdRequestDTO request)
+        public IEnumerable<ConsultaFincaMapaPorId> ConsultarFincaMapaPorFincaId(ConsultaFincaMapaPorFincaIdRequestDTO request)
         {
-            return _ISocioFincaRepository.ConsultarSocioFincaCertificacionPorSocioFincaId(request.SocioFincaId);
+            return _IFincaMapaRepository.ConsultarFincaMapaPorFincaId(request.FincaId);
         }
 
-        public ConsultaSocioFincaCertificacionPorId ConsultarSocioFincaCertificacionPorId(ConsultaSocioFincaCertificacionPorIdRequestDTO request)
+        public ConsultaFincaMapaPorId ConsultarFincaMapaPorId(ConsultaFincaMapaPorIdRequestDTO request)
         {
-            return _ISocioFincaRepository.ConsultarSocioFincaCertificacionPorId(request.SocioFincaCertificacionId);
+            return _IFincaMapaRepository.ConsultarFincaMapaPorId(request.FincaMapaId);
         }
 
     }

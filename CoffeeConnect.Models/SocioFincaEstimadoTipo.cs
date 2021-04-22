@@ -32,6 +32,9 @@ namespace CoffeeConnect.Models
 		public decimal Estimado
 		{ get; set; }
 
+
+		public decimal SaldoPendiente
+		{ get; set; }
 		
 
 		#endregion

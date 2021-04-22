@@ -24,6 +24,9 @@ namespace CoffeeConnect.DTO
 		public decimal Estimado
 		{ get; set; }
 
+		public decimal SaldoPendiente
+		{ get; set; }
+
 		public string ProductoId
 		{ get; set; }
 
