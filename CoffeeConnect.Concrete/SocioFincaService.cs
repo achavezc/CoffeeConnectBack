@@ -16,9 +16,6 @@ namespace CoffeeConnect.Service
 
         private ISocioFincaRepository _ISocioFincaRepository;
 
-
-
-
         public SocioFincaService(ISocioFincaRepository socioFincaRepository, IMapper mapper)
         {
             _ISocioFincaRepository = socioFincaRepository;
@@ -29,8 +26,6 @@ namespace CoffeeConnect.Service
 
 
         }
-
-
 
         public int RegistrarSocioFinca(RegistrarActualizarSocioFincaRequestDTO request)
         {
@@ -44,7 +39,8 @@ namespace CoffeeConnect.Service
 
             List<SocioFincaEstimadoTipo> socioFincaEstimadoTipoList = new List<SocioFincaEstimadoTipo>();
 
-            request.FincaEstimado.ForEach(z => {
+            request.FincaEstimado.ForEach(z =>
+            {
                 SocioFincaEstimadoTipo item = new SocioFincaEstimadoTipo();
                 item.Anio = z.Anio;
                 item.Estimado = z.Estimado;
@@ -66,6 +62,20 @@ namespace CoffeeConnect.Service
 
             int affected = _ISocioFincaRepository.Actualizar(socioFinca);
 
+            List<SocioFincaEstimadoTipo> socioFincaEstimadoTipoList = new List<SocioFincaEstimadoTipo>();
+
+            request.FincaEstimado.ForEach(z =>
+            {
+                SocioFincaEstimadoTipo item = new SocioFincaEstimadoTipo();
+                item.Anio = z.Anio;
+                item.Estimado = z.Estimado;
+                item.SocioFincaId = request.SocioFincaId;
+                item.ProductoId = "02"; //Pergamino;
+                socioFincaEstimadoTipoList.Add(item);
+            });
+
+            _ISocioFincaRepository.ActualizarSocioFincaEstimado(socioFincaEstimadoTipoList, request.SocioFincaId);
+
             return affected;
         }
 
@@ -84,20 +94,15 @@ namespace CoffeeConnect.Service
             return consultaSocioFincaPorIdBE;
         }
 
-       
-
         public ConsultaSocioFincaEstimadoPorSocioFincaIdBE ConsultarSocioFincaEstimadoPorSocioFincaId(ConsultaSocioFincaEstimadoPorSocioFincaIdRequest request)
-        {  
+        {
             List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(request.SocioFincaId).ToList();
 
             int anioActual = DateTime.Now.Year;
 
-            ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();           
+            ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
 
             return fincaEstima;
         }
-
-
-        
     }
 }
