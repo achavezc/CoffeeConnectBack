@@ -86,8 +86,15 @@ namespace CoffeeConnect.API
             services.AddTransient<IContratoService, ContratoService>();
             services.AddTransient<IContratoRepository, ContratoRepository>();
 
-            
 
+            services.AddTransient<IFincaDocumentoAdjuntoService, FincaDocumentoAdjuntoService>();
+            services.AddTransient<IFincaDocumentoAdjuntoRepository, FincaDocumentoAdjuntoRepository>();
+
+            services.AddTransient<IFincaFotoGeoreferenciadaService, FincaFotoGeoreferenciadaService>();
+            services.AddTransient<IFincaFotoGeoreferenciadaRepository, FincaFotoGeoreferenciadaRepository>();
+
+            services.AddTransient<IFincaMapaService, FincaMapaService>();
+            services.AddTransient<IFincaMapaRepository, FincaMapaRepository>();
 
             services.AddTransient<IGuiaRemisionAlmacenService, GuiaRemisionAlmacenService>();
             services.AddTransient<IGuiaRemisionAlmacenRepository, GuiaRemisionAlmacenRepository>();
