@@ -12,5 +12,10 @@ namespace CoffeeConnect.Service
         public string Contrato { get; set; }
 
         public string FincasMapa { get; set; }
+
+        public string FincasFotoGeoreferenciada { get; set; }
+
+        public string FincasDocumentoAdjunto { get; set; }
+
     }
 }

@@ -10,10 +10,10 @@ using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
-    public class SocioFincaMapaRepository : IFincaMapaRepository
+    public class FincaMapaRepository : IFincaMapaRepository
     {
         public IOptions<ConnectionString> _connectionString;
-        public SocioFincaMapaRepository(IOptions<ConnectionString> connectionString)
+        public FincaMapaRepository(IOptions<ConnectionString> connectionString)
         {
             _connectionString = connectionString;
         }
