@@ -17,13 +17,13 @@ namespace CoffeeConnect.Service
     public partial class FincaDocumentoAdjuntoService : IFincaDocumentoAdjuntoService
     {
         private readonly IMapper _Mapper;
-       
+
 
         private IFincaDocumentoAdjuntoRepository _IFincaDocumentoAdjuntoRepository;
 
 
         public IOptions<FileServerSettings> _fileServerSettings;
-     
+
         public FincaDocumentoAdjuntoService(IFincaDocumentoAdjuntoRepository FincaDocumentoAdjuntoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
         {
             _IFincaDocumentoAdjuntoRepository = FincaDocumentoAdjuntoRepository;
@@ -45,7 +45,7 @@ namespace CoffeeConnect.Service
             socioFinca.UsuarioRegistro = request.Usuario;
 
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-            byte[] fileBytes = null ;
+            byte[] fileBytes = null;
             if (file != null)
             {
 
@@ -75,7 +75,7 @@ namespace CoffeeConnect.Service
             }
 
 
-            
+
             //if (file != null)
             //{
             //    if (file.Length > 0)
@@ -173,7 +173,7 @@ namespace CoffeeConnect.Service
                     socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
             }
-           
+
 
             ////Adjuntos
             //if (file != null)

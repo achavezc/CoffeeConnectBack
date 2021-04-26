@@ -17,13 +17,13 @@ namespace CoffeeConnect.Service
     public partial class FincaFotoGeoreferenciadaService : IFincaFotoGeoreferenciadaService
     {
         private readonly IMapper _Mapper;
-       
+
 
         private IFincaFotoGeoreferenciadaRepository _IFincaFotoGeoreferenciadaRepository;
 
 
         public IOptions<FileServerSettings> _fileServerSettings;
-     
+
         public FincaFotoGeoreferenciadaService(IFincaFotoGeoreferenciadaRepository FincaFotoGeoreferenciadaRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
         {
             _IFincaFotoGeoreferenciadaRepository = FincaFotoGeoreferenciadaRepository;
@@ -45,7 +45,7 @@ namespace CoffeeConnect.Service
             socioFinca.UsuarioRegistro = request.Usuario;
 
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-            byte[] fileBytes = null ;
+            byte[] fileBytes = null;
             if (file != null)
             {
 
@@ -75,7 +75,7 @@ namespace CoffeeConnect.Service
             }
 
 
-            
+
             //if (file != null)
             //{
             //    if (file.Length > 0)
@@ -173,7 +173,7 @@ namespace CoffeeConnect.Service
                     socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
             }
-           
+
 
             ////Adjuntos
             //if (file != null)

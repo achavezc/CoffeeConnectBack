@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class ConsultaFincaDocumentoAdjuntoPorIdRequestDTO
+    public class ConsultaFincaDocumentoAdjuntoPorIdRequestDTO
     {
-
         public int FincaDocumentoAdjuntoId { get; set; }
-     
+
     }
 }

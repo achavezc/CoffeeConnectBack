@@ -22,9 +22,9 @@ namespace CoffeeConnect.Repository
 
         public int Insertar(FincaMapa fincaMapa)
         {
-            int result = 0;    
+            int result = 0;
 
-            var parameters = new DynamicParameters();           
+            var parameters = new DynamicParameters();
             parameters.Add("@FincaId", fincaMapa.FincaId);
             parameters.Add("@Nombre", fincaMapa.Nombre);
             parameters.Add("@Descripcion", fincaMapa.Descripcion);
@@ -32,7 +32,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", fincaMapa.FechaRegistro);
             parameters.Add("@UsuarioRegistro", fincaMapa.UsuarioRegistro);
             parameters.Add("@EstadoId", fincaMapa.EstadoId);
-         
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

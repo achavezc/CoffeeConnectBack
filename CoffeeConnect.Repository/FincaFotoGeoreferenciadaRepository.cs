@@ -18,13 +18,11 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
-
         public int Insertar(FincaFotoGeoreferenciada fincaFotoGeoreferenciada)
         {
-            int result = 0;    
+            int result = 0;
 
-            var parameters = new DynamicParameters();           
+            var parameters = new DynamicParameters();
             parameters.Add("@FincaId", fincaFotoGeoreferenciada.FincaId);
             parameters.Add("@Nombre", fincaFotoGeoreferenciada.Nombre);
             parameters.Add("@Descripcion", fincaFotoGeoreferenciada.Descripcion);
@@ -32,7 +30,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", fincaFotoGeoreferenciada.FechaRegistro);
             parameters.Add("@UsuarioRegistro", fincaFotoGeoreferenciada.UsuarioRegistro);
             parameters.Add("@EstadoId", fincaFotoGeoreferenciada.EstadoId);
-         
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

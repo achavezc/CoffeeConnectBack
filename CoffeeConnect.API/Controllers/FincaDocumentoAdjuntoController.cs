@@ -6,12 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Integracion.Deuda.Controller
 {
@@ -45,7 +41,7 @@ namespace Integracion.Deuda.Controller
             RegistrarActualizarFincaDocumentoAdjuntoResponseDTO response = new RegistrarActualizarFincaDocumentoAdjuntoResponseDTO();
             try
             {
-             
+
                 var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarFincaDocumentoAdjuntoRequestDTO>(request);
                 response.Result.Data = _FincaDocumentoAdjuntoService.RegistrarFincaDocumentoAdjunto(myJsonObject, file);
 
@@ -65,7 +61,7 @@ namespace Integracion.Deuda.Controller
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
-            
+
         }
 
         [Route("Actualizar")]
@@ -134,7 +130,7 @@ namespace Integracion.Deuda.Controller
         //public IActionResult DescargarArchivo([FromBody] RequestDescargarArchivoDTO request)
         public IActionResult DescargarArchivo([FromQuery(Name = "path")] string path, [FromQuery(Name = "name")] string name)
         {
-           
+
 
             DescargarArchivoRequestDTO response = new DescargarArchivoRequestDTO();
             RequestDescargarArchivoDTO request = new RequestDescargarArchivoDTO();
@@ -144,7 +140,7 @@ namespace Integracion.Deuda.Controller
             {
                 response.Result.Data = _FincaDocumentoAdjuntoService.DescargarArchivo(request);
                 response.Result.Success = true;
-                
+
                 string extension = Path.GetExtension(request.PathFile);
 
                 Response.Clear();
@@ -185,7 +181,7 @@ namespace Integracion.Deuda.Controller
                 Response.Headers.Add("Content-Length", response.Result.Data.archivoBytes.Length.ToString());
                 Response.Headers.Add("Content-Disposition", contentDispositionHeader.ToString());
                 Response.Body.WriteAsync(response.Result.Data.archivoBytes);
-                
+
 
 
             }

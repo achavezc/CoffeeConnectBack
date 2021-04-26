@@ -18,13 +18,11 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
-
         public int Insertar(FincaDocumentoAdjunto fincaDocumentoAdjunto)
         {
-            int result = 0;    
+            int result = 0;
 
-            var parameters = new DynamicParameters();           
+            var parameters = new DynamicParameters();
             parameters.Add("@FincaId", fincaDocumentoAdjunto.FincaId);
             parameters.Add("@Nombre", fincaDocumentoAdjunto.Nombre);
             parameters.Add("@Descripcion", fincaDocumentoAdjunto.Descripcion);
@@ -32,7 +30,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", fincaDocumentoAdjunto.FechaRegistro);
             parameters.Add("@UsuarioRegistro", fincaDocumentoAdjunto.UsuarioRegistro);
             parameters.Add("@EstadoId", fincaDocumentoAdjunto.EstadoId);
-         
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
