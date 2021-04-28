@@ -164,87 +164,108 @@ namespace CoffeeConnect.Service
 
         public int ActualizarLote(ActualizarLoteRequestDTO request)
         {
-            int affected = _ILoteRepository.Actualizar(request.LoteId, DateTime.Now, request.Usuario, request.AlmacenId);
+            int affected = _ILoteRepository.Actualizar(request.LoteId, DateTime.Now, request.Usuario, request.AlmacenId,request.Cantidad,request.TotalKilosNetosPesado,request.TotalKilosBrutosPesado);
 
-            if (request.NotasIngresoAlmacenId != null)
+            if (request.NotasIngresoAlmacenId != null && request.NotasIngresoAlmacenId.Count > 0)
             {
+                List<ListaIdsAccion> notasIngresoAlmacenIdEliminar = request.NotasIngresoAlmacenId.Where(a => a.Accion == "E").ToList();
+
+                if (notasIngresoAlmacenIdEliminar != null && notasIngresoAlmacenIdEliminar.Count > 0)
+                {
+                    List<TablaIdsTipo> loteDetalleIdEliminar = new List<TablaIdsTipo>();
+
+                    foreach (ListaIdsAccion id in notasIngresoAlmacenIdEliminar)
+                    {
+                        TablaIdsTipo tablaIdsTipo = new TablaIdsTipo();
+                        tablaIdsTipo.Id = id.Id;
+                        loteDetalleIdEliminar.Add(tablaIdsTipo);
+                    }
+
+                    _ILoteRepository.EliminarLoteDetalle(loteDetalleIdEliminar);
+                }
+                
                 List<ListaIdsAccion> notasIngresoAlmacenIdNuevo = request.NotasIngresoAlmacenId.Where(a => a.Accion == "N").ToList();
 
-                List<TablaIdsTipo> notasIngresoAlmacenIdConsulta = new List<TablaIdsTipo>();
-
-                foreach (ListaIdsAccion id in notasIngresoAlmacenIdNuevo)
-                {
-                    TablaIdsTipo tablaIdsTipo = new TablaIdsTipo();
-                    tablaIdsTipo.Id = id.Id;
-                    notasIngresoAlmacenIdConsulta.Add(tablaIdsTipo);
-                }
-
-                List<NotaIngresoAlmacen> notasIngreso = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoPorIds(notasIngresoAlmacenIdConsulta).ToList();
-
-                if (notasIngreso != null)
+                if (notasIngresoAlmacenIdNuevo != null && notasIngresoAlmacenIdNuevo.Count > 0)
                 {
 
-                    List<LoteDetalle> lotesDetalle = new List<LoteDetalle>();
+                    List<TablaIdsTipo> notasIngresoAlmacenIdConsulta = new List<TablaIdsTipo>();
 
-                    notasIngreso.ForEach(notaingreso =>
+                    foreach (ListaIdsAccion id in notasIngresoAlmacenIdNuevo)
                     {
-                        LoteDetalle item = new LoteDetalle();
-                        item.LoteId = request.LoteId;
-                        item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
-                        item.Numero = notaingreso.Numero;
-                        item.TipoProvedorId = notaingreso.TipoProvedorId;
-                        item.SocioId = notaingreso.SocioId;
-                        item.TerceroId = notaingreso.TerceroId;
-                        item.IntermediarioId = notaingreso.IntermediarioId;
-                        item.ProductoId = notaingreso.ProductoId;
-                        item.SubProductoId = notaingreso.SubProductoId;
-                        item.UnidadMedidaIdPesado = notaingreso.UnidadMedidaIdPesado;
-                        item.CantidadPesado = notaingreso.CantidadPesado;
-                        item.KilosNetosPesado = notaingreso.KilosNetosPesado;
-                        item.KilosBrutosPesado = notaingreso.KilosBrutosPesado;
-                        item.RendimientoPorcentaje = notaingreso.RendimientoPorcentaje;
-                        item.HumedadPorcentaje = notaingreso.HumedadPorcentajeAnalisisFisico;
-                        item.TotalAnalisisSensorial = notaingreso.TotalAnalisisSensorial.Value;
+                        TablaIdsTipo tablaIdsTipo = new TablaIdsTipo();
+                        tablaIdsTipo.Id = id.Id;
+                        notasIngresoAlmacenIdConsulta.Add(tablaIdsTipo);
+                    }
 
+                    List<NotaIngresoAlmacen> notasIngreso = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoPorIds(notasIngresoAlmacenIdConsulta).ToList();
 
-                        item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
-                    //totalKilosNetosPesado = totalKilosNetosPesado + item.KilosNetosPesado;
-                    //totalKilosBrutosPesado = totalKilosBrutosPesado + item.KilosBrutosPesado;
-                    //totalRendimientoPorcentaje = totalRendimientoPorcentaje + item.RendimientoPorcentaje.Value;
-                    //totalAnalisisSensorial = totalAnalisisSensorial + item.TotalAnalisisSensorial;
-                    //totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
-                    //totalCantidad = totalCantidad + item.CantidadPesado;
-                    //unidadMedidaId = item.UnidadMedidaIdPesado;
-
-                    lotesDetalle.Add(item);
-                    });
-
-
-                    /*
-                    lote.TotalKilosNetosPesado = totalKilosNetosPesado;
-                    lote.TotalKilosBrutosPesado = totalKilosBrutosPesado;
-                    //lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje / lotesDetalle.Count;
-                    //lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
-                    lote.UnidadMedidaId = unidadMedidaId;
-                    //lote.PromedioTotalAnalisisSensorial = totalAnalisisSensorial / lotesDetalle.Count;
-
-                    lote.Cantidad = totalCantidad;
-
-                    loteId = _ILoteRepository.Insertar(lote);
-
-
-
-                    int affected = _ILoteRepository.InsertarLoteDetalle(lotesDetalle);
-
-                    notasIngreso.ForEach(notaingreso =>
+                    if (notasIngreso != null && notasIngreso.Count > 0)
                     {
-                        _INotaIngresoAlmacenRepository.ActualizarEstado(notaingreso.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, NotaIngresoAlmacenEstados.Lotizado);
-                    });
 
-                    */
+                        List<LoteDetalle> lotesDetalle = new List<LoteDetalle>();
+
+                        notasIngreso.ForEach(notaingreso =>
+                        {
+                            LoteDetalle item = new LoteDetalle();
+                            item.LoteId = request.LoteId;
+                            item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
+                            item.Numero = notaingreso.Numero;
+                            item.TipoProvedorId = notaingreso.TipoProvedorId;
+                            item.SocioId = notaingreso.SocioId;
+                            item.TerceroId = notaingreso.TerceroId;
+                            item.IntermediarioId = notaingreso.IntermediarioId;
+                            item.ProductoId = notaingreso.ProductoId;
+                            item.SubProductoId = notaingreso.SubProductoId;
+                            item.UnidadMedidaIdPesado = notaingreso.UnidadMedidaIdPesado;
+                            item.CantidadPesado = notaingreso.CantidadPesado;
+                            item.KilosNetosPesado = notaingreso.KilosNetosPesado;
+                            item.KilosBrutosPesado = notaingreso.KilosBrutosPesado;
+                            item.RendimientoPorcentaje = notaingreso.RendimientoPorcentaje;
+                            item.HumedadPorcentaje = notaingreso.HumedadPorcentajeAnalisisFisico;
+                            item.TotalAnalisisSensorial = notaingreso.TotalAnalisisSensorial.Value;
+
+
+                            item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
+                        //totalKilosNetosPesado = totalKilosNetosPesado + item.KilosNetosPesado;
+                        //totalKilosBrutosPesado = totalKilosBrutosPesado + item.KilosBrutosPesado;
+                        //totalRendimientoPorcentaje = totalRendimientoPorcentaje + item.RendimientoPorcentaje.Value;
+                        //totalAnalisisSensorial = totalAnalisisSensorial + item.TotalAnalisisSensorial;
+                        //totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
+                        //totalCantidad = totalCantidad + item.CantidadPesado;
+                        //unidadMedidaId = item.UnidadMedidaIdPesado;
+
+                        lotesDetalle.Add(item);
+                        });
+
+
+                        /*
+                        lote.TotalKilosNetosPesado = totalKilosNetosPesado;
+                        lote.TotalKilosBrutosPesado = totalKilosBrutosPesado;
+                        //lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje / lotesDetalle.Count;
+                        //lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
+                        lote.UnidadMedidaId = unidadMedidaId;
+                        //lote.PromedioTotalAnalisisSensorial = totalAnalisisSensorial / lotesDetalle.Count;
+
+                        lote.Cantidad = totalCantidad;
+
+                        loteId = _ILoteRepository.Insertar(lote);
+
+
+
+                        
+
+                        */
+
+                        _ILoteRepository.InsertarLoteDetalle(lotesDetalle);
+
+                        notasIngreso.ForEach(notaingreso =>
+                        {
+                            _INotaIngresoAlmacenRepository.ActualizarEstado(notaingreso.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, NotaIngresoAlmacenEstados.Lotizado);
+                        });
+                    }
+
                 }
-
-
             }
 
             return affected;

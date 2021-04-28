@@ -15,6 +15,11 @@ namespace CoffeeConnect.DTO
         public String Usuario { get; set; }
 
         public int? ContratoId { get; set; }
+        public int Cantidad { get; set; }
+
+        public decimal TotalKilosNetosPesado { get; set; }
+
+        public decimal TotalKilosBrutosPesado { get; set; }
 
         public List<ListaIdsAccion> NotasIngresoAlmacenId { get; set; }
 

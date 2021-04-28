@@ -79,6 +79,20 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+        public int EliminarLoteDetalle(List<TablaIdsTipo> request)
+        {
+            int result = 0;
+            var parameters = new DynamicParameters();
+            parameters.Add("@TablaIdsTipo", request.ToDataTable().AsTableValuedParameter());
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLoteDetalleEliminarPorIds", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
         public IEnumerable<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -177,7 +191,7 @@ namespace CoffeeConnect.Repository
             return lote;
         }
 
-        public int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId)
+        public int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId,int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado)
         {
             int affected = 0;
 
@@ -186,6 +200,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
             parameters.Add("@AlmacenId", almacenId);
+            parameters.Add("@Cantidad", cantidad);
+            parameters.Add("@TotalKilosNetosPesado", totalKilosNetosPesado);
+            parameters.Add("@TotalKilosBrutosPesado", totalKilosBrutosPesado);
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -485,9 +503,7 @@ namespace CoffeeConnect.Repository
 
         }
 
-
-
-
+       
     }
 
 
