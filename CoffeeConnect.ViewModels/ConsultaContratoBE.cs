@@ -57,6 +57,20 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the Activo value.
         /// </summary>
+        /// 
+        public decimal Cantidad
+        { get; set; }
+
+        public decimal KilosNetos
+        { get; set; }
+
+        
+
+
+        public string UnidadMedida
+        { get; set; }
+
+
         public string EstadoId
         { get; set; }
 

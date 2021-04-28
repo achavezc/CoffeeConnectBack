@@ -70,7 +70,7 @@ namespace CoffeeConnect.Service
                         pathFile = _fileServerSettings.Value.FincasMapa
 
                     });
-                    socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+                    socioFinca.Path = _fileServerSettings.Value.FincasMapa + "\\" + response.ficheroReal;
                 }
             }
 
@@ -170,7 +170,7 @@ namespace CoffeeConnect.Service
 
                     });
 
-                    socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+                    socioFinca.Path = _fileServerSettings.Value.FincasMapa + "\\" + response.ficheroReal;
                 }
             }
 
