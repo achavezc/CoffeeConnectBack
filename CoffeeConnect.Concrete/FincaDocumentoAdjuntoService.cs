@@ -68,9 +68,8 @@ namespace CoffeeConnect.Service
                             filename = file.FileName,
                         },
                         pathFile = _fileServerSettings.Value.FincasDocumentoAdjunto
-
                     });
-                    socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+                    socioFinca.Path = _fileServerSettings.Value.FincasDocumentoAdjunto + "\\" + response.ficheroReal;
                 }
             }
 

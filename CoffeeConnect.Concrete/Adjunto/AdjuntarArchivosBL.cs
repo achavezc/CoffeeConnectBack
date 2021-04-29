@@ -37,7 +37,7 @@ namespace CoffeeConnect.Service.Adjunto
                 Directory.CreateDirectory(path);
                 return path;
             }
-            
+
         }
 
         public String getRutaLogica()
@@ -72,7 +72,7 @@ namespace CoffeeConnect.Service.Adjunto
                     //----------------------------------------------------
                     try
                     {
-                        
+
                         FileStream file = new FileStream(rutaReal, FileMode.Create, System.IO.FileAccess.Write);
                         byte[] bytes = new byte[memoryStream.Length];
                         memoryStream.Read(bytes, 0, (int)memoryStream.Length);
@@ -106,7 +106,7 @@ namespace CoffeeConnect.Service.Adjunto
             }
             catch (Exception ex)
             {
-              
+
                 throw ex;
             }
         }
