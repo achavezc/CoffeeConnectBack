@@ -144,5 +144,26 @@ namespace CoffeeConnect.Repository
             return result;
 
         }
+
+        public int ActualizarSocioFincaEstimadoConsumido(int socioFincaEstimadoId, decimal consumido)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@SocioFincaEstimadoId", socioFincaEstimadoId);
+            parameters.Add("@Consumido", consumido);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspSocioFincaEstimadoConsumidoActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
     }
 }

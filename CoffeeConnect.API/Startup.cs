@@ -69,6 +69,7 @@ namespace CoffeeConnect.API
 
             services.Configure<ConnectionString>(Configuration.GetSection("ConnectionStrings"));
             services.Configure<FileServerSettings>(Configuration.GetSection("FileServerSettings"));
+            services.Configure<ParametrosSettings>(Configuration.GetSection("ParametrosSettings"));
             //services.Configure<MailServerSettings>(Configuration.GetSection("MailServerSettings"));
             //services.AddTransient<IVBRepository, VBRepository>();
 

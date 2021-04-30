@@ -4,6 +4,7 @@ using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using Core.Common.Domain.Model;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,19 @@ namespace CoffeeConnect.Service
         private IGuiaRecepcionMateriaPrimaRepository _IGuiaRecepcionMateriaPrimaRepository;
 
         private INotaCompraRepository _INotaCompraRepository;
+        private ISocioFincaRepository _ISocioFincaRepository;
 
         private ICorrelativoRepository _ICorrelativoRepository;
 
-        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima, INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository)
+        public IOptions<ParametrosSettings> _ParametrosSettings;
+
+        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima, ISocioFincaRepository socioFincaRepository, INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings)
         {
             _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrima;
             _INotaCompraRepository = notaCompraRepository;
+            _ISocioFincaRepository = socioFincaRepository;
             _ICorrelativoRepository = correlativoRepository;
+            _ParametrosSettings = parametrosSettings;
         }
         public List<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO request)       
         {           
@@ -63,7 +69,6 @@ namespace CoffeeConnect.Service
         public ConsultaGuiaRecepcionMateriaPrimaPorIdBE ConsultarGuiaRecepcionMateriaPrimaPorId(ConsultaGuiaRecepcionMateriaPrimaPorIdRequestDTO request)
         {
             int guiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
-
 
             ConsultaGuiaRecepcionMateriaPrimaPorIdBE consultaGuiaRecepcionMateriaPrimaPorIdBE = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(request.GuiaRecepcionMateriaPrimaId);
             
@@ -128,9 +133,35 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.TipoProduccionId = request.TipoProduccionId;
             guiaRecepcionMateriaPrima.EstadoId = GuiaRecepcionMateriaPrimaEstados.Pesado;
             guiaRecepcionMateriaPrima.FechaRegistro = DateTime.Now;
-            guiaRecepcionMateriaPrima.UsuarioRegistro = request.UsuarioPesado;  
+            guiaRecepcionMateriaPrima.UsuarioRegistro = request.UsuarioPesado;
+
+            string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
+            string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
+
+            
 
             int affected = _IGuiaRecepcionMateriaPrimaRepository.InsertarPesado(guiaRecepcionMateriaPrima);
+
+            if (request.ProductoId == productoIdCafePergamino && request.SubProductoId == subProductoIdCafeSeco && request.SocioFincaCertificacion != String.Empty)
+            {
+                List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(request.SocioFincaId.Value).ToList();
+
+                if (fincaEstimados.Count > 0)
+                {
+                    int anioActual = DateTime.Now.Year;
+
+                    ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = null;
+
+                    fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
+
+                    if (fincaEstima != null)
+                    {
+                        fincaEstima.SaldoPendiente = fincaEstima.Estimado - fincaEstima.Consumido;
+
+                        _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, request.KilosBrutosPesado);
+                    }
+                }
+            }
 
             return affected;
         }
