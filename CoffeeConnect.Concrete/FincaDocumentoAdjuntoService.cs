@@ -169,7 +169,7 @@ namespace CoffeeConnect.Service
 
                     });
 
-                    socioFinca.Path = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+                    socioFinca.Path = _fileServerSettings.Value.FincasDocumentoAdjunto + "\\" + response.ficheroReal;
                 }
             }
 

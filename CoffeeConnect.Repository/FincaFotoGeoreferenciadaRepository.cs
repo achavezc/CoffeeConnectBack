@@ -50,8 +50,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Nombre", fincaFotoGeoreferenciada.Nombre);
             parameters.Add("@Descripcion", fincaFotoGeoreferenciada.Descripcion);
             parameters.Add("@Path", fincaFotoGeoreferenciada.Path);
-            parameters.Add("@FechaRegistro", fincaFotoGeoreferenciada.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", fincaFotoGeoreferenciada.UsuarioRegistro);
+            parameters.Add("@FechaUltimaActualizacion", fincaFotoGeoreferenciada.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", fincaFotoGeoreferenciada.UsuarioUltimaActualizacion);
             parameters.Add("@EstadoId", fincaFotoGeoreferenciada.EstadoId);
 
 

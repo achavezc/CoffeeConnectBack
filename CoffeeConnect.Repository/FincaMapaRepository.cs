@@ -52,8 +52,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Nombre", fincaMapa.Nombre);
             parameters.Add("@Descripcion", fincaMapa.Descripcion);
             parameters.Add("@Path", fincaMapa.Path);
-            parameters.Add("@FechaRegistro", fincaMapa.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", fincaMapa.UsuarioRegistro);
+            parameters.Add("@FechaUltimaActualizacion", fincaMapa.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", fincaMapa.UsuarioUltimaActualizacion);
             parameters.Add("@EstadoId", fincaMapa.EstadoId);
 
 

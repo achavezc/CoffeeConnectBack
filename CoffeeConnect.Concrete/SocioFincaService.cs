@@ -99,10 +99,20 @@ namespace CoffeeConnect.Service
         {
             List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(request.SocioFincaId).ToList();
 
-            int anioActual = DateTime.Now.Year;
+            ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = null;
 
-            ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
-            fincaEstima.SaldoPendiente = fincaEstima.Estimado - fincaEstima.Consumido;
+            if (fincaEstimados.Count > 0)
+            {
+                int anioActual = DateTime.Now.Year;
+
+                fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
+                if (fincaEstima != null)
+                {
+                    fincaEstima.SaldoPendiente = fincaEstima.Estimado - fincaEstima.Consumido;
+                }
+                
+                
+            }
             return fincaEstima;
         }
     }
