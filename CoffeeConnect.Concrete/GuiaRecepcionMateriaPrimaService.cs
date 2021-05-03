@@ -196,7 +196,54 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.FechaUltimaActualizacion = DateTime.Now;
             guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion = request.UsuarioPesado;
 
+            
+
+            string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
+            string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
+
+            ConsultaGuiaRecepcionMateriaPrimaPorIdBE consultaGuiaRecepcionMateriaPrimaPorIdBE = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId);
+
             int affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarPesado(guiaRecepcionMateriaPrima);
+
+            if (consultaGuiaRecepcionMateriaPrimaPorIdBE.ProductoId == productoIdCafePergamino && consultaGuiaRecepcionMateriaPrimaPorIdBE.SubProductoId == subProductoIdCafeSeco && consultaGuiaRecepcionMateriaPrimaPorIdBE.SocioFincaCertificacion != String.Empty)
+            {
+                List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(consultaGuiaRecepcionMateriaPrimaPorIdBE.SocioFincaId.Value).ToList();
+
+                if (fincaEstimados.Count > 0)
+                {
+                    int anioActual = DateTime.Now.Year;
+
+                    ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = null;
+
+                    fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
+
+                    if (fincaEstima != null)
+                    {   
+                        _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, consultaGuiaRecepcionMateriaPrimaPorIdBE.KilosBrutosPesado * -1);
+                    }
+                }
+            }
+
+            if (request.ProductoId == productoIdCafePergamino && request.SubProductoId == subProductoIdCafeSeco && request.SocioFincaCertificacion != String.Empty)
+            {
+                List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(request.SocioFincaId.Value).ToList();
+
+                if (fincaEstimados.Count > 0)
+                {
+                    int anioActual = DateTime.Now.Year;
+
+                    ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = null;
+
+                    fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
+
+                    if (fincaEstima != null)
+                    {
+                        _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, request.KilosBrutosPesado);
+                    }
+                }
+            }
+
+
 
             return affected;
         }
