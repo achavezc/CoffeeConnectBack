@@ -9,6 +9,7 @@ namespace CoffeeConnect.DTO.Adjunto
     /// <summary>
     /// Clase para Response Descargar Archivo DTO:Base
     /// </summary>
+    [Serializable]
     public class ResponseDescargarArchivoDTO : BaseDTO
     {
 

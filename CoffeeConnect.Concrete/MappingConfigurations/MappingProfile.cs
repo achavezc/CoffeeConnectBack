@@ -8,7 +8,6 @@ namespace CoffeeConnect.Service.MappingConfigurations
     {
         public MappingProfile()
         {
-
             CreateMap<RegistrarActualizarProductorRequestDTO, Productor>();
             CreateMap<RegistrarActualizarSocioRequestDTO, Socio>();
             CreateMap<RegistrarActualizarProductorFincaRequestDTO, ProductorFinca>();
@@ -21,6 +20,7 @@ namespace CoffeeConnect.Service.MappingConfigurations
             CreateMap<RegistrarActualizarFincaDocumentoAdjuntoRequestDTO, FincaDocumentoAdjunto>();
             CreateMap<RegistrarActualizarFincaFotoGeoreferenciadaRequestDTO, FincaFotoGeoreferenciada>();
             CreateMap<RegistrarActualizarContratoRequestDTO, Contrato>();
+            CreateMap<RegistrarSocioDocumentoRequestDTO, SocioDocumento>();
         }
     }
 

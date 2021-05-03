@@ -16,6 +16,6 @@ namespace CoffeeConnect.Service
         public string FincasFotoGeoreferenciada { get; set; }
 
         public string FincasDocumentoAdjunto { get; set; }
-
+        public string SocioDocumento { get; set; }
     }
 }

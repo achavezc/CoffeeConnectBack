@@ -1,14 +1,8 @@
-﻿using System;
+﻿using CoffeeConnect.DTO.Adjunto;
+using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-using System.Web;
-using System.IO.IsolatedStorage;
-using CoffeeConnect.DTO.Adjunto;
-using Microsoft.Extensions.Options;
 
 namespace CoffeeConnect.Service.Adjunto
 {
@@ -20,7 +14,6 @@ namespace CoffeeConnect.Service.Adjunto
         {
             _fileServerSettings = fileServerSettings;
         }
-
 
         private String getRutaFisica(string pathFile)
         {

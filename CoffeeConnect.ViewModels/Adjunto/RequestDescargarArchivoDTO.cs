@@ -1,15 +1,11 @@
-﻿namespace CoffeeConnect.DTO.Adjunto { 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.ComponentModel.DataAnnotations;
-    using System.Reflection;
+﻿using System;
 
-
-
+namespace CoffeeConnect.DTO.Adjunto
+{
     /// <summary>
     /// Clase para Request Descargar Archivo
     /// </summary>
+    [Serializable]
     public class RequestDescargarArchivoDTO : RequestBaseDTO
     {
 

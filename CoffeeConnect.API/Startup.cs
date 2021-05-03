@@ -86,8 +86,6 @@ namespace CoffeeConnect.API
 
             services.AddTransient<IContratoService, ContratoService>();
             services.AddTransient<IContratoRepository, ContratoRepository>();
-
-
             services.AddTransient<IFincaDocumentoAdjuntoService, FincaDocumentoAdjuntoService>();
             services.AddTransient<IFincaDocumentoAdjuntoRepository, FincaDocumentoAdjuntoRepository>();
 
@@ -123,11 +121,8 @@ namespace CoffeeConnect.API
 
             services.AddTransient<IEmpresaTransporteService, EmpresaTransporteService>();
             services.AddTransient<IEmpresaTransporteRepository, EmpresaTransporteRepository>();
-
             services.AddTransient<IEmpresaProveedoraAcreedoraService, EmpresaProveedoraAcreedoraService>();
             services.AddTransient<IEmpresaProveedoraAcreedoraRepository, EmpresaProveedoraAcreedoraRepository>();
-
-
             services.AddTransient<INotaSalidaAlmacenRepository, NotaSalidaAlmacenRepository>();
             services.AddTransient<ICorrelativoRepository, CorrelativoRepository>();
 
@@ -136,22 +131,17 @@ namespace CoffeeConnect.API
 
             services.AddTransient<INotaIngresoAlmacenService, NotaIngresoAlmacenService>();
             services.AddTransient<INotaIngresoAlmacenRepository, NotaIngresoAlmacenRepository>();
-
             services.AddTransient<IOrdenServicioControlCalidadService, OrdenServicioControlCalidadService>();
             services.AddTransient<IOrdenServicioControlCalidadRepository, OrdenServicioControlCalidadRepository>();
-
             services.AddTransient<INotaSalidaAlmacenService, NotaSalidaAlmacenService>();
             services.AddTransient<INotaSalidaAlmacenRepository, NotaSalidaAlmacenRepository>();
-
             services.AddTransient<IProductorFincaService, ProductorFincaService>();
             services.AddTransient<IProductorFincaRepository, ProductorFincaRepository>();
-
             services.AddTransient<ISocioFincaService, SocioFincaService>();
             services.AddTransient<ISocioFincaRepository, SocioFincaRepository>();
-
             services.AddTransient<IGuiaRemisionAlmacenRepository, GuiaRemisionAlmacenRepository>();
-
-
+            services.AddTransient<ISocioDocumentoService, SocioDocumentoService>();
+            services.AddTransient<ISocioDocumentoRepository, SocioDocumentoRepository>();
 
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })

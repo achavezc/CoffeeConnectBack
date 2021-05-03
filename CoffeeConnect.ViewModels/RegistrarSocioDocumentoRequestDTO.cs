@@ -1,17 +1,17 @@
 ﻿namespace CoffeeConnect.DTO
 {
-    public class RegistrarActualizarFincaDocumentoAdjuntoRequestDTO
+    public class RegistrarSocioDocumentoRequestDTO
     {
         /// <summary>
-        /// Gets or sets the FincaMapaId value.
+        /// Gets or sets the SocioDocumentoId value.
         /// </summary>
-        public int FincaDocumentoAdjuntoId
+        public int SocioDocumentoId
         { get; set; }
 
         /// <summary>
-        /// Gets or sets the FincaId value.
+        /// Gets or sets the SocioId value.
         /// </summary>
-        public int FincaId
+        public int SocioId
         { get; set; }
 
         /// <summary>
@@ -31,7 +31,6 @@
         /// </summary>
         public string Path
         { get; set; }
-
 
         /// <summary>
         /// Gets or sets the UsuarioRegistro value.
