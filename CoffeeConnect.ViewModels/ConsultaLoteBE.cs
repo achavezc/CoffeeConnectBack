@@ -50,7 +50,21 @@ namespace CoffeeConnect.DTO
 		public decimal TotalKilosBrutosPesado
 		{ get; set; }
 
-		
+        public int Cantidad
+        { get; set; }
+
+        public string UnidadMedidaId
+        { get; set; }
+
+        public string UnidadMedida
+        { get; set; }
+
+        public string SubProductoId
+        { get; set; }
+
+        public string SubProducto
+        { get; set; }
+
 
         /// <summary>
         /// Gets or sets the PromedioRendimientoPorcentaje value.
