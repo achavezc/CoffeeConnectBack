@@ -21,6 +21,7 @@ namespace CoffeeConnect.Service.MappingConfigurations
             CreateMap<RegistrarActualizarFincaFotoGeoreferenciadaRequestDTO, FincaFotoGeoreferenciada>();
             CreateMap<RegistrarActualizarContratoRequestDTO, Contrato>();
             CreateMap<RegistrarSocioDocumentoRequestDTO, SocioDocumento>();
+            CreateMap<RegistrarActualizarSocioProyectoRequestDTO, SocioProyecto>();
         }
     }
 

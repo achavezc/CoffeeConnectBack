@@ -143,6 +143,11 @@ namespace CoffeeConnect.API
             services.AddTransient<ISocioDocumentoService, SocioDocumentoService>();
             services.AddTransient<ISocioDocumentoRepository, SocioDocumentoRepository>();
 
+            services.AddTransient<ISocioProyectoService, SocioProyectoService>();
+            services.AddTransient<ISocioProyectoRepository, SocioProyectoRepository>();
+
+
+
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
                     .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
