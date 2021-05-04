@@ -39,6 +39,9 @@ namespace CoffeeConnect.DTO
 		public string MonedaId
 		{ get; set; }
 
+		public string Moneda
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the Monto value.
 		/// </summary>
