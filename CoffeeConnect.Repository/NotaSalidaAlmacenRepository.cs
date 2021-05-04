@@ -48,7 +48,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", notaSalidaAlmacen.Licencia);
             parameters.Add("@Observacion", notaSalidaAlmacen.Observacion);
             parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
-            parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);
+            //parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);
             parameters.Add("@CantidadTotal", notaSalidaAlmacen.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", notaSalidaAlmacen.PesoKilosBrutos);
             parameters.Add("@EstadoId", notaSalidaAlmacen.EstadoId);
@@ -91,7 +91,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", notaSalidaAlmacen.Licencia);
             parameters.Add("@Observacion", notaSalidaAlmacen.Observacion);
             parameters.Add("@CantidadLotes", notaSalidaAlmacen.CantidadLotes);
-            parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);
+            //parameters.Add("@PromedioPorcentajeRendimiento", notaSalidaAlmacen.PromedioPorcentajeRendimiento);
             parameters.Add("@CantidadTotal", notaSalidaAlmacen.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", notaSalidaAlmacen.PesoKilosBrutos);           
             

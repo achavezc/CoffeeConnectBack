@@ -76,7 +76,7 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.Licencia = request.Licencia;
             notaSalidaAlmacen.Observacion = request.Observacion;
             notaSalidaAlmacen.CantidadLotes = request.CantidadLotes;
-            notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
+            //notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
             notaSalidaAlmacen.CantidadTotal = request.CantidadTotal;
             notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
             
@@ -205,7 +205,7 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.Licencia = request.Licencia;
             notaSalidaAlmacen.Observacion = request.Observacion;
             notaSalidaAlmacen.CantidadLotes = request.CantidadLotes;
-            notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
+            //notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
             notaSalidaAlmacen.CantidadTotal = request.CantidadTotal;
             notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
 

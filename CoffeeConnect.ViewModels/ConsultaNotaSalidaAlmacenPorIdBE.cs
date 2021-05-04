@@ -506,34 +506,34 @@ namespace CoffeeConnect.DTO
 		public decimal TotalAnalisisSensorial
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the CantidadLotes value.
-		/// </summary>
-		public int CantidadLotes
-		{ get; set; }
+        /// <summary>
+        /// Gets or sets the CantidadLotes value.
+        /// </summary>
+        public int CantidadLotes
+        { get; set; }
 
-		/// <summary>
-		/// Gets or sets the PromedioPorcentajeRendimiento value.
-		/// </summary>
-		public decimal PromedioPorcentajeRendimiento
-		{ get; set; }
+        ///// <summary>
+        ///// Gets or sets the PromedioPorcentajeRendimiento value.
+        ///// </summary>
+        //public decimal PromedioPorcentajeRendimiento
+        //{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the CantidadTotal value.
-		/// </summary>
-		public int CantidadTotal
-		{ get; set; }
+        ///// <summary>
+        ///// Gets or sets the CantidadTotal value.
+        ///// </summary>
+        public int CantidadTotal
+        { get; set; }
 
-		/// <summary>
-		/// Gets or sets the PesoKilosBrutos value.
-		/// </summary>
-		public decimal PesoKilosBrutos
-		{ get; set; }
+        ///// <summary>
+        ///// Gets or sets the PesoKilosBrutos value.
+        ///// </summary>
+        public decimal PesoKilosBrutos
+        { get; set; }
 
-		/// <summary>
-		/// Gets or sets the EstadoId value.
-		/// </summary>
-		public string EstadoId
+        /// <summary>
+        /// Gets or sets the EstadoId value.
+        /// </summary>
+        public string EstadoId
 		{ get; set; }
 
 		public string Estado

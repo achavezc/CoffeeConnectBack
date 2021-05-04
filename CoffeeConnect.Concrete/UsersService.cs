@@ -264,7 +264,7 @@ namespace CoffeeConnect.Service
     submenu: [
       {
         path: '',
-        title: 'Planta.Operaciones.Label',
+        title: 'Planta.Operaciones.Label',  
         icon: 'ft-arrow-right submenu-icon',
         class: 'has-sub',
         badge: '',

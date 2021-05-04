@@ -26,11 +26,11 @@ namespace CoffeeConnect.DTO
 		public String Conductor { get; set; }
 		public String Licencia { get; set; }
 		public String Observacion { get; set; }
-		public int CantidadLotes { get; set; }
-		public Decimal PesoKilosBrutos { get; set; }
-		public Decimal PromedioPorcentajeRendimiento { get; set; }
+        public int CantidadLotes { get; set; }
+        public Decimal PesoKilosBrutos { get; set; }
+        //public Decimal PromedioPorcentajeRendimiento { get; set; }
         public int CantidadTotal { get; set; }
-		public String EstadoId { get; set; }
+        public String EstadoId { get; set; }
 		public String UsuarioNotaSalidaAlmacen { get; set; }
 		//public String Activo { get; set; }
 		public List<NotaSalidaAlmacenDetalleDTO> ListNotaSalidaAlmacenDetalle { get; set; }
