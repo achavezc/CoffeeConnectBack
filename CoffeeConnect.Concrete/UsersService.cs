@@ -272,8 +272,20 @@ namespace CoffeeConnect.Service
         isExternalLink: false,
         submenu: [
           {
-            path: '/uikit/feather',
-            title: 'Planta.Operaciones.GuiaIngreso.Label',
+            path: '/planta/operaciones/notaingreso-list',
+            title: 'Planta.Operaciones.NotaIngreso.Label',
+            icon: 'ft-arrow-right submenu-icon',
+            class: '',
+            badge: '',
+            badgeClass: '',
+            isExternalLink: false,
+            submenu: [
+              
+            ]
+          },
+		  {
+            path: '/planta/operaciones/notaingresoalmacen-list',
+            title: 'Planta.Operaciones.NotaIngresoAlmacen.Label',
             icon: 'ft-arrow-right submenu-icon',
             class: '',
             badge: '',
