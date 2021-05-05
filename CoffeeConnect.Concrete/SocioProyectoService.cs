@@ -6,7 +6,6 @@ using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CoffeeConnect.Service
 {
@@ -35,7 +34,7 @@ namespace CoffeeConnect.Service
 
 
             int id = _ISocioProyectoRepository.Insertar(socioProyecto);
-           
+
             return id;
         }
 
@@ -46,7 +45,7 @@ namespace CoffeeConnect.Service
             socioProyecto.UsuarioUltimaActualizacion = request.Usuario;
 
             int affected = _ISocioProyectoRepository.Actualizar(socioProyecto);
-            
+
 
             return affected;
         }
@@ -60,11 +59,9 @@ namespace CoffeeConnect.Service
         {
             ConsultaSocioProyectoPorIdBE consultaSocioProyectoPorIdBE = _ISocioProyectoRepository.ConsultarSocioProyectoPorId(request.SocioProyectoId);
 
-          
+
 
             return consultaSocioProyectoPorIdBE;
         }
-
-       
     }
 }
