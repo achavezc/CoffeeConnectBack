@@ -51,9 +51,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaFinCapacitacion", socioProyecto.FechaFinCapacitacion);
             parameters.Add("@AdopcionTecnologias", socioProyecto.AdopcionTecnologias);
             parameters.Add("@Requisitos", socioProyecto.Requisitos);
-            parameters.Add("@EstadoId", socioProyecto.EstadoId);           
+            parameters.Add("@EstadoId", socioProyecto.EstadoId);
             parameters.Add("@FechaUltimaActualizacion", socioProyecto.FechaUltimaActualizacion);
-            parameters.Add("@UsuarioUltimaActualizacion", socioProyecto.UsuarioUltimaActualizacion);        
+            parameters.Add("@UsuarioUltimaActualizacion", socioProyecto.UsuarioUltimaActualizacion);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -96,7 +96,7 @@ namespace CoffeeConnect.Repository
         {
             int result = 0;
 
-            var parameters = new DynamicParameters();            
+            var parameters = new DynamicParameters();
             parameters.Add("@EmpresaId", socioProyecto.EmpresaId);
             parameters.Add("@OrganizacionProyectoAnte", socioProyecto.OrganizacionProyectoAnterior);
             parameters.Add("@ProyectoId", socioProyecto.ProyectoId);
@@ -125,8 +125,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Requisitos", socioProyecto.Requisitos);
             parameters.Add("@EstadoId", socioProyecto.EstadoId);
             parameters.Add("@FechaRegistro", socioProyecto.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", socioProyecto.UsuarioRegistro);         
-         
+            parameters.Add("@UsuarioRegistro", socioProyecto.UsuarioRegistro);
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
