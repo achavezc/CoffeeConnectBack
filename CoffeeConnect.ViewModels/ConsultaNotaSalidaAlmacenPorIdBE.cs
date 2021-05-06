@@ -593,8 +593,8 @@ namespace CoffeeConnect.DTO
 		public IEnumerable<NotaSalidaAlmacenRegistroTostadoIndicadorDetalle> RegistroTostadoIndicadorDetalle
 		{ get; set; }
 
-		public IEnumerable<NotaSalidaAlmacenDetalle> Detalle
-		{ get; set; }
+		//public IEnumerable<NotaSalidaAlmacenDetalle> Detalle
+		//{ get; set; }
 
 
 		//public IEnumerable<NotaSalidaAlmacenDetalleLotes> DetalleLotes

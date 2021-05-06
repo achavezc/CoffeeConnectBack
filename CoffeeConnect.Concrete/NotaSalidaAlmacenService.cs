@@ -111,69 +111,49 @@ namespace CoffeeConnect.Service
             GuiaRemisionAlmacen guiaRemisionAlmacen = _Mapper.Map<GuiaRemisionAlmacen>(notaSalidaAlmacen);
             guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacen);
 
+
+            #region Comentado Guia de Remision
             
+            //string tipoProduccionId = String.Empty;
+            //string tipoCertificacionId = String.Empty;
 
-            #region comentado
-            //guiaRemisionAlmacen.NotaSalidaAlmacenId = notaSalidaAlmacen.NotaSalidaAlmacenId;
-            //guiaRemisionAlmacen.AlmacenId = notaSalidaAlmacen.AlmacenId;
-            //guiaRemisionAlmacen.CantidadLotes = notaSalidaAlmacen.CantidadLotes;
-            //guiaRemisionAlmacen.CantidadTotal = notaSalidaAlmacen.CantidadTotal;
-            //guiaRemisionAlmacen.Conductor = notaSalidaAlmacen.Conductor;
-            //guiaRemisionAlmacen.EmpresaId = notaSalidaAlmacen.EmpresaId;
-            //guiaRemisionAlmacen.EmpresaIdDestino = notaSalidaAlmacen.EmpresaIdDestino;
-            //guiaRemisionAlmacen.EmpresaTransporteId = notaSalidaAlmacen.EmpresaTransporteId;
-            //guiaRemisionAlmacen.EstadoId = notaSalidaAlmacen.EstadoId;
-            //guiaRemisionAlmacen.FechaRegistro= DateTime.Now;
-            //guiaRemisionAlmacen.Licencia = notaSalidaAlmacen.Licencia;
-            //guiaRemisionAlmacen.MarcaCarretaId = notaSalidaAlmacen.MarcaCarretaId;
-            //guiaRemisionAlmacen.MarcaTractorId = notaSalidaAlmacen.MarcaTractorId;
-            //guiaRemisionAlmacen.MotivoTrasladoId = notaSalidaAlmacen.MotivoTrasladoId;
-            //guiaRemisionAlmacen.MotivoTrasladoReferencia = notaSalidaAlmacen.MotivoTrasladoReferencia;
-            //guiaRemisionAlmacen.PesoKilosBrutos = notaSalidaAlmacen.PesoKilosBrutos;
-            //guiaRemisionAlmacen.PlacaCarreta = notaSalidaAlmacen.PlacaCarreta;
-            //guiaRemisionAlmacen.PlacaTractor = notaSalidaAlmacen.PlacaTractor;
-            //guiaRemisionAlmacen.PromedioPorcentajeRendimiento = notaSalidaAlmacen.PromedioPorcentajeRendimiento;
-            //guiaRemisionAlmacen.TransporteId = notaSalidaAlmacen.TransporteId;
-            //guiaRemisionAlmacen.UsuarioRegistro = notaSalidaAlmacen.UsuarioRegistro;
-            #endregion
-            string tipoProduccionId = String.Empty;
-            string tipoCertificacionId = String.Empty;
-
-            List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
+            //List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
 
 
-            if (NotaSalidaDetalle.Count > 0)
-            {
-                tipoProduccionId = NotaSalidaDetalle[0].TipoProduccionId;
-                tipoCertificacionId = NotaSalidaDetalle[0].TipoCertificacionId;
+            //if (NotaSalidaDetalle.Count > 0)
+            //{
+            //    tipoProduccionId = NotaSalidaDetalle[0].TipoProduccionId;
+            //    tipoCertificacionId = NotaSalidaDetalle[0].TipoCertificacionId;
 
-            }
+            //}
 
-            guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
-            guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
+            //guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
+            //guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
 
 
-            guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
+            //guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
 
-            if (guiaRemisionAlmacenId != 0)
-            {
-                List<GuiaRemisionAlmacenDetalleTipo> listaDetalle = new List<GuiaRemisionAlmacenDetalleTipo>();
-                if (NotaSalidaDetalle.Any())
-                {
-                    NotaSalidaDetalle.ForEach(x =>
-                    {
-                        GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
-                        item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
-                        item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
-                        item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
-                        item.KilosBrutosPesado = x.KilosNetosPesado;
-                        listaDetalle.Add(item);
-                    });
+            //if (guiaRemisionAlmacenId != 0)
+            //{
+            //    List<GuiaRemisionAlmacenDetalleTipo> listaDetalle = new List<GuiaRemisionAlmacenDetalleTipo>();
+            //    if (NotaSalidaDetalle.Any())
+            //    {
+            //        NotaSalidaDetalle.ForEach(x =>
+            //        {
+            //            GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
+            //            item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
+            //            item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
+            //            item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
+            //            item.KilosBrutosPesado = x.KilosNetosPesado;
+            //            listaDetalle.Add(item);
+            //        });
 
-                    _IGuiaRemisionAlmacenRepository.ActualizarGuiaRemisionAlmacenDetalle(listaDetalle);
-                }
+            //        _IGuiaRemisionAlmacenRepository.ActualizarGuiaRemisionAlmacenDetalle(listaDetalle);
+            //    }
 
-            }
+            //}
+
+            #endregion Comentado Guia de Remision
 
 
             #endregion
@@ -237,63 +217,66 @@ namespace CoffeeConnect.Service
             GuiaRemisionAlmacen guiaRemisionAlmacen = _Mapper.Map<GuiaRemisionAlmacen>(notaSalidaAlmacen);
             ConsultaGuiaRemisionAlmacen guiaRemisionPivot = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenPorNotaSalidaAlmacenId(notaSalidaAlmacen.NotaSalidaAlmacenId);
 
-            string tipoProduccionId = String.Empty;
-            string tipoCertificacionId = String.Empty;
 
-            List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
+            #region Comentado Guia de Remision
+
+            //string tipoProduccionId = String.Empty;
+            //string tipoCertificacionId = String.Empty;
+
+            //List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
 
 
-            if (NotaSalidaDetalle.Count > 0)
-            {
-                tipoProduccionId = NotaSalidaDetalle[0].TipoProduccionId;
-                tipoCertificacionId = NotaSalidaDetalle[0].TipoCertificacionId;
+            //if (NotaSalidaDetalle.Count > 0)
+            //{
+            //    tipoProduccionId = NotaSalidaDetalle[0].TipoProduccionId;
+            //    tipoCertificacionId = NotaSalidaDetalle[0].TipoCertificacionId;
 
-            }
+            //}
 
-            guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
-            guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
+            //guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
+            //guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
 
-            if (guiaRemisionPivot == null)
-            {
-                guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacen);
+            //if (guiaRemisionPivot == null)
+            //{
+            //    guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacen);
 
-                guiaRemisionAlmacen.FechaRegistro = DateTime.Now;
-                guiaRemisionAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;
+            //    guiaRemisionAlmacen.FechaRegistro = DateTime.Now;
+            //    guiaRemisionAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;
 
-                guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
-            }
-            else
-            {
-                guiaRemisionAlmacen.FechaUltimaActualizacion = DateTime.Now;
-                guiaRemisionAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacen;
+            //    guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
+            //}
+            //else
+            //{
+            //    guiaRemisionAlmacen.FechaUltimaActualizacion = DateTime.Now;
+            //    guiaRemisionAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacen;
 
-                _IGuiaRemisionAlmacenRepository.Actualizar(guiaRemisionAlmacen);
+            //    _IGuiaRemisionAlmacenRepository.Actualizar(guiaRemisionAlmacen);
 
-                guiaRemisionAlmacenId = guiaRemisionPivot.GuiaRemisionAlmacenId;
-            }
+            //    guiaRemisionAlmacenId = guiaRemisionPivot.GuiaRemisionAlmacenId;
+            //}
             
 
-            if (guiaRemisionAlmacenId != 0)
-            {
-                //List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
-                List<GuiaRemisionAlmacenDetalleTipo> listaDetalle = new List<GuiaRemisionAlmacenDetalleTipo>();
-                if (NotaSalidaDetalle.Any())
-                {
-                    NotaSalidaDetalle.ForEach(x =>
-                    {
-                        GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
-                        item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
-                        item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
-                        item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
-                        listaDetalle.Add(item);
-                    });
+            //if (guiaRemisionAlmacenId != 0)
+            //{
+            //    //List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
+            //    List<GuiaRemisionAlmacenDetalleTipo> listaDetalle = new List<GuiaRemisionAlmacenDetalleTipo>();
+            //    if (NotaSalidaDetalle.Any())
+            //    {
+            //        NotaSalidaDetalle.ForEach(x =>
+            //        {
+            //            GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
+            //            item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
+            //            item.NumeroNotaIngreso = x.NumeroNotaIngresoAlmacen;
+            //            item.NotaIngresoAlmacenId = x.NotaIngresoAlmacenId;
+            //            listaDetalle.Add(item);
+            //        });
 
-                    _IGuiaRemisionAlmacenRepository.ActualizarGuiaRemisionAlmacenDetalle(listaDetalle);
-                }
+            //        _IGuiaRemisionAlmacenRepository.ActualizarGuiaRemisionAlmacenDetalle(listaDetalle);
+            //    }
 
-            }
+            //}
 
-
+            #endregion Comentado Guia de Remision
             #endregion
 
             return affected;
@@ -402,7 +385,7 @@ namespace CoffeeConnect.Service
                 notaSalidaAlmacenPorIdBE.AnalisisSensorialAtributoDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisSensorialAtributoDetallePorId(request.NotaSalidaAlmacenId);
                 notaSalidaAlmacenPorIdBE.AnalisisSensorialDefectoDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisSensorialDefectoDetallePorId(request.NotaSalidaAlmacenId);
                 notaSalidaAlmacenPorIdBE.DetalleLotes = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(request.NotaSalidaAlmacenId);
-                notaSalidaAlmacenPorIdBE.Detalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenDetallePorId(request.NotaSalidaAlmacenId).ToList();
+                //notaSalidaAlmacenPorIdBE.Detalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenDetallePorId(request.NotaSalidaAlmacenId).ToList();
                 notaSalidaAlmacenPorIdBE.RegistroTostadoIndicadorDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenRegistroTostadoIndicadorDetallePorId(request.NotaSalidaAlmacenId).ToList();
                 
 

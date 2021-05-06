@@ -8,8 +8,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the LoteDetalleId value.
 		/// </summary>
-		public int LoteDetalleId
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the LoteId value.
@@ -18,102 +17,53 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
-		public int NotaIngresoAlmacenId { get; set; }
 
 
 		public string NumeroLote
 		{ get; set; }
 		
 
-		/// <summary>
-		/// Gets or sets the NumeroNotaIngresoAlmacen value.
-		/// </summary>
-		public string NumeroNotaIngresoAlmacen
-		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the FechaIngresoAlmacen value.
 		/// </summary>
-		public DateTime FechaIngresoAlmacen
+		public DateTime FechaRegistro
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the AlmacenId value.
-		/// </summary>
-		public string AlmacenId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ProductoId value.
-		/// </summary>
 		public string ProductoId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Producto value.
-		/// </summary>
 		public string Producto
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the SubProductoId value.
-		/// </summary>
 		public string SubProductoId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the SubProducto value.
-		/// </summary>
 		public string SubProducto
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the UnidadMedidaIdPesado value.
-		/// </summary>
-		public string UnidadMedidaIdPesado
+		public string UnidadMedidaId
 		{ get; set; }
 
-		public string TipoCertificacionId
-		{ get; set; }
-
-		public string TipoProduccionId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UnidadMedida value.
-		/// </summary>
 		public string UnidadMedida
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the CantidadPesado value.
-		/// </summary>
-		public decimal CantidadPesado
+		public int Cantidad
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the KilosNetosPesado value.
-		/// </summary>
-		public decimal KilosNetosPesado
+		public decimal TotalKilosBrutosPesado
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the RendimientoPorcentaje value.
-		/// </summary>
+
+		public decimal TotalKilosNetosPesado
+		{ get; set; }
+
 		public decimal RendimientoPorcentaje
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the HumedadPorcentaje value.
-		/// </summary>
-		public decimal HumedadPorcentaje
+		public decimal HumedadPorcentajeAnalisisFisico
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the TotalAnalisisSensorial value.
-		/// </summary>
-		public decimal TotalAnalisisSensorial
-		{ get; set; }
 
 		#endregion
 	}
