@@ -141,22 +141,25 @@ namespace CoffeeConnect.DTO
         public decimal PreparacionCantidadDefectos
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the RequiereAprobacionMuestra value.
-        /// </summary>
-        public bool RequiereAprobacionMuestra
+        public string LaboratorioId
         { get; set; }
 
         /// <summary>
         /// Gets or sets the MuestraEnviadaCliente value.
         /// </summary>
-        public bool MuestraEnviadaCliente
+        public string NumeroSeguimientoMuestra
         { get; set; }
 
         /// <summary>
         /// Gets or sets the MuestraEnviadaAnalisisGlifosato value.
         /// </summary>
-        public bool MuestraEnviadaAnalisisGlifosato
+        public string EstadoMuestraId
+        { get; set; }
+
+        public DateTime? FechaEnvioMuestra
+        { get; set; }
+
+        public DateTime? FechaRecepcionMuestra
         { get; set; }
 
         /// <summary>

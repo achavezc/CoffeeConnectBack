@@ -67,9 +67,13 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadPorSaco", contrato.CantidadPorSaco);
             parameters.Add("@PesoPorSaco", contrato.PesoPorSaco);
             parameters.Add("@PreparacionCantidadDefectos", contrato.PreparacionCantidadDefectos);
-            parameters.Add("@RequiereAprobacionMuestra", contrato.RequiereAprobacionMuestra);
-            parameters.Add("@MuestraEnviadaCliente", contrato.MuestraEnviadaCliente);
-            parameters.Add("@MuestraEnviadaAnalisisGlifosato", contrato.MuestraEnviadaAnalisisGlifosato);
+
+            parameters.Add("@LaboratorioId", contrato.LaboratorioId);
+            parameters.Add("@FechaEnvioMuestra", contrato.FechaEnvioMuestra);
+            parameters.Add("@NumeroSeguimientoMuestra", contrato.NumeroSeguimientoMuestra);
+            parameters.Add("@EstadoMuestraId", contrato.EstadoMuestraId);
+            parameters.Add("@FechaRecepcionMuestra", contrato.FechaRecepcionMuestra);
+
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
             parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
@@ -119,9 +123,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadPorSaco", contrato.CantidadPorSaco);
             parameters.Add("@PesoPorSaco", contrato.PesoPorSaco);
             parameters.Add("@PreparacionCantidadDefectos", contrato.PreparacionCantidadDefectos);
-            parameters.Add("@RequiereAprobacionMuestra", contrato.RequiereAprobacionMuestra);
-            parameters.Add("@MuestraEnviadaCliente", contrato.MuestraEnviadaCliente);
-            parameters.Add("@MuestraEnviadaAnalisisGlifosato", contrato.MuestraEnviadaAnalisisGlifosato);
+            parameters.Add("@LaboratorioId", contrato.LaboratorioId);
+            parameters.Add("@FechaEnvioMuestra", contrato.FechaEnvioMuestra);
+            parameters.Add("@NumeroSeguimientoMuestra", contrato.NumeroSeguimientoMuestra);
+            parameters.Add("@EstadoMuestraId", contrato.EstadoMuestraId);
+            parameters.Add("@FechaRecepcionMuestra", contrato.FechaRecepcionMuestra);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
             parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);

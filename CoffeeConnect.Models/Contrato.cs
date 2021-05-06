@@ -151,20 +151,27 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the RequiereAprobacionMuestra value.
         /// </summary>
-        public bool RequiereAprobacionMuestra
+        public string LaboratorioId
         { get; set; }
 
         /// <summary>
         /// Gets or sets the MuestraEnviadaCliente value.
         /// </summary>
-        public bool MuestraEnviadaCliente
+        public string NumeroSeguimientoMuestra
         { get; set; }
 
         /// <summary>
         /// Gets or sets the MuestraEnviadaAnalisisGlifosato value.
         /// </summary>
-        public bool MuestraEnviadaAnalisisGlifosato
+        public string EstadoMuestraId
         { get; set; }
+
+        public DateTime? FechaEnvioMuestra
+        { get; set; }
+
+        public DateTime? FechaRecepcionMuestra
+        { get; set; }
+
 
         /// <summary>
         /// Gets or sets the NombreArchivo value.
@@ -196,7 +203,7 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the FechaUltimaActualizacion value.
         /// </summary>
-        public DateTime FechaUltimaActualizacion
+        public DateTime? FechaUltimaActualizacion
         { get; set; }
 
         /// <summary>
