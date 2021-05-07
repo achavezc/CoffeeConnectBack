@@ -39,8 +39,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MontoSegundoDesembolso", socioProyecto.MontoSegundoDesembolso);
             parameters.Add("@FechaInicioSegundoDesembolso", socioProyecto.FechaInicioSegundoDesembolso);
             parameters.Add("@FechaFinSegundoDesembolso", socioProyecto.FechaFinSegundoDesembolso);
-            parameters.Add("@Cobrado", socioProyecto.Cobrado);
-            parameters.Add("@FechaCobro", socioProyecto.FechaCobro);
+            parameters.Add("@Cobrado", socioProyecto.CobradoPrimerDesembolso);
+            parameters.Add("@FechaCobro", socioProyecto.FechaCobroPrimerDesembolso);
+            parameters.Add("@Cobrado2", socioProyecto.CobradoSegundoDesembolso);
+            parameters.Add("@FechaCobro2", socioProyecto.FechaCobroSegundoDesembolso);
             parameters.Add("@UnidadMedidaId", socioProyecto.UnidadMedidaId);
             parameters.Add("@TipoInsumoId", socioProyecto.TipoInsumoId);
             parameters.Add("@CantidadInsumo", socioProyecto.CantidadInsumo);
@@ -98,7 +100,7 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
             parameters.Add("@EmpresaId", socioProyecto.EmpresaId);
-            parameters.Add("@OrganizacionProyectoAnte", socioProyecto.OrganizacionProyectoAnterior);
+            parameters.Add("@OrganizacionProyectoAnterior", socioProyecto.OrganizacionProyectoAnterior);
             parameters.Add("@ProyectoId", socioProyecto.ProyectoId);
             parameters.Add("@MonedaId", socioProyecto.MonedaId);
             parameters.Add("@Monto", socioProyecto.Monto);
@@ -111,8 +113,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MontoSegundoDesembolso", socioProyecto.MontoSegundoDesembolso);
             parameters.Add("@FechaInicioSegundoDesembolso", socioProyecto.FechaInicioSegundoDesembolso);
             parameters.Add("@FechaFinSegundoDesembolso", socioProyecto.FechaFinSegundoDesembolso);
-            parameters.Add("@Cobrado", socioProyecto.Cobrado);
-            parameters.Add("@FechaCobro", socioProyecto.FechaCobro);
+            parameters.Add("@Cobrado", socioProyecto.CobradoPrimerDesembolso);
+            parameters.Add("@FechaCobro", socioProyecto.FechaCobroPrimerDesembolso);
+            parameters.Add("@Cobrado2", socioProyecto.CobradoSegundoDesembolso);
+            parameters.Add("@FechaCobro2", socioProyecto.FechaCobroSegundoDesembolso);
             parameters.Add("@UnidadMedidaId", socioProyecto.UnidadMedidaId);
             parameters.Add("@TipoInsumoId", socioProyecto.TipoInsumoId);
             parameters.Add("@CantidadInsumo", socioProyecto.CantidadInsumo);
