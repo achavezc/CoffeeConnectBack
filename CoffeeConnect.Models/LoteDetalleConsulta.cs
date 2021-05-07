@@ -27,7 +27,7 @@ namespace CoffeeConnect.Models
         public String TipoDocumentoId { get; set; }
 
         public String TipoDocumento { get; set; }
-        public String NombreRazonSocial { get; set; }
+        public String Socio { get; set; }
         public String UnidadMedida { get; set; }
         public Decimal CantidadPesado { get; set; }
         public Decimal KilosNetosPesado { get; set; }

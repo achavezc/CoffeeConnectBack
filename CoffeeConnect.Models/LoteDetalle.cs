@@ -34,6 +34,10 @@ namespace CoffeeConnect.Models
 		public string TipoProvedorId
 		{ get; set; }
 
+
+
+
+		
 		/// <summary>
 		/// Gets or sets the SocioId value.
 		/// </summary>

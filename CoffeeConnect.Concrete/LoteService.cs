@@ -52,7 +52,7 @@ namespace CoffeeConnect.Service
             decimal totalRendimientoPorcentaje = 0;
             decimal totalAnalisisSensorial = 0;
             decimal totalHumedadPorcentaje = 0;
-
+            string tipoProduccionId = String.Empty;
 
             List<NotaIngresoAlmacen> notasIngreso = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoPorIds(request.NotasIngresoAlmacenId).ToList();
 
@@ -90,7 +90,7 @@ namespace CoffeeConnect.Service
                     totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
                     totalCantidad = totalCantidad + item.CantidadPesado;
                     unidadMedidaId = item.UnidadMedidaIdPesado;
-
+                    tipoProduccionId = notaingreso.TipoProduccionId;
                     lotesDetalle.Add(item);
                 });
 
@@ -100,6 +100,7 @@ namespace CoffeeConnect.Service
                 //lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje / lotesDetalle.Count;
                 //lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
                 lote.UnidadMedidaId = unidadMedidaId;
+                lote.TipoProduccionId = tipoProduccionId;
                 //lote.PromedioTotalAnalisisSensorial = totalAnalisisSensorial / lotesDetalle.Count;
 
                 lote.Cantidad = totalCantidad;

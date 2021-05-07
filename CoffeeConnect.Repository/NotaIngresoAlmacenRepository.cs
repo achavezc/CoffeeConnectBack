@@ -33,6 +33,8 @@ namespace CoffeeConnect.Repository
 			parameters.Add("@AlmacenId", notaIngresoAlmacen.AlmacenId);
 			parameters.Add("@GuiaRecepcionMateriaPrimaId", notaIngresoAlmacen.GuiaRecepcionMateriaPrimaId);
 			parameters.Add("@Numero", notaIngresoAlmacen.Numero);
+			parameters.Add("@TipoProduccionId", notaIngresoAlmacen.TipoProduccionId);
+			
 			parameters.Add("@TipoProvedorId", notaIngresoAlmacen.TipoProvedorId);
 			parameters.Add("@SocioId", notaIngresoAlmacen.SocioId);
 			parameters.Add("@TerceroId", notaIngresoAlmacen.TerceroId);

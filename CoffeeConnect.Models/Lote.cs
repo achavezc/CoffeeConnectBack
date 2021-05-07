@@ -48,6 +48,12 @@ namespace CoffeeConnect.Models
 		public string UnidadMedidaId
 		{ get; set; }
 
+		public string TipoProduccionId
+		{ get; set; }
+		
+
+
+
 		/// <summary>
 		/// Gets or sets the TotalKilosNetosPesado value.
 		/// </summary>

@@ -59,6 +59,7 @@ namespace CoffeeConnect.Service
 			notaIngresoAlmacen.TipoProvedorId = guiaRecepcionMateriaPrima.TipoProvedorId;
 			notaIngresoAlmacen.SocioId = guiaRecepcionMateriaPrima.SocioId;
 			notaIngresoAlmacen.TerceroId = guiaRecepcionMateriaPrima.TerceroId;
+			notaIngresoAlmacen.TipoProduccionId = guiaRecepcionMateriaPrima.TipoProduccionId;
 			notaIngresoAlmacen.IntermediarioId = guiaRecepcionMateriaPrima.IntermediarioId;
 			notaIngresoAlmacen.ProductoId = guiaRecepcionMateriaPrima.ProductoId;
 			notaIngresoAlmacen.SubProductoId = guiaRecepcionMateriaPrima.SubProductoId;
