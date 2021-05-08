@@ -65,7 +65,7 @@ namespace CoffeeConnect.Service
 
         public int RegistrarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
-           
+
 
             Contrato contrato = _Mapper.Map<Contrato>(request);
             contrato.FechaRegistro = DateTime.Now;
@@ -163,7 +163,7 @@ namespace CoffeeConnect.Service
         }
         public int ActualizarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
-            
+
             Contrato contrato = _Mapper.Map<Contrato>(request);
 
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
@@ -197,7 +197,7 @@ namespace CoffeeConnect.Service
             }
 
 
-            
+
             contrato.FechaUltimaActualizacion = DateTime.Now;
             contrato.UsuarioUltimaActualizacion = request.Usuario;
             ////Adjuntos

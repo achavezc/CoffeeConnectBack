@@ -4,18 +4,15 @@ using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using Core.Common.Domain.Model;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
     public partial class NotaCompraService : INotaCompraService
     {
-       
+
         private INotaCompraRepository _INotaCompraRepository;
 
         private ICorrelativoRepository _ICorrelativoRepository;
@@ -26,9 +23,9 @@ namespace CoffeeConnect.Service
             _ICorrelativoRepository = correlativoRepository;
         }
 
-       		
-			
-        
+
+
+
         public int RegistrarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request)
         {
             NotaCompra notaCompra = new NotaCompra();
@@ -45,13 +42,13 @@ namespace CoffeeConnect.Service
             notaCompra.DescuentoPorHumedad = request.DescuentoPorHumedad;
             notaCompra.KilosNetosDescontar = request.KilosNetosDescontar;
             notaCompra.KilosNetosPagar = request.KilosNetosPagar;
-            notaCompra.QQ55 = request.QQ55;       
+            notaCompra.QQ55 = request.QQ55;
             notaCompra.TipoId = request.TipoId;
             notaCompra.MonedaId = request.MonedaId;
             notaCompra.PrecioGuardado = request.PrecioGuardado;
             notaCompra.PrecioPagado = request.PrecioPagado;
             notaCompra.Importe = request.Importe;
-            notaCompra.EstadoId = NotaCompraEstados.PorLiquidar;          
+            notaCompra.EstadoId = NotaCompraEstados.PorLiquidar;
             notaCompra.FechaRegistro = DateTime.Now;
             notaCompra.UsuarioRegistro = request.UsuarioNotaCompra;
             notaCompra.Observaciones = request.Observaciones;
@@ -77,7 +74,7 @@ namespace CoffeeConnect.Service
             notaCompra.DescuentoPorHumedad = request.DescuentoPorHumedad;
             notaCompra.KilosNetosDescontar = request.KilosNetosDescontar;
             notaCompra.KilosNetosPagar = request.KilosNetosPagar;
-            notaCompra.QQ55 = request.QQ55;            
+            notaCompra.QQ55 = request.QQ55;
             notaCompra.TipoId = request.TipoId;
             notaCompra.MonedaId = request.MonedaId;
             notaCompra.PrecioGuardado = request.PrecioGuardado;
@@ -102,7 +99,7 @@ namespace CoffeeConnect.Service
 
         public int LiquidarNotaCompra(LiquidarNotaCompraRequestDTO request)
         {
-            int affected = _INotaCompraRepository.Liquidar(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.Liquidado,request.MonedaId, request.PrecioPagado, request.Importe);
+            int affected = _INotaCompraRepository.Liquidar(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.Liquidado, request.MonedaId, request.PrecioPagado, request.Importe);
 
             return affected;
         }

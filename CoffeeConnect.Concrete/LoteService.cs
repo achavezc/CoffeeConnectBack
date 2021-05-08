@@ -165,7 +165,7 @@ namespace CoffeeConnect.Service
 
         public int ActualizarLote(ActualizarLoteRequestDTO request)
         {
-            int affected = _ILoteRepository.Actualizar(request.LoteId, DateTime.Now, request.Usuario, request.AlmacenId,request.Cantidad,request.TotalKilosNetosPesado,request.TotalKilosBrutosPesado);
+            int affected = _ILoteRepository.Actualizar(request.LoteId, DateTime.Now, request.Usuario, request.AlmacenId, request.Cantidad, request.TotalKilosNetosPesado, request.TotalKilosBrutosPesado);
 
             if (request.NotasIngresoAlmacenId != null && request.NotasIngresoAlmacenId.Count > 0)
             {
@@ -184,7 +184,7 @@ namespace CoffeeConnect.Service
 
                     _ILoteRepository.EliminarLoteDetalle(loteDetalleIdEliminar);
                 }
-                
+
                 List<ListaIdsAccion> notasIngresoAlmacenIdNuevo = request.NotasIngresoAlmacenId.Where(a => a.Accion == "N").ToList();
 
                 if (notasIngresoAlmacenIdNuevo != null && notasIngresoAlmacenIdNuevo.Count > 0)
@@ -228,15 +228,15 @@ namespace CoffeeConnect.Service
 
 
                             item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
-                        //totalKilosNetosPesado = totalKilosNetosPesado + item.KilosNetosPesado;
-                        //totalKilosBrutosPesado = totalKilosBrutosPesado + item.KilosBrutosPesado;
-                        //totalRendimientoPorcentaje = totalRendimientoPorcentaje + item.RendimientoPorcentaje.Value;
-                        //totalAnalisisSensorial = totalAnalisisSensorial + item.TotalAnalisisSensorial;
-                        //totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
-                        //totalCantidad = totalCantidad + item.CantidadPesado;
-                        //unidadMedidaId = item.UnidadMedidaIdPesado;
+                            //totalKilosNetosPesado = totalKilosNetosPesado + item.KilosNetosPesado;
+                            //totalKilosBrutosPesado = totalKilosBrutosPesado + item.KilosBrutosPesado;
+                            //totalRendimientoPorcentaje = totalRendimientoPorcentaje + item.RendimientoPorcentaje.Value;
+                            //totalAnalisisSensorial = totalAnalisisSensorial + item.TotalAnalisisSensorial;
+                            //totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
+                            //totalCantidad = totalCantidad + item.CantidadPesado;
+                            //unidadMedidaId = item.UnidadMedidaIdPesado;
 
-                        lotesDetalle.Add(item);
+                            lotesDetalle.Add(item);
                         });
 
 
@@ -430,7 +430,8 @@ namespace CoffeeConnect.Service
 
                 List<LoteAnalisisFisicoColorDetalleTipo> AnalisisFisicoColorDetalleList = new List<LoteAnalisisFisicoColorDetalleTipo>();
 
-                request.AnalisisFisicoColorDetalleList.ForEach(z => {
+                request.AnalisisFisicoColorDetalleList.ForEach(z =>
+                {
                     LoteAnalisisFisicoColorDetalleTipo item = new LoteAnalisisFisicoColorDetalleTipo();
                     item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
                     item.ColorDetalleId = z.ColorDetalleId;
@@ -448,7 +449,8 @@ namespace CoffeeConnect.Service
             {
                 List<LoteAnalisisFisicoDefectoPrimarioDetalleTipo> AnalisisFisicoDefectoPrimarioDetalleList = new List<LoteAnalisisFisicoDefectoPrimarioDetalleTipo>();
 
-                request.AnalisisFisicoDefectoPrimarioDetalleList.ForEach(z => {
+                request.AnalisisFisicoDefectoPrimarioDetalleList.ForEach(z =>
+                {
                     LoteAnalisisFisicoDefectoPrimarioDetalleTipo item = new LoteAnalisisFisicoDefectoPrimarioDetalleTipo();
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
@@ -467,7 +469,8 @@ namespace CoffeeConnect.Service
             {
                 List<LoteAnalisisFisicoDefectoSecundarioDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<LoteAnalisisFisicoDefectoSecundarioDetalleTipo>();
 
-                request.AnalisisFisicoDefectoSecundarioDetalleList.ForEach(z => {
+                request.AnalisisFisicoDefectoSecundarioDetalleList.ForEach(z =>
+                {
                     LoteAnalisisFisicoDefectoSecundarioDetalleTipo item = new LoteAnalisisFisicoDefectoSecundarioDetalleTipo();
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
@@ -486,7 +489,8 @@ namespace CoffeeConnect.Service
             {
                 List<LoteAnalisisFisicoOlorDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<LoteAnalisisFisicoOlorDetalleTipo>();
 
-                request.AnalisisFisicoOlorDetalleList.ForEach(z => {
+                request.AnalisisFisicoOlorDetalleList.ForEach(z =>
+                {
                     LoteAnalisisFisicoOlorDetalleTipo item = new LoteAnalisisFisicoOlorDetalleTipo();
                     item.LoteId = request.LoteId;
                     item.OlorDetalleDescripcion = z.OlorDetalleDescripcion;
@@ -504,7 +508,8 @@ namespace CoffeeConnect.Service
             {
                 List<LoteAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<LoteAnalisisSensorialAtributoDetalleTipo>();
 
-                request.AnalisisSensorialAtributoDetalleList.ForEach(z => {
+                request.AnalisisSensorialAtributoDetalleList.ForEach(z =>
+                {
                     LoteAnalisisSensorialAtributoDetalleTipo item = new LoteAnalisisSensorialAtributoDetalleTipo();
                     item.LoteId = request.LoteId;
                     item.AtributoDetalleDescripcion = z.AtributoDetalleDescripcion;
@@ -521,7 +526,8 @@ namespace CoffeeConnect.Service
             {
                 List<LoteAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<LoteAnalisisSensorialDefectoDetalleTipo>();
 
-                request.AnalisisSensorialDefectoDetalleList.ForEach(z => {
+                request.AnalisisSensorialDefectoDetalleList.ForEach(z =>
+                {
                     LoteAnalisisSensorialDefectoDetalleTipo item = new LoteAnalisisSensorialDefectoDetalleTipo();
                     item.LoteId = request.LoteId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
@@ -539,7 +545,8 @@ namespace CoffeeConnect.Service
             {
                 List<LoteRegistroTostadoIndicadorDetalleTipo> RegistroTostadoIndicadorDetalle = new List<LoteRegistroTostadoIndicadorDetalleTipo>();
 
-                request.RegistroTostadoIndicadorDetalleList.ForEach(z => {
+                request.RegistroTostadoIndicadorDetalleList.ForEach(z =>
+                {
 
                     LoteRegistroTostadoIndicadorDetalleTipo item = new LoteRegistroTostadoIndicadorDetalleTipo();
                     item.LoteId = request.LoteId;

@@ -1,27 +1,22 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
 using Dapper;
-using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using CoffeeConnect.DTO;
-using Core.Common;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
-	public class SocioRepository : ISocioRepository
-	{
-		public IOptions<ConnectionString> _connectionString;
-		public SocioRepository(IOptions<ConnectionString> connectionString)
-		{
-			_connectionString = connectionString;
-		}
+    public class SocioRepository : ISocioRepository
+    {
+        public IOptions<ConnectionString> _connectionString;
+        public SocioRepository(IOptions<ConnectionString> connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
         public int Actualizar(Socio socio)
         {
@@ -44,22 +39,22 @@ namespace CoffeeConnect.Repository
         }
 
         public IEnumerable<ConsultaSocioBE> ConsultarSocio(ConsultaSocioRequestDTO request)
-		{
-			var parameters = new DynamicParameters();
-			parameters.Add("Codigo", request.Codigo);		
-			parameters.Add("NombreRazonSocial", request.NombreRazonSocial);
-			parameters.Add("TipoDocumentoId", request.TipoDocumentoId);
-			parameters.Add("NumeroDocumento", request.NumeroDocumento);			
-			parameters.Add("EstadoId", request.EstadoId);			
-			parameters.Add("FechaInicio", request.FechaInicio);
-			parameters.Add("FechaFin", request.FechaFin);
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("Codigo", request.Codigo);
+            parameters.Add("NombreRazonSocial", request.NombreRazonSocial);
+            parameters.Add("TipoDocumentoId", request.TipoDocumentoId);
+            parameters.Add("NumeroDocumento", request.NumeroDocumento);
+            parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("FechaInicio", request.FechaInicio);
+            parameters.Add("FechaFin", request.FechaFin);
 
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				return db.Query<ConsultaSocioBE>("uspSocioConsulta", parameters, commandType: CommandType.StoredProcedure);
-			}
-		}
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaSocioBE>("uspSocioConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
         public int Insertar(Socio socio)
         {
@@ -70,7 +65,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductorId", socio.ProductorId);
             parameters.Add("@UsuarioRegistro", socio.UsuarioRegistro);
             parameters.Add("@EstadoId", socio.EstadoId);
-            parameters.Add("@FechaRegistro", socio.FechaRegistro);         
+            parameters.Add("@FechaRegistro", socio.FechaRegistro);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

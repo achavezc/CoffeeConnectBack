@@ -110,8 +110,8 @@ namespace CoffeeConnect.Service
                 {
                     fincaEstima.SaldoPendiente = fincaEstima.Estimado - fincaEstima.Consumido;
                 }
-                
-                
+
+
             }
             return fincaEstima;
         }

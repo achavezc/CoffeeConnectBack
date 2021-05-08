@@ -22,16 +22,16 @@ namespace CoffeeConnect.Repository
 
         public int Insertar(SocioFincaCertificacion socioFincaCertificacion)
         {
-            int result = 0;           
+            int result = 0;
 
             var parameters = new DynamicParameters();
-            
+
             parameters.Add("@SocioFincaId", socioFincaCertificacion.SocioFincaId);
             parameters.Add("@EntidadCertificadoraId", socioFincaCertificacion.EntidadCertificadoraId);
             parameters.Add("@TipoCertificacionId", socioFincaCertificacion.TipoCertificacionId);
             parameters.Add("@FechaCaducidad", socioFincaCertificacion.FechaCaducidad);
             parameters.Add("@FechaRegistro", socioFincaCertificacion.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", socioFincaCertificacion.UsuarioRegistro);           
+            parameters.Add("@UsuarioRegistro", socioFincaCertificacion.UsuarioRegistro);
             parameters.Add("@NombreArchivo", socioFincaCertificacion.NombreArchivo);
             parameters.Add("@DescripcionArchivo", socioFincaCertificacion.DescripcionArchivo);
             parameters.Add("@PathArchivo", socioFincaCertificacion.PathArchivo);
@@ -53,14 +53,14 @@ namespace CoffeeConnect.Repository
             parameters.Add("@SocioFincaCertificacionId", socioFincaCertificacion.SocioFincaCertificacionId);
             parameters.Add("@SocioFincaId", socioFincaCertificacion.SocioFincaId);
             parameters.Add("@EntidadCertificadoraId", socioFincaCertificacion.EntidadCertificadoraId);
-            parameters.Add("@TipoCertificacionId", socioFincaCertificacion.TipoCertificacionId);         
-            parameters.Add("@FechaCaducidad", socioFincaCertificacion.FechaCaducidad);         
+            parameters.Add("@TipoCertificacionId", socioFincaCertificacion.TipoCertificacionId);
+            parameters.Add("@FechaCaducidad", socioFincaCertificacion.FechaCaducidad);
             parameters.Add("@FechaUltimaActualizacion", socioFincaCertificacion.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", socioFincaCertificacion.UsuarioUltimaActualizacion);
             parameters.Add("@NombreArchivo", socioFincaCertificacion.NombreArchivo);
             parameters.Add("@DescripcionArchivo", socioFincaCertificacion.DescripcionArchivo);
             parameters.Add("@PathArchivo", socioFincaCertificacion.PathArchivo);
-            parameters.Add("@EstadoId", socioFincaCertificacion.EstadoId);      
+            parameters.Add("@EstadoId", socioFincaCertificacion.EstadoId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

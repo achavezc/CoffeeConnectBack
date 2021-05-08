@@ -1,17 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
-using Dapper;
-using System.Data.SqlClient;
-using Microsoft.Extensions.Options;
 using Core.Utils;
-using CoffeeConnect.DTO;
+using Dapper;
+using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
@@ -40,7 +37,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@AlmacenId", lote.AlmacenId);
             parameters.Add("@TotalKilosNetosPesado", lote.TotalKilosNetosPesado);
             parameters.Add("@TotalKilosBrutosPesado", lote.TotalKilosBrutosPesado);
-            
+
             parameters.Add("@UnidadMedidaId", lote.UnidadMedidaId);
             parameters.Add("@Cantidad", lote.Cantidad);
             //parameters.Add("@PromedioRendimientoPorcentaje", lote.PromedioRendimientoPorcentaje);
@@ -192,7 +189,7 @@ namespace CoffeeConnect.Repository
             return lote;
         }
 
-        public int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId,int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado)
+        public int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId, int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado)
         {
             int affected = 0;
 
@@ -504,7 +501,7 @@ namespace CoffeeConnect.Repository
 
         }
 
-       
+
     }
 
 

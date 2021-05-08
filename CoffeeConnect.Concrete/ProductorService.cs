@@ -8,24 +8,23 @@ using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
     public partial class ProductorService : IProductorService
-	{
+    {
         private readonly IMapper _Mapper;
 
         private IProductorRepository _IProductorRepository;
-      
-		private ICorrelativoRepository _ICorrelativoRepository;
+
+        private ICorrelativoRepository _ICorrelativoRepository;
 
 
-		public ProductorService(IProductorRepository productorRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
+        public ProductorService(IProductorRepository productorRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
         {
-			_IProductorRepository = productorRepository;
-            
-			_ICorrelativoRepository = correlativoRepository;
+            _IProductorRepository = productorRepository;
+
+            _ICorrelativoRepository = correlativoRepository;
 
             _Mapper = mapper;
 
@@ -35,22 +34,22 @@ namespace CoffeeConnect.Service
 
 
         public List<ConsultaProductorBE> ConsultarProductor(ConsultaProductorRequestDTO request)
-		{
-			if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.NombreRazonSocial))
-				throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+        {
+            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.NombreRazonSocial))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 
-			var timeSpan = request.FechaFin - request.FechaInicio;
+            var timeSpan = request.FechaFin - request.FechaInicio;
 
-			if (timeSpan.Days > 730)
-				throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
+            if (timeSpan.Days > 730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
 
 
-			var list = _IProductorRepository.ConsultarProductor(request);
+            var list = _IProductorRepository.ConsultarProductor(request);
 
-			return list.ToList();
-		}
+            return list.ToList();
+        }
 
         public int RegistrarProductor(RegistrarActualizarProductorRequestDTO request)
         {
@@ -61,7 +60,7 @@ namespace CoffeeConnect.Service
 
             int affected = _IProductorRepository.Insertar(productor);
 
-            return affected;           
+            return affected;
         }
 
         public int ActualizarProductor(RegistrarActualizarProductorRequestDTO request)
@@ -81,4 +80,4 @@ namespace CoffeeConnect.Service
         }
 
     }
-}   
+}

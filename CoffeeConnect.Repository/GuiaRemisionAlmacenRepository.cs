@@ -1,18 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
-using Dapper;
-using System.Data.SqlClient;
-using Microsoft.Extensions.Options;
-using Core.Utils;
-using CoffeeConnect.DTO;
 using Core.Common;
+using Core.Utils;
+using Dapper;
+using Microsoft.Extensions.Options;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
@@ -30,7 +26,7 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
-            
+
             parameters.Add("@NotaSalidaAlmacenId", guiaRemisionAlmacen.NotaSalidaAlmacenId);
             parameters.Add("@Numero", guiaRemisionAlmacen.Numero);
             parameters.Add("@EmpresaId", guiaRemisionAlmacen.EmpresaId);
@@ -58,9 +54,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PesoKilosBrutos", guiaRemisionAlmacen.PesoKilosBrutos);
             parameters.Add("@EstadoId", guiaRemisionAlmacen.EstadoId);
             parameters.Add("@FechaRegistro", guiaRemisionAlmacen.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", guiaRemisionAlmacen.UsuarioRegistro);            
+            parameters.Add("@UsuarioRegistro", guiaRemisionAlmacen.UsuarioRegistro);
             parameters.Add("@GuiaRemisionAlmacenId", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -112,7 +108,7 @@ namespace CoffeeConnect.Repository
             {
                 result = db.Execute("uspGuiaRemisionAlmacenActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
-          
+
 
             return result;
         }
@@ -123,8 +119,8 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
-            
-            parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);           
+
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", guiaRemisionAlmacen.HumedadPorcentajeAnalisisFisico);
             parameters.Add("@FechaUltimaActualizacion", guiaRemisionAlmacen.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", guiaRemisionAlmacen.UsuarioUltimaActualizacion);
             parameters.Add("@GuiaRemisionAlmacenId", guiaRemisionAlmacen.GuiaRemisionId);
@@ -174,7 +170,7 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
-       
+
 
         public IEnumerable<ConsultaGuiaRemisionAlmacenDetalle> ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(int guiaRemisionAlmacenId)
         {

@@ -1,66 +1,63 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
-using Dapper;
-using System.Data.SqlClient;
-using Microsoft.Extensions.Options;
-using CoffeeConnect.DTO;
 using Core.Common;
+using Dapper;
+using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
-	public class OrdenServicioControlCalidadRepository : IOrdenServicioControlCalidadRepository
-	{
-		public IOptions<ConnectionString> _connectionString;
-		public OrdenServicioControlCalidadRepository(IOptions<ConnectionString> connectionString)
-		{
-			_connectionString = connectionString;
-		}
+    public class OrdenServicioControlCalidadRepository : IOrdenServicioControlCalidadRepository
+    {
+        public IOptions<ConnectionString> _connectionString;
+        public OrdenServicioControlCalidadRepository(IOptions<ConnectionString> connectionString)
+        {
+            _connectionString = connectionString;
+        }
 
 
-		public IEnumerable<ConsultaOrdenServicioControlCalidadBE> ConsultarOrdenServicioControlCalidad(ConsultaOrdenServicioControlCalidadRequestDTO request)
-		{
-			var parameters = new DynamicParameters();
-			parameters.Add("Numero", request.Numero);
-			parameters.Add("Ruc", request.Ruc);
-			parameters.Add("RazonSocial", request.RazonSocial);
-			parameters.Add("EstadoId", request.EstadoId);
-			parameters.Add("ProductoId", request.ProductoId);
-			parameters.Add("SubProductoId", request.SubProductoId);
-			parameters.Add("EmpresaId", request.EmpresaId);
-			parameters.Add("FechaInicio", request.FechaInicio);
-			parameters.Add("FechaFin", request.FechaFin);
+        public IEnumerable<ConsultaOrdenServicioControlCalidadBE> ConsultarOrdenServicioControlCalidad(ConsultaOrdenServicioControlCalidadRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("Numero", request.Numero);
+            parameters.Add("Ruc", request.Ruc);
+            parameters.Add("RazonSocial", request.RazonSocial);
+            parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("ProductoId", request.ProductoId);
+            parameters.Add("SubProductoId", request.SubProductoId);
+            parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("FechaInicio", request.FechaInicio);
+            parameters.Add("FechaFin", request.FechaFin);
 
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				return db.Query<ConsultaOrdenServicioControlCalidadBE>("uspOrdenServicioControlCalidadConsulta", parameters, commandType: CommandType.StoredProcedure);
-			}
-		}
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaOrdenServicioControlCalidadBE>("uspOrdenServicioControlCalidadConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
-		public int ActualizarEstado(int ordenServicioControlCalidadId, DateTime fecha, string usuario, string estadoId)
-		{
-			int affected = 0;
+        public int ActualizarEstado(int ordenServicioControlCalidadId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
 
-			var parameters = new DynamicParameters();
-			parameters.Add("@OrdenServicioControlCalidadId", ordenServicioControlCalidadId);
-			parameters.Add("@Fecha", fecha);
-			parameters.Add("@Usuario", usuario);
-			parameters.Add("@EstadoId", estadoId);
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenServicioControlCalidadId", ordenServicioControlCalidadId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
 
-			using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-			{
-				affected = db.Execute("uspOrdenServicioControlCalidadActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
-			}
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspOrdenServicioControlCalidadActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
+            }
 
-			return affected;
-		}
+            return affected;
+        }
 
 
         public int Insertar(OrdenServicioControlCalidad OrdenServicioControlCalidad)
@@ -76,12 +73,12 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadPesado", OrdenServicioControlCalidad.CantidadPesado);
             parameters.Add("@ProductoId", OrdenServicioControlCalidad.ProductoId);
             parameters.Add("@SubProductoId", OrdenServicioControlCalidad.SubProductoId);
-            parameters.Add("@TipoProduccionId", OrdenServicioControlCalidad.TipoProduccionId);            
-            parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);            
+            parameters.Add("@TipoProduccionId", OrdenServicioControlCalidad.TipoProduccionId);
+            parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);
             parameters.Add("@EstadoId", OrdenServicioControlCalidad.EstadoId);
             parameters.Add("@FechaRegistro", OrdenServicioControlCalidad.FechaRegistro);
             parameters.Add("@UsuarioRegistro", OrdenServicioControlCalidad.UsuarioRegistro);
-          
+
 
             parameters.Add("@OrdenServicioControlCalidadId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -105,13 +102,13 @@ namespace CoffeeConnect.Repository
 
             parameters.Add("@OrdenServicioControlCalidadId", OrdenServicioControlCalidad.OrdenServicioControlCalidadId);
             parameters.Add("@EmpresaId", OrdenServicioControlCalidad.EmpresaId);
-            parameters.Add("@EmpresaProcesadoraId", OrdenServicioControlCalidad.EmpresaProcesadoraId);            
+            parameters.Add("@EmpresaProcesadoraId", OrdenServicioControlCalidad.EmpresaProcesadoraId);
             parameters.Add("@UnidadMedidaId", OrdenServicioControlCalidad.UnidadMedidaId);
             parameters.Add("@CantidadPesado", OrdenServicioControlCalidad.CantidadPesado);
             parameters.Add("@ProductoId", OrdenServicioControlCalidad.ProductoId);
             parameters.Add("@SubProductoId", OrdenServicioControlCalidad.SubProductoId);
             parameters.Add("@TipoProduccionId", OrdenServicioControlCalidad.TipoProduccionId);
-            parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);  
+            parameters.Add("@RendimientoEsperadoPorcentaje", OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje);
             parameters.Add("@FechaUltimaActualizacion", OrdenServicioControlCalidad.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", OrdenServicioControlCalidad.UsuarioUltimaActualizacion);
 
@@ -298,7 +295,7 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        
+
 
         public int ActualizarOrdenServicioControlCalidadAnalisisFisicoColorDetalle(List<OrdenServicioControlCalidadAnalisisFisicoColorDetalleTipo> request, int OrdenServicioControlCalidadId)
         {

@@ -1,6 +1,4 @@
-using CoffeeConnect.Models;
 using System;
-using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -12,6 +10,7 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public int SocioProyectoId
         { get; set; }
+        public int SocioId { get; set; }
 
         /// <summary>
         /// Gets or sets the EmpresaId value.

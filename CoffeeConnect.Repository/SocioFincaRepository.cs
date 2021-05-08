@@ -1,13 +1,13 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
+using Core.Utils;
 using Dapper;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using Core.Utils;
 namespace CoffeeConnect.Repository
 {
     public class SocioFincaRepository : ISocioFincaRepository
@@ -38,7 +38,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", socioFinca.FechaRegistro);
             parameters.Add("@UsuarioRegistro", socioFinca.UsuarioRegistro);
             parameters.Add("@EstadoId", socioFinca.EstadoId);
-        
+
 
             parameters.Add("@SocioFincaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 

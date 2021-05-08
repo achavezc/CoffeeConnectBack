@@ -7,27 +7,26 @@ using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
     public partial class OrdenServicioControlCalidadService : IOrdenServicioControlCalidadService
-	{
-       
+    {
+
         private IOrdenServicioControlCalidadRepository _IOrdenServicioControlCalidadRepository;
 
-       
-
-		private ICorrelativoRepository _ICorrelativoRepository;
 
 
-		public OrdenServicioControlCalidadService(IOrdenServicioControlCalidadRepository ordenServicioControlCalidadRepository,  ICorrelativoRepository correlativoRepository)
+        private ICorrelativoRepository _ICorrelativoRepository;
+
+
+        public OrdenServicioControlCalidadService(IOrdenServicioControlCalidadRepository ordenServicioControlCalidadRepository, ICorrelativoRepository correlativoRepository)
         {
-			_IOrdenServicioControlCalidadRepository = ordenServicioControlCalidadRepository;        
-			_ICorrelativoRepository = correlativoRepository;
-		}
+            _IOrdenServicioControlCalidadRepository = ordenServicioControlCalidadRepository;
+            _ICorrelativoRepository = correlativoRepository;
+        }
 
-		/*
+        /*
          
  
 	
@@ -45,50 +44,50 @@ namespace CoffeeConnect.Service
  
          */
 
-		public List<ConsultaOrdenServicioControlCalidadBE> ConsultarOrdenServicioControlCalidad(ConsultaOrdenServicioControlCalidadRequestDTO request)
-		{
-			if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
-				throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+        public List<ConsultaOrdenServicioControlCalidadBE> ConsultarOrdenServicioControlCalidad(ConsultaOrdenServicioControlCalidadRequestDTO request)
+        {
+            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 
-			var timeSpan = request.FechaFin - request.FechaInicio;
+            var timeSpan = request.FechaFin - request.FechaInicio;
 
-			if (timeSpan.Days > 730)
-				throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
-
-
-
-			var list = _IOrdenServicioControlCalidadRepository.ConsultarOrdenServicioControlCalidad(request);
-
-			return list.ToList();
-		}
-
-		public int AnularOrdenServicioControlCalidad(AnularOrdenServicioControlCalidadRequestDTO request)
-		{
-			int affected = _IOrdenServicioControlCalidadRepository.ActualizarEstado(request.OrdenServicioControlCalidadId, DateTime.Now, request.Usuario, OrdenServicioControlCalidadEstados.Anulado);
-
-			return affected;
-		}
+            if (timeSpan.Days > 730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
 
-        public int  RegistrarOrdenServicioControlCalidad(RegistrarActualizarOrdenServicioControlCalidadRequestDTO request)
+
+            var list = _IOrdenServicioControlCalidadRepository.ConsultarOrdenServicioControlCalidad(request);
+
+            return list.ToList();
+        }
+
+        public int AnularOrdenServicioControlCalidad(AnularOrdenServicioControlCalidadRequestDTO request)
+        {
+            int affected = _IOrdenServicioControlCalidadRepository.ActualizarEstado(request.OrdenServicioControlCalidadId, DateTime.Now, request.Usuario, OrdenServicioControlCalidadEstados.Anulado);
+
+            return affected;
+        }
+
+
+        public int RegistrarOrdenServicioControlCalidad(RegistrarActualizarOrdenServicioControlCalidadRequestDTO request)
         {
             OrdenServicioControlCalidad OrdenServicioControlCalidad = new OrdenServicioControlCalidad();
-            
+
             int affected = 0;
 
             OrdenServicioControlCalidad.EmpresaId = request.EmpresaId;
-            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;            
+            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;
             OrdenServicioControlCalidad.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.OrdenServicioControlCalidad);
             OrdenServicioControlCalidad.UnidadMedidaId = request.UnidadMedidaId;
             OrdenServicioControlCalidad.CantidadPesado = request.CantidadPesado;
             OrdenServicioControlCalidad.ProductoId = request.ProductoId;
             OrdenServicioControlCalidad.SubProductoId = request.SubProductoId;
             OrdenServicioControlCalidad.TipoProduccionId = request.TipoProduccionId;
-            OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje = request.RendimientoEsperadoPorcentaje;            
-            OrdenServicioControlCalidad.EstadoId = OrdenServicioControlCalidadEstados.Ingresado;            
+            OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje = request.RendimientoEsperadoPorcentaje;
+            OrdenServicioControlCalidad.EstadoId = OrdenServicioControlCalidadEstados.Ingresado;
             OrdenServicioControlCalidad.FechaRegistro = DateTime.Now;
-            OrdenServicioControlCalidad.UsuarioRegistro = request.UsuarioOrdenServicioControlCalidad;     
+            OrdenServicioControlCalidad.UsuarioRegistro = request.UsuarioOrdenServicioControlCalidad;
 
             affected = _IOrdenServicioControlCalidadRepository.Insertar(OrdenServicioControlCalidad);
             OrdenServicioControlCalidad.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId = affected;
@@ -99,18 +98,18 @@ namespace CoffeeConnect.Service
         public int ActualizarOrdenServicioControlCalidad(RegistrarActualizarOrdenServicioControlCalidadRequestDTO request)
         {
             OrdenServicioControlCalidad OrdenServicioControlCalidad = new OrdenServicioControlCalidad();
-            
+
             int affected = 0;
 
             OrdenServicioControlCalidad.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId;
             OrdenServicioControlCalidad.EmpresaId = request.EmpresaId;
-            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;           
+            OrdenServicioControlCalidad.EmpresaProcesadoraId = request.EmpresaProcesadoraId;
             OrdenServicioControlCalidad.UnidadMedidaId = request.UnidadMedidaId;
             OrdenServicioControlCalidad.CantidadPesado = request.CantidadPesado;
             OrdenServicioControlCalidad.ProductoId = request.ProductoId;
             OrdenServicioControlCalidad.SubProductoId = request.SubProductoId;
             OrdenServicioControlCalidad.TipoProduccionId = request.TipoProduccionId;
-            OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje = request.RendimientoEsperadoPorcentaje;            
+            OrdenServicioControlCalidad.RendimientoEsperadoPorcentaje = request.RendimientoEsperadoPorcentaje;
             OrdenServicioControlCalidad.FechaUltimaActualizacion = DateTime.Now;
             OrdenServicioControlCalidad.UsuarioUltimaActualizacion = request.UsuarioOrdenServicioControlCalidad;
 
@@ -159,7 +158,7 @@ namespace CoffeeConnect.Service
 
         }
 
-       
+
 
 
         public int ActualizarOrdenServicioControlCalidadAnalisisCalidad(ActualizarOrderServicioControlCalidadRequestDTO request)
@@ -185,7 +184,7 @@ namespace CoffeeConnect.Service
             ordenServicioControlCalidad.FechaCalidad = DateTime.Now;
             ordenServicioControlCalidad.TotalAnalisisSensorial = request.TotalAnalisisSensorial;
 
-           
+
 
             int affected = _IOrdenServicioControlCalidadRepository.ActualizarAnalisisCalidad(ordenServicioControlCalidad);
 
@@ -195,7 +194,8 @@ namespace CoffeeConnect.Service
 
                 List<OrdenServicioControlCalidadAnalisisFisicoColorDetalleTipo> AnalisisFisicoColorDetalleList = new List<OrdenServicioControlCalidadAnalisisFisicoColorDetalleTipo>();
 
-                request.AnalisisFisicoColorDetalleList.ForEach(z => {
+                request.AnalisisFisicoColorDetalleList.ForEach(z =>
+                {
                     OrdenServicioControlCalidadAnalisisFisicoColorDetalleTipo item = new OrdenServicioControlCalidadAnalisisFisicoColorDetalleTipo();
                     item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
                     item.ColorDetalleId = z.ColorDetalleId;
@@ -214,7 +214,8 @@ namespace CoffeeConnect.Service
             {
                 List<OrdenServicioControlCalidadAnalisisFisicoDefectoPrimarioDetalleTipo> AnalisisFisicoDefectoPrimarioDetalleList = new List<OrdenServicioControlCalidadAnalisisFisicoDefectoPrimarioDetalleTipo>();
 
-                request.AnalisisFisicoDefectoPrimarioDetalleList.ForEach(z => {
+                request.AnalisisFisicoDefectoPrimarioDetalleList.ForEach(z =>
+                {
                     OrdenServicioControlCalidadAnalisisFisicoDefectoPrimarioDetalleTipo item = new OrdenServicioControlCalidadAnalisisFisicoDefectoPrimarioDetalleTipo();
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
@@ -233,7 +234,8 @@ namespace CoffeeConnect.Service
             {
                 List<OrdenServicioControlCalidadAnalisisFisicoDefectoSecundarioDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<OrdenServicioControlCalidadAnalisisFisicoDefectoSecundarioDetalleTipo>();
 
-                request.AnalisisFisicoDefectoSecundarioDetalleList.ForEach(z => {
+                request.AnalisisFisicoDefectoSecundarioDetalleList.ForEach(z =>
+                {
                     OrdenServicioControlCalidadAnalisisFisicoDefectoSecundarioDetalleTipo item = new OrdenServicioControlCalidadAnalisisFisicoDefectoSecundarioDetalleTipo();
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
@@ -252,7 +254,8 @@ namespace CoffeeConnect.Service
             {
                 List<OrdenServicioControlCalidadAnalisisFisicoOlorDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<OrdenServicioControlCalidadAnalisisFisicoOlorDetalleTipo>();
 
-                request.AnalisisFisicoOlorDetalleList.ForEach(z => {
+                request.AnalisisFisicoOlorDetalleList.ForEach(z =>
+                {
                     OrdenServicioControlCalidadAnalisisFisicoOlorDetalleTipo item = new OrdenServicioControlCalidadAnalisisFisicoOlorDetalleTipo();
                     item.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId;
                     item.OlorDetalleDescripcion = z.OlorDetalleDescripcion;
@@ -270,7 +273,8 @@ namespace CoffeeConnect.Service
             {
                 List<OrdenServicioControlCalidadAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<OrdenServicioControlCalidadAnalisisSensorialAtributoDetalleTipo>();
 
-                request.AnalisisSensorialAtributoDetalleList.ForEach(z => {
+                request.AnalisisSensorialAtributoDetalleList.ForEach(z =>
+                {
                     OrdenServicioControlCalidadAnalisisSensorialAtributoDetalleTipo item = new OrdenServicioControlCalidadAnalisisSensorialAtributoDetalleTipo();
                     item.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId;
                     item.AtributoDetalleDescripcion = z.AtributoDetalleDescripcion;
@@ -289,7 +293,8 @@ namespace CoffeeConnect.Service
             {
                 List<OrdenServicioControlCalidadAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<OrdenServicioControlCalidadAnalisisSensorialDefectoDetalleTipo>();
 
-                request.AnalisisSensorialDefectoDetalleList.ForEach(z => {
+                request.AnalisisSensorialDefectoDetalleList.ForEach(z =>
+                {
                     OrdenServicioControlCalidadAnalisisSensorialDefectoDetalleTipo item = new OrdenServicioControlCalidadAnalisisSensorialDefectoDetalleTipo();
                     item.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
@@ -310,7 +315,8 @@ namespace CoffeeConnect.Service
             {
                 List<OrdenServicioControlCalidadRegistroTostadoIndicadorDetalleTipo> RegistroTostadoIndicadorDetalle = new List<OrdenServicioControlCalidadRegistroTostadoIndicadorDetalleTipo>();
 
-                request.RegistroTostadoIndicadorDetalleList.ForEach(z => {
+                request.RegistroTostadoIndicadorDetalleList.ForEach(z =>
+                {
 
                     OrdenServicioControlCalidadRegistroTostadoIndicadorDetalleTipo item = new OrdenServicioControlCalidadRegistroTostadoIndicadorDetalleTipo();
                     item.OrdenServicioControlCalidadId = request.OrdenServicioControlCalidadId;

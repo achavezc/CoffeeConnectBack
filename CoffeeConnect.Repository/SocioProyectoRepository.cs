@@ -25,8 +25,9 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
             parameters.Add("@SocioProyectoId", socioProyecto.SocioProyectoId);
+            parameters.Add("@SocioId", socioProyecto.SocioId);
             parameters.Add("@EmpresaId", socioProyecto.EmpresaId);
-            parameters.Add("@OrganizacionProyectoAnte", socioProyecto.OrganizacionProyectoAnterior);
+            parameters.Add("@OrganizacionProyectoAnterior", socioProyecto.OrganizacionProyectoAnterior);
             parameters.Add("@ProyectoId", socioProyecto.ProyectoId);
             parameters.Add("@MonedaId", socioProyecto.MonedaId);
             parameters.Add("@Monto", socioProyecto.Monto);
@@ -102,6 +103,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", socioProyecto.EmpresaId);
             parameters.Add("@OrganizacionProyectoAnterior", socioProyecto.OrganizacionProyectoAnterior);
             parameters.Add("@ProyectoId", socioProyecto.ProyectoId);
+            parameters.Add("@SocioId", socioProyecto.SocioId);
             parameters.Add("@MonedaId", socioProyecto.MonedaId);
             parameters.Add("@Monto", socioProyecto.Monto);
             parameters.Add("@PeriodoDesde", socioProyecto.PeriodoDesde);

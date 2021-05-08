@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
@@ -11,6 +7,7 @@ namespace CoffeeConnect.DTO
         #region Properties
 
         public int SocioProyectoId { get; set; }
+        public int SocioId { get; set; }
 
         /// <summary>
         /// Gets or sets the EmpresaId value.
@@ -150,6 +147,7 @@ namespace CoffeeConnect.DTO
         /// Gets or sets the UsuarioUltimaActualizacion value.
         /// </summary>
         public string Usuario { get; set; }
+        public string EstadoId { get; set; }
 
         #endregion
     }

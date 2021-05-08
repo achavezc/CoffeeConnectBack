@@ -1,17 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
-using Dapper;
-using System.Data.SqlClient;
-using Microsoft.Extensions.Options;
 using Core.Utils;
-using CoffeeConnect.DTO;
+using Dapper;
+using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
@@ -67,13 +64,13 @@ namespace CoffeeConnect.Repository
             ConsultaGuiaRecepcionMateriaPrimaPorIdBE itemBE = null;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);    
-            
+            parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 var list = db.Query<ConsultaGuiaRecepcionMateriaPrimaPorIdBE>("uspGuiaRecepcionMateriaPrimaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
-                
+
                 if (list.Any())
                     itemBE = list.First();
             }
@@ -88,7 +85,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId);
             parameters.Add("@NumeroReferencia", guiaRecepcionMateriaPrima.NumeroReferencia);
-            parameters.Add("@EmpresaId", guiaRecepcionMateriaPrima.EmpresaId);            
+            parameters.Add("@EmpresaId", guiaRecepcionMateriaPrima.EmpresaId);
             parameters.Add("@TipoProvedorId", guiaRecepcionMateriaPrima.TipoProvedorId);
             parameters.Add("@SocioId", guiaRecepcionMateriaPrima.SocioId);
             parameters.Add("@TerceroId", guiaRecepcionMateriaPrima.TerceroId);
@@ -102,7 +99,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadPesado", guiaRecepcionMateriaPrima.CantidadPesado);
             parameters.Add("@KilosBrutosPesado", guiaRecepcionMateriaPrima.KilosBrutosPesado);
             parameters.Add("@TaraPesado", guiaRecepcionMateriaPrima.TaraPesado);
-            parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);            
+            parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);
             parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);
             parameters.Add("@SocioFincaId", guiaRecepcionMateriaPrima.SocioFincaId);
             parameters.Add("@TerceroFincaId", guiaRecepcionMateriaPrima.TerceroFincaId);
@@ -117,7 +114,7 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspGuiaRecepcionMateriaPrimaPesadoActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-          
+
 
             return result;
         }
@@ -130,7 +127,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@EmpresaId", guiaRecepcionMateriaPrima.EmpresaId);
             parameters.Add("@Numero", guiaRecepcionMateriaPrima.Numero);
-            parameters.Add("@NumeroReferencia", guiaRecepcionMateriaPrima.NumeroReferencia);            
+            parameters.Add("@NumeroReferencia", guiaRecepcionMateriaPrima.NumeroReferencia);
             parameters.Add("@TipoProvedorId", guiaRecepcionMateriaPrima.TipoProvedorId);
             parameters.Add("@SocioId", guiaRecepcionMateriaPrima.SocioId);
             parameters.Add("@TerceroId", guiaRecepcionMateriaPrima.TerceroId);
@@ -150,7 +147,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TerceroFincaId", guiaRecepcionMateriaPrima.TerceroFincaId);
             parameters.Add("@IntermediarioFinca", guiaRecepcionMateriaPrima.IntermediarioFinca);
             parameters.Add("@SocioFincaCertificacion", guiaRecepcionMateriaPrima.SocioFincaCertificacion);
-            
+
 
             parameters.Add("@FechaRegistro", guiaRecepcionMateriaPrima.FechaRegistro);
             parameters.Add("@UsuarioRegistro", guiaRecepcionMateriaPrima.UsuarioRegistro);
@@ -192,7 +189,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UsuarioCalidad", guiaRecepcionMateriaPrima.UsuarioCalidad);
             parameters.Add("@ObservacionRegistroTostado", guiaRecepcionMateriaPrima.ObservacionRegistroTostado);
             parameters.Add("@ObservacionAnalisisSensorial", guiaRecepcionMateriaPrima.ObservacionAnalisisSensorial);
-            parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);            
+            parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);
             parameters.Add("@FechaUltimaActualizacion", guiaRecepcionMateriaPrima.FechaCalidad);
             parameters.Add("@UsuarioUltimaActualizacion", guiaRecepcionMateriaPrima.UsuarioCalidad);
 
@@ -200,27 +197,27 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspGuiaRecepcionMateriaPrimaCalidadActualizar", parameters, commandType: CommandType.StoredProcedure);
-            }            
+            }
 
             return result;
         }
 
         public IEnumerable<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetallePorId(int guiaRecepcionMateriaPrimaId)
-        {     
+        {
             var parameters = new DynamicParameters();
             parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
-          
+
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle>("uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
-              
+
             }
 
-            
+
         }
-        
+
         public IEnumerable<GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetallePorId(int guiaRecepcionMateriaPrimaId)
-        {          
+        {
 
             var parameters = new DynamicParameters();
             parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
@@ -229,12 +226,12 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<GuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalle>("uspGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
-                                
-            }           
+
+            }
         }
 
         public IEnumerable<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetallePorId(int guiaRecepcionMateriaPrimaId)
-        {            
+        {
 
             var parameters = new DynamicParameters();
             parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
@@ -244,24 +241,24 @@ namespace CoffeeConnect.Repository
             {
                 return db.Query<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalle>("uspGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
 
-               
+
             }
 
-          
+
         }
 
         public IEnumerable<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetallePorId(int guiaRecepcionMateriaPrimaId)
-        {   
+        {
             var parameters = new DynamicParameters();
             parameters.Add("@GuiaRecepcionMateriaPrimaId", guiaRecepcionMateriaPrimaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalle>("uspGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
-            
+
             }
 
-            
+
         }
 
         public IEnumerable<GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalle> ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetallePorId(int guiaRecepcionMateriaPrimaId)
@@ -306,7 +303,7 @@ namespace CoffeeConnect.Repository
 
             parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
             parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
-            
+
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -315,7 +312,7 @@ namespace CoffeeConnect.Repository
             }
 
             return result;
-           
+
         }
 
         public int ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalle(List<GuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleTipo> request, int GuiaRecepcionMateriaPrimaId)
@@ -381,7 +378,7 @@ namespace CoffeeConnect.Repository
             {
                 result = db.Execute("uspGuiaRecepcionMateriaPrimaAnalisisFisicoOlorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
-            
+
             return result;
 
         }
@@ -396,7 +393,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
 
-            
+
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspGuiaRecepcionMateriaPrimaAnalisisSensorialAtributoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
@@ -415,7 +412,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@GuiaRecepcionMateriaPrimaId", GuiaRecepcionMateriaPrimaId);
             parameters.Add("@GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
-          
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

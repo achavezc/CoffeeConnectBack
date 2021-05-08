@@ -7,28 +7,27 @@ using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoffeeConnect.Service
 {
     public partial class NotaIngresoAlmacenService : INotaIngresoAlmacenService
     {
-       
+
         private INotaIngresoAlmacenRepository _INotaIngresoAlmacenRepository;
 
         private IGuiaRecepcionMateriaPrimaRepository _IGuiaRecepcionMateriaPrimaRepository;
 
-		private ICorrelativoRepository _ICorrelativoRepository;
+        private ICorrelativoRepository _ICorrelativoRepository;
 
 
-		public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrimaRepository, ICorrelativoRepository correlativoRepository)
+        public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrimaRepository, ICorrelativoRepository correlativoRepository)
         {
             _INotaIngresoAlmacenRepository = notaIngresoAlmacenRepository;
             _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrimaRepository;
-			_ICorrelativoRepository = correlativoRepository;
-		}
+            _ICorrelativoRepository = correlativoRepository;
+        }
 
-		/*
+        /*
          
  
 	
@@ -46,113 +45,113 @@ namespace CoffeeConnect.Service
  
          */
 
-		public int Registrar(EnviarAlmacenGuiaRecepcionMateriaPrimaRequestDTO request)
+        public int Registrar(EnviarAlmacenGuiaRecepcionMateriaPrimaRequestDTO request)
         {
             ConsultaGuiaRecepcionMateriaPrimaPorIdBE guiaRecepcionMateriaPrima = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(request.GuiaRecepcionMateriaPrimaId);
 
             NotaIngresoAlmacen notaIngresoAlmacen = new NotaIngresoAlmacen();
             notaIngresoAlmacen.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
 
-			notaIngresoAlmacen.EmpresaId = guiaRecepcionMateriaPrima.EmpresaId;
-			notaIngresoAlmacen.Numero = _ICorrelativoRepository.Obtener(guiaRecepcionMateriaPrima.EmpresaId, Documentos.NotaIngresoAlmacen);
-			notaIngresoAlmacen.AlmacenId = null;
-			notaIngresoAlmacen.TipoProvedorId = guiaRecepcionMateriaPrima.TipoProvedorId;
-			notaIngresoAlmacen.SocioId = guiaRecepcionMateriaPrima.SocioId;
-			notaIngresoAlmacen.TerceroId = guiaRecepcionMateriaPrima.TerceroId;
-			notaIngresoAlmacen.TipoProduccionId = guiaRecepcionMateriaPrima.TipoProduccionId;
-			notaIngresoAlmacen.IntermediarioId = guiaRecepcionMateriaPrima.IntermediarioId;
-			notaIngresoAlmacen.ProductoId = guiaRecepcionMateriaPrima.ProductoId;
-			notaIngresoAlmacen.SubProductoId = guiaRecepcionMateriaPrima.SubProductoId;
-			notaIngresoAlmacen.UnidadMedidaIdPesado = guiaRecepcionMateriaPrima.UnidadMedidaIdPesado;
-			notaIngresoAlmacen.CantidadPesado = guiaRecepcionMateriaPrima.CantidadPesado;
-			notaIngresoAlmacen.KilosBrutosPesado = guiaRecepcionMateriaPrima.KilosBrutosPesado;
-			notaIngresoAlmacen.TaraPesado = guiaRecepcionMateriaPrima.TaraPesado;
-			notaIngresoAlmacen.KilosNetosPesado = guiaRecepcionMateriaPrima.KilosBrutosPesado - notaIngresoAlmacen.TaraPesado;
-			notaIngresoAlmacen.QQ55 = notaIngresoAlmacen.KilosNetosPesado /  Convert.ToDecimal(55.2);
-			notaIngresoAlmacen.ExportableGramosAnalisisFisico = guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico;
-			notaIngresoAlmacen.ExportablePorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.ExportablePorcentajeAnalisisFisico;
-			notaIngresoAlmacen.DescarteGramosAnalisisFisico = guiaRecepcionMateriaPrima.DescarteGramosAnalisisFisico;
-			notaIngresoAlmacen.DescartePorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.DescartePorcentajeAnalisisFisico;
-			notaIngresoAlmacen.CascarillaGramosAnalisisFisico = guiaRecepcionMateriaPrima.CascarillaGramosAnalisisFisico;
-			notaIngresoAlmacen.CascarillaPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.CascarillaPorcentajeAnalisisFisico;
-			notaIngresoAlmacen.TotalGramosAnalisisFisico = guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico;
-			notaIngresoAlmacen.TotalPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico;
-			notaIngresoAlmacen.TotalAnalisisSensorial = guiaRecepcionMateriaPrima.TotalAnalisisSensorial;
-			notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico.Value;
-			notaIngresoAlmacen.RendimientoPorcentaje = (guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico / guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico) * 100;
-			//notaIngresoAlmacen.Observacion = guiaRecepcionMateriaPrima.Observacion;
-			notaIngresoAlmacen.UsuarioRegistro = request.Usuario;
+            notaIngresoAlmacen.EmpresaId = guiaRecepcionMateriaPrima.EmpresaId;
+            notaIngresoAlmacen.Numero = _ICorrelativoRepository.Obtener(guiaRecepcionMateriaPrima.EmpresaId, Documentos.NotaIngresoAlmacen);
+            notaIngresoAlmacen.AlmacenId = null;
+            notaIngresoAlmacen.TipoProvedorId = guiaRecepcionMateriaPrima.TipoProvedorId;
+            notaIngresoAlmacen.SocioId = guiaRecepcionMateriaPrima.SocioId;
+            notaIngresoAlmacen.TerceroId = guiaRecepcionMateriaPrima.TerceroId;
+            notaIngresoAlmacen.TipoProduccionId = guiaRecepcionMateriaPrima.TipoProduccionId;
+            notaIngresoAlmacen.IntermediarioId = guiaRecepcionMateriaPrima.IntermediarioId;
+            notaIngresoAlmacen.ProductoId = guiaRecepcionMateriaPrima.ProductoId;
+            notaIngresoAlmacen.SubProductoId = guiaRecepcionMateriaPrima.SubProductoId;
+            notaIngresoAlmacen.UnidadMedidaIdPesado = guiaRecepcionMateriaPrima.UnidadMedidaIdPesado;
+            notaIngresoAlmacen.CantidadPesado = guiaRecepcionMateriaPrima.CantidadPesado;
+            notaIngresoAlmacen.KilosBrutosPesado = guiaRecepcionMateriaPrima.KilosBrutosPesado;
+            notaIngresoAlmacen.TaraPesado = guiaRecepcionMateriaPrima.TaraPesado;
+            notaIngresoAlmacen.KilosNetosPesado = guiaRecepcionMateriaPrima.KilosBrutosPesado - notaIngresoAlmacen.TaraPesado;
+            notaIngresoAlmacen.QQ55 = notaIngresoAlmacen.KilosNetosPesado / Convert.ToDecimal(55.2);
+            notaIngresoAlmacen.ExportableGramosAnalisisFisico = guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico;
+            notaIngresoAlmacen.ExportablePorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.ExportablePorcentajeAnalisisFisico;
+            notaIngresoAlmacen.DescarteGramosAnalisisFisico = guiaRecepcionMateriaPrima.DescarteGramosAnalisisFisico;
+            notaIngresoAlmacen.DescartePorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.DescartePorcentajeAnalisisFisico;
+            notaIngresoAlmacen.CascarillaGramosAnalisisFisico = guiaRecepcionMateriaPrima.CascarillaGramosAnalisisFisico;
+            notaIngresoAlmacen.CascarillaPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.CascarillaPorcentajeAnalisisFisico;
+            notaIngresoAlmacen.TotalGramosAnalisisFisico = guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico;
+            notaIngresoAlmacen.TotalPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico;
+            notaIngresoAlmacen.TotalAnalisisSensorial = guiaRecepcionMateriaPrima.TotalAnalisisSensorial;
+            notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico.Value;
+            notaIngresoAlmacen.RendimientoPorcentaje = (guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico / guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico) * 100;
+            //notaIngresoAlmacen.Observacion = guiaRecepcionMateriaPrima.Observacion;
+            notaIngresoAlmacen.UsuarioRegistro = request.Usuario;
             notaIngresoAlmacen.FechaRegistro = DateTime.Now;
             notaIngresoAlmacen.EstadoId = NotaIngresoAlmacenEstados.Ingresado;
 
-			
 
 
-			int affected = _INotaIngresoAlmacenRepository.Insertar(notaIngresoAlmacen);
 
-			_IGuiaRecepcionMateriaPrimaRepository.ActualizarEstado(request.GuiaRecepcionMateriaPrimaId, DateTime.Now, request.Usuario, GuiaRecepcionMateriaPrimaEstados.EnviadoAlmacen);
+            int affected = _INotaIngresoAlmacenRepository.Insertar(notaIngresoAlmacen);
 
-			return affected;
+            _IGuiaRecepcionMateriaPrimaRepository.ActualizarEstado(request.GuiaRecepcionMateriaPrimaId, DateTime.Now, request.Usuario, GuiaRecepcionMateriaPrimaEstados.EnviadoAlmacen);
+
+            return affected;
         }
 
-		public List<ConsultaNotaIngresoAlmacenBE> ConsultarNotaIngresoAlmacen(ConsultaNotaIngresoAlmacenRequestDTO request)
-		{
-			//if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
-			//	throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+        public List<ConsultaNotaIngresoAlmacenBE> ConsultarNotaIngresoAlmacen(ConsultaNotaIngresoAlmacenRequestDTO request)
+        {
+            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
+            //	throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
-			if (string.IsNullOrEmpty(request.EstadoId))
-				throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
-
-			var timeSpan = request.FechaFin - request.FechaInicio;
-
-			if (timeSpan.Days > 730)
-				throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
+            if (string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
 
+            var timeSpan = request.FechaFin - request.FechaInicio;
 
-			var list = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacen(request);
+            if (timeSpan.Days > 730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
-			return list.ToList();
-		}
 
-		public int AnularNotaIngresoAlmacen(AnularNotaIngresoAlmacenRequestDTO request)
-		{
-			ConsultaNotaIngresoAlmacenPorIdBE consultaNotaIngresoAlmacenPorIdBE = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacenPorId(request.NotaIngresoAlmacenId);
 
-			int affected = 0;
+            var list = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacen(request);
 
-			if (consultaNotaIngresoAlmacenPorIdBE!=null)
+            return list.ToList();
+        }
+
+        public int AnularNotaIngresoAlmacen(AnularNotaIngresoAlmacenRequestDTO request)
+        {
+            ConsultaNotaIngresoAlmacenPorIdBE consultaNotaIngresoAlmacenPorIdBE = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacenPorId(request.NotaIngresoAlmacenId);
+
+            int affected = 0;
+
+            if (consultaNotaIngresoAlmacenPorIdBE != null)
             {
-				affected = _INotaIngresoAlmacenRepository.ActualizarEstado(request.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, LoteEstados.Anulado);
+                affected = _INotaIngresoAlmacenRepository.ActualizarEstado(request.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, LoteEstados.Anulado);
 
-				_IGuiaRecepcionMateriaPrimaRepository.ActualizarEstado(consultaNotaIngresoAlmacenPorIdBE.GuiaRecepcionMateriaPrimaId, DateTime.Now,request.Usuario, GuiaRecepcionMateriaPrimaEstados.Analizado);
+                _IGuiaRecepcionMateriaPrimaRepository.ActualizarEstado(consultaNotaIngresoAlmacenPorIdBE.GuiaRecepcionMateriaPrimaId, DateTime.Now, request.Usuario, GuiaRecepcionMateriaPrimaEstados.Analizado);
 
-			}
+            }
 
-			return affected;
-		}
+            return affected;
+        }
 
-		public int ActualizarNotaIngresoAlmacen(ActualizarNotaIngresoAlmacenRequestDTO request)
-		{
-			int affected = 0;
+        public int ActualizarNotaIngresoAlmacen(ActualizarNotaIngresoAlmacenRequestDTO request)
+        {
+            int affected = 0;
 
-			
-			affected = _INotaIngresoAlmacenRepository.Actualizar(request.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, request.AlmacenId);
 
-			
+            affected = _INotaIngresoAlmacenRepository.Actualizar(request.NotaIngresoAlmacenId, DateTime.Now, request.Usuario, request.AlmacenId);
 
-			return affected;
-		}
 
-		public ConsultaNotaIngresoAlmacenPorIdBE ConsultarNotaIngresoAlmacenPorId(ConsultaNotaIngresoAlmacenPorIdRequestDTO request)
-		{
-			ConsultaNotaIngresoAlmacenPorIdBE consultaNotaIngresoAlmacenPorIdBE = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacenPorId(request.NotaIngresoAlmacenId);
 
-			consultaNotaIngresoAlmacenPorIdBE.AnalisisSensorialDefectoDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetallePorId(consultaNotaIngresoAlmacenPorIdBE.GuiaRecepcionMateriaPrimaId).ToList();
+            return affected;
+        }
 
-			return consultaNotaIngresoAlmacenPorIdBE;
-		}
+        public ConsultaNotaIngresoAlmacenPorIdBE ConsultarNotaIngresoAlmacenPorId(ConsultaNotaIngresoAlmacenPorIdRequestDTO request)
+        {
+            ConsultaNotaIngresoAlmacenPorIdBE consultaNotaIngresoAlmacenPorIdBE = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacenPorId(request.NotaIngresoAlmacenId);
 
-	}
+            consultaNotaIngresoAlmacenPorIdBE.AnalisisSensorialDefectoDetalle = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetallePorId(consultaNotaIngresoAlmacenPorIdBE.GuiaRecepcionMateriaPrimaId).ToList();
+
+            return consultaNotaIngresoAlmacenPorIdBE;
+        }
+
+    }
 }

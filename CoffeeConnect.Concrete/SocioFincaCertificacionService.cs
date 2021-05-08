@@ -17,13 +17,13 @@ namespace CoffeeConnect.Service
     public partial class SocioFincaCertificacionService : ISocioFincaCertificacionService
     {
         private readonly IMapper _Mapper;
-       
+
 
         private ISocioFincaCertificacionRepository _ISocioFincaRepository;
 
 
         public IOptions<FileServerSettings> _fileServerSettings;
-     
+
         public SocioFincaCertificacionService(ISocioFincaCertificacionRepository socioFincaRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
         {
             _ISocioFincaRepository = socioFincaRepository;
@@ -41,7 +41,7 @@ namespace CoffeeConnect.Service
         public int RegistrarSocioFincaCertificacion(RegistrarActualizarSocioFincaCertificacionRequestDTO request, IFormFile file)
         {
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-            byte[] fileBytes = null ;
+            byte[] fileBytes = null;
 
             SocioFincaCertificacion socioFinca = _Mapper.Map<SocioFincaCertificacion>(request);
             socioFinca.FechaRegistro = DateTime.Now;
@@ -76,7 +76,7 @@ namespace CoffeeConnect.Service
             }
 
 
-            
+
             //if (file != null)
             //{
             //    if (file.Length > 0)
@@ -176,7 +176,7 @@ namespace CoffeeConnect.Service
                     socioFinca.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
             }
-            
+
 
             //Adjuntos
             //if (file != null)

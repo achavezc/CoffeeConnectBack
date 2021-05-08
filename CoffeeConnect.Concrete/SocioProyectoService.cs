@@ -32,7 +32,6 @@ namespace CoffeeConnect.Service
             socioProyecto.FechaRegistro = DateTime.Now;
             socioProyecto.UsuarioRegistro = request.Usuario;
 
-
             int id = _ISocioProyectoRepository.Insertar(socioProyecto);
 
             return id;
@@ -58,9 +57,6 @@ namespace CoffeeConnect.Service
         public ConsultaSocioProyectoPorIdBE ConsultarSocioProyectoPorId(ConsultaSocioProyectoPorIdRequestDTO request)
         {
             ConsultaSocioProyectoPorIdBE consultaSocioProyectoPorIdBE = _ISocioProyectoRepository.ConsultarSocioProyectoPorId(request.SocioProyectoId);
-
-
-
             return consultaSocioProyectoPorIdBE;
         }
     }

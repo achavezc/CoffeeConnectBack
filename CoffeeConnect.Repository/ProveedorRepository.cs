@@ -1,16 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
-using CoffeeConnect.Models;
-using System.Threading.Tasks;
 using Dapper;
-using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using CoffeeConnect.DTO;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace CoffeeConnect.Repository
 {
@@ -31,7 +25,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("TipoDocumentoId", request.TipoDocumentoId);
             parameters.Add("NumeroDocumento", request.NumeroDocumento);
             parameters.Add("CodigoSocio", request.CodigoSocio);
-            
+
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

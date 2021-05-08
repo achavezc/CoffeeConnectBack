@@ -1,16 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
-using System.Threading.Tasks;
 using Dapper;
-using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using CoffeeConnect.DTO;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
@@ -23,8 +19,8 @@ namespace CoffeeConnect.Repository
         }
 
 
-        
-       
+
+
 
 
         public Empresa ObtenerEmpresaPorId(int empresaId)
@@ -32,7 +28,7 @@ namespace CoffeeConnect.Repository
             Empresa itemBE = null;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@EmpresaId", empresaId);           
+            parameters.Add("@EmpresaId", empresaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

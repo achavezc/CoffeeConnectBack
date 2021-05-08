@@ -1,16 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using System.Linq;
-using CoffeeConnect.Interface.Repository;
-using CoffeeConnect.Models;
-using System.Threading.Tasks;
+﻿using CoffeeConnect.Interface.Repository;
 using Dapper;
-using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using CoffeeConnect.DTO;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace CoffeeConnect.Repository
 {
@@ -22,25 +15,25 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-        public string Obtener(int? empresaId,string documento)
+        public string Obtener(int? empresaId, string documento)
         {
             string result = String.Empty;
 
-			var parameters = new DynamicParameters();			
-			
-			parameters.Add("@Documento", documento);
-			parameters.Add("@EmpresaId", empresaId);	
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Documento", documento);
+            parameters.Add("@EmpresaId", empresaId);
             parameters.Add("@Numero", dbType: DbType.String, direction: ParameterDirection.Output, size: 5215585);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                 db.Execute("uspCorrelativoGenerar", parameters, commandType: CommandType.StoredProcedure);
+                db.Execute("uspCorrelativoGenerar", parameters, commandType: CommandType.StoredProcedure);
             }
-            
+
             result = parameters.Get<string>("Numero");
 
             return result;
         }
 
-	}
+    }
 }

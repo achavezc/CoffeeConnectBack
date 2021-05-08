@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 
 namespace CoffeeConnect.Repository
 {
-    public class UsersRepository: IUsersRepository
+    public class UsersRepository : IUsersRepository
     {
         public IOptions<ConnectionString> _connectionString;
         public UsersRepository(IOptions<ConnectionString> connectionString)
@@ -22,7 +22,7 @@ namespace CoffeeConnect.Repository
         }
 
 
-        
+
         private string dataMenu = @"[
   {
     path: '',
@@ -329,19 +329,19 @@ namespace CoffeeConnect.Repository
 
 
 
-        public IEnumerable<Usuario>  AuthenticateUsers(string username, string password)
+        public IEnumerable<Usuario> AuthenticateUsers(string username, string password)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@UserName", username);
-            parameters.Add("@Password", password);           
+            parameters.Add("@Password", password);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<Usuario>("uspUsuarioValidarCredenciales", parameters, commandType: CommandType.StoredProcedure);                             
+                return db.Query<Usuario>("uspUsuarioValidarCredenciales", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 
-        
+
 
     }
 }

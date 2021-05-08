@@ -10,6 +10,7 @@ namespace CoffeeConnect.Models
         /// </summary>
         public int SocioProyectoId
         { get; set; }
+        public int SocioId { get; set; }
 
         /// <summary>
         /// Gets or sets the EmpresaId value.

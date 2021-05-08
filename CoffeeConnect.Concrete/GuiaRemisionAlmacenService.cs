@@ -29,8 +29,8 @@ namespace CoffeeConnect.Service
             consultaImpresionGuiaRemision = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenPorNotaSalidaAlmacenId(notaSalidaAlmacenIdId);
 
             List<ConsultaGuiaRemisionAlmacenDetalle> detalleGuiaRemision = _IGuiaRemisionAlmacenRepository.ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(consultaImpresionGuiaRemision.GuiaRemisionAlmacenId).ToList();
-            
-            int contador = 1;            
+
+            int contador = 1;
 
             //string[] agenciasTotal= { };
             //string[] certificacionTotal = { };
@@ -68,7 +68,7 @@ namespace CoffeeConnect.Service
 
             //string agenciaCertificadora = string.Join(separator, agenciasTotal);
             //string certificacion = string.Join(separator, certificacionTotal);
-            
+
 
             CabeceraGuiaRemision cabeceraGuiaRemision = new CabeceraGuiaRemision();
             cabeceraGuiaRemision.RazonSocial = consultaImpresionGuiaRemision.RazonSocialEmpresa;
