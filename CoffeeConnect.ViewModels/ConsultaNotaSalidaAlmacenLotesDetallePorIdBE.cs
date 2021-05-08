@@ -24,6 +24,7 @@ namespace CoffeeConnect.DTO
 		
 
 
+
 		/// <summary>
 		/// Gets or sets the FechaIngresoAlmacen value.
 		/// </summary>
@@ -38,6 +39,14 @@ namespace CoffeeConnect.DTO
 
 		public string SubProductoId
 		{ get; set; }
+
+		public string TipoProduccionId
+		{ get; set; }
+
+		public string TipoCertificacionId
+		{ get; set; }
+
+
 
 		public string SubProducto
 		{ get; set; }
