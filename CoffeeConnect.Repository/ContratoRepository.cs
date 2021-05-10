@@ -63,25 +63,23 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoCertificacionId", contrato.TipoCertificacionId);
             parameters.Add("@CalidadId", contrato.CalidadId);
             parameters.Add("@GradoId", contrato.GradoId);
-            parameters.Add("@CantidadPorSaco", contrato.CantidadPorSaco);
             parameters.Add("@PesoPorSaco", contrato.PesoPorSaco);
             parameters.Add("@PreparacionCantidadDefectos", contrato.PreparacionCantidadDefectos);
-
             parameters.Add("@LaboratorioId", contrato.LaboratorioId);
             parameters.Add("@FechaEnvioMuestra", contrato.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", contrato.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", contrato.EstadoMuestraId);
             parameters.Add("@FechaRecepcionMuestra", contrato.FechaRecepcionMuestra);
-
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
             parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
             parameters.Add("@FechaRegistro", contrato.FechaRegistro);
             parameters.Add("@UsuarioRegistro", contrato.UsuarioRegistro);
             parameters.Add("@EstadoId", contrato.EstadoId);
-
+            parameters.Add("@EmpaqueId", contrato.EmpaqueId);
+            parameters.Add("@TipoId", contrato.TipoId);
+            parameters.Add("@CantidadSaco", contrato.CantidadPorSaco);
             parameters.Add("@ContratoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -119,7 +117,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CalculoContratoId", contrato.CalculoContratoId);
             parameters.Add("@CalidadId", contrato.CalidadId);
             parameters.Add("@GradoId", contrato.GradoId);
-            parameters.Add("@CantidadPorSaco", contrato.CantidadPorSaco);
+            parameters.Add("@CantidadSaco", contrato.CantidadPorSaco);
             parameters.Add("@PesoPorSaco", contrato.PesoPorSaco);
             parameters.Add("@PreparacionCantidadDefectos", contrato.PreparacionCantidadDefectos);
             parameters.Add("@LaboratorioId", contrato.LaboratorioId);
@@ -133,7 +131,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaUltimaActualizacion", contrato.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", contrato.UsuarioUltimaActualizacion);
             parameters.Add("@EstadoId", contrato.EstadoId);
-
+            parameters.Add("@EmpaqueId", contrato.EmpaqueId);
+            parameters.Add("@TipoId", contrato.TipoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

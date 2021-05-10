@@ -183,7 +183,8 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public string PathArchivo
         { get; set; }
-
+        public string EmpaqueId { get; set; }
+        public string TipoId { get; set; }
 
         /// <summary>
         /// Gets or sets the UsuarioRegistro value.

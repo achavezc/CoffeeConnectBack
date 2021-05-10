@@ -59,6 +59,9 @@ namespace CoffeeConnect.Models
         public string PaisDestinoId
         { get; set; }
 
+        public string CalculoContratoId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the DepartamentoDestinoId value.
         /// </summary>
@@ -125,11 +128,6 @@ namespace CoffeeConnect.Models
         public string GradoId
         { get; set; }
 
-
-        public string CalculoContratoId
-        { get; set; }
-
-
         /// <summary>
         /// Gets or sets the Cantidad value.
         /// </summary>
@@ -172,7 +170,6 @@ namespace CoffeeConnect.Models
         public DateTime? FechaRecepcionMuestra
         { get; set; }
 
-
         /// <summary>
         /// Gets or sets the NombreArchivo value.
         /// </summary>
@@ -187,6 +184,8 @@ namespace CoffeeConnect.Models
         /// </summary>
         public string PathArchivo
         { get; set; }
+        public string EmpaqueId { get; set; }
+        public string TipoId { get; set; }
 
         /// <summary>
         /// Gets or sets the FechaRegistro value.
