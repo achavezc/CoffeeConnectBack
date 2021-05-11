@@ -17,5 +17,6 @@ namespace CoffeeConnect.Service
 
         public string FincasDocumentoAdjunto { get; set; }
         public string SocioDocumento { get; set; }
+        public string OrdenProceso { get; set; }
     }
 }

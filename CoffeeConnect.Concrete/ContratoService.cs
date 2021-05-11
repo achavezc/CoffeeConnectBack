@@ -29,15 +29,9 @@ namespace CoffeeConnect.Service
         public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
         {
             _IContratoRepository = contratoRepository;
-
             _fileServerSettings = fileServerSettings;
-
             _ICorrelativoRepository = correlativoRepository;
-
             _Mapper = mapper;
-
-
-
         }
 
         private String getRutaFisica(string pathFile)

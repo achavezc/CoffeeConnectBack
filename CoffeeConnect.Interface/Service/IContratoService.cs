@@ -11,9 +11,6 @@ namespace CoffeeConnect.Interface.Service
         int ActualizarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file);
         List<ConsultaContratoBE> ConsultarContrato(ConsultaContratoRequestDTO request);
         ConsultaContratoPorIdBE ConsultarContratoPorId(ConsultaContratoPorIdRequestDTO request);
-
         ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);
-
-
     }
 }
