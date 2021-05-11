@@ -1,13 +1,13 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class NotaIngresoPlanta
+   public class RegistrarActualizarNotaIngresoPlantaRequestDTO
 	{
-		#region Properties
-		/// <summary>
-		/// Gets or sets the NotaIngresoPlantaId value.
-		/// </summary>
 		public int NotaIngresoPlantaId
 		{ get; set; }
 
@@ -260,30 +260,6 @@ namespace CoffeeConnect.Models
 		public DateTime FechaPesado
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the UsuarioRegistro value.
-		/// </summary>
-		public string UsuarioRegistro
-		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the FechaUltimaActualizacion value.
-		/// </summary>
-		public DateTime? FechaUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioUltimaActualizacion value.
-		/// </summary>
-		public string UsuarioUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
-		{ get; set; }
-
-		#endregion
 	}
 }
