@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class RegistrarActualizarNotaIngresoPlantaRequestDTO
+   public class RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO
 	{
 		public int NotaIngresoPlantaId
 		{ get; set; }
@@ -149,95 +149,7 @@ namespace CoffeeConnect.DTO
 		public string ObservacionPesado
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the ExportableGramosAnalisisFisico value.
-		/// </summary>
-		public decimal ExportableGramosAnalisisFisico
-		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the ExportablePorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal ExportablePorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the DescarteGramosAnalisisFisico value.
-		/// </summary>
-		public decimal DescarteGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the DescartePorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal DescartePorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CascarillaGramosAnalisisFisico value.
-		/// </summary>
-		public decimal CascarillaGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CascarillaPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal CascarillaPorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TotalGramosAnalisisFisico value.
-		/// </summary>
-		public decimal TotalGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TotalPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal TotalPorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal HumedadPorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ObservacionAnalisisFisico value.
-		/// </summary>
-		public string ObservacionAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaCalidad value.
-		/// </summary>
-		public DateTime FechaCalidad
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioCalidad value.
-		/// </summary>
-		public string UsuarioCalidad
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ObservacionRegistroTostado value.
-		/// </summary>
-		public string ObservacionRegistroTostado
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TotalAnalisisSensorial value.
-		/// </summary>
-		public decimal TotalAnalisisSensorial
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ObservacionAnalisisSensorial value.
-		/// </summary>
-		public string ObservacionAnalisisSensorial
-		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the EstadoId value.

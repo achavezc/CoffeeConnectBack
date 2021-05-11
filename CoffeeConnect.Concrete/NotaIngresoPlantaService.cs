@@ -1,4 +1,5 @@
 ﻿
+using AutoMapper;
 using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
@@ -14,22 +15,22 @@ namespace CoffeeConnect.Service
     public partial class NotaIngresoPlantaService : INotaIngresoPlantaService
     {
 
+        private readonly IMapper _Mapper;
+
         private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
 
-        private INotaCompraRepository _INotaCompraRepository;
-        private ISocioFincaRepository _ISocioFincaRepository;
+        
 
         private ICorrelativoRepository _ICorrelativoRepository;
 
         public IOptions<ParametrosSettings> _ParametrosSettings;
 
-        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ISocioFincaRepository socioFincaRepository, INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings)
+        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta,ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings, IMapper mapper)
         {
-            _INotaIngresoPlantaRepository = NotaIngresoPlanta;
-            _INotaCompraRepository = notaCompraRepository;
-            _ISocioFincaRepository = socioFincaRepository;
+            _INotaIngresoPlantaRepository = NotaIngresoPlanta;            
             _ICorrelativoRepository = correlativoRepository;
             _ParametrosSettings = parametrosSettings;
+            _Mapper = mapper;
         }
         public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request)
         {
@@ -57,12 +58,7 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
-        //public int EnviarGuardiolaNotaIngresoPlanta(EnviarGuardiolaNotaIngresoPlantaRequestDTO request)
-        //{
-        //    int affected = _INotaIngresoPlantaRepository.EnviarGuardiolaNotaIngresoPlanta(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoGuardiola);
 
-        //    return affected;
-        //}
 
 
         //public ConsultaNotaIngresoPlantaPorIdBE ConsultarNotaIngresoPlantaPorId(ConsultaNotaIngresoPlantaPorIdRequestDTO request)
@@ -104,148 +100,41 @@ namespace CoffeeConnect.Service
 
         //}
 
-        //public int RegistrarPesadoNotaIngresoPlanta(RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO request)
-        //{
-        //    NotaIngresoPlanta NotaIngresoPlanta = new NotaIngresoPlanta();
+        public int RegistrarPesadoNotaIngresoPlanta(RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO request)
+        {
+            NotaIngresoPlanta NotaIngresoPlanta = _Mapper.Map<NotaIngresoPlanta>(request);
 
-        //    NotaIngresoPlanta.EmpresaId = request.EmpresaId;
-        //    NotaIngresoPlanta.NumeroReferencia = request.NumeroReferencia;
-        //    NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRecepcion);
-        //    NotaIngresoPlanta.TipoProvedorId = request.TipoProvedorId;
-        //    NotaIngresoPlanta.SocioId = request.SocioId;
-        //    NotaIngresoPlanta.TerceroId = request.TerceroId;
-        //    NotaIngresoPlanta.IntermediarioId = request.IntermediarioId;
-        //    NotaIngresoPlanta.ProductoId = request.ProductoId;
-        //    NotaIngresoPlanta.SubProductoId = request.SubProductoId;
-        //    NotaIngresoPlanta.FechaCosecha = request.FechaCosecha;
-        //    NotaIngresoPlanta.FechaPesado = DateTime.Now;
-        //    NotaIngresoPlanta.UsuarioPesado = request.UsuarioPesado;
-        //    NotaIngresoPlanta.UnidadMedidaIdPesado = request.UnidadMedidaIdPesado;
-        //    NotaIngresoPlanta.CantidadPesado = request.CantidadPesado;
-        //    NotaIngresoPlanta.KilosBrutosPesado = request.KilosBrutosPesado;
-        //    NotaIngresoPlanta.TaraPesado = request.TaraPesado;
-        //    NotaIngresoPlanta.ObservacionPesado = request.ObservacionPesado;
-        //    NotaIngresoPlanta.SocioFincaId = request.SocioFincaId;
-        //    NotaIngresoPlanta.SocioFincaCertificacion = request.SocioFincaCertificacion;
-        //    NotaIngresoPlanta.IntermediarioFinca = request.IntermediarioFinca;
-        //    NotaIngresoPlanta.TerceroFincaId = request.TerceroFincaId;
-        //    NotaIngresoPlanta.TipoProduccionId = request.TipoProduccionId;
-        //    NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
-        //    NotaIngresoPlanta.FechaRegistro = DateTime.Now;
-        //    NotaIngresoPlanta.UsuarioRegistro = request.UsuarioPesado;
-
-        //    string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
-        //    string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
+            
+            NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRecepcion);
+            
+            NotaIngresoPlanta.FechaPesado = DateTime.Now;            
+            NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+            NotaIngresoPlanta.FechaRegistro = DateTime.Now;
+            NotaIngresoPlanta.UsuarioRegistro = request.UsuarioPesado;
 
 
+            int affected = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);            
 
-        //    int affected = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
+            return affected;
+        }
 
-        //    if (request.ProductoId == productoIdCafePergamino && request.SubProductoId == subProductoIdCafeSeco && request.SocioFincaCertificacion != String.Empty)
-        //    {
-        //        List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(request.SocioFincaId.Value).ToList();
+        public int ActualizarPesadoNotaIngresoPlanta(RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO request)
+        {
+            NotaIngresoPlanta NotaIngresoPlanta = _Mapper.Map<NotaIngresoPlanta>(request);
 
-        //        if (fincaEstimados.Count > 0)
-        //        {
-        //            int anioActual = DateTime.Now.Year;
+            NotaIngresoPlanta.FechaPesado = DateTime.Now;
+            NotaIngresoPlanta.UsuarioPesado = request.UsuarioPesado;
+            
+            NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+            NotaIngresoPlanta.FechaUltimaActualizacion = DateTime.Now;
+            NotaIngresoPlanta.UsuarioUltimaActualizacion = request.UsuarioPesado;   
 
-        //            ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = null;
-
-        //            fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
-
-        //            if (fincaEstima != null)
-        //            {
-        //                fincaEstima.SaldoPendiente = fincaEstima.Estimado - fincaEstima.Consumido;
-
-        //                _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, request.KilosBrutosPesado);
-        //            }
-        //        }
-        //    }
-
-        //    return affected;
-        //}
-
-        //public int ActualizarPesadoNotaIngresoPlanta(RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO request)
-        //{
-        //    NotaIngresoPlanta NotaIngresoPlanta = new NotaIngresoPlanta();
-
-        //    NotaIngresoPlanta.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
-        //    NotaIngresoPlanta.EmpresaId = request.EmpresaId;
-        //    NotaIngresoPlanta.TipoProvedorId = request.TipoProvedorId;
-        //    NotaIngresoPlanta.NumeroReferencia = request.NumeroReferencia;
-        //    NotaIngresoPlanta.SocioId = request.SocioId;
-        //    NotaIngresoPlanta.TerceroId = request.TerceroId;
-        //    NotaIngresoPlanta.IntermediarioId = request.IntermediarioId;
-        //    NotaIngresoPlanta.ProductoId = request.ProductoId;
-        //    NotaIngresoPlanta.SubProductoId = request.SubProductoId;
-        //    NotaIngresoPlanta.FechaCosecha = request.FechaCosecha;
-        //    NotaIngresoPlanta.FechaPesado = DateTime.Now;
-        //    NotaIngresoPlanta.UsuarioPesado = request.UsuarioPesado;
-        //    NotaIngresoPlanta.UnidadMedidaIdPesado = request.UnidadMedidaIdPesado;
-        //    NotaIngresoPlanta.CantidadPesado = request.CantidadPesado;
-        //    NotaIngresoPlanta.KilosBrutosPesado = request.KilosBrutosPesado;
-        //    NotaIngresoPlanta.TaraPesado = request.TaraPesado;
-        //    NotaIngresoPlanta.ObservacionPesado = request.ObservacionPesado;
-        //    NotaIngresoPlanta.SocioFincaId = request.SocioFincaId;
-        //    NotaIngresoPlanta.SocioFincaCertificacion = request.SocioFincaCertificacion;
-        //    NotaIngresoPlanta.IntermediarioFinca = request.IntermediarioFinca;
-        //    NotaIngresoPlanta.TerceroFincaId = request.TerceroFincaId;
-        //    NotaIngresoPlanta.TipoProduccionId = request.TipoProduccionId;
-        //    NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
-        //    NotaIngresoPlanta.FechaUltimaActualizacion = DateTime.Now;
-        //    NotaIngresoPlanta.UsuarioUltimaActualizacion = request.UsuarioPesado;
+          
+            int affected = _INotaIngresoPlantaRepository.ActualizarPesado(NotaIngresoPlanta);
 
 
-
-        //    string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
-        //    string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
-
-        //    ConsultaNotaIngresoPlantaPorIdBE consultaNotaIngresoPlantaPorIdBE = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(NotaIngresoPlanta.NotaIngresoPlantaId);
-
-        //    int affected = _INotaIngresoPlantaRepository.ActualizarPesado(NotaIngresoPlanta);
-
-        //    if (consultaNotaIngresoPlantaPorIdBE.ProductoId == productoIdCafePergamino && consultaNotaIngresoPlantaPorIdBE.SubProductoId == subProductoIdCafeSeco && consultaNotaIngresoPlantaPorIdBE.SocioFincaCertificacion != String.Empty)
-        //    {
-        //        List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(consultaNotaIngresoPlantaPorIdBE.SocioFincaId.Value).ToList();
-
-        //        if (fincaEstimados.Count > 0)
-        //        {
-        //            int anioActual = DateTime.Now.Year;
-
-        //            ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = null;
-
-        //            fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
-
-        //            if (fincaEstima != null)
-        //            {
-        //                _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, consultaNotaIngresoPlantaPorIdBE.KilosBrutosPesado * -1);
-        //            }
-        //        }
-        //    }
-
-        //    if (request.ProductoId == productoIdCafePergamino && request.SubProductoId == subProductoIdCafeSeco && request.SocioFincaCertificacion != String.Empty)
-        //    {
-        //        List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(request.SocioFincaId.Value).ToList();
-
-        //        if (fincaEstimados.Count > 0)
-        //        {
-        //            int anioActual = DateTime.Now.Year;
-
-        //            ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = null;
-
-        //            fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
-
-        //            if (fincaEstima != null)
-        //            {
-        //                _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, request.KilosBrutosPesado);
-        //            }
-        //        }
-        //    }
-
-
-
-        //    return affected;
-        //}
+            return affected;
+        }
 
 
         //public int ActualizarNotaIngresoPlantaAnalisisCalidad(ActualizarNotaIngresoPlantaAnalisisCalidadRequestDTO request)
