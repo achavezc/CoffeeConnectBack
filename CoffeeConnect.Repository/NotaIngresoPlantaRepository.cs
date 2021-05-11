@@ -61,24 +61,24 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-        //public ConsultaNotaIngresoPlantaPorIdBE ConsultarNotaIngresoPlantaPorId(int NotaIngresoPlantaId)
-        //{
-        //    ConsultaNotaIngresoPlantaPorIdBE itemBE = null;
+        public ConsultaNotaIngresoPlantaPorIdBE ConsultarNotaIngresoPlantaPorId(int notaIngresoPlantaId)
+        {
+            ConsultaNotaIngresoPlantaPorIdBE itemBE = null;
 
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoPlantaId", notaIngresoPlantaId);
 
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        var list = db.Query<ConsultaNotaIngresoPlantaPorIdBE>("uspNotaIngresoPlantaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaNotaIngresoPlantaPorIdBE>("uspNotaIngresoPlantaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
 
-        //        if (list.Any())
-        //            itemBE = list.First();
-        //    }
+                if (list.Any())
+                    itemBE = list.First();
+            }
 
-        //    return itemBE;
-        //}
+            return itemBE;
+        }
 
         public int ActualizarPesado(NotaIngresoPlanta NotaIngresoPlanta)
         {

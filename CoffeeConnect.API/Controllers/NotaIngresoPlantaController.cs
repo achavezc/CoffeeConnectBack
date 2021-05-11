@@ -88,35 +88,35 @@ namespace Integracion.Deuda.Controller
 
 
 
-        //[Route("ConsultarPorId")]
-        //[HttpPost]
-        //public IActionResult ConsultarPorId([FromBody] ConsultaNotaIngresoPlantaPorIdRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+        [Route("ConsultarPorId")]
+        [HttpPost]
+        public IActionResult ConsultarPorId([FromBody] ConsultaNotaIngresoPlantaPorIdRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    ConsultaNotaIngresoPlantaPorIdResponseDTO response = new ConsultaNotaIngresoPlantaPorIdResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _NotaIngresoPlantaService.ConsultarNotaIngresoPlantaPorId(request);
+            ConsultaNotaIngresoPlantaPorIdResponseDTO response = new ConsultaNotaIngresoPlantaPorIdResponseDTO();
+            try
+            {
+                response.Result.Data = _NotaIngresoPlantaService.ConsultarNotaIngresoPlantaPorId(request);
 
-        //        response.Result.Success = true;
+                response.Result.Success = true;
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
         [Route("RegistrarPesado")]
         [HttpPost]
@@ -178,34 +178,34 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-        //[Route("ActualizarAnalisisCalidad")]
-        //[HttpPost]
-        //public IActionResult ActualizarAnalisisCalidad([FromBody] ActualizarNotaIngresoPlantaAnalisisCalidadRequestDTO request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+        [Route("ActualizarAnalisisCalidad")]
+        [HttpPost]
+        public IActionResult ActualizarAnalisisCalidad([FromBody] ActualizarNotaIngresoPlantaAnalisisCalidadRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-        //    ActualizarNotaIngresoPlantaAnalisisCalidadResponseDTO response = new ActualizarNotaIngresoPlantaAnalisisCalidadResponseDTO();
-        //    try
-        //    {
-        //        response.Result.Data = _NotaIngresoPlantaService.ActualizarNotaIngresoPlantaAnalisisCalidad(request);
+            ActualizarNotaIngresoPlantaAnalisisCalidadResponseDTO response = new ActualizarNotaIngresoPlantaAnalisisCalidadResponseDTO();
+            try
+            {
+                response.Result.Data = _NotaIngresoPlantaService.ActualizarNotaIngresoPlantaAnalisisCalidad(request);
 
-        //        response.Result.Success = true;
+                response.Result.Success = true;
 
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
     }
 }
