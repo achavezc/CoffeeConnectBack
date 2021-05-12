@@ -64,7 +64,7 @@ namespace CoffeeConnect.DTO
         public decimal KilosNetos
         { get; set; }
 
-        
+
 
 
         public string UnidadMedida
@@ -76,7 +76,9 @@ namespace CoffeeConnect.DTO
 
         public string Estado
         { get; set; }
-
+        public string TipoCertificacionId { get; set; }
+        public decimal PesoPorSaco { get; set; }
+        public string Grado { get; set; }
         #endregion
     }
 }
