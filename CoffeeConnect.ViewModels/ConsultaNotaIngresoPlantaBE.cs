@@ -39,6 +39,15 @@ namespace CoffeeConnect.DTO
         public string EstadoId { get; set; }
         public string Estado { get; set; }
 
+        public decimal KilosBrutos
+        { get; set; }
+
+        public decimal KilosNetos
+        { get; set; }
+
+        public decimal Tara
+        { get; set; }
+
         public DateTime FechaRegistro { get; set; }
 
         public string UsuarioRegistro { get; set; }

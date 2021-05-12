@@ -50,6 +50,10 @@ namespace CoffeeConnect.Service
 
         public static String Contrato { get { return "Contrato"; } }
 
+        public static String NotaIngresoAlmacenPlanta { get { return "NotaIngresoAlmacenPlanta  "; } }
+
+        
+
 
 
     }
@@ -73,6 +77,13 @@ namespace CoffeeConnect.Service
         public static String Ingresado { get { return "01"; } }
 
         public static String Lotizado { get { return "02"; } }
+        public static String Anulado { get { return "00"; } }
+    }
+
+    public static class NotaIngresoAlmacenPlantaEstados
+    {
+        public static String Ingresado { get { return "01"; } }
+   
         public static String Anulado { get { return "00"; } }
     }
 

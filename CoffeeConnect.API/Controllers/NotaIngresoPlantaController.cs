@@ -11,11 +11,13 @@ namespace Integracion.Deuda.Controller
     public class NotaIngresoPlantaController : ControllerBase
     {
         private INotaIngresoPlantaService _NotaIngresoPlantaService;
+
         private Core.Common.Logger.ILog _log;
 
         public NotaIngresoPlantaController(INotaIngresoPlantaService NotaIngresoPlantaService, Core.Common.Logger.ILog log)
         {
             _NotaIngresoPlantaService = NotaIngresoPlantaService;
+        
             _log = log;
         }
 
@@ -207,5 +209,8 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
+
+
+        
     }
 }

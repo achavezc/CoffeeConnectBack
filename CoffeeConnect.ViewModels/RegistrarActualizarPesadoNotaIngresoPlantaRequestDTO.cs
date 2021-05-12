@@ -83,6 +83,15 @@ namespace CoffeeConnect.DTO
 		public string EmpaqueId
 		{ get; set; }
 
+		public decimal KilosBrutos
+		{ get; set; }
+
+		public decimal KilosNetos
+		{ get; set; }
+
+		public decimal Tara
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the TipoId value.
 		/// </summary>
@@ -95,12 +104,7 @@ namespace CoffeeConnect.DTO
 		public decimal Cantidad
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the KilosBrutos value.
-		/// </summary>
-		public decimal KilosBrutos
-		{ get; set; }
-
+		
 		/// <summary>
 		/// Gets or sets the HumedadPorcentaje value.
 		/// </summary>

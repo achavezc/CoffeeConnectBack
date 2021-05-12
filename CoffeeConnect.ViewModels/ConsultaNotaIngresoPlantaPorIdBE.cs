@@ -103,6 +103,12 @@ namespace CoffeeConnect.DTO
 		public decimal KilosBrutos
 		{ get; set; }
 
+		public decimal KilosNetos
+		{ get; set; }
+
+		public decimal Tara
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the FechaPesado value.
 		/// </summary>

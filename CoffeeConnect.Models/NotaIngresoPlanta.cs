@@ -101,6 +101,14 @@ namespace CoffeeConnect.Models
 		public decimal KilosBrutos
 		{ get; set; }
 
+		public decimal KilosNetos
+		{ get; set; }
+
+		public decimal Tara
+		{ get; set; }
+
+
+
 		/// <summary>
 		/// Gets or sets the HumedadPorcentaje value.
 		/// </summary>
