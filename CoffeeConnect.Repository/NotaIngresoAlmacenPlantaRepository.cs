@@ -36,6 +36,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductoId", NotaIngresoAlmacenPlanta.ProductoId);
             parameters.Add("@SubProductoId", NotaIngresoAlmacenPlanta.SubProductoId);
             parameters.Add("@UnidadMedidaIdPesado", NotaIngresoAlmacenPlanta.UnidadMedidaIdPesado);
+            parameters.Add("@CalidadId", NotaIngresoAlmacenPlanta.CalidadId);
+            parameters.Add("@GradoId", NotaIngresoAlmacenPlanta.GradoId);
+            parameters.Add("@CantidadDefectos", NotaIngresoAlmacenPlanta.CantidadDefectos);
             parameters.Add("@CantidadPesado", NotaIngresoAlmacenPlanta.CantidadPesado);
             parameters.Add("@KilosBrutosPesado", NotaIngresoAlmacenPlanta.KilosBrutosPesado);
             parameters.Add("@TaraPesado", NotaIngresoAlmacenPlanta.TaraPesado);
@@ -160,24 +163,24 @@ namespace CoffeeConnect.Repository
         //}
 
 
-        //public ConsultaNotaIngresoAlmacenPlantaPorIdBE ConsultarNotaIngresoAlmacenPlantaPorId(int NotaIngresoAlmacenPlantaId)
-        //{
-        //    ConsultaNotaIngresoAlmacenPlantaPorIdBE itemBE = null;
+        public ConsultaNotaIngresoAlmacenPlantaPorIdBE ConsultarNotaIngresoAlmacenPlantaPorId(int NotaIngresoAlmacenPlantaId)
+        {
+            ConsultaNotaIngresoAlmacenPlantaPorIdBE itemBE = null;
 
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
 
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        var list = db.Query<ConsultaNotaIngresoAlmacenPlantaPorIdBE>("uspNotaIngresoAlmacenPlantaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaNotaIngresoAlmacenPlantaPorIdBE>("uspNotaIngresoAlmacenPlantaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
 
-        //        if (list.Any())
-        //            itemBE = list.First();
-        //    }
+                if (list.Any())
+                    itemBE = list.First();
+            }
 
-        //    return itemBE;
-        //}
+            return itemBE;
+        }
 
 
 

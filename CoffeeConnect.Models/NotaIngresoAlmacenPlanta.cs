@@ -71,11 +71,22 @@ namespace CoffeeConnect.Models
 		public string EntidadCertificadoraId
 		{ get; set; }
 
+		public string CalidadId
+		{ get; set; }
+
+		public string GradoId
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the CantidadPesado value.
 		/// </summary>
+		public decimal CantidadDefectos
+		{ get; set; }
+
 		public decimal CantidadPesado
 		{ get; set; }
+
+		
 
 		/// <summary>
 		/// Gets or sets the KilosBrutosPesado value.
