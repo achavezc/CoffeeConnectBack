@@ -1,4 +1,5 @@
 ﻿using CoffeeConnect.DTO;
+using CoffeeConnect.Models;
 using System.Collections.Generic;
 
 namespace CoffeeConnect.Interface.Service
@@ -8,7 +9,7 @@ namespace CoffeeConnect.Interface.Service
        
         int Registrar(EnviarAlmacenNotaIngresoPlantaRequestDTO request);
 
-        //List<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request);
+        List<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request);
 
         //int AnularNotaIngresoAlmacenPlanta(AnularNotaIngresoAlmacenPlantaRequestDTO request);
 

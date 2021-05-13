@@ -10,7 +10,7 @@ namespace CoffeeConnect.Interface.Repository
     {       
         int Insertar(NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta);
 
-        //IEnumerable<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request);
+        IEnumerable<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request);
 
         //IEnumerable<NotaIngresoAlmacenPlanta> ConsultarNotaIngresoPorIds(List<TablaIdsTipo> request);
 

@@ -172,6 +172,14 @@ namespace CoffeeConnect.DTO
         public string NombreArchivo { get; set; }
         public string DescripcionArchivo { get; set; }
 
+
+
+        public string ObservacionMuestra
+        { get; set; }
+
+        public string NavieraId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the PathArchivo value.
         /// </summary>
