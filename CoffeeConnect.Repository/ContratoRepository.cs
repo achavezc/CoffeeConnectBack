@@ -70,6 +70,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NumeroSeguimientoMuestra", contrato.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", contrato.EstadoMuestraId);
             parameters.Add("@FechaRecepcionMuestra", contrato.FechaRecepcionMuestra);
+            parameters.Add("@ObservacionMuestra", contrato.ObservacionMuestra);
+            parameters.Add("@NavieraId", contrato.NavieraId);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
             parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
@@ -125,6 +127,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NumeroSeguimientoMuestra", contrato.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", contrato.EstadoMuestraId);
             parameters.Add("@FechaRecepcionMuestra", contrato.FechaRecepcionMuestra);
+            parameters.Add("@ObservacionMuestra", contrato.ObservacionMuestra);
+            parameters.Add("@NavieraId", contrato.NavieraId);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
             parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
             parameters.Add("@PathArchivo", contrato.PathArchivo);
@@ -148,7 +152,6 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@ContratoId", contratoId);
 
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 var list = db.Query<ConsultaContratoPorIdBE>("uspContratoConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
@@ -156,7 +159,6 @@ namespace CoffeeConnect.Repository
                 if (list.Any())
                     itemBE = list.First();
             }
-
             return itemBE;
         }
     }

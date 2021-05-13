@@ -48,6 +48,24 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+        public int Anular(int ordenProcesoId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenProcesoId", ordenProcesoId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspOrdenProcesoAnular", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
         public IEnumerable<ConsultaOrdenProcesoBE> ConsultarOrdenProceso(ConsultaOrdenProcesoRequestDTO request)
         {
             var parameters = new DynamicParameters();

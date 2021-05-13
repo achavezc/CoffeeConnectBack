@@ -119,5 +119,20 @@ namespace CoffeeConnect.Service
             int affected = _IOrdenProcesoRepository.Actualizar(ordenProceso);
             return affected;
         }
+
+        public ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(ConsultaOrdenProcesoPorIdRequestDTO request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int AnularOrdenProceso(AnularOrdenProcesoRequestDTO request)
+        {
+            int result = 0;
+            if(request.OrdenProcesoId > 0)
+            {
+                result = _IOrdenProcesoRepository.Anular(request.OrdenProcesoId, DateTime.Now, request.Usuario, OrdenProcesoEstados.Anulado);
+            }
+            return result;
+        }
     }
 }

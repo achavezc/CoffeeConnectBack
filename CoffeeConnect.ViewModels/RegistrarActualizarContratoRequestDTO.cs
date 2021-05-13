@@ -160,42 +160,29 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the MuestraEnviadaAnalisisGlifosato value.
         /// </summary>
-        public string EstadoMuestraId
-        { get; set; }
-
-        public DateTime? FechaEnvioMuestra
-        { get; set; }
-
-        public DateTime? FechaRecepcionMuestra
-        { get; set; }
+        public string EstadoMuestraId { get; set; }
+        public DateTime? FechaEnvioMuestra { get; set; }
+        public DateTime? FechaRecepcionMuestra { get; set; }
+        public string ObservacionMuestra { get; set; }
+        public string NavieraId { get; set; }
 
         /// <summary>
         /// Gets or sets the NombreArchivo value.
         /// </summary>
-        public string NombreArchivo
-        { get; set; }
-
-        public string DescripcionArchivo
-        { get; set; }
+        public string NombreArchivo { get; set; }
+        public string DescripcionArchivo { get; set; }
 
         /// <summary>
         /// Gets or sets the PathArchivo value.
         /// </summary>
-        public string PathArchivo
-        { get; set; }
+        public string PathArchivo { get; set; }
         public string EmpaqueId { get; set; }
         public string TipoId { get; set; }
 
         /// <summary>
         /// Gets or sets the UsuarioRegistro value.
         /// </summary>
-        public string Usuario
-        { get; set; }
-
-
-        public string EstadoId
-        { get; set; }
-
-
+        public string Usuario { get; set; }
+        public string EstadoId { get; set; }
     }
 }

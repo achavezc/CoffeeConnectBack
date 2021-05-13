@@ -59,8 +59,6 @@ namespace CoffeeConnect.Service
 
         public int RegistrarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
-
-
             Contrato contrato = _Mapper.Map<Contrato>(request);
             contrato.FechaRegistro = DateTime.Now;
             //contrato.NombreArchivo = file.FileName;
@@ -157,11 +155,10 @@ namespace CoffeeConnect.Service
         }
         public int ActualizarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
-
             Contrato contrato = _Mapper.Map<Contrato>(request);
-
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;
+
             if (file != null)
             {
                 if (file.Length > 0)
@@ -183,14 +180,11 @@ namespace CoffeeConnect.Service
                             filename = file.FileName,
                         },
                         pathFile = _fileServerSettings.Value.FincasCertificacion
-
                     });
 
                     contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
                 }
             }
-
-
 
             contrato.FechaUltimaActualizacion = DateTime.Now;
             contrato.UsuarioUltimaActualizacion = request.Usuario;

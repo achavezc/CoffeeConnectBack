@@ -161,23 +161,17 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the MuestraEnviadaAnalisisGlifosato value.
         /// </summary>
-        public string EstadoMuestraId
-        { get; set; }
-
-        public DateTime? FechaEnvioMuestra
-        { get; set; }
-
-        public DateTime? FechaRecepcionMuestra
-        { get; set; }
+        public string EstadoMuestraId { get; set; }
+        public DateTime? FechaEnvioMuestra { get; set; }
+        public DateTime? FechaRecepcionMuestra { get; set; }
+        public string ObservacionMuestra { get; set; }
+        public string NavieraId { get; set; }
 
         /// <summary>
         /// Gets or sets the NombreArchivo value.
         /// </summary>
-        public string NombreArchivo
-        { get; set; }
-
-        public string DescripcionArchivo
-        { get; set; }
+        public string NombreArchivo { get; set; }
+        public string DescripcionArchivo { get; set; }
 
         /// <summary>
         /// Gets or sets the PathArchivo value.

@@ -74,9 +74,7 @@ namespace Integracion.Deuda.Controller
             {
                 var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarContratoRequestDTO>(request);
                 response.Result.Data = _contratoService.RegistrarContrato(myJsonObject, file);
-
                 response.Result.Success = true;
-
             }
             catch (ResultException ex)
             {
@@ -98,17 +96,14 @@ namespace Integracion.Deuda.Controller
         public IActionResult Actualizar(IFormFile file, [FromForm] string request)
         {
             Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
             RegistrarActualizarContratoResponseDTO response = new RegistrarActualizarContratoResponseDTO();
             try
             {
                 var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarContratoRequestDTO>(request);
-                
                 response.Result.Data = _contratoService.ActualizarContrato(myJsonObject, file);
-
                 response.Result.Success = true;
-
             }
             catch (ResultException ex)
             {
@@ -120,7 +115,7 @@ namespace Integracion.Deuda.Controller
                 _log.RegistrarEvento(ex, guid.ToString());
             }
 
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
         }
@@ -130,15 +125,13 @@ namespace Integracion.Deuda.Controller
         public IActionResult ConsultarPorId([FromBody] ConsultaContratoPorIdRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
             ConsultaContratoPorIdResponseDTO response = new ConsultaContratoPorIdResponseDTO();
             try
             {
                 response.Result.Data = _contratoService.ConsultarContratoPorId(request);
-
                 response.Result.Success = true;
-
             }
             catch (ResultException ex)
             {
@@ -150,8 +143,7 @@ namespace Integracion.Deuda.Controller
                 _log.RegistrarEvento(ex, guid.ToString());
             }
 
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
-
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
             return Ok(response);
         }
 

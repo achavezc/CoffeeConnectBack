@@ -1,8 +1,6 @@
 ﻿using CoffeeConnect.DTO;
 using Microsoft.AspNetCore.Http;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CoffeeConnect.Interface.Service
 {
@@ -11,5 +9,7 @@ namespace CoffeeConnect.Interface.Service
         List<ConsultaOrdenProcesoBE> ConsultarOrdenProceso(ConsultaOrdenProcesoRequestDTO request);
         int RegistrarOrdenProceso(RegistrarActualizarOrdenProcesoRequestDTO request, IFormFile file);
         int ActualizarOrdenProceso(RegistrarActualizarOrdenProcesoRequestDTO request, IFormFile file);
+        ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(ConsultaOrdenProcesoPorIdRequestDTO request);
+        int AnularOrdenProceso(AnularOrdenProcesoRequestDTO request);
     }
 }

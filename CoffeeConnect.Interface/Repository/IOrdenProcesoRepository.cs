@@ -2,7 +2,6 @@
 using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CoffeeConnect.Interface.Repository
 {
@@ -11,5 +10,6 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaOrdenProcesoBE> ConsultarOrdenProceso(ConsultaOrdenProcesoRequestDTO request);
         int Insertar(OrdenProceso ordenProceso);
         int Actualizar(OrdenProceso ordenProceso);
+        int Anular(int ordenProcesoId, DateTime fecha, string usuario, string estadoId);
     }
 }
