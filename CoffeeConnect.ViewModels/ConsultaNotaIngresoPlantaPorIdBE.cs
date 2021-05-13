@@ -91,6 +91,19 @@ namespace CoffeeConnect.DTO
 		public string TipoId
 		{ get; set; }
 
+		public string CalidadId
+		{ get; set; }
+
+		public string GradoId
+		{ get; set; }
+
+		public decimal CantidadDefectos
+		{ get; set; }
+
+		public decimal? PesoPorSaco
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the Cantidad value.
 		/// </summary>
@@ -105,6 +118,10 @@ namespace CoffeeConnect.DTO
 
 		public decimal KilosNetos
 		{ get; set; }
+
+		
+
+		
 
 		public decimal Tara
 		{ get; set; }

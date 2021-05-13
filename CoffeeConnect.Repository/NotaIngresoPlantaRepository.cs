@@ -100,6 +100,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Cantidad", NotaIngresoPlanta.Cantidad);
             parameters.Add("@KilosBrutos", NotaIngresoPlanta.KilosBrutos);
             parameters.Add("@Tara", NotaIngresoPlanta.Tara);
+            parameters.Add("@CalidadId", NotaIngresoPlanta.CalidadId);
+            parameters.Add("@GradoId", NotaIngresoPlanta.GradoId);
+            parameters.Add("@CantidadDefectos", NotaIngresoPlanta.CantidadDefectos);
+            parameters.Add("@PesoPorSaco", NotaIngresoPlanta.PesoPorSaco);
             parameters.Add("@KilosNetos", NotaIngresoPlanta.KilosNetos);
             parameters.Add("@HumedadPorcentaje", NotaIngresoPlanta.HumedadPorcentaje);
             parameters.Add("@RendimientoPorcentaje", NotaIngresoPlanta.RendimientoPorcentaje);
@@ -146,6 +150,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoId", NotaIngresoPlanta.TipoId);
             parameters.Add("@Cantidad", NotaIngresoPlanta.Cantidad);
             parameters.Add("@KilosBrutos", NotaIngresoPlanta.KilosBrutos);
+            parameters.Add("@CalidadId", NotaIngresoPlanta.CalidadId);
+            parameters.Add("@GradoId", NotaIngresoPlanta.GradoId);
+            parameters.Add("@CantidadDefectos", NotaIngresoPlanta.CantidadDefectos);
+            parameters.Add("@PesoPorSaco", NotaIngresoPlanta.PesoPorSaco);            
             parameters.Add("@HumedadPorcentaje", NotaIngresoPlanta.HumedadPorcentaje);
             parameters.Add("@RendimientoPorcentaje", NotaIngresoPlanta.RendimientoPorcentaje);
             parameters.Add("@RucEmpresaTransporte", NotaIngresoPlanta.RucEmpresaTransporte);

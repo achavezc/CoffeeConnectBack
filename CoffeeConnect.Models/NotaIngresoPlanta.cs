@@ -101,6 +101,19 @@ namespace CoffeeConnect.Models
 		public decimal KilosBrutos
 		{ get; set; }
 
+		public decimal PesoPorSaco
+		{ get; set; }
+
+		public string CalidadId
+		{ get; set; }
+
+		public string GradoId
+		{ get; set; }
+
+		public decimal CantidadDefectos
+		{ get; set; }
+
+
 		public decimal KilosNetos
 		{ get; set; }
 

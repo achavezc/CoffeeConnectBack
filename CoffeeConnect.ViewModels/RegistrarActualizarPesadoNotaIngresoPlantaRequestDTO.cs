@@ -92,6 +92,18 @@ namespace CoffeeConnect.DTO
 		public decimal Tara
 		{ get; set; }
 
+		public string CalidadId
+		{ get; set; }
+
+		public string GradoId
+		{ get; set; }
+
+		public decimal CantidadDefectos
+		{ get; set; }
+
+		public decimal? PesoPorSaco
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the TipoId value.
 		/// </summary>

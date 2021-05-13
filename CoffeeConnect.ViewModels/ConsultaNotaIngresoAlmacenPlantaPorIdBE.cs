@@ -185,10 +185,21 @@ namespace CoffeeConnect.DTO
 		public decimal CantidadPesado
 		{ get; set; }
 
+		public decimal? RendimientoPorcentajePesado
+		{ get; set; }
+
+		public decimal? HumedadPorcentajePesado
+		{ get; set; }
+
+
+
 		/// <summary>
 		/// Gets or sets the KilosBrutosPesado value.
 		/// </summary>
 		public decimal KilosBrutosPesado
+		{ get; set; }
+
+		public decimal PesoPorSaco
 		{ get; set; }
 
 		/// <summary>

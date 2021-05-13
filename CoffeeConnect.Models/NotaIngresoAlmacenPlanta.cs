@@ -166,6 +166,14 @@ namespace CoffeeConnect.Models
 		public decimal? RendimientoPorcentaje
 		{ get; set; }
 
+		public decimal? RendimientoPorcentajePesado
+		{ get; set; }
+
+
+		public decimal? HumedadPorcentajePesado
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the TotalAnalisisSensorial value.
 		/// </summary>
