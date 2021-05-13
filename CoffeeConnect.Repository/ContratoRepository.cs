@@ -69,6 +69,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaEnvioMuestra", contrato.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", contrato.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", contrato.EstadoMuestraId);
+            parameters.Add("@ObservacionMuestra", contrato.ObservacionMuestra);
+            parameters.Add("@NavieraId", contrato.NavieraId);
             parameters.Add("@FechaRecepcionMuestra", contrato.FechaRecepcionMuestra);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
             parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);
@@ -124,6 +126,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaEnvioMuestra", contrato.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", contrato.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", contrato.EstadoMuestraId);
+            parameters.Add("@ObservacionMuestra", contrato.ObservacionMuestra);
+            parameters.Add("@NavieraId", contrato.NavieraId);
             parameters.Add("@FechaRecepcionMuestra", contrato.FechaRecepcionMuestra);
             parameters.Add("@NombreArchivo", contrato.NombreArchivo);
             parameters.Add("@DescripcionArchivo", contrato.DescripcionArchivo);

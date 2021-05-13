@@ -175,6 +175,14 @@ namespace CoffeeConnect.DTO
         public string NombreArchivo
         { get; set; }
 
+
+
+        public string ObservacionMuestra
+        { get; set; }
+
+        public string NavieraId
+        { get; set; }
+
         public string DescripcionArchivo
         { get; set; }
 

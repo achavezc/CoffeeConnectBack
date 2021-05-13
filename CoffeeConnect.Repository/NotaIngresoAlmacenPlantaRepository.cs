@@ -63,33 +63,33 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-        //public IEnumerable<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request)
-        //{
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("Numero", request.Numero);
-        //    parameters.Add("NombreRazonSocial", request.NombreRazonSocial);
-        //    parameters.Add("TipoDocumentoId", request.TipoDocumentoId);
-        //    parameters.Add("NumeroDocumento", request.NumeroDocumento);
-        //    parameters.Add("CodigoSocio", request.CodigoSocio);
-        //    parameters.Add("EstadoId", request.EstadoId);
-        //    parameters.Add("ProductoId", request.ProductoId);
-        //    parameters.Add("SubProductoId", request.SubProductoId);
-        //    parameters.Add("TipoCertificacionId", request.TipoCertificacionId);
-        //    parameters.Add("AlmacenId", request.AlmacenId);
-        //    parameters.Add("EmpresaId", request.EmpresaId);
-        //    parameters.Add("RendimientoPorcentajeInicio", request.RendimientoPorcentajeInicio);
-        //    parameters.Add("RendimientoPorcentajeFin", request.RendimientoPorcentajeFin);
-        //    parameters.Add("PuntajeAnalisisSensorialInicio", request.PuntajeAnalisisSensorialInicio);
-        //    parameters.Add("PuntajeAnalisisSensorialFin", request.PuntajeAnalisisSensorialFin);
-        //    parameters.Add("FechaInicio", request.FechaInicio);
-        //    parameters.Add("FechaFin", request.FechaFin);
+        public IEnumerable<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("Numero", request.Numero);
+            parameters.Add("NumeroNotaIngresoPlanta", request.NumeroNotaIngresoPlanta);
+            parameters.Add("NumeroOrganizacion", request.NumeroOrganizacion);
+            parameters.Add("RazonSocialOrganizacion", request.RazonSocialOrganizacion);
+            parameters.Add("RucOrganizacion", request.RucOrganizacion);
+            parameters.Add("CertificacionId", request.CertificacionId);
+            parameters.Add("EstadoId", request.CertificacionId);
+            parameters.Add("ProductoId", request.ProductoId);
+            parameters.Add("SubProductoId", request.SubProductoId); 
+            parameters.Add("AlmacenId", request.AlmacenId);
+            parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("RendimientoPorcentajeInicio", request.RendimientoPorcentajeInicio);
+            parameters.Add("RendimientoPorcentajeFin", request.RendimientoPorcentajeFin);
+            parameters.Add("PuntajeAnalisisSensorialInicio", request.PuntajeAnalisisSensorialInicio);
+            parameters.Add("PuntajeAnalisisSensorialFin", request.PuntajeAnalisisSensorialFin);
+            parameters.Add("FechaInicio", request.FechaInicio);
+            parameters.Add("FechaFin", request.FechaFin);
 
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        return db.Query<ConsultaNotaIngresoAlmacenPlantaBE>("uspNotaIngresoAlmacenPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
-        //    }
-        //}
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaNotaIngresoAlmacenPlantaBE>("uspNotaIngresoAlmacenPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
         //public IEnumerable<NotaIngresoAlmacenPlanta> ConsultarNotaIngresoPorIds(List<TablaIdsTipo> request)
         //{
