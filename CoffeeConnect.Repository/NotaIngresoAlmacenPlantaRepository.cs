@@ -54,6 +54,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TotalAnalisisSensorial", NotaIngresoAlmacenPlanta.TotalAnalisisSensorial);
             parameters.Add("@HumedadPorcentajeAnalisisFisico", NotaIngresoAlmacenPlanta.HumedadPorcentajeAnalisisFisico);     
             parameters.Add("@RendimientoPorcentaje", NotaIngresoAlmacenPlanta.RendimientoPorcentaje);
+            parameters.Add("@RendimientoPorcentajePesado", NotaIngresoAlmacenPlanta.RendimientoPorcentajePesado);
+            parameters.Add("@HumedadPorcentajePesado", NotaIngresoAlmacenPlanta.HumedadPorcentajePesado);
+
             parameters.Add("@EstadoId", NotaIngresoAlmacenPlanta.EstadoId);
             parameters.Add("@FechaRegistro", NotaIngresoAlmacenPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", NotaIngresoAlmacenPlanta.UsuarioRegistro);

@@ -77,8 +77,14 @@ namespace CoffeeConnect.Service
                 }
             }
 
-            int affected = _IOrdenProcesoRepository.Insertar(ordenProceso);
-            return affected;
+            int ordenProcesoId = _IOrdenProcesoRepository.Insertar(ordenProceso);
+
+            foreach (OrdenProcesoDetalle detalle in request.OrdenProcesoDetalle)
+            {
+                detalle.OrdenProcesoId = ordenProcesoId;
+                _IOrdenProcesoRepository.InsertarProcesoDetalle(detalle);
+            }
+            return ordenProcesoId;
         }
 
         public int ActualizarOrdenProceso(RegistrarActualizarOrdenProcesoRequestDTO request, IFormFile file)
@@ -117,6 +123,16 @@ namespace CoffeeConnect.Service
             ordenProceso.FechaUltimaActualizacion = DateTime.Now;
             ordenProceso.UsuarioUltimaActualizacion = request.UsuarioRegistro;
             int affected = _IOrdenProcesoRepository.Actualizar(ordenProceso);
+
+            _IOrdenProcesoRepository.EliminarProcesoDetalle(ordenProceso.OrdenProcesoId);
+
+            foreach (OrdenProcesoDetalle detalle in request.OrdenProcesoDetalle)
+            {
+                detalle.OrdenProcesoId = ordenProceso.OrdenProcesoId;
+                _IOrdenProcesoRepository.InsertarProcesoDetalle(detalle);
+            }
+
+
             return affected;
         }
 

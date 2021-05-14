@@ -66,6 +66,9 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+
+
+
         public IEnumerable<ConsultaOrdenProcesoBE> ConsultarOrdenProceso(ConsultaOrdenProcesoRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -86,6 +89,21 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaOrdenProcesoBE>("uspOrdenProcesoConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+
+        public IEnumerable<OrdenProcesoDetalle> ConsultarOrdenProcesoDetallePorId(int ordenProcesoId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenProcesoId", ordenProcesoId);
+            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<OrdenProcesoDetalle>("uspOrdenProcesoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
 
         public int Insertar(OrdenProceso ordenProceso)
         {
@@ -112,8 +130,51 @@ namespace CoffeeConnect.Repository
                 db.Execute("uspOrdenProcesoInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
+            int id = parameters.Get<int>("OrdenProcesoId");
+            return id;
+        }
+
+
+        public int InsertarProcesoDetalle(OrdenProcesoDetalle ordenProcesoDetalle)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NroNotaIngresoPlanta", ordenProcesoDetalle.NroNotaIngresoPlanta);
+            parameters.Add("@FechaNotaIngresoPlanta", ordenProcesoDetalle.FechaNotaIngresoPlanta);
+            parameters.Add("@OrdenProcesoId", ordenProcesoDetalle.OrdenProcesoId);
+            parameters.Add("@NroNotaIngresoPlanta", ordenProcesoDetalle.NroNotaIngresoPlanta);
+            parameters.Add("@RendimientoPorcentaje", ordenProcesoDetalle.RendimientoPorcentaje);
+            parameters.Add("@HumedadPorcentaje", ordenProcesoDetalle.HumedadPorcentaje);
+            parameters.Add("@CantidadSacos", ordenProcesoDetalle.CantidadSacos);
+            parameters.Add("@KilosBrutos", ordenProcesoDetalle.KilosBrutos);
+            parameters.Add("@Tara", ordenProcesoDetalle.Tara);
+            parameters.Add("@KilosNetos", ordenProcesoDetalle.KilosNetos);            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspOrdenProcesoDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
             int id = parameters.Get<int>("ContratoId");
             return id;
         }
+
+
+        public int EliminarProcesoDetalle(int ordenProcesoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenProcesoId", ordenProcesoId);
+       
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspOrdenProcesoDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
     }
 }
