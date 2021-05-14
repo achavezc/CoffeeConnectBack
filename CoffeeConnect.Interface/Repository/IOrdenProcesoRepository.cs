@@ -11,10 +11,9 @@ namespace CoffeeConnect.Interface.Repository
         int Insertar(OrdenProceso ordenProceso);
         int Actualizar(OrdenProceso ordenProceso);
         int Anular(int ordenProcesoId, DateTime fecha, string usuario, string estadoId);
-
         IEnumerable<OrdenProcesoDetalle> ConsultarOrdenProcesoDetallePorId(int ordenProcesoId);
-
         int EliminarProcesoDetalle(int ordenProcesoId);
-         int InsertarProcesoDetalle(OrdenProcesoDetalle ordenProcesoDetalle);
+        int InsertarProcesoDetalle(OrdenProcesoDetalle ordenProcesoDetalle);
+        ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(int ordenProcesoId);
     }
 }

@@ -16,9 +16,6 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
-
-
         public IEnumerable<ConsultaEmpresaProveedoraAcreedoraBE> ConsultarEmpresaProveedoraAcreedora(ConsultaEmpresaProveedoraAcreedoraRequestDTO request)
         {
             var parameters = new DynamicParameters();

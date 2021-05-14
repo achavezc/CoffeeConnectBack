@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeConnect.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,5 +7,25 @@ namespace CoffeeConnect.DTO
 {
     public class ConsultaOrdenProcesoPorIdBE
     {
+        public int OrdenProcesoId { get; set; }
+        public int EmpresaId { get; set; }
+        public int EmpresaProcesadoraId { get; set; }
+        public string TipoProcesoId { get; set; }
+        public int ContratoId { get; set; }
+        public string Numero { get; set; }
+        public decimal CantidadSacosUtilizar { get; set; }
+        public decimal RendimientoEsperadoPorcentaje { get; set; }
+        public DateTime FechaFinProceso { get; set; }
+        public decimal CantidadContenedores { get; set; }
+        public string NombreArchivo { get; set; }
+        public string DescripcionArchivo { get; set; }
+        public string PathArchivo { get; set; }
+        public string EstadoId { get; set; }
+        public DateTime FechaRegistro { get; set; }
+        public string UsuarioRegistro { get; set; }
+        public DateTime FechaUltimaActualizacion { get; set; }
+        public string UsuarioUltimaActualizacion { get; set; }
+        public bool Activo { get; set; }
+        public IEnumerable<OrdenProcesoDetalle> detalle { get; set; }
     }
 }

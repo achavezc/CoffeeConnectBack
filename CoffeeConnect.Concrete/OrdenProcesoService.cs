@@ -138,7 +138,7 @@ namespace CoffeeConnect.Service
 
         public ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(ConsultaOrdenProcesoPorIdRequestDTO request)
         {
-            throw new NotImplementedException();
+            return _IOrdenProcesoRepository.ConsultarOrdenProcesoPorId(request.OrdenProcesoId);
         }
 
         public int AnularOrdenProceso(AnularOrdenProcesoRequestDTO request)

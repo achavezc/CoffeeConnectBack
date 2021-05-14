@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 
 namespace CoffeeConnect.Repository
@@ -14,7 +15,7 @@ namespace CoffeeConnect.Repository
     public class OrdenProcesoRepository : IOrdenProcesoRepository
     {
         public IOptions<ConnectionString> _connectionString;
-        
+
         public OrdenProcesoRepository(IOptions<ConnectionString> connectionString)
         {
             _connectionString = connectionString;
@@ -66,9 +67,6 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-
-
-
         public IEnumerable<ConsultaOrdenProcesoBE> ConsultarOrdenProceso(ConsultaOrdenProcesoRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -90,20 +88,16 @@ namespace CoffeeConnect.Repository
             }
         }
 
-
         public IEnumerable<OrdenProcesoDetalle> ConsultarOrdenProcesoDetallePorId(int ordenProcesoId)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@OrdenProcesoId", ordenProcesoId);
-            
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<OrdenProcesoDetalle>("uspOrdenProcesoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
-
-
 
         public int Insertar(OrdenProceso ordenProceso)
         {
@@ -134,11 +128,10 @@ namespace CoffeeConnect.Repository
             return id;
         }
 
-
         public int InsertarProcesoDetalle(OrdenProcesoDetalle ordenProcesoDetalle)
         {
+            int result = 0;
             var parameters = new DynamicParameters();
-            parameters.Add("@NroNotaIngresoPlanta", ordenProcesoDetalle.NroNotaIngresoPlanta);
             parameters.Add("@FechaNotaIngresoPlanta", ordenProcesoDetalle.FechaNotaIngresoPlanta);
             parameters.Add("@OrdenProcesoId", ordenProcesoDetalle.OrdenProcesoId);
             parameters.Add("@NroNotaIngresoPlanta", ordenProcesoDetalle.NroNotaIngresoPlanta);
@@ -147,17 +140,15 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadSacos", ordenProcesoDetalle.CantidadSacos);
             parameters.Add("@KilosBrutos", ordenProcesoDetalle.KilosBrutos);
             parameters.Add("@Tara", ordenProcesoDetalle.Tara);
-            parameters.Add("@KilosNetos", ordenProcesoDetalle.KilosNetos);            
+            parameters.Add("@KilosNetos", ordenProcesoDetalle.KilosNetos);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 db.Execute("uspOrdenProcesoDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-            int id = parameters.Get<int>("ContratoId");
-            return id;
+            return result;
         }
-
 
         public int EliminarProcesoDetalle(int ordenProcesoId)
         {
@@ -165,7 +156,7 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
             parameters.Add("@OrdenProcesoId", ordenProcesoId);
-       
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -175,6 +166,22 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+        public ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(int ordenProcesoId)
+        {
+            ConsultaOrdenProcesoPorIdBE itemBE = null;
 
+            var parameters = new DynamicParameters();
+            parameters.Add("@pOrdenProcesoId", ordenProcesoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaOrdenProcesoPorIdBE>("uspOrdenProcesoConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+                itemBE.detalle = ConsultarOrdenProcesoDetallePorId(ordenProcesoId);
+            }
+            return itemBE;
+        }
     }
 }

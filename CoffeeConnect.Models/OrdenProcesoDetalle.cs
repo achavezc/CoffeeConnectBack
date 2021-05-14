@@ -24,22 +24,12 @@ namespace CoffeeConnect.Models
         /// Gets or sets the TipoProcesoId value.
         /// </summary>
         public DateTime FechaNotaIngresoPlanta { get; set; }
-
-
         public decimal RendimientoPorcentaje { get; set; }
-
         public decimal HumedadPorcentaje { get; set; }
-
         public decimal CantidadSacos { get; set; }
-
         public decimal KilosBrutos { get; set; }
-
         public decimal Tara { get; set; }
-
         public decimal KilosNetos { get; set; }
-
-
-      
 
         #endregion
     }
