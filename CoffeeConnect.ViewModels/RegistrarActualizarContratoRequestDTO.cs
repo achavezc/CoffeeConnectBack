@@ -73,6 +73,10 @@ namespace CoffeeConnect.DTO
         public string ProductoId
         { get; set; }
 
+
+        public string SubProductoId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the TipoProduccionId value.
         /// </summary>
@@ -130,7 +134,10 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the Cantidad value.
         /// </summary>
-        public decimal CantidadPorSaco
+        public decimal TotalSacos
+        { get; set; }
+
+        public decimal Peso
         { get; set; }
 
         /// <summary>

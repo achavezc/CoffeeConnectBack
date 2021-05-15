@@ -138,7 +138,12 @@ namespace CoffeeConnect.Service
 
         public ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(ConsultaOrdenProcesoPorIdRequestDTO request)
         {
-            return _IOrdenProcesoRepository.ConsultarOrdenProcesoPorId(request.OrdenProcesoId);
+            ConsultaOrdenProcesoPorIdBE consultaOrdenProcesoPorIdBE = _IOrdenProcesoRepository.ConsultarOrdenProcesoPorId(request.OrdenProcesoId);
+
+            consultaOrdenProcesoPorIdBE.detalle = _IOrdenProcesoRepository.ConsultarOrdenProcesoDetallePorId(request.OrdenProcesoId).ToList();
+
+
+            return consultaOrdenProcesoPorIdBE;
         }
 
         public int AnularOrdenProceso(AnularOrdenProcesoRequestDTO request)

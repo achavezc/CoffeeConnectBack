@@ -38,6 +38,9 @@ namespace CoffeeConnect.DTO
         public string ProductoId
         { get; set; }
 
+        public string SubProductoId
+        { get; set; }
+
         public string Producto
         { get; set; }
 
@@ -58,10 +61,10 @@ namespace CoffeeConnect.DTO
         /// Gets or sets the Activo value.
         /// </summary>
         /// 
-        public decimal Cantidad
+        public decimal TotalSacos
         { get; set; }
 
-        public decimal KilosNetos
+        public decimal Peso
         { get; set; }
 
 
@@ -78,6 +81,8 @@ namespace CoffeeConnect.DTO
         { get; set; }
         public string TipoCertificacionId { get; set; }
         public decimal PesoPorSaco { get; set; }
+
+
         public string Grado { get; set; }
         #endregion
     }

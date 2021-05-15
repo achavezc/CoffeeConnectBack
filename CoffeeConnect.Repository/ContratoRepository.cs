@@ -53,6 +53,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PaisDestinoId", contrato.PaisDestinoId);
             parameters.Add("@DepartamentoDestinoId", contrato.DepartamentoDestinoId);
             parameters.Add("@ProductoId", contrato.ProductoId);
+            parameters.Add("@SubProductoId", contrato.SubProductoId);
             parameters.Add("@TipoProduccionId", contrato.TipoProduccionId);
             parameters.Add("@MonedadId", contrato.MonedadId);
             parameters.Add("@Monto", contrato.Monto);
@@ -82,7 +83,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", contrato.EstadoId);
             parameters.Add("@EmpaqueId", contrato.EmpaqueId);
             parameters.Add("@TipoId", contrato.TipoId);
-            parameters.Add("@CantidadSaco", contrato.CantidadPorSaco);
+            parameters.Add("@TotalSacos", contrato.TotalSacos);
+            parameters.Add("@Peso", contrato.Peso);
             parameters.Add("@ContratoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -111,6 +113,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PaisDestinoId", contrato.PaisDestinoId);
             parameters.Add("@DepartamentoDestinoId", contrato.DepartamentoDestinoId);
             parameters.Add("@ProductoId", contrato.ProductoId);
+            parameters.Add("@SubProductoId", contrato.SubProductoId);
             parameters.Add("@TipoProduccionId", contrato.TipoProduccionId);
             parameters.Add("@MonedadId", contrato.MonedadId);
             parameters.Add("@Monto", contrato.Monto);
@@ -121,7 +124,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CalculoContratoId", contrato.CalculoContratoId);
             parameters.Add("@CalidadId", contrato.CalidadId);
             parameters.Add("@GradoId", contrato.GradoId);
-            parameters.Add("@CantidadSaco", contrato.CantidadPorSaco);
+            parameters.Add("@TotalSacos", contrato.TotalSacos);
+            parameters.Add("@Peso", contrato.Peso);
             parameters.Add("@PesoPorSaco", contrato.PesoPorSaco);
             parameters.Add("@PreparacionCantidadDefectos", contrato.PreparacionCantidadDefectos);
             parameters.Add("@LaboratorioId", contrato.LaboratorioId);
