@@ -46,7 +46,7 @@ namespace CoffeeConnect.Service
             OrdenProceso ordenProceso = _Mapper.Map<OrdenProceso>(request);
             ordenProceso.FechaRegistro = DateTime.Now;
             ordenProceso.UsuarioRegistro = request.UsuarioRegistro;
-            ordenProceso.Numero = _ICorrelativoRepository.Obtener(null, Documentos.OrdenProceso);
+            ordenProceso.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.OrdenProceso);
 
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;

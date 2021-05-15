@@ -1,7 +1,6 @@
 ﻿using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CoffeeConnect.DTO
 {
@@ -23,7 +22,6 @@ namespace CoffeeConnect.DTO
         public string EstadoId { get; set; }
         public DateTime FechaRegistro { get; set; }
         public string UsuarioRegistro { get; set; }
-
         public List<OrdenProcesoDetalle> OrdenProcesoDetalle { get; set; }
     }
 }

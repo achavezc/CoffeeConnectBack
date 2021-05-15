@@ -214,7 +214,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the Peso value.
 		/// </summary>
-		public decimal? Peso
+		public decimal? PesoKilos
 		{ get; set; }
 
 		/// <summary>
