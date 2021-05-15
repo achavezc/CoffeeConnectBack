@@ -13,7 +13,7 @@ namespace CoffeeConnect.DTO
         public string TipoProcesoId { get; set; }
         public int ContratoId { get; set; }
         public string Numero { get; set; }
-        public decimal CantidadSacosUtilizar { get; set; }
+        public string Observacion { get; set; }
         public decimal RendimientoEsperadoPorcentaje { get; set; }
         public DateTime FechaFinProceso { get; set; }
         public decimal CantidadContenedores { get; set; }

@@ -38,7 +38,7 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the CantidadSacosUtilizar value.
         /// </summary>
-        public decimal CantidadSacosUtilizar { get; set; }
+        public string Observacion { get; set; }
 
         /// <summary>
         /// Gets or sets the RendimientoEsperadoPorcentaje value.

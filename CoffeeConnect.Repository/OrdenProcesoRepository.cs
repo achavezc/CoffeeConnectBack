@@ -32,7 +32,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ContratoId", ordenProceso.ContratoId);
             parameters.Add("@Numero", ordenProceso.Numero);
             parameters.Add("@TipoProcesoId", ordenProceso.TipoProcesoId);
-            parameters.Add("@CantidadSacosUtilizar", ordenProceso.CantidadSacosUtilizar);
+            parameters.Add("@Observacion", ordenProceso.Observacion);
             parameters.Add("@RendimientoEsperadoPorcentaje", ordenProceso.RendimientoEsperadoPorcentaje);
             parameters.Add("@NombreArchivo", ordenProceso.NombreArchivo);
             parameters.Add("@DescripcionArchivo", ordenProceso.DescripcionArchivo);
@@ -106,7 +106,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaProcesadoraId", ordenProceso.EmpresaProcesadoraId);
             parameters.Add("@ContratoId", ordenProceso.ContratoId);
             parameters.Add("@Numero", ordenProceso.Numero);
-            parameters.Add("@CantidadSacosUtilizar", ordenProceso.CantidadSacosUtilizar);
+            parameters.Add("@Observacion", ordenProceso.Observacion);
             parameters.Add("@RendimientoEsperadoPorcentaje", ordenProceso.RendimientoEsperadoPorcentaje);
             parameters.Add("@FechaFinProceso", ordenProceso.FechaFinProceso);
             parameters.Add("@CantidadContenedores", ordenProceso.CantidadContenedores);

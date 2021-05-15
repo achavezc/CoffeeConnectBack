@@ -25,6 +25,9 @@ namespace CoffeeConnect.Models
         /// </summary>
         public DateTime FechaNotaIngresoPlanta { get; set; }
         public decimal RendimientoPorcentaje { get; set; }
+
+        public string Observaciones { get; set; }
+        
         public decimal HumedadPorcentaje { get; set; }
         public decimal CantidadSacos { get; set; }
         public decimal KilosBrutos { get; set; }
