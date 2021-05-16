@@ -28,9 +28,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("CalidadId", request.CalidadId);
             parameters.Add("NumeroCliente", request.NumeroCliente);
             parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
-
+          
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -48,6 +49,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FloId", contrato.FloId);
             parameters.Add("@CondicionEmbarqueId", contrato.CondicionEmbarqueId);
             parameters.Add("@FechaEmbarque", contrato.FechaEmbarque);
+            parameters.Add("EmpresaId", contrato.EmpresaId);
             parameters.Add("@FechaContrato", contrato.FechaContrato);
             parameters.Add("@FechaFacturacion", contrato.FechaFacturacion);
             parameters.Add("@PaisDestinoId", contrato.PaisDestinoId);
@@ -57,8 +59,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoProduccionId", contrato.TipoProduccionId);
             parameters.Add("@MonedadId", contrato.MonedadId);
             parameters.Add("@Monto", contrato.Monto);
-            parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);
-            parameters.Add("@UnidadMedidaId", contrato.UnidadMedidaId);
+            parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);            
             parameters.Add("@CalculoContratoId", contrato.CalculoContratoId ?? string.Empty);
             parameters.Add("@EntidadCertificadoraId", contrato.EntidadCertificadoraId);
             parameters.Add("@TipoCertificacionId", contrato.TipoCertificacionId);
@@ -106,6 +107,7 @@ namespace CoffeeConnect.Repository
             //parameters.Add("@Numero", contrato.Numero);
             parameters.Add("@ClienteId", contrato.ClienteId);
             parameters.Add("@FloId", contrato.FloId);
+            parameters.Add("EmpresaId", contrato.EmpresaId);
             parameters.Add("@CondicionEmbarqueId", contrato.CondicionEmbarqueId);
             parameters.Add("@FechaEmbarque", contrato.FechaEmbarque);
             parameters.Add("@FechaContrato", contrato.FechaContrato);
@@ -117,8 +119,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoProduccionId", contrato.TipoProduccionId);
             parameters.Add("@MonedadId", contrato.MonedadId);
             parameters.Add("@Monto", contrato.Monto);
-            parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);
-            parameters.Add("@UnidadMedidaId", contrato.UnidadMedidaId);
+            parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);       
             parameters.Add("@EntidadCertificadoraId", contrato.EntidadCertificadoraId);
             parameters.Add("@TipoCertificacionId", contrato.TipoCertificacionId);
             parameters.Add("@CalculoContratoId", contrato.CalculoContratoId);

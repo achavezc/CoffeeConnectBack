@@ -19,6 +19,9 @@ namespace CoffeeConnect.DTO
 
         public String EstadoId { get; set; }
 
+        public int EmpresaId { get; set; }
+        
+
         public DateTime FechaInicio { get; set; }
 
         public DateTime FechaFin { get; set; }

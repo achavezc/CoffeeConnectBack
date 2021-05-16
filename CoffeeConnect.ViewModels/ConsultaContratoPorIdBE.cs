@@ -99,7 +99,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the UnidadMedidaId value.
         /// </summary>
-        public string UnidadMedidaId
+        public int EmpresaId
         { get; set; }
 
         /// <summary>
@@ -207,6 +207,20 @@ namespace CoffeeConnect.DTO
         public string EstadoId { get; set; }
         public string NumeroCliente { get; set; }
         public string Cliente { get; set; }
+
+        public string RazonSocial
+        { get; set; }
+
+        public string Ruc
+        { get; set; }
+
+        public string Logo
+        { get; set; }
+
+        public string Direccion
+        { get; set; }
+
+
 
         #endregion
     }

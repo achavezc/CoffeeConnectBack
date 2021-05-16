@@ -104,7 +104,7 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the UnidadMedidaId value.
         /// </summary>
-        public string UnidadMedidaId
+        public int EmpresaId
         { get; set; }
 
         /// <summary>

@@ -45,7 +45,7 @@ namespace CoffeeConnect.DTO
         /// 
         public decimal TotalSacos { get; set; }
         public decimal PesoKilos { get; set; }
-        public string UnidadMedida { get; set; }
+     
         public string EstadoId { get; set; }
         public string Estado { get; set; }
         public string TipoCertificacionId { get; set; }
@@ -56,6 +56,10 @@ namespace CoffeeConnect.DTO
         public string TipoEmpaque { get; set; }
         public string SubProducto { get; set; }
         public decimal PreparacionCantidadDefectos { get; set; }
+
+        public DateTime FechaContrato { get; set; }
+
+        public int EmpresaId { get; set; }
         #endregion
     }
 }
