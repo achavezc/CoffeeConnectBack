@@ -22,6 +22,9 @@ namespace CoffeeConnect.DTO
         public int ClienteId
         { get; set; }
 
+        public int EmpreresaId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the FloId value.
         /// </summary>
@@ -101,12 +104,7 @@ namespace CoffeeConnect.DTO
         public string UnidadMedicionId
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the UnidadMedidaId value.
-        /// </summary>
-        public string UnidadMedidaId
-        { get; set; }
-
+      
         /// <summary>
         /// Gets or sets the EntidadCertificadoraId value.
         /// </summary>
