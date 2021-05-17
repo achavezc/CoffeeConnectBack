@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
+using CoffeeConnect.DTO;
 
 namespace CoffeeConnect.Repository
 {
@@ -338,6 +339,18 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<Usuario>("uspUsuarioValidarCredenciales", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public IEnumerable<ConsultaOpcionesPorUsuario> ConsultarOpcionesPorUsuario(int usuarioId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("UserId", usuarioId);
+          
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaOpcionesPorUsuario>("uspOpcionesPorUsuario", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 

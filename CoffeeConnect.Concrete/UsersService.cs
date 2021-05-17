@@ -476,6 +476,9 @@ namespace CoffeeConnect.Service
 
             }
 
+            List<ConsultaOpcionesPorUsuario> opcionesUsuario = _UsersRepository.ConsultarOpcionesPorUsuario(usuario.UserId).ToList();
+
+            //TODO: Armar dataMenu en base a opcionesUsuario
 
             List<MenuBE> opciones = JsonConvert.DeserializeObject<List<MenuBE>>(dataMenu);
 
