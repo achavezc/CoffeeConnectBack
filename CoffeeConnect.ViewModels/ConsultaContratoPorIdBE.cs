@@ -138,7 +138,7 @@ namespace CoffeeConnect.DTO
         public decimal PesoPorSaco
         { get; set; }
 
-        public decimal Peso
+        public decimal PesoKilos
         { get; set; }
 
         /// <summary>
@@ -219,7 +219,8 @@ namespace CoffeeConnect.DTO
 
         public string Direccion
         { get; set; }
-
+        public string EmpaqueId { get; set; }
+        public string TipoId { get; set; }
 
 
         #endregion

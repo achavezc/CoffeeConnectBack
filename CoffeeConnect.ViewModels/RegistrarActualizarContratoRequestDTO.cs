@@ -22,7 +22,7 @@ namespace CoffeeConnect.DTO
         public int ClienteId
         { get; set; }
 
-        public int EmpreresaId
+        public int EmpresaId
         { get; set; }
 
         /// <summary>
