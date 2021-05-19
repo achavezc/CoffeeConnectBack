@@ -155,5 +155,13 @@ namespace CoffeeConnect.Service
             }
             return result;
         }
+
+        public ConsultarImpresionOrdenProcesoResponseDTO ConsultarImpresionOrdenProceso(ConsultarImpresionOrdenProcesoRequestDTO request)
+        {
+            ConsultarImpresionOrdenProcesoResponseDTO response = new ConsultarImpresionOrdenProcesoResponseDTO();
+            response.listOrdenProceso = _IOrdenProcesoRepository.ConsultarImpresionOrdenProceso(request.OrdenProcesoId);
+            response.listDetalleOrdenProceso = _IOrdenProcesoRepository.ConsultarOrdenProcesoDetallePorId(request.OrdenProcesoId);
+            return response;
+        }
     }
 }

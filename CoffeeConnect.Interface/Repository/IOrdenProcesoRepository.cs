@@ -15,5 +15,6 @@ namespace CoffeeConnect.Interface.Repository
         int EliminarProcesoDetalle(int ordenProcesoId);
         int InsertarProcesoDetalle(OrdenProcesoDetalle ordenProcesoDetalle);
         ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(int ordenProcesoId);
+        IEnumerable<OrdenProcesoDTO> ConsultarImpresionOrdenProceso(int ordenProcesoId);
     }
 }
