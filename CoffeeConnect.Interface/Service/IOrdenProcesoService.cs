@@ -11,5 +11,6 @@ namespace CoffeeConnect.Interface.Service
         int ActualizarOrdenProceso(RegistrarActualizarOrdenProcesoRequestDTO request, IFormFile file);
         ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(ConsultaOrdenProcesoPorIdRequestDTO request);
         int AnularOrdenProceso(AnularOrdenProcesoRequestDTO request);
+        ConsultarImpresionOrdenProcesoResponseDTO ConsultarImpresionOrdenProceso(ConsultarImpresionOrdenProcesoRequestDTO request);
     }
 }

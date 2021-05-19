@@ -1,6 +1,9 @@
-﻿using CoffeeConnect.DTO;
+﻿using AspNetCore.Reporting;
+using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
+using Core.Common;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -17,10 +20,13 @@ namespace CoffeeConnect.API.Controllers
     {
         private IOrdenProcesoService ordenProcesoService;
         private Core.Common.Logger.ILog _log;
-        public OrdenProcesoController(IOrdenProcesoService ordenProcesoService, Core.Common.Logger.ILog log)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public OrdenProcesoController(IOrdenProcesoService ordenProcesoService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
             _log = log;
             this.ordenProcesoService = ordenProcesoService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [Route("Consultar")]
@@ -158,6 +164,51 @@ namespace CoffeeConnect.API.Controllers
             }
 
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+            return Ok(response);
+        }
+
+        [Route("Imprimir")]
+        [HttpGet]
+        public IActionResult Imprimir(int id)
+        {
+            return this.generar(id);
+        }
+
+        private IActionResult generar(int id)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
+
+            ImpresionOrdenProcesoResponseDTO response = new ImpresionOrdenProcesoResponseDTO();
+            try
+            {
+                ConsultarImpresionOrdenProcesoRequestDTO request = new ConsultarImpresionOrdenProcesoRequestDTO { OrdenProcesoId = id };
+                ConsultarImpresionOrdenProcesoResponseDTO resImpresion = ordenProcesoService.ConsultarImpresionOrdenProceso(request);
+
+                var path = $"{this._webHostEnvironment.ContentRootPath}\\Reportes\\rptOrdenProceso.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                //TODO: impresionListaProductores
+                lr.AddDataSource("dsOrdenProceso", resImpresion.listOrdenProceso.ToList());
+                lr.AddDataSource("dsDetalleOrdenProceso", resImpresion.listDetalleOrdenProceso.ToList());
+                var result = lr.Execute(RenderType.Pdf, 1, parameters, "");
+
+                return File(result.MainStream, "application/pdf");
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+
             return Ok(response);
         }
     }

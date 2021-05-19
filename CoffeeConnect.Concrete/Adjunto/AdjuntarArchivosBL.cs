@@ -42,7 +42,7 @@ namespace CoffeeConnect.Service.Adjunto
         {
             FileName = FileName.Replace(" ", "");
             String aleatorio = Math.Round(new Random().NextDouble() * 99999999, 0).ToString();
-            String nuevofile = DateTime.Now.ToString("ddMMyyyyHHmmss") + "-" + aleatorio + FileName;
+            String nuevofile = DateTime.Now.ToString("ddMMyyyyHHmmss") + "-" + aleatorio;// + FileName;
             return nuevofile;
         }
 
@@ -78,7 +78,7 @@ namespace CoffeeConnect.Service.Adjunto
                             error = "",
                             ficheroReal = nombreInterno,
                             ficheroVisual = filtro.filename,
-                            link = getRutaLogica() + "" + nombreInterno
+                            link = getRutaLogica() //+ "" + nombreInterno
                         };
                     }
                     catch (Exception ex)

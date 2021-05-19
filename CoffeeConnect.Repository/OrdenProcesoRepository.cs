@@ -183,5 +183,16 @@ namespace CoffeeConnect.Repository
             }
             return itemBE;
         }
+
+        public IEnumerable<OrdenProcesoDTO> ConsultarImpresionOrdenProceso(int ordenProcesoId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@pOrdenProcesoId", ordenProcesoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<OrdenProcesoDTO>("uspOrdenProcesoConsultaImpresionPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
