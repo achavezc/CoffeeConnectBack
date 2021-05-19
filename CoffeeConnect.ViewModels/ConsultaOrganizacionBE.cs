@@ -11,6 +11,9 @@ namespace CoffeeConnect.DTO
 		public int OrganizacionId
 		{ get; set; }
 
+
+		public string Codigo
+		{ get; set; }
 		/// <summary>
 		/// Gets or sets the RazonSocial value.
 		/// </summary>

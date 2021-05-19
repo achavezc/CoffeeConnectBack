@@ -17,12 +17,29 @@ namespace CoffeeConnect.DTO
 		public int NotaIngresoPlantaId
 		{ get; set; }
 
+		public string NumeroGuiaRemision
+		{ get; set; }
+
+		public DateTime FechaGuiaRemision
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the EmpresaId value.
 		/// </summary>
 		public int EmpresaId
 		{ get; set; }
 
+		public string NombreOrganizacion
+		{ get; set; }
+
+		public string CodigoOrganizacion
+		{ get; set; }
+
+		public string Certificacion
+		{ get; set; }
+
+		public string Certificadora
+		{ get; set; }
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>

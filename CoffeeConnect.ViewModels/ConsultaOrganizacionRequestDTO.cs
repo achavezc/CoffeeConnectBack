@@ -17,6 +17,8 @@ namespace CoffeeConnect.DTO
 
         public string EstadoId { get; set; }
 
+        public string CodigoOrganizacion { get; set; }
+
         public int EmpresaId { get; set; }
     }
 }

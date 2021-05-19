@@ -27,6 +27,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("ClasificacionId", request.ClasificacionId);
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("Numero", request.CodigoOrganizacion);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

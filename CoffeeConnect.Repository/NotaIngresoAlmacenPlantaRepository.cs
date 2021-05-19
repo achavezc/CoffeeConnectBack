@@ -171,7 +171,7 @@ namespace CoffeeConnect.Repository
             ConsultaNotaIngresoAlmacenPlantaPorIdBE itemBE = null;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenIdPlanta", NotaIngresoAlmacenPlantaId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

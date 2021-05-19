@@ -227,7 +227,9 @@ namespace Integracion.Deuda.Controller
                 //response.Certificacion = resultado.TipoCertificacion;
 
                 //response.Cantidad = resultado.Cantidad;
-                //response.TotalKilosNetosPesado = resultado.TotalKilosNetosPesado;
+                //response.Total
+                //
+                //NetosPesado = resultado.TotalKilosNetosPesado;
                 //response.TotalKilosBrutosPesado = resultado.TotalKilosBrutosPesado;
                 //response.PromedioRendimientoPorcentaje = resultado.PromedioRendimientoPorcentaje;
                 //response.PromedioRendimientoPorcentaje = resultado.PromedioRendimientoPorcentaje;
