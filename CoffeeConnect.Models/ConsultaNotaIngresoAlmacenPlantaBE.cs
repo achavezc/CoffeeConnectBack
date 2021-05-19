@@ -185,6 +185,15 @@ namespace CoffeeConnect.Models
 		public string Almacen
 		{ get; set; }
 
+		public string CodigoOrganizacion
+		{ get; set; }
+
+		public string NombreOrganizacion
+		{ get; set; }
+
+		public string Ruc
+		{ get; set; }
+
 		#endregion
 	}
 }
