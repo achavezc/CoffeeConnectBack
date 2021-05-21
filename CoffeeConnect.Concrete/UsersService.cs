@@ -1,8 +1,10 @@
 ﻿using CoffeeConnect.DTO;
+using CoffeeConnect.DTO.Seguridad;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -479,10 +481,43 @@ namespace CoffeeConnect.Service
             List<ConsultaOpcionesPorUsuario> opcionesUsuario = _UsersRepository.ConsultarOpcionesPorUsuario(usuario.UserId).ToList();
 
             //TODO: Armar dataMenu en base a opcionesUsuario
+            List<Root> rootList = new List<Root>();
+           
+            var listaModulos = opcionesUsuario.Where(c => c.Type == "Modulo").ToList();
+            foreach (ConsultaOpcionesPorUsuario objOpcion in listaModulos)
+            {
+                Root root = new Root();
+                root.Badge =""  ;
+                root.BadgeClass = "";
+                root.Class = "has-sub";
+                root.Icon = objOpcion.Icon;
+                root.IsExternalLink = false;
+                root.Path = objOpcion.Path;
+                var submenu1List = opcionesUsuario.Where(c => c.Type == "Opcion" && Convert.ToString(c.OpcionPadreId) == objOpcion.Codigo).ToList();
+                List<Submenu2> subMenuPrincipalList = new List<Submenu2>();
+                foreach (ConsultaOpcionesPorUsuario submenu1 in submenu1List)
+                {
+                    Submenu2 subMenu = new Submenu2();
+                    subMenu.Badge = "";
+                    subMenu.BadgeClass = "";
+                    subMenu.Class = "has-sub";
+                    subMenu.Icon = submenu1.Icon;
+                    subMenu.IsExternalLink = false;
+                    subMenu.Path = submenu1.Path;
+                    subMenu.Submenu = new List<Submenu2>();
+                    subMenu.Title = submenu1.Tittle;
+                    subMenuPrincipalList.Add(subMenu);
+                }
+                root.Submenu = subMenuPrincipalList;
 
+                root.Title = objOpcion.Tittle;
+                rootList.Add(root);
+            }
+            
             List<MenuBE> opciones = JsonConvert.DeserializeObject<List<MenuBE>>(dataMenu);
 
-            loginDTO.Opciones = opciones;
+
+            loginDTO.Opciones = rootList;
 
             return loginDTO;
 
