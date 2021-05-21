@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeConnect.DTO.Seguridad;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace CoffeeConnect.DTO
         public string RucEmpresa { get; set; }
         public string DireccionEmpresa { get; set; }
         public string LogoEmpresa { get; set; }
-        public List<MenuBE> Opciones { get; set; }
+        public List<Root> Opciones { get; set; }
 
         public List<ProductoPrecioDiaBE> ProductoPreciosDia { get; set; }
 
