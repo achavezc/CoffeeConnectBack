@@ -113,6 +113,11 @@ namespace CoffeeConnect.API
             services.AddTransient<IProductorService, ProductorService>();
             services.AddTransient<IProductorRepository, ProductorRepository>();
 
+            services.AddTransient<IProductoPrecioDiaService, ProductoPrecioDiaService>();
+            services.AddTransient<IProductoPrecioDiaRepository, ProductoPrecioDiaRepository>();
+
+
+
             services.AddTransient<ISocioService, SocioService>();
             services.AddTransient<ISocioRepository, SocioRepository>();
 
@@ -150,6 +155,10 @@ namespace CoffeeConnect.API
             services.AddTransient<IGuiaRemisionAlmacenRepository, GuiaRemisionAlmacenRepository>();
             services.AddTransient<ISocioDocumentoService, SocioDocumentoService>();
             services.AddTransient<ISocioDocumentoRepository, SocioDocumentoRepository>();
+
+            services.AddTransient<IProductorDocumentoService, ProductorDocumentoService>();
+            services.AddTransient<IProductorDocumentoRepository, ProductorDocumentoRepository>();
+
 
             services.AddTransient<ISocioProyectoService, SocioProyectoService>();
             services.AddTransient<ISocioProyectoRepository, SocioProyectoRepository>();
