@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoffeeConnect.DTO;
+using CoffeeConnect.Models;
 
 namespace CoffeeConnect.DTO
 {
@@ -20,8 +22,8 @@ namespace CoffeeConnect.DTO
         public string DireccionEmpresa { get; set; }
         public string LogoEmpresa { get; set; }
         public List<Root> Opciones { get; set; }
-
-        public List<ProductoPrecioDiaBE> ProductoPreciosDia { get; set; }
+        
+        public List<ConsultaProductoPrecioDiaBE> ProductoPreciosDia { get; set; }
 
         public string MonedaId { get; set; }
         public string Moneda { get; set; }

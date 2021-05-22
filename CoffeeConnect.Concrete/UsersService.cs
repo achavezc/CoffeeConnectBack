@@ -2,6 +2,7 @@
 using CoffeeConnect.DTO.Seguridad;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
+using CoffeeConnect.Models;
 using Core.Common.Domain.Model;
 using Newtonsoft.Json;
 using System;
@@ -14,11 +15,13 @@ namespace CoffeeConnect.Service
     {
         private IUsersRepository _UsersRepository;
         private IEmpresaRepository _EmpresaRepository;
+        private IProductoPrecioDiaRepository _ProductoPrecioDiaRepository;
 
-        public UsersService(IUsersRepository usersRepository, IEmpresaRepository empresaRepository)
+        public UsersService(IUsersRepository usersRepository, IEmpresaRepository empresaRepository, IProductoPrecioDiaRepository productoPrecioDiaRepository)
         {
             _UsersRepository = usersRepository;
             _EmpresaRepository = empresaRepository;
+            _ProductoPrecioDiaRepository = productoPrecioDiaRepository;
         }
 
         string dataMenu = @"[
@@ -454,25 +457,27 @@ namespace CoffeeConnect.Service
                 loginDTO.MonedaId = "01";
                 loginDTO.Moneda = "Soles";
 
-                List<ProductoPrecioDiaBE> precios = new List<ProductoPrecioDiaBE>();
+                
 
-                ProductoPrecioDiaBE precioCafePergaminoMote = new ProductoPrecioDiaBE();
-                precioCafePergaminoMote.ProductoId = "01";
-                precioCafePergaminoMote.SubProductoId = "01";
-                precioCafePergaminoMote.PrecioDia = 5.00M;
-                precios.Add(precioCafePergaminoMote);
+                List<ConsultaProductoPrecioDiaBE> precios = _ProductoPrecioDiaRepository.ConsultarProductoPrecioDiaPorEmpresaId(usuario.EmpresaId).ToList();
 
-                ProductoPrecioDiaBE precioCafePergaminoSeco = new ProductoPrecioDiaBE();
-                precioCafePergaminoSeco.ProductoId = "01";
-                precioCafePergaminoSeco.SubProductoId = "02";
-                precioCafePergaminoSeco.PrecioDia = 6.80M;
-                precios.Add(precioCafePergaminoSeco);
+                //ProductoPrecioDiaBE precioCafePergaminoMote = new ProductoPrecioDiaBE();
+                //precioCafePergaminoMote.ProductoId = "01";
+                //precioCafePergaminoMote.SubProductoId = "01";
+                //precioCafePergaminoMote.PrecioDia = 5.00M;
+                //precios.Add(precioCafePergaminoMote);
 
-                ProductoPrecioDiaBE precioCafePergaminoEstandar = new ProductoPrecioDiaBE();
-                precioCafePergaminoEstandar.ProductoId = "01";
-                precioCafePergaminoEstandar.SubProductoId = "03";
-                precioCafePergaminoEstandar.PrecioDia = 6.80M;
-                precios.Add(precioCafePergaminoEstandar);
+                //ProductoPrecioDiaBE precioCafePergaminoSeco = new ProductoPrecioDiaBE();
+                //precioCafePergaminoSeco.ProductoId = "01";
+                //precioCafePergaminoSeco.SubProductoId = "02";
+                //precioCafePergaminoSeco.PrecioDia = 6.80M;
+                //precios.Add(precioCafePergaminoSeco);
+
+                //ProductoPrecioDiaBE precioCafePergaminoEstandar = new ProductoPrecioDiaBE();
+                //precioCafePergaminoEstandar.ProductoId = "01";
+                //precioCafePergaminoEstandar.SubProductoId = "03";
+                //precioCafePergaminoEstandar.PrecioDia = 6.80M;
+                //precios.Add(precioCafePergaminoEstandar);
 
                 loginDTO.ProductoPreciosDia = precios;
 
