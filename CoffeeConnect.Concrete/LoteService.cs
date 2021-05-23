@@ -153,7 +153,7 @@ namespace CoffeeConnect.Service
         {
             int affected = _ILoteRepository.ActualizarEstado(request.LoteId, DateTime.Now, request.Usuario, LoteEstados.Anulado);
 
-            List<LoteDetalle> lotesDetalle = _ILoteRepository.ConsultarLoteDetallePorId(request.LoteId).ToList();
+            List<LoteDetalle> lotesDetalle = _ILoteRepository.ConsultarLoteDetallePorLoteId(request.LoteId).ToList();
 
             lotesDetalle.ForEach(loteDetalle =>
             {
@@ -174,15 +174,29 @@ namespace CoffeeConnect.Service
                 if (notasIngresoAlmacenIdEliminar != null && notasIngresoAlmacenIdEliminar.Count > 0)
                 {
                     List<TablaIdsTipo> loteDetalleIdEliminar = new List<TablaIdsTipo>();
+                    List<TablaIdsTipo> notasIntegresoIdActualizar = new List<TablaIdsTipo>();
 
                     foreach (ListaIdsAccion id in notasIngresoAlmacenIdEliminar)
                     {
                         TablaIdsTipo tablaIdsTipo = new TablaIdsTipo();
                         tablaIdsTipo.Id = id.Id;
                         loteDetalleIdEliminar.Add(tablaIdsTipo);
+
+
+                        LoteDetalle loteDetalle = _ILoteRepository.ConsultarLoteDetallePorId(id.Id);
+
+                        if(loteDetalle != null)
+                        {
+                            TablaIdsTipo tablaNotasIntegresoIdsTipo = new TablaIdsTipo();
+                            tablaNotasIntegresoIdsTipo.Id = loteDetalle.LoteDetalleId;
+                            notasIntegresoIdActualizar.Add(tablaNotasIntegresoIdsTipo);
+
+                        }
                     }
 
                     _ILoteRepository.EliminarLoteDetalle(loteDetalleIdEliminar);
+
+                    _INotaIngresoAlmacenRepository.ActualizarEstadoPorIds(loteDetalleIdEliminar,DateTime.Now,request.Usuario, NotaIngresoAlmacenEstados.Ingresado);
                 }
 
                 List<ListaIdsAccion> notasIngresoAlmacenIdNuevo = request.NotasIngresoAlmacenId.Where(a => a.Accion == "N").ToList();

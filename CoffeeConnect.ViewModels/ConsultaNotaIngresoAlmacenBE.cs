@@ -171,6 +171,11 @@ namespace CoffeeConnect.DTO
         public string Certificacion
         { get; set; }
 
+        public string Certificadora
+        { get; set; }
+
+        
+
         public string UnidadMedida
         { get; set; }
 

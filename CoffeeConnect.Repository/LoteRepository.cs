@@ -128,7 +128,7 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        public IEnumerable<LoteDetalle> ConsultarLoteDetallePorId(int loteId)
+        public IEnumerable<LoteDetalle> ConsultarLoteDetallePorLoteId(int loteId)
         {
             var parameters = new DynamicParameters();
             parameters.Add("LoteId", loteId);
@@ -137,7 +137,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<LoteDetalle>("uspLoteDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<LoteDetalle>("uspLoteDetalleConsultaPorLoteId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -188,6 +188,26 @@ namespace CoffeeConnect.Repository
             }
 
             return lote;
+        }
+
+        public LoteDetalle ConsultarLoteDetallePorId(int loteDetalleId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("LoteDetalleId", loteDetalleId);
+
+            IEnumerable<LoteDetalle> result;
+            LoteDetalle loteDetalle = new LoteDetalle();
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Query<LoteDetalle>("uspLoteDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                if (result.Any())
+                {
+                    loteDetalle = result.First();
+                }
+            }
+
+            return loteDetalle;
         }
 
         public int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId, int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado)
