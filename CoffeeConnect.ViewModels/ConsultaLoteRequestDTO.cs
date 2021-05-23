@@ -11,6 +11,10 @@ namespace CoffeeConnect.DTO
 
         public String Numero { get; set; }
 
+        public String NumeroContrato { get; set; }
+
+        
+
         public String NombreRazonSocial { get; set; }
 
         public String TipoDocumentoId { get; set; }

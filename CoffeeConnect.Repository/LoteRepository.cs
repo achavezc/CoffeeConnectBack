@@ -95,6 +95,7 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("Numero", request.Numero);
+            parameters.Add("NumeroContrato", request.NumeroContrato);
             parameters.Add("NombreRazonSocial", request.NombreRazonSocial);
             parameters.Add("TipoDocumentoId", request.TipoDocumentoId);
             parameters.Add("NumeroDocumento", request.NumeroDocumento);

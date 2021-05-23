@@ -54,6 +54,32 @@ namespace CoffeeConnect.Service
         {
             int affected = _IGuiaRecepcionMateriaPrimaRepository.AnularGuiaRecepcionMateriaPrima(request.GuiaRecepcionMateriaPrimaId, DateTime.Now, request.Usuario, GuiaRecepcionMateriaPrimaEstados.Anulado);
 
+            string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
+            string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
+
+            ConsultaGuiaRecepcionMateriaPrimaPorIdBE consultaGuiaRecepcionMateriaPrimaPorIdBE = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(request.GuiaRecepcionMateriaPrimaId);
+
+           
+
+            if (consultaGuiaRecepcionMateriaPrimaPorIdBE.ProductoId == productoIdCafePergamino && consultaGuiaRecepcionMateriaPrimaPorIdBE.SubProductoId == subProductoIdCafeSeco && consultaGuiaRecepcionMateriaPrimaPorIdBE.SocioFincaCertificacion != String.Empty)
+            {
+                List<ConsultaSocioFincaEstimadoPorSocioFincaIdBE> fincaEstimados = _ISocioFincaRepository.ConsultarSocioFincaEstimadoPorSocioFincaId(consultaGuiaRecepcionMateriaPrimaPorIdBE.SocioFincaId.Value).ToList();
+
+                if (fincaEstimados.Count > 0)
+                {
+                    int anioActual = DateTime.Now.Year;
+
+                    ConsultaSocioFincaEstimadoPorSocioFincaIdBE fincaEstima = null;
+
+                    fincaEstima = fincaEstimados.Where(x => x.Anio == anioActual).FirstOrDefault();
+
+                    if (fincaEstima != null)
+                    {
+                        _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, consultaGuiaRecepcionMateriaPrimaPorIdBE.KilosBrutosPesado * -1);
+                    }
+                }
+            }
+
             return affected;
         }
 
