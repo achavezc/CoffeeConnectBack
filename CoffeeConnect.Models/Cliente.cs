@@ -29,6 +29,12 @@ namespace CoffeeConnect.Models
         public string Ruc
         { get; set; }
 
+        public string FloId
+        { get; set; }
+        
+
+
+
         /// <summary>
         /// Gets or sets the RazonSocial value.
         /// </summary>

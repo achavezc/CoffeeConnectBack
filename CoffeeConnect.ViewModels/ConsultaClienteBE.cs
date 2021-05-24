@@ -15,6 +15,11 @@ namespace CoffeeConnect.DTO
         public string Numero
         { get; set; }
 
+        public string FloId
+        { get; set; }
+        
+
+
         /// <summary>
         /// Gets or sets the TipoDocumentoId value.
         /// </summary>
