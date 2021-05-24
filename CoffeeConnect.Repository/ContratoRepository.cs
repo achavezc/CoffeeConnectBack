@@ -85,7 +85,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpaqueId", contrato.EmpaqueId);
             parameters.Add("@TipoId", contrato.TipoId);
             parameters.Add("@TotalSacos", contrato.TotalSacos);
-            parameters.Add("@Peso", contrato.Peso);
+            parameters.Add("@PesoEnContrato", contrato.PesoEnContrato);
+            parameters.Add("@PesoKilos", contrato.PesoKilos);
             parameters.Add("@ContratoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -126,7 +127,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CalidadId", contrato.CalidadId);
             parameters.Add("@GradoId", contrato.GradoId);
             parameters.Add("@TotalSacos", contrato.TotalSacos);
-            parameters.Add("@Peso", contrato.Peso);
+            parameters.Add("@PesoEnContrato", contrato.PesoEnContrato);
+            parameters.Add("@PesoKilos", contrato.PesoKilos);
             parameters.Add("@PesoPorSaco", contrato.PesoPorSaco);
             parameters.Add("@PreparacionCantidadDefectos", contrato.PreparacionCantidadDefectos);
             parameters.Add("@LaboratorioId", contrato.LaboratorioId);

@@ -18,6 +18,10 @@
         public string TipoClienteId
         { get; set; }
 
+
+        public string FloId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the Ruc value.
         /// </summary>

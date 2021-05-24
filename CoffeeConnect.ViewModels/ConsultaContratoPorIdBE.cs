@@ -141,6 +141,11 @@ namespace CoffeeConnect.DTO
         public decimal PesoKilos
         { get; set; }
 
+        public decimal PesoEnContrato
+        { get; set; }
+
+        
+
         /// <summary>
         /// Gets or sets the PreparacionCantidadDefectos value.
         /// </summary>

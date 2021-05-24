@@ -134,18 +134,23 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the Cantidad value.
         /// </summary>
-        public decimal TotalSacos
+        public decimal? TotalSacos
         { get; set; }
 
-        public decimal Peso
+        public decimal? PesoKilos
         { get; set; }
+
+        public decimal? PesoEnContrato
+        { get; set; }
+
         
+
 
 
         /// <summary>
         /// Gets or sets the PesoPorSaco value.
         /// </summary>
-        public decimal PesoPorSaco
+        public decimal? PesoPorSaco
         { get; set; }
 
         /// <summary>
