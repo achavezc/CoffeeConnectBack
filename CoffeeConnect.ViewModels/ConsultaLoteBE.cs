@@ -49,25 +49,18 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public decimal TotalKilosNetosPesado
         { get; set; }
-
-		public decimal TotalKilosBrutosPesado
-		{ get; set; }
-
+        public decimal TotalKilosBrutosPesado
+        { get; set; }
         public int Cantidad
         { get; set; }
-
         public string UnidadMedidaId
         { get; set; }
-
         public string UnidadMedida
         { get; set; }
-
         public string SubProductoId
         { get; set; }
-
         public string SubProducto
         { get; set; }
-
 
         /// <summary>
         /// Gets or sets the PromedioRendimientoPorcentaje value.
@@ -110,24 +103,15 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public bool Activo
         { get; set; }
-
         public decimal TotalAnalisisSensorial { get; set; }
-
         public string ProductoId
         { get; set; }
-
-
         public string TipoCertificacionId
         { get; set; }
-
-
         public string Producto
         { get; set; }
-
-
         public string Certificacion
         { get; set; }
-
 
         #endregion
     }

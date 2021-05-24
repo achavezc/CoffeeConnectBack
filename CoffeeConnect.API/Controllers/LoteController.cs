@@ -5,6 +5,7 @@ using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 
 namespace Integracion.Deuda.Controller
@@ -69,7 +70,7 @@ namespace Integracion.Deuda.Controller
         public IActionResult Consultar([FromBody] ConsultaLoteRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
             ConsultaLoteResponseDTO response = new ConsultaLoteResponseDTO();
             try
@@ -89,7 +90,7 @@ namespace Integracion.Deuda.Controller
                 _log.RegistrarEvento(ex, guid.ToString());
             }
 
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
         }
