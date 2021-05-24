@@ -11,6 +11,8 @@ namespace CoffeeConnect.Interface.Repository
         int Insertar(Lote lote);
         int InsertarLoteDetalle(List<LoteDetalle> request);
 
+        LoteDetalle ConsultarLoteDetallePorId(int loteDetalleId);
+
         int EliminarLoteDetalle(List<TablaIdsTipo> request);
         IEnumerable<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request);
 
@@ -18,9 +20,13 @@ namespace CoffeeConnect.Interface.Repository
 
         int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId, int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado);
 
-        IEnumerable<LoteDetalle> ConsultarLoteDetallePorId(int loteId);
+        IEnumerable<LoteDetalle> ConsultarLoteDetallePorLoteId(int loteId);
+
+        
+
         IEnumerable<LoteDetalleConsulta> ConsultarBandejaLoteDetallePorId(int loteId);
         ConsultaLoteBandejaBE ConsultarLotePorId(int loteId);
+
 
         IEnumerable<ConsultaImpresionLotePorIdBE> ConsultarImpresionLotePorId(int loteId);
 

@@ -14,8 +14,9 @@ namespace CoffeeConnect.Interface.Repository
 
         IEnumerable<NotaIngresoAlmacen> ConsultarNotaIngresoPorIds(List<TablaIdsTipo> request);
 
-      
-     
+        int ActualizarEstadoPorIds(List<TablaIdsTipo> ids, DateTime fecha, string usuario, string estadoId);
+
+
 
         int ActualizarEstado(int notaIngresoAlmacenId, DateTime fecha, string usuario, string estadoId);
 

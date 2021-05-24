@@ -16,6 +16,9 @@ namespace CoffeeConnect.Models
 		public int LoteId
 		{ get; set; }
 
+		public int LoteDetalleId
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the NotaIngresoAlmacenId value.
 		/// </summary>
