@@ -229,12 +229,14 @@ namespace CoffeeConnect.Repository
             return loteDetalle;
         }
 
-        public int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId, int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado)
+        public int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId, int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado,int? contratoId)
         {
             int affected = 0;
 
             var parameters = new DynamicParameters();
             parameters.Add("@LoteId", loteId);
+            parameters.Add("@ContratoId", contratoId);
+            
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
             parameters.Add("@AlmacenId", almacenId);

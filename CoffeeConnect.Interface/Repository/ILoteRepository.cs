@@ -18,7 +18,8 @@ namespace CoffeeConnect.Interface.Repository
 
         int ActualizarEstado(int loteId, DateTime fecha, string usuario, string estadoId);
 
-        int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId, int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado);
+
+        int Actualizar(int loteId, DateTime fecha, string usuario, string almacenId, int cantidad, decimal totalKilosNetosPesado, decimal totalKilosBrutosPesado, int? contratoId);
 
         IEnumerable<LoteDetalle> ConsultarLoteDetallePorLoteId(int loteId);
 

@@ -192,5 +192,31 @@ namespace CoffeeConnect.DTO
 
         public IEnumerable<LoteRegistroTostadoIndicadorDetalle> RegistroTostadoIndicadorDetalle
         { get; set; }
-    }
+
+		public int? ContratoId { get; set; }
+
+		public string NumeroContrato
+		{ get; set; }
+
+		public int? ClienteId
+		{
+			get; set;
+		}
+
+		public string Cliente
+		{ get; set; }
+
+		public decimal TotalSacos
+		{ get; set; }
+
+		public decimal PesoKilos
+		{ get; set; }
+
+		public decimal PesoPorSaco
+		{ get; set; }
+
+		public string Empaque
+		{ get; set; }
+
+	}
 }
