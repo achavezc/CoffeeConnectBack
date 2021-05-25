@@ -1,4 +1,5 @@
 ﻿using CoffeeConnect.DTO;
+using CoffeeConnect.DTO.Adjunto;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 
@@ -12,5 +13,6 @@ namespace CoffeeConnect.Interface.Service
         ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(ConsultaOrdenProcesoPorIdRequestDTO request);
         int AnularOrdenProceso(AnularOrdenProcesoRequestDTO request);
         ConsultarImpresionOrdenProcesoResponseDTO ConsultarImpresionOrdenProceso(ConsultarImpresionOrdenProcesoRequestDTO request);
+        ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);
     }
 }
