@@ -141,9 +141,14 @@ namespace CoffeeConnect.Service
                         GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
                         item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
                         item.FechaLote = x.FechaRegistro;
+                        item.UnidadMedidaIdPesado = x.UnidadMedidaId;
+                        item.ProductoId = x.ProductoId;
+                        item.SubProductoId = x.SubProductoId;
                         item.NumeroLote = x.NumeroLote;
                         item.KilosNetosPesado = x.TotalKilosNetosPesado;
                         item.KilosBrutosPesado = x.TotalKilosBrutosPesado;
+                        item.RendimientoPorcentaje = x.RendimientoPorcentaje;
+                        item.HumedadPorcentaje = x.HumedadPorcentajeAnalisisFisico;
                         listaDetalle.Add(item);
                     });
 
