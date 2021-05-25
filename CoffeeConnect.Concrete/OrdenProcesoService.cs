@@ -163,5 +163,44 @@ namespace CoffeeConnect.Service
             response.listDetalleOrdenProceso = _IOrdenProcesoRepository.ConsultarOrdenProcesoDetallePorId(request.OrdenProcesoId);
             return response;
         }
+
+        private String getRutaFisica(string pathFile)
+        {
+            return _fileServerSettings.Value.RutaPrincipal + pathFile;
+        }
+
+        public ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request)
+        {
+            try
+            {
+                string rutaReal = Path.Combine(getRutaFisica(request.PathFile));
+
+                if (File.Exists(rutaReal))
+                {
+                    byte[] archivoBytes = File.ReadAllBytes(rutaReal);
+                    return new ResponseDescargarArchivoDTO()
+                    {
+                        archivoBytes = archivoBytes,
+                        errores = new Dictionary<string, string>(),
+                        ficheroVisual = request.ArchivoVisual
+                    };
+                }
+                else
+                {
+                    var resp = new ResponseDescargarArchivoDTO()
+                    {
+                        archivoBytes = null,
+                        errores = new Dictionary<string, string>(),
+                        ficheroVisual = ""
+                    };
+                    resp.errores.Add("Error", "El Archivo solicitado no existe");
+                    return resp;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
