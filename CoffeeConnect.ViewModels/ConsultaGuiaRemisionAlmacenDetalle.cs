@@ -10,8 +10,7 @@ namespace CoffeeConnect.DTO
 		public int GuiaRemisionAlmacenDetalleId { get; set; }
 		public int GuiaRemisionAlmacenId { get; set; }
 		public int LoteId { get; set; }
-		public String NumeroLote { get; set; }
-		public String NumeroNotaIngreso { get; set; }
+		public String NumeroLote { get; set; }	
 		public String ProductoId { get; set; }
 		public String Producto { get; set; }
 		public String SubProductoId { get; set; }
@@ -23,9 +22,9 @@ namespace CoffeeConnect.DTO
 		public Decimal RendimientoPorcentaje { get; set; }
 		public Decimal HumedadPorcentaje { get; set; }
 
-		public String AgenciaCertificadora { get; set; }
+		public DateTime FechaLote { get; set; }
 
-		public String Certificacion { get; set; }
+	
 
 
 		#endregion

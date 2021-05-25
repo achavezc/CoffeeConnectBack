@@ -47,11 +47,13 @@ namespace CoffeeConnect.Service
                 //certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
 
                 guiaRemisionListaDetalle.NumeroLote = z.NumeroLote;
-                guiaRemisionListaDetalle.NotaIngreso = z.NumeroNotaIngreso;
+                guiaRemisionListaDetalle.FechaLote = z.FechaLote;
                 guiaRemisionListaDetalle.TipoProducto = z.Producto;
                 guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida;
                 guiaRemisionListaDetalle.Cantidad = z.CantidadPesado;
                 guiaRemisionListaDetalle.PesoBruto = z.KilosBrutosPesado;
+                guiaRemisionListaDetalle.HumedadPorcentaje = z.HumedadPorcentaje;
+                guiaRemisionListaDetalle.RendimientoPorcentaje = z.RendimientoPorcentaje;
 
                 generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
 

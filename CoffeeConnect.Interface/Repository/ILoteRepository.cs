@@ -12,7 +12,7 @@ namespace CoffeeConnect.Interface.Repository
         int InsertarLoteDetalle(List<LoteDetalle> request);
 
         LoteDetalle ConsultarLoteDetallePorId(int loteDetalleId);
-
+        int ActualizarEstadoPorIds(List<TablaIdsTipo> ids, DateTime fecha, string usuario, string estadoId);
         int EliminarLoteDetalle(List<TablaIdsTipo> request);
         IEnumerable<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request);
 

@@ -159,6 +159,25 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+
+        public int ActualizarEstadoPorIds(List<TablaIdsTipo> ids, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@TablaIdsTipo", ids.ToDataTable().AsTableValuedParameter());
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspLoteActualizarEstadoPorIds", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
         public IEnumerable<LoteDetalleConsulta> ConsultarBandejaLoteDetallePorId(int loteId)
         {
             var parameters = new DynamicParameters();

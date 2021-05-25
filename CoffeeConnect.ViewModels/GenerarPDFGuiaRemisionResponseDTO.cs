@@ -42,11 +42,16 @@ namespace CoffeeConnect.DTO
     {
         public int correlativo { get; set; }
         public string NumeroLote { get; set; }
-        public string NotaIngreso { get; set; }
+        public DateTime FechaLote { get; set; }
         public string TipoProducto { get; set; }
         public string UnidadMedida { get; set; }
         public decimal Cantidad { get; set; }
         public decimal PesoBruto { get; set; }
+
+        public decimal HumedadPorcentaje { get; set; }
+
+        public decimal RendimientoPorcentaje { get; set; }
+
     }
 
     public class GuiaRemisionDetalle
