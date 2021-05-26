@@ -156,6 +156,8 @@ namespace CoffeeConnect.Service
                         item.KilosBrutosPesado = x.TotalKilosBrutosPesado;
                         item.RendimientoPorcentaje = x.RendimientoPorcentaje;
                         item.HumedadPorcentaje = x.HumedadPorcentajeAnalisisFisico;
+                        item.TipoProduccionId = x.TipoProduccionId;
+                        item.TipoCertificacionId = x.TipoCertificacionId;
                         listaDetalle.Add(item);
                     });
 
@@ -302,6 +304,8 @@ namespace CoffeeConnect.Service
                         item.KilosBrutosPesado = x.TotalKilosBrutosPesado;
                         item.RendimientoPorcentaje = x.RendimientoPorcentaje;
                         item.HumedadPorcentaje = x.HumedadPorcentajeAnalisisFisico;
+                        item.TipoProduccionId = x.TipoProduccionId;
+                        item.TipoCertificacionId = x.TipoCertificacionId;
                         listaDetalle.Add(item);
                     });
 

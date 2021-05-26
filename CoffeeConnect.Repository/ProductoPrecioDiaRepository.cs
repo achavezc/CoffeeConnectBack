@@ -56,6 +56,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();            
             parameters.Add("@EmpresaId", productoPrecioDia.EmpresaId);
             parameters.Add("@ProductoId", productoPrecioDia.ProductoId);
+            parameters.Add("@MonedaId", productoPrecioDia.MonedaId);
             parameters.Add("@SubProductoId", productoPrecioDia.SubProductoId);
             parameters.Add("@Fecha", productoPrecioDia.Fecha);
             parameters.Add("@PrecioDia", productoPrecioDia.PrecioDia);
@@ -83,6 +84,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", productoPrecioDia.EmpresaId);
             parameters.Add("@ProductoId", productoPrecioDia.ProductoId);
             parameters.Add("@SubProductoId", productoPrecioDia.SubProductoId);
+            parameters.Add("@MonedaId", productoPrecioDia.MonedaId);
             parameters.Add("@Fecha", productoPrecioDia.Fecha);
             parameters.Add("@PrecioDia", productoPrecioDia.PrecioDia);
             parameters.Add("@FechaUltimaActualizacion", productoPrecioDia.FechaUltimaActualizacion);

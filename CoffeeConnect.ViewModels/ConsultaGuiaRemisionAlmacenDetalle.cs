@@ -19,6 +19,19 @@ namespace CoffeeConnect.DTO
 		public String UnidadMedida { get; set; }
 		public Decimal CantidadPesado { get; set; }
 		public Decimal KilosBrutosPesado { get; set; }
+
+		public Decimal KilosNetosPesado { get; set; }
+
+		public String TipoProduccionId { get; set; }
+
+		public String TipoCertificacionId { get; set; }
+
+		public String TipoProduccion { get; set; }
+
+		public String TipoCertificacion { get; set; }
+
+
+
 		public Decimal RendimientoPorcentaje { get; set; }
 		public Decimal HumedadPorcentaje { get; set; }
 

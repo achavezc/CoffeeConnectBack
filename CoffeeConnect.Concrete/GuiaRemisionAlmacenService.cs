@@ -2,6 +2,7 @@
 using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,11 +50,13 @@ namespace CoffeeConnect.Service
                 guiaRemisionListaDetalle.NumeroLote = z.NumeroLote;
                 guiaRemisionListaDetalle.FechaLote = z.FechaLote;
                 guiaRemisionListaDetalle.TipoProducto = z.Producto;
-                guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida;
+                guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida + " Plastico";
                 guiaRemisionListaDetalle.Cantidad = z.CantidadPesado;
-                guiaRemisionListaDetalle.PesoBruto = z.KilosBrutosPesado;
+                guiaRemisionListaDetalle.PesoNeto = z.KilosNetosPesado;
                 guiaRemisionListaDetalle.HumedadPorcentaje = z.HumedadPorcentaje;
                 guiaRemisionListaDetalle.RendimientoPorcentaje = z.RendimientoPorcentaje;
+                guiaRemisionListaDetalle.TipoCertificacion = z.TipoCertificacion;
+                guiaRemisionListaDetalle.TipoProduccion = z.TipoProduccion;
 
                 generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
 
@@ -75,7 +78,9 @@ namespace CoffeeConnect.Service
             CabeceraGuiaRemision cabeceraGuiaRemision = new CabeceraGuiaRemision();
             cabeceraGuiaRemision.RazonSocial = consultaImpresionGuiaRemision.RazonSocialEmpresa;
             cabeceraGuiaRemision.Direccion = consultaImpresionGuiaRemision.DireccionPartida;
-            cabeceraGuiaRemision.Fecha = consultaImpresionGuiaRemision.FechaRegistro;
+            cabeceraGuiaRemision.FechaEmision = DateTime.Now;
+            cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
+
             cabeceraGuiaRemision.Ruc = consultaImpresionGuiaRemision.RucEmpresa;
             cabeceraGuiaRemision.Almacen = consultaImpresionGuiaRemision.Almacen;
             cabeceraGuiaRemision.Destinatario = consultaImpresionGuiaRemision.Destinatario;
@@ -96,6 +101,9 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.PorcentajeHumedad = consultaImpresionGuiaRemision.HumedadPorcentajeAnalisisFisico;
             guiaRemisionDetalle.CantidadTotal = consultaImpresionGuiaRemision.CantidadTotal;
             guiaRemisionDetalle.TotalKGBrutos = consultaImpresionGuiaRemision.PesoKilosBrutos;
+            guiaRemisionDetalle.ModalidadTransporte = "TRANSPORTE PRIVADO";
+            guiaRemisionDetalle.TipoTraslado = "TRANSPORTE PRIVADO";
+
 
             guiaRemisionDetalle.MotivoTraslado = consultaImpresionGuiaRemision.Motivo;
             guiaRemisionDetalle.MotivoTrasladoId = consultaImpresionGuiaRemision.MotivoTrasladoId;
