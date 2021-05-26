@@ -15,5 +15,7 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaFincaMapaPorId> ConsultarFincaMapaPorFincaId(int fincaId);
 
         ConsultaFincaMapaPorId ConsultarFincaMapaPorId(int fincaMapaId);
+
+        int Eliminar(int fincaMapaId);
     }
 }

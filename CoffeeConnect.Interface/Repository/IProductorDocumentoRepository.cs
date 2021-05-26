@@ -12,6 +12,10 @@ namespace CoffeeConnect.Interface.Repository
 
         int Actualizar(ProductorDocumento ProductorDocumento);
 
+        int Eliminar(int socioDocumentoId);
+
         IEnumerable<ConsultarProductorDocumentoPorProductorId> ConsultarProductorDocumentoPorProductorId(int ProductorId);
+
+        ProductorDocumento ConsultarProductorDocumentoPorId(int productorDocumentoId);
     }
 }

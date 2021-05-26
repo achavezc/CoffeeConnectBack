@@ -15,5 +15,7 @@ namespace CoffeeConnect.Interface.Service
 
         ConsultaFincaMapaPorId ConsultarFincaMapaPorId(ConsultaFincaMapaPorIdRequestDTO request);
         ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);
+
+        int EliminarFincaMapa(RegistrarActualizarFincaMapaRequestDTO request);
     }
 }

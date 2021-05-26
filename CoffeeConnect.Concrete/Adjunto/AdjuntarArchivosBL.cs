@@ -108,23 +108,23 @@ namespace CoffeeConnect.Service.Adjunto
         {
             var filtro = request;
             String error = "";
-            foreach (var item in request.Archivos)
+            try
             {
-                try
-                {
-                    //String nombreInterno = getNombreInterno(request.SociedadPropietaria, item);
-                    String rutaReal = Path.Combine(getRutaFisica(request.pathFile), item);
+                //String nombreInterno = getNombreInterno(request.SociedadPropietaria, item);
+                String rutaReal = _fileServerSettings.Value.RutaPrincipal + request.pathFile;
 
+                if (File.Exists(rutaReal))
+                {
                     System.IO.File.Delete(rutaReal);
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             return new ResponseEliminarAdjuntarArchivoDTO()
             {
-                Archivos = request.Archivos,
+                //Archivos = request.Archivos,
                 error = error
             };
         }

@@ -210,5 +210,27 @@ namespace CoffeeConnect.Service
             return _IFincaDocumentoAdjuntoRepository.ConsultarFincaDocumentoAdjuntoPorId(request.FincaDocumentoAdjuntoId);
         }
 
+        public int EliminarFincaDocumentoAdjunto(RegistrarActualizarFincaDocumentoAdjuntoRequestDTO request)
+        {
+            ConsultaFincaDocumentoAdjuntoPorId fincaFincaDocumentoAdjunto = _IFincaDocumentoAdjuntoRepository.ConsultarFincaDocumentoAdjuntoPorId(request.FincaDocumentoAdjuntoId);
+
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+
+            int affected = _IFincaDocumentoAdjuntoRepository.Eliminar(request.FincaDocumentoAdjuntoId);
+
+            EliminarArchivoAdjuntoDTO adjunto = new EliminarArchivoAdjuntoDTO();
+            adjunto.pathFile = fincaFincaDocumentoAdjunto.Path;
+
+            if(!string.IsNullOrEmpty(fincaFincaDocumentoAdjunto.Path))
+            {
+                AdjuntoBl.EliminarArchivo(adjunto);
+            }
+            
+
+
+
+            return affected;
+        }
+
     }
 }

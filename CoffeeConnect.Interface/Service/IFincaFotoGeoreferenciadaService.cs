@@ -15,5 +15,8 @@ namespace CoffeeConnect.Interface.Service
 
         ConsultaFincaFotoGeoreferenciadaPorId ConsultarFincaFotoGeoreferenciadaPorId(ConsultaFincaFotoGeoreferenciadaPorIdRequestDTO request);
         ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);
+
+        int EliminarFincaFotoGeoreferenciada(RegistrarActualizarFincaFotoGeoreferenciadaRequestDTO request);
+
     }
 }

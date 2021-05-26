@@ -150,5 +150,27 @@ namespace CoffeeConnect.Service
         {
             return _fileServerSettings.Value.RutaPrincipal + pathFile;
         }
+
+
+        public int EliminarProductorDocumento(RegistrarProductorDocumentoRequestDTO request)
+        {
+            ProductorDocumento productorDocumento = _ProductorDocumentoRepository.ConsultarProductorDocumentoPorId(request.ProductorDocumentoId);
+
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+
+            int affected = _ProductorDocumentoRepository.Eliminar(request.ProductorDocumentoId);
+
+            EliminarArchivoAdjuntoDTO adjunto = new EliminarArchivoAdjuntoDTO();
+            adjunto.pathFile = productorDocumento.Path;
+
+            if (!string.IsNullOrEmpty(adjunto.pathFile))
+            {
+                AdjuntoBl.EliminarArchivo(adjunto);
+            }
+
+
+
+            return affected;
+        }
     }
 }

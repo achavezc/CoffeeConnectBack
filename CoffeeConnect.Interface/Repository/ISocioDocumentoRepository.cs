@@ -13,5 +13,9 @@ namespace CoffeeConnect.Interface.Repository
         int Actualizar(SocioDocumento socioDocumento);
 
         IEnumerable<ConsultarSocioDocumentoPorSocioId> ConsultarSocioDocumentoPorSocioId(int socioId);
+
+        int Eliminar(int socioDocumentoId);
+
+        SocioDocumento ConsultarSocioDocumentoPorId(int socioDocumentoId);
     }
 }
