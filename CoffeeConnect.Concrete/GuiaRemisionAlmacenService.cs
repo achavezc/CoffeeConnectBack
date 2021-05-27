@@ -57,7 +57,8 @@ namespace CoffeeConnect.Service
                 guiaRemisionListaDetalle.RendimientoPorcentaje = z.RendimientoPorcentaje;
                 guiaRemisionListaDetalle.TipoCertificacion = z.TipoCertificacion;
                 guiaRemisionListaDetalle.TipoProduccion = z.TipoProduccion;
-
+                guiaRemisionListaDetalle.Producto = z.Producto;
+                guiaRemisionListaDetalle.SubProducto = z.SubProducto;
                 generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
 
             });

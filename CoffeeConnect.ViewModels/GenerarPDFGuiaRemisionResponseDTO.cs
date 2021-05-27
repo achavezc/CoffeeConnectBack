@@ -55,7 +55,8 @@ namespace CoffeeConnect.DTO
         public decimal HumedadPorcentaje { get; set; }
 
         public decimal RendimientoPorcentaje { get; set; }
-
+        public string Producto { get; set; }
+        public string SubProducto { get; set; }
     }
 
     public class GuiaRemisionDetalle
