@@ -987,7 +987,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!PesoNeto.Value, "dsGRListaDetalle")</Value>
+                <Value>=Sum(Fields!TotalKGBrutos.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1510,7 +1510,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!NumeroLote.Value, "dsGRListaDetalle") &amp; "	" &amp; "	  " &amp; Sum(Fields!Cantidad.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!UnidadMedida.Value, "dsGRListaDetalle") &amp; "	   " &amp; First(Fields!Producto.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!SubProducto.Value, "dsGRListaDetalle") &amp; " " &amp; First(Fields!TipoProduccion.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!TipoCertificacion.Value, "dsGRListaDetalle")</Value>
+                <Value>="	  " &amp; Sum(Fields!Cantidad.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!UnidadMedida.Value, "dsGRListaDetalle") &amp; "	   " &amp; First(Fields!Producto.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!SubProducto.Value, "dsGRListaDetalle") &amp; " " &amp; First(Fields!TipoProduccion.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!TipoCertificacion.Value, "dsGRListaDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1546,7 +1546,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!TotalKGBrutos.Value, "dsGRDetalle")</Value>
+                <Value>=Sum(Fields!PesoNeto.Value, "dsGRListaDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1569,6 +1569,40 @@
             <Style>Solid</Style>
           </Border>
           <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox50">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Observaciones.Value, "dsGRDetalle")</Value>
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox50</rd:DefaultName>
+        <Top>6.14396in</Top>
+        <Left>1.35896in</Left>
+        <Height>0.53125in</Height>
+        <Width>4.01042in</Width>
+        <ZIndex>44</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
