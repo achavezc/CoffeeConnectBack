@@ -54,6 +54,7 @@ namespace CoffeeConnect.Service
             List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
             int affected = 0;
 
+            List<TablaIdsTipo> loteIdActualizar = new List<TablaIdsTipo>();
 
             notaSalidaAlmacen.EmpresaId = request.EmpresaId;
             notaSalidaAlmacen.AlmacenId = request.AlmacenId;
@@ -83,9 +84,6 @@ namespace CoffeeConnect.Service
 
             notaSalidaAlmacen.NotaSalidaAlmacenId = _INotaSalidaAlmacenRepository.Insertar(notaSalidaAlmacen);
 
-
-
-
             if (notaSalidaAlmacen.NotaSalidaAlmacenId != 0)
             {
                 request.ListNotaSalidaAlmacenDetalle.ForEach(x =>
@@ -95,10 +93,18 @@ namespace CoffeeConnect.Service
                     obj.NotaSalidaAlmacenId = notaSalidaAlmacen.NotaSalidaAlmacenId;
 
                     lstnotaSalidaAlmacen.Add(obj);
+
+
+                    TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
+                    tablaLoteIdsTipo.Id = x.LoteId;
+                    loteIdActualizar.Add(tablaLoteIdsTipo);
+
                 });
 
                 affected = _INotaSalidaAlmacenRepository.ActualizarNotaSalidaAlmacenDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenId);
 
+
+                _LoteRepository.ActualizarEstadoPorIds(loteIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacen, LoteEstados.GeneradoNotaSalida);
             }
 
 
@@ -145,10 +151,13 @@ namespace CoffeeConnect.Service
                         item.ProductoId = x.ProductoId;
                         item.SubProductoId = x.SubProductoId;
                         item.NumeroLote = x.NumeroLote;
+                        item.CantidadPesado = x.Cantidad;
                         item.KilosNetosPesado = x.TotalKilosNetosPesado;
                         item.KilosBrutosPesado = x.TotalKilosBrutosPesado;
                         item.RendimientoPorcentaje = x.RendimientoPorcentaje;
                         item.HumedadPorcentaje = x.HumedadPorcentajeAnalisisFisico;
+                        item.TipoProduccionId = x.TipoProduccionId;
+                        item.TipoCertificacionId = x.TipoCertificacionId;
                         listaDetalle.Add(item);
                     });
 
@@ -170,6 +179,8 @@ namespace CoffeeConnect.Service
             NotaSalidaAlmacen notaSalidaAlmacen = new NotaSalidaAlmacen();
             List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
             int affected = 0;
+            List<TablaIdsTipo> loteIdActualizar = new List<TablaIdsTipo>();
+
 
             notaSalidaAlmacen.NotaSalidaAlmacenId = request.NotaSalidaAlmacenId;
             notaSalidaAlmacen.EmpresaId = request.EmpresaId;
@@ -200,8 +211,20 @@ namespace CoffeeConnect.Service
 
             affected = _INotaSalidaAlmacenRepository.Actualizar(notaSalidaAlmacen);
 
+            
             if (affected != 0)
             {
+                List<NotaSalidaAlmacenDetalle> notaSalidaAlmacenDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenDetallePorId(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
+
+                notaSalidaAlmacenDetalle.ForEach(x =>
+                {
+                    TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
+                    tablaLoteIdsTipo.Id = x.LoteId;
+                    loteIdActualizar.Add(tablaLoteIdsTipo);
+                });
+
+                _LoteRepository.ActualizarEstadoPorIds(loteIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacen, LoteEstados.Analizado);
+
                 request.ListNotaSalidaAlmacenDetalle.ForEach(x =>
                 {
                     NotaSalidaAlmacenDetalle obj = new NotaSalidaAlmacenDetalle();
@@ -272,9 +295,17 @@ namespace CoffeeConnect.Service
                         GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
                         item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
                         item.FechaLote = x.FechaRegistro;
+                        item.UnidadMedidaIdPesado = x.UnidadMedidaId;
+                        item.ProductoId = x.ProductoId;
+                        item.SubProductoId = x.SubProductoId;
                         item.NumeroLote = x.NumeroLote;
+                        item.CantidadPesado = x.Cantidad;
                         item.KilosNetosPesado = x.TotalKilosNetosPesado;
                         item.KilosBrutosPesado = x.TotalKilosBrutosPesado;
+                        item.RendimientoPorcentaje = x.RendimientoPorcentaje;
+                        item.HumedadPorcentaje = x.HumedadPorcentajeAnalisisFisico;
+                        item.TipoProduccionId = x.TipoProduccionId;
+                        item.TipoCertificacionId = x.TipoCertificacionId;
                         listaDetalle.Add(item);
                     });
 
@@ -373,7 +404,7 @@ namespace CoffeeConnect.Service
 
             notaSalidaAlmacenDetalle.ForEach(notaSalidaDetalle =>
             {
-                _LoteRepository.ActualizarEstado(notaSalidaDetalle.LoteId, DateTime.Now, request.Usuario, LoteEstados.Ingresado);
+                _LoteRepository.ActualizarEstado(notaSalidaDetalle.LoteId, DateTime.Now, request.Usuario, LoteEstados.Analizado);
             });
 
             return affected;
@@ -385,17 +416,9 @@ namespace CoffeeConnect.Service
 
             if (notaSalidaAlmacenPorIdBE != null)
             {
-                notaSalidaAlmacenPorIdBE.AnalisisFisicoColorDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisFisicoColorDetallePorId(request.NotaSalidaAlmacenId);
-                notaSalidaAlmacenPorIdBE.AnalisisFisicoDefectoPrimarioDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisFisicoDefectoPrimarioDetallePorId(request.NotaSalidaAlmacenId);
-                notaSalidaAlmacenPorIdBE.AnalisisFisicoDefectoSecundarioDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisFisicoDefectoSecundarioDetallePorId(request.NotaSalidaAlmacenId);
-                notaSalidaAlmacenPorIdBE.AnalisisFisicoOlorDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisFisicoOlorDetallePorId(request.NotaSalidaAlmacenId);
-                notaSalidaAlmacenPorIdBE.AnalisisSensorialAtributoDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisSensorialAtributoDetallePorId(request.NotaSalidaAlmacenId);
-                notaSalidaAlmacenPorIdBE.AnalisisSensorialDefectoDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenAnalisisSensorialDefectoDetallePorId(request.NotaSalidaAlmacenId);
+                
                 notaSalidaAlmacenPorIdBE.DetalleLotes = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(request.NotaSalidaAlmacenId);
-                //notaSalidaAlmacenPorIdBE.Detalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenDetallePorId(request.NotaSalidaAlmacenId).ToList();
-                notaSalidaAlmacenPorIdBE.RegistroTostadoIndicadorDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenRegistroTostadoIndicadorDetallePorId(request.NotaSalidaAlmacenId).ToList();
-
-
+              
 
             }
 

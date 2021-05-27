@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
@@ -69,6 +70,42 @@ namespace CoffeeConnect.Repository
             }
 
             return result;
+        }
+
+
+        public int Eliminar(int socioDocumentoId)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@SocioDocumentoId", socioDocumentoId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspSocioDocumentoEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
+
+
+        public SocioDocumento ConsultarSocioDocumentoPorId(int socioDocumentoId)
+        {
+            SocioDocumento itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@SocioDocumentoId", socioDocumentoId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<SocioDocumento>("uspSocioDocumentoConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
         }
     }
 }

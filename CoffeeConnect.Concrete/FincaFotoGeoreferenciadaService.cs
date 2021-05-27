@@ -211,5 +211,27 @@ namespace CoffeeConnect.Service
             return _IFincaFotoGeoreferenciadaRepository.ConsultarFincaFotoGeoreferenciadaPorId(request.FincaFotoGeoreferenciadaId);
         }
 
+        public int EliminarFincaFotoGeoreferenciada(RegistrarActualizarFincaFotoGeoreferenciadaRequestDTO request)
+        {
+            ConsultaFincaFotoGeoreferenciadaPorId fincaFotoGeoreferenciada = _IFincaFotoGeoreferenciadaRepository.ConsultarFincaFotoGeoreferenciadaPorId(request.FincaFotoGeoreferenciadaId);
+
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+
+            int affected = _IFincaFotoGeoreferenciadaRepository.Eliminar(request.FincaFotoGeoreferenciadaId);
+
+            EliminarArchivoAdjuntoDTO adjunto = new EliminarArchivoAdjuntoDTO();
+            adjunto.pathFile = fincaFotoGeoreferenciada.Path;
+
+            if (!string.IsNullOrEmpty(adjunto.pathFile))
+            {
+                AdjuntoBl.EliminarArchivo(adjunto);
+            }
+
+
+
+            return affected;
+        }
+
+
     }
 }

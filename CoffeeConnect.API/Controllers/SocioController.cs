@@ -2,6 +2,7 @@
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 
 namespace Integracion.Deuda.Controller
@@ -145,5 +146,9 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
+
+
+        
+
     }
 }

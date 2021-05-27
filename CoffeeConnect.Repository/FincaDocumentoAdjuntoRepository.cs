@@ -91,5 +91,21 @@ namespace CoffeeConnect.Repository
 
             return itemBE;
         }
+
+
+        public int Eliminar(int fincaDocumentoAdjuntoId)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@FincaDocumentoAdjuntoId", fincaDocumentoAdjuntoId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspFincaDocumentoAdjuntoEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
     }
 }

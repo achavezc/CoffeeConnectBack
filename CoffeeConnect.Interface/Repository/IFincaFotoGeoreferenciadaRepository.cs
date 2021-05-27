@@ -15,5 +15,7 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaFincaFotoGeoreferenciadaPorId> ConsultarFincaFotoGeoreferenciadaPorFincaId(int fincaId);
 
         ConsultaFincaFotoGeoreferenciadaPorId ConsultarFincaFotoGeoreferenciadaPorId(int FincaFotoGeoreferenciadaId);
+
+        int Eliminar(int fincaFotoGeoreferenciadaId);
     }
 }

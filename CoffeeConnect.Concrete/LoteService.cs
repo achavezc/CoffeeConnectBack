@@ -165,7 +165,7 @@ namespace CoffeeConnect.Service
 
         public int ActualizarLote(ActualizarLoteRequestDTO request)
         {
-            int affected = _ILoteRepository.Actualizar(request.LoteId, DateTime.Now, request.Usuario, request.AlmacenId, request.Cantidad, request.TotalKilosNetosPesado, request.TotalKilosBrutosPesado);
+            int affected = _ILoteRepository.Actualizar(request.LoteId, DateTime.Now, request.Usuario, request.AlmacenId, request.Cantidad, request.TotalKilosNetosPesado, request.TotalKilosBrutosPesado, request.ContratoId);
 
             if (request.NotasIngresoAlmacenId != null && request.NotasIngresoAlmacenId.Count > 0)
             {

@@ -13,5 +13,8 @@ namespace CoffeeConnect.Interface.Service
         int ActualizarProductorDocumento(RegistrarProductorDocumentoRequestDTO request, IFormFile file);
         IEnumerable<ConsultarProductorDocumentoPorProductorId> ConsultarProductorDocumentoPorProductorId(ConsultarProductorDocumentoPorProductorIdRequestDTO request);
         ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);
+
+        int EliminarProductorDocumento(RegistrarProductorDocumentoRequestDTO request);
+
     }
 }

@@ -27,6 +27,11 @@ namespace CoffeeConnect.Models
 		public Decimal HumedadPorcentaje { get; set; }
 
 		public DateTime FechaLote { get; set; }
+
+		public String TipoProduccionId { get; set; }
+
+		public String TipoCertificacionId { get; set; }
+
 		#endregion
 	}
 }

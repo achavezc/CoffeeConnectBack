@@ -25,7 +25,8 @@ namespace CoffeeConnect.DTO
         public string RazonSocial { get; set; }
         public string NumeroGuiaRemision { get; set; }
         public string Direccion { get; set; }
-        public DateTime Fecha { get; set; }
+        public DateTime FechaEmision { get; set; }
+        public DateTime FechaEntregaTransportista { get; set; }
         public string Ruc { get; set; }
         public string Almacen { get; set; }
         public string Destinatario { get; set; }
@@ -42,11 +43,19 @@ namespace CoffeeConnect.DTO
     {
         public int correlativo { get; set; }
         public string NumeroLote { get; set; }
-        public string NotaIngreso { get; set; }
+        public DateTime FechaLote { get; set; }
         public string TipoProducto { get; set; }
+        public string TipoCertificacion { get; set; }
+        public string TipoProduccion { get; set; }
+
         public string UnidadMedida { get; set; }
         public decimal Cantidad { get; set; }
-        public decimal PesoBruto { get; set; }
+        public decimal PesoNeto { get; set; }
+
+        public decimal HumedadPorcentaje { get; set; }
+
+        public decimal RendimientoPorcentaje { get; set; }
+
     }
 
     public class GuiaRemisionDetalle
@@ -58,6 +67,12 @@ namespace CoffeeConnect.DTO
         public decimal TotalKGBrutos { get; set; }
         public string MotivoTraslado { get; set; }
         public string MotivoTrasladoId { get; set; }
+
+        public string ModalidadTransporte { get; set; }
+
+        public string TipoTraslado { get; set; }
+
+
         public string MotivoDetalleTraslado { get; set; }
         public string PropietarioTransportista { get; set; }
         public string TransportistaDomicilio { get; set; }

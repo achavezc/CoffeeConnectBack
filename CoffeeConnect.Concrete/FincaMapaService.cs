@@ -211,5 +211,27 @@ namespace CoffeeConnect.Service
             return _IFincaMapaRepository.ConsultarFincaMapaPorId(request.FincaMapaId);
         }
 
+
+        public int EliminarFincaMapa(RegistrarActualizarFincaMapaRequestDTO request)
+        {
+            ConsultaFincaMapaPorId fincaMapa = _IFincaMapaRepository.ConsultarFincaMapaPorId(request.FincaMapaId);
+
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+
+            int affected = _IFincaMapaRepository.Eliminar(request.FincaMapaId);
+
+            EliminarArchivoAdjuntoDTO adjunto = new EliminarArchivoAdjuntoDTO();
+            adjunto.pathFile = fincaMapa.Path;
+
+            if (!string.IsNullOrEmpty(adjunto.pathFile))
+            {
+                AdjuntoBl.EliminarArchivo(adjunto);
+            }
+
+
+
+            return affected;
+        }
+
     }
 }

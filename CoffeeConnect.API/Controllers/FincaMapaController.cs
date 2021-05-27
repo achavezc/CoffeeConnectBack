@@ -227,5 +227,35 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
+
+
+        [Route("Eliminar")]
+        [HttpPost]
+        public IActionResult Eliminar(RegistrarActualizarFincaMapaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
+
+            RegistrarProductorDocumentoResponseDTO response = new RegistrarProductorDocumentoResponseDTO();
+            try
+            {
+
+                response.Result.Data = _fincaMapaService.EliminarFincaMapa(request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
     }
 }

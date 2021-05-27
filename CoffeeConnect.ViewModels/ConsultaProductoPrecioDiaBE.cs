@@ -23,6 +23,11 @@ namespace CoffeeConnect.Models
 		public string ProductoId
 		{ get; set; }
 
+		public string MonedaId
+		{ get; set; }
+		
+
+
 		public string Producto
 		{ get; set; }
 

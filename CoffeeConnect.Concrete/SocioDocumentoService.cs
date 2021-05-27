@@ -67,6 +67,12 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
+
+
+        
+
+
+
         public IEnumerable<ConsultarSocioDocumentoPorSocioId> ConsultarSocioDocumentoPorSocioId(ConsultarSocioDocumentoPorSocioIdRequestDTO request)
         {
             return _SocioDocumentoRepository.ConsultarSocioDocumentoPorSocioId(request.SocioId);
@@ -149,6 +155,27 @@ namespace CoffeeConnect.Service
         private String getRutaFisica(string pathFile)
         {
             return _fileServerSettings.Value.RutaPrincipal + pathFile;
+        }
+
+        public int EliminarSocioDocumento(RegistrarSocioDocumentoRequestDTO request)
+        {
+            SocioDocumento socioDocumento = _SocioDocumentoRepository.ConsultarSocioDocumentoPorId(request.SocioDocumentoId);
+
+            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+
+            int affected = _SocioDocumentoRepository.Eliminar(request.SocioDocumentoId);
+
+            EliminarArchivoAdjuntoDTO adjunto = new EliminarArchivoAdjuntoDTO();
+            adjunto.pathFile = socioDocumento.Path;
+
+            if (!string.IsNullOrEmpty(adjunto.pathFile))
+            {
+                AdjuntoBl.EliminarArchivo(adjunto);
+            }
+
+
+
+            return affected;
         }
     }
 }

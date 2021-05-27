@@ -12,5 +12,7 @@ namespace CoffeeConnect.Interface.Service
         IEnumerable<ConsultaFincaDocumentoAdjuntoPorId> ConsultarFincaDocumentoAdjuntoPorFincaId(ConsultaFincaDocumentoAdjuntoPorFincaIdRequestDTO request);
         ConsultaFincaDocumentoAdjuntoPorId ConsultarFincaDocumentoAdjuntoPorId(ConsultaFincaDocumentoAdjuntoPorIdRequestDTO request);
         ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);
+
+        int EliminarFincaDocumentoAdjunto(RegistrarActualizarFincaDocumentoAdjuntoRequestDTO request);
     }
 }
