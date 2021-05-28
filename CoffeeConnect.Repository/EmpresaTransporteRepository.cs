@@ -21,6 +21,9 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("EmpresaId", empresaId);
+            parameters.Add("Ruc", empresaId);
+            parameters.Add("RazonSocial", empresaId);
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

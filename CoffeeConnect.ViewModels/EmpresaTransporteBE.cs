@@ -24,9 +24,12 @@ namespace CoffeeConnect.DTO
         public string Departamento { get; set; }
         public string Provincia { get; set; }
         public string Distrito { get; set; }
+        public string EstadoId
+        { get; set; }
 
-        public bool Activo { get; set; }
-       
+        public string Estado
+        { get; set; }
+
     }
 
 }
