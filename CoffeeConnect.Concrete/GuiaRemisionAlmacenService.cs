@@ -109,14 +109,17 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TipoTraslado = "TRANSPORTE PRIVADO";
 
 
+
+
             guiaRemisionDetalle.MotivoTraslado = consultaImpresionGuiaRemision.Motivo.Trim();
             guiaRemisionDetalle.MotivoTrasladoId = consultaImpresionGuiaRemision.MotivoTrasladoId;
             guiaRemisionDetalle.MotivoDetalleTraslado = consultaImpresionGuiaRemision.MotivoTrasladoReferencia.Trim();
-            guiaRemisionDetalle.PropietarioTransportista = consultaImpresionGuiaRemision.Transportista.Trim();
+            guiaRemisionDetalle.PropietarioTransportista = consultaImpresionGuiaRemision.Propietario.Trim();
             guiaRemisionDetalle.TransportistaDomicilio = consultaImpresionGuiaRemision.DireccionTransportista.Trim();
             guiaRemisionDetalle.TransportistaCodigoVehicular = consultaImpresionGuiaRemision.ConfiguracionVehicular.Trim();
             guiaRemisionDetalle.TransportistaMarca = consultaImpresionGuiaRemision.MarcaTractor.Trim();
             guiaRemisionDetalle.TransportistaRuc = consultaImpresionGuiaRemision.RucTransportista.Trim();
+            guiaRemisionDetalle.TransportistaRazonSocial = consultaImpresionGuiaRemision.Transportista.Trim();
             guiaRemisionDetalle.TransportistaPlaca = consultaImpresionGuiaRemision.PlacaTractor.Trim();
             guiaRemisionDetalle.TransportistaConductor = consultaImpresionGuiaRemision.Conductor.Trim();
 

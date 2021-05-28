@@ -17,6 +17,9 @@ namespace CoffeeConnect.Models
 		public int EmpresaId
 		{ get; set; }
 
+		public string Moneda
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the ProductoId value.
 		/// </summary>

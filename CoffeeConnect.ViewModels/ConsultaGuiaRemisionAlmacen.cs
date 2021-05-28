@@ -49,6 +49,8 @@ namespace CoffeeConnect.DTO
 		public String DireccionTransportista { get; set; }
 		public String RucTransportista { get; set; }
 		public String Conductor { get; set; }
+
+		public String Propietario { get; set; }
 		public String LicenciaConductor { get; set; }
 		public String TransporteId { get; set; }
 		public String MarcaCarretaId { get; set; }

@@ -77,6 +77,12 @@ namespace CoffeeConnect.DTO
         public string MotivoDetalleTraslado { get; set; }
         public string PropietarioTransportista { get; set; }
         public string TransportistaDomicilio { get; set; }
+
+        public string TransportistaRazonSocial { get; set; }
+
+
+        
+
         public string TransportistaCodigoVehicular { get; set; }
         public string TransportistaMarca { get; set; }
         public string TransportistaRuc { get; set; }
