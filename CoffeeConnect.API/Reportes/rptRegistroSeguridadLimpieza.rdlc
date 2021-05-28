@@ -3840,7 +3840,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!NumeroGuiaRemision.Value, "dsGRCabecera")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -3910,7 +3910,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!PropietarioTransportista.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4086,7 +4086,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaConductor.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4122,7 +4122,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaBrevete.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4194,7 +4194,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaDni.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4518,7 +4518,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaMarca.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4554,7 +4554,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaColor.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4590,7 +4590,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaPlaca.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4626,7 +4626,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaConstancia.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4662,7 +4662,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!PropietarioTransportista.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4698,7 +4698,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaPlacaCarreta.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4734,7 +4734,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaSoat.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4770,7 +4770,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!TransportistaRUC.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -4854,37 +4854,149 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>afcd3332-d239-4e23-a362-5533125c0696</rd:DataSourceID>
+      <rd:DataSourceID>a67edf68-13a9-4439-8a57-0fc14d5fbd2d</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="dsRegSeguridadLimpieza">
+    <DataSet Name="dsGRCabecera">
       <Query>
         <DataSourceName>dsReportes</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="NroGuiaRemisionZona">
-          <DataField>NroGuiaRemisionZona</DataField>
+        <Field Name="NumeroGuiaRemision">
+          <DataField>NumeroGuiaRemision</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Proveedor">
-          <DataField>Proveedor</DataField>
+        
+        <Field Name="Direccion">
+          <DataField>Direccion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="MarcaCarro">
-          <DataField>MarcaCarro</DataField>
+        <Field Name="FechaEmision">
+          <DataField>FechaEmision</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Ruc">
+          <DataField>Ruc</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PlacaUnidad">
-          <DataField>PlacaUnidad</DataField>
+        <Field Name="Almacen">
+          <DataField>Almacen</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Destinatario">
+          <DataField>Destinatario</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RucDestinatario">
+          <DataField>RucDestinatario</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DireccionPartida">
+          <DataField>DireccionPartida</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DireccionDestino">
+          <DataField>DireccionDestino</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Certificacion">
+          <DataField>Certificacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TipoProduccion">
+          <DataField>TipoProduccion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FechaEntregaTransportista">
+          <DataField>FechaEntregaTransportista</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsReportes</rd:DataSetName>
         <rd:SchemaPath>C:\jdavilat\MR\CoreRDLCReport-master\RDLCDesign\dsReportes.xsd</rd:SchemaPath>
-        <rd:TableName>dtRegSeguridadLimpieza</rd:TableName>
+        <rd:TableName>dtGRCabecera</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dsGRDetalle">
+      <Query>
+        <DataSourceName>dsReportes</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+	  <Field Name="PropietarioTransportista">
+          <DataField>PropietarioTransportista</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+	  <Field Name="TransportistaMarca">
+          <DataField>TransportistaMarca</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		
+		
+		<Field Name="TransportistaColor">
+          <DataField>TransportistaColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		
+		<Field Name="TransportistaDni">
+          <DataField>TransportistaDni</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		
+		<Field Name="TransportistaSoat">
+          <DataField>TransportistaSoat</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>  
+		
+		<Field Name="TransportistaPlacaCarreta">
+          <DataField>TransportistaPlacaCarreta</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field> 
+	  
+        
+        
+        
+        <Field Name="TransportistaDomicilio">
+          <DataField>TransportistaDomicilio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaCodigoVehicular">
+          <DataField>TransportistaCodigoVehicular</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        
+        <Field Name="TransportistaRuc">
+          <DataField>TransportistaRuc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaPlaca">
+          <DataField>TransportistaPlaca</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaConductor">
+          <DataField>TransportistaConductor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaConstancia">
+          <DataField>TransportistaConstancia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaBrevete">
+          <DataField>TransportistaBrevete</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>dsReportes</rd:DataSetName>
+        <rd:SchemaPath>C:\jdavilat\MR\CoreRDLCReport-master\RDLCDesign\dsReportes.xsd</rd:SchemaPath>
+        <rd:TableName>dtGRDetalle</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

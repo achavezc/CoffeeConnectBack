@@ -387,7 +387,7 @@ namespace Integracion.Deuda.Controller
 
             //ES MOMENTANEO SE DEBE ELIMINAR
             GenerarPDFGuiaRemisionResponseDTO response = _guiaRemisionAlmacenService.GenerarPDFGuiaRemisionPorNotaSalidaAlmacenId(id);
-
+           
             try
             {
                 GenerarPDFGuiaRemisionRequestDTO request = new GenerarPDFGuiaRemisionRequestDTO { LoteId = id };
@@ -398,10 +398,15 @@ namespace Integracion.Deuda.Controller
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                lr.AddDataSource("dsRegSeguridadLimpieza", Util.ToDataTable(response.Cabecera));
+                lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));               
+                lr.AddDataSource("dsGRDetalle", Util.ToDataTable(response.detalleGM));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
                 return File(result.MainStream, "application/pdf");
+
+
+
+
             }
             catch (ResultException ex)
             {

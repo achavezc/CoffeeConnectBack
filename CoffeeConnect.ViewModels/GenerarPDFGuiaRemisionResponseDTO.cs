@@ -79,8 +79,18 @@ namespace CoffeeConnect.DTO
         public string TransportistaDomicilio { get; set; }
         public string TransportistaCodigoVehicular { get; set; }
         public string TransportistaMarca { get; set; }
-        public string TransportistaRUC { get; set; }
+        public string TransportistaRuc { get; set; }
         public string TransportistaPlaca { get; set; }
+
+        public string TransportistaPlacaCarreta { get; set; }
+
+        public string TransportistaColor { get; set; }
+
+
+        public String TransportistaDni { get; set; }
+
+
+        public string TransportistaSoat { get; set; }
         public string TransportistaConductor { get; set; }
         public string TransportistaConstancia { get; set; }
         public string TransportistaBrevete { get; set; }

@@ -90,6 +90,9 @@ namespace CoffeeConnect.Service
             cabeceraGuiaRemision.DireccionDestino = consultaImpresionGuiaRemision.DireccionDestino;
             cabeceraGuiaRemision.Certificacion = consultaImpresionGuiaRemision.Certificacion;
             cabeceraGuiaRemision.TipoProduccion = consultaImpresionGuiaRemision.TipoProduccion;
+            cabeceraGuiaRemision.NumeroGuiaRemision = consultaImpresionGuiaRemision.Numero;
+
+            
             //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
 
 
@@ -113,9 +116,15 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TransportistaDomicilio = consultaImpresionGuiaRemision.DireccionTransportista;
             guiaRemisionDetalle.TransportistaCodigoVehicular = consultaImpresionGuiaRemision.ConfiguracionVehicular;
             guiaRemisionDetalle.TransportistaMarca = consultaImpresionGuiaRemision.MarcaTractor;
-            guiaRemisionDetalle.TransportistaRUC = consultaImpresionGuiaRemision.RucTransportista;
+            guiaRemisionDetalle.TransportistaRuc = consultaImpresionGuiaRemision.RucTransportista;
             guiaRemisionDetalle.TransportistaPlaca = consultaImpresionGuiaRemision.PlacaTractor;
             guiaRemisionDetalle.TransportistaConductor = consultaImpresionGuiaRemision.Conductor;
+
+            guiaRemisionDetalle.TransportistaColor = consultaImpresionGuiaRemision.Color;
+            guiaRemisionDetalle.TransportistaSoat = consultaImpresionGuiaRemision.Soat;
+            guiaRemisionDetalle.TransportistaDni = consultaImpresionGuiaRemision.Dni;
+
+
             guiaRemisionDetalle.TransportistaConstancia = consultaImpresionGuiaRemision.NumeroConstanciaMTC;
             guiaRemisionDetalle.TransportistaBrevete = consultaImpresionGuiaRemision.LicenciaConductor;
             guiaRemisionDetalle.Observaciones = consultaImpresionGuiaRemision.Observacion;

@@ -15,6 +15,13 @@ namespace CoffeeConnect.DTO
 		public String RucEmpresa { get; set; }
 		public String AlmacenId { get; set; }
 		public String Almacen { get; set; }
+
+		public String Soat { get; set; }
+
+		public String Color { get; set; }
+		public String Dni { get; set; }
+
+
 		public String MotivoTrasladoId { get; set; }
 
 		public String TipoProduccionId { get; set; }
