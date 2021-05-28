@@ -47,18 +47,18 @@ namespace CoffeeConnect.Service
                 //agenciasTotal = agenciasTotal.Concat(agencias).ToArray();
                 //certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
 
-                guiaRemisionListaDetalle.NumeroLote = z.NumeroLote;
+                guiaRemisionListaDetalle.NumeroLote = z.NumeroLote.Trim();
                 guiaRemisionListaDetalle.FechaLote = z.FechaLote;
-                guiaRemisionListaDetalle.TipoProducto = z.Producto;
+                guiaRemisionListaDetalle.TipoProducto = z.Producto.Trim();
                 guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida + " Plastico";
                 guiaRemisionListaDetalle.Cantidad = z.CantidadPesado;
                 guiaRemisionListaDetalle.PesoNeto = z.KilosNetosPesado;
                 guiaRemisionListaDetalle.HumedadPorcentaje = z.HumedadPorcentaje;
                 guiaRemisionListaDetalle.RendimientoPorcentaje = z.RendimientoPorcentaje;
-                guiaRemisionListaDetalle.TipoCertificacion = z.TipoCertificacion;
-                guiaRemisionListaDetalle.TipoProduccion = z.TipoProduccion;
-                guiaRemisionListaDetalle.Producto = z.Producto;
-                guiaRemisionListaDetalle.SubProducto = z.SubProducto;
+                guiaRemisionListaDetalle.TipoCertificacion = z.TipoCertificacion.Trim();
+                guiaRemisionListaDetalle.TipoProduccion = z.TipoProduccion.Trim();
+                guiaRemisionListaDetalle.Producto = z.Producto.Trim();
+                guiaRemisionListaDetalle.SubProducto = z.SubProducto.Trim();
                 generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
 
             });
@@ -77,20 +77,20 @@ namespace CoffeeConnect.Service
 
 
             CabeceraGuiaRemision cabeceraGuiaRemision = new CabeceraGuiaRemision();
-            cabeceraGuiaRemision.RazonSocial = consultaImpresionGuiaRemision.RazonSocialEmpresa;
-            cabeceraGuiaRemision.Direccion = consultaImpresionGuiaRemision.DireccionPartida;
+            cabeceraGuiaRemision.RazonSocial = consultaImpresionGuiaRemision.RazonSocialEmpresa.Trim();
+            cabeceraGuiaRemision.Direccion = consultaImpresionGuiaRemision.DireccionPartida.Trim();
             cabeceraGuiaRemision.FechaEmision = DateTime.Now;
             cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
 
-            cabeceraGuiaRemision.Ruc = consultaImpresionGuiaRemision.RucEmpresa;
-            cabeceraGuiaRemision.Almacen = consultaImpresionGuiaRemision.Almacen;
-            cabeceraGuiaRemision.Destinatario = consultaImpresionGuiaRemision.Destinatario;
-            cabeceraGuiaRemision.RucDestinatario = consultaImpresionGuiaRemision.RucDestinatario;
-            cabeceraGuiaRemision.DireccionPartida = consultaImpresionGuiaRemision.DireccionPartida;
-            cabeceraGuiaRemision.DireccionDestino = consultaImpresionGuiaRemision.DireccionDestino;
-            cabeceraGuiaRemision.Certificacion = consultaImpresionGuiaRemision.Certificacion;
-            cabeceraGuiaRemision.TipoProduccion = consultaImpresionGuiaRemision.TipoProduccion;
-            cabeceraGuiaRemision.NumeroGuiaRemision = consultaImpresionGuiaRemision.Numero;
+            cabeceraGuiaRemision.Ruc = consultaImpresionGuiaRemision.RucEmpresa.Trim();
+            cabeceraGuiaRemision.Almacen = consultaImpresionGuiaRemision.Almacen.Trim();
+            cabeceraGuiaRemision.Destinatario = consultaImpresionGuiaRemision.Destinatario.Trim();
+            cabeceraGuiaRemision.RucDestinatario = consultaImpresionGuiaRemision.RucDestinatario.Trim();
+            cabeceraGuiaRemision.DireccionPartida = consultaImpresionGuiaRemision.DireccionPartida.Trim();
+            cabeceraGuiaRemision.DireccionDestino = consultaImpresionGuiaRemision.DireccionDestino.Trim();
+            cabeceraGuiaRemision.Certificacion = consultaImpresionGuiaRemision.Certificacion.Trim();
+            cabeceraGuiaRemision.TipoProduccion = consultaImpresionGuiaRemision.TipoProduccion.Trim();
+            cabeceraGuiaRemision.NumeroGuiaRemision = consultaImpresionGuiaRemision.Numero.Trim();
 
             
             //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
@@ -109,26 +109,26 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TipoTraslado = "TRANSPORTE PRIVADO";
 
 
-            guiaRemisionDetalle.MotivoTraslado = consultaImpresionGuiaRemision.Motivo;
+            guiaRemisionDetalle.MotivoTraslado = consultaImpresionGuiaRemision.Motivo.Trim();
             guiaRemisionDetalle.MotivoTrasladoId = consultaImpresionGuiaRemision.MotivoTrasladoId;
-            guiaRemisionDetalle.MotivoDetalleTraslado = consultaImpresionGuiaRemision.MotivoTrasladoReferencia;
-            guiaRemisionDetalle.PropietarioTransportista = consultaImpresionGuiaRemision.Transportista;
-            guiaRemisionDetalle.TransportistaDomicilio = consultaImpresionGuiaRemision.DireccionTransportista;
-            guiaRemisionDetalle.TransportistaCodigoVehicular = consultaImpresionGuiaRemision.ConfiguracionVehicular;
-            guiaRemisionDetalle.TransportistaMarca = consultaImpresionGuiaRemision.MarcaTractor;
-            guiaRemisionDetalle.TransportistaRuc = consultaImpresionGuiaRemision.RucTransportista;
-            guiaRemisionDetalle.TransportistaPlaca = consultaImpresionGuiaRemision.PlacaTractor;
-            guiaRemisionDetalle.TransportistaConductor = consultaImpresionGuiaRemision.Conductor;
+            guiaRemisionDetalle.MotivoDetalleTraslado = consultaImpresionGuiaRemision.MotivoTrasladoReferencia.Trim();
+            guiaRemisionDetalle.PropietarioTransportista = consultaImpresionGuiaRemision.Transportista.Trim();
+            guiaRemisionDetalle.TransportistaDomicilio = consultaImpresionGuiaRemision.DireccionTransportista.Trim();
+            guiaRemisionDetalle.TransportistaCodigoVehicular = consultaImpresionGuiaRemision.ConfiguracionVehicular.Trim();
+            guiaRemisionDetalle.TransportistaMarca = consultaImpresionGuiaRemision.MarcaTractor.Trim();
+            guiaRemisionDetalle.TransportistaRuc = consultaImpresionGuiaRemision.RucTransportista.Trim();
+            guiaRemisionDetalle.TransportistaPlaca = consultaImpresionGuiaRemision.PlacaTractor.Trim();
+            guiaRemisionDetalle.TransportistaConductor = consultaImpresionGuiaRemision.Conductor.Trim();
 
-            guiaRemisionDetalle.TransportistaColor = consultaImpresionGuiaRemision.Color;
-            guiaRemisionDetalle.TransportistaSoat = consultaImpresionGuiaRemision.Soat;
-            guiaRemisionDetalle.TransportistaDni = consultaImpresionGuiaRemision.Dni;
+            guiaRemisionDetalle.TransportistaColor = consultaImpresionGuiaRemision.Color.Trim();
+            guiaRemisionDetalle.TransportistaSoat = consultaImpresionGuiaRemision.Soat.Trim();
+            guiaRemisionDetalle.TransportistaDni = consultaImpresionGuiaRemision.Dni.Trim();
 
 
-            guiaRemisionDetalle.TransportistaConstancia = consultaImpresionGuiaRemision.NumeroConstanciaMTC;
-            guiaRemisionDetalle.TransportistaBrevete = consultaImpresionGuiaRemision.LicenciaConductor;
-            guiaRemisionDetalle.Observaciones = consultaImpresionGuiaRemision.Observacion;
-            guiaRemisionDetalle.Responsable = consultaImpresionGuiaRemision.UsuarioRegistro;
+            guiaRemisionDetalle.TransportistaConstancia = consultaImpresionGuiaRemision.NumeroConstanciaMTC.Trim();
+            guiaRemisionDetalle.TransportistaBrevete = consultaImpresionGuiaRemision.LicenciaConductor.Trim();
+            guiaRemisionDetalle.Observaciones = consultaImpresionGuiaRemision.Observacion.Trim();
+            guiaRemisionDetalle.Responsable = consultaImpresionGuiaRemision.UsuarioRegistro.Trim();
 
 
             generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);

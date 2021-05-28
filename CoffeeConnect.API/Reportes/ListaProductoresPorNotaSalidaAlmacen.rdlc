@@ -811,7 +811,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=CDate(Fields!FechaNotaIngresoAlmacen.Value).ToString("dd/MM/yyyy")</Value>
+                              <Value>=Format(Fields!FechaNotaIngresoAlmacen.Value, "dd/MM/yyyy")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -1139,7 +1139,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=CDate(Fields!FechaGuiaRecepcionMateriaPrima.Value).ToString("dd/MM/yyyy")</Value>
+                              <Value>=Format(Fields!FechaGuiaRecepcionMateriaPrima.Value, "dd/MM/yyyy")</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -2317,7 +2317,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=CDate(First(Fields!FechaImpresion.Value, "dsCabeceraLP")).ToString("dd/MM/yyyy")</Value>
+                          <Value>=Format(First(Fields!FechaImpresion.Value, "dsCabeceraLP"), "dd/MM/yyyy")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>

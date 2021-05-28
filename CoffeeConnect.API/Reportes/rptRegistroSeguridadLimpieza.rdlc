@@ -308,7 +308,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox77">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -322,7 +322,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox77</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -481,7 +481,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
+                    <Textbox Name="Textbox82">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -495,7 +495,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <rd:DefaultName>Textbox82</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2192,6 +2192,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>dsGRCabecera</DataSetName>
         <Top>3.67583in</Top>
         <Left>0.13417in</Left>
         <Height>2.66616in</Height>
@@ -2201,18 +2202,7 @@
           <Border>
             <Style>Solid</Style>
           </Border>
-          <TopBorder>
-            <Style>Solid</Style>
-          </TopBorder>
-          <BottomBorder>
-            <Style>Solid</Style>
-          </BottomBorder>
-          <LeftBorder>
-            <Style>Solid</Style>
-          </LeftBorder>
-          <RightBorder>
-            <Style>Solid</Style>
-          </RightBorder>
+          <VerticalAlign>Middle</VerticalAlign>
         </Style>
       </Tablix>
       <Tablix Name="Tablix2">
@@ -3256,6 +3246,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>dsGRCabecera</DataSetName>
         <Top>6.41146in</Top>
         <Left>0.13417in</Left>
         <Height>1.21872in</Height>
@@ -3556,6 +3547,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>dsGRCabecera</DataSetName>
         <Top>7.73889in</Top>
         <Left>0.13418in</Left>
         <Height>0.79168in</Height>
@@ -3672,6 +3664,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>dsGRCabecera</DataSetName>
         <Top>8.6in</Top>
         <Left>0.39458in</Left>
         <Height>0.85in</Height>
@@ -3788,6 +3781,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <DataSetName>dsGRCabecera</DataSetName>
         <Top>8.6in</Top>
         <Left>3.77562in</Left>
         <Height>0.85in</Height>
@@ -3808,6 +3802,7 @@
               <TextRun>
                 <Value>No. Guia Remisión de Zona:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -3817,7 +3812,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox171</rd:DefaultName>
-        <Top>0.73833in</Top>
+        <Top>0.72791in</Top>
         <Left>0.13417in</Left>
         <Height>0.25in</Height>
         <Width>1.63542in</Width>
@@ -3842,6 +3837,7 @@
               <TextRun>
                 <Value>=First(Fields!NumeroGuiaRemision.Value, "dsGRCabecera")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -3850,7 +3846,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox172</rd:DefaultName>
-        <Top>0.73833in</Top>
+        <Top>0.72791in</Top>
         <Left>1.83903in</Left>
         <Height>0.25in</Height>
         <Width>1.45139in</Width>
@@ -3878,6 +3874,7 @@
               <TextRun>
                 <Value>Proveedor:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -3887,7 +3884,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox173</rd:DefaultName>
-        <Top>0.73833in</Top>
+        <Top>0.72791in</Top>
         <Left>3.31819in</Left>
         <Height>0.25in</Height>
         <Width>0.73958in</Width>
@@ -3912,6 +3909,7 @@
               <TextRun>
                 <Value>=First(Fields!PropietarioTransportista.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -3920,7 +3918,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox174</rd:DefaultName>
-        <Top>0.73833in</Top>
+        <Top>0.72791in</Top>
         <Left>4.09944in</Left>
         <Height>0.25in</Height>
         <Width>1.79861in</Width>
@@ -3957,7 +3955,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox175</rd:DefaultName>
-        <Top>1.1in</Top>
+        <Top>1.08958in</Top>
         <Left>0.13417in</Left>
         <Height>0.25in</Height>
         <Width>2.6875in</Width>
@@ -4052,6 +4050,7 @@
               <TextRun>
                 <Value>Licencia de Conducir:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4086,8 +4085,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!TransportistaConductor.Value, "dsGRDetalle")</Value>
+                <Value>=Trim(First(Fields!TransportistaConductor.Value, "dsGRDetalle"))</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4124,6 +4124,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaBrevete.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4160,6 +4161,7 @@
               <TextRun>
                 <Value>DNI:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4196,6 +4198,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaDni.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4232,6 +4235,7 @@
               <TextRun>
                 <Value>Marca del Carro:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4243,7 +4247,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox177</rd:DefaultName>
-        <Top>1.45361in</Top>
+        <Top>1.44319in</Top>
         <Left>0.13417in</Left>
         <Height>0.25in</Height>
         <Width>1.01042in</Width>
@@ -4268,6 +4272,7 @@
               <TextRun>
                 <Value>Placa Unidad:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4279,7 +4284,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox177</rd:DefaultName>
-        <Top>1.77306in</Top>
+        <Top>1.76264in</Top>
         <Left>0.13417in</Left>
         <Height>0.25in</Height>
         <Width>0.83334in</Width>
@@ -4304,6 +4309,7 @@
               <TextRun>
                 <Value>Colores:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4315,7 +4321,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox177</rd:DefaultName>
-        <Top>1.45361in</Top>
+        <Top>1.44319in</Top>
         <Left>3.04736in</Left>
         <Height>0.25in</Height>
         <Width>0.57292in</Width>
@@ -4340,6 +4346,7 @@
               <TextRun>
                 <Value>Placa Carreta:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4351,7 +4358,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox177</rd:DefaultName>
-        <Top>1.77306in</Top>
+        <Top>1.76264in</Top>
         <Left>3.04736in</Left>
         <Height>0.25in</Height>
         <Width>0.89931in</Width>
@@ -4376,6 +4383,7 @@
               <TextRun>
                 <Value>No. Constancia de inscripción:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4387,7 +4395,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox177</rd:DefaultName>
-        <Top>2.06472in</Top>
+        <Top>2.0543in</Top>
         <Left>0.13417in</Left>
         <Height>0.25in</Height>
         <Width>1.8125in</Width>
@@ -4412,6 +4420,7 @@
               <TextRun>
                 <Value>SOAT:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4448,6 +4457,7 @@
               <TextRun>
                 <Value>Propietario:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4484,6 +4494,7 @@
               <TextRun>
                 <Value>RUC:</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -4520,6 +4531,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaMarca.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4528,7 +4540,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox191</rd:DefaultName>
-        <Top>1.45361in</Top>
+        <Top>1.44319in</Top>
         <Left>1.20014in</Left>
         <Height>0.25in</Height>
         <Width>1.71875in</Width>
@@ -4556,6 +4568,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaColor.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4564,7 +4577,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox191</rd:DefaultName>
-        <Top>1.45361in</Top>
+        <Top>1.44319in</Top>
         <Left>3.68972in</Left>
         <Height>0.25in</Height>
         <Width>2.20833in</Width>
@@ -4592,6 +4605,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaPlaca.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4600,7 +4614,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox191</rd:DefaultName>
-        <Top>1.77306in</Top>
+        <Top>1.76264in</Top>
         <Left>1.03695in</Left>
         <Height>0.25in</Height>
         <Width>1.88194in</Width>
@@ -4628,6 +4642,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaConstancia.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4636,7 +4651,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox191</rd:DefaultName>
-        <Top>2.06472in</Top>
+        <Top>2.0543in</Top>
         <Left>1.98833in</Left>
         <Height>0.25in</Height>
         <Width>0.93056in</Width>
@@ -4664,6 +4679,7 @@
               <TextRun>
                 <Value>=First(Fields!PropietarioTransportista.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4700,6 +4716,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaPlacaCarreta.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4708,7 +4725,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox191</rd:DefaultName>
-        <Top>1.77306in</Top>
+        <Top>1.76264in</Top>
         <Left>3.98833in</Left>
         <Height>0.25in</Height>
         <Width>1.90972in</Width>
@@ -4736,6 +4753,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaSoat.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4772,6 +4790,7 @@
               <TextRun>
                 <Value>=First(Fields!TransportistaRUC.Value, "dsGRDetalle")</Value>
                 <Style>
+                  <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -4864,11 +4883,14 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
+        <Field Name="RazonSocial">
+          <DataField>RazonSocial</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="NumeroGuiaRemision">
           <DataField>NumeroGuiaRemision</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        
         <Field Name="Direccion">
           <DataField>Direccion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -4929,39 +4951,38 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-	  <Field Name="PropietarioTransportista">
+        <Field Name="TotalLotes">
+          <DataField>TotalLotes</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Rendimiento">
+          <DataField>Rendimiento</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PorcentajeHumedad">
+          <DataField>PorcentajeHumedad</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CantidadTotal">
+          <DataField>CantidadTotal</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalKGBrutos">
+          <DataField>TotalKGBrutos</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="MotivoTraslado">
+          <DataField>MotivoTraslado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MotivoDetalleTraslado">
+          <DataField>MotivoDetalleTraslado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PropietarioTransportista">
           <DataField>PropietarioTransportista</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-	  <Field Name="TransportistaMarca">
-          <DataField>TransportistaMarca</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-		
-		
-		<Field Name="TransportistaColor">
-          <DataField>TransportistaColor</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-		
-		<Field Name="TransportistaDni">
-          <DataField>TransportistaDni</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-		
-		<Field Name="TransportistaSoat">
-          <DataField>TransportistaSoat</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>  
-		
-		<Field Name="TransportistaPlacaCarreta">
-          <DataField>TransportistaPlacaCarreta</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field> 
-	  
-        
-        
-        
         <Field Name="TransportistaDomicilio">
           <DataField>TransportistaDomicilio</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -4970,9 +4991,12 @@
           <DataField>TransportistaCodigoVehicular</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        
-        <Field Name="TransportistaRuc">
-          <DataField>TransportistaRuc</DataField>
+        <Field Name="TransportistaMarca">
+          <DataField>TransportistaMarca</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaRUC">
+          <DataField>TransportistaRUC</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TransportistaPlaca">
@@ -4991,7 +5015,42 @@
           <DataField>TransportistaBrevete</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        
+        <Field Name="Observaciones">
+          <DataField>Observaciones</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Responsable">
+          <DataField>Responsable</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MotivoTrasladoId">
+          <DataField>MotivoTrasladoId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ModalidadTransporte">
+          <DataField>ModalidadTransporte</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TipoTraslado">
+          <DataField>TipoTraslado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaDni">
+          <DataField>TransportistaDni</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaColor">
+          <DataField>TransportistaColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaPlacaCarreta">
+          <DataField>TransportistaPlacaCarreta</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaSoat">
+          <DataField>TransportistaSoat</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsReportes</rd:DataSetName>
