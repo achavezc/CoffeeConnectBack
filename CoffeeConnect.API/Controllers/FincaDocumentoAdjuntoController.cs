@@ -227,7 +227,8 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
+        [Route("Eliminar")]
+        [HttpPost]
         public IActionResult Eliminar(RegistrarActualizarFincaDocumentoAdjuntoRequestDTO request)
         {
             Guid guid = Guid.NewGuid();

@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class ConsultaTransportistaRequestDTO
+   public class ConsultaEmpresaTransporteDTO
     {
-
-        public String RazonSocial { get; set; }
 
         public String Ruc { get; set; }
 
+        public String RazonSocial { get; set; }
+
+       
         public String EstadoId { get; set; }
 
+      
+
         public int EmpresaId { get; set; }
-        
+
+
     }
 }

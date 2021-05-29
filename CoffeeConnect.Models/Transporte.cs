@@ -1,38 +1,20 @@
 using System;
 
-namespace CoffeeConnect.DTO
+namespace CoffeeConnect.Models
 {
-	public class ConsultaTransportistaBE
+	public class Transporte
 	{
 		#region Properties
-		/// <summary>
-		/// Gets or sets the EmpresaTransporteId value.
-		/// </summary>
-		public int EmpresaTransporteId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the RazonSocial value.
-		/// </summary>
-		public string RazonSocial
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Ruc value.
-		/// </summary>
-		public string Ruc
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Direccion value.
-		/// </summary>
-		public string Direccion
-		{ get; set; }
-
 		/// <summary>
 		/// Gets or sets the TransporteId value.
 		/// </summary>
 		public int TransporteId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the EmpresaTransporteId value.
+		/// </summary>
+		public int EmpresaTransporteId
 		{ get; set; }
 
 		/// <summary>
@@ -48,16 +30,6 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the MarcaTractor value.
-		/// </summary>
-		public string MarcaTractor
-		{ get; set; }
-
-
-
-		public string Propietario
-		{ get; set; }
-		/// <summary>
 		/// Gets or sets the PlacaTractor value.
 		/// </summary>
 		public string PlacaTractor
@@ -67,12 +39,6 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the MarcaCarretaId value.
 		/// </summary>
 		public string MarcaCarretaId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the MarcaCarreta value.
-		/// </summary>
-		public string MarcaCarreta
 		{ get; set; }
 
 		/// <summary>
@@ -88,15 +54,33 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the ConfiguracionVehicular value.
+		/// Gets or sets the Propietario value.
 		/// </summary>
-		public string ConfiguracionVehicular
+		public string Propietario
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the Conductor value.
 		/// </summary>
 		public string Conductor
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Color value.
+		/// </summary>
+		public string Color
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Soat value.
+		/// </summary>
+		public string Soat
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Dni value.
+		/// </summary>
+		public string Dni
 		{ get; set; }
 
 		/// <summary>
@@ -145,6 +129,43 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the Ancho value.
 		/// </summary>
 		public decimal? Ancho
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the EstadoId value.
+		/// </summary>
+		public string EstadoId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Activo value.
+		/// </summary>
+		public bool Activo
+		{ get; set; }
+
+
+		/// <summary>
+		/// Gets or sets the FechaRegistro value.
+		/// </summary>
+		public DateTime FechaRegistro
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioRegistro value.
+		/// </summary>
+		public string UsuarioRegistro
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaUltimaActualizacion value.
+		/// </summary>
+		public DateTime? FechaUltimaActualizacion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioUltimaActualizacion value.
+		/// </summary>
+		public string UsuarioUltimaActualizacion
 		{ get; set; }
 
 		#endregion

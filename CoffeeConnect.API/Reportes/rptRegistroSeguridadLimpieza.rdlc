@@ -3907,7 +3907,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!PropietarioTransportista.Value, "dsGRDetalle")</Value>
+                <Value>=First(Fields!TransportistaRazonSocial.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -4085,7 +4085,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Trim(First(Fields!TransportistaConductor.Value, "dsGRDetalle"))</Value>
+                <Value>=First(Fields!TransportistaConductor.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -5005,6 +5005,10 @@
         </Field>
         <Field Name="TransportistaConductor">
           <DataField>TransportistaConductor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaRazonSocial">
+          <DataField>TransportistaRazonSocial</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TransportistaConstancia">
