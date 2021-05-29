@@ -38,7 +38,7 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the FechaEmbarque value.
         /// </summary>
-        public DateTime FechaEmbarque
+        public DateTime? FechaEmbarque
         { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the FechaFacturacion value.
         /// </summary>
-        public DateTime FechaFacturacion
+        public DateTime? FechaFacturacion
         { get; set; }
 
         /// <summary>

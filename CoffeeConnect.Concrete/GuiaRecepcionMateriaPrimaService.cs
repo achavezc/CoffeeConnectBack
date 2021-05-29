@@ -183,7 +183,10 @@ namespace CoffeeConnect.Service
                     {
                         fincaEstima.SaldoPendiente = fincaEstima.Estimado - fincaEstima.Consumido;
 
-                        _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, request.KilosBrutosPesado);
+                        if (fincaEstima.SaldoPendiente > 0)
+                        {
+                            _ISocioFincaRepository.ActualizarSocioFincaEstimadoConsumido(fincaEstima.SocioFincaEstimadoId, request.KilosBrutosPesado);
+                        }
                     }
                 }
             }

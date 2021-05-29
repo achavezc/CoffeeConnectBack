@@ -13,6 +13,8 @@ namespace CoffeeConnect.DTO
 
         public String Ruc { get; set; }
 
+        public String EstadoId { get; set; }
+
         public int EmpresaId { get; set; }
         
     }
