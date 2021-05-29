@@ -77,20 +77,27 @@ namespace CoffeeConnect.Service
 
 
             CabeceraGuiaRemision cabeceraGuiaRemision = new CabeceraGuiaRemision();
-            cabeceraGuiaRemision.RazonSocial = consultaImpresionGuiaRemision.RazonSocialEmpresa.Trim();
-            cabeceraGuiaRemision.Direccion = consultaImpresionGuiaRemision.DireccionPartida.Trim();
+
+
+            cabeceraGuiaRemision.RazonSocial = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocialEmpresa) ? consultaImpresionGuiaRemision.RazonSocialEmpresa.Trim() : String.Empty;
+            cabeceraGuiaRemision.Direccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionPartida) ? consultaImpresionGuiaRemision.DireccionPartida.Trim() : String.Empty;
+            cabeceraGuiaRemision.Ruc = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucEmpresa) ? consultaImpresionGuiaRemision.RucEmpresa.Trim() : String.Empty;
+            cabeceraGuiaRemision.Almacen = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Almacen) ? consultaImpresionGuiaRemision.Almacen.Trim() : String.Empty;
+            cabeceraGuiaRemision.Destinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Destinatario) ? consultaImpresionGuiaRemision.Destinatario.Trim() : String.Empty;
+            cabeceraGuiaRemision.DireccionPartida = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionPartida) ? consultaImpresionGuiaRemision.DireccionPartida.Trim() : String.Empty;
+            cabeceraGuiaRemision.DireccionDestino = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionDestino) ? consultaImpresionGuiaRemision.DireccionDestino.Trim() : String.Empty;
+            cabeceraGuiaRemision.Certificacion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Certificacion) ? consultaImpresionGuiaRemision.Certificacion.Trim() : String.Empty;
+            cabeceraGuiaRemision.TipoProduccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.TipoProduccion) ? consultaImpresionGuiaRemision.TipoProduccion.Trim() : String.Empty;
+            cabeceraGuiaRemision.NumeroGuiaRemision = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Numero) ? consultaImpresionGuiaRemision.Numero.Trim() : String.Empty;
+            cabeceraGuiaRemision.RucDestinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucDestinatario) ? consultaImpresionGuiaRemision.RucDestinatario.Trim() : String.Empty;
+
+
+
+            
             cabeceraGuiaRemision.FechaEmision = DateTime.Now;
             cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
 
-            cabeceraGuiaRemision.Ruc = consultaImpresionGuiaRemision.RucEmpresa.Trim();
-            cabeceraGuiaRemision.Almacen = consultaImpresionGuiaRemision.Almacen.Trim();
-            cabeceraGuiaRemision.Destinatario = consultaImpresionGuiaRemision.Destinatario.Trim();
-            cabeceraGuiaRemision.RucDestinatario = consultaImpresionGuiaRemision.RucDestinatario.Trim();
-            cabeceraGuiaRemision.DireccionPartida = consultaImpresionGuiaRemision.DireccionPartida.Trim();
-            cabeceraGuiaRemision.DireccionDestino = consultaImpresionGuiaRemision.DireccionDestino.Trim();
-            cabeceraGuiaRemision.Certificacion = consultaImpresionGuiaRemision.Certificacion.Trim();
-            cabeceraGuiaRemision.TipoProduccion = consultaImpresionGuiaRemision.TipoProduccion.Trim();
-            cabeceraGuiaRemision.NumeroGuiaRemision = consultaImpresionGuiaRemision.Numero.Trim();
+
 
             
             //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
@@ -109,29 +116,33 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TipoTraslado = "TRANSPORTE PRIVADO";
 
 
+           
+
+            guiaRemisionDetalle.MotivoTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Motivo) ? consultaImpresionGuiaRemision.Motivo.Trim() : String.Empty;
+            guiaRemisionDetalle.MotivoDetalleTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoReferencia) ? consultaImpresionGuiaRemision.MotivoTrasladoReferencia.Trim() : String.Empty;
+            guiaRemisionDetalle.PropietarioTransportista = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Propietario) ? consultaImpresionGuiaRemision.Propietario.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaDomicilio = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionTransportista) ? consultaImpresionGuiaRemision.DireccionTransportista.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaCodigoVehicular = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ConfiguracionVehicular) ? consultaImpresionGuiaRemision.ConfiguracionVehicular.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaMarca = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MarcaTractor) ? consultaImpresionGuiaRemision.MarcaTractor.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaRuc = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucTransportista) ? consultaImpresionGuiaRemision.RucTransportista.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaRazonSocial = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Transportista) ? consultaImpresionGuiaRemision.Transportista.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaPlaca = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.PlacaTractor) ? consultaImpresionGuiaRemision.PlacaTractor.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaConductor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Conductor) ? consultaImpresionGuiaRemision.Conductor.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaColor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Color) ? consultaImpresionGuiaRemision.Color.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaSoat = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Soat) ? consultaImpresionGuiaRemision.Soat.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaDni = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Dni) ? consultaImpresionGuiaRemision.Dni.Trim() : String.Empty;
 
 
-            guiaRemisionDetalle.MotivoTraslado = consultaImpresionGuiaRemision.Motivo.Trim();
-            guiaRemisionDetalle.MotivoTrasladoId = consultaImpresionGuiaRemision.MotivoTrasladoId;
-            guiaRemisionDetalle.MotivoDetalleTraslado = consultaImpresionGuiaRemision.MotivoTrasladoReferencia.Trim();
-            guiaRemisionDetalle.PropietarioTransportista = consultaImpresionGuiaRemision.Propietario.Trim();
-            guiaRemisionDetalle.TransportistaDomicilio = consultaImpresionGuiaRemision.DireccionTransportista.Trim();
-            guiaRemisionDetalle.TransportistaCodigoVehicular = consultaImpresionGuiaRemision.ConfiguracionVehicular.Trim();
-            guiaRemisionDetalle.TransportistaMarca = consultaImpresionGuiaRemision.MarcaTractor.Trim();
-            guiaRemisionDetalle.TransportistaRuc = consultaImpresionGuiaRemision.RucTransportista.Trim();
-            guiaRemisionDetalle.TransportistaRazonSocial = consultaImpresionGuiaRemision.Transportista.Trim();
-            guiaRemisionDetalle.TransportistaPlaca = consultaImpresionGuiaRemision.PlacaTractor.Trim();
-            guiaRemisionDetalle.TransportistaConductor = consultaImpresionGuiaRemision.Conductor.Trim();
-
-            guiaRemisionDetalle.TransportistaColor = consultaImpresionGuiaRemision.Color.Trim();
-            guiaRemisionDetalle.TransportistaSoat = consultaImpresionGuiaRemision.Soat.Trim();
-            guiaRemisionDetalle.TransportistaDni = consultaImpresionGuiaRemision.Dni.Trim();
+            guiaRemisionDetalle.TransportistaColor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Color) ? consultaImpresionGuiaRemision.Color.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaSoat = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Soat) ? consultaImpresionGuiaRemision.Soat.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaConstancia = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.NumeroConstanciaMTC) ? consultaImpresionGuiaRemision.NumeroConstanciaMTC.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaBrevete = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.LicenciaConductor) ? consultaImpresionGuiaRemision.LicenciaConductor.Trim() : String.Empty;
+            guiaRemisionDetalle.Observaciones = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Observacion) ? consultaImpresionGuiaRemision.Observacion.Trim() : String.Empty;
+            guiaRemisionDetalle.Responsable = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.UsuarioRegistro) ? consultaImpresionGuiaRemision.UsuarioRegistro.Trim() : String.Empty;
 
 
-            guiaRemisionDetalle.TransportistaConstancia = consultaImpresionGuiaRemision.NumeroConstanciaMTC.Trim();
-            guiaRemisionDetalle.TransportistaBrevete = consultaImpresionGuiaRemision.LicenciaConductor.Trim();
-            guiaRemisionDetalle.Observaciones = consultaImpresionGuiaRemision.Observacion.Trim();
-            guiaRemisionDetalle.Responsable = consultaImpresionGuiaRemision.UsuarioRegistro.Trim();
+
+           
 
 
             generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);
