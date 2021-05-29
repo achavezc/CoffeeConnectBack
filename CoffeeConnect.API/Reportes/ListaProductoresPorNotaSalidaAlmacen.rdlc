@@ -1430,7 +1430,7 @@
                       <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1439,14 +1439,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1482,7 +1485,7 @@
                       <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1491,14 +1494,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1532,7 +1538,7 @@
                       <rd:DefaultName>Textbox4</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1541,14 +1547,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1584,7 +1593,7 @@
                       <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1593,14 +1602,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1636,7 +1648,7 @@
                       <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1645,14 +1657,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1688,7 +1703,7 @@
                       <rd:DefaultName>Textbox17</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1697,14 +1712,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1740,7 +1758,7 @@
                       <rd:DefaultName>Textbox18</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1749,14 +1767,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1792,7 +1813,7 @@
                       <rd:DefaultName>Textbox19</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1801,14 +1822,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1844,7 +1868,7 @@
                       <rd:DefaultName>Textbox20</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Style>Solid</Style>
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
@@ -1853,14 +1877,17 @@
                         </TopBorder>
                         <BottomBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </BottomBorder>
                         <LeftBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </LeftBorder>
                         <RightBorder>
                           <Color>Black</Color>
+                          <Style>Solid</Style>
                           <Width>1pt</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1944,9 +1971,7 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
+                          <Style />
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox23</rd:DefaultName>
@@ -1999,9 +2024,7 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
+                          <Style />
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox25</rd:DefaultName>
@@ -2067,8 +2090,10 @@
               <Group Name="Details" />
               <TablixMembers>
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
+            </TablixMember>
+            <TablixMember>
+              <KeepWithGroup>Before</KeepWithGroup>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
