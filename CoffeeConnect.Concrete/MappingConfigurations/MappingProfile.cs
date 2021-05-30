@@ -16,6 +16,7 @@ namespace CoffeeConnect.Service.MappingConfigurations
             CreateMap<NotaSalidaAlmacen, GuiaRemisionAlmacen>();
             CreateMap<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE, GuiaRemisionAlmacenDetalleTipo>();
             CreateMap<RegistrarActualizarClienteRequestDTO, Cliente>();
+            CreateMap<RegistrarActualizarEmpresaTransporteRequestDTO, EmpresaTransporte>();
             CreateMap<RegistrarActualizarFincaMapaRequestDTO, FincaMapa>();
             CreateMap<RegistrarActualizarFincaDocumentoAdjuntoRequestDTO, FincaDocumentoAdjunto>();
             CreateMap<RegistrarActualizarFincaFotoGeoreferenciadaRequestDTO, FincaFotoGeoreferenciada>();

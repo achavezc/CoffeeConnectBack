@@ -7,6 +7,12 @@ namespace CoffeeConnect.Interface.Service
     {
         List<EmpresaTransporteBE> ConsultarEmpresaTransporte(int empresaId);
         List<ConsultaTransportistaBE> ConsultarTransportista(ConsultaTransportistaRequestDTO request);
+        ConsultaEmpresaTransportePorIdBE ConsultarEmpresaTransportePorId(ConsultaEmpresaTransportePorIdRequestDTO request);
+        int ActualizarEmpresaTransporte(RegistrarActualizarEmpresaTransporteRequestDTO request);
+
+        int RegistrarEmpresaTransporte(RegistrarActualizarEmpresaTransporteRequestDTO request);
+
+
 
     }
 }
