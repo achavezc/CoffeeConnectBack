@@ -15,5 +15,7 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request);
 
         ConsultaClientePorIdBE ConsultarClientePorId(int clienteId);
+
+        int Anular(int clienteId, DateTime fecha, string usuario, string estadoId);
     }
 }

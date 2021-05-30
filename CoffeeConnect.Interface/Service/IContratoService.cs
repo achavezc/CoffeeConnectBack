@@ -12,5 +12,7 @@ namespace CoffeeConnect.Interface.Service
         List<ConsultaContratoBE> ConsultarContrato(ConsultaContratoRequestDTO request);
         ConsultaContratoPorIdBE ConsultarContratoPorId(ConsultaContratoPorIdRequestDTO request);
         ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);
+
+        int AnularContrato(AnularContratoRequestDTO request);
     }
 }

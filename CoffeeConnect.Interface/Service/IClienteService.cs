@@ -13,6 +13,8 @@ namespace CoffeeConnect.Interface.Service
         List<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request);
         ConsultaClientePorIdBE ConsultarClientePorId(ConsultaClientePorIdRequestDTO request);
 
+        int AnularCliente(AnularClienteRequestDTO request);
+
 
     }
 }

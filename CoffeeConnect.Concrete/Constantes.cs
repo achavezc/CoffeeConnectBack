@@ -70,6 +70,20 @@ namespace CoffeeConnect.Service
         public static string Analizado { get { return "02"; } }
     }
 
+    public static class ClienteEstados
+    {
+        public static string Activo { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+    }
+
+    public static class ContratoEstados
+    {
+        public static string Activo { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+    }
+
     public static class LoteEstados
     {
         public static string Ingresado { get { return "01"; } }

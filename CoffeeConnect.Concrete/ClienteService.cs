@@ -77,5 +77,15 @@ namespace CoffeeConnect.Service
             return _IClienteRepository.ConsultarClientePorId(request.ClienteId);
         }
 
+        public int AnularCliente(AnularClienteRequestDTO request)
+        {
+            int result = 0;
+            if (request.ClienteId > 0)
+            {
+                result = _IClienteRepository.Anular(request.ClienteId, DateTime.Now, request.Usuario, ClienteEstados.Anulado);
+            }
+            return result;
+        }
+
     }
 }

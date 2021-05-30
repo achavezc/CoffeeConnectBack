@@ -3,6 +3,7 @@ using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
 using Dapper;
 using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -77,6 +78,24 @@ namespace CoffeeConnect.Repository
             int id = parameters.Get<int>("ClienteId");
 
             return id;
+        }
+
+        public int Anular(int clienteId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ClienteId", clienteId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspClienteIdAnular", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
         }
 
         public int Actualizar(Cliente cliente)

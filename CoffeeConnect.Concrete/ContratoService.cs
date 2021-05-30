@@ -217,5 +217,15 @@ namespace CoffeeConnect.Service
         {
             return _IContratoRepository.ConsultarContratoPorId(request.ContratoId);
         }
+
+        public int AnularContrato(AnularContratoRequestDTO request)
+        {
+            int result = 0;
+            if (request.ContratoId > 0)
+            {
+                result = _IContratoRepository.Anular(request.ContratoId, DateTime.Now, request.Usuario, ContratoEstados.Anulado);
+            }
+            return result;
+        }
     }
 }

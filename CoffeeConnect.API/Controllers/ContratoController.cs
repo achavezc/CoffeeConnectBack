@@ -221,5 +221,35 @@ namespace Integracion.Deuda.Controller
             return null;
         }
 
+        [Route("Anular")]
+        [HttpPost]
+        public IActionResult Anular([FromBody] AnularContratoRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            AnularLoteResponseDTO response = new AnularLoteResponseDTO();
+            try
+            {
+                response.Result.Data = _contratoService.AnularContrato(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
     }
 }

@@ -3,6 +3,7 @@ using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
 using Dapper;
 using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -154,6 +155,24 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspContratoActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
             return result;
+        }
+
+        public int Anular(int contratoId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", contratoId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspContratoIdAnular", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
         }
 
         public ConsultaContratoPorIdBE ConsultarContratoPorId(int contratoId)
