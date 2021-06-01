@@ -29,6 +29,14 @@ namespace CoffeeConnect.Service
         public static string Productor { get { return "Productor"; } }
         public static string Socio { get { return "Socio"; } }
         public static string NotaSalidaAlmacen { get { return "NotaSalidaAlmacen"; } }
+
+
+        public static string NotaSalidaAlmacenPlanta { get { return "NotaSalidaAlmacenPlanta"; } }
+
+
+
+        
+
         public static string GuiaRemisionAlmacen { get { return "GuiaRemisionAlmacen"; } }
         public static string OrdenServicioControlCalidad { get { return "OrdenServicioControlCalidad"; } }
         public static string OrdenProceso { get { return "OrdenProceso"; } }
@@ -67,6 +75,13 @@ namespace CoffeeConnect.Service
     }
 
     public static class NotaSalidaAlmacenEstados
+    {
+        public static string Ingresado { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+        public static string Analizado { get { return "02"; } }
+    }
+
+    public static class NotaSalidaAlmacenPlantaEstados
     {
         public static string Ingresado { get { return "01"; } }
         public static string Anulado { get { return "00"; } }
