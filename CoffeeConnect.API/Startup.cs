@@ -159,6 +159,9 @@ namespace CoffeeConnect.API
             services.AddTransient<IProductorDocumentoService, ProductorDocumentoService>();
             services.AddTransient<IProductorDocumentoRepository, ProductorDocumentoRepository>();
 
+            services.AddTransient<IInspeccionInternaService, InspeccionInternaService>();
+            services.AddTransient<IInspeccionInternaRepository, InspeccionInternaRepository>();
+
 
             services.AddTransient<ISocioProyectoService, SocioProyectoService>();
             services.AddTransient<ISocioProyectoRepository, SocioProyectoRepository>();

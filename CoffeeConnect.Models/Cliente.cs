@@ -31,8 +31,8 @@ namespace CoffeeConnect.Models
 
         public string FloId
         { get; set; }
-        
 
+        public int EmpresaId { get; set; }
 
 
         /// <summary>

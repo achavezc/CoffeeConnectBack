@@ -18,6 +18,8 @@
         public string TipoClienteId
         { get; set; }
 
+        public int EmpresaId { get; set; }
+
 
         public string FloId
         { get; set; }

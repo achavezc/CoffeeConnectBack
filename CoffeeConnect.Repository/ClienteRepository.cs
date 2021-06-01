@@ -26,6 +26,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("RazonSocial", request.RazonSocial);
             parameters.Add("TipoClienteId", request.TipoClienteId);
             parameters.Add("PaisId", request.PaisId);
+            parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("Ruc", request.Ruc);
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("FechaInicio", request.FechaInicio);
@@ -49,6 +50,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoClienteId", cliente.TipoClienteId);
             parameters.Add("@Ruc", cliente.Ruc);
             parameters.Add("@FloId", cliente.FloId);
+            parameters.Add("@EmpresaId", cliente.EmpresaId);
             parameters.Add("@RazonSocial", cliente.RazonSocial);
             parameters.Add("@Direccion", cliente.Direccion);
             parameters.Add("@PaisId", cliente.PaisId);
@@ -109,6 +111,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FloId", cliente.FloId);
             parameters.Add("@RazonSocial", cliente.RazonSocial);
             parameters.Add("@Direccion", cliente.Direccion);
+            parameters.Add("@EmpresaId", cliente.EmpresaId);
             parameters.Add("@PaisId", cliente.PaisId);
             parameters.Add("@DepartamentoId", cliente.DepartamentoId);
             parameters.Add("@ProvinciaId", cliente.ProvinciaId);
