@@ -32,7 +32,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
-          
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -60,7 +60,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoProduccionId", contrato.TipoProduccionId);
             parameters.Add("@MonedadId", contrato.MonedadId);
             parameters.Add("@Monto", contrato.Monto);
-            parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);            
+            parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);
             parameters.Add("@CalculoContratoId", contrato.CalculoContratoId ?? string.Empty);
             parameters.Add("@EntidadCertificadoraId", contrato.EntidadCertificadoraId);
             parameters.Add("@TipoCertificacionId", contrato.TipoCertificacionId);
@@ -121,7 +121,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoProduccionId", contrato.TipoProduccionId);
             parameters.Add("@MonedadId", contrato.MonedadId);
             parameters.Add("@Monto", contrato.Monto);
-            parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);       
+            parameters.Add("@UnidadMedicionId", contrato.UnidadMedicionId);
             parameters.Add("@EntidadCertificadoraId", contrato.EntidadCertificadoraId);
             parameters.Add("@TipoCertificacionId", contrato.TipoCertificacionId);
             parameters.Add("@CalculoContratoId", contrato.CalculoContratoId);
@@ -169,7 +169,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                affected = db.Execute("uspContratoIdAnular", parameters, commandType: CommandType.StoredProcedure);
+                affected = db.Execute("uspContratoAnular", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;
