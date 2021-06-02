@@ -269,8 +269,8 @@ namespace CoffeeConnect.DTO
 		
 
 
-		//public IEnumerable<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> DetalleLotes
-		//{ get; set; }
+		public IEnumerable<ConsultaNotaSalidaAlmacenPlantaDetallePorIdBE> Detalle
+		{ get; set; }
 
 	
 

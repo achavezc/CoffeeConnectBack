@@ -22,5 +22,7 @@ namespace CoffeeConnect.Interface.Repository
         ConsultaNotaIngresoAlmacenPlantaPorIdBE ConsultarNotaIngresoAlmacenPlantaPorId(int NotaIngresoAlmacenPlantaId);
 
         int Actualizar(int NotaIngresoAlmacenPlantaId, DateTime fecha, string usuario, string almacenId);
+
+        int ActualizarEstadoPorIds(List<TablaIdsTipo> ids, DateTime fecha, string usuario, string estadoId);
     }
 }

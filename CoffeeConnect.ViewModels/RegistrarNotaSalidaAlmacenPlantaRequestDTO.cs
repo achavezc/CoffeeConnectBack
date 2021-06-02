@@ -37,9 +37,10 @@ namespace CoffeeConnect.DTO
         public String EstadoId { get; set; }
 		public String UsuarioNotaSalidaAlmacenPlanta { get; set; }
 		//public String Activo { get; set; }
-		//public List<NotaSalidaAlmacenDetalleDTO> ListNotaSalidaAlmacenDetalle { get; set; }
+		
+		public List<NotaSalidaAlmacenPlantaDetalleDTO> ListNotaSalidaAlmacenPlantaDetalle { get; set; }
 		public RegistrarNotaSalidaAlmacenPlantaRequestDTO() {
-			//ListNotaSalidaAlmacenDetalle = new List<NotaSalidaAlmacenDetalleDTO>();
+			ListNotaSalidaAlmacenPlantaDetalle = new List<NotaSalidaAlmacenPlantaDetalleDTO>();
 		}
 	}
 }

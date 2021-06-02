@@ -163,45 +163,43 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+
+        public int ActualizarNotaSalidaAlmacenPlantaDetalle(List<NotaSalidaAlmacenPlantaDetalle> request, int? NotaSalidaAlmacenPlantaId)
+        {
+            //uspNotaSalidaAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaSalidaAlmacenPlantaId", NotaSalidaAlmacenPlantaId);
+            parameters.Add("@NotaSalidaAlmacenPlantaDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenPlantaDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+
+        public IEnumerable<ConsultaNotaSalidaAlmacenPlantaDetallePorIdBE> ConsultarNotaSalidaAlmacenPlantaDetallePorIdBE(int notaSalidaAlmacenPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("NotaSalidaAlmacenPlantaId", notaSalidaAlmacenPlantaId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaNotaSalidaAlmacenPlantaDetallePorIdBE>("uspConsultaNotaSalidaAlmacenPlantaDetallePorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         
-
-    
-
-
-        //public int ActualizarNotaSalidaAlmacenPlantaDetalle(List<NotaSalidaAlmacenPlantaDetalle> request, int? NotaSalidaAlmacenPlantaId)
-        //{
-        //    //uspNotaSalidaAlmacenPlantaAnalisisFisicoColorDetalleActualizar
-        //    int result = 0;
-
-        //    var parameters = new DynamicParameters();
-
-        //    parameters.Add("@NotaSalidaAlmacenPlantaId", NotaSalidaAlmacenPlantaId);
-        //    parameters.Add("@NotaSalidaAlmacenPlantaDetalleTipo", request.ToDataTable().AsTableValuedParameter());
-
-
-
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        result = db.Execute("uspNotaSalidaAlmacenPlantaDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
-        //    }
-
-        //    return result;
-
-        //}
-
-
-        //public IEnumerable<ConsultaNotaSalidaAlmacenPlantaLotesDetallePorIdBE> ConsultarNotaSalidaAlmacenPlantaLotesDetallePorIdBE(int NotaSalidaAlmacenPlantaId)
-        //{
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("NotaSalidaAlmacenPlantaId", NotaSalidaAlmacenPlantaId);
-
-
-
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        return db.Query<ConsultaNotaSalidaAlmacenPlantaLotesDetallePorIdBE>("uspConsultaNotaSalidaAlmacenPlantaLotesDetallePorId", parameters, commandType: CommandType.StoredProcedure);
-        //    }
-        //}
 
 
     }

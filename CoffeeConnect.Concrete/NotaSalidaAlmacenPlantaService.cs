@@ -15,7 +15,7 @@ namespace CoffeeConnect.Service
 
         private INotaSalidaAlmacenPlantaRepository _INotaSalidaAlmacenPlantaRepository;
 
-        private ILoteRepository _LoteRepository;
+        private INotaIngresoAlmacenPlantaRepository _NotaIngresoAlmacenPlantaRepository;
 
         private IUsersRepository _UsersRepository;
 
@@ -26,7 +26,7 @@ namespace CoffeeConnect.Service
 
 
         public NotaSalidaAlmacenPlantaService(INotaSalidaAlmacenPlantaRepository notaSalidaAlmacenPlantaRepository, IUsersRepository usersRepository,
-            IEmpresaRepository empresaRepository, ILoteRepository loteRepository, ICorrelativoRepository ICorrelativoRepository,
+            IEmpresaRepository empresaRepository, INotaIngresoAlmacenPlantaRepository notaIngresoAlmacenPlantaRepository, ICorrelativoRepository ICorrelativoRepository,
             IGuiaRemisionAlmacenRepository IGuiaRemisionAlmacenRepository,
             IMapper mapper)
         {
@@ -36,7 +36,7 @@ namespace CoffeeConnect.Service
 
             _EmpresaRepository = empresaRepository;
 
-            _LoteRepository = loteRepository;
+            _NotaIngresoAlmacenPlantaRepository = notaIngresoAlmacenPlantaRepository;
 
             _ICorrelativoRepository = ICorrelativoRepository;
 
@@ -95,9 +95,9 @@ namespace CoffeeConnect.Service
         public int ActualizarNotaSalidaAlmacenPlanta(RegistrarNotaSalidaAlmacenPlantaRequestDTO request)
         {
             NotaSalidaAlmacenPlanta notaSalidaAlmacen = new NotaSalidaAlmacenPlanta();
-            List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
+            List<NotaSalidaAlmacenPlantaDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenPlantaDetalle>();
             int affected = 0;
-            List<TablaIdsTipo> loteIdActualizar = new List<TablaIdsTipo>();
+            List<TablaIdsTipo> notaIngresoIdActualizar = new List<TablaIdsTipo>();
 
 
             notaSalidaAlmacen.NotaSalidaAlmacenPlantaId = request.NotaSalidaAlmacenPlantaId;
@@ -129,10 +129,31 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacenPlanta;
 
 
-            affected = _INotaSalidaAlmacenPlantaRepository.Actualizar(notaSalidaAlmacen);
+            notaSalidaAlmacen.NotaSalidaAlmacenPlantaId = _INotaSalidaAlmacenPlantaRepository.Actualizar(notaSalidaAlmacen);
 
 
+            if (notaSalidaAlmacen.NotaSalidaAlmacenPlantaId != 0)
+            {
+                request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
+                {
+                    NotaSalidaAlmacenPlantaDetalle obj = new NotaSalidaAlmacenPlantaDetalle();
+                    obj.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
+                    obj.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
 
+                    lstnotaSalidaAlmacen.Add(obj);
+
+
+                    TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
+                    tablaLoteIdsTipo.Id = x.NotaIngresoAlmacenPlantaId;
+                    notaIngresoIdActualizar.Add(tablaLoteIdsTipo);
+
+                });
+
+                affected = _INotaSalidaAlmacenPlantaRepository.ActualizarNotaSalidaAlmacenPlantaDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
+
+
+                _NotaIngresoAlmacenPlantaRepository.ActualizarEstadoPorIds(notaIngresoIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, NotaIngresoAlmacenPlantaEstados.GeneradoNotaSalida);
+            }
 
 
             return affected;
@@ -141,9 +162,6 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaNotaSalidaAlmacenPlantaBE> ConsultarNotaSalidaAlmacenPlanta(ConsultaNotaSalidaAlmacenPlantaRequestDTO request)
         {
-
-
-
             var list = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenPlanta(request);
 
             return list.ToList();
@@ -170,13 +188,13 @@ namespace CoffeeConnect.Service
         {
             ConsultaNotaSalidaAlmacenPlantaPorIdBE notaSalidaAlmacenPorIdBE = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenPlantaPorId(request.NotaSalidaAlmacenPlantaId);
 
-            //if (notaSalidaAlmacenPorIdBE != null)
-            //{
+            if (notaSalidaAlmacenPorIdBE != null)
+            {
 
-            //    notaSalidaAlmacenPorIdBE.DetalleLotes = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenPlantaLotesDetallePorIdBE(request.NotaSalidaAlmacenId);
+                notaSalidaAlmacenPorIdBE.Detalle = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenPlantaDetallePorIdBE(request.NotaSalidaAlmacenPlantaId);
 
 
-            //}
+            }
 
 
 
