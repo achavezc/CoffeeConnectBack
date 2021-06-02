@@ -11,7 +11,7 @@ namespace CoffeeConnect.Interface.Repository
     {
        
 
-        IEnumerable<EmpresaTransporteBE> ConsultarEmpresaTransporte(int empresaId);
+        IEnumerable<EmpresaTransporteBE> ConsultarEmpresaTransporte(ConsultaEmpresaTransporteRequestDTO request);
         IEnumerable<ConsultaTransportistaBE> ConsultarTransportista(ConsultaTransportistaRequestDTO request);
         IEnumerable<ConsultaProductoPrecioDiaBE> ConsultarEmpresaTransporte(ConsultaEmpresaTransporteDTO request);
         ConsultaEmpresaTransportePorIdBE ConsultarEmpresaTransportePorId(int empresaTransporteId);

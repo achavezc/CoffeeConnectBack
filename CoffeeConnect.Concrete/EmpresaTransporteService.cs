@@ -22,9 +22,9 @@ namespace CoffeeConnect.Service
 
             _Mapper = mapper;
         }
-        public List<EmpresaTransporteBE> ConsultarEmpresaTransporte(int empresaId)
+        public List<EmpresaTransporteBE> ConsultarEmpresaTransporte(ConsultaEmpresaTransporteRequestDTO request)
         {
-            var lista = _IEmpresaTransporteRepository.ConsultarEmpresaTransporte(empresaId);
+            var lista = _IEmpresaTransporteRepository.ConsultarEmpresaTransporte(request);
 
             return lista.ToList();
         }
