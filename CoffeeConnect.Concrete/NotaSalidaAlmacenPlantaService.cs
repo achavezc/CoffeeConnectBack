@@ -22,12 +22,12 @@ namespace CoffeeConnect.Service
         private IEmpresaRepository _EmpresaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
 
-        private IGuiaRemisionAlmacenRepository _IGuiaRemisionAlmacenRepository;
+        private IGuiaRemisionAlmacenPlantaRepository _IGuiaRemisionAlmacenPlantaRepository;
 
 
         public NotaSalidaAlmacenPlantaService(INotaSalidaAlmacenPlantaRepository notaSalidaAlmacenPlantaRepository, IUsersRepository usersRepository,
             IEmpresaRepository empresaRepository, INotaIngresoAlmacenPlantaRepository notaIngresoAlmacenPlantaRepository, ICorrelativoRepository ICorrelativoRepository,
-            IGuiaRemisionAlmacenRepository IGuiaRemisionAlmacenRepository,
+            IGuiaRemisionAlmacenPlantaRepository IGuiaRemisionAlmacenPlantaRepository,
             IMapper mapper)
         {
             _INotaSalidaAlmacenPlantaRepository = notaSalidaAlmacenPlantaRepository;
@@ -40,7 +40,7 @@ namespace CoffeeConnect.Service
 
             _ICorrelativoRepository = ICorrelativoRepository;
 
-            _IGuiaRemisionAlmacenRepository = IGuiaRemisionAlmacenRepository;
+            _IGuiaRemisionAlmacenPlantaRepository = IGuiaRemisionAlmacenPlantaRepository;
 
             _Mapper = mapper;
         }
@@ -51,10 +51,11 @@ namespace CoffeeConnect.Service
         public int RegistrarNotaSalidaAlmacenPlanta(RegistrarNotaSalidaAlmacenPlantaRequestDTO request)
         {
             NotaSalidaAlmacenPlanta notaSalidaAlmacen = new NotaSalidaAlmacenPlanta();
-            List<NotaSalidaAlmacenDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenDetalle>();
+            List<NotaSalidaAlmacenPlantaDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenPlantaDetalle>();
             int affected = 0;
 
-            List<TablaIdsTipo> loteIdActualizar = new List<TablaIdsTipo>();
+        
+            List<TablaIdsTipo> notaIngresoIdActualizar = new List<TablaIdsTipo>();
 
             notaSalidaAlmacen.EmpresaId = request.EmpresaId;
             notaSalidaAlmacen.AlmacenId = request.AlmacenId;
@@ -84,10 +85,89 @@ namespace CoffeeConnect.Service
 
             notaSalidaAlmacen.NotaSalidaAlmacenPlantaId = _INotaSalidaAlmacenPlantaRepository.Insertar(notaSalidaAlmacen);
 
+            if (notaSalidaAlmacen.NotaSalidaAlmacenPlantaId != 0)
+            {
+                request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
+                {
+                    NotaSalidaAlmacenPlantaDetalle obj = new NotaSalidaAlmacenPlantaDetalle();
+                    obj.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
+                    obj.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
+
+                    lstnotaSalidaAlmacen.Add(obj);
 
 
+                    TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
+                    tablaLoteIdsTipo.Id = x.NotaIngresoAlmacenPlantaId;
+                    notaIngresoIdActualizar.Add(tablaLoteIdsTipo);
+
+                });
+
+                affected = _INotaSalidaAlmacenPlantaRepository.ActualizarNotaSalidaAlmacenPlantaDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
 
 
+                _NotaIngresoAlmacenPlantaRepository.ActualizarEstadoPorIds(notaIngresoIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, NotaIngresoAlmacenPlantaEstados.GeneradoNotaSalida);
+            }
+
+
+            int guiaRemisionAlmacenId;
+            //GuiaRemisionAlmacen guiaRemisionAlmacen = new GuiaRemisionAlmacen();
+
+            GuiaRemisionAlmacenPlanta guiaRemisionAlmacen = _Mapper.Map<GuiaRemisionAlmacenPlanta>(notaSalidaAlmacen);
+            guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacenPlanta);
+
+            
+
+           
+
+            string tipoProduccionId = String.Empty;
+            string tipoCertificacionId = String.Empty;
+
+            //List<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
+
+
+            //if (NotaSalidaDetalle.Count > 0)
+            //{
+            //    tipoProduccionId = NotaSalidaDetalle[0].TipoProduccionId;
+            //    tipoCertificacionId = NotaSalidaDetalle[0].TipoCertificacionId;
+
+            //}
+
+            //guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
+            //guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
+
+
+            guiaRemisionAlmacenId = _IGuiaRemisionAlmacenPlantaRepository.Insertar(guiaRemisionAlmacen);
+
+            //if (guiaRemisionAlmacenId != 0)
+            //{
+            //    List<GuiaRemisionAlmacenDetalleTipo> listaDetalle = new List<GuiaRemisionAlmacenDetalleTipo>();
+            //    if (NotaSalidaDetalle.Any())
+            //    {
+            //        NotaSalidaDetalle.ForEach(x =>
+            //        {
+            //            GuiaRemisionAlmacenDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenDetalleTipo>(x);
+            //            item.GuiaRemisionAlmacenId = guiaRemisionAlmacenId;
+            //            item.FechaLote = x.FechaRegistro;
+            //            item.UnidadMedidaIdPesado = x.UnidadMedidaId;
+            //            item.ProductoId = x.ProductoId;
+            //            item.SubProductoId = x.SubProductoId;
+            //            item.NumeroLote = x.NumeroLote;
+            //            item.CantidadPesado = x.Cantidad;
+            //            item.KilosNetosPesado = x.TotalKilosNetosPesado;
+            //            item.KilosBrutosPesado = x.TotalKilosBrutosPesado;
+            //            item.RendimientoPorcentaje = x.RendimientoPorcentaje;
+            //            item.HumedadPorcentaje = x.HumedadPorcentajeAnalisisFisico;
+            //            item.TipoProduccionId = x.TipoProduccionId;
+            //            item.TipoCertificacionId = x.TipoCertificacionId;
+            //            listaDetalle.Add(item);
+            //        });
+
+            //        _IGuiaRemisionAlmacenRepository.ActualizarGuiaRemisionAlmacenDetalle(listaDetalle);
+            //    }
+
+            //}
+
+            _NotaIngresoAlmacenPlantaRepository.ActualizarEstadoPorIds(notaIngresoIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, NotaIngresoAlmacenPlantaEstados.GeneradoNotaSalida);
 
             return affected;
         }
@@ -193,9 +273,7 @@ namespace CoffeeConnect.Service
 
                 notaSalidaAlmacenPorIdBE.Detalle = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenPlantaDetallePorIdBE(request.NotaSalidaAlmacenPlantaId);
 
-
             }
-
 
 
             return notaSalidaAlmacenPorIdBE;
