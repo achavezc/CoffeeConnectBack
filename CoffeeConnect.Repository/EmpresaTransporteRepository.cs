@@ -19,12 +19,13 @@ namespace CoffeeConnect.Repository
         }
 
 
-        public IEnumerable<EmpresaTransporteBE> ConsultarEmpresaTransporte(int empresaId)
+        public IEnumerable<EmpresaTransporteBE> ConsultarEmpresaTransporte(ConsultaEmpresaTransporteRequestDTO request)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("EmpresaId", empresaId);
-            parameters.Add("Ruc", empresaId);
-            parameters.Add("RazonSocial", empresaId);
+            parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("Ruc", request.Ruc);
+            parameters.Add("RazonSocial", request.RazonSocial);
+            parameters.Add("EstadoId", request.EstadoId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -63,7 +64,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", empresaTransporte.EmpresaId);       
             parameters.Add("@FechaRegistro", empresaTransporte.FechaRegistro);
             parameters.Add("@UsuarioRegistro", empresaTransporte.UsuarioRegistro);
-       
+            parameters.Add("@Activo", true);
+
 
 
 

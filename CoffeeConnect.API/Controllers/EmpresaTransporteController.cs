@@ -37,7 +37,7 @@ namespace Integracion.Deuda.Controller
             ConsultaEmpresaTransporteResponseDTO response = new ConsultaEmpresaTransporteResponseDTO();
             try
             {
-                List<EmpresaTransporteBE> lista = _empresaTransporteService.ConsultarEmpresaTransporte(request.EmpresaId);
+                List<EmpresaTransporteBE> lista = _empresaTransporteService.ConsultarEmpresaTransporte(request);
 
                 response.Result.Data = lista;
 

@@ -11,12 +11,13 @@ namespace CoffeeConnect.DTO
 
         public int EmpresaId { get; set; }
 
-        public int Ruc { get; set; }
+        public string Ruc { get; set; }
 
-        public int RazonSocial { get; set; }
+        public string RazonSocial { get; set; }
 
- 
+        public string EstadoId { get; set; }
 
-     
+
     }
 }
+

@@ -5,7 +5,7 @@ namespace CoffeeConnect.Interface.Service
 {
     public interface IEmpresaTransporteService
     {
-        List<EmpresaTransporteBE> ConsultarEmpresaTransporte(int empresaId);
+        List<EmpresaTransporteBE> ConsultarEmpresaTransporte(ConsultaEmpresaTransporteRequestDTO request);
         List<ConsultaTransportistaBE> ConsultarTransportista(ConsultaTransportistaRequestDTO request);
         ConsultaEmpresaTransportePorIdBE ConsultarEmpresaTransportePorId(ConsultaEmpresaTransportePorIdRequestDTO request);
         int ActualizarEmpresaTransporte(RegistrarActualizarEmpresaTransporteRequestDTO request);
