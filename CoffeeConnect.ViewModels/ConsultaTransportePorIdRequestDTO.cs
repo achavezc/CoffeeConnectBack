@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class ConsultaTransporteRequestDTO
+   public class ConsultaTransportePorIdRequestDTO
     {
 
-        public int EmpresaTransporteId { get; set; }
+
+        public int TransporteId { get; set; }
         
     }
 }

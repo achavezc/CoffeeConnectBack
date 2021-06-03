@@ -18,7 +18,6 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
         public IEnumerable<EmpresaTransporteBE> ConsultarEmpresaTransporte(ConsultaEmpresaTransporteRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -122,7 +121,6 @@ namespace CoffeeConnect.Repository
 
             return itemBE;
         }
-
 
         public IEnumerable<ConsultaProductoPrecioDiaBE> ConsultarEmpresaTransporte(ConsultaEmpresaTransporteDTO request)
         {
