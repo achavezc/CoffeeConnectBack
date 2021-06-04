@@ -97,12 +97,12 @@ namespace CoffeeConnect.Service
             return consultaSocioFincaPorIdBE;
         }
 
-        public ConsultaProductorIdBE ConsultarSocioProductorPorSocioFincaId(ConsultaSocioFincaPorIdRequestDTO request)
+        public ConsultarSocioProductorPorSocioFincaId ConsultarSocioProductorPorSocioFincaId(ConsultaSocioFincaPorIdRequestDTO request)
         {
 
-            ConsultaProductorIdBE consultaProductorIdBE = _ISocioRepository.ConsultarSocioProductorPorSocioFincaId(request.SocioFincaId);
+            ConsultarSocioProductorPorSocioFincaId consultarSocioProductorPorSocioFincaId = _ISocioRepository.ConsultarSocioProductorPorSocioFincaId(request.SocioFincaId);
            
-            return consultaProductorIdBE;
+            return consultarSocioProductorPorSocioFincaId;
         }
 
 

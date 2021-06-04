@@ -97,9 +97,9 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
-        public ConsultaProductorIdBE ConsultarSocioProductorPorSocioFincaId(int socioFincaId)
+        public ConsultarSocioProductorPorSocioFincaId ConsultarSocioProductorPorSocioFincaId(int socioFincaId)
         {
-            ConsultaProductorIdBE itemBE = null;
+            ConsultarSocioProductorPorSocioFincaId itemBE = null;
 
             var parameters = new DynamicParameters();
             parameters.Add("@SocioFincaId", socioFincaId);
@@ -107,7 +107,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                var list = db.Query<ConsultaProductorIdBE>("uspSocioProductorPorSocioFincaId", parameters, commandType: CommandType.StoredProcedure);
+                var list = db.Query<ConsultarSocioProductorPorSocioFincaId>("uspSocioProductorPorSocioFincaId", parameters, commandType: CommandType.StoredProcedure);
 
                 if (list.Any())
                     itemBE = list.First();
