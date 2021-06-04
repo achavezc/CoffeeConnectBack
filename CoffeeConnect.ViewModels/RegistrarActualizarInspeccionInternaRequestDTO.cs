@@ -90,6 +90,19 @@ namespace CoffeeConnect.DTO
 
 		public List<InspeccionInternaParcelaTipo> InspeccionInternaParcelaList { get; set; }
 
+		public List<InspeccionInternaLevantamientoNoConformidadTipo> InspeccionInternaLevantamientoNoConformidadList { get; set; }
+
+		public List<InspeccionInternaNoConformidadTipo> InspeccionInternaNoConformidadList { get; set; }
+
+
+		public RegistrarActualizarInspeccionInternaRequestDTO()
+		{
+			InspeccionInternaNormaList = new List<InspeccionInternaNormasTipo>();
+			InspeccionInternaParcelaList = new List<InspeccionInternaParcelaTipo>();
+			InspeccionInternaLevantamientoNoConformidadList = new List<InspeccionInternaLevantamientoNoConformidadTipo>();
+			InspeccionInternaNoConformidadList = new List<InspeccionInternaNoConformidadTipo>();
+
+		}
 
 
 		#endregion

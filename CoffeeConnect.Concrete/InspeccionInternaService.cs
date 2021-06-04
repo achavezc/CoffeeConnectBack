@@ -31,7 +31,53 @@ namespace CoffeeConnect.Service
 
         public int ActualizarInspeccionInterna(RegistrarActualizarInspeccionInternaRequestDTO request)
         {
-            throw new NotImplementedException();
+            InspeccionInterna inspeccionInterna = _Mapper.Map<InspeccionInterna>(request);
+            inspeccionInterna.FechaUltimaActualizacion = DateTime.Now;
+            inspeccionInterna.UsuarioUltimaActualizacion = request.Usuario;
+
+            int affected = _IInspeccionInternaRepository.Actualizar(inspeccionInterna);
+
+            if (request.InspeccionInternaNormaList.FirstOrDefault() != null)
+            {
+                request.InspeccionInternaNormaList.ForEach(z =>
+                {
+                    z.InspeccionInternaId = request.InspeccionInternaId;
+                });
+
+                _IInspeccionInternaRepository.ActualizarInspeccionInternaNormas(request.InspeccionInternaNormaList, request.InspeccionInternaId);
+            }
+
+            if (request.InspeccionInternaParcelaList.FirstOrDefault() != null)
+            {
+                request.InspeccionInternaParcelaList.ForEach(z =>
+                {
+                    z.InspeccionInternaId = request.InspeccionInternaId;
+                });
+
+                _IInspeccionInternaRepository.ActualizarInspeccionInternaParcela(request.InspeccionInternaParcelaList, request.InspeccionInternaId);
+            }
+
+            if (request.InspeccionInternaLevantamientoNoConformidadList.FirstOrDefault() != null)
+            {
+                request.InspeccionInternaLevantamientoNoConformidadList.ForEach(z =>
+                {
+                    z.InspeccionInternaId = request.InspeccionInternaId;
+                });
+
+                _IInspeccionInternaRepository.ActualizarInspeccionInternaLevantamientoNoConformidad(request.InspeccionInternaLevantamientoNoConformidadList, request.InspeccionInternaId);
+            }
+
+            if (request.InspeccionInternaNoConformidadList.FirstOrDefault() != null)
+            {
+                request.InspeccionInternaNoConformidadList.ForEach(z =>
+                {
+                    z.InspeccionInternaId = request.InspeccionInternaId;
+                });
+
+                _IInspeccionInternaRepository.ActualizarInspeccionInternaNoConformidad(request.InspeccionInternaNoConformidadList, request.InspeccionInternaId);
+            }
+
+            return affected;
         }
 
        
@@ -66,6 +112,28 @@ namespace CoffeeConnect.Service
                 _IInspeccionInternaRepository.ActualizarInspeccionInternaParcela(request.InspeccionInternaParcelaList, inspeccionInternaId);
             }
 
+            if (request.InspeccionInternaLevantamientoNoConformidadList.FirstOrDefault() != null)
+            {
+                request.InspeccionInternaLevantamientoNoConformidadList.ForEach(z =>
+                {
+                    z.InspeccionInternaId = inspeccionInternaId;
+                });
+
+                _IInspeccionInternaRepository.ActualizarInspeccionInternaLevantamientoNoConformidad(request.InspeccionInternaLevantamientoNoConformidadList, inspeccionInternaId);
+            }
+
+            if (request.InspeccionInternaNoConformidadList.FirstOrDefault() != null)
+            {
+                request.InspeccionInternaNoConformidadList.ForEach(z =>
+                {
+                    z.InspeccionInternaId = inspeccionInternaId;
+                });
+
+                _IInspeccionInternaRepository.ActualizarInspeccionInternaNoConformidad(request.InspeccionInternaNoConformidadList, inspeccionInternaId);
+            }
+
+
+
             return inspeccionInternaId;
         }
 
@@ -89,7 +157,16 @@ namespace CoffeeConnect.Service
 
         public ConsultaInspeccionInternaPorIdBE ConsultarInspeccionInternaPorId(ConsultaInspeccionInternaPorIdRequestDTO request)
         {
-            return _IInspeccionInternaRepository.ConsultarInspeccionInternaPorId(request.InspeccionInternaId);
+            ConsultaInspeccionInternaPorIdBE consultaInspeccionInternaPorIdBE = _IInspeccionInternaRepository.ConsultarInspeccionInternaPorId(request.InspeccionInternaId);
+
+
+
+            consultaInspeccionInternaPorIdBE.InspeccionInternaParcela = _IInspeccionInternaRepository.ConsultarInspeccionInternaParcelaPorId(request.InspeccionInternaId).ToList();
+            consultaInspeccionInternaPorIdBE.InspeccionInternaNoConformidad = _IInspeccionInternaRepository.ConsultarInspeccionInternaNoConformidadPorId(request.InspeccionInternaId).ToList();
+            consultaInspeccionInternaPorIdBE.InspeccionInternaLevantamientoNoConformidad = _IInspeccionInternaRepository.ConsultarInspeccionInternaLevantamientoNoConformidadPorId(request.InspeccionInternaId).ToList();
+            consultaInspeccionInternaPorIdBE.InspeccionInternaNorma = _IInspeccionInternaRepository.ConsultarInspeccionInternaNormasPorId(request.InspeccionInternaId).ToList();
+
+            return consultaInspeccionInternaPorIdBE;
         }
 
     }

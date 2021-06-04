@@ -13,6 +13,8 @@ namespace CoffeeConnect.Interface.Service
 
         ConsultaSocioFincaPorIdBE ConsultarSocioFincaPorId(ConsultaSocioFincaPorIdRequestDTO request);
 
+        ConsultaProductorIdBE ConsultarSocioProductorPorSocioFincaId(ConsultaSocioFincaPorIdRequestDTO request);
+
         public ConsultaSocioFincaEstimadoPorSocioFincaIdBE ConsultarSocioFincaEstimadoPorSocioFincaId(ConsultaSocioFincaEstimadoPorSocioFincaIdRequest request);
     }
 }
