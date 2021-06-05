@@ -132,8 +132,8 @@ namespace CoffeeConnect.Service
 
             //}
 
-            //guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
-            //guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
+            guiaRemisionAlmacen.TipoProduccionId = ""; ;
+            guiaRemisionAlmacen.TipoCertificacionId = "";
 
 
             guiaRemisionAlmacenId = _IGuiaRemisionAlmacenPlantaRepository.Insertar(guiaRemisionAlmacen);
