@@ -143,12 +143,14 @@ namespace CoffeeConnect.Service
         {
             ConsultaDiagnosticoPorIdBE consultaDiagnosticoPorIdBE = _IDiagnosticoRepository.ConsultarDiagnosticoPorId(request.DiagnosticoId);
 
+            if (consultaDiagnosticoPorIdBE != null)
+            {
 
+                consultaDiagnosticoPorIdBE.DiagnosticoInfraestructura = _IDiagnosticoRepository.ConsultarDiagnosticoInfraestructuraPorId(request.DiagnosticoId).ToList();
+                consultaDiagnosticoPorIdBE.DiagnosticoDatosCampo = _IDiagnosticoRepository.ConsultarDiagnosticoDatosCampoPorId(request.DiagnosticoId).ToList();
+                consultaDiagnosticoPorIdBE.DiagnosticoInfraestructura = _IDiagnosticoRepository.ConsultarDiagnosticoInfraestructuraPorId(request.DiagnosticoId).ToList();
 
-            consultaDiagnosticoPorIdBE.DiagnosticoInfraestructura = _IDiagnosticoRepository.ConsultarDiagnosticoInfraestructuraPorId(request.DiagnosticoId).ToList();
-            consultaDiagnosticoPorIdBE.DiagnosticoDatosCampo = _IDiagnosticoRepository.ConsultarDiagnosticoDatosCampoPorId(request.DiagnosticoId).ToList();
-            consultaDiagnosticoPorIdBE.DiagnosticoInfraestructura = _IDiagnosticoRepository.ConsultarDiagnosticoInfraestructuraPorId(request.DiagnosticoId).ToList();
-          
+            }
             return consultaDiagnosticoPorIdBE;
         }
 

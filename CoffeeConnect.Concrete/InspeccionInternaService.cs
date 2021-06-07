@@ -159,13 +159,14 @@ namespace CoffeeConnect.Service
         {
             ConsultaInspeccionInternaPorIdBE consultaInspeccionInternaPorIdBE = _IInspeccionInternaRepository.ConsultarInspeccionInternaPorId(request.InspeccionInternaId);
 
+            if (consultaInspeccionInternaPorIdBE != null)
+            {
 
-
-            consultaInspeccionInternaPorIdBE.InspeccionInternaParcela = _IInspeccionInternaRepository.ConsultarInspeccionInternaParcelaPorId(request.InspeccionInternaId).ToList();
-            consultaInspeccionInternaPorIdBE.InspeccionInternaNoConformidad = _IInspeccionInternaRepository.ConsultarInspeccionInternaNoConformidadPorId(request.InspeccionInternaId).ToList();
-            consultaInspeccionInternaPorIdBE.InspeccionInternaLevantamientoNoConformidad = _IInspeccionInternaRepository.ConsultarInspeccionInternaLevantamientoNoConformidadPorId(request.InspeccionInternaId).ToList();
-            consultaInspeccionInternaPorIdBE.InspeccionInternaNorma = _IInspeccionInternaRepository.ConsultarInspeccionInternaNormasPorId(request.InspeccionInternaId).ToList();
-
+                consultaInspeccionInternaPorIdBE.InspeccionInternaParcela = _IInspeccionInternaRepository.ConsultarInspeccionInternaParcelaPorId(request.InspeccionInternaId).ToList();
+                consultaInspeccionInternaPorIdBE.InspeccionInternaNoConformidad = _IInspeccionInternaRepository.ConsultarInspeccionInternaNoConformidadPorId(request.InspeccionInternaId).ToList();
+                consultaInspeccionInternaPorIdBE.InspeccionInternaLevantamientoNoConformidad = _IInspeccionInternaRepository.ConsultarInspeccionInternaLevantamientoNoConformidadPorId(request.InspeccionInternaId).ToList();
+                consultaInspeccionInternaPorIdBE.InspeccionInternaNorma = _IInspeccionInternaRepository.ConsultarInspeccionInternaNormasPorId(request.InspeccionInternaId).ToList();
+            }
             return consultaInspeccionInternaPorIdBE;
         }
 
