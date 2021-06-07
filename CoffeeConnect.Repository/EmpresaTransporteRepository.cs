@@ -38,8 +38,8 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("RazonSocial", request.RazonSocial);
             parameters.Add("Ruc", request.Ruc);
-            parameters.Add("EmpresaId", request.EstadoId);
-            parameters.Add("EstadoId", request.EmpresaId);
+            parameters.Add("EmpresaId", request.EmpresaId );
+            parameters.Add("EstadoId", request.EstadoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

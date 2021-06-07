@@ -16,9 +16,11 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public string Numero
 		{ get; set; }
-		
-		/// </summary>
-		public string EstadoId
+        public int SocioFincaId { get; set; }
+        public int SocioId { get; set; }
+        public int ProductorFincaId { get; set; }
+        /// </summary>
+        public string EstadoId
 		{ get; set; }
 
 		public string Estado
