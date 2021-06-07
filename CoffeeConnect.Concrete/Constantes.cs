@@ -46,6 +46,8 @@ namespace CoffeeConnect.Service
 
         public static string InspeccionInterna { get { return "InspeccionInterna"; } }
 
+        public static string Diagnostico { get { return "Diagnostico"; } }
+
         public static string Contrato { get { return "Contrato"; } }
         public static string NotaIngresoAlmacenPlanta { get { return "NotaIngresoAlmacenPlanta  "; } }
     }
