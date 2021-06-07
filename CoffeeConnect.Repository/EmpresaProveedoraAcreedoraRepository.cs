@@ -46,6 +46,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@DistritoId", EmpresaProveedoraAcreedora.DistritoId);
             parameters.Add("@EstadoId", EmpresaProveedoraAcreedora.EstadoId);
             parameters.Add("@EmpresaId", EmpresaProveedoraAcreedora.EmpresaId);
+            parameters.Add("@ClasificacionId", EmpresaProveedoraAcreedora.ClasificacionId);
             parameters.Add("@FechaRegistro", EmpresaProveedoraAcreedora.FechaRegistro);
             parameters.Add("@UsuarioRegistro", EmpresaProveedoraAcreedora.UsuarioRegistro);
 

@@ -16,5 +16,7 @@ namespace CoffeeConnect.Interface.Repository
 
         ConsultaSocioPorIdBE ConsultarSocioPorId(int socioId);
 
+        ConsultarSocioProductorPorSocioFincaId ConsultarSocioProductorPorSocioFincaId(int socioFincaId);
+
     }
 }

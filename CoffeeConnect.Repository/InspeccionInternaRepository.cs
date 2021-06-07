@@ -96,12 +96,12 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-        public ConsultaInspeccionInternaPorIdBE ConsultarInspeccionInternaPorId(int InspeccionInternaId)
+        public ConsultaInspeccionInternaPorIdBE ConsultarInspeccionInternaPorId(int inspeccionInternaId)
         {
             ConsultaInspeccionInternaPorIdBE itemBE = null;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@InspeccionInternaId", InspeccionInternaId);
+            parameters.Add("@InspeccionInternaId", inspeccionInternaId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -163,6 +163,98 @@ namespace CoffeeConnect.Repository
             //uspLoteAnalisisFisicoColorDetalleActualizar
 
         }
+
+        public int ActualizarInspeccionInternaLevantamientoNoConformidad(List<InspeccionInternaLevantamientoNoConformidadTipo> request, int inspeccionInternaId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@InspeccionInternaId", inspeccionInternaId);
+            parameters.Add("@InspeccionInternaLevantamientoNoConformidadTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspInspeccionInternaLevantamientoNoConformidadActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;          
+
+        }
+
+        public int ActualizarInspeccionInternaNoConformidad(List<InspeccionInternaNoConformidadTipo> request, int inspeccionInternaId)
+        {
+            //uspLoteAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@InspeccionInternaId", inspeccionInternaId);
+            parameters.Add("@InspeccionInternaNoConformidadTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspInspeccionInternaNoConformidadActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public IEnumerable<InspeccionInternaLevantamientoNoConformidad> ConsultarInspeccionInternaLevantamientoNoConformidadPorId(int inspeccionInternaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@InspeccionInternaId", inspeccionInternaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<InspeccionInternaLevantamientoNoConformidad>("uspInspeccionInternaLevantamientoNoConformidadConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<InspeccionInternaNoConformidad> ConsultarInspeccionInternaNoConformidadPorId(int inspeccionInternaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@InspeccionInternaId", inspeccionInternaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<InspeccionInternaNoConformidad>("uspInspeccionInternaNoConformidadConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<InspeccionInternaNorma> ConsultarInspeccionInternaNormasPorId(int inspeccionInternaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@InspeccionInternaId", inspeccionInternaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<InspeccionInternaNorma>("uspInspeccionInternaNormasConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<InspeccionInternaParcela> ConsultarInspeccionInternaParcelaPorId(int inspeccionInternaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@InspeccionInternaId", inspeccionInternaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<InspeccionInternaParcela>("uspInspeccionInternaParcelaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
 
 
     }

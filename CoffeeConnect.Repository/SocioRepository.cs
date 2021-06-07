@@ -97,5 +97,25 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+        public ConsultarSocioProductorPorSocioFincaId ConsultarSocioProductorPorSocioFincaId(int socioFincaId)
+        {
+            ConsultarSocioProductorPorSocioFincaId itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@SocioFincaId", socioFincaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultarSocioProductorPorSocioFincaId>("uspSocioProductorPorSocioFincaId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
+
+
     }
 }

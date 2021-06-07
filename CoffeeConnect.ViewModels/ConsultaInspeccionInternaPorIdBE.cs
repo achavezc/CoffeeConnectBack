@@ -1,4 +1,6 @@
+using CoffeeConnect.Models;
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -100,6 +102,16 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public bool Activo
 		{ get; set; }
+
+
+		public List<InspeccionInternaNorma> InspeccionInternaNorma { get; set; }
+
+		public List<InspeccionInternaParcela> InspeccionInternaParcela { get; set; }
+
+		public List<InspeccionInternaLevantamientoNoConformidad> InspeccionInternaLevantamientoNoConformidad { get; set; }
+
+		public List<InspeccionInternaNoConformidad> InspeccionInternaNoConformidad { get; set; }
+
 
 		#endregion
 	}

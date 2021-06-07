@@ -74,9 +74,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NotaSalidaAlmacenPlantaId", NotaSalidaAlmacenPlanta.NotaSalidaAlmacenPlantaId);
             parameters.Add("@EmpresaId", NotaSalidaAlmacenPlanta.EmpresaId);
             parameters.Add("@AlmacenId", NotaSalidaAlmacenPlanta.AlmacenId);
-            parameters.Add("@Numero", NotaSalidaAlmacenPlanta.Numero);
-            parameters.Add("@MotivoTrasladoId", NotaSalidaAlmacenPlanta.MotivoSalidaId);
-            parameters.Add("@MotivoTrasladoReferencia", NotaSalidaAlmacenPlanta.MotivoSalidaReferencia);
+          
+            parameters.Add("@MotivoSalidaId", NotaSalidaAlmacenPlanta.MotivoSalidaId);
+            parameters.Add("@MotivoSalidaReferencia", NotaSalidaAlmacenPlanta.MotivoSalidaReferencia);
             parameters.Add("@EmpresaIdDestino", NotaSalidaAlmacenPlanta.EmpresaIdDestino);
             parameters.Add("@EmpresaTransporteId", NotaSalidaAlmacenPlanta.EmpresaTransporteId);
             parameters.Add("@TransporteId", NotaSalidaAlmacenPlanta.TransporteId);

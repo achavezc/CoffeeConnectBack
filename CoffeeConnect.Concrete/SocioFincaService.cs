@@ -16,10 +16,12 @@ namespace CoffeeConnect.Service
 
         private ISocioFincaRepository _ISocioFincaRepository;
 
-        public SocioFincaService(ISocioFincaRepository socioFincaRepository, IMapper mapper)
+        private ISocioRepository _ISocioRepository;
+
+        public SocioFincaService(ISocioFincaRepository socioFincaRepository, ISocioRepository socioRepository, IMapper mapper)
         {
             _ISocioFincaRepository = socioFincaRepository;
-
+            _ISocioRepository = socioRepository;
 
             _Mapper = mapper;
 
@@ -94,6 +96,16 @@ namespace CoffeeConnect.Service
 
             return consultaSocioFincaPorIdBE;
         }
+
+        public ConsultarSocioProductorPorSocioFincaId ConsultarSocioProductorPorSocioFincaId(ConsultaSocioFincaPorIdRequestDTO request)
+        {
+
+            ConsultarSocioProductorPorSocioFincaId consultarSocioProductorPorSocioFincaId = _ISocioRepository.ConsultarSocioProductorPorSocioFincaId(request.SocioFincaId);
+           
+            return consultarSocioProductorPorSocioFincaId;
+        }
+
+
 
         public ConsultaSocioFincaEstimadoPorSocioFincaIdBE ConsultarSocioFincaEstimadoPorSocioFincaId(ConsultaSocioFincaEstimadoPorSocioFincaIdRequest request)
         {
