@@ -47,6 +47,8 @@ namespace CoffeeConnect.DTO
         public string CodigoSocio
         { get; set; }
 
+
+
         /// <summary>
         /// Gets or sets the TipoDocumentoId value.
         /// </summary>

@@ -20,7 +20,14 @@ namespace CoffeeConnect.DTO
 		public string NumeroNotaIngresoAlmacenPlanta
 		{ get; set; }
 
+		public string NumeroNotaIngreso
+		{ get; set; }
 
+		public string HumedadPorcentaje
+		{ get; set; }
+
+		public string RendimientoPorcentaje
+		{ get; set; }
 		/// <summary>
 		/// Gets or sets the FechaIngresoAlmacen value.
 		/// </summary>
