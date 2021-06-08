@@ -22,5 +22,7 @@ namespace CoffeeConnect.Service
 
         
         public string OrdenProceso { get; set; }
+
+        public string OrdenProcesoPlanta { get; set; }
     }
 }

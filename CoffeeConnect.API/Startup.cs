@@ -183,6 +183,12 @@ namespace CoffeeConnect.API
             services.AddTransient<ISocioProyectoRepository, SocioProyectoRepository>();
             services.AddTransient<IOrdenProcesoService, OrdenProcesoService>();
             services.AddTransient<IOrdenProcesoRepository, OrdenProcesoRepository>();
+
+
+            services.AddTransient<IOrdenProcesoPlantaService, OrdenProcesoPlantaService>();
+            services.AddTransient<IOrdenProcesoPlantaRepository, OrdenProcesoPlantaRepository>();
+
+
             services.AddTransient<IOrganizacionService, OrganizacionService>();
             services.AddTransient<IOrganizacionRepository, OrganizacionRepository>();
 
