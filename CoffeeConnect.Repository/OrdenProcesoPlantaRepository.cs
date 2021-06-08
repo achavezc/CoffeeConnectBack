@@ -33,7 +33,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", request.EstadoId);
             parameters.Add("@EmpresaId", request.EmpresaId);
             parameters.Add("@FechaInicio", request.FechaInicio);
-            parameters.Add("@FechaFin", request.FechaFinal);
+            parameters.Add("@FechaFin", request.FechaFin);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
