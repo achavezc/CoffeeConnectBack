@@ -21,7 +21,7 @@ namespace CoffeeConnect.Repository
         public IEnumerable<ConsultaTransportePorEmpresaTransporteId> ConsultarTransportePorEmpresaTransporteId(int empresaTransporteId)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("EmpresaTransporteId", empresaTransporteId);     
+            parameters.Add("TransporteId", empresaTransporteId);     
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
