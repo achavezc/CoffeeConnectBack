@@ -30,7 +30,7 @@ namespace CoffeeConnect.Service
             _ICorrelativoRepository = correlativoRepository;
         }
 
-        public List<ConsultaOrdenProcesoPlantaBE> ConsultarOrdenProcesoPlanta(ConsultaOrdenProcesoPlantaRequestDTO request)
+        public List<ConsultaLiquidacionProcesoPlantaBE> ConsultarOrdenProcesoPlanta(ConsultaOrdenProcesoPlantaRequestDTO request)
         {
             var timeSpan = request.FechaFin - request.FechaInicio;
 
