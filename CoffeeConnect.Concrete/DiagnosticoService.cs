@@ -18,13 +18,13 @@ namespace CoffeeConnect.Service
         private readonly IMapper _Mapper;
 
         private IDiagnosticoRepository _IDiagnosticoRepository;
-        
+
 
         private ICorrelativoRepository _ICorrelativoRepository;
 
         public DiagnosticoService(IDiagnosticoRepository DiagnosticoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
         {
-            _IDiagnosticoRepository = DiagnosticoRepository;          
+            _IDiagnosticoRepository = DiagnosticoRepository;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
         }
@@ -67,12 +67,10 @@ namespace CoffeeConnect.Service
                 _IDiagnosticoRepository.ActualizarDiagnosticoInfraestructura(request.DiagnosticoInfraestructuraList, request.DiagnosticoId);
             }
 
-            
+
 
             return affected;
         }
-
-       
 
         public int RegistrarDiagnostico(RegistrarActualizarDiagnosticoRequestDTO request)
         {
@@ -85,13 +83,13 @@ namespace CoffeeConnect.Service
             int DiagnosticoId = _IDiagnosticoRepository.Insertar(Diagnostico);
 
             if (request.DiagnosticoCostoProduccionList.FirstOrDefault() != null)
-            {                
+            {
                 request.DiagnosticoCostoProduccionList.ForEach(z =>
                 {
                     z.DiagnosticoId = DiagnosticoId;
                 });
 
-               _IDiagnosticoRepository.ActualizarDiagnosticoCostoProduccion(request.DiagnosticoCostoProduccionList, DiagnosticoId);
+                _IDiagnosticoRepository.ActualizarDiagnosticoCostoProduccion(request.DiagnosticoCostoProduccionList, DiagnosticoId);
             }
 
             if (request.DiagnosticoDatosCampoList.FirstOrDefault() != null)
@@ -114,7 +112,7 @@ namespace CoffeeConnect.Service
                 _IDiagnosticoRepository.ActualizarDiagnosticoInfraestructura(request.DiagnosticoInfraestructuraList, DiagnosticoId);
             }
 
-           
+
 
 
 
@@ -145,14 +143,11 @@ namespace CoffeeConnect.Service
 
             if (consultaDiagnosticoPorIdBE != null)
             {
-
                 consultaDiagnosticoPorIdBE.DiagnosticoInfraestructura = _IDiagnosticoRepository.ConsultarDiagnosticoInfraestructuraPorId(request.DiagnosticoId).ToList();
                 consultaDiagnosticoPorIdBE.DiagnosticoDatosCampo = _IDiagnosticoRepository.ConsultarDiagnosticoDatosCampoPorId(request.DiagnosticoId).ToList();
-                consultaDiagnosticoPorIdBE.DiagnosticoInfraestructura = _IDiagnosticoRepository.ConsultarDiagnosticoInfraestructuraPorId(request.DiagnosticoId).ToList();
-
+                consultaDiagnosticoPorIdBE.DiagnosticoCostoProduccion = _IDiagnosticoRepository.ConsultarDiagnosticoCostoProduccionPorId(request.DiagnosticoId).ToList();
             }
             return consultaDiagnosticoPorIdBE;
         }
-
     }
 }
