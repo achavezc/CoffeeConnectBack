@@ -33,11 +33,7 @@ namespace CoffeeConnect.DTO
 		public int? OrdenProcesoId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Numero value.
-		/// </summary>
-		public string Numero
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the TipoCertificacionId value.
@@ -126,13 +122,13 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the FechaInicioProceso value.
 		/// </summary>
-		public DateTime FechaInicioProceso
+		public DateTime? FechaInicioProceso
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the FechaFinProceso value.
 		/// </summary>
-		public DateTime FechaFinProceso
+		public DateTime? FechaFinProceso
 		{ get; set; }
 
 		/// <summary>
@@ -172,7 +168,7 @@ namespace CoffeeConnect.DTO
 		public string Usuario
 		{ get; set; }
 
-		
-		public List<OrdenProcesoDetalle> OrdenProcesoDetalle { get; set; }
+	
+		public List<OrdenProcesoPlantaDetalle> OrdenProcesoPlantaDetalle { get; set; }
     }
 }

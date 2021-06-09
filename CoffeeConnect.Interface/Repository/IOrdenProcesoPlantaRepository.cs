@@ -8,13 +8,17 @@ namespace CoffeeConnect.Interface.Repository
     public interface IOrdenProcesoPlantaRepository
     {
         IEnumerable<ConsultaOrdenProcesoPlantaBE> ConsultarOrdenProcesoPlanta(ConsultaOrdenProcesoPlantaRequestDTO request);
-        int Insertar(OrdenProcesoPlanta OrdenProcesoPlanta);
-        int Actualizar(OrdenProcesoPlanta OrdenProcesoPlanta);
+        int Insertar(OrdenProcesoPlanta ordenProcesoPlanta);
+        int Actualizar(OrdenProcesoPlanta ordenProcesoPlanta);
+
+        int InsertarProcesoPlantaDetalle(OrdenProcesoPlantaDetalle ordenProcesoPlantaDetalle);
+
         //int Anular(int OrdenProcesoPlantaId, DateTime fecha, string usuario, string estadoId);
         //IEnumerable<OrdenProcesoPlantaDetalle> ConsultarOrdenProcesoPlantaDetallePorId(int OrdenProcesoPlantaId);
-        //int EliminarProcesoDetalle(int OrdenProcesoPlantaId);
-        //int InsertarProcesoDetalle(OrdenProcesoPlantaDetalle OrdenProcesoPlantaDetalle);
-        //ConsultaOrdenProcesoPlantaPorIdBE ConsultarOrdenProcesoPlantaPorId(int OrdenProcesoPlantaId);
+        int EliminarProcesoPlantaDetalle(int ordenProcesoPlantaId);
+
+        IEnumerable<OrdenProcesoPlantaDetalleBE> ConsultarOrdenProcesoPlantaDetallePorId(int OrdenProcesoPlantaId);
+        ConsultaOrdenProcesoPlantaPorIdBE ConsultarOrdenProcesoPlantaPorId(int ordenProcesoPlantaId);
         //IEnumerable<OrdenProcesoPlantaDTO> ConsultarImpresionOrdenProcesoPlanta(int OrdenProcesoPlantaId);
     }
 }
