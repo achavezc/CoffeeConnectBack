@@ -147,74 +147,68 @@ namespace CoffeeConnect.Repository
 
 
 
-        //public IEnumerable<OrdenProcesoPlantaDetalle> ConsultarOrdenProcesoPlantaDetallePorId(int OrdenProcesoPlantaId)
-        //{
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@OrdenProcesoPlantaId", OrdenProcesoPlantaId);
+        public IEnumerable<OrdenProcesoPlantaDetalleBE> ConsultarOrdenProcesoPlantaDetallePorId(int OrdenProcesoPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenProcesoPlantaId", OrdenProcesoPlantaId);
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        return db.Query<OrdenProcesoPlantaDetalle>("uspOrdenProcesoPlantaDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
-        //    }
-        //}
-
-
-
-        //public int InsertarProcesoDetalle(OrdenProcesoPlantaDetalle OrdenProcesoPlantaDetalle)
-        //{
-        //    int result = 0;
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@FechaNotaIngresoPlanta", OrdenProcesoPlantaDetalle.FechaNotaIngresoPlanta);
-        //    parameters.Add("@OrdenProcesoPlantaId", OrdenProcesoPlantaDetalle.OrdenProcesoPlantaId);
-        //    parameters.Add("@NroNotaIngresoPlanta", OrdenProcesoPlantaDetalle.NroNotaIngresoPlanta);
-        //    parameters.Add("@RendimientoPorcentaje", OrdenProcesoPlantaDetalle.RendimientoPorcentaje);
-        //    parameters.Add("@HumedadPorcentaje", OrdenProcesoPlantaDetalle.HumedadPorcentaje);
-        //    parameters.Add("@CantidadSacos", OrdenProcesoPlantaDetalle.CantidadSacos);
-        //    parameters.Add("@KilosBrutos", OrdenProcesoPlantaDetalle.KilosBrutos);
-        //    parameters.Add("@Tara", OrdenProcesoPlantaDetalle.Tara);
-        //    parameters.Add("@KilosNetos", OrdenProcesoPlantaDetalle.KilosNetos);
-
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        db.Execute("uspOrdenProcesoPlantaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
-        //    }
-
-        //    return result;
-        //}
-
-        //public int EliminarProcesoDetalle(int OrdenProcesoPlantaId)
-        //{
-        //    int affected = 0;
-
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@OrdenProcesoPlantaId", OrdenProcesoPlantaId);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<OrdenProcesoPlantaDetalleBE>("uspOrdenProcesoPlantaDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        affected = db.Execute("uspOrdenProcesoPlantaDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
-        //    }
 
-        //    return affected;
-        //}
+        public int InsertarProcesoPlantaDetalle(OrdenProcesoPlantaDetalle ordenProcesoPlantaDetalle)
+        {
+            int result = 0;
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaDetalle.OrdenProcesoPlantaId);
+            parameters.Add("@NotaIngresoPlantaId", ordenProcesoPlantaDetalle.NotaIngresoPlantaId);
+            
 
-        //public ConsultaOrdenProcesoPlantaPorIdBE ConsultarOrdenProcesoPlantaPorId(int OrdenProcesoPlantaId)
-        //{
-        //    ConsultaOrdenProcesoPlantaPorIdBE itemBE = null;
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspOrdenProcesoPlantaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
 
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@pOrdenProcesoPlantaId", OrdenProcesoPlantaId);
+            return result;
+        }
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        var list = db.Query<ConsultaOrdenProcesoPlantaPorIdBE>("uspOrdenProcesoPlantaConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+        public int EliminarProcesoPlantaDetalle(int ordenProcesoPlantaPlantaId)
+        {
+            int affected = 0;
 
-        //        if (list.Any())
-        //            itemBE = list.First();
-        //        itemBE.detalle = ConsultarOrdenProcesoPlantaDetallePorId(OrdenProcesoPlantaId);
-        //    }
-        //    return itemBE;
-        //}
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspOrdenProcesoPlantaDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        public ConsultaOrdenProcesoPlantaPorIdBE ConsultarOrdenProcesoPlantaPorId(int ordenProcesoPlantaId)
+        {
+            ConsultaOrdenProcesoPlantaPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaOrdenProcesoPlantaPorIdBE>("uspOrdenProcesoPlantaConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+                
+            }
+            return itemBE;
+        }
 
         //public IEnumerable<OrdenProcesoPlantaDTO> ConsultarImpresionOrdenProcesoPlanta(int OrdenProcesoPlantaId)
         //{

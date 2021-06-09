@@ -1,13 +1,12 @@
+﻿using CoffeeConnect.Models;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class OrdenProcesoPlanta
-	{
-		#region Properties
-		/// <summary>
-		/// Gets or sets the OrdenProcesoPlantaId value.
-		/// </summary>
+    public class ConsultaOrdenProcesoPlantaPorIdBE
+    {
 		public int OrdenProcesoPlantaId
 		{ get; set; }
 
@@ -197,6 +196,21 @@ namespace CoffeeConnect.Models
 		public bool Activo
 		{ get; set; }
 
-		#endregion
-	}
+
+		public string RazonSocial { get; set; }
+
+		public string Ruc { get; set; }
+
+		public string Logo { get; set; }
+
+		public string Direccion { get; set; }
+
+		public string RucOrganizacion { get; set; }
+
+		public string RazonSocialOrganizacion { get; set; }
+
+
+
+		public IEnumerable<OrdenProcesoPlantaDetalleBE> detalle { get; set; }
+    }
 }

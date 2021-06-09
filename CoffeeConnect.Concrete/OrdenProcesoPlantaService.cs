@@ -79,11 +79,11 @@ namespace CoffeeConnect.Service
 
             int OrdenProcesoPlantaId = _IOrdenProcesoPlantaRepository.Insertar(OrdenProcesoPlanta);
 
-            //foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
-            //{
-            //    detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;
-            //    _IOrdenProcesoPlantaRepository.InsertarProcesoDetalle(detalle);
-            //}
+            foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
+            {
+                detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;
+                _IOrdenProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
+            }
             return OrdenProcesoPlantaId;
         }
 
@@ -124,27 +124,41 @@ namespace CoffeeConnect.Service
             ordenProcesoPlanta.UsuarioUltimaActualizacion = request.Usuario;
             int affected = _IOrdenProcesoPlantaRepository.Actualizar(ordenProcesoPlanta);
 
-            //_IOrdenProcesoPlantaRepository.EliminarProcesoDetalle(ordenProcesoPlanta.OrdenProcesoPlantaId);
+            _IOrdenProcesoPlantaRepository.EliminarProcesoPlantaDetalle(ordenProcesoPlanta.OrdenProcesoPlantaId);
 
-            //foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
-            //{
-            //    detalle.OrdenProcesoPlantaId = OrdenProcesoPlanta.OrdenProcesoPlantaId;
-            //    _IOrdenProcesoPlantaRepository.InsertarProcesoDetalle(detalle);
-            //}
+            
+            foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
+            {
+                detalle.OrdenProcesoPlantaId = request.OrdenProcesoPlantaId;
+                _IOrdenProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
+            }
 
 
             return affected;
         }
 
-        //public ConsultaOrdenProcesoPlantaPorIdBE ConsultarOrdenProcesoPlantaPorId(ConsultaOrdenProcesoPlantaPorIdRequestDTO request)
-        //{
-        //    ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaPorId(request.OrdenProcesoPlantaId);
+        public ConsultaOrdenProcesoPlantaPorIdBE ConsultarOrdenProcesoPlantaPorId(ConsultaOrdenProcesoPlantaPorIdRequestDTO request)
+        {
+            ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaPorId(request.OrdenProcesoPlantaId);
 
-        //    consultaOrdenProcesoPlantaPorIdBE.detalle = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaDetallePorId(request.OrdenProcesoPlantaId).ToList();
+            if (consultaOrdenProcesoPlantaPorIdBE != null)
+            {
+                consultaOrdenProcesoPlantaPorIdBE.detalle = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaDetallePorId(request.OrdenProcesoPlantaId).ToList();
+            }
 
+            return consultaOrdenProcesoPlantaPorIdBE;
+        }
 
-        //    return consultaOrdenProcesoPlantaPorIdBE;
-        //}
+        public ConsultaOrdenProcesoPlantaPorIdBE ConsultarOrdenProcesoPlantaDetallePorId(ConsultaOrdenProcesoPlantaPorIdRequestDTO request)
+        {
+            ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE = new ConsultaOrdenProcesoPlantaPorIdBE();
+
+            
+             consultaOrdenProcesoPlantaPorIdBE.detalle = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaDetallePorId(request.OrdenProcesoPlantaId).ToList();
+            
+
+            return consultaOrdenProcesoPlantaPorIdBE;
+        }
 
         //public int AnularOrdenProcesoPlanta(AnularOrdenProcesoPlantaRequestDTO request)
         //{
