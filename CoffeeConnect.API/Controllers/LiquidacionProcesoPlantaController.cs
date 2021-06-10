@@ -59,33 +59,33 @@ namespace CoffeeConnect.API.Controllers
             return Ok(response);
         }
 
-        //[Route("Registrar")]
-        //[HttpPost]
-        //public IActionResult Registrar(IFormFile file, [FromForm] string request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
+        [Route("Registrar")]
+        [HttpPost]
+        public IActionResult Registrar(RegistrarActualizarLiquidacionProcesoPlantaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
-        //    RegistrarActualizarLiquidacionProcesoPlantaResponseDTO response = new RegistrarActualizarLiquidacionProcesoPlantaResponseDTO();
-        //    try
-        //    {
-        //        var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarLiquidacionProcesoPlantaRequestDTO>(request);
-        //        response.Result.Data = LiquidacionProcesoPlantaService.RegistrarLiquidacionProcesoPlanta(myJsonObject, file);
-        //        response.Result.Success = true;
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            RegistrarActualizarLiquidacionProcesoPlantaResponseDTO response = new RegistrarActualizarLiquidacionProcesoPlantaResponseDTO();
+            try
+            {
+               
+                response.Result.Data = LiquidacionProcesoPlantaService.RegistrarLiquidacionProcesoPlanta(request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
-        //    return Ok(response);
-        //}
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+            return Ok(response);
+        }
 
         //[Route("Registrar")]
         //[HttpPost]
@@ -115,34 +115,34 @@ namespace CoffeeConnect.API.Controllers
         //    return Ok(response);
         //}
 
-        //[Route("Actualizar")]
-        //[HttpPost]
-        //public IActionResult Actualizar(IFormFile file, [FromForm] string request)
-        //{
-        //    Guid guid = Guid.NewGuid();
-        //    _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
+        [Route("Actualizar")]
+        [HttpPost]
+        public IActionResult Actualizar(RegistrarActualizarLiquidacionProcesoPlantaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
-        //    RegistrarActualizarLiquidacionProcesoPlantaResponseDTO response = new RegistrarActualizarLiquidacionProcesoPlantaResponseDTO();
-        //    try
-        //    {
-        //        var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarLiquidacionProcesoPlantaRequestDTO>(request);
-        //        response.Result.Data = LiquidacionProcesoPlantaService.ActualizarLiquidacionProcesoPlanta(myJsonObject, file);
-        //        response.Result.Success = true;
-        //    }
-        //    catch (ResultException ex)
-        //    {
-        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-        //        _log.RegistrarEvento(ex, guid.ToString());
-        //    }
+            RegistrarActualizarLiquidacionProcesoPlantaResponseDTO response = new RegistrarActualizarLiquidacionProcesoPlantaResponseDTO();
+            try
+            {
+               
+                response.Result.Data = LiquidacionProcesoPlantaService.ActualizarLiquidacionProcesoPlanta(request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
 
-        //    _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
         //[Route("Actualizar")]
         //[HttpPost]

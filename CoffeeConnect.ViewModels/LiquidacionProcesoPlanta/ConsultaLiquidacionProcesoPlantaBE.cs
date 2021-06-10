@@ -43,6 +43,15 @@ namespace CoffeeConnect.DTO
         public DateTime FechaRegistro { get; set; }
         public string UsuarioRegistro { get; set; }
         public DateTime? FechaUltimaActualizacion { get; set; }
+
+        public DateTime? FechaInicioProceso { get; set; }
+
+        public DateTime? FechaFinProceso { get; set; }
+
+
+        
+
+            
         public string UsuarioUltimaActualizacion { get; set; }
     }
 }

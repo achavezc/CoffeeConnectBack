@@ -81,7 +81,7 @@ namespace CoffeeConnect.Service
 
             foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
             {
-                detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;
+                detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;                
                 _IOrdenProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
             }
             return OrdenProcesoPlantaId;
@@ -130,6 +130,7 @@ namespace CoffeeConnect.Service
             foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
             {
                 detalle.OrdenProcesoPlantaId = request.OrdenProcesoPlantaId;
+               
                 _IOrdenProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
             }
 

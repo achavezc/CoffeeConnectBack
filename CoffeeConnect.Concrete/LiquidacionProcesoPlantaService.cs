@@ -41,101 +41,60 @@ namespace CoffeeConnect.Service
             return list.ToList();
         }
 
-        //public int RegistrarLiquidacionProcesoPlanta(RegistrarActualizarLiquidacionProcesoPlantaRequestDTO request, IFormFile file)
-        //{
-        //    LiquidacionProcesoPlanta LiquidacionProcesoPlanta = _Mapper.Map<LiquidacionProcesoPlanta>(request);
-        //    LiquidacionProcesoPlanta.FechaRegistro = DateTime.Now;
-        //    LiquidacionProcesoPlanta.UsuarioRegistro = request.Usuario;
-        //    LiquidacionProcesoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
+        public int RegistrarLiquidacionProcesoPlanta(RegistrarActualizarLiquidacionProcesoPlantaRequestDTO request)
+        {
+            LiquidacionProcesoPlanta liquidacionProcesoPlanta = _Mapper.Map<LiquidacionProcesoPlanta>(request);
+            liquidacionProcesoPlanta.FechaRegistro = DateTime.Now;
+            liquidacionProcesoPlanta.UsuarioRegistro = request.Usuario;
+            liquidacionProcesoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
+                       
 
-        //    var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-        //    byte[] fileBytes = null;
+            int LiquidacionProcesoPlantaId = _ILiquidacionProcesoPlantaRepository.Insertar(liquidacionProcesoPlanta);
 
-        //    if (file != null)
-        //    {
-        //        if (file.Length > 0)
-        //        {
-        //            using (var ms = new MemoryStream())
-        //            {
-        //                file.CopyTo(ms);
-        //                fileBytes = ms.ToArray();
-        //                string s = Convert.ToBase64String(fileBytes);
-        //            }
+            foreach (LiquidacionProcesoPlantaDetalle detalle in request.LiquidacionProcesoPlantaDetalle)
+            {
+                detalle.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
+                _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaDetalle(detalle);
+            }
 
-        //            LiquidacionProcesoPlanta.NombreArchivo = file.FileName;
-        //            //Adjuntos
-        //            ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
-        //            {
-        //                filtros = new AdjuntarArchivosDTO()
-        //                {
-        //                    archivoStream = fileBytes,
-        //                    filename = file.FileName,
-        //                },
-        //                pathFile = _fileServerSettings.Value.LiquidacionProcesoPlanta
-        //            });
-        //            LiquidacionProcesoPlanta.PathArchivo = _fileServerSettings.Value.LiquidacionProcesoPlanta + "\\" + response.ficheroReal;
-        //        }
-        //    }
+            foreach (LiquidacionProcesoPlantaResultado detalle in request.LiquidacionProcesoPlantaResultado)
+            {
+                detalle.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
+                _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaResultado(detalle);
+            }
+            return LiquidacionProcesoPlantaId;
+        }
 
-        //    int LiquidacionProcesoPlantaId = _ILiquidacionProcesoPlantaRepository.Insertar(LiquidacionProcesoPlanta);
-
-        //    foreach (LiquidacionProcesoPlantaDetalle detalle in request.LiquidacionProcesoPlantaDetalle)
-        //    {
-        //        detalle.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
-        //        _ILiquidacionProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
-        //    }
-        //    return LiquidacionProcesoPlantaId;
-        //}
-
-        //public int ActualizarLiquidacionProcesoPlanta(RegistrarActualizarLiquidacionProcesoPlantaRequestDTO request, IFormFile file)
-        //{
-        //    LiquidacionProcesoPlanta LiquidacionProcesoPlanta = _Mapper.Map<LiquidacionProcesoPlanta>(request);
-
-        //    var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-        //    byte[] fileBytes = null;
-        //    if (file != null)
-        //    {
-        //        if (file.Length > 0)
-        //        {
-        //            using (var ms = new MemoryStream())
-        //            {
-        //                file.CopyTo(ms);
-        //                fileBytes = ms.ToArray();
-        //                string s = Convert.ToBase64String(fileBytes);
-        //            }
-
-        //            LiquidacionProcesoPlanta.NombreArchivo = file.FileName;
-        //            ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
-        //            {
-        //                filtros = new AdjuntarArchivosDTO()
-        //                {
-        //                    archivoStream = fileBytes,
-        //                    filename = file.FileName,
-        //                },
-        //                pathFile = _fileServerSettings.Value.LiquidacionProcesoPlanta
-
-        //            });
-
-        //            LiquidacionProcesoPlanta.PathArchivo = _fileServerSettings.Value.LiquidacionProcesoPlanta + "\\" + response.ficheroReal;
-        //        }
-        //    }
-
-        //    LiquidacionProcesoPlanta.FechaUltimaActualizacion = DateTime.Now;
-        //    LiquidacionProcesoPlanta.UsuarioUltimaActualizacion = request.Usuario;
-        //    int affected = _ILiquidacionProcesoPlantaRepository.Actualizar(LiquidacionProcesoPlanta);
-
-        //    _ILiquidacionProcesoPlantaRepository.EliminarProcesoPlantaDetalle(LiquidacionProcesoPlanta.LiquidacionProcesoPlantaId);
-
-            
-        //    foreach (LiquidacionProcesoPlantaDetalle detalle in request.LiquidacionProcesoPlantaDetalle)
-        //    {
-        //        detalle.LiquidacionProcesoPlantaId = request.LiquidacionProcesoPlantaId;
-        //        _ILiquidacionProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
-        //    }
+        public int ActualizarLiquidacionProcesoPlanta(RegistrarActualizarLiquidacionProcesoPlantaRequestDTO request)
+        {
+            LiquidacionProcesoPlanta liquidacionProcesoPlanta = _Mapper.Map<LiquidacionProcesoPlanta>(request);
 
 
-        //    return affected;
-        //}
+
+            liquidacionProcesoPlanta.FechaUltimaActualizacion = DateTime.Now;
+            liquidacionProcesoPlanta.UsuarioUltimaActualizacion = request.Usuario;
+            int affected = _ILiquidacionProcesoPlantaRepository.Actualizar(liquidacionProcesoPlanta);
+
+            _ILiquidacionProcesoPlantaRepository.EliminarLiquidacionProcesoPlantaDetalle(liquidacionProcesoPlanta.LiquidacionProcesoPlantaId);
+
+
+            foreach (LiquidacionProcesoPlantaDetalle detalle in request.LiquidacionProcesoPlantaDetalle)
+            {
+                detalle.LiquidacionProcesoPlantaId = request.LiquidacionProcesoPlantaId;
+                _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaDetalle(detalle);
+            }
+
+            _ILiquidacionProcesoPlantaRepository.EliminarLiquidacionProcesoPlantaResultado(liquidacionProcesoPlanta.LiquidacionProcesoPlantaId);
+
+
+            foreach (LiquidacionProcesoPlantaResultado detalle in request.LiquidacionProcesoPlantaResultado)
+            {
+                detalle.LiquidacionProcesoPlantaId = request.LiquidacionProcesoPlantaId;
+                _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaResultado(detalle);
+            }
+
+            return affected;
+        }
 
         //public ConsultaLiquidacionProcesoPlantaPorIdBE ConsultarLiquidacionProcesoPlantaPorId(ConsultaLiquidacionProcesoPlantaPorIdRequestDTO request)
         //{
@@ -153,9 +112,9 @@ namespace CoffeeConnect.Service
         //{
         //    ConsultaLiquidacionProcesoPlantaPorIdBE consultaLiquidacionProcesoPlantaPorIdBE = new ConsultaLiquidacionProcesoPlantaPorIdBE();
 
-            
+
         //     consultaLiquidacionProcesoPlantaPorIdBE.detalle = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaDetallePorId(request.LiquidacionProcesoPlantaId).ToList();
-            
+
 
         //    return consultaLiquidacionProcesoPlantaPorIdBE;
         //}

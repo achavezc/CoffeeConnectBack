@@ -10,14 +10,18 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaLiquidacionProcesoPlantaBE> ConsultarLiquidacionProcesoPlanta(ConsultaLiquidacionProcesoPlantaRequestDTO request);
 
 
-        //int Insertar(LiquidacionProcesoPlanta LiquidacionProcesoPlanta);
-        //int Actualizar(LiquidacionProcesoPlanta LiquidacionProcesoPlanta);
+        int Insertar(LiquidacionProcesoPlanta liquidacionProcesoPlanta);
+        int Actualizar(LiquidacionProcesoPlanta liquidacionProcesoPlanta);
 
-        //int InsertarProcesoPlantaDetalle(LiquidacionProcesoPlantaDetalle LiquidacionProcesoPlantaDetalle);
+        int InsertarLiquidacionProcesoPlantaDetalle(LiquidacionProcesoPlantaDetalle liquidacionProcesoPlantaDetalle);
+
+        int InsertarLiquidacionProcesoPlantaResultado(LiquidacionProcesoPlantaResultado liquidacionProcesoPlantaResultado);
+
+        int EliminarLiquidacionProcesoPlantaResultado(int liquidacionProcesoPlantaPlantaId);
 
         ////int Anular(int LiquidacionProcesoPlantaId, DateTime fecha, string usuario, string estadoId);
         ////IEnumerable<LiquidacionProcesoPlantaDetalle> ConsultarLiquidacionProcesoPlantaDetallePorId(int LiquidacionProcesoPlantaId);
-        //int EliminarProcesoPlantaDetalle(int LiquidacionProcesoPlantaId);
+        int EliminarLiquidacionProcesoPlantaDetalle(int liquidacionProcesoPlantaId);
 
         //IEnumerable<LiquidacionProcesoPlantaDetalleBE> ConsultarLiquidacionProcesoPlantaDetallePorId(int LiquidacionProcesoPlantaId);
         //ConsultaLiquidacionProcesoPlantaPorIdBE ConsultarLiquidacionProcesoPlantaPorId(int LiquidacionProcesoPlantaId);

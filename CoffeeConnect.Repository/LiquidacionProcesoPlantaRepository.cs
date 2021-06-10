@@ -41,91 +41,54 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        //        public int Insertar(LiquidacionProcesoPlanta LiquidacionProcesoPlanta)
-        //        {
-        //            var parameters = new DynamicParameters();
+        public int Insertar(LiquidacionProcesoPlanta liquidacionProcesoPlanta)
+        {
+            var parameters = new DynamicParameters();        
+            
+            parameters.Add("@OrdenProcesoPlantaId", liquidacionProcesoPlanta.OrdenProcesoPlantaId);
+            parameters.Add("@Numero", liquidacionProcesoPlanta.Numero);
+            parameters.Add("@EmpresaId", liquidacionProcesoPlanta.EmpresaId);
+            parameters.Add("@Observacion", liquidacionProcesoPlanta.Observacion);
+            parameters.Add("@EnvasesProductos", liquidacionProcesoPlanta.EnvasesProductos);
+            parameters.Add("@TrabajosRealizados", liquidacionProcesoPlanta.TrabajosRealizados);
+            parameters.Add("@EstadoId", liquidacionProcesoPlanta.EstadoId);
+            parameters.Add("@FechaRegistro", liquidacionProcesoPlanta.FechaRegistro);
+            parameters.Add("@UsuarioRegistro", liquidacionProcesoPlanta.UsuarioRegistro);
+            
+            parameters.Add("@LiquidacionProcesoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-        //            parameters.Add("@EmpresaId", LiquidacionProcesoPlanta.EmpresaId);
-        //            parameters.Add("@OrganizacionId", LiquidacionProcesoPlanta.OrganizacionId);
-        //            parameters.Add("@TipoProcesoId", LiquidacionProcesoPlanta.TipoProcesoId);
-        //            parameters.Add("@OrdenProcesoId", LiquidacionProcesoPlanta.OrdenProcesoId);
-        //            parameters.Add("@Numero", LiquidacionProcesoPlanta.Numero);
-        //            parameters.Add("@TipoCertificacionId", LiquidacionProcesoPlanta.TipoCertificacionId);
-        //            parameters.Add("@EntidadCertificadoraId", LiquidacionProcesoPlanta.EntidadCertificadoraId);
-        //            parameters.Add("@ProductoId", LiquidacionProcesoPlanta.ProductoId);
-        //            parameters.Add("@SubProductoId", LiquidacionProcesoPlanta.SubProductoId);
-        //            parameters.Add("@TipoProduccionId", LiquidacionProcesoPlanta.TipoProduccionId);
-        //            parameters.Add("@EmpaqueId", LiquidacionProcesoPlanta.EmpaqueId);
-        //            parameters.Add("@TipoId", LiquidacionProcesoPlanta.TipoId);
-        //            parameters.Add("@CalidadId", LiquidacionProcesoPlanta.CalidadId);
-        //            parameters.Add("@GradoId", LiquidacionProcesoPlanta.GradoId);
-        //            parameters.Add("@TotalSacos", LiquidacionProcesoPlanta.TotalSacos);
-        //            parameters.Add("@PesoPorSaco", LiquidacionProcesoPlanta.PesoPorSaco);
-        //            parameters.Add("@PesoKilos", LiquidacionProcesoPlanta.PesoKilos);
-        //            parameters.Add("@CantidadContenedores", LiquidacionProcesoPlanta.CantidadContenedores);
-        //            parameters.Add("@CantidadDefectos", LiquidacionProcesoPlanta.CantidadDefectos);
-        //            parameters.Add("@FechaInicioProceso", LiquidacionProcesoPlanta.FechaInicioProceso);
-        //            parameters.Add("@FechaFinProceso", LiquidacionProcesoPlanta.FechaFinProceso);
-        //            parameters.Add("@NombreArchivo", LiquidacionProcesoPlanta.NombreArchivo);
-        //            parameters.Add("@DescripcionArchivo", LiquidacionProcesoPlanta.DescripcionArchivo);
-        //            parameters.Add("@PathArchivo", LiquidacionProcesoPlanta.PathArchivo);
-        //            parameters.Add("@Observacion", LiquidacionProcesoPlanta.Observacion);
-        //            parameters.Add("@EstadoId", LiquidacionProcesoPlanta.EstadoId);
-        //            parameters.Add("@FechaRegistro", LiquidacionProcesoPlanta.FechaRegistro);
-        //            parameters.Add("@UsuarioRegistro", LiquidacionProcesoPlanta.UsuarioRegistro);
-        //            parameters.Add("@LiquidacionProcesoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspLiquidacionProcesoPlantaInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
 
-        //            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //            {
-        //                db.Execute("uspLiquidacionProcesoPlantaInsertar", parameters, commandType: CommandType.StoredProcedure);
-        //            }
-
-        //            int id = parameters.Get<int>("LiquidacionProcesoPlantaId");
-        //            return id;
-        //        }
+            int id = parameters.Get<int>("LiquidacionProcesoPlantaId");
+            return id;
+        }
 
 
 
-        //        public int Actualizar(LiquidacionProcesoPlanta LiquidacionProcesoPlanta)
-        //        {
-        //            int result = 0;
+        public int Actualizar(LiquidacionProcesoPlanta liquidacionProcesoPlanta)
+        {
+            int result = 0;
 
-        //            var parameters = new DynamicParameters();
-        //            parameters.Add("@LiquidacionProcesoPlantaId", LiquidacionProcesoPlanta.LiquidacionProcesoPlantaId);
-        //            parameters.Add("@EmpresaId", LiquidacionProcesoPlanta.EmpresaId);
-        //            parameters.Add("@OrganizacionId", LiquidacionProcesoPlanta.OrganizacionId);
-        //            parameters.Add("@TipoProcesoId", LiquidacionProcesoPlanta.TipoProcesoId);
-        //            parameters.Add("@OrdenProcesoId", LiquidacionProcesoPlanta.OrdenProcesoId);            
-        //            parameters.Add("@TipoCertificacionId", LiquidacionProcesoPlanta.TipoCertificacionId);
-        //            parameters.Add("@EntidadCertificadoraId", LiquidacionProcesoPlanta.EntidadCertificadoraId);
-        //            parameters.Add("@ProductoId", LiquidacionProcesoPlanta.ProductoId);
-        //            parameters.Add("@SubProductoId", LiquidacionProcesoPlanta.SubProductoId);
-        //            parameters.Add("@TipoProduccionId", LiquidacionProcesoPlanta.TipoProduccionId);
-        //            parameters.Add("@EmpaqueId", LiquidacionProcesoPlanta.EmpaqueId);
-        //            parameters.Add("@TipoId", LiquidacionProcesoPlanta.TipoId);
-        //            parameters.Add("@CalidadId", LiquidacionProcesoPlanta.CalidadId);
-        //            parameters.Add("@GradoId", LiquidacionProcesoPlanta.GradoId);
-        //            parameters.Add("@TotalSacos", LiquidacionProcesoPlanta.TotalSacos);
-        //            parameters.Add("@PesoPorSaco", LiquidacionProcesoPlanta.PesoPorSaco);
-        //            parameters.Add("@PesoKilos", LiquidacionProcesoPlanta.PesoKilos);
-        //            parameters.Add("@CantidadContenedores", LiquidacionProcesoPlanta.CantidadContenedores);
-        //            parameters.Add("@CantidadDefectos", LiquidacionProcesoPlanta.CantidadDefectos);
-        //            parameters.Add("@FechaInicioProceso", LiquidacionProcesoPlanta.FechaInicioProceso);
-        //            parameters.Add("@FechaFinProceso", LiquidacionProcesoPlanta.FechaFinProceso);
-        //            parameters.Add("@NombreArchivo", LiquidacionProcesoPlanta.NombreArchivo);
-        //            parameters.Add("@DescripcionArchivo", LiquidacionProcesoPlanta.DescripcionArchivo);
-        //            parameters.Add("@PathArchivo", LiquidacionProcesoPlanta.PathArchivo);
-        //            parameters.Add("@Observacion", LiquidacionProcesoPlanta.Observacion);            
-        //            parameters.Add("@FechaUltimaActualizacion", LiquidacionProcesoPlanta.FechaUltimaActualizacion);
-        //            parameters.Add("@UsuarioUltimaActualizacion", LiquidacionProcesoPlanta.UsuarioUltimaActualizacion);
+            var parameters = new DynamicParameters();
+            parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlanta.LiquidacionProcesoPlantaId);
+            parameters.Add("@OrdenProcesoPlantaId", liquidacionProcesoPlanta.OrdenProcesoPlantaId);           
+            parameters.Add("@EmpresaId", liquidacionProcesoPlanta.EmpresaId);
+            parameters.Add("@Observacion", liquidacionProcesoPlanta.Observacion);
+            parameters.Add("@EnvasesProductos", liquidacionProcesoPlanta.EnvasesProductos);
+            parameters.Add("@TrabajosRealizados", liquidacionProcesoPlanta.TrabajosRealizados);            
+            parameters.Add("@FechaUltimaActualizacion", liquidacionProcesoPlanta.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", liquidacionProcesoPlanta.UsuarioUltimaActualizacion);          
 
 
-        //            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //            {
-        //                result = db.Execute("uspLiquidacionProcesoPlantaActualizar", parameters, commandType: CommandType.StoredProcedure);
-        //            }
-        //            return result;
-        //        }
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspLiquidacionProcesoPlantaActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
 
         //        //public int Anular(int LiquidacionProcesoPlantaId, DateTime fecha, string usuario, string estadoId)
         //        //{
@@ -160,37 +123,65 @@ namespace CoffeeConnect.Repository
 
 
 
-        //        public int InsertarProcesoPlantaDetalle(LiquidacionProcesoPlantaDetalle LiquidacionProcesoPlantaDetalle)
-        //        {
-        //            int result = 0;
-        //            var parameters = new DynamicParameters();
-        //            parameters.Add("@LiquidacionProcesoPlantaId", LiquidacionProcesoPlantaDetalle.LiquidacionProcesoPlantaId);
-        //            parameters.Add("@NotaIngresoPlantaId", LiquidacionProcesoPlantaDetalle.NotaIngresoPlantaId);
+        public int InsertarLiquidacionProcesoPlantaResultado(LiquidacionProcesoPlantaResultado liquidacionProcesoPlantaResultado)
+        {
+            int result = 0;
+            var parameters = new DynamicParameters();
+            parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaResultado.LiquidacionProcesoPlantaId);
+            parameters.Add("@ReferenciaId", liquidacionProcesoPlantaResultado.ReferenciaId);
+            parameters.Add("@CantidadSacos", liquidacionProcesoPlantaResultado.CantidadSacos);
+            parameters.Add("@KGN", liquidacionProcesoPlantaResultado.KGN);
+            parameters.Add("@KilosNetos", liquidacionProcesoPlantaResultado.KilosNetos);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspLiquidacionProcesoPlantaResultadoInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
 
 
-        //            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //            {
-        //                db.Execute("uspLiquidacionProcesoPlantaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
-        //            }
-
-        //            return result;
-        //        }
-
-        //        public int EliminarProcesoPlantaDetalle(int LiquidacionProcesoPlantaPlantaId)
-        //        {
-        //            int affected = 0;
-
-        //            var parameters = new DynamicParameters();
-        //            parameters.Add("@LiquidacionProcesoPlantaId", LiquidacionProcesoPlantaPlantaId);
 
 
-        //            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //            {
-        //                affected = db.Execute("uspLiquidacionProcesoPlantaDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
-        //            }
 
-        //            return affected;
-        //        }
+        public int EliminarLiquidacionProcesoPlantaDetalle(int liquidacionProcesoPlantaPlantaId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspLiquidacionProcesoPlantaDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        public int EliminarLiquidacionProcesoPlantaResultado(int liquidacionProcesoPlantaPlantaId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspLiquidacionProcesoPlantaResultadoEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        public int InsertarLiquidacionProcesoPlantaDetalle(LiquidacionProcesoPlantaDetalle liquidacionProcesoPlantaDetalle)
+        {
+            throw new NotImplementedException();
+        }
+
 
         //        public ConsultaLiquidacionProcesoPlantaPorIdBE ConsultarLiquidacionProcesoPlantaPorId(int LiquidacionProcesoPlantaId)
         //        {
