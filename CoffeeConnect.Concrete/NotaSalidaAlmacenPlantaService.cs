@@ -3,6 +3,7 @@ using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
+using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +13,12 @@ namespace CoffeeConnect.Service
     public partial class NotaSalidaAlmacenPlantaService : INotaSalidaAlmacenPlantaService
     {
         private readonly IMapper _Mapper;
-
         private INotaSalidaAlmacenPlantaRepository _INotaSalidaAlmacenPlantaRepository;
-
         private INotaIngresoAlmacenPlantaRepository _NotaIngresoAlmacenPlantaRepository;
-
         private IUsersRepository _UsersRepository;
-
         private IEmpresaRepository _EmpresaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
-
         private IGuiaRemisionAlmacenPlantaRepository _IGuiaRemisionAlmacenPlantaRepository;
-
 
         public NotaSalidaAlmacenPlantaService(INotaSalidaAlmacenPlantaRepository notaSalidaAlmacenPlantaRepository, IUsersRepository usersRepository,
             IEmpresaRepository empresaRepository, INotaIngresoAlmacenPlantaRepository notaIngresoAlmacenPlantaRepository, ICorrelativoRepository ICorrelativoRepository,
@@ -45,16 +40,13 @@ namespace CoffeeConnect.Service
             _Mapper = mapper;
         }
 
-
-
-
         public int RegistrarNotaSalidaAlmacenPlanta(RegistrarNotaSalidaAlmacenPlantaRequestDTO request)
         {
             NotaSalidaAlmacenPlanta notaSalidaAlmacen = new NotaSalidaAlmacenPlanta();
             List<NotaSalidaAlmacenPlantaDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenPlantaDetalle>();
             int affected = 0;
 
-        
+
             List<TablaIdsTipo> notaIngresoIdActualizar = new List<TablaIdsTipo>();
 
             notaSalidaAlmacen.EmpresaId = request.EmpresaId;
@@ -115,9 +107,9 @@ namespace CoffeeConnect.Service
             GuiaRemisionAlmacenPlanta guiaRemisionAlmacen = _Mapper.Map<GuiaRemisionAlmacenPlanta>(notaSalidaAlmacen);
             guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacenPlanta);
 
-            
 
-           
+
+
 
             string tipoProduccionId = String.Empty;
             string tipoCertificacionId = String.Empty;
@@ -239,14 +231,15 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
-
         public List<ConsultaNotaSalidaAlmacenPlantaBE> ConsultarNotaSalidaAlmacenPlanta(ConsultaNotaSalidaAlmacenPlantaRequestDTO request)
         {
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue)
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaIngresoPlanta.ValidacionSeleccioneMinimoUnFiltro.Label" });
+
             var list = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenPlanta(request);
 
             return list.ToList();
         }
-
 
         public int AnularNotaSalidaAlmacenPlanta(AnularNotaSalidaAlmacenPlantaRequestDTO request)
         {
@@ -261,8 +254,6 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
-
-
 
         public ConsultaNotaSalidaAlmacenPlantaPorIdBE ConsultarNotaSalidaAlmacenPlantaPorId(ConsultaNotaSalidaAlmacenPlantaPorIdRequestDTO request)
         {
@@ -279,7 +270,5 @@ namespace CoffeeConnect.Service
             return notaSalidaAlmacenPorIdBE;
 
         }
-
-        
     }
 }

@@ -21,7 +21,6 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
         public int Insertar(NotaSalidaAlmacen notaSalidaAlmacen)
         {
             int result = 0;
@@ -105,9 +104,6 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-
-
-
         public int ActualizarEstado(int notaSalidaAlmacenId, DateTime fecha, string usuario, string estadoId)
         {
             int affected = 0;
@@ -137,7 +133,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", request.EmpresaId);
             parameters.Add("@FechaInicio", request.FechaInicio);
             parameters.Add("@FechaFin", request.FechaFin);
-
+            parameters.Add("@EstadoId", request.EstadoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -336,8 +332,6 @@ namespace CoffeeConnect.Repository
             }
         }
 
-
-
         public int ActualizarNotaSalidaAlmacenAnalisisFisicoColorDetalle(List<NotaSalidaAlmacenAnalisisFisicoColorDetalleTipo> request, int NotaSalidaAlmacenId)
         {
             //uspNotaSalidaAlmacenAnalisisFisicoColorDetalleActualizar
@@ -512,7 +506,6 @@ namespace CoffeeConnect.Repository
 
         }
 
-
         public IEnumerable<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE> ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(int notaSalidaAlmacenId)
         {
             var parameters = new DynamicParameters();
@@ -525,10 +518,5 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaNotaSalidaAlmacenLotesDetallePorIdBE>("uspConsultaNotaSalidaAlmacenLotesDetallePorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
-
-
     }
-
-
-
 }

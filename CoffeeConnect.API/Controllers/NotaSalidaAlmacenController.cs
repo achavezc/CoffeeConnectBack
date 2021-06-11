@@ -137,9 +137,7 @@ namespace Integracion.Deuda.Controller
             try
             {
                 response.Result.Data = _notaSalidaAlmacenService.ConsultarNotaSalidaAlmacen(request);
-
                 response.Result.Success = true;
-
             }
             catch (ResultException ex)
             {
@@ -151,7 +149,7 @@ namespace Integracion.Deuda.Controller
                 _log.RegistrarEvento(ex, guid.ToString());
             }
 
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
         }
@@ -387,7 +385,7 @@ namespace Integracion.Deuda.Controller
 
             //ES MOMENTANEO SE DEBE ELIMINAR
             GenerarPDFGuiaRemisionResponseDTO response = _guiaRemisionAlmacenService.GenerarPDFGuiaRemisionPorNotaSalidaAlmacenId(id);
-           
+
             try
             {
                 GenerarPDFGuiaRemisionRequestDTO request = new GenerarPDFGuiaRemisionRequestDTO { LoteId = id };
@@ -398,7 +396,7 @@ namespace Integracion.Deuda.Controller
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));               
+                lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));
                 lr.AddDataSource("dsGRDetalle", Util.ToDataTable(response.detalleGM));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 

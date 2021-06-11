@@ -3,6 +3,7 @@ using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
+using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +13,12 @@ namespace CoffeeConnect.Service
     public partial class NotaSalidaAlmacenService : INotaSalidaAlmacenService
     {
         private readonly IMapper _Mapper;
-
         private INotaSalidaAlmacenRepository _INotaSalidaAlmacenRepository;
-
         private ILoteRepository _LoteRepository;
-
         private IUsersRepository _UsersRepository;
-
         private IEmpresaRepository _EmpresaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
-
         private IGuiaRemisionAlmacenRepository _IGuiaRemisionAlmacenRepository;
-
 
         public NotaSalidaAlmacenService(INotaSalidaAlmacenRepository notaSalidaAlmacenRepository, IUsersRepository usersRepository,
             IEmpresaRepository empresaRepository, ILoteRepository loteRepository, ICorrelativoRepository ICorrelativoRepository,
@@ -44,9 +39,6 @@ namespace CoffeeConnect.Service
 
             _Mapper = mapper;
         }
-
-
-
 
         public int RegistrarNotaSalidaAlmacen(RegistrarNotaSalidaAlmacenRequestDTO request)
         {
@@ -211,7 +203,7 @@ namespace CoffeeConnect.Service
 
             affected = _INotaSalidaAlmacenRepository.Actualizar(notaSalidaAlmacen);
 
-            
+
             if (affected != 0)
             {
                 List<NotaSalidaAlmacenDetalle> notaSalidaAlmacenDetalle = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenDetallePorId(notaSalidaAlmacen.NotaSalidaAlmacenId).ToList();
@@ -320,28 +312,17 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
-
-
-
         public List<ConsultaNotaSalidaAlmacenBE> ConsultarNotaSalidaAlmacen(ConsultaNotaSalidaAlmacenRequestDTO request)
         {
-            //if (string.IsNullOrEmpty(request.Numero) 
-            //    && string.IsNullOrEmpty(request.NumeroGuiaRecepcion) 
-            //    && string.IsNullOrEmpty(request.NumeroDocumento) 
-            //    && string.IsNullOrEmpty(request.CodigoSocio) 
-            //    && string.IsNullOrEmpty(request.NombreRazonSocial))
-            //    throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
             //var timeSpan = request.FechaFin - request.FechaInicio;
 
             //if (timeSpan.Days > 730)
             //    throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
-
-
             var list = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacen(request);
-
             return list.ToList();
         }
 
@@ -416,9 +397,9 @@ namespace CoffeeConnect.Service
 
             if (notaSalidaAlmacenPorIdBE != null)
             {
-                
+
                 notaSalidaAlmacenPorIdBE.DetalleLotes = _INotaSalidaAlmacenRepository.ConsultarNotaSalidaAlmacenLotesDetallePorIdBE(request.NotaSalidaAlmacenId);
-              
+
 
             }
 
@@ -446,7 +427,6 @@ namespace CoffeeConnect.Service
 
         //    return affected;
         //}
-
 
         public int ActualizarNotaSalidaAlmacenAnalisisCalidad(ActualizarNotaSalidaAnalisisCalidadRequestDTO request)
         {
@@ -641,7 +621,5 @@ namespace CoffeeConnect.Service
 
             return consultaImpresionGuiaRemision;
         }
-
-
     }
 }

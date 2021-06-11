@@ -14,12 +14,9 @@ namespace CoffeeConnect.Service
 {
     public partial class LoteService : ILoteService
     {
-
         private readonly IMapper _Mapper;
         private ILoteRepository _ILoteRepository;
-
         private INotaIngresoAlmacenRepository _INotaIngresoAlmacenRepository;
-
         private ICorrelativoRepository _ICorrelativoRepository;
 
         public LoteService(ILoteRepository loteRepository, INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
@@ -136,8 +133,8 @@ namespace CoffeeConnect.Service
         public List<ConsultaLoteBE> ConsultarLote(ConsultaLoteRequestDTO request)
         {
 
-            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.ProductoId))
-            //    throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
@@ -185,7 +182,7 @@ namespace CoffeeConnect.Service
 
                         LoteDetalle loteDetalle = _ILoteRepository.ConsultarLoteDetallePorId(id.Id);
 
-                        if(loteDetalle != null)
+                        if (loteDetalle != null)
                         {
                             TablaIdsTipo tablaNotasIntegresoIdsTipo = new TablaIdsTipo();
                             tablaNotasIntegresoIdsTipo.Id = loteDetalle.LoteDetalleId;
@@ -196,7 +193,7 @@ namespace CoffeeConnect.Service
 
                     _ILoteRepository.EliminarLoteDetalle(loteDetalleIdEliminar);
 
-                    _INotaIngresoAlmacenRepository.ActualizarEstadoPorIds(loteDetalleIdEliminar,DateTime.Now,request.Usuario, NotaIngresoAlmacenEstados.Ingresado);
+                    _INotaIngresoAlmacenRepository.ActualizarEstadoPorIds(loteDetalleIdEliminar, DateTime.Now, request.Usuario, NotaIngresoAlmacenEstados.Ingresado);
                 }
 
                 List<ListaIdsAccion> notasIngresoAlmacenIdNuevo = request.NotasIngresoAlmacenId.Where(a => a.Accion == "N").ToList();

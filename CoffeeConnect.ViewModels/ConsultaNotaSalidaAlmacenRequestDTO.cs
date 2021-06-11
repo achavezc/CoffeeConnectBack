@@ -8,7 +8,6 @@ namespace CoffeeConnect.DTO
 {
    public class ConsultaNotaSalidaAlmacenRequestDTO
     {
-
         public String Numero { get; set; }
         public int? EmpresaIdDestino { get; set; }
         public int? EmpresaTransporteId { get; set; }
@@ -17,6 +16,6 @@ namespace CoffeeConnect.DTO
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public int EmpresaId { get; set; }
-
+        public string EstadoId { get; set; }
     }
 }

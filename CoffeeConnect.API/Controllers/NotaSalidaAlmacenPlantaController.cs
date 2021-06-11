@@ -1,12 +1,9 @@
-﻿using AspNetCore.Reporting;
-using CoffeeConnect.DTO;
+﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
-using Core.Common;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace Integracion.Deuda.Controller
 {
@@ -156,7 +153,7 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-        
+
         [Route("ConsultarPorId")]
         [HttpPost]
         public IActionResult ConsultarPorId([FromBody] ConsultaNotaSalidaAlmacenPlantaPorIdRequestDTO request)
@@ -187,7 +184,7 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-       
+
 
     }
 }

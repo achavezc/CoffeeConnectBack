@@ -19,11 +19,8 @@ namespace CoffeeConnect.Service
     public partial class ContratoService : IContratoService
     {
         private readonly IMapper _Mapper;
-
         private IContratoRepository _IContratoRepository;
-
         private ICorrelativoRepository _ICorrelativoRepository;
-
         public IOptions<FileServerSettings> _fileServerSettings;
 
         public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
@@ -41,19 +38,15 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaContratoBE> ConsultarContrato(ConsultaContratoRequestDTO request)
         {
-            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
-            //    throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Cliente.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Cliente.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
                 throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionRangoFechaMayor2anios.Label" });
 
-
-
             var list = _IContratoRepository.ConsultarContrato(request);
-
             return list.ToList();
         }
 
@@ -119,6 +112,7 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
+
         public ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request)
         {
             try
@@ -153,6 +147,7 @@ namespace CoffeeConnect.Service
                 throw ex;
             }
         }
+
         public int ActualizarContrato(RegistrarActualizarContratoRequestDTO request, IFormFile file)
         {
             Contrato contrato = _Mapper.Map<Contrato>(request);

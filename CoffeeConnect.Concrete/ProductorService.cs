@@ -35,19 +35,19 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaProductorBE> ConsultarProductor(ConsultaProductorRequestDTO request)
         {
-            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.NombreRazonSocial))
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+            {
                 throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
+            }
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
+            {
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
-
-
+            }
 
             var list = _IProductorRepository.ConsultarProductor(request);
-
             return list.ToList();
         }
 

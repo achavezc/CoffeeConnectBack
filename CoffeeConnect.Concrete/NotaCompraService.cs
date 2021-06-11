@@ -12,9 +12,7 @@ namespace CoffeeConnect.Service
 {
     public partial class NotaCompraService : INotaCompraService
     {
-
         private INotaCompraRepository _INotaCompraRepository;
-
         private ICorrelativoRepository _ICorrelativoRepository;
 
         public NotaCompraService(INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository)
@@ -22,9 +20,6 @@ namespace CoffeeConnect.Service
             _INotaCompraRepository = notaCompraRepository;
             _ICorrelativoRepository = correlativoRepository;
         }
-
-
-
 
         public int RegistrarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request)
         {
@@ -104,25 +99,23 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
-
         public List<ConsultaNotaCompraBE> ConsultarNotaCompra(ConsultaNotaCompraRequestDTO request)
         {
-            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroGuiaRecepcion) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+            {
                 throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
+            }
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
+            {
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
-
-
+            }
 
             var list = _INotaCompraRepository.ConsultarNotaCompra(request);
-
             return list.ToList();
         }
-
 
         public ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request)
         {

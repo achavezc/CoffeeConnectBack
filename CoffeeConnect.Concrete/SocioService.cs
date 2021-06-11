@@ -33,9 +33,8 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaSocioBE> ConsultarSocio(ConsultaSocioRequestDTO request)
         {
-            if (string.IsNullOrEmpty(request.Codigo) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.NombreRazonSocial))
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
                 throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
@@ -43,7 +42,6 @@ namespace CoffeeConnect.Service
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
             var list = _ISocioRepository.ConsultarSocio(request);
-
             return list.ToList();
         }
 

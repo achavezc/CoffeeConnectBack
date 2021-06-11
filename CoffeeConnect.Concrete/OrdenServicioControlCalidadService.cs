@@ -12,13 +12,8 @@ namespace CoffeeConnect.Service
 {
     public partial class OrdenServicioControlCalidadService : IOrdenServicioControlCalidadService
     {
-
         private IOrdenServicioControlCalidadRepository _IOrdenServicioControlCalidadRepository;
-
-
-
         private ICorrelativoRepository _ICorrelativoRepository;
-
 
         public OrdenServicioControlCalidadService(IOrdenServicioControlCalidadRepository ordenServicioControlCalidadRepository, ICorrelativoRepository correlativoRepository)
         {
@@ -46,19 +41,15 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaOrdenServicioControlCalidadBE> ConsultarOrdenServicioControlCalidad(ConsultaOrdenServicioControlCalidadRequestDTO request)
         {
-            if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
                 throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
-
-
             var list = _IOrdenServicioControlCalidadRepository.ConsultarOrdenServicioControlCalidad(request);
-
             return list.ToList();
         }
 
@@ -68,7 +59,6 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
-
 
         public int RegistrarOrdenServicioControlCalidad(RegistrarActualizarOrdenServicioControlCalidadRequestDTO request)
         {
@@ -134,8 +124,6 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
-
-
         public ConsultaOrdenServicioControlCalidadPorIdBE ConsultarOrdenServicioControlCalidadPorId(ConsultaOrdenServicioCalidadServicioPorIdRequestDTO request)
         {
             ConsultaOrdenServicioControlCalidadPorIdBE OrdenServicioControlCalidadPorIdBE = _IOrdenServicioControlCalidadRepository.ConsultarOrdenServicioControlCalidadPorId(request.OrdenServicioControlCalidadId);
@@ -157,9 +145,6 @@ namespace CoffeeConnect.Service
             return OrdenServicioControlCalidadPorIdBE;
 
         }
-
-
-
 
         public int ActualizarOrdenServicioControlCalidadAnalisisCalidad(ActualizarOrderServicioControlCalidadRequestDTO request)
         {
@@ -334,6 +319,5 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
-
     }
 }

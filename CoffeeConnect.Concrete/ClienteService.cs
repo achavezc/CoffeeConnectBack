@@ -14,9 +14,7 @@ namespace CoffeeConnect.Service
     public partial class ClienteService : IClienteService
     {
         private readonly IMapper _Mapper;
-
         private IClienteRepository _IClienteRepository;
-
         private ICorrelativoRepository _ICorrelativoRepository;
 
         public ClienteService(IClienteRepository clienteRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
@@ -33,19 +31,15 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request)
         {
-            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
-            //    throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Cliente.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Cliente.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
                 throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Cliente.ValidacionRangoFechaMayor2anios.Label" });
 
-
-
             var list = _IClienteRepository.ConsultarCliente(request);
-
             return list.ToList();
         }
 

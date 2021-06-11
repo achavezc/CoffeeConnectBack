@@ -14,42 +14,32 @@ namespace CoffeeConnect.Service
 {
     public partial class NotaIngresoPlantaService : INotaIngresoPlantaService
     {
-
         private readonly IMapper _Mapper;
-
         private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
-
-        
-
         private ICorrelativoRepository _ICorrelativoRepository;
-
         public IOptions<ParametrosSettings> _ParametrosSettings;
 
-        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta,ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings, IMapper mapper)
+        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings, IMapper mapper)
         {
-            _INotaIngresoPlantaRepository = NotaIngresoPlanta;            
+            _INotaIngresoPlantaRepository = NotaIngresoPlanta;
             _ICorrelativoRepository = correlativoRepository;
             _ParametrosSettings = parametrosSettings;
             _Mapper = mapper;
         }
+        
         public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request)
         {
-            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
-            //    throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaIngresoPlanta.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaIngresoPlanta.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaIngresoPlanta.ValidacionRangoFechaMayor2anios.Label" });
 
-
-
             var list = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlanta(request);
-
             return list.ToList();
         }
-
 
         public int AnularNotaIngresoPlanta(AnularNotaIngresoPlantaRequestDTO request)
         {
@@ -57,9 +47,6 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
-
-
-
 
         public ConsultaNotaIngresoPlantaPorIdBE ConsultarNotaIngresoPlantaPorId(ConsultaNotaIngresoPlantaPorIdRequestDTO request)
         {
@@ -94,20 +81,20 @@ namespace CoffeeConnect.Service
 
         }
 
-            public int RegistrarPesadoNotaIngresoPlanta(RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO request)
+        public int RegistrarPesadoNotaIngresoPlanta(RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO request)
         {
             NotaIngresoPlanta NotaIngresoPlanta = _Mapper.Map<NotaIngresoPlanta>(request);
 
-            
+
             NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRecepcion);
-            
-            NotaIngresoPlanta.FechaPesado = DateTime.Now;            
+
+            NotaIngresoPlanta.FechaPesado = DateTime.Now;
             NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
             NotaIngresoPlanta.FechaRegistro = DateTime.Now;
             NotaIngresoPlanta.UsuarioRegistro = request.UsuarioPesado;
 
 
-            int affected = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);            
+            int affected = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
 
             return affected;
         }
@@ -118,18 +105,17 @@ namespace CoffeeConnect.Service
 
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
             NotaIngresoPlanta.UsuarioPesado = request.UsuarioPesado;
-            
+
             NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
             NotaIngresoPlanta.FechaUltimaActualizacion = DateTime.Now;
-            NotaIngresoPlanta.UsuarioUltimaActualizacion = request.UsuarioPesado;   
+            NotaIngresoPlanta.UsuarioUltimaActualizacion = request.UsuarioPesado;
 
-          
+
             int affected = _INotaIngresoPlantaRepository.ActualizarPesado(NotaIngresoPlanta);
 
 
             return affected;
         }
-
 
         public int ActualizarNotaIngresoPlantaAnalisisCalidad(ActualizarNotaIngresoPlantaAnalisisCalidadRequestDTO request)
         {

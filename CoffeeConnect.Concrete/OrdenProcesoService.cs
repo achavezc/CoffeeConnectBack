@@ -32,6 +32,9 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaOrdenProcesoBE> ConsultarOrdenProceso(ConsultaOrdenProcesoRequestDTO request)
         {
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFinal == null || request.FechaFinal == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+
             var timeSpan = request.FechaFinal - request.FechaInicio;
 
             if (timeSpan.Days > 730)

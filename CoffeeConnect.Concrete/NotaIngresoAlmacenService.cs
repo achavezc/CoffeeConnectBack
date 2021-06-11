@@ -12,13 +12,9 @@ namespace CoffeeConnect.Service
 {
     public partial class NotaIngresoAlmacenService : INotaIngresoAlmacenService
     {
-
         private INotaIngresoAlmacenRepository _INotaIngresoAlmacenRepository;
-
         private IGuiaRecepcionMateriaPrimaRepository _IGuiaRecepcionMateriaPrimaRepository;
-
         private ICorrelativoRepository _ICorrelativoRepository;
-
 
         public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrimaRepository, ICorrelativoRepository correlativoRepository)
         {
@@ -96,22 +92,15 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaNotaIngresoAlmacenBE> ConsultarNotaIngresoAlmacen(ConsultaNotaIngresoAlmacenRequestDTO request)
         {
-            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
-            //	throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
-            if (string.IsNullOrEmpty(request.EstadoId))
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
                 throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
-
-
             var list = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacen(request);
-
             return list.ToList();
         }
 

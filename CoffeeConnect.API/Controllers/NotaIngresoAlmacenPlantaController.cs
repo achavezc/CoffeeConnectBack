@@ -67,9 +67,7 @@ namespace Integracion.Deuda.Controller
             try
             {
                 response.Result.Data = _NotaIngresoAlmacenPlantaService.ConsultarNotaIngresoAlmacenPlanta(request);
-
                 response.Result.Success = true;
-
             }
             catch (ResultException ex)
             {

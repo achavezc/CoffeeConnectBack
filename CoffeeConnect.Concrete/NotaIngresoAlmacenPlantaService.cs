@@ -14,11 +14,8 @@ namespace CoffeeConnect.Service
     {
 
         private INotaIngresoAlmacenPlantaRepository _INotaIngresoAlmacenPlantaRepository;
-
         private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
-
         private ICorrelativoRepository _ICorrelativoRepository;
-
 
         public NotaIngresoAlmacenPlantaService(INotaIngresoAlmacenPlantaRepository NotaIngresoAlmacenPlantaRepository, INotaIngresoPlantaRepository notaIngresoPlantaRepository, ICorrelativoRepository correlativoRepository)
         {
@@ -26,8 +23,6 @@ namespace CoffeeConnect.Service
             _INotaIngresoPlantaRepository = notaIngresoPlantaRepository;
             _ICorrelativoRepository = correlativoRepository;
         }
-
-       
 
         public int Registrar(EnviarAlmacenNotaIngresoPlantaRequestDTO request)
         {
@@ -40,8 +35,8 @@ namespace CoffeeConnect.Service
             NotaIngresoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(notaIngresoPlanta.EmpresaId, Documentos.NotaIngresoAlmacenPlanta);
             NotaIngresoAlmacenPlanta.AlmacenId = null;
             NotaIngresoAlmacenPlanta.CertificacionId = notaIngresoPlanta.CertificacionId;
-            NotaIngresoAlmacenPlanta.EntidadCertificadoraId = notaIngresoPlanta.EntidadCertificadoraId;            
-            NotaIngresoAlmacenPlanta.TipoProduccionId = notaIngresoPlanta.TipoProduccionId;            
+            NotaIngresoAlmacenPlanta.EntidadCertificadoraId = notaIngresoPlanta.EntidadCertificadoraId;
+            NotaIngresoAlmacenPlanta.TipoProduccionId = notaIngresoPlanta.TipoProduccionId;
             NotaIngresoAlmacenPlanta.ProductoId = notaIngresoPlanta.ProductoId;
             NotaIngresoAlmacenPlanta.SubProductoId = notaIngresoPlanta.SubProductoId;
             NotaIngresoAlmacenPlanta.UnidadMedidaIdPesado = notaIngresoPlanta.EmpaqueId;
@@ -49,7 +44,7 @@ namespace CoffeeConnect.Service
             NotaIngresoAlmacenPlanta.KilosBrutosPesado = notaIngresoPlanta.KilosBrutos;
             NotaIngresoAlmacenPlanta.TaraPesado = notaIngresoPlanta.Tara;
             NotaIngresoAlmacenPlanta.KilosNetosPesado = notaIngresoPlanta.KilosBrutos - notaIngresoPlanta.Tara;
-           
+
             NotaIngresoAlmacenPlanta.ExportableGramosAnalisisFisico = notaIngresoPlanta.ExportableGramosAnalisisFisico;
             //NotaIngresoAlmacenPlanta.ExportableGramosAnalisisFisico = (notaIngresoPlanta.ExportableGramosAnalisisFisico.HasValue) ? notaIngresoPlanta.ExportableGramosAnalisisFisico.Value : 0;
 
@@ -70,7 +65,7 @@ namespace CoffeeConnect.Service
 
             NotaIngresoAlmacenPlanta.ExportablePorcentajeAnalisisFisico = notaIngresoPlanta.ExportablePorcentajeAnalisisFisico;
 
-           
+
             NotaIngresoAlmacenPlanta.RendimientoPorcentaje = (notaIngresoPlanta.ExportableGramosAnalisisFisico / notaIngresoPlanta.TotalGramosAnalisisFisico) * 100;
             //NotaIngresoAlmacenPlanta.Observacion = guiaRecepcionMateriaPrima.Observacion;
             NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
@@ -89,22 +84,18 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request)
         {
-            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.NumeroDocumento) && string.IsNullOrEmpty(request.CodigoSocio) && string.IsNullOrEmpty(request.NombreRazonSocial))
-            //	throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
             //if (string.IsNullOrEmpty(request.EstadoId))
             //    throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaCompra.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
-
-
             var list = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlanta(request);
-
             return list.ToList();
         }
 
@@ -141,9 +132,8 @@ namespace CoffeeConnect.Service
         {
             ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(request.NotaIngresoAlmacenPlantaId);
 
-            
+
             return consultaNotaIngresoAlmacenPlantaPorIdBE;
         }
-
     }
 }

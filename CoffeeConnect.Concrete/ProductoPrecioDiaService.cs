@@ -14,9 +14,7 @@ namespace CoffeeConnect.Service
     public partial class ProductoPrecioDiaService : IProductoPrecioDiaService
     {
         private readonly IMapper _Mapper;
-
         private IProductoPrecioDiaRepository _IProductoPrecioDiaRepository;
-
         private ICorrelativoRepository _ICorrelativoRepository;
 
         public ProductoPrecioDiaService(IProductoPrecioDiaRepository ProductoPrecioDiaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
@@ -33,19 +31,15 @@ namespace CoffeeConnect.Service
 
         public List<ConsultaProductoPrecioDiaBE> ConsultarProductoPrecioDia(ConsultaProductoPrecioDiaRequestDTO request)
         {
-            //if (string.IsNullOrEmpty(request.Numero) && string.IsNullOrEmpty(request.Ruc) && string.IsNullOrEmpty(request.RazonSocial))
-            //    throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.ProductoPrecioDia.ValidacionSeleccioneMinimoUnFiltro.Label" });
-
+            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.ProductoPrecioDia.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
             if (timeSpan.Days > 730)
                 throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.ProductoPrecioDia.ValidacionRangoFechaMayor2anios.Label" });
 
-
-
             var list = _IProductoPrecioDiaRepository.ConsultarProductoPrecioDia(request);
-
             return list.ToList();
         }
 
@@ -54,7 +48,7 @@ namespace CoffeeConnect.Service
             ProductoPrecioDia ProductoPrecioDia = _Mapper.Map<ProductoPrecioDia>(request);
             ProductoPrecioDia.FechaRegistro = DateTime.Now;
             ProductoPrecioDia.UsuarioRegistro = request.Usuario;
-           
+
 
             int affected = _IProductoPrecioDiaRepository.Insertar(ProductoPrecioDia);
 

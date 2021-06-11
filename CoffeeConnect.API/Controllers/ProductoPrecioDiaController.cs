@@ -4,8 +4,6 @@ using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-using CoffeeConnect.Models;
-
 namespace Integracion.Deuda.Controller
 {
     [Route("api/[controller]")]
