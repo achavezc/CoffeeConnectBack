@@ -1,9 +1,12 @@
-﻿using CoffeeConnect.DTO;
+﻿using AspNetCore.Reporting;
+using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
+using Core.Common;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 
 namespace Integracion.Deuda.Controller
 {
@@ -12,11 +15,11 @@ namespace Integracion.Deuda.Controller
     public class NotaSalidaAlmacenPlantaController : ControllerBase
     {
         private INotaSalidaAlmacenPlantaService _NotaSalidaAlmacenPlantaService;
-        private IGuiaRemisionAlmacenService _guiaRemisionAlmacenService;
+        private IGuiaRemisionAlmacenPlantaService _guiaRemisionAlmacenService;
 
         private Core.Common.Logger.ILog _log;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public NotaSalidaAlmacenPlantaController(INotaSalidaAlmacenPlantaService NotaSalidaAlmacenPlantaService, IGuiaRemisionAlmacenService guiaRemisionAlmacenService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
+        public NotaSalidaAlmacenPlantaController(INotaSalidaAlmacenPlantaService NotaSalidaAlmacenPlantaService, IGuiaRemisionAlmacenPlantaService guiaRemisionAlmacenService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
             _NotaSalidaAlmacenPlantaService = NotaSalidaAlmacenPlantaService;
             _guiaRemisionAlmacenService = guiaRemisionAlmacenService;
@@ -168,6 +171,47 @@ namespace Integracion.Deuda.Controller
 
                 response.Result.Success = true;
 
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("GenerarPDFGuiaRemision")]
+        [HttpGet]
+        public IActionResult GenerarPDFGuiaRemisionPlanta(int id)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
+
+            GenerarPDFGuiaRemisionResponseDTO response = _guiaRemisionAlmacenService.GenerarPDFGuiaRemisionPlantaPorNotaSalidaAlmacenId(id);
+
+            try
+            {
+                GenerarPDFGuiaRemisionRequestDTO request = new GenerarPDFGuiaRemisionRequestDTO { LoteId = id };
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptGuiaRemision.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));
+                lr.AddDataSource("dsGRListaDetalle", Util.ToDataTable(response.listaDetalleGM));
+                lr.AddDataSource("dsGRDetalle", Util.ToDataTable(response.detalleGM));
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+                return File(result.MainStream, "application/pdf");
             }
             catch (ResultException ex)
             {
