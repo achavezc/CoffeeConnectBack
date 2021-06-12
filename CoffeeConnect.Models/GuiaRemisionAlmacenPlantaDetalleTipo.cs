@@ -13,6 +13,10 @@ namespace CoffeeConnect.Models
 		public String ProductoId { get; set; }
 		public String SubProductoId { get; set; }
 		public String UnidadMedidaIdPesado { get; set; }
+
+		public String CalidadId { get; set; }
+
+		public String GradoId { get; set; }
 		public Decimal CantidadPesado { get; set; }
 
 		public Decimal KilosNetosPesado { get; set; }
@@ -24,11 +28,6 @@ namespace CoffeeConnect.Models
 		public Decimal TaraPesado { get; set; }
 
 		
-
-
-		public String SubCalidadId { get; set; }
-
-		public String SubGradoId { get; set; }
 
 		#endregion
 	}

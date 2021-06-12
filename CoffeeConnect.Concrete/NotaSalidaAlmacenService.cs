@@ -126,7 +126,6 @@ namespace CoffeeConnect.Service
             guiaRemisionAlmacen.TipoProduccionId = tipoProduccionId;
             guiaRemisionAlmacen.TipoCertificacionId = tipoCertificacionId;
 
-
             guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
 
             if (guiaRemisionAlmacenId != 0)
@@ -262,7 +261,7 @@ namespace CoffeeConnect.Service
 
                 guiaRemisionAlmacen.FechaRegistro = DateTime.Now;
                 guiaRemisionAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacen;
-
+                guiaRemisionAlmacen.EstadoId = GuiaRemisionAlmacenEstados.Ingresado;
                 guiaRemisionAlmacenId = _IGuiaRemisionAlmacenRepository.Insertar(guiaRemisionAlmacen);
             }
             else

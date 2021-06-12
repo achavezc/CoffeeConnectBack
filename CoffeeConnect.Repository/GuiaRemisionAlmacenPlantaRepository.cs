@@ -44,10 +44,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Licencia", GuiaRemisionAlmacenPlanta.Licencia);
             parameters.Add("@CantidadLotes", GuiaRemisionAlmacenPlanta.CantidadLotes);
             parameters.Add("@NumeroConstanciaMTC", GuiaRemisionAlmacenPlanta.NumeroConstanciaMTC);
-
             parameters.Add("@TipoProduccionId", GuiaRemisionAlmacenPlanta.TipoProduccionId);
             parameters.Add("@TipoCertificacionId", GuiaRemisionAlmacenPlanta.TipoCertificacionId);
-
             parameters.Add("@PromedioPorcentajeRendimiento", GuiaRemisionAlmacenPlanta.PromedioPorcentajeRendimiento);
             parameters.Add("@HumedadPorcentajeAnalisisFisico", GuiaRemisionAlmacenPlanta.HumedadPorcentajeAnalisisFisico);
             parameters.Add("@CantidadTotal", GuiaRemisionAlmacenPlanta.CantidadTotal);
@@ -131,42 +129,45 @@ namespace CoffeeConnect.Repository
         }
 
 
-        //public ConsultaGuiaRemisionAlmacenPlanta ConsultaGuiaRemisionAlmacenPlantaPorNotaSalidaAlmacenPlantaId(int NotaSalidaAlmacenPlantaId)
-        //{
-        //    ConsultaGuiaRemisionAlmacenPlanta itemBE = null;
+        public ConsultaGuiaRemisionAlmacenPlanta ConsultaGuiaRemisionAlmacenPlantaPorNotaSalidaAlmacenPlantaId(int NotaSalidaAlmacenPlantaId)
+        {
+            ConsultaGuiaRemisionAlmacenPlanta itemBE = null;
 
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@NotaSalidaAlmacenPlantaId", NotaSalidaAlmacenPlantaId);
-
-
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        var list = db.Query<ConsultaGuiaRemisionAlmacenPlanta>("uspGuiaRemisionAlmacenPlantaConsultaIdNotaSalida", parameters, commandType: CommandType.StoredProcedure);
-
-        //        if (list.Any())
-        //            itemBE = list.First();
-        //    }
-
-        //    return itemBE;
-        //}
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenPlantaId", NotaSalidaAlmacenPlantaId);
 
 
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaGuiaRemisionAlmacenPlanta>("uspGuiaRemisionAlmacenPlantaConsultaIdNotaSalidaAlmacenPlanta", parameters, commandType: CommandType.StoredProcedure);
 
-        //public IEnumerable<ConsultaGuiaRemisionAlmacenPlantaDetalle> ConsultaGuiaRemisionAlmacenPlantaDetallePorGuiaRemisionAlmacenPlantaId(int GuiaRemisionAlmacenPlantaId)
-        //{
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@GuiaRemisionAlmacenPlantaId", GuiaRemisionAlmacenPlantaId);
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
 
 
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        return db.Query<ConsultaGuiaRemisionAlmacenPlantaDetalle>("uspGuiaAlmacenDetalleConsultaPorIdGuia", parameters, commandType: CommandType.StoredProcedure);
-        //    }
-        //}
+        public IEnumerable<ConsultaGuiaRemisionAlmacenPlantaDetalle> ConsultaGuiaRemisionAlmacenPlantaDetallePorGuiaRemisionAlmacenPlantaId(int GuiaRemisionAlmacenPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@GuiaRemisionAlmacenPlantaId", GuiaRemisionAlmacenPlantaId);
 
 
 
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaGuiaRemisionAlmacenPlantaDetalle>("uspGuiaAlmacenPlantaDetalleConsultaPorIdGuia", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+        public ConsultaGuiaRemisionAlmacenPlanta ConsultaGuiaRemisionAlmacenPlantaPorId(int guiaRemisionAlmacenPlantaId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 

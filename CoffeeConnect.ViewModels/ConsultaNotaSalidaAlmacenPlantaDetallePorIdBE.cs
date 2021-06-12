@@ -60,23 +60,33 @@ namespace CoffeeConnect.DTO
 		public string Grado
 		{ get; set; }
 
-		public decimal? CantidadDefectos
+		
+
+		public string UnidadMedidaIdPesado
 		{ get; set; }
 
-		public decimal? CantidadPesado
+		public decimal CantidadDefectos
+		{ get; set; }
+
+		public decimal CantidadPesado
 		{ get; set; }
 
 
-		public decimal? KilosBrutosPesado
+		public decimal KilosBrutosPesado
 		{ get; set; }
 
 
-		public decimal? KilosNetosPesado
+		public decimal KilosNetosPesado
 		{ get; set; }
 
-		public decimal? TaraPesado
+		public decimal TaraPesado
 		{ get; set; }
 
+		public string TipoProduccionId
+		{ get; set; }
+
+		public string CertificacionId
+		{ get; set; }
 
 
 		#endregion
