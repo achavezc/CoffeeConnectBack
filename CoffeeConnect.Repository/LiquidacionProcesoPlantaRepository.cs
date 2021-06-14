@@ -179,7 +179,18 @@ namespace CoffeeConnect.Repository
 
         public int InsertarLiquidacionProcesoPlantaDetalle(LiquidacionProcesoPlantaDetalle liquidacionProcesoPlantaDetalle)
         {
-            throw new NotImplementedException();
+            int result = 0;
+            var parameters = new DynamicParameters();
+            parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaDetalle.LiquidacionProcesoPlantaId);
+            parameters.Add("@NotaIngresoPlantaId", liquidacionProcesoPlantaDetalle.NotaIngresoPlantaId);
+           
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspLiquidacionProcesoPlantaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
         }
 
 
