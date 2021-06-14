@@ -28,6 +28,9 @@ namespace CoffeeConnect.DTO
         public string EstadoId { get; set; }
         public string Estado { get; set; }
         public DateTime FechaRegistro { get; set; }
+
+        public DateTime? FechaInicioProceso { get; set; }
+
         public string UsuarioRegistro { get; set; }
         public DateTime? FechaUltimaActualizacion { get; set; }
         public string UsuarioUltimaActualizacion { get; set; }

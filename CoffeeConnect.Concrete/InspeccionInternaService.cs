@@ -156,7 +156,7 @@ namespace CoffeeConnect.Service
         }
 
         public ConsultaInspeccionInternaPorIdBE ConsultarInspeccionInternaPorId(ConsultaInspeccionInternaPorIdRequestDTO request)
-        {
+       {
             ConsultaInspeccionInternaPorIdBE consultaInspeccionInternaPorIdBE = _IInspeccionInternaRepository.ConsultarInspeccionInternaPorId(request.InspeccionInternaId);
 
             if (consultaInspeccionInternaPorIdBE != null)

@@ -52,6 +52,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NoConformidadObservacionLevantada", inspeccionInterna.NoConformidadObservacionLevantada);
             parameters.Add("@ApruebaSinCondicion", inspeccionInterna.ApruebaSinCondicion);
             parameters.Add("@EmpresaId", inspeccionInterna.EmpresaId);
+            parameters.Add("@Inspector", inspeccionInterna.Inspector);
+            parameters.Add("@FechaInspeccion", inspeccionInterna.FechaInspeccion);
             parameters.Add("@EstadoId", inspeccionInterna.EstadoId);
             parameters.Add("@FechaRegistro", inspeccionInterna.FechaRegistro);
             parameters.Add("@UsuarioRegistro", inspeccionInterna.UsuarioRegistro);    
@@ -85,6 +87,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NoConformidadObservacionLevantada", inspeccionInterna.NoConformidadObservacionLevantada);
             parameters.Add("@ApruebaSinCondicion", inspeccionInterna.ApruebaSinCondicion);
             parameters.Add("@EmpresaId", inspeccionInterna.EmpresaId);
+            parameters.Add("@Inspector", inspeccionInterna.Inspector);
+            parameters.Add("@FechaInspeccion", inspeccionInterna.FechaInspeccion);
             parameters.Add("@EstadoId", inspeccionInterna.EstadoId);            
             parameters.Add("@FechaUltimaActualizacion", inspeccionInterna.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", inspeccionInterna.UsuarioUltimaActualizacion);       

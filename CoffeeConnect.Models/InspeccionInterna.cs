@@ -23,6 +23,14 @@ namespace CoffeeConnect.Models
 		public int SocioFincaId
 		{ get; set; }
 
+		public string Inspector
+		{ get; set; }
+
+		public DateTime? FechaInspeccion
+		{ get; set; }
+
+
+
 		/// <summary>
 		/// Gets or sets the Certificaciones value.
 		/// </summary>

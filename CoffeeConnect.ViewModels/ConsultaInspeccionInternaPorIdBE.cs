@@ -19,6 +19,9 @@ namespace CoffeeConnect.DTO
 		public string Numero
 		{ get; set; }
 
+		public string Inspector
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the SocioFincaId value.
 		/// </summary>
@@ -90,6 +93,10 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public DateTime? FechaUltimaActualizacion
 		{ get; set; }
+
+		public DateTime? FechaInspeccion
+		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the UsuarioUltimaActualizacion value.
