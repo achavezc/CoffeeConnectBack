@@ -7,7 +7,7 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface IOrdenProcesoPlantaRepository
     {
-        IEnumerable<ConsultaLiquidacionProcesoPlantaBE> ConsultarOrdenProcesoPlanta(ConsultaOrdenProcesoPlantaRequestDTO request);
+        IEnumerable<ConsultaOrdenProcesoPlantaBE> ConsultarOrdenProcesoPlanta(ConsultaOrdenProcesoPlantaRequestDTO request);
         int Insertar(OrdenProcesoPlanta ordenProcesoPlanta);
         int Actualizar(OrdenProcesoPlanta ordenProcesoPlanta);
 

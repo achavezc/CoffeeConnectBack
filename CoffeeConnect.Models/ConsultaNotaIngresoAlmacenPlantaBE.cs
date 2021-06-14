@@ -194,6 +194,22 @@ namespace CoffeeConnect.Models
 		public string Ruc
 		{ get; set; }
 
+		public string CalidadId
+		{ get; set; }
+
+		public string Calidad
+		{ get; set; }
+
+
+		public string GradoId
+		{ get; set; }
+
+		public string Grado
+		{ get; set; }
+
+		public decimal? CantidadDefectos
+		{ get; set; }
+
 		#endregion
 	}
 }

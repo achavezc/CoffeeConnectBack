@@ -22,7 +22,7 @@ namespace CoffeeConnect.Repository
         }
 
 
-        public IEnumerable<ConsultaLiquidacionProcesoPlantaBE> ConsultarOrdenProcesoPlanta(ConsultaOrdenProcesoPlantaRequestDTO request)
+        public IEnumerable<ConsultaOrdenProcesoPlantaBE> ConsultarOrdenProcesoPlanta(ConsultaOrdenProcesoPlantaRequestDTO request)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@Numero", request.Numero);
@@ -37,7 +37,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ConsultaLiquidacionProcesoPlantaBE>("uspOrdenProcesoPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ConsultaOrdenProcesoPlantaBE>("uspOrdenProcesoPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 
