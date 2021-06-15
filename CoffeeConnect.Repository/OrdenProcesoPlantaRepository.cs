@@ -55,6 +55,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
             parameters.Add("@SubProductoId", ordenProcesoPlanta.SubProductoId);
             parameters.Add("@TipoProduccionId", ordenProcesoPlanta.TipoProduccionId);
+            parameters.Add("@ProductoIdTerminado", ordenProcesoPlanta.ProductoIdTerminado);
+            parameters.Add("@SubProductoIdTerminado", ordenProcesoPlanta.SubProductoIdTerminado);
             parameters.Add("@EmpaqueId", ordenProcesoPlanta.EmpaqueId);
             parameters.Add("@TipoId", ordenProcesoPlanta.TipoId);
             parameters.Add("@CalidadId", ordenProcesoPlanta.CalidadId);
@@ -101,6 +103,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
             parameters.Add("@SubProductoId", ordenProcesoPlanta.SubProductoId);
             parameters.Add("@TipoProduccionId", ordenProcesoPlanta.TipoProduccionId);
+            parameters.Add("@ProductoIdTerminado", ordenProcesoPlanta.ProductoIdTerminado);
+            parameters.Add("@SubProductoIdTerminado", ordenProcesoPlanta.SubProductoIdTerminado);
             parameters.Add("@EmpaqueId", ordenProcesoPlanta.EmpaqueId);
             parameters.Add("@TipoId", ordenProcesoPlanta.TipoId);
             parameters.Add("@CalidadId", ordenProcesoPlanta.CalidadId);
