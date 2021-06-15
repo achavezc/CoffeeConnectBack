@@ -194,23 +194,23 @@ namespace CoffeeConnect.Repository
         }
 
 
-        //        public ConsultaLiquidacionProcesoPlantaPorIdBE ConsultarLiquidacionProcesoPlantaPorId(int LiquidacionProcesoPlantaId)
-        //        {
-        //            ConsultaLiquidacionProcesoPlantaPorIdBE itemBE = null;
+        public ConsultaLiquidacionProcesoPlantaPorIdBE ConsultarLiquidacionProcesoPlantaPorId(int liquidacionProcesoPlantaId)
+        {
+            ConsultaLiquidacionProcesoPlantaPorIdBE itemBE = null;
 
-        //            var parameters = new DynamicParameters();
-        //            parameters.Add("@LiquidacionProcesoPlantaId", LiquidacionProcesoPlantaId);
+            var parameters = new DynamicParameters();
+            parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaId);
 
-        //            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //            {
-        //                var list = db.Query<ConsultaLiquidacionProcesoPlantaPorIdBE>("uspLiquidacionProcesoPlantaConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaLiquidacionProcesoPlantaPorIdBE>("uspLiquidacionProcesoPlantaConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
 
-        //                if (list.Any())
-        //                    itemBE = list.First();
+                if (list.Any())
+                    itemBE = list.First();
 
-        //            }
-        //            return itemBE;
-        //        }
+            }
+            return itemBE;
+        }
 
         //        //public IEnumerable<LiquidacionProcesoPlantaDTO> ConsultarImpresionLiquidacionProcesoPlanta(int LiquidacionProcesoPlantaId)
         //        //{
