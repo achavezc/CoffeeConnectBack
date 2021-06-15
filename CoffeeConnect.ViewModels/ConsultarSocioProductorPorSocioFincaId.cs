@@ -24,8 +24,11 @@ namespace CoffeeConnect.DTO
         public DateTime? FechaNacimiento { get; set; }
         public String LugarNacimiento { get; set; }
         public String EstadoCivilId { get; set; }
+        public string EstadoCivil { get; set; }
         public String ReligionId { get; set; }
+        public string Religion { get; set; }
         public String GeneroId { get; set; }
+        public string Genero { get; set; }
         public int CantidadHijos { get; set; }
         public String Idiomas { get; set; }
         public String Dialecto { get; set; }
@@ -44,7 +47,9 @@ namespace CoffeeConnect.DTO
         public String EstadoId { get; set; }
         public bool Activo { get; set; }
         public String GradoEstudiosIdConyuge { get; set; }
+        public string GradoEstudiosConyuge { get; set; }
         public String GradoEstudiosId { get; set; }
+        public string GradoEstudios { get; set; }
         public string Departamento { get; set; }
         public string Provincia { get; set; }
         public string Distrito { get; set; }
@@ -74,9 +79,11 @@ namespace CoffeeConnect.DTO
 
         public string FuenteEnergiaId
         { get; set; }
+        public string FuenteEnergia { get; set; }
 
         public string FuenteAguaId
         { get; set; }
+        public string FuenteAgua { get; set; }
 
         public string InternetId
         { get; set; }
