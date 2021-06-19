@@ -150,7 +150,7 @@ namespace Integracion.Deuda.Controller
                 Response.Clear();
                 switch (extension)
                 {
-                    case ".doxc":
+                    case ".docx":
                         Response.Headers.Add("Content-type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
                         break;
                     case ".jpg":

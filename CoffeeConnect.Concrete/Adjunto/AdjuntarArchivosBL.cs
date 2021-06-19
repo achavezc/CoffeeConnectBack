@@ -42,7 +42,7 @@ namespace CoffeeConnect.Service.Adjunto
         {
             FileName = FileName.Replace(" ", "");
             String aleatorio = Math.Round(new Random().NextDouble() * 99999999, 0).ToString();
-            String nuevofile = DateTime.Now.ToString("ddMMyyyyHHmmss") + "-" + aleatorio;// + FileName;
+            String nuevofile = DateTime.Now.ToString("ddMMyyyyHHmmss") + "-" + aleatorio  + Path.GetExtension(FileName);
             return nuevofile;
         }
 
