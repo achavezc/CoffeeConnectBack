@@ -10,7 +10,9 @@ namespace CoffeeConnect.DTO
     public class ConsultaZonaRequestDTO
     {     
         public String CodigoDistrito { get; set; }
-      
 
+        public String EstadoId { get; set; }
+
+        public int EmpresaId { get; set; }
     }
 }

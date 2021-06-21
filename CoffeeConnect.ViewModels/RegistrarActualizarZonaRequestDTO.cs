@@ -1,8 +1,8 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class Zona
+	public class RegistrarActualizarZonaRequestDTO
 	{
 		#region Properties
 		/// <summary>
@@ -29,30 +29,15 @@ namespace CoffeeConnect.Models
 		public int EmpresaId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the FechaRegistro value.
-		/// </summary>
-		public DateTime FechaRegistro
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the UsuarioRegistro value.
 		/// </summary>
-		public string UsuarioRegistro
+		public string Usuario
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the FechaUltimaActualizacion value.
-		/// </summary>
-		public DateTime? FechaUltimaActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioUltimaActualizacion value.
-		/// </summary>
-		public string UsuarioUltimaActualizacion
-		{ get; set; }
-
+		
 		/// <summary>
 		/// Gets or sets the EstadoId value.
 		/// </summary>
@@ -62,9 +47,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the Activo value.
 		/// </summary>
-		public bool Activo
-		{ get; set; }
-
+	
 		#endregion
 	}
 }

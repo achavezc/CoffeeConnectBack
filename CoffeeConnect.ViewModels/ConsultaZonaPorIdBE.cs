@@ -1,8 +1,8 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class Zona
+	public class ConsultaZonaPorIdBE
 	{
 		#region Properties
 		/// <summary>

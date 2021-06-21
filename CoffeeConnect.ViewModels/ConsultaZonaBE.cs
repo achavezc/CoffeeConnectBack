@@ -1,8 +1,8 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class Zona
+	public class ConsultaZonaBE
 	{
 		#region Properties
 		/// <summary>
@@ -59,11 +59,10 @@ namespace CoffeeConnect.Models
 		public string EstadoId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
+		public string Estado
 		{ get; set; }
+
+		
 
 		#endregion
 	}

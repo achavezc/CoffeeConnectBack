@@ -78,6 +78,9 @@ namespace CoffeeConnect.API
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IUsersRepository, UsersRepository>();
 
+            services.AddTransient<IZonaService, ZonaService>();
+            services.AddTransient<IZonaRepository, ZonaRepository>();
+
             services.AddTransient<IMaestroService, MaestroService>();
             services.AddTransient<IMaestroRepository, MaestroRepository>();
 
