@@ -1,11 +1,9 @@
 ﻿using CoffeeConnect.DTO;
-using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using Core.Common;
 using Dapper;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -24,7 +22,7 @@ namespace CoffeeConnect.Repository
         public IEnumerable<ConsultaInspeccionInternaBE> ConsultarInspeccionInterna(ConsultaInspeccionInternaRequestDTO request)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("Numero", request.Numero);           
+            parameters.Add("Numero", request.Numero);
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("FechaInicio", request.FechaInicio);
@@ -56,10 +54,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaInspeccion", inspeccionInterna.FechaInspeccion);
             parameters.Add("@EstadoId", inspeccionInterna.EstadoId);
             parameters.Add("@FechaRegistro", inspeccionInterna.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", inspeccionInterna.UsuarioRegistro);    
+            parameters.Add("@UsuarioRegistro", inspeccionInterna.UsuarioRegistro);
+            parameters.Add("@NombreArchivo", inspeccionInterna.NombreArchivo);
+            parameters.Add("@PathArchivo", inspeccionInterna.PathArchivo);
 
             parameters.Add("@InspeccionInternaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -71,14 +70,12 @@ namespace CoffeeConnect.Repository
             return id;
         }
 
-      
-
         public int Actualizar(InspeccionInterna inspeccionInterna)
         {
             int result = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@InspeccionInternaId", inspeccionInterna.InspeccionInternaId);            
+            parameters.Add("@InspeccionInternaId", inspeccionInterna.InspeccionInternaId);
             parameters.Add("@SocioFincaId", inspeccionInterna.SocioFincaId);
             parameters.Add("@Certificaciones", inspeccionInterna.Certificaciones);
             parameters.Add("@ExclusionPrograma", inspeccionInterna.ExclusionPrograma);
@@ -89,9 +86,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", inspeccionInterna.EmpresaId);
             parameters.Add("@Inspector", inspeccionInterna.Inspector);
             parameters.Add("@FechaInspeccion", inspeccionInterna.FechaInspeccion);
-            parameters.Add("@EstadoId", inspeccionInterna.EstadoId);            
+            parameters.Add("@EstadoId", inspeccionInterna.EstadoId);
             parameters.Add("@FechaUltimaActualizacion", inspeccionInterna.FechaUltimaActualizacion);
-            parameters.Add("@UsuarioUltimaActualizacion", inspeccionInterna.UsuarioUltimaActualizacion);       
+            parameters.Add("@UsuarioUltimaActualizacion", inspeccionInterna.UsuarioUltimaActualizacion);
+            parameters.Add("@NombreArchivo", inspeccionInterna.NombreArchivo);
+            parameters.Add("@PathArchivo", inspeccionInterna.PathArchivo);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -107,7 +106,6 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@InspeccionInternaId", inspeccionInternaId);
 
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 var list = db.Query<ConsultaInspeccionInternaPorIdBE>("uspInspeccionInternaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
@@ -119,7 +117,6 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
-
         public int ActualizarInspeccionInternaParcela(List<InspeccionInternaParcelaTipo> request, int inspeccionInternaId)
         {
             //uspLoteAnalisisFisicoColorDetalleActualizar
@@ -130,18 +127,12 @@ namespace CoffeeConnect.Repository
             parameters.Add("@InspeccionInternaId", inspeccionInternaId);
             parameters.Add("@InspeccionInternaParcelaTipo", request.ToDataTable().AsTableValuedParameter());
 
-
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspInspeccionInternaParcelaActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
-
-
-            //uspLoteAnalisisFisicoColorDetalleActualizar
-
         }
 
         public int ActualizarInspeccionInternaNormas(List<InspeccionInternaNormasTipo> request, int inspeccionInternaId)
@@ -154,18 +145,13 @@ namespace CoffeeConnect.Repository
             parameters.Add("@InspeccionInternaId", inspeccionInternaId);
             parameters.Add("@InspeccionInternaNormasTipo", request.ToDataTable().AsTableValuedParameter());
 
-
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspInspeccionInternaNormasActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
-
-
             //uspLoteAnalisisFisicoColorDetalleActualizar
-
         }
 
         public int ActualizarInspeccionInternaLevantamientoNoConformidad(List<InspeccionInternaLevantamientoNoConformidadTipo> request, int inspeccionInternaId)
@@ -178,15 +164,12 @@ namespace CoffeeConnect.Repository
             parameters.Add("@InspeccionInternaId", inspeccionInternaId);
             parameters.Add("@InspeccionInternaLevantamientoNoConformidadTipo", request.ToDataTable().AsTableValuedParameter());
 
-
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspInspeccionInternaLevantamientoNoConformidadActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-            return result;          
-
+            return result;
         }
 
         public int ActualizarInspeccionInternaNoConformidad(List<InspeccionInternaNoConformidadTipo> request, int inspeccionInternaId)
@@ -199,22 +182,18 @@ namespace CoffeeConnect.Repository
             parameters.Add("@InspeccionInternaId", inspeccionInternaId);
             parameters.Add("@InspeccionInternaNoConformidadTipo", request.ToDataTable().AsTableValuedParameter());
 
-
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspInspeccionInternaNoConformidadActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
-
         }
 
         public IEnumerable<InspeccionInternaLevantamientoNoConformidad> ConsultarInspeccionInternaLevantamientoNoConformidadPorId(int inspeccionInternaId)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@InspeccionInternaId", inspeccionInternaId);
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -227,7 +206,6 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@InspeccionInternaId", inspeccionInternaId);
 
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<InspeccionInternaNoConformidad>("uspInspeccionInternaNoConformidadConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
@@ -238,7 +216,6 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("@InspeccionInternaId", inspeccionInternaId);
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -257,9 +234,5 @@ namespace CoffeeConnect.Repository
                 return db.Query<InspeccionInternaParcela>("uspInspeccionInternaParcelaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
-
-
-
-
     }
 }

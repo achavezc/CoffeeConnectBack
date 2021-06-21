@@ -66,10 +66,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", diagnostico.EstadoId);
             parameters.Add("@FechaRegistro", diagnostico.FechaRegistro);
             parameters.Add("@UsuarioRegistro", diagnostico.UsuarioRegistro);
-          
+            parameters.Add("@NombreArchivo", diagnostico.NombreArchivo);
+            parameters.Add("@PathArchivo", diagnostico.PathArchivo);
 
             parameters.Add("@DiagnosticoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -80,8 +80,6 @@ namespace CoffeeConnect.Repository
 
             return id;
         }
-
-      
 
         public int Actualizar(Diagnostico diagnostico)
         {
@@ -111,7 +109,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", diagnostico.EstadoId);           
             parameters.Add("@FechaUltimaActualizacion", diagnostico.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", diagnostico.UsuarioUltimaActualizacion);
-           
+            parameters.Add("@NombreArchivo", diagnostico.NombreArchivo);
+            parameters.Add("@PathArchivo", diagnostico.PathArchivo);
+
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspDiagnosticoActualizar", parameters, commandType: CommandType.StoredProcedure);
@@ -126,7 +126,6 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@DiagnosticoId", diagnosticoId);
 
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 var list = db.Query<ConsultaDiagnosticoPorIdBE>("uspDiagnosticoConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
@@ -137,7 +136,6 @@ namespace CoffeeConnect.Repository
 
             return itemBE;
         }
-
 
         public int ActualizarDiagnosticoCostoProduccion(List<DiagnosticoCostoProduccionTipo> request, int diagnosticoId)
         {
@@ -232,8 +230,6 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        
-
         public IEnumerable<DiagnosticoInfraestructura> ConsultarDiagnosticoInfraestructuraPorId(int diagnosticoId)
         {
             var parameters = new DynamicParameters();
@@ -245,9 +241,5 @@ namespace CoffeeConnect.Repository
                 return db.Query<DiagnosticoInfraestructura>("uspDiagnosticoInfraestructuraConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
-
-
-
-
     }
 }
