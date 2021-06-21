@@ -90,7 +90,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                var list = db.Query<ConsultaZonaPorIdBE>("uspZonaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                var list = db.Query<ConsultaZonaPorIdBE>("uspZonaConsultaPorIdZona", parameters, commandType: CommandType.StoredProcedure);
 
                 if (list.Any())
                     itemBE = list.First();

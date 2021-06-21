@@ -1,8 +1,8 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class DetalleCatalogo
+	public class ConsultaDetalleCatalogoPorIdBE
 	{
 		#region Properties
 		/// <summary>
@@ -100,6 +100,8 @@ namespace CoffeeConnect.Models
 		/// </summary>
 		public string EstadoId
 		{ get; set; }
+
+
 
 		#endregion
 	}

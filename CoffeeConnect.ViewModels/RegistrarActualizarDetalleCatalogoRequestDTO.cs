@@ -1,8 +1,8 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class DetalleCatalogo
+	public class RegistrarActualizarDetalleCatalogoRequestDTO
 	{
 		#region Properties
 		/// <summary>
@@ -62,32 +62,10 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the UsuarioCreacion value.
 		/// </summary>
-		public string UsuarioCreacion
+		public string Usuario
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the FechaHoraCreacion value.
-		/// </summary>
-		public DateTime FechaHoraCreacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UsuarioActualizacion value.
-		/// </summary>
-		public string UsuarioActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaHoraActualizacion value.
-		/// </summary>
-		public DateTime? FechaHoraActualizacion
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Activo value.
-		/// </summary>
-		public bool Activo
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the CodigoPadre value.

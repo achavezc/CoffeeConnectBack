@@ -132,6 +132,11 @@ namespace CoffeeConnect.API
             services.AddTransient<ISocioService, SocioService>();
             services.AddTransient<ISocioRepository, SocioRepository>();
 
+            services.AddTransient<IDetalleCatalogoService, DetalleCatalogoService>();
+            services.AddTransient<IDetalleCatalogoRepository, DetalleCatalogoRepository>();
+
+
+
             services.AddTransient<ISocioFincaCertificacionService, SocioFincaCertificacionService>();
             services.AddTransient<ISocioFincaCertificacionRepository, SocioFincaCertificacionRepository>();
 

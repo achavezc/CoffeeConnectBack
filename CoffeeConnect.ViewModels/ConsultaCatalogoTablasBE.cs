@@ -1,16 +1,10 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
-	public class DetalleCatalogo
+	public class ConsultaCatalogoTablasBE
 	{
 		#region Properties
-		/// <summary>
-		/// Gets or sets the IdDetalleCatalogo value.
-		/// </summary>
-		public int IdDetalleCatalogo
-		{ get; set; }
-
 		/// <summary>
 		/// Gets or sets the IdCatalogo value.
 		/// </summary>
@@ -24,9 +18,9 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the Label value.
+		/// Gets or sets the Nombre value.
 		/// </summary>
-		public string Label
+		public string Nombre
 		{ get; set; }
 
 		/// <summary>
@@ -36,27 +30,9 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the Mnemonico value.
+		/// Gets or sets the CodigoTabla value.
 		/// </summary>
-		public string Mnemonico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Val1 value.
-		/// </summary>
-		public string Val1
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the Val2 value.
-		/// </summary>
-		public string Val2
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the EmpresaID value.
-		/// </summary>
-		public int EmpresaID
+		public string CodigoTabla
 		{ get; set; }
 
 		/// <summary>
@@ -80,7 +56,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the FechaHoraActualizacion value.
 		/// </summary>
-		public DateTime? FechaHoraActualizacion
+		public DateTime FechaHoraActualizacion
 		{ get; set; }
 
 		/// <summary>
@@ -90,15 +66,21 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the CodigoPadre value.
+		/// Gets or sets the UltimoCambio value.
 		/// </summary>
-		public string CodigoPadre
+		public DateTime UltimoCambio
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the EstadoId value.
+		/// Gets or sets the IdCatalogoPadre value.
 		/// </summary>
-		public string EstadoId
+		public int IdCatalogoPadre
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the CodigoTablaPadre value.
+		/// </summary>
+		public string CodigoTablaPadre
 		{ get; set; }
 
 		#endregion
