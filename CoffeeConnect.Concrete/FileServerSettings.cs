@@ -20,14 +20,13 @@ namespace CoffeeConnect.Service
 
         public string ProductorDocumento { get; set; }
 
-        
+
         public string OrdenProceso { get; set; }
 
         public string OrdenProcesoPlanta { get; set; }
 
         public string NotaIngresoPlantasDocumentoAdjunto { get; set; }
-
-        
-
+        public string InspeccionInterna { get; set; }
+        public string Diagnostico { get; set; }
     }
 }
