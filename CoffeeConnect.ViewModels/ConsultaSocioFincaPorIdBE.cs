@@ -49,6 +49,10 @@ namespace CoffeeConnect.DTO
         public string MedioTransporte
         { get; set; }
 
+        public string Direccion
+        { get; set; }
+        
+
         /// <summary>
         /// Gets or sets the Cultivo value.
         /// </summary>

@@ -58,6 +58,9 @@ namespace CoffeeConnect.DTO
 		public string ProvinciaId
 		{ get; set; }
 
+		public string Direccion
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the DistritoId value.
 		/// </summary>
