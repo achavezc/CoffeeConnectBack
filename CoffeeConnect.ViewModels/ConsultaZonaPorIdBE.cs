@@ -23,6 +23,12 @@ namespace CoffeeConnect.DTO
 		public string DistritoId
 		{ get; set; }
 
+		public string DepartamentoId
+		{ get; set; }
+
+		public string ProvinciaId
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the EmpresaId value.
 		/// </summary>

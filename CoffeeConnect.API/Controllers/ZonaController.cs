@@ -126,7 +126,19 @@ namespace Integracion.Deuda.Controller
             ConsultaZonaPorIdResponseDTO response = new ConsultaZonaPorIdResponseDTO();
             try
             {
-                response.Result.Data = _ZonaService.ConsultarZonaPorId(request);
+                ConsultaZonaPorIdBE consultaZonaPorIdBE = _ZonaService.ConsultarZonaPorId(request);
+
+                response.Result.Data = consultaZonaPorIdBE;
+
+                string distrito = consultaZonaPorIdBE.DistritoId;
+
+                string departamento = distrito.Remove(distrito.Length - 3) + "000";
+
+                string provincia = distrito.Remove(distrito.Length - 2) + "00";
+
+                consultaZonaPorIdBE.DepartamentoId = departamento;
+
+                consultaZonaPorIdBE.ProvinciaId = provincia;
 
                 response.Result.Success = true;
 
