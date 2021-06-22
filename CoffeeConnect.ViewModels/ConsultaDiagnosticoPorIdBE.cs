@@ -100,31 +100,31 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the IngresoPromedioMensual value.
         /// </summary>
-        public decimal? IngresoPromedioMensual
+        public string IngresoPromedioMensual
         { get; set; }
 
         /// <summary>
         /// Gets or sets the IngresoAgricultura value.
         /// </summary>
-        public decimal? IngresoAgricultura
+        public string IngresoAgricultura
         { get; set; }
 
         /// <summary>
         /// Gets or sets the IngresoBodega value.
         /// </summary>
-        public decimal? IngresoBodega
+        public string IngresoBodega
         { get; set; }
 
         /// <summary>
         /// Gets or sets the IngresoTransporte value.
         /// </summary>
-        public decimal? IngresoTransporte
+        public string IngresoTransporte
         { get; set; }
 
         /// <summary>
         /// Gets or sets the IngresoOtro value.
         /// </summary>
-        public decimal? IngresoOtro
+        public string IngresoOtro
         { get; set; }
 
         /// <summary>
