@@ -56,7 +56,8 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-
+        [Route("ConsultarCatalogoTablas")]
+        [HttpPost]
         public IActionResult ConsultarCatalogoTablas([FromBody] ConsultaCatalogoTablasRequestDTO request)
         {
             Guid guid = Guid.NewGuid();

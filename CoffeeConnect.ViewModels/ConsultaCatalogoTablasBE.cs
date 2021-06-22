@@ -68,7 +68,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the UltimoCambio value.
 		/// </summary>
-		public DateTime UltimoCambio
+		public System.Byte[] UltimoCambio
 		{ get; set; }
 
 		/// <summary>
