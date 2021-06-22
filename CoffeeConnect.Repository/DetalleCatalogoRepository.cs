@@ -108,7 +108,7 @@ namespace CoffeeConnect.Repository
             ConsultaDetalleCatalogoPorIdBE itemBE = null;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@DetalleCatalogoId", DetalleCatalogoId);
+            parameters.Add("@IdDetalleCatalogo", DetalleCatalogoId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
