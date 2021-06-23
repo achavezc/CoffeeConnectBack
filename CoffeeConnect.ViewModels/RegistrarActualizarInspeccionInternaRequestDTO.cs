@@ -111,6 +111,8 @@ namespace CoffeeConnect.DTO
 
         }
 
+        public string NombreArchivo { get; set; }
+        public string PathArchivo { get; set; }
 
         #endregion
     }
