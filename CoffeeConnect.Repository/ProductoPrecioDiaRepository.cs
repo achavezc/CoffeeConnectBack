@@ -48,6 +48,22 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ConsultaProductoPrecioDiaBE> ConsultarProductoPrecioDiaPorSubProductoIdPorEmpresaId(int empresaID, string subProductoId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("EmpresaId", empresaID);
+            parameters.Add("SubProductoId", subProductoId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaProductoPrecioDiaBE>("uspProductoPrecioDiaConsultaPorSubProductoIdPorEmpresaId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
 
         public int Insertar(ProductoPrecioDia productoPrecioDia)
         {

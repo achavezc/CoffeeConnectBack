@@ -14,6 +14,8 @@ namespace CoffeeConnect.Interface.Repository
 
         IEnumerable<ConsultaProductoPrecioDiaBE> ConsultarProductoPrecioDia(ConsultaProductoPrecioDiaRequestDTO request);
 
+        IEnumerable<ConsultaProductoPrecioDiaBE> ConsultarProductoPrecioDiaPorSubProductoIdPorEmpresaId(int empresaID, string subProductoId);
+
         ConsultaProductoPrecioDiaPorIdBE ConsultarProductoPrecioDiaPorId(int ProductoPrecioDiaId);
 
         IEnumerable<ConsultaProductoPrecioDiaBE> ConsultarProductoPrecioDiaPorEmpresaId(int empresaID);
