@@ -15,5 +15,7 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaProductorBE> ConsultarProductor(ConsultaProductorRequestDTO request);
         
         ConsultaProductorIdBE ConsultarProductorId(int productorId);
+
+        IEnumerable<ConsultaProductorBE> ValidarProductor(ConsultaProductorRequestDTO request);
 }
 }

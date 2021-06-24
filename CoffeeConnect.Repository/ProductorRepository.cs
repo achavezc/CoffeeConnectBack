@@ -38,6 +38,23 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ConsultaProductorBE> ValidarProductor(ConsultaProductorRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+           
+            parameters.Add("TipoDocumentoId", request.TipoDocumentoId);
+            parameters.Add("NumeroDocumento", request.NumeroDocumento);
+            
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaProductorBE>("uspProductorValidar", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
         public int Insertar(Productor productor)
         {
             int result = 0;

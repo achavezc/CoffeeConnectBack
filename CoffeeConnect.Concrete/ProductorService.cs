@@ -53,9 +53,25 @@ namespace CoffeeConnect.Service
 
         public int RegistrarProductor(RegistrarActualizarProductorRequestDTO request)
         {
+            ConsultaProductorRequestDTO consultaProductorRequestDTO = new ConsultaProductorRequestDTO();
+            consultaProductorRequestDTO.TipoDocumentoId = request.TipoDocumentoId;
+            consultaProductorRequestDTO.NumeroDocumento = request.NumeroDocumento;
+
+            var list = _IProductorRepository.ValidarProductor(consultaProductorRequestDTO);
+
+            if(list.ToList().Count>0)
+            {
+                throw new ResultException(new Result { ErrCode = "01", Message = "El Productor ya se encuentra registrado." });
+            }
+            
+
+
             Productor productor = _Mapper.Map<Productor>(request);
             productor.FechaRegistro = DateTime.Now;
             productor.UsuarioRegistro = request.Usuario;
+
+
+
             productor.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Productor);
 
             int affected = _IProductorRepository.Insertar(productor);

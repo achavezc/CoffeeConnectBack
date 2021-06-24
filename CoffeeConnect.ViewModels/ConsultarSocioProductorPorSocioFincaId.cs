@@ -88,13 +88,25 @@ namespace CoffeeConnect.DTO
         public string InternetId
         { get; set; }
 
+        public string Internet
+        { get; set; }
+
         public string SenialTelefonicaId
+        { get; set; }
+
+        public string SenialTelefonica
         { get; set; }
 
         public string EstablecimientoSaludId
         { get; set; }
 
+        public string EstablecimientoSalud
+        { get; set; }
+
         public string CentroEducativoId
+        { get; set; }
+
+        public string CentroEducativo
         { get; set; }
 
         public string CentroEducativoNivel

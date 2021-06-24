@@ -64,37 +64,37 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the AreaCafeEnProduccion value.
         /// </summary>
-        public decimal? AreaCafeEnProduccion
+        public string AreaCafeEnProduccion
         { get; set; }
 
         /// <summary>
         /// Gets or sets the Crecimiento value.
         /// </summary>
-        public decimal? Crecimiento
+        public string Crecimiento
         { get; set; }
 
         /// <summary>
         /// Gets or sets the Bosque value.
         /// </summary>
-        public decimal? Bosque
+        public string Bosque
         { get; set; }
 
         /// <summary>
         /// Gets or sets the Purma value.
         /// </summary>
-        public decimal? Purma
+        public string Purma
         { get; set; }
 
         /// <summary>
         /// Gets or sets the PanLlevar value.
         /// </summary>
-        public decimal? PanLlevar
+        public string PanLlevar
         { get; set; }
 
         /// <summary>
         /// Gets or sets the Vivienda value.
         /// </summary>
-        public decimal? Vivienda
+        public string Vivienda
         { get; set; }
 
         /// <summary>

@@ -11,5 +11,8 @@ namespace CoffeeConnect.Interface.Service
         List<Zona> ConsultarZona(string codigoDistrito);
 
         List<ConsultaPaisBE> ConsultarPais();
+
+        List<ConsultaProductoPrecioDiaBE> ConsultarProductoPrecioDiaPorSubProductoIdPorEmpresaId(string subProductoId, int empresaId);
+
     }
 }
