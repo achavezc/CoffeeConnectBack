@@ -47,6 +47,15 @@ namespace CoffeeConnect.Service
 
         public int RegistrarSocio(RegistrarActualizarSocioRequestDTO request)
         {
+
+            var list = _ISocioRepository.ValidarSocio(request.ProductorId);
+
+            if (list.ToList().Count > 0)
+            {
+                throw new ResultException(new Result { ErrCode = "01", Message = "El Socio ya se encuentra registrado." });
+            }
+
+
             Socio socio = _Mapper.Map<Socio>(request);
             socio.FechaRegistro = DateTime.Now;
             socio.UsuarioRegistro = request.Usuario;

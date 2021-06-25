@@ -18,5 +18,7 @@ namespace CoffeeConnect.Interface.Repository
 
         ConsultarSocioProductorPorSocioFincaId ConsultarSocioProductorPorSocioFincaId(int socioFincaId);
 
+        IEnumerable<ConsultaSocioBE> ValidarSocio(int productorId);
+
     }
 }

@@ -116,6 +116,19 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+        public IEnumerable<ConsultaSocioBE> ValidarSocio(int productorId)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("ProductorId", productorId);
+            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaSocioBE>("uspSocioValidar", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
 
     }
 }
