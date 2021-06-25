@@ -12,7 +12,8 @@ namespace Core.Common.Logger
 
         public LogText()
         {
-            this.Ruta = string.Format("{0}{1}", @"c:\Log\", string.Format("{0:yyyyMMdd}{1}", DateTime.Now, @"Integracion.Danio.txt"));
+            //this.Ruta = string.Format("{0}{1}", @"h:\\root\\home\\mruizb-002\\www\\adjuntos\\", string.Format("{0:yyyyMMdd}{1}", DateTime.Now, @"Log.txt"));
+            this.Ruta = string.Format("{0}{1}", @"c:\\Log\\", string.Format("{0:yyyyMMdd}{1}", DateTime.Now, @"Log.txt"));
         }
 
         public void RegistrarEvento(string message)
