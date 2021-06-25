@@ -337,6 +337,13 @@ namespace Integracion.Deuda.Controller
                 GenerarPDFEtiquetasLoteRequestDTO request = new GenerarPDFEtiquetasLoteRequestDTO { LoteId = id };
                 response.Result.Data = _loteService.ConsultarImpresionLotePorId(request.LoteId);
                 string html = _loteService.ObtenerHTMLReporteEtiquetasLotes(response.Result.Data);
+                string fileName = $"EtiquetasLotes_{DateTime.Now.ToString("yyyyMMddhhmmss")}.pdf";
+
+                if (string.IsNullOrEmpty(html))
+                {
+                    html = "<h3>No existe información para mostrar.</h3>";
+                    fileName = "EtiquetasLotes_SinDatos.pdf";
+                }
 
                 var globalSettings = new GlobalSettings
                 {
@@ -360,7 +367,7 @@ namespace Integracion.Deuda.Controller
                 };
                 var file = _converter.Convert(pdf);
 
-                return File(file, "application/pdf", $"EtiquetasLotes_{DateTime.Now.ToString("yyyyMMddhhmmss")}.pdf");
+                return File(file, "application/pdf", fileName);
             }
             catch (ResultException ex)
             {
