@@ -1,8 +1,8 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common.Domain.Model;
-using DinkToPdf;
-using DinkToPdf.Contracts;
+using WkHtmlToPdfDotNet;
+using WkHtmlToPdfDotNet.Contracts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;

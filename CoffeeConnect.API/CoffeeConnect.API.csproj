@@ -37,7 +37,7 @@
     <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="BoldReports.WPF" Version="2.4.27" />
-    <PackageReference Include="DinkToPdf" Version="1.0.8" />
+    <PackageReference Include="Haukcode.WkHtmlToPdfDotNet" Version="1.5.8" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="System.CodeDom" Version="5.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
