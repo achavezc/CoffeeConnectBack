@@ -19,6 +19,7 @@ namespace Integracion.Deuda.Controller
         private readonly IWebHostEnvironment _webHostEnvironment;
         private IConverter _converter;
 
+
         public LoteController(ILoteService loteService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment, IConverter converter)
         {
             _loteService = loteService;
@@ -365,6 +366,7 @@ namespace Integracion.Deuda.Controller
             catch (ResultException ex)
             {
                 response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+                _log.RegistrarEvento(ex, guid.ToString());
             }
             catch (Exception ex)
             {

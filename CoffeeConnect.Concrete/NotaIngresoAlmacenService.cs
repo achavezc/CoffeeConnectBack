@@ -74,7 +74,15 @@ namespace CoffeeConnect.Service
             notaIngresoAlmacen.TotalPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.TotalPorcentajeAnalisisFisico;
             notaIngresoAlmacen.TotalAnalisisSensorial = guiaRecepcionMateriaPrima.TotalAnalisisSensorial;
             notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico.Value;
-            notaIngresoAlmacen.RendimientoPorcentaje = (guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico / guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico) * 100;
+
+            if (guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico.HasValue && guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico > 0)
+            {
+                notaIngresoAlmacen.RendimientoPorcentaje = (guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico / guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico) * 100;
+            }
+            else
+            {
+                notaIngresoAlmacen.RendimientoPorcentaje = 0;
+            }
             //notaIngresoAlmacen.Observacion = guiaRecepcionMateriaPrima.Observacion;
             notaIngresoAlmacen.UsuarioRegistro = request.Usuario;
             notaIngresoAlmacen.FechaRegistro = DateTime.Now;
