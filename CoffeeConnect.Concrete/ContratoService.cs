@@ -56,7 +56,7 @@ namespace CoffeeConnect.Service
             contrato.FechaRegistro = DateTime.Now;
             //contrato.NombreArchivo = file.FileName;
             contrato.UsuarioRegistro = request.Usuario;
-            contrato.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Contrato);
+            //contrato.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Contrato);
 
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;

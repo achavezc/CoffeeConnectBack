@@ -48,9 +48,9 @@ namespace CoffeeConnect.Service
 
         public static string LiquidacionProcesoPlanta { get { return "LiquidacionProcesoPlanta"; } }
 
+        public static string UbigeoCiudad { get { return "UbigeoCiudad"; } }
 
         
-
 
         public static string GuiaRemisionAlmacen { get { return "GuiaRemisionAlmacen"; } }
 

@@ -9,5 +9,9 @@ namespace CoffeeConnect.DTO
         public String Descripcion { get; set; }
         public String CodigoPais { get; set; }
         public String DescripcionPais { get; set; }
+
+        public bool EstadoRegistro { get; set; }
+
+        
     }
 }

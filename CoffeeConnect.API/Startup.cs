@@ -188,6 +188,9 @@ namespace CoffeeConnect.API
            
             services.AddTransient<IDiagnosticoRepository, DiagnosticoRepository>();
 
+            services.AddTransient<IUbigeoService, UbigeoService>();
+            services.AddTransient<IUbigeoRepository, UbigeoRepository>();
+
 
             services.AddTransient<IInspeccionInternaService, InspeccionInternaService>();
             services.AddTransient<IInspeccionInternaRepository, InspeccionInternaRepository>();

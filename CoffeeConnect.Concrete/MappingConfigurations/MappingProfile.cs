@@ -33,6 +33,7 @@ namespace CoffeeConnect.Service.MappingConfigurations
             CreateMap<RegistrarActualizarOrdenProcesoPlantaRequestDTO, OrdenProcesoPlanta>();
             CreateMap<RegistrarActualizarOrdenProcesoRequestDTO, OrdenProceso>();
             CreateMap<RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO, NotaIngresoPlanta>();
+            CreateMap<RegistrarActualizarUbigeoRequestDTO, Ubigeo>();
             CreateMap<RegistrarActualizarProductoPrecioDiaRequestDTO, ProductoPrecioDia>();
             CreateMap<RegistrarActualizarEmpresaProveedoraAcreedoraRequestDTO, EmpresaProveedoraAcreedora>();
             CreateMap<RegistrarActualizarInspeccionInternaRequestDTO, InspeccionInterna>();
