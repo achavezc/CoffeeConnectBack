@@ -144,6 +144,9 @@ namespace CoffeeConnect.API
             services.AddTransient<ITransporteService, TransporteService>();
             services.AddTransient<ITransporteRepository, TransporteRepository>();
 
+            services.AddTransient<IAduanaService, AduanaService>();
+            services.AddTransient<IAduanaRepository, AduanaRepository>();
+
             services.AddTransient<IEmpresaTransporteService, EmpresaTransporteService>();
             services.AddTransient<IEmpresaTransporteRepository, EmpresaTransporteRepository>();
             services.AddTransient<IEmpresaProveedoraAcreedoraService, EmpresaProveedoraAcreedoraService>();

@@ -185,7 +185,7 @@ namespace CoffeeConnect.Service
                         if (loteDetalle != null)
                         {
                             TablaIdsTipo tablaNotasIntegresoIdsTipo = new TablaIdsTipo();
-                            tablaNotasIntegresoIdsTipo.Id = loteDetalle.LoteDetalleId;
+                            tablaNotasIntegresoIdsTipo.Id = loteDetalle.NotaIngresoAlmacenId;
                             notasIntegresoIdActualizar.Add(tablaNotasIntegresoIdsTipo);
 
                         }
@@ -193,7 +193,7 @@ namespace CoffeeConnect.Service
 
                     _ILoteRepository.EliminarLoteDetalle(loteDetalleIdEliminar);
 
-                    _INotaIngresoAlmacenRepository.ActualizarEstadoPorIds(loteDetalleIdEliminar, DateTime.Now, request.Usuario, NotaIngresoAlmacenEstados.Ingresado);
+                    _INotaIngresoAlmacenRepository.ActualizarEstadoPorIds(notasIntegresoIdActualizar, DateTime.Now, request.Usuario, NotaIngresoAlmacenEstados.Ingresado);
                 }
 
                 List<ListaIdsAccion> notasIngresoAlmacenIdNuevo = request.NotasIngresoAlmacenId.Where(a => a.Accion == "N").ToList();

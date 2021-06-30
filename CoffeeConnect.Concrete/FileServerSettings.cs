@@ -28,5 +28,7 @@ namespace CoffeeConnect.Service
         public string NotaIngresoPlantasDocumentoAdjunto { get; set; }
         public string InspeccionInterna { get; set; }
         public string Diagnostico { get; set; }
+
+        public string Aduana { get; set; }
     }
 }

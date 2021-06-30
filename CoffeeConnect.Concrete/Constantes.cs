@@ -118,6 +118,15 @@ namespace CoffeeConnect.Service
 
     }
 
+    public static class AduanaEstados
+    {
+        public static string Activo { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+    }
+
+    
+
     public static class ContratoEstados
     {
         public static string Activo { get { return "01"; } }
