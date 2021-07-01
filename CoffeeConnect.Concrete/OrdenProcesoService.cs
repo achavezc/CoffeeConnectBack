@@ -21,13 +21,15 @@ namespace CoffeeConnect.Service
         private IOrdenProcesoRepository _IOrdenProcesoRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
         private ICorrelativoRepository _ICorrelativoRepository;
+        private IMaestroRepository _IMaestroRepository;
 
-        public OrdenProcesoService(IOrdenProcesoRepository ordenProcesoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
+        public OrdenProcesoService(IOrdenProcesoRepository ordenProcesoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _IOrdenProcesoRepository = ordenProcesoRepository;
             _Mapper = mapper;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
+            _IMaestroRepository = maestroRepository;
         }
 
         public List<ConsultaOrdenProcesoBE> ConsultarOrdenProceso(ConsultaOrdenProcesoRequestDTO request)
@@ -142,6 +144,33 @@ namespace CoffeeConnect.Service
         public ConsultaOrdenProcesoPorIdBE ConsultarOrdenProcesoPorId(ConsultaOrdenProcesoPorIdRequestDTO request)
         {
             ConsultaOrdenProcesoPorIdBE consultaOrdenProcesoPorIdBE = _IOrdenProcesoRepository.ConsultarOrdenProcesoPorId(request.OrdenProcesoId);
+
+            string [] certificacionesIds = consultaOrdenProcesoPorIdBE.TipoCertificacionId.Split('|');
+
+            string certificacionLabel = string.Empty;
+
+            if(certificacionesIds.Length>0)
+            {
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaOrdenProcesoPorIdBE.EmpresaId).ToList();
+
+                List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                foreach(string certificacionId in certificacionesIds)
+                {
+
+                    ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                    if(certificacion!=null)
+                    {
+                        certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                    }
+
+                    
+                }
+            }
+
+            consultaOrdenProcesoPorIdBE.Certificacion = certificacionLabel;
+
 
             consultaOrdenProcesoPorIdBE.detalle = _IOrdenProcesoRepository.ConsultarOrdenProcesoDetallePorId(request.OrdenProcesoId).ToList();
 

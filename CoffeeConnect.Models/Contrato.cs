@@ -131,6 +131,10 @@ namespace CoffeeConnect.Models
         public string GradoId
         { get; set; }
 
+        public string PeriodosCosecha
+        { get; set; }
+        
+
         /// <summary>
         /// Gets or sets the Cantidad value.
         /// </summary>

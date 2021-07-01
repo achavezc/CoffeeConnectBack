@@ -119,6 +119,9 @@ namespace CoffeeConnect.Service
            
 
             guiaRemisionDetalle.MotivoTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Motivo) ? consultaImpresionGuiaRemision.Motivo.Trim() : String.Empty;
+            guiaRemisionDetalle.MotivoTrasladoId = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoId) ? consultaImpresionGuiaRemision.MotivoTrasladoId.Trim() : String.Empty;
+
+
             guiaRemisionDetalle.MotivoDetalleTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoReferencia) ? consultaImpresionGuiaRemision.MotivoTrasladoReferencia.Trim() : String.Empty;
             guiaRemisionDetalle.PropietarioTransportista = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Propietario) ? consultaImpresionGuiaRemision.Propietario.Trim() : String.Empty;
             guiaRemisionDetalle.TransportistaDomicilio = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionTransportista) ? consultaImpresionGuiaRemision.DireccionTransportista.Trim() : String.Empty;
@@ -127,6 +130,8 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TransportistaRuc = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucTransportista) ? consultaImpresionGuiaRemision.RucTransportista.Trim() : String.Empty;
             guiaRemisionDetalle.TransportistaRazonSocial = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Transportista) ? consultaImpresionGuiaRemision.Transportista.Trim() : String.Empty;
             guiaRemisionDetalle.TransportistaPlaca = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.PlacaTractor) ? consultaImpresionGuiaRemision.PlacaTractor.Trim() : String.Empty;
+            guiaRemisionDetalle.TransportistaPlacaCarreta = String.Empty;
+
             guiaRemisionDetalle.TransportistaConductor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Conductor) ? consultaImpresionGuiaRemision.Conductor.Trim() : String.Empty;
             guiaRemisionDetalle.TransportistaColor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Color) ? consultaImpresionGuiaRemision.Color.Trim() : String.Empty;
             guiaRemisionDetalle.TransportistaSoat = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Soat) ? consultaImpresionGuiaRemision.Soat.Trim() : String.Empty;

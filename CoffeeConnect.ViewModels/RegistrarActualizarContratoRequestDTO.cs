@@ -22,6 +22,9 @@ namespace CoffeeConnect.DTO
         public int ClienteId
         { get; set; }
 
+        public string PeriodosCosecha
+        { get; set; }
+
         public int EmpresaId
         { get; set; }
 
