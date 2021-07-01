@@ -72,6 +72,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@RazonSocial", EmpresaProveedoraAcreedora.RazonSocial);
             parameters.Add("@Ruc", EmpresaProveedoraAcreedora.Ruc);
             parameters.Add("@Direccion", EmpresaProveedoraAcreedora.Direccion);
+            parameters.Add("@ClasificacionId", EmpresaProveedoraAcreedora.ClasificacionId);
             parameters.Add("@DepartamentoId", EmpresaProveedoraAcreedora.DepartamentoId);
             parameters.Add("@ProvinciaId", EmpresaProveedoraAcreedora.ProvinciaId);
             parameters.Add("@DistritoId", EmpresaProveedoraAcreedora.DistritoId);
