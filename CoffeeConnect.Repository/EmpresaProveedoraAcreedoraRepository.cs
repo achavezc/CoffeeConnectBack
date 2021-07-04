@@ -1,6 +1,7 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
+using Core.Common;
 using Dapper;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
@@ -106,6 +107,39 @@ namespace CoffeeConnect.Repository
             }
 
             return itemBE;
+        }
+
+
+        public int ActualizarEmpresaProveedoraAcreedoraCertificacion(List<EmpresaProveedoraAcreedoraCertificacionTipo> request, int empresaProveedoraAcreedoraCertificacionId)
+        {
+            //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@EmpresaProveedoraAcreedoraCertificacionId", empresaProveedoraAcreedoraCertificacionId);
+            parameters.Add("@EmpresaProveedoraAcreedoraCertificacionTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspEmpresaProveedoraAcreedoraCertificacionActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public IEnumerable<ConsultaEmpresaProveedoraAcreedoraCertificacionPorIdBE> ConsultarEmpresaProveedoraAcreedoraCertificacionPorId(int empresaProveedoraAcreedoraId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaProveedoraAcreedoraId", empresaProveedoraAcreedoraId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaEmpresaProveedoraAcreedoraCertificacionPorIdBE>("uspEmpresaProveedoraAcreedoraCertificacionPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
         }
 
 

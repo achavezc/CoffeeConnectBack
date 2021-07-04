@@ -148,6 +148,13 @@ namespace Integracion.Deuda.Controller
 
 
 
+
+
+
+
+
+
+
         [Route("ConsultarPorId")]
         [HttpPost]
         public IActionResult ConsultarPorId([FromBody] ConsultaSocioFincaPorIdRequestDTO request)

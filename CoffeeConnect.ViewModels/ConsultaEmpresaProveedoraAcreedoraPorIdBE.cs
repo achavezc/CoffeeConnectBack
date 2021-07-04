@@ -1,4 +1,6 @@
+using CoffeeConnect.DTO;
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.Models
 {
@@ -94,6 +96,10 @@ namespace CoffeeConnect.Models
 		/// </summary>
 		public string UsuarioUltimaActualizacion
 		{ get; set; }
+
+		public List<ConsultaEmpresaProveedoraAcreedoraCertificacionPorIdBE> Certificaciones
+		{ get; set; }
+
 
 		#endregion
 	}

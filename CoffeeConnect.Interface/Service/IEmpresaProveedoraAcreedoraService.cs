@@ -13,6 +13,7 @@ namespace CoffeeConnect.Interface.Service
 
         int RegistrarEmpresaProveedoraAcreedora(RegistrarActualizarEmpresaProveedoraAcreedoraRequestDTO request);
 
+        ConsultaEmpresaProveedoraAcreedoraPorIdBE ConsultarEmpresaProveedoraAcreedoraCertificacionPorEmpresaProveedoraAcreedoraId(ConsultaEmpresaProveedoraAcreedoraPorIdRequestDTO request);
 
 
     }

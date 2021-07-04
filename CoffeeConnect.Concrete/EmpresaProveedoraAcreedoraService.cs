@@ -37,9 +37,27 @@ namespace CoffeeConnect.Service
             empresaProveedoraAcreedora.UsuarioRegistro = request.Usuario;
 
 
-            int affected = _IEmpresaProveedoraAcreedoraRepository.Insertar(empresaProveedoraAcreedora);
+            int id = _IEmpresaProveedoraAcreedoraRepository.Insertar(empresaProveedoraAcreedora);
 
-            return affected;
+
+            List<EmpresaProveedoraAcreedoraCertificacionTipo> empresaProveedoraAcreedoraCertificacionTipoList = new List<EmpresaProveedoraAcreedoraCertificacionTipo>();
+
+            request.Certificaciones.ForEach(z =>
+            {
+                EmpresaProveedoraAcreedoraCertificacionTipo item = new EmpresaProveedoraAcreedoraCertificacionTipo();
+                item.CodigoCertificacion = z.CodigoCertificacion;
+                item.TipoCertificacionId = z.TipoCertificacionId;
+                item.EmpresaProveedoraAcreedoraId = id;
+
+                empresaProveedoraAcreedoraCertificacionTipoList.Add(item);
+            });
+
+
+            _IEmpresaProveedoraAcreedoraRepository.ActualizarEmpresaProveedoraAcreedoraCertificacion(empresaProveedoraAcreedoraCertificacionTipoList, id);
+
+
+
+            return id;
         }
 
         public int ActualizarEmpresaProveedoraAcreedora(RegistrarActualizarEmpresaProveedoraAcreedoraRequestDTO request)
@@ -50,12 +68,42 @@ namespace CoffeeConnect.Service
 
             int affected = _IEmpresaProveedoraAcreedoraRepository.Actualizar(empresaProveedoraAcreedora);
 
+            List<EmpresaProveedoraAcreedoraCertificacionTipo> empresaProveedoraAcreedoraCertificacionTipoList = new List<EmpresaProveedoraAcreedoraCertificacionTipo>();
+
+            request.Certificaciones.ForEach(z =>
+            {
+                EmpresaProveedoraAcreedoraCertificacionTipo item = new EmpresaProveedoraAcreedoraCertificacionTipo();
+                item.CodigoCertificacion = z.CodigoCertificacion;
+                item.TipoCertificacionId = z.TipoCertificacionId;
+                item.EmpresaProveedoraAcreedoraId = request.EmpresaProveedoraAcreedoraId;
+
+                empresaProveedoraAcreedoraCertificacionTipoList.Add(item);
+            });
+
+            _IEmpresaProveedoraAcreedoraRepository.ActualizarEmpresaProveedoraAcreedoraCertificacion(empresaProveedoraAcreedoraCertificacionTipoList, request.EmpresaProveedoraAcreedoraId);
+
+
             return affected;
         }
 
         public ConsultaEmpresaProveedoraAcreedoraPorIdBE ConsultarEmpresaProveedoraAcreedoraPorId(ConsultaEmpresaProveedoraAcreedoraPorIdRequestDTO request)
         {
-            return _IEmpresaProveedoraAcreedoraRepository.ConsultarEmpresaProveedoraAcreedoraPorId(request.EmpresaProveedoraAcreedoraId);
+            ConsultaEmpresaProveedoraAcreedoraPorIdBE consultaEmpresaProveedoraAcreedoraPorIdBE = _IEmpresaProveedoraAcreedoraRepository.ConsultarEmpresaProveedoraAcreedoraPorId(request.EmpresaProveedoraAcreedoraId);
+
+            consultaEmpresaProveedoraAcreedoraPorIdBE.Certificaciones = _IEmpresaProveedoraAcreedoraRepository.ConsultarEmpresaProveedoraAcreedoraCertificacionPorId(request.EmpresaProveedoraAcreedoraId).ToList();
+
+            return consultaEmpresaProveedoraAcreedoraPorIdBE;
+        }
+
+
+        public ConsultaEmpresaProveedoraAcreedoraPorIdBE ConsultarEmpresaProveedoraAcreedoraCertificacionPorEmpresaProveedoraAcreedoraId(ConsultaEmpresaProveedoraAcreedoraPorIdRequestDTO request)
+        {
+            ConsultaEmpresaProveedoraAcreedoraPorIdBE consultaEmpresaProveedoraAcreedoraPorIdBE = new ConsultaEmpresaProveedoraAcreedoraPorIdBE();
+
+            consultaEmpresaProveedoraAcreedoraPorIdBE.Certificaciones = _IEmpresaProveedoraAcreedoraRepository.ConsultarEmpresaProveedoraAcreedoraCertificacionPorId(request.EmpresaProveedoraAcreedoraId).ToList();
+
+            
+            return consultaEmpresaProveedoraAcreedoraPorIdBE;
         }
 
     }

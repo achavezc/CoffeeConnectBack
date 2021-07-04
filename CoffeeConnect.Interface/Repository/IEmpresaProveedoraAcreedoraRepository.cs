@@ -14,5 +14,10 @@ namespace CoffeeConnect.Interface.Repository
         ConsultaEmpresaProveedoraAcreedoraPorIdBE ConsultarEmpresaProveedoraAcreedoraPorId(int EmpresaProveedoraAcreedoraId);
         int Actualizar(EmpresaProveedoraAcreedora EmpresaProveedoraAcreedora);
         int Insertar(EmpresaProveedoraAcreedora EmpresaProveedoraAcreedora);
+
+        IEnumerable<ConsultaEmpresaProveedoraAcreedoraCertificacionPorIdBE> ConsultarEmpresaProveedoraAcreedoraCertificacionPorId(int empresaProveedoraAcreedoraId);
+
+        int ActualizarEmpresaProveedoraAcreedoraCertificacion(List<EmpresaProveedoraAcreedoraCertificacionTipo> request, int empresaProveedoraAcreedoraCertificacionId);
+
     }
 }

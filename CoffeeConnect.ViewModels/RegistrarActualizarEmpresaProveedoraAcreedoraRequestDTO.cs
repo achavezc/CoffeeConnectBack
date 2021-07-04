@@ -1,4 +1,6 @@
-﻿namespace CoffeeConnect.DTO
+﻿using System.Collections.Generic;
+
+namespace CoffeeConnect.DTO
 {
     public class RegistrarActualizarEmpresaProveedoraAcreedoraRequestDTO
 	{
@@ -72,10 +74,10 @@
         { get; set; }
 
 
-  
+
+		public List<ActualizarEmpresaProveedoraAcreedoraCertificacionRequestDTO> Certificaciones { get; set; }
 
 
-
-        #endregion
-    }
+		#endregion
+	}
 }
