@@ -73,8 +73,16 @@ namespace Integracion.Deuda.Controller
             {
                 List<ConsultaUbigeoBE> lista = _maestroService.ConsultaUbibeo();
 
-                response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("0000"))
+                if(request.CodigoPais=="PE")
+                {
+                    response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("0000")).ToList();
+                }
+                else
+                {
+                    response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.StartsWith("C"))
                                         .ToList();
+                }
+                
 
                 response.Result.Success = true;
 

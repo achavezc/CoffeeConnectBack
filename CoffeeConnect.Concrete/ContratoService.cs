@@ -22,13 +22,16 @@ namespace CoffeeConnect.Service
         private IContratoRepository _IContratoRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
+        private IMaestroRepository _IMaestroRepository;
 
-        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
+
+        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _IContratoRepository = contratoRepository;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
+            _IMaestroRepository = maestroRepository;
         }
 
         private String getRutaFisica(string pathFile)
@@ -47,6 +50,41 @@ namespace CoffeeConnect.Service
                 throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionRangoFechaMayor2anios.Label" });
 
             var list = _IContratoRepository.ConsultarContrato(request);
+
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId).ToList();
+
+
+            foreach (ConsultaContratoBE contrato in list)
+            {
+                string[] certificacionesIds = contrato.TipoCertificacionId.Split('|');
+
+                string certificacionLabel = string.Empty;
+
+                if (certificacionesIds.Length > 0)
+                {
+
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+
+
+                    }
+                }
+
+                contrato.TipoCertificacion = certificacionLabel;
+            }
+
+            
+
+
             return list.ToList();
         }
 
