@@ -108,9 +108,27 @@ namespace CoffeeConnect.Service
             //    }
             //}
 
-            int affected = _IAduanaRepository.Insertar(Aduana);
+            int id = _IAduanaRepository.Insertar(Aduana);
 
-            return affected;
+            List<AduanaCertificacionTipo> aduanaCertificacionTipoList = new List<AduanaCertificacionTipo>();
+
+            request.Certificaciones.ForEach(z =>
+            {
+                AduanaCertificacionTipo item = new AduanaCertificacionTipo();
+                item.AduanaId = id;
+                item.CodigoCertificacion = z.CodigoCertificacion;
+                item.TipoCertificacionId = z.TipoCertificacionId;
+                item.EmpresaProveedoraAcreedoraId = z.EmpresaProveedoraAcreedoraId;
+
+                aduanaCertificacionTipoList.Add(item);
+            });
+
+
+            _IAduanaRepository.ActualizarAduanaCertificacion(aduanaCertificacionTipoList, id);
+
+
+
+            return id;
         }
 
         public ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request)
@@ -205,12 +223,32 @@ namespace CoffeeConnect.Service
             //}
             int affected = _IAduanaRepository.Actualizar(Aduana);
 
+            List<AduanaCertificacionTipo> aduanaCertificacionTipoList = new List<AduanaCertificacionTipo>();
+
+            request.Certificaciones.ForEach(z =>
+            {
+                AduanaCertificacionTipo item = new AduanaCertificacionTipo();
+                item.AduanaId = request.AduanaId;
+                item.CodigoCertificacion = z.CodigoCertificacion;
+                item.TipoCertificacionId = z.TipoCertificacionId;
+                item.EmpresaProveedoraAcreedoraId = z.EmpresaProveedoraAcreedoraId;
+
+                aduanaCertificacionTipoList.Add(item);
+            });
+
+
+            _IAduanaRepository.ActualizarAduanaCertificacion(aduanaCertificacionTipoList, request.AduanaId);
+
             return affected;
         }
 
         public ConsultaAduanaPorIdBE ConsultarAduanaPorId(ConsultaAduanaPorIdRequestDTO request)
         {
-            return _IAduanaRepository.ConsultarAduanaPorId(request.AduanaId);
+            ConsultaAduanaPorIdBE consultaAduanaPorIdBE = _IAduanaRepository.ConsultarAduanaPorId(request.AduanaId);
+
+            consultaAduanaPorIdBE.Certificaciones = _IAduanaRepository.ConsultarAduanaCertificacionPorId(request.AduanaId).ToList();
+
+            return consultaAduanaPorIdBE;
         }
 
         public int AnularAduana(AnularAduanaRequestDTO request)

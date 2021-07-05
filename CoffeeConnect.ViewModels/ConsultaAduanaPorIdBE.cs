@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -153,6 +154,10 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the Activo value.
 		/// </summary>
 		public bool Activo
+		{ get; set; }
+
+
+		public List<ConsultaAduanaCertificacionPorIdBE> Certificaciones
 		{ get; set; }
 
 		#endregion

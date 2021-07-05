@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -129,7 +130,9 @@ namespace CoffeeConnect.DTO
 		public string Usuario
 		{ get; set; }
 
-		
+		public List<ActualizarAduanaCertificacionRequestDTO> Certificaciones { get; set; }
+
+
 
 		#endregion
 	}
