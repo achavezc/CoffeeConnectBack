@@ -23,6 +23,9 @@ namespace CoffeeConnect.DTO
 		public string Propietario
 		{ get; set; }
 
+		public string Conductor
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the Ruc value.
 		/// </summary>

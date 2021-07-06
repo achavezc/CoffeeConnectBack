@@ -94,7 +94,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                affected = db.Execute("uspClienteIdAnular", parameters, commandType: CommandType.StoredProcedure);
+                affected = db.Execute("uspClienteAnular", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;

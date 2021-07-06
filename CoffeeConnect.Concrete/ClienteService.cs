@@ -48,7 +48,7 @@ namespace CoffeeConnect.Service
             Cliente cliente = _Mapper.Map<Cliente>(request);
             cliente.FechaRegistro = DateTime.Now;
             cliente.UsuarioRegistro = request.Usuario;
-            cliente.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Cliente);
+            cliente.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.Cliente);
 
             int affected = _IClienteRepository.Insertar(cliente);
 

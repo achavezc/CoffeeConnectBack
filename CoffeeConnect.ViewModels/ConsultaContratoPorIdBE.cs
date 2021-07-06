@@ -1,4 +1,8 @@
+﻿
 using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace CoffeeConnect.DTO
 {
@@ -124,6 +128,9 @@ namespace CoffeeConnect.DTO
         public string CalidadId
         { get; set; }
 
+        public string CalculoContratoId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the GradoId value.
         /// </summary>
@@ -148,7 +155,7 @@ namespace CoffeeConnect.DTO
         public decimal? PesoEnContrato
         { get; set; }
 
-        
+
 
         /// <summary>
         /// Gets or sets the PreparacionCantidadDefectos value.

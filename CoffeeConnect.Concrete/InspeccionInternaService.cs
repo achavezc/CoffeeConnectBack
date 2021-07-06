@@ -122,7 +122,7 @@ namespace CoffeeConnect.Service
             InspeccionInterna inspeccionInterna = _Mapper.Map<InspeccionInterna>(request);
             inspeccionInterna.FechaRegistro = DateTime.Now;
             inspeccionInterna.UsuarioRegistro = request.Usuario;
-            inspeccionInterna.Numero = _ICorrelativoRepository.Obtener(null, Documentos.InspeccionInterna);
+            inspeccionInterna.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.InspeccionInterna);
 
             AdjuntarArchivosBL AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;

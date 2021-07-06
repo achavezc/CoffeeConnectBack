@@ -113,7 +113,7 @@ namespace CoffeeConnect.Service
             Diagnostico Diagnostico = _Mapper.Map<Diagnostico>(request);
             Diagnostico.FechaRegistro = DateTime.Now;
             Diagnostico.UsuarioRegistro = request.Usuario;
-            Diagnostico.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Diagnostico);
+            Diagnostico.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.Diagnostico);
 
             AdjuntarArchivosBL AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;
