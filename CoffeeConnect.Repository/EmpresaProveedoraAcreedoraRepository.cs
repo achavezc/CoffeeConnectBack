@@ -59,7 +59,7 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspEmpresaProveedoraAcreedoraInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-            int id = parameters.Get<int>("GuiaRecepcionMateriaPrimaId");
+            int id = parameters.Get<int>("EmpresaProveedoraAcreedoraId");
 
             return id;
         }
@@ -118,7 +118,7 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@EmpresaProveedoraAcreedoraCertificacionId", empresaProveedoraAcreedoraCertificacionId);
+            parameters.Add("@EmpresaProveedoraAcreedoraId", empresaProveedoraAcreedoraCertificacionId);
             parameters.Add("@EmpresaProveedoraAcreedoraCertificacionTipo", request.ToDataTable().AsTableValuedParameter());
 
 
