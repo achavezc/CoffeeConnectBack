@@ -51,7 +51,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", EmpresaProveedoraAcreedora.FechaRegistro);
             parameters.Add("@UsuarioRegistro", EmpresaProveedoraAcreedora.UsuarioRegistro);
 
-
+            parameters.Add("@EmpresaProveedoraAcreedoraId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -59,8 +59,9 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspEmpresaProveedoraAcreedoraInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
+            int id = parameters.Get<int>("GuiaRecepcionMateriaPrimaId");
 
-            return result;
+            return id;
         }
 
         public int Actualizar(EmpresaProveedoraAcreedora EmpresaProveedoraAcreedora)
