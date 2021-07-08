@@ -50,7 +50,7 @@ namespace CoffeeConnect.Service
             return list.ToList();
         }
 
-        public int RegistrarAduana(RegistrarActualizarAduanaRequestDTO request, IFormFile file)
+        public int RegistrarAduana(RegistrarActualizarAduanaRequestDTO request)
         {
             Aduana Aduana = _Mapper.Map<Aduana>(request);
             Aduana.FechaRegistro = DateTime.Now;
@@ -58,55 +58,7 @@ namespace CoffeeConnect.Service
             Aduana.UsuarioRegistro = request.Usuario;
             //Aduana.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Aduana);
 
-            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-            byte[] fileBytes = null;
-
-            if (file != null)
-            {
-
-                if (file.Length > 0)
-                {
-                    using (var ms = new MemoryStream())
-                    {
-                        file.CopyTo(ms);
-                        fileBytes = ms.ToArray();
-                        string s = Convert.ToBase64String(fileBytes);
-                        // act on the Base64 data
-                    }
-
-                    Aduana.NombreArchivo = file.FileName;
-                    //Adjuntos
-                    ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
-                    {
-                        filtros = new AdjuntarArchivosDTO()
-                        {
-                            archivoStream = fileBytes,
-                            filename = file.FileName,
-                        },
-                        pathFile = _fileServerSettings.Value.Aduana
-                    });
-                    Aduana.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
-                }
-
-            }
-
-            //if (file != null)
-            //{
-            //    if (file.Length > 0)
-            //    {
-            //        //Adjuntos
-            //        ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
-            //        {
-            //            filtros = new AdjuntarArchivosDTO()
-            //            {
-            //                archivoStream = fileBytes,
-            //                filename = file.FileName,
-            //            },
-            //            pathFile = _fileServerSettings.Value.FincasCertificacion
-            //        });
-            //        Aduana.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
-            //    }
-            //}
+           
 
             int id = _IAduanaRepository.Insertar(Aduana);
 
@@ -166,38 +118,10 @@ namespace CoffeeConnect.Service
             }
         }
 
-        public int ActualizarAduana(RegistrarActualizarAduanaRequestDTO request, IFormFile file)
+        public int ActualizarAduana(RegistrarActualizarAduanaRequestDTO request)
         {
             Aduana Aduana = _Mapper.Map<Aduana>(request);
-            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
-            byte[] fileBytes = null;
-
-            if (file != null)
-            {
-                if (file.Length > 0)
-                {
-                    using (var ms = new MemoryStream())
-                    {
-                        file.CopyTo(ms);
-                        fileBytes = ms.ToArray();
-                        string s = Convert.ToBase64String(fileBytes);
-                        // act on the Base64 data
-                    }
-
-                    Aduana.NombreArchivo = file.FileName;
-                    ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
-                    {
-                        filtros = new AdjuntarArchivosDTO()
-                        {
-                            archivoStream = fileBytes,
-                            filename = file.FileName,
-                        },
-                        pathFile = _fileServerSettings.Value.FincasCertificacion
-                    });
-
-                    Aduana.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
-                }
-            }
+            
 
             Aduana.FechaUltimaActualizacion = DateTime.Now;
             Aduana.UsuarioUltimaActualizacion = request.Usuario;

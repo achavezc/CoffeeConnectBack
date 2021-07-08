@@ -7,8 +7,8 @@ namespace CoffeeConnect.Interface.Service
 {
     public interface IAduanaService
     {
-        int RegistrarAduana(RegistrarActualizarAduanaRequestDTO request, IFormFile file);
-        int ActualizarAduana(RegistrarActualizarAduanaRequestDTO request, IFormFile file);
+        int RegistrarAduana(RegistrarActualizarAduanaRequestDTO request);
+        int ActualizarAduana(RegistrarActualizarAduanaRequestDTO request);
         List<ConsultaAduanaBE> ConsultarAduana(ConsultaAduanaRequestDTO request);
         ConsultaAduanaPorIdBE ConsultarAduanaPorId(ConsultaAduanaPorIdRequestDTO request);
         ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);

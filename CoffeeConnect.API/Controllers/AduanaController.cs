@@ -64,7 +64,7 @@ namespace Integracion.Deuda.Controller
         [Route("Registrar")]
         [HttpPost]
         //public IActionResult Registrar([FromBody] RegistrarActualizarAduanaRequestDTO request)
-        public IActionResult Registrar(IFormFile file, [FromForm] string request)
+        public IActionResult Registrar(RegistrarActualizarAduanaRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
@@ -72,8 +72,8 @@ namespace Integracion.Deuda.Controller
             RegistrarActualizarAduanaResponseDTO response = new RegistrarActualizarAduanaResponseDTO();
             try
             {
-                var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarAduanaRequestDTO>(request);
-                response.Result.Data = _AduanaService.RegistrarAduana(myJsonObject, file);
+                //var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarAduanaRequestDTO>(request);
+                response.Result.Data = _AduanaService.RegistrarAduana(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
@@ -93,7 +93,7 @@ namespace Integracion.Deuda.Controller
 
         [Route("Actualizar")]
         [HttpPost]
-        public IActionResult Actualizar(IFormFile file, [FromForm] string request)
+        public IActionResult Actualizar(RegistrarActualizarAduanaRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
@@ -101,8 +101,8 @@ namespace Integracion.Deuda.Controller
             RegistrarActualizarAduanaResponseDTO response = new RegistrarActualizarAduanaResponseDTO();
             try
             {
-                var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarAduanaRequestDTO>(request);
-                response.Result.Data = _AduanaService.ActualizarAduana(myJsonObject, file);
+                //var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarAduanaRequestDTO>(request);
+                response.Result.Data = _AduanaService.ActualizarAduana(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
