@@ -42,6 +42,13 @@ namespace CoffeeConnect.DTO
 		public string Numero
 		{ get; set; }
 
+
+		public DateTime FechaEmbarque
+		{ get; set; }
+
+		public DateTime? FechaFacturacion
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the Marca value.
 		/// </summary>
@@ -84,11 +91,7 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaRecepcionMuestra
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the ObservacionMuestra value.
-		/// </summary>
-		public string ObservacionMuestra
-		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the NavieraId value.
@@ -102,24 +105,7 @@ namespace CoffeeConnect.DTO
 		public string Observacion
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the NombreArchivo value.
-		/// </summary>
-		public string NombreArchivo
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the DescripcionArchivo value.
-		/// </summary>
-		public string DescripcionArchivo
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PathArchivo value.
-		/// </summary>
-		public string PathArchivo
-		{ get; set; }
-
+		
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
 		/// </summary>
@@ -129,6 +115,12 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public string Usuario
 		{ get; set; }
+
+		public int EmpresaAgenciaAduaneraId
+		{ get; set; }
+
+
+
 
 		public List<ActualizarAduanaCertificacionRequestDTO> Certificaciones { get; set; }
 

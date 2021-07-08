@@ -47,12 +47,17 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             
             parameters.Add("@ContratoId", aduana.ContratoId);
+            parameters.Add("@EmpresaAgenciaAduaneraId", aduana.EmpresaAgenciaAduaneraId);
             parameters.Add("@EmpresaExportadoraId", aduana.EmpresaExportadoraId);
             parameters.Add("@EmpresaProductoraId", aduana.EmpresaProductoraId);
             parameters.Add("@EmpresaId", aduana.EmpresaId);
             parameters.Add("@Numero", aduana.Numero);
             parameters.Add("@Marca", aduana.Marca);
-            parameters.Add("@PO", aduana.PO);
+            parameters.Add("@FechaEmbarque", aduana.FechaEmbarque);
+            parameters.Add("@FechaFacturacion", aduana.FechaFacturacion);
+
+          
+        parameters.Add("@PO", aduana.PO);
             parameters.Add("@LaboratorioId", aduana.LaboratorioId);
             parameters.Add("@FechaEnvioMuestra", aduana.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", aduana.NumeroSeguimientoMuestra);
@@ -85,10 +90,13 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@AduanaId", aduana.AduanaId);
             parameters.Add("@ContratoId", aduana.ContratoId);
+            parameters.Add("@EmpresaAgenciaAduaneraId", aduana.EmpresaAgenciaAduaneraId);
             parameters.Add("@EmpresaExportadoraId", aduana.EmpresaExportadoraId);
             parameters.Add("@EmpresaProductoraId", aduana.EmpresaProductoraId);
             parameters.Add("@EmpresaId", aduana.EmpresaId);
             parameters.Add("@Numero", aduana.Numero);
+            parameters.Add("@FechaEmbarque", aduana.FechaEmbarque);
+            parameters.Add("@FechaFacturacion", aduana.FechaFacturacion);
             parameters.Add("@Marca", aduana.Marca);
             parameters.Add("@PO", aduana.PO);
             parameters.Add("@LaboratorioId", aduana.LaboratorioId);

@@ -12,6 +12,11 @@ namespace CoffeeConnect.DTO
 		public int AduanaId
 		{ get; set; }
 
+		public int EmpresaAgenciaAduaneraId
+		{ get; set; }
+
+		
+
 		/// <summary>
 		/// Gets or sets the ContratoId value.
 		/// </summary>
@@ -22,6 +27,12 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the EmpresaExportadoraId value.
 		/// </summary>
 		public int EmpresaExportadoraId
+		{ get; set; }
+
+		public DateTime FechaEmbarque
+		{ get; set; }
+
+		public DateTime? FechaFacturacion
 		{ get; set; }
 
 		/// <summary>
@@ -84,11 +95,7 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaRecepcionMuestra
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the ObservacionMuestra value.
-		/// </summary>
-		public string ObservacionMuestra
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the NavieraId value.
@@ -105,20 +112,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the NombreArchivo value.
 		/// </summary>
-		public string NombreArchivo
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the DescripcionArchivo value.
-		/// </summary>
-		public string DescripcionArchivo
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PathArchivo value.
-		/// </summary>
-		public string PathArchivo
-		{ get; set; }
+	
 
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.

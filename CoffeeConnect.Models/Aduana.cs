@@ -23,6 +23,19 @@ namespace CoffeeConnect.Models
 		public int EmpresaExportadoraId
 		{ get; set; }
 
+		public int EmpresaAgenciaAduaneraId
+		{ get; set; }
+
+		
+
+
+		public DateTime FechaEmbarque
+		{ get; set; }
+
+		public DateTime? FechaFacturacion
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the EmpresaProductoraId value.
 		/// </summary>
