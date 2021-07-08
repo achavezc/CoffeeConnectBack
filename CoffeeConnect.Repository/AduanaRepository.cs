@@ -62,13 +62,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaEnvioMuestra", aduana.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", aduana.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", aduana.EstadoMuestraId);
-            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);
-            parameters.Add("@ObservacionMuestra", aduana.ObservacionMuestra);
+            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);            
             parameters.Add("@NavieraId", aduana.NavieraId);
             parameters.Add("@Observacion", aduana.Observacion);
-            parameters.Add("@NombreArchivo", aduana.NombreArchivo);
-            parameters.Add("@DescripcionArchivo", aduana.DescripcionArchivo);
-            parameters.Add("@PathArchivo", aduana.PathArchivo);
+           
             parameters.Add("@FechaRegistro", aduana.FechaRegistro);
             parameters.Add("@UsuarioRegistro", aduana.UsuarioRegistro);                    
       
@@ -103,13 +100,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaEnvioMuestra", aduana.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", aduana.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", aduana.EstadoMuestraId);
-            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);
-            parameters.Add("@ObservacionMuestra", aduana.ObservacionMuestra);
+            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);            
             parameters.Add("@NavieraId", aduana.NavieraId);
-            parameters.Add("@Observacion", aduana.Observacion);
-            parameters.Add("@NombreArchivo", aduana.NombreArchivo);
-            parameters.Add("@DescripcionArchivo", aduana.DescripcionArchivo);
-            parameters.Add("@PathArchivo", aduana.PathArchivo);            
+            parameters.Add("@Observacion", aduana.Observacion);           
             parameters.Add("@FechaUltimaActualizacion", aduana.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", aduana.UsuarioUltimaActualizacion);     
             
