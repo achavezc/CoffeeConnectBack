@@ -67,8 +67,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Observacion", aduana.Observacion);
            
             parameters.Add("@FechaRegistro", aduana.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", aduana.UsuarioRegistro);                    
-      
+            parameters.Add("@UsuarioRegistro", aduana.UsuarioRegistro);
+            parameters.Add("@AduanaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -90,8 +90,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaAgenciaAduaneraId", aduana.EmpresaAgenciaAduaneraId);
             parameters.Add("@EmpresaExportadoraId", aduana.EmpresaExportadoraId);
             parameters.Add("@EmpresaProductoraId", aduana.EmpresaProductoraId);
-            parameters.Add("@EmpresaId", aduana.EmpresaId);
-            parameters.Add("@Numero", aduana.Numero);
+            parameters.Add("@EmpresaId", aduana.EmpresaId);           
             parameters.Add("@FechaEmbarque", aduana.FechaEmbarque);
             parameters.Add("@FechaFacturacion", aduana.FechaFacturacion);
             parameters.Add("@Marca", aduana.Marca);
@@ -179,6 +178,51 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<ConsultaAduanaCertificacionPorIdBE>("uspAduanaCertificacionConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public int InsertarAduanaDetalle(AduanaDetalle aduanaDetalle)
+        {
+            int result = 0;
+            var parameters = new DynamicParameters();
+            parameters.Add("@AduanaId", aduanaDetalle.AduanaId);
+            parameters.Add("@NroNotaIngresoPlanta", aduanaDetalle.NroNotaIngresoPlanta);                    
+            parameters.Add("@CantidadSacos", aduanaDetalle.CantidadSacos);          
+            parameters.Add("@KilosNetos", aduanaDetalle.KilosNetos);
+            parameters.Add("@NumeroLote", aduanaDetalle.NumeroLote);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspAduanaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
+        public int EliminarAduanaDetalle(int aduanaId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@AduanaId", aduanaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspAduanaDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        public IEnumerable<AduanaDetalle> ConsultarAduanaDetallePorId(int aduanaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@AduanaId", aduanaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<AduanaDetalle>("uspAduanaDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 

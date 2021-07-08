@@ -1,3 +1,4 @@
+using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
 
@@ -124,7 +125,7 @@ namespace CoffeeConnect.DTO
 
 		public List<ActualizarAduanaCertificacionRequestDTO> Certificaciones { get; set; }
 
-
+		public List<AduanaDetalle> Detalle { get; set; }
 
 		#endregion
 	}

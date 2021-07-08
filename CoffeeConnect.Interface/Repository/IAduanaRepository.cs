@@ -22,5 +22,11 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaAduanaCertificacionPorIdBE> ConsultarAduanaCertificacionPorId(int aduanaId);
         int ActualizarAduanaCertificacion(List<AduanaCertificacionTipo> request, int aduanaId);
 
+        int InsertarAduanaDetalle(AduanaDetalle aduanaDetalle);
+
+        int EliminarAduanaDetalle(int aduanaId);
+
+        IEnumerable<AduanaDetalle> ConsultarAduanaDetallePorId(int aduanaId);
+
     }
 }

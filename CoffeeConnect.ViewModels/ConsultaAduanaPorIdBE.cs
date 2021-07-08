@@ -1,3 +1,4 @@
+using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
 
@@ -153,6 +154,8 @@ namespace CoffeeConnect.DTO
 
 		public List<ConsultaAduanaCertificacionPorIdBE> Certificaciones
 		{ get; set; }
+
+		public IEnumerable<AduanaDetalle> Detalle { get; set; }
 
 		#endregion
 	}
