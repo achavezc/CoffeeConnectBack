@@ -140,7 +140,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                var list = db.Query<ConsultaAduanaPorIdBE>("uspAduanaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                var list = db.Query<ConsultaAduanaPorIdBE>("uspAduanaConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
 
                 if (list.Any())
                     itemBE = list.First();

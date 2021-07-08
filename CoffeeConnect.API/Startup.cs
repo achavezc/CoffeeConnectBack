@@ -95,6 +95,10 @@ namespace CoffeeConnect.API
             services.AddTransient<INotaIngresoPlantaDocumentoAdjuntoService, NotaIngresoPlantaDocumentoAdjuntoService>();
             services.AddTransient<INotaIngresoPlantaDocumentoAdjuntoRepository, NotaIngresoPlantaDocumentoAdjuntoRepository>();
 
+            services.AddTransient<IAduanaDocumentoAdjuntoService, AduanaDocumentoAdjuntoService>();
+            services.AddTransient<IAduanaDocumentoAdjuntoRepository, AduanaDocumentoAdjuntoRepository>();
+
+
 
 
             services.AddTransient<IFincaFotoGeoreferenciadaService, FincaFotoGeoreferenciadaService>();
@@ -200,6 +204,9 @@ namespace CoffeeConnect.API
 
             services.AddTransient<INotaSalidaAlmacenPlantaService, NotaSalidaAlmacenPlantaService>();
             services.AddTransient<INotaSalidaAlmacenPlantaRepository, NotaSalidaAlmacenPlantaRepository>();
+
+
+
 
             services.AddTransient<ISocioProyectoService, SocioProyectoService>();
             services.AddTransient<ISocioProyectoRepository, SocioProyectoRepository>();

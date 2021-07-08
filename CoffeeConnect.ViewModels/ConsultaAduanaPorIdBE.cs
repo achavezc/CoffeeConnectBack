@@ -16,7 +16,99 @@ namespace CoffeeConnect.DTO
 		public int EmpresaAgenciaAduaneraId
 		{ get; set; }
 
-		
+		public string FloId
+		{ get; set; }
+
+
+		public string NumeroContrato
+		{ get; set; }
+
+		public string NumeroCliente
+		{ get; set; }
+
+		public string RazonSocialCliente
+		{ get; set; }
+
+
+		public string RucEmpresaAgenciaAduanera
+		{ get; set; }
+
+		public string RazonSocialEmpresaAgenciaAduanera
+		{ get; set; }
+
+		public string RucEmpresaExportadora
+		{ get; set; }
+
+		public string RazonSocialEmpresaExportadora
+		{ get; set; }
+
+		public string RucEmpresaProductora
+		{ get; set; }
+
+
+		public string RazonSocialEmpresaProductora
+		{ get; set; }
+
+		public string Estado
+
+
+		{ get; set; }
+
+
+
+		public string Empaque
+		{ get; set; }
+
+		public string EmpaqueId
+		{ get; set; }
+
+		public string TipoEmpaque
+		{ get; set; }
+
+		public string TipoId
+		{ get; set; }
+
+
+
+		public string Producto
+		{ get; set; }
+
+		public string ProductoId
+		{ get; set; }
+
+
+		public string SubProducto
+		{ get; set; }
+
+		public string SubProductoId
+		{ get; set; }
+
+
+
+		public string Calidad
+		{ get; set; }
+
+
+		public string CalidadId
+		{ get; set; }
+
+		public string GradoId
+		{ get; set; }
+
+
+		public string RazonSocial
+		{ get; set; }
+
+		public string Ruc
+		{ get; set; }
+
+		public string Logo
+		{ get; set; }
+
+
+		public string Direccion
+		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the ContratoId value.
