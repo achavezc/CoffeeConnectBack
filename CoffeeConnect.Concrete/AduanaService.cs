@@ -56,7 +56,7 @@ namespace CoffeeConnect.Service
             Aduana.FechaRegistro = DateTime.Now;
             //Aduana.NombreArchivo = file.FileName;
             Aduana.UsuarioRegistro = request.Usuario;
-            //Aduana.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Aduana);
+            Aduana.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.Aduana);
 
            
 
