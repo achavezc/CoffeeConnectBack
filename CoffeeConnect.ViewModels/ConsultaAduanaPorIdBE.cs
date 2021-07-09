@@ -45,6 +45,19 @@ namespace CoffeeConnect.DTO
 		public string RucEmpresaProductora
 		{ get; set; }
 
+		public decimal TotalSacos
+		{ get; set; }
+
+		public decimal PesoPorSaco
+		{ get; set; }
+
+		public decimal PesoKilos
+		{ get; set; }
+
+
+
+		
+
 
 		public string RazonSocialEmpresaProductora
 		{ get; set; }
