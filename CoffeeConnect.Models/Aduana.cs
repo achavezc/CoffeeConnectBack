@@ -54,6 +54,13 @@ namespace CoffeeConnect.Models
 		public string Numero
 		{ get; set; }
 
+		public string Courier
+		{ get; set; }
+
+		
+
+
+
 		/// <summary>
 		/// Gets or sets the Marca value.
 		/// </summary>

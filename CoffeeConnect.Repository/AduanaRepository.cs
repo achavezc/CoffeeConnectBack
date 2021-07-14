@@ -50,6 +50,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaAgenciaAduaneraId", aduana.EmpresaAgenciaAduaneraId);
             parameters.Add("@EmpresaExportadoraId", aduana.EmpresaExportadoraId);
             parameters.Add("@EmpresaProductoraId", aduana.EmpresaProductoraId);
+            parameters.Add("@Courier", aduana.Courier);
+            
+
             parameters.Add("@EmpresaId", aduana.EmpresaId);
             parameters.Add("@Numero", aduana.Numero);
             parameters.Add("@Marca", aduana.Marca);
@@ -92,6 +95,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaProductoraId", aduana.EmpresaProductoraId);
             parameters.Add("@EmpresaId", aduana.EmpresaId);           
             parameters.Add("@FechaEmbarque", aduana.FechaEmbarque);
+            parameters.Add("@Courier", aduana.Courier);
             parameters.Add("@FechaFacturacion", aduana.FechaFacturacion);
             parameters.Add("@Marca", aduana.Marca);
             parameters.Add("@PO", aduana.PO);

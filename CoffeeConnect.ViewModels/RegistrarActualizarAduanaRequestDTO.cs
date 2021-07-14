@@ -31,6 +31,9 @@ namespace CoffeeConnect.DTO
 		public int EmpresaProductoraId
 		{ get; set; }
 
+		public string Courier
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the EmpresaId value.
 		/// </summary>

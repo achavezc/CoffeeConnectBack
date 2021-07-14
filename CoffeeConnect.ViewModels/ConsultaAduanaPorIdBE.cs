@@ -19,6 +19,9 @@ namespace CoffeeConnect.DTO
 		public string FloId
 		{ get; set; }
 
+		public string Courier
+		{ get; set; }
+		
 
 		public string NumeroContrato
 		{ get; set; }

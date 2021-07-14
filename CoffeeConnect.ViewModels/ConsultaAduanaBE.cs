@@ -54,7 +54,7 @@ namespace CoffeeConnect.DTO
         { get; set; }
 
 
-        public DateTime FechaEmbarque
+        public DateTime? FechaEmbarque
         { get; set; }
 
 
