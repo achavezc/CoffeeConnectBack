@@ -150,6 +150,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoId", NotaIngresoPlanta.TipoId);
             parameters.Add("@Cantidad", NotaIngresoPlanta.Cantidad);
             parameters.Add("@KilosBrutos", NotaIngresoPlanta.KilosBrutos);
+            parameters.Add("@Tara", NotaIngresoPlanta.Tara);
+            parameters.Add("@KilosNetos", NotaIngresoPlanta.KilosNetos);
             parameters.Add("@CalidadId", NotaIngresoPlanta.CalidadId);
             parameters.Add("@GradoId", NotaIngresoPlanta.GradoId);
             parameters.Add("@CantidadDefectos", NotaIngresoPlanta.CantidadDefectos);
