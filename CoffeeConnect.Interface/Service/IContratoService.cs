@@ -17,5 +17,7 @@ namespace CoffeeConnect.Interface.Service
 
         ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(ConsultaTrackingContratoPorContratoIdRequestDTO request);
 
+        List<ConsultarTrackingContratoPorContratoIdBE> ConsultarTrackingContrato(ConsultaTrackingContratoRequestDTO request);
+
     }
 }

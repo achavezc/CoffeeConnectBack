@@ -19,5 +19,8 @@ namespace CoffeeConnect.Interface.Repository
         int Anular(int contratoId, DateTime fecha, string usuario, string estadoId);
 
         ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(int contratoId,string idioma);
+
+        IEnumerable<ConsultarTrackingContratoPorContratoIdBE> ConsultarTrackingContrato(ConsultaTrackingContratoRequestDTO request);
+
     }
 }

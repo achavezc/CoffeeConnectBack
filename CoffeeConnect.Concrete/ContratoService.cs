@@ -265,5 +265,19 @@ namespace CoffeeConnect.Service
         {
             return _IContratoRepository.ConsultarTrackingContratoPorContratoId(request.ContratoId,request.Idioma);
         }
+
+        public List<ConsultarTrackingContratoPorContratoIdBE> ConsultarTrackingContrato(ConsultaTrackingContratoRequestDTO request)
+        {
+           
+            var list = _IContratoRepository.ConsultarTrackingContrato(request);
+
+            
+
+
+
+            return list.ToList();
+        }
+
+
     }
 }
