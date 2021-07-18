@@ -193,5 +193,24 @@ namespace CoffeeConnect.Repository
             }
             return itemBE;
         }
+
+        public ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(int contratoId, string idioma)
+        {
+            ConsultarTrackingContratoPorContratoIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", contratoId);
+            parameters.Add("@Idioma", idioma);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultarTrackingContratoPorContratoIdBE>("uspTrackingContratoConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+            return itemBE;
+        }
+
     }
 }

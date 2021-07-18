@@ -47,6 +47,17 @@ namespace CoffeeConnect.DTO
         public string RazonSocialEmpresaExportadora
         { get; set; }
 
+        public string RucEmpresaAgenciaAduanera
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the NombreRazonSocial value.
+        /// </summary>
+        public string RazonSocialEmpresaAgenciaAduanera
+        { get; set; }
+
+
+
         public string RucEmpresaProductora
         { get; set; }
 

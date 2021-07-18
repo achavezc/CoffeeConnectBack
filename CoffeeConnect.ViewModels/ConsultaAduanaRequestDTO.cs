@@ -11,9 +11,9 @@ namespace CoffeeConnect.DTO
 
         public String RazonSocialCliente { get; set; }
 
-        public String RucEmpresaExportadora { get; set; }
+        public String RucEmpresaAgenciaAduanera { get; set; }
 
-        public String RazonSocialEmpresaExportadora { get; set; }
+        public String RazonSocialEmpresaAgenciaAduanera { get; set; }
 
         public String EstadoId { get; set; }
 
