@@ -14,5 +14,10 @@ namespace CoffeeConnect.Interface.Service
 
         List<ConsultaProductoPrecioDiaBE> ConsultarProductoPrecioDiaPorSubProductoIdPorEmpresaId(string subProductoId, int empresaId);
 
+        List<ConsultaPrecioDiaRendimientoBE> ConsultarPrecioDiaRendimiento(ConsultaPrecioDiaRendimientoRequestDTO request);
+
+
+     
+
     }
 }
