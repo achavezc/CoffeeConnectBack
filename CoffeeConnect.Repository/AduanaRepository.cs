@@ -27,7 +27,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("NumeroContrato", request.NumeroContrato);
             parameters.Add("RazonSocialCliente", request.RazonSocialCliente);
             parameters.Add("RucEmpresaAgenciaAduanera", request.RucEmpresaAgenciaAduanera);
-            parameters.Add("RazonSocialEmpresaAgenciaAduanera", request.RazonSocialEmpresaAgenciaAduanera);           
+            parameters.Add("RazonSocialEmpresaAgenciaAduanera", request.RazonSocialEmpresaAgenciaAduanera);
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("FechaInicio", request.FechaInicio);
@@ -45,32 +45,28 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
-            
+
             parameters.Add("@ContratoId", aduana.ContratoId);
             parameters.Add("@EmpresaAgenciaAduaneraId", aduana.EmpresaAgenciaAduaneraId);
             parameters.Add("@EmpresaExportadoraId", aduana.EmpresaExportadoraId);
             parameters.Add("@EmpresaProductoraId", aduana.EmpresaProductoraId);
             parameters.Add("@Courier", aduana.Courier);
-            
-
             parameters.Add("@EmpresaId", aduana.EmpresaId);
             parameters.Add("@Numero", aduana.Numero);
             parameters.Add("@Marca", aduana.Marca);
             parameters.Add("@FechaEmbarque", aduana.FechaEmbarque);
             parameters.Add("@FechaFacturacion", aduana.FechaFacturacion);
-
-          
-        parameters.Add("@PO", aduana.PO);
+            parameters.Add("@PO", aduana.PO);
             parameters.Add("@LaboratorioId", aduana.LaboratorioId);
             parameters.Add("@FechaEnvioMuestra", aduana.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", aduana.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", aduana.EstadoMuestraId);
-            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);            
+            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);
             parameters.Add("@NavieraId", aduana.NavieraId);
             parameters.Add("@Observacion", aduana.Observacion);
-           
             parameters.Add("@FechaRegistro", aduana.FechaRegistro);
             parameters.Add("@UsuarioRegistro", aduana.UsuarioRegistro);
+            parameters.Add("@pEstadoSeguimientoId", aduana.EstadoSeguimientoId);
             parameters.Add("@AduanaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -93,7 +89,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaAgenciaAduaneraId", aduana.EmpresaAgenciaAduaneraId);
             parameters.Add("@EmpresaExportadoraId", aduana.EmpresaExportadoraId);
             parameters.Add("@EmpresaProductoraId", aduana.EmpresaProductoraId);
-            parameters.Add("@EmpresaId", aduana.EmpresaId);           
+            parameters.Add("@EmpresaId", aduana.EmpresaId);
             parameters.Add("@FechaEmbarque", aduana.FechaEmbarque);
             parameters.Add("@Courier", aduana.Courier);
             parameters.Add("@FechaFacturacion", aduana.FechaFacturacion);
@@ -103,12 +99,12 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaEnvioMuestra", aduana.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", aduana.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", aduana.EstadoMuestraId);
-            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);            
+            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);
             parameters.Add("@NavieraId", aduana.NavieraId);
-            parameters.Add("@Observacion", aduana.Observacion);           
+            parameters.Add("@Observacion", aduana.Observacion);
             parameters.Add("@FechaUltimaActualizacion", aduana.FechaUltimaActualizacion);
-            parameters.Add("@UsuarioUltimaActualizacion", aduana.UsuarioUltimaActualizacion);     
-            
+            parameters.Add("@UsuarioUltimaActualizacion", aduana.UsuarioUltimaActualizacion);
+            parameters.Add("@pEstadoSeguimientoId", aduana.EstadoSeguimientoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -152,7 +148,6 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
-
         public int ActualizarAduanaCertificacion(List<AduanaCertificacionTipo> request, int aduanaId)
         {
             //uspGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleActualizar
@@ -190,8 +185,8 @@ namespace CoffeeConnect.Repository
             int result = 0;
             var parameters = new DynamicParameters();
             parameters.Add("@AduanaId", aduanaDetalle.AduanaId);
-            parameters.Add("@NroNotaIngresoPlanta", aduanaDetalle.NroNotaIngresoPlanta);                    
-            parameters.Add("@CantidadSacos", aduanaDetalle.CantidadSacos);          
+            parameters.Add("@NroNotaIngresoPlanta", aduanaDetalle.NroNotaIngresoPlanta);
+            parameters.Add("@CantidadSacos", aduanaDetalle.CantidadSacos);
             parameters.Add("@KilosNetos", aduanaDetalle.KilosNetos);
             parameters.Add("@NumeroLote", aduanaDetalle.NumeroLote);
 
@@ -229,7 +224,5 @@ namespace CoffeeConnect.Repository
                 return db.Query<AduanaDetalle>("uspAduanaDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
-
-
     }
 }

@@ -5,9 +5,7 @@ using CoffeeConnect.DTO.Adjunto;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
-using CoffeeConnect.Service.Adjunto;
 using Core.Common.Domain.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -58,8 +56,6 @@ namespace CoffeeConnect.Service
             Aduana.UsuarioRegistro = request.Usuario;
             Aduana.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.Aduana);
 
-           
-
             int id = _IAduanaRepository.Insertar(Aduana);
 
             List<AduanaCertificacionTipo> aduanaCertificacionTipoList = new List<AduanaCertificacionTipo>();
@@ -75,7 +71,6 @@ namespace CoffeeConnect.Service
                 aduanaCertificacionTipoList.Add(item);
             });
 
-
             _IAduanaRepository.ActualizarAduanaCertificacion(aduanaCertificacionTipoList, id);
 
             foreach (AduanaDetalle detalle in request.Detalle)
@@ -83,7 +78,6 @@ namespace CoffeeConnect.Service
                 detalle.AduanaId = id;
                 _IAduanaRepository.InsertarAduanaDetalle(detalle);
             }
-
 
             return id;
         }
@@ -126,7 +120,7 @@ namespace CoffeeConnect.Service
         public int ActualizarAduana(RegistrarActualizarAduanaRequestDTO request)
         {
             Aduana Aduana = _Mapper.Map<Aduana>(request);
-            
+
 
             Aduana.FechaUltimaActualizacion = DateTime.Now;
             Aduana.UsuarioUltimaActualizacion = request.Usuario;
