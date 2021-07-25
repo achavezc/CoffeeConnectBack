@@ -1,6 +1,6 @@
 ﻿
 using System;
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -238,7 +238,21 @@ namespace CoffeeConnect.DTO
         public string EmpaqueId { get; set; }
         public string TipoId { get; set; }
 
-
+        public string FacturarEnId { get; set; }
+        public DateTime? FechaFijacionContrato { get; set; }
+        public decimal KilosNetosQQ { get; set; }
+        public string EstadoFijacionId { get; set; }
+        public decimal KilosNetosLB { get; set; }
+        public decimal PrecioNivelFijacion { get; set; }
+        public decimal Diferencial { get; set; }
+        public decimal PUTotalA { get; set; }
+        public decimal PUTotalB { get; set; }
+        public decimal PUTotalC { get; set; }
+        public decimal NotaCreditoComision { get; set; }
+        public decimal GastosExpCostos { get; set; }
+        public decimal TotalFacturar1 { get; set; }
+        public decimal TotalFacturar2 { get; set; }
+        public decimal TotalFacturar3 { get; set; }
         #endregion
     }
 }

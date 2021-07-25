@@ -19,14 +19,9 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the ClienteId value.
         /// </summary>
-        public int ClienteId
-        { get; set; }
-
-        public string PeriodosCosecha
-        { get; set; }
-
-        public int EmpresaId
-        { get; set; }
+        public int ClienteId { get; set; }
+        public string PeriodosCosecha { get; set; }
+        public int EmpresaId { get; set; }
 
         /// <summary>
         /// Gets or sets the FloId value.
@@ -79,7 +74,6 @@ namespace CoffeeConnect.DTO
         public string ProductoId
         { get; set; }
 
-
         public string SubProductoId
         { get; set; }
 
@@ -107,7 +101,7 @@ namespace CoffeeConnect.DTO
         public string UnidadMedicionId
         { get; set; }
 
-      
+
         /// <summary>
         /// Gets or sets the EntidadCertificadoraId value.
         /// </summary>
@@ -195,5 +189,20 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public string Usuario { get; set; }
         public string EstadoId { get; set; }
+        public string FacturarEnId { get; set; }
+        public DateTime? FechaFijacionContrato { get; set; }
+        public decimal KilosNetosQQ { get; set; }
+        public string EstadoFijacionId { get; set; }
+        public decimal KilosNetosLB { get; set; }
+        public decimal PrecioNivelFijacion { get; set; }
+        public decimal Diferencial { get; set; }
+        public decimal PUTotalA { get; set; }
+        public decimal PUTotalB { get; set; }
+        public decimal PUTotalC { get; set; }
+        public decimal NotaCreditoComision { get; set; }
+        public decimal GastosExpCostos { get; set; }
+        public decimal TotalFacturar1 { get; set; }
+        public decimal TotalFacturar2 { get; set; }
+        public decimal TotalFacturar3 { get; set; }
     }
 }

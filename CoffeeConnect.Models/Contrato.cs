@@ -133,7 +133,7 @@ namespace CoffeeConnect.Models
 
         public string PeriodosCosecha
         { get; set; }
-        
+
 
         /// <summary>
         /// Gets or sets the Cantidad value.
@@ -147,7 +147,7 @@ namespace CoffeeConnect.Models
         public decimal? PesoEnContrato
         { get; set; }
 
-        
+
 
 
 
@@ -188,7 +188,7 @@ namespace CoffeeConnect.Models
         { get; set; }
 
 
-        
+
 
 
 
@@ -241,6 +241,22 @@ namespace CoffeeConnect.Models
         /// </summary>
         public bool Activo
         { get; set; }
+
+        public string FacturarEnId { get; set; }
+        public DateTime? FechaFijacionContrato { get; set; }
+        public decimal KilosNetosQQ { get; set; }
+        public string EstadoFijacionId { get; set; }
+        public decimal KilosNetosLB { get; set; }
+        public decimal PrecioNivelFijacion { get; set; }
+        public decimal Diferencial { get; set; }
+        public decimal PUTotalA { get; set; }
+        public decimal PUTotalB { get; set; }
+        public decimal PUTotalC { get; set; }
+        public decimal NotaCreditoComision { get; set; }
+        public decimal GastosExpCostos { get; set; }
+        public decimal TotalFacturar1 { get; set; }
+        public decimal TotalFacturar2 { get; set; }
+        public decimal TotalFacturar3 { get; set; }
 
         #endregion
     }

@@ -90,6 +90,21 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PesoEnContrato", contrato.PesoEnContrato);
             parameters.Add("@PesoKilos", contrato.PesoKilos);
             parameters.Add("@ContratoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@pFacturarEnId", contrato.FacturarEnId);
+            parameters.Add("@pFechaFijacionContrato", contrato.FechaFijacionContrato);
+            parameters.Add("@pKilosNetosQQ", contrato.KilosNetosQQ);
+            parameters.Add("@pEstadoFijacionId", contrato.EstadoFijacionId);
+            parameters.Add("@pKilosNetosLB", contrato.KilosNetosLB);
+            parameters.Add("@pPrecioNivelFijacion", contrato.PrecioNivelFijacion);
+            parameters.Add("@pDiferencial", contrato.Diferencial);
+            parameters.Add("@pPUTotalA", contrato.PUTotalA);
+            parameters.Add("@pPUTotalB", contrato.PUTotalB);
+            parameters.Add("@pPUTotalC", contrato.PUTotalC);
+            parameters.Add("@pNotaCreditoComision", contrato.NotaCreditoComision);
+            parameters.Add("@pGastosExpCostos", contrato.GastosExpCostos);
+            parameters.Add("@pTotalFacturar1", contrato.TotalFacturar1);
+            parameters.Add("@pTotalFacturar2", contrato.TotalFacturar2);
+            parameters.Add("@pTotalFacturar3", contrato.TotalFacturar3);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -151,6 +166,21 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", contrato.EstadoId);
             parameters.Add("@EmpaqueId", contrato.EmpaqueId);
             parameters.Add("@TipoId", contrato.TipoId);
+            parameters.Add("@pFacturarEnId", contrato.FacturarEnId);
+            parameters.Add("@pFechaFijacionContrato", contrato.FechaFijacionContrato);
+            parameters.Add("@pKilosNetosQQ", contrato.KilosNetosQQ);
+            parameters.Add("@pEstadoFijacionId", contrato.EstadoFijacionId);
+            parameters.Add("@pKilosNetosLB", contrato.KilosNetosLB);
+            parameters.Add("@pPrecioNivelFijacion", contrato.PrecioNivelFijacion);
+            parameters.Add("@pDiferencial", contrato.Diferencial);
+            parameters.Add("@pPUTotalA", contrato.PUTotalA);
+            parameters.Add("@pPUTotalB", contrato.PUTotalB);
+            parameters.Add("@pPUTotalC", contrato.PUTotalC);
+            parameters.Add("@pNotaCreditoComision", contrato.NotaCreditoComision);
+            parameters.Add("@pGastosExpCostos", contrato.GastosExpCostos);
+            parameters.Add("@pTotalFacturar1", contrato.TotalFacturar1);
+            parameters.Add("@pTotalFacturar2", contrato.TotalFacturar2);
+            parameters.Add("@pTotalFacturar3", contrato.TotalFacturar3);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
