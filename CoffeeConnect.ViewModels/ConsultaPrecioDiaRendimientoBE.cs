@@ -17,9 +17,9 @@ namespace CoffeeConnect.Models
 
 		public string MonedaId
 		{ get; set; }
-
-
-		public double RendimientoInicio
+        public double TipoCambio { get; set; }
+        public double PrecioPromedioContrato { get; set; }
+        public double RendimientoInicio
 		{ get; set; }
 
 		public double RendimientoFin
