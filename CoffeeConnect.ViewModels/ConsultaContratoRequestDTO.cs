@@ -20,7 +20,7 @@ namespace CoffeeConnect.DTO
         public String EstadoId { get; set; }
 
         public int EmpresaId { get; set; }
-        
+        public string TipoContratoId { get; set; }
 
 
         public DateTime FechaInicio { get; set; }

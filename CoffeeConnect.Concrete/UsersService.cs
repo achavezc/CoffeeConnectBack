@@ -452,7 +452,7 @@ namespace CoffeeConnect.Service
                 loginDTO.RazonSocialEmpresa = empresa.RazonSocial;
                 loginDTO.RucEmpresa = empresa.Ruc;
                 loginDTO.EmpresaId = empresa.EmpresaId;
-                loginDTO.TipoImpresaid = empresa.TipoImpresaid;
+                loginDTO.TipoEmpresaid = empresa.TipoImpresaid;
                 loginDTO.DireccionEmpresa = empresa.Direccion;
                 loginDTO.LogoEmpresa = empresa.Logo;
                 loginDTO.MonedaId = "01";

@@ -59,12 +59,14 @@ namespace CoffeeConnect.Service
                 string[] certificacionesIds = contrato.TipoCertificacionId.Split('|');
 
                 string certificacionLabel = string.Empty;
+                string tipoContratoLabel = string.Empty;
+
 
                 if (certificacionesIds.Length > 0)
                 {
 
                     List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
-
+                    
                     foreach (string certificacionId in certificacionesIds)
                     {
 
@@ -74,11 +76,17 @@ namespace CoffeeConnect.Service
                         {
                             certificacionLabel = certificacionLabel + certificacion.Label + " ";
                         }
-
-
                     }
+
+                }
+                List<ConsultaDetalleTablaBE> tipoContratos = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoContrato")).ToList();
+                ConsultaDetalleTablaBE tipoContrato = tipoContratos.Where(a => a.Codigo == contrato.TipoContradoId).FirstOrDefault();
+                if (tipoContrato != null)
+                {
+                    tipoContratoLabel = tipoContratoLabel + tipoContrato.Label + " ";
                 }
 
+                contrato.TipoContrato = tipoContratoLabel;
                 contrato.TipoCertificacion = certificacionLabel;
             }
 

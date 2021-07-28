@@ -13,7 +13,7 @@ namespace CoffeeConnect.DTO
     {
         public int IdUsuario { get; set; }
         public int EmpresaId { get; set; }
-        public string TipoImpresaid { get; set; }
+        public string TipoEmpresaid { get; set; }
         public string NombreUsuario { get; set; }
         public string NombreCompletoUsuario { get; set; }
         
