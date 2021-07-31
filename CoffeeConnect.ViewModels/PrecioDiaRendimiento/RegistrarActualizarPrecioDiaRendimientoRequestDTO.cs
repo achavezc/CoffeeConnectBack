@@ -18,6 +18,6 @@ namespace CoffeeConnect.DTO
         public decimal PrecioPromedioContrato { get; set; }
         public IList<PrecioDiaRendimientoTipoRequestDTO> Rendimientos { get; set; }
         public string UsuarioRegistro { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public DateTime? FechaRegistro { get; set; }
     }
 }

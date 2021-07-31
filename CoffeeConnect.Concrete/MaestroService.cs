@@ -64,9 +64,9 @@ namespace CoffeeConnect.Service
             precio1.PrecioPromedioContrato = 170.25;
             precio1.RendimientoInicio = 64;
             precio1.RendimientoFin = 65.99;
-            //precio1.Valor1 = 9.80;
-            //precio1.Valor2 = 9.60;
-            //precio1.Valor3 = 9.40;
+            precio1.Valor1 = 9.80;
+            precio1.Valor2 = 9.60;
+            precio1.Valor3 = 9.40;
 
             ConsultaPrecioDiaRendimientoBE precio2 = new ConsultaPrecioDiaRendimientoBE();
             precio2.MonedaId = "01";

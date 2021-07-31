@@ -28,6 +28,7 @@ namespace CoffeeConnect.Service
         public int RegistrarPrecioDiaRendimiento(RegistrarActualizarPrecioDiaRendimientoRequestDTO request)
         {
             int id = 0;
+            request.FechaRegistro = DateTime.Now;
             id = _IPrecioDiaRendimientoRepository.RegistrarPrecioDiaRendimiento(request);
             return id;
         }
