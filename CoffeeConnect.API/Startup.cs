@@ -98,9 +98,6 @@ namespace CoffeeConnect.API
             services.AddTransient<IAduanaDocumentoAdjuntoService, AduanaDocumentoAdjuntoService>();
             services.AddTransient<IAduanaDocumentoAdjuntoRepository, AduanaDocumentoAdjuntoRepository>();
 
-
-
-
             services.AddTransient<IFincaFotoGeoreferenciadaService, FincaFotoGeoreferenciadaService>();
             services.AddTransient<IFincaFotoGeoreferenciadaRepository, FincaFotoGeoreferenciadaRepository>();
 
@@ -111,7 +108,7 @@ namespace CoffeeConnect.API
             services.AddTransient<IGuiaRemisionAlmacenRepository, GuiaRemisionAlmacenRepository>();
 
             services.AddTransient<IGuiaRemisionAlmacenPlantaService, GuiaRemisionAlmacenPlantaService>();
-         
+
 
             services.AddTransient<IGuiaRecepcionMateriaPrimaService, GuiaRecepcionMateriaPrimaService>();
             services.AddTransient<IGuiaRecepcionMateriaPrimaRepository, GuiaRecepcionMateriaPrimaRepository>();
@@ -131,19 +128,14 @@ namespace CoffeeConnect.API
             services.AddTransient<IProductoPrecioDiaService, ProductoPrecioDiaService>();
             services.AddTransient<IProductoPrecioDiaRepository, ProductoPrecioDiaRepository>();
 
-
-
             services.AddTransient<ISocioService, SocioService>();
             services.AddTransient<ISocioRepository, SocioRepository>();
 
             services.AddTransient<IDetalleCatalogoService, DetalleCatalogoService>();
             services.AddTransient<IDetalleCatalogoRepository, DetalleCatalogoRepository>();
 
-
-
             services.AddTransient<ISocioFincaCertificacionService, SocioFincaCertificacionService>();
             services.AddTransient<ISocioFincaCertificacionRepository, SocioFincaCertificacionRepository>();
-
 
             services.AddTransient<ITransporteService, TransporteService>();
             services.AddTransient<ITransporteRepository, TransporteRepository>();
@@ -170,7 +162,6 @@ namespace CoffeeConnect.API
             services.AddTransient<INotaIngresoPlantaService, NotaIngresoPlantaService>();
             services.AddTransient<INotaIngresoPlantaRepository, NotaIngresoPlantaRepository>();
 
-
             services.AddTransient<IOrdenServicioControlCalidadService, OrdenServicioControlCalidadService>();
             services.AddTransient<IOrdenServicioControlCalidadRepository, OrdenServicioControlCalidadRepository>();
             services.AddTransient<INotaSalidaAlmacenService, NotaSalidaAlmacenService>();
@@ -191,8 +182,6 @@ namespace CoffeeConnect.API
             services.AddTransient<IInspeccionInternaRepository, InspeccionInternaRepository>();
 
             services.AddTransient<IDiagnosticoService, DiagnosticoService>();
-
-           
             services.AddTransient<IDiagnosticoRepository, DiagnosticoRepository>();
 
             services.AddTransient<IUbigeoService, UbigeoService>();
@@ -222,6 +211,9 @@ namespace CoffeeConnect.API
 
             services.AddTransient<IOrganizacionService, OrganizacionService>();
             services.AddTransient<IOrganizacionRepository, OrganizacionRepository>();
+
+            services.AddTransient<IPrecioDiaRendimientoService, PrecioDiaRendimientoService>();
+            services.AddTransient<IPrecioDiaRendimientoRepository, PrecioDiaRendimientoRepository>();
 
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })

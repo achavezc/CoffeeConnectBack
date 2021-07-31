@@ -20,6 +20,19 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
+        public IEnumerable<ConsultaPrecioDiaRendimientoBE> ConsultaPrecioDiaRendimiento(ConsultarPrecioDiaRendimientoRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("FechaInicio", request.FechaInicio);
+            parameters.Add("FechaFin", request.FechaFin);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaPrecioDiaRendimientoBE>("uspPrecioDiaRendimientoConsultar", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public int RegistrarPrecioDiaRendimiento(RegistrarActualizarPrecioDiaRendimientoRequestDTO request)
         {
             int result = 0;

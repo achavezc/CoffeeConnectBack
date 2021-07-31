@@ -8,6 +8,7 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface IPrecioDiaRendimientoRepository
     {
+        IEnumerable<ConsultaPrecioDiaRendimientoBE> ConsultaPrecioDiaRendimiento(ConsultarPrecioDiaRendimientoRequestDTO request);
         int RegistrarPrecioDiaRendimiento(RegistrarActualizarPrecioDiaRendimientoRequestDTO request);
     }
 }

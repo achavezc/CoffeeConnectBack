@@ -5,6 +5,7 @@ using CoffeeConnect.Interface.Service;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CoffeeConnect.Service
@@ -29,6 +30,12 @@ namespace CoffeeConnect.Service
             int id = 0;
             id = _IPrecioDiaRendimientoRepository.RegistrarPrecioDiaRendimiento(request);
             return id;
+        }
+
+        public List<ConsultaPrecioDiaRendimientoBE> ConsultaPrecioDiaRendimiento(ConsultarPrecioDiaRendimientoRequestDTO request)
+        {
+            var list = _IPrecioDiaRendimientoRepository.ConsultaPrecioDiaRendimiento(request);
+            return list.ToList();
         }
     }
 }

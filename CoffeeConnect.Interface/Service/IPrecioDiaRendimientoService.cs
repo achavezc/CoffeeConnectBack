@@ -7,6 +7,7 @@ namespace CoffeeConnect.Interface.Service
 {
     public interface IPrecioDiaRendimientoService
     {
+        List<ConsultaPrecioDiaRendimientoBE> ConsultaPrecioDiaRendimiento(ConsultarPrecioDiaRendimientoRequestDTO request);
         int RegistrarPrecioDiaRendimiento(RegistrarActualizarPrecioDiaRendimientoRequestDTO request);
     }
 }
