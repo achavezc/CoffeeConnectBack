@@ -8,10 +8,8 @@ namespace CoffeeConnect.Interface.Repository
     {
         IEnumerable<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId);
         IEnumerable<ConsultaUbigeoBE> ConsultaUbibeo();
-
         IEnumerable<Zona> ConsultarZona(string codigoDistrito);
-
         IEnumerable<ConsultaPaisBE> ConsultarPais();
-
+        IEnumerable<ConsultaPrecioDiaRendimientoBE> ConsultarPrecioDiaRendimientoPorEmpresa(int empresaId);
     }
 }

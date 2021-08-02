@@ -21,6 +21,8 @@ namespace CoffeeConnect.DTO
         public double Valor1 { get; set; }
         public double Valor2 { get; set; }
         public double Valor3 { get; set; }
+        public double KGPergamino { get; set; }
+        public double PrecioDia { get; set; }
         public string EstadoId { get; set; }
         public string Estado { get; set; }
         public DateTime FechaRegistro { get; set; }

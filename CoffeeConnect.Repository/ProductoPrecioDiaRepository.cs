@@ -23,7 +23,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("ProductoId", request.ProductoId);
-            parameters.Add("SubProductoId", request.SubProductoId);           
+            parameters.Add("SubProductoId", request.SubProductoId);
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
@@ -39,7 +39,7 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("EmpresaId", empresaID);
-            
+
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -62,14 +62,11 @@ namespace CoffeeConnect.Repository
             }
         }
 
-
-
-
         public int Insertar(ProductoPrecioDia productoPrecioDia)
         {
-            int result = 0;            
+            int result = 0;
 
-            var parameters = new DynamicParameters();            
+            var parameters = new DynamicParameters();
             parameters.Add("@EmpresaId", productoPrecioDia.EmpresaId);
             parameters.Add("@ProductoId", productoPrecioDia.ProductoId);
             parameters.Add("@MonedaId", productoPrecioDia.MonedaId);
@@ -77,8 +74,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Fecha", productoPrecioDia.Fecha);
             parameters.Add("@PrecioDia", productoPrecioDia.PrecioDia);
             parameters.Add("@FechaRegistro", productoPrecioDia.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", productoPrecioDia.UsuarioRegistro);           
-            parameters.Add("@EstadoId", productoPrecioDia.EstadoId);           
+            parameters.Add("@UsuarioRegistro", productoPrecioDia.UsuarioRegistro);
+            parameters.Add("@EstadoId", productoPrecioDia.EstadoId);
 
 
 
@@ -86,7 +83,7 @@ namespace CoffeeConnect.Repository
             {
                 result = db.Execute("uspProductoPrecioDiaInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
-            
+
 
             return result;
         }
@@ -106,7 +103,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaUltimaActualizacion", productoPrecioDia.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", productoPrecioDia.UsuarioUltimaActualizacion);
             parameters.Add("@EstadoId", productoPrecioDia.EstadoId);
-    
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

@@ -17,7 +17,6 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
         public IEnumerable<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId)
         {
             var parameters = new DynamicParameters();
@@ -58,6 +57,17 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<ConsultaPaisBE>("uspPaisConsulta", commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<ConsultaPrecioDiaRendimientoBE> ConsultarPrecioDiaRendimientoPorEmpresa(int empresaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("EmpresaId", empresaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaPrecioDiaRendimientoBE>("uspPrecioDiaRendimientoConsultarPorEmpresa", parameters, commandType: CommandType.StoredProcedure);
             }
         }
     }
