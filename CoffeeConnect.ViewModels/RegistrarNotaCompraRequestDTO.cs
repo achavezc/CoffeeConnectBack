@@ -145,6 +145,6 @@ namespace CoffeeConnect.DTO
 
 		public string Observaciones 
 		{ get; set; }
-        public decimal PrecioDia { get; set; }
+        public int ValorId { get; set; }
     }
 }
