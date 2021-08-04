@@ -90,6 +90,9 @@ namespace CoffeeConnect.Models
 		public string TipoId
 		{ get; set; }
 
+		public int ValorId
+		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the MonedaId value.
