@@ -26,6 +26,12 @@ namespace CoffeeConnect.DTO
         public List<ConsultaProductoPrecioDiaBE> ProductoPreciosDia { get; set; }
 
         public string MonedaId { get; set; }
+
+        public string CodigoCliente { get; set; }
+
+        public string Cliente { get; set; }
+
+
         public string Moneda { get; set; }
     }
 }
