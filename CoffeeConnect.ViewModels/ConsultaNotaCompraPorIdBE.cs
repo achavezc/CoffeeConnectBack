@@ -17,6 +17,9 @@ namespace CoffeeConnect.DTO
 		public int GuiaRecepcionMateriaPrimaId
 		{ get; set; }
 
+		public int ValorId
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>

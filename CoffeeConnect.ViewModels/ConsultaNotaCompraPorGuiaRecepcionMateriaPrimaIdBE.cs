@@ -23,6 +23,9 @@ namespace CoffeeConnect.DTO
 		public string Numero
 		{ get; set; }
 
+		public int ValorId
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the EstadoId value.
 		/// </summary>

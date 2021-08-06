@@ -38,6 +38,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@QQ55", notaCompra.QQ55);
             parameters.Add("@TipoId", notaCompra.TipoId);
             parameters.Add("@MonedaId", notaCompra.MonedaId);
+            parameters.Add("@ValorId", notaCompra.ValorId);
             parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);
             parameters.Add("@PrecioGuardado", notaCompra.PrecioGuardado);
             parameters.Add("@Importe", notaCompra.Importe);
@@ -73,7 +74,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@KilosNetosDescontar", notaCompra.KilosNetosDescontar);
             parameters.Add("@KilosNetosPagar", notaCompra.KilosNetosPagar);
             parameters.Add("@QQ55", notaCompra.QQ55);
-
+            parameters.Add("@ValorId", notaCompra.ValorId);
             parameters.Add("@TipoId", notaCompra.TipoId);
             parameters.Add("@MonedaId", notaCompra.MonedaId);
             parameters.Add("@PrecioPagado", notaCompra.PrecioPagado);

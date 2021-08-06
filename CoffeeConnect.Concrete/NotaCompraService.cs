@@ -47,6 +47,7 @@ namespace CoffeeConnect.Service
             notaCompra.FechaRegistro = DateTime.Now;
             notaCompra.UsuarioRegistro = request.UsuarioNotaCompra;
             notaCompra.Observaciones = request.Observaciones;
+            notaCompra.ValorId = request.ValorId;
 
             int affected = _INotaCompraRepository.Insertar(notaCompra);
 
@@ -79,6 +80,7 @@ namespace CoffeeConnect.Service
             notaCompra.FechaUltimaActualizacion = DateTime.Now;
             notaCompra.UsuarioUltimaActualizacion = request.UsuarioNotaCompra;
             notaCompra.Observaciones = request.Observaciones;
+            notaCompra.ValorId = request.ValorId;
 
             int affected = _INotaCompraRepository.Actualizar(notaCompra);
 

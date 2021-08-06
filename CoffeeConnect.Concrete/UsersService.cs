@@ -457,10 +457,13 @@ namespace CoffeeConnect.Service
                 loginDTO.LogoEmpresa = empresa.Logo;
                 loginDTO.MonedaId = "01";
                 loginDTO.Moneda = "Soles";
+                loginDTO.Cliente = "CLIENTE 1";
+                loginDTO.CodigoCliente = "CLI00000001";
+
 
                 
 
-                List<ConsultaProductoPrecioDiaBE> precios = _ProductoPrecioDiaRepository.ConsultarProductoPrecioDiaPorEmpresaId(usuario.EmpresaId).ToList();
+                //List<ConsultaProductoPrecioDiaBE> precios = _ProductoPrecioDiaRepository.ConsultarProductoPrecioDiaPorEmpresaId(usuario.EmpresaId).ToList();
 
                 //ProductoPrecioDiaBE precioCafePergaminoMote = new ProductoPrecioDiaBE();
                 //precioCafePergaminoMote.ProductoId = "01";
@@ -480,7 +483,7 @@ namespace CoffeeConnect.Service
                 //precioCafePergaminoEstandar.PrecioDia = 6.80M;
                 //precios.Add(precioCafePergaminoEstandar);
 
-                loginDTO.ProductoPreciosDia = precios;
+                //loginDTO.ProductoPreciosDia = precios;
 
             }
 
