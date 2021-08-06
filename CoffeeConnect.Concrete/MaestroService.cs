@@ -17,9 +17,9 @@ namespace CoffeeConnect.Service
             _IMaestroRepository = maestroRepository;
             _IProductoPrecioDiaRepository = productoPrecioDiaRepository;
         }
-        public List<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId)
+        public List<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId,string idioma)
         {
-            var lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(empresaId);
+            var lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(empresaId, idioma);
 
             return lista.ToList();
         }

@@ -151,7 +151,7 @@ namespace CoffeeConnect.Service
 
             if(certificacionesIds.Length>0)
             {
-                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaOrdenProcesoPorIdBE.EmpresaId).ToList();
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaOrdenProcesoPorIdBE.EmpresaId,String.Empty).ToList();
 
                 List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
 

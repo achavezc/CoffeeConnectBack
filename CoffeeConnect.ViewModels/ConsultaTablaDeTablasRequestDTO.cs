@@ -12,5 +12,7 @@ namespace CoffeeConnect.DTO
         public String CodigoTabla { get; set; }
 
         public int EmpresaId { get; set; }
+
+        public String Idioma { get; set; }
     }
 }

@@ -51,7 +51,7 @@ namespace CoffeeConnect.Service
 
             var list = _IContratoRepository.ConsultarContrato(request);
 
-            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId).ToList();
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId,String.Empty).ToList();
 
 
             foreach (ConsultaContratoBE contrato in list)

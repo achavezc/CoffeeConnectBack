@@ -17,10 +17,11 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-        public IEnumerable<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId)
+        public IEnumerable<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId, string idioma)
         {
             var parameters = new DynamicParameters();
             parameters.Add("EmpresaId", empresaId);
+            parameters.Add("Idioma", idioma);
 
 
 

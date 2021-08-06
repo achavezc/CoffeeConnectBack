@@ -38,7 +38,7 @@ namespace Integracion.Deuda.Controller
             ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
             try
             {
-                List<ConsultaDetalleTablaBE> lista = _maestroService.ConsultarDetalleTablaDeTablas(request.EmpresaId);
+                List<ConsultaDetalleTablaBE> lista = _maestroService.ConsultarDetalleTablaDeTablas(request.EmpresaId, request.Idioma);
 
                 response.Result.Data = lista.Where(a => a.CodigoTabla.Trim().Equals(request.CodigoTabla.Trim())).ToList();
 

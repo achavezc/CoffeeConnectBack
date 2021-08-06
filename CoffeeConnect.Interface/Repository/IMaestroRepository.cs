@@ -6,7 +6,7 @@ namespace CoffeeConnect.Interface.Repository
 {
     public interface IMaestroRepository
     {
-        IEnumerable<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId);
+        IEnumerable<ConsultaDetalleTablaBE> ConsultarDetalleTablaDeTablas(int empresaId, string idioma);
         IEnumerable<ConsultaUbigeoBE> ConsultaUbibeo();
         IEnumerable<Zona> ConsultarZona(string codigoDistrito);
         IEnumerable<ConsultaPaisBE> ConsultarPais();
