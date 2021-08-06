@@ -215,6 +215,10 @@ namespace CoffeeConnect.API
             services.AddTransient<IPrecioDiaRendimientoService, PrecioDiaRendimientoService>();
             services.AddTransient<IPrecioDiaRendimientoRepository, PrecioDiaRendimientoRepository>();
 
+            services.AddTransient<IAdelantoService, AdelantoService>();
+            services.AddTransient<IAdelantoRepository, AdelantoRepository>();
+
+
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
                     .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
