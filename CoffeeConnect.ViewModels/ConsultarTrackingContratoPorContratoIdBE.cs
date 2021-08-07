@@ -91,6 +91,18 @@ namespace CoffeeConnect.DTO
 		public string TipoEmpaque
 		{ get; set; }
 
+		public string TipoProduccionId
+		{ get; set; }
+
+
+		public string TipoProduccion
+		{ get; set; }
+
+
+
+		
+
+
 		public string TipoId
 		{ get; set; }
 
