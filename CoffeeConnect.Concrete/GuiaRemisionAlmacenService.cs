@@ -93,13 +93,13 @@ namespace CoffeeConnect.Service
 
 
 
-            
+
             cabeceraGuiaRemision.FechaEmision = DateTime.Now;
             cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
 
 
 
-            
+
             //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
 
 
@@ -116,7 +116,7 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TipoTraslado = "TRANSPORTE PRIVADO";
 
 
-           
+
 
             guiaRemisionDetalle.MotivoTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Motivo) ? consultaImpresionGuiaRemision.Motivo.Trim() : String.Empty;
             guiaRemisionDetalle.MotivoTrasladoId = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoId) ? consultaImpresionGuiaRemision.MotivoTrasladoId.Trim() : String.Empty;
@@ -147,7 +147,7 @@ namespace CoffeeConnect.Service
 
 
 
-           
+
 
 
             generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adelanto;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
@@ -38,6 +39,13 @@ namespace CoffeeConnect.Service
 
             var list = _IAdelantoRepository.ConsultarAdelanto(request);
             return list.ToList();
+        }
+
+        public GenerarPDFAdelantoResponseDTO GenerarPDF(int id)
+        {
+            GenerarPDFAdelantoResponseDTO response = new GenerarPDFAdelantoResponseDTO;
+            response.resultado = _IAdelantoRepository.GenerarPDF(id).ToList();
+            return response;
         }
     }
 }

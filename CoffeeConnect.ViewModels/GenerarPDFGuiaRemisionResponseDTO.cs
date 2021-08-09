@@ -33,9 +33,7 @@ namespace CoffeeConnect.DTO
         public string RucDestinatario { get; set; }
         public string DireccionPartida { get; set; }
         public string DireccionDestino { get; set; }
-
         public string Certificacion { get; set; }
-
         public string TipoProduccion { get; set; }
     }
 
@@ -47,13 +45,10 @@ namespace CoffeeConnect.DTO
         public string TipoProducto { get; set; }
         public string TipoCertificacion { get; set; }
         public string TipoProduccion { get; set; }
-
         public string UnidadMedida { get; set; }
         public decimal Cantidad { get; set; }
         public decimal PesoNeto { get; set; }
-
         public decimal HumedadPorcentaje { get; set; }
-
         public decimal RendimientoPorcentaje { get; set; }
         public string Producto { get; set; }
         public string SubProducto { get; set; }
@@ -68,42 +63,24 @@ namespace CoffeeConnect.DTO
         public decimal TotalKGBrutos { get; set; }
         public string MotivoTraslado { get; set; }
         public string MotivoTrasladoId { get; set; }
-
         public string ModalidadTransporte { get; set; }
-
         public string TipoTraslado { get; set; }
-
-
         public string MotivoDetalleTraslado { get; set; }
         public string PropietarioTransportista { get; set; }
         public string TransportistaDomicilio { get; set; }
-
         public string TransportistaRazonSocial { get; set; }
-
-
-        
-
         public string TransportistaCodigoVehicular { get; set; }
         public string TransportistaMarca { get; set; }
         public string TransportistaRuc { get; set; }
         public string TransportistaPlaca { get; set; }
-
         public string TransportistaPlacaCarreta { get; set; }
-
         public string TransportistaColor { get; set; }
-
-
         public String TransportistaDni { get; set; }
-
-
         public string TransportistaSoat { get; set; }
         public string TransportistaConductor { get; set; }
         public string TransportistaConstancia { get; set; }
         public string TransportistaBrevete { get; set; }
-
         public string Observaciones { get; set; }
-
         public string Responsable { get; set; }
-
     }
 }

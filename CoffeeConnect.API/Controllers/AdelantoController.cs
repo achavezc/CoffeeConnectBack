@@ -1,12 +1,16 @@
-﻿using CoffeeConnect.DTO;
+﻿using AspNetCore.Reporting;
+using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adelanto;
 using CoffeeConnect.DTO.Adjunto;
 using CoffeeConnect.Interface.Service;
+using Core.Common;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Mime;
 
@@ -17,12 +21,14 @@ namespace Integracion.Deuda.Controller
     public class AdelantoController : ControllerBase
     {
         private IAdelantoService _AdelantoService;
-
         private Core.Common.Logger.ILog _log;
-        public AdelantoController(IAdelantoService AdelantoService, Core.Common.Logger.ILog log)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public AdelantoController(IAdelantoService AdelantoService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
             _AdelantoService = AdelantoService;
             _log = log;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet("version")]
@@ -253,5 +259,44 @@ namespace Integracion.Deuda.Controller
         }
 
         */
+
+        [Route("GenerarPDFAdelanto")]
+        [HttpGet]
+        public IActionResult GenerarPDFAdelanto(int id)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
+
+            //ES MOMENTANEO SE DEBE ELIMINAR
+            GenerarPDFAdelantoResponseDTO response = _AdelantoService.GenerarPDF(id);
+
+            try
+            {
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptAdelanto.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                lr.AddDataSource("dsAdelanto", Util.ToDataTable(response.resultado));
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+                return File(result.MainStream, "application/pdf");
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
     }
 }

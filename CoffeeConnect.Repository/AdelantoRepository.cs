@@ -1,4 +1,5 @@
-﻿using CoffeeConnect.DTO.Adelanto;
+﻿using CoffeeConnect.DTO;
+using CoffeeConnect.DTO.Adelanto;
 using CoffeeConnect.Interface.Repository;
 using Dapper;
 using Microsoft.Extensions.Options;
@@ -19,6 +20,17 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
+        public IEnumerable<ResultadoPDFAdelanto> GenerarPDF(int idAdelanto)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@AdelantoId", idAdelanto);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ResultadoPDFAdelanto>("uspAdelantoConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         IEnumerable<ConsultaAdelantoBE> IAdelantoRepository.ConsultarAdelanto(ConsultaAdelantoRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -32,7 +44,6 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", request.EmpresaId);
             parameters.Add("@FechaInicio", request.FechaInicio);
             parameters.Add("@FechaFin", request.FechaFin);
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
