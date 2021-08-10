@@ -10,5 +10,7 @@ namespace CoffeeConnect.Interface.Repository
     {
         IEnumerable<ConsultaPrecioDiaRendimientoBE> ConsultaPrecioDiaRendimiento(ConsultarPrecioDiaRendimientoRequestDTO request);
         int RegistrarPrecioDiaRendimiento(RegistrarActualizarPrecioDiaRendimientoRequestDTO request);
+
+        int Anular(int precioDiaRendimientoId, DateTime fecha, string usuario, string estadoId);
     }
 }

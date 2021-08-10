@@ -38,5 +38,17 @@ namespace CoffeeConnect.Service
             var list = _IPrecioDiaRendimientoRepository.ConsultaPrecioDiaRendimiento(request);
             return list.ToList();
         }
+
+        public int AnularPrecioDiaRendimiento(AnularPrecioDiaRendimientoRequestDTO request)
+        {
+            int result = 0;
+            if (request.PrecioDiaRendimientoId > 0)
+            {
+
+                result = _IPrecioDiaRendimientoRepository.Anular(request.PrecioDiaRendimientoId, DateTime.Now, request.Usuario, PrecioDiaRendimientoEstados.Anulado);
+            }
+            return result;
+        }
+
     }
 }
