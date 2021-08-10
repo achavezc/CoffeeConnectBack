@@ -227,18 +227,19 @@ namespace Integracion.Deuda.Controller
 
             return null;
         }
+        */
 
         [Route("Anular")]
         [HttpPost]
-        public IActionResult Anular([FromBody] AnularAduanaRequestDTO request)
+        public IActionResult Anular([FromBody] AnularAdelantoRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            AnularLoteResponseDTO response = new AnularLoteResponseDTO();
+            AnularAdelantoResponseDTO response = new AnularAdelantoResponseDTO();
             try
             {
-                response.Result.Data = _AduanaService.AnularAduana(request);
+                response.Result.Data = _AdelantoService.AnularAdelanto(request);
 
                 response.Result.Success = true;
 
@@ -258,7 +259,39 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-        */
+        [Route("Asociar")]
+        [HttpPost]
+        public IActionResult Asociar([FromBody] AsociarAdelantoRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            AsociarAdelantoResponseDTO response = new AsociarAdelantoResponseDTO();
+            try
+            {
+                response.Result.Data = _AdelantoService.AsociarAdelanto(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
+
+
 
         [Route("GenerarPDFAdelanto")]
         [HttpGet]

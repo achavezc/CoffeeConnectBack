@@ -50,5 +50,44 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaAdelantoBE>("uspAdelantoConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public int Anular(int adelantoId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@AdelantoId", adelantoId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspAdelantoAnular", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
+        public int AsociarNotaCompra(int adelantoId, int notaCompraId, DateTime fecha, string usuario)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@AdelantoId", adelantoId);
+            parameters.Add("@NotaCompraId", notaCompraId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspAdelantoAsociarNotaCompra", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
     }
 }
