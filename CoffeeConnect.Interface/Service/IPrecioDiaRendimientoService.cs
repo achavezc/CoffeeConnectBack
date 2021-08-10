@@ -11,5 +11,7 @@ namespace CoffeeConnect.Interface.Service
         int RegistrarPrecioDiaRendimiento(RegistrarActualizarPrecioDiaRendimientoRequestDTO request);
 
         int AnularPrecioDiaRendimiento(AnularPrecioDiaRendimientoRequestDTO request);
+
+        CalculoPrecioDiaRendimientoDTO CalcularPrecioDiaRendimiento(CalcularPrecioDiaRendimientoRequestDTO request);
     }
 }
