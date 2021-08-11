@@ -274,7 +274,7 @@ namespace CoffeeConnect.Service
             int result = 0;
             if (request.ContratoId > 0)
             {
-                result = _IContratoRepository.AsignarAcopio(request.ContratoId, DateTime.Now, request.Usuario, request.KGPergaminoAsignacion, request.PorcentajeRendimientoAsignacion, request.TotalKGPergaminoAsignacion);
+                result = _IContratoRepository.AsignarAcopio(request.ContratoId, DateTime.Now, request.Usuario, ContratoEstados.Asignado, request.KGPergaminoAsignacion, request.PorcentajeRendimientoAsignacion, request.TotalKGPergaminoAsignacion);
             }
             return result;
         }

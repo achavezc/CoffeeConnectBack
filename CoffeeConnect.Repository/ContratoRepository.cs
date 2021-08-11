@@ -208,7 +208,7 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-        public int AsignarAcopio(int contratoId, DateTime fecha, string usuario, decimal kgPergaminoAsignacion, decimal porcentajeRendimientoAsignacion, decimal totalKGPergaminoAsignacion)
+        public int AsignarAcopio(int contratoId, DateTime fecha, string usuario, string estadoId, decimal kgPergaminoAsignacion, decimal porcentajeRendimientoAsignacion, decimal totalKGPergaminoAsignacion)
         {
             int affected = 0;
 
@@ -216,10 +216,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ContratoId", contratoId);
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
             parameters.Add("@KGPergaminoAsignacion", kgPergaminoAsignacion);
             parameters.Add("@PorcentajeRendimientoAsignacion", porcentajeRendimientoAsignacion);
             parameters.Add("@TotalKGPergaminoAsignacion", totalKGPergaminoAsignacion);
-
+            
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -290,16 +291,16 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        public double CalcularPrecioDiaContrato(int empresaId)
+        public decimal CalcularPrecioDiaContrato(int empresaId)
         {
-            double precioPromedio = 0;
+            decimal precioPromedio = 0;
 
             var parameters = new DynamicParameters();
             parameters.Add("@EmpresaId", empresaId);            
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                precioPromedio = db.ExecuteScalar<double>("uspPrecioPromedioDiaContratoCalcular", parameters, commandType: CommandType.StoredProcedure);
+                precioPromedio = db.ExecuteScalar<decimal>("uspPrecioPromedioDiaContratoCalcular", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return precioPromedio;
