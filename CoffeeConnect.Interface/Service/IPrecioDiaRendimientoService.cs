@@ -9,5 +9,9 @@ namespace CoffeeConnect.Interface.Service
     {
         List<ConsultaPrecioDiaRendimientoBE> ConsultaPrecioDiaRendimiento(ConsultarPrecioDiaRendimientoRequestDTO request);
         int RegistrarPrecioDiaRendimiento(RegistrarActualizarPrecioDiaRendimientoRequestDTO request);
+
+        int AnularPrecioDiaRendimiento(AnularPrecioDiaRendimientoRequestDTO request);
+
+        CalculoPrecioDiaRendimientoDTO CalcularPrecioDiaRendimiento(CalcularPrecioDiaRendimientoRequestDTO request);
     }
 }

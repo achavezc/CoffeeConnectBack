@@ -81,5 +81,29 @@ namespace CoffeeConnect.Service
             return consultaAdelantoPorIdBE;
         }
 
+        public int AnularAdelanto(AnularAdelantoRequestDTO request)
+        {
+            int result = 0;
+            if (request.AdelantoId > 0)
+            {
+
+                result = _IAdelantoRepository.Anular(request.AdelantoId, DateTime.Now, request.Usuario, AdelantoEstados.Anulado);
+            }
+            return result;
+        }
+
+
+        public int AsociarAdelanto(AsociarAdelantoRequestDTO request)
+        {
+            int result = 0;
+            if (request.AdelantoId > 0)
+            {
+                request.NotasCompraId.ForEach(z =>
+                {   
+                    result = _IAdelantoRepository.AsociarNotaCompra(request.AdelantoId, z.Id, DateTime.Now, request.Usuario);
+                });
+            }
+            return result;
+        }
     }
 }
