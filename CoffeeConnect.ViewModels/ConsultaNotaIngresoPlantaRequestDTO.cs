@@ -14,7 +14,6 @@ namespace CoffeeConnect.DTO
         public String NumeroGuiaRemision { get; set; }
 
 
-        public String NumeroOrganizacion { get; set; }
 
         public String RazonSocialOrganizacion { get; set; }
 
