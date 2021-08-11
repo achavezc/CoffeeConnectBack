@@ -10,5 +10,8 @@ namespace CoffeeConnect.Interface.Repository
     {
         IEnumerable<ConsultaAdelantoBE> ConsultarAdelanto(ConsultaAdelantoRequestDTO request);
         IEnumerable<ResultadoPDFAdelanto> GenerarPDF(int idAdelanto);
+        int Insertar(Adelanto adelanto);
+        int Actualizar(Adelanto adelanto);
+        ConsultaAdelantoPorIdBE ConsultarAdelantoPorId(int adelantoId);
     }
 }
