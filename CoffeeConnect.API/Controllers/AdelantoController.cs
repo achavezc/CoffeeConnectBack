@@ -67,20 +67,20 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-        /*
+
         [Route("Registrar")]
         [HttpPost]
         //public IActionResult Registrar([FromBody] RegistrarActualizarAduanaRequestDTO request)
-        public IActionResult Registrar(RegistrarActualizarAduanaRequestDTO request)
+        public IActionResult Registrar(RegistrarActualizarAdelantoRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            RegistrarActualizarAduanaResponseDTO response = new RegistrarActualizarAduanaResponseDTO();
+            RegistrarActualizarAdelantoResponseDTO response = new RegistrarActualizarAdelantoResponseDTO();
             try
             {
                 //var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarAduanaRequestDTO>(request);
-                response.Result.Data = _AduanaService.RegistrarAduana(request);
+                response.Result.Data = _AdelantoService.RegistrarAdelanto(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
@@ -100,16 +100,16 @@ namespace Integracion.Deuda.Controller
 
         [Route("Actualizar")]
         [HttpPost]
-        public IActionResult Actualizar(RegistrarActualizarAduanaRequestDTO request)
+        public IActionResult Actualizar(RegistrarActualizarAdelantoRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
-            RegistrarActualizarAduanaResponseDTO response = new RegistrarActualizarAduanaResponseDTO();
+            RegistrarActualizarAdelantoResponseDTO response = new RegistrarActualizarAdelantoResponseDTO();
             try
             {
                 //var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarAduanaRequestDTO>(request);
-                response.Result.Data = _AduanaService.ActualizarAduana(request);
+                response.Result.Data = _AdelantoService.ActualizarAdelanto(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
@@ -129,15 +129,15 @@ namespace Integracion.Deuda.Controller
 
         [Route("ConsultarPorId")]
         [HttpPost]
-        public IActionResult ConsultarPorId([FromBody] ConsultaAduanaPorIdRequestDTO request)
+        public IActionResult ConsultarPorId([FromBody] ConsultaAdelantoPorIdRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
-            ConsultaAduanaPorIdResponseDTO response = new ConsultaAduanaPorIdResponseDTO();
+            ConsultaAdelantoPorIdResponseDTO response = new ConsultaAdelantoPorIdResponseDTO();
             try
             {
-                response.Result.Data = _AduanaService.ConsultarAduanaPorId(request);
+                response.Result.Data = _AdelantoService.ConsultarAdelantoPorId(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
@@ -154,6 +154,7 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
+        /*
         [Route("DescargarArchivo")]
         //[HttpPost]
         [HttpGet()]
@@ -229,6 +230,7 @@ namespace Integracion.Deuda.Controller
         }
         */
 
+
         [Route("Anular")]
         [HttpPost]
         public IActionResult Anular([FromBody] AnularAdelantoRequestDTO request)
@@ -255,9 +257,9 @@ namespace Integracion.Deuda.Controller
             }
 
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
-
             return Ok(response);
         }
+
 
         [Route("Asociar")]
         [HttpPost]

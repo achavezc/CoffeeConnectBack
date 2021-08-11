@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 
 namespace CoffeeConnect.Repository
@@ -50,6 +51,89 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaAdelantoBE>("uspAdelantoConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+
+        public int Insertar(Adelanto adelanto)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@SocioId", adelanto.SocioId);
+            parameters.Add("@EmpresaId", adelanto.EmpresaId);
+            parameters.Add("@Numero", adelanto.Numero);
+            parameters.Add("@TipoDocumentoId", adelanto.TipoDocumentoId);
+            parameters.Add("@NumeroDocumento", adelanto.NumeroDocumento);
+            parameters.Add("@NombreRazonSocial", adelanto.NombreRazonSocial);
+            parameters.Add("@MonedaId", adelanto.MonedaId);
+            parameters.Add("@Monto", adelanto.Monto);
+            parameters.Add("@FechaPago", adelanto.FechaPago);
+            parameters.Add("@Motivo", adelanto.Motivo);
+            parameters.Add("@FechaEntregaProducto", adelanto.FechaEntregaProducto);
+            parameters.Add("@NotaCompraId", adelanto.NotaCompraId);
+            parameters.Add("@EstadoId", adelanto.EstadoId);
+            parameters.Add("@FechaRegistro", adelanto.FechaRegistro);
+            parameters.Add("@UsuarioRegistro", adelanto.UsuarioRegistro);
+            parameters.Add("@AdelantoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspAdelantoInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            int id = parameters.Get<int>("AduanaId");
+
+            return id;
+        }
+        public int Actualizar(Adelanto adelanto)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@AdelantoId", adelanto.AdelantoId);
+            parameters.Add("@SocioId", adelanto.SocioId);
+            parameters.Add("@EmpresaId", adelanto.EmpresaId);
+            //parameters.Add("@Numero", adelanto.Numero);
+            parameters.Add("@TipoDocumentoId", adelanto.TipoDocumentoId);
+            parameters.Add("@NumeroDocumento", adelanto.NumeroDocumento);
+            parameters.Add("@NombreRazonSocial", adelanto.NombreRazonSocial);
+            parameters.Add("@MonedaId", adelanto.MonedaId);
+            parameters.Add("@Monto", adelanto.Monto);
+            parameters.Add("@FechaPago", adelanto.FechaPago);
+            parameters.Add("@Motivo", adelanto.Motivo);
+            parameters.Add("@FechaEntregaProducto", adelanto.FechaEntregaProducto);
+          //  parameters.Add("@NotaCompraId", adelanto.NotaCompraId);
+            parameters.Add("@FechaUltimaActualizacion", adelanto.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", adelanto.UsuarioUltimaActualizacion);
+            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspAdelantoActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
+        public ConsultaAdelantoPorIdBE ConsultarAdelantoPorId(int adelantoId)
+        {
+            ConsultaAdelantoPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@AdelantoId", adelantoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+
+                var list = db.Query<ConsultaAdelantoPorIdBE>("uspAdelantoConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+            return itemBE;
+        }
+
 
         public int Anular(int adelantoId, DateTime fecha, string usuario, string estadoId)
         {

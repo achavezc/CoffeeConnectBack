@@ -11,9 +11,15 @@ namespace CoffeeConnect.Interface.Service
         List<ConsultaAdelantoBE> ConsultarAdelanto(ConsultaAdelantoRequestDTO request);
         GenerarPDFAdelantoResponseDTO GenerarPDF(int id);
 
+        int RegistrarAdelanto(RegistrarActualizarAdelantoRequestDTO request);
+        int ActualizarAdelanto(RegistrarActualizarAdelantoRequestDTO request);
+        ConsultaAdelantoPorIdBE ConsultarAdelantoPorId(ConsultaAdelantoPorIdRequestDTO request);
+
+
         int AnularAdelanto(AnularAdelantoRequestDTO request);
 
         int AsociarAdelanto(AsociarAdelantoRequestDTO request);
+
 
     }
 }

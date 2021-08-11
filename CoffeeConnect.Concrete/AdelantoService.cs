@@ -48,6 +48,39 @@ namespace CoffeeConnect.Service
             return response;
         }
 
+        public int RegistrarAdelanto(RegistrarActualizarAdelantoRequestDTO request)
+        {
+            Adelanto adelanto = _Mapper.Map<Adelanto>(request);
+            adelanto.FechaRegistro = DateTime.Now;
+            //Aduana.NombreArchivo = file.FileName;
+            adelanto.UsuarioRegistro = request.UsuarioRegistro;
+            adelanto.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.Adelanto);
+
+            int id = _IAdelantoRepository.Insertar(adelanto);
+
+            return id;
+        }
+        public int ActualizarAdelanto(RegistrarActualizarAdelantoRequestDTO request)
+        {
+            Adelanto adelanto = _Mapper.Map<Adelanto>(request);
+
+
+            adelanto.FechaUltimaActualizacion = DateTime.Now;
+            adelanto.UsuarioUltimaActualizacion = request.UsuarioUltimaActualizacion;
+     
+            int affected = _IAdelantoRepository.Actualizar(adelanto);
+
+            return affected;
+        }
+
+        public ConsultaAdelantoPorIdBE ConsultarAdelantoPorId(ConsultaAdelantoPorIdRequestDTO request)
+        {
+            ConsultaAdelantoPorIdBE consultaAdelantoPorIdBE = _IAdelantoRepository.ConsultarAdelantoPorId(request.AdelantoId);
+
+
+            return consultaAdelantoPorIdBE;
+        }
+
         public int AnularAdelanto(AnularAdelantoRequestDTO request)
         {
             int result = 0;
