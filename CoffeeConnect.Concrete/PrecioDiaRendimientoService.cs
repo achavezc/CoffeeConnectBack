@@ -144,5 +144,85 @@ namespace CoffeeConnect.Service
             return calculoPrecioDiaRendimientoDTO;
         }
 
+
+        public List<PorcentajeRendimientoBE> ConsultarPorcentajeRendimiento(CalcularPrecioDiaRendimientoRequestDTO request)
+        {    
+            List<PorcentajeRendimientoBE> rendimientos = new List<PorcentajeRendimientoBE>();
+
+            int valorConstante = 46;
+
+            PorcentajeRendimientoBE rendimiento1 = new PorcentajeRendimientoBE();
+            rendimiento1.RendimientoInicio = 64;
+            rendimiento1.RendimientoFin = 65.99;
+            rendimiento1.KGPergamino = valorConstante / (rendimiento1.RendimientoInicio / 100);
+            
+
+            PorcentajeRendimientoBE rendimiento2 = new PorcentajeRendimientoBE();
+            rendimiento2.RendimientoInicio = 66;
+            rendimiento2.RendimientoFin = 67.99;
+            rendimiento2.KGPergamino = valorConstante / (rendimiento2.RendimientoInicio / 100);
+           
+
+            PorcentajeRendimientoBE rendimiento3 = new PorcentajeRendimientoBE();
+            rendimiento3.RendimientoInicio = 68;
+            rendimiento3.RendimientoFin = 69.99;
+            rendimiento3.KGPergamino = valorConstante / (rendimiento3.RendimientoInicio / 100);
+
+            PorcentajeRendimientoBE rendimiento4 = new PorcentajeRendimientoBE();
+            rendimiento4.RendimientoInicio = 70;
+            rendimiento4.RendimientoFin = 71.99;
+            rendimiento4.KGPergamino = valorConstante / (rendimiento4.RendimientoInicio / 100);
+           
+
+            PorcentajeRendimientoBE rendimiento5 = new PorcentajeRendimientoBE();
+            rendimiento5.RendimientoInicio = 72;
+            rendimiento5.RendimientoFin = 73.99;
+            rendimiento5.KGPergamino = valorConstante / (rendimiento5.RendimientoInicio / 100);
+            
+
+            PorcentajeRendimientoBE rendimiento6 = new PorcentajeRendimientoBE();
+            rendimiento6.RendimientoInicio = 74;
+            rendimiento6.RendimientoFin = 75.99;
+            rendimiento6.KGPergamino = valorConstante / (rendimiento6.RendimientoInicio / 100);
+            
+
+
+
+            PorcentajeRendimientoBE rendimiento7 = new PorcentajeRendimientoBE();
+            rendimiento7.RendimientoInicio = 76;
+            rendimiento7.RendimientoFin = 77.99;
+            rendimiento7.KGPergamino = valorConstante / (rendimiento7.RendimientoInicio / 100);
+            
+
+            PorcentajeRendimientoBE rendimiento8 = new PorcentajeRendimientoBE();
+            rendimiento8.RendimientoInicio = 78;
+            rendimiento8.RendimientoFin = 79.99;
+            rendimiento8.KGPergamino = valorConstante / (rendimiento8.RendimientoInicio / 100);
+           
+            PorcentajeRendimientoBE rendimiento9 = new PorcentajeRendimientoBE();
+
+            rendimiento9.RendimientoInicio = 80;
+            rendimiento9.RendimientoFin = 80;
+            rendimiento9.KGPergamino = valorConstante / (rendimiento9.RendimientoInicio / 100);
+           
+
+
+
+            rendimientos.Add(rendimiento1);
+            rendimientos.Add(rendimiento2);
+            rendimientos.Add(rendimiento3);
+            rendimientos.Add(rendimiento4);
+            rendimientos.Add(rendimiento5);
+            rendimientos.Add(rendimiento6);
+            rendimientos.Add(rendimiento7);
+            rendimientos.Add(rendimiento8);
+            rendimientos.Add(rendimiento9);
+
+        
+
+
+            return rendimientos;
+        }
+
     }
 }

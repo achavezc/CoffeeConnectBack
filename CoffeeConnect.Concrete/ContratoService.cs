@@ -269,6 +269,17 @@ namespace CoffeeConnect.Service
             return result;
         }
 
+        public int AsignarAcopio(AsignarAcopioContratoRequestDTO request)
+        {
+            int result = 0;
+            if (request.ContratoId > 0)
+            {
+                result = _IContratoRepository.AsignarAcopio(request.ContratoId, DateTime.Now, request.Usuario, request.KGPergaminoAsignacion, request.PorcentajeRendimientoAsignacion, request.TotalKGPergaminoAsignacion);
+            }
+            return result;
+        }
+
+
         public ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(ConsultaTrackingContratoPorContratoIdRequestDTO request)
         {
             return _IContratoRepository.ConsultarTrackingContratoPorContratoId(request.ContratoId,request.Idioma);

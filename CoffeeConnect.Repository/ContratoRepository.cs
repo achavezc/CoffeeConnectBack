@@ -208,6 +208,30 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+        public int AsignarAcopio(int contratoId, DateTime fecha, string usuario, decimal kgPergaminoAsignacion, decimal porcentajeRendimientoAsignacion, decimal totalKGPergaminoAsignacion)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", contratoId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@KGPergaminoAsignacion", kgPergaminoAsignacion);
+            parameters.Add("@PorcentajeRendimientoAsignacion", porcentajeRendimientoAsignacion);
+            parameters.Add("@TotalKGPergaminoAsignacion", totalKGPergaminoAsignacion);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspContratoAsignarAcopio", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
+
         public ConsultaContratoPorIdBE ConsultarContratoPorId(int contratoId)
         {
             ConsultaContratoPorIdBE itemBE = null;

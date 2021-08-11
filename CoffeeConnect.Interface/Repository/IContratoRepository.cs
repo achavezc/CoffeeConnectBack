@@ -24,5 +24,8 @@ namespace CoffeeConnect.Interface.Repository
 
         double CalcularPrecioDiaContrato(int empresaId);
 
+        int AsignarAcopio(int contratoId, DateTime fecha, string usuario, decimal kgPergaminoAsignacion, decimal porcentajeRendimientoAsignacion, decimal totalKGPergaminoAsignacion);
+
+
     }
 }
