@@ -22,5 +22,7 @@ namespace CoffeeConnect.Interface.Repository
 
         IEnumerable<ConsultarTrackingContratoPorContratoIdBE> ConsultarTrackingContrato(ConsultaTrackingContratoRequestDTO request);
 
+        double CalcularPrecioDiaContrato(int empresaId);
+
     }
 }

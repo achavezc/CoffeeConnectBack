@@ -8,10 +8,10 @@ namespace CoffeeConnect.DTO
 	{
 		#region Properties
 
-		public decimal PrecioPromedioContrato
+		public double PrecioPromedioContrato
 		{ get; set; }
 
-		public decimal TipoCambio
+		public double TipoCambio
 		{ get; set; }		
 
 		public List<CalculoPrecioDiaRendimientoBE> CalculoPrecioDiaRendimiento

@@ -266,5 +266,21 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public double CalcularPrecioDiaContrato(int empresaId)
+        {
+            double precioPromedio = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", empresaId);            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                precioPromedio = db.ExecuteScalar<double>("uspPrecioPromedioDiaContratoCalcular", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return precioPromedio;
+        }
+
+
     }
 }
