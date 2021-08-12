@@ -13,5 +13,7 @@ namespace CoffeeConnect.Interface.Service
         int AnularPrecioDiaRendimiento(AnularPrecioDiaRendimientoRequestDTO request);
 
         CalculoPrecioDiaRendimientoDTO CalcularPrecioDiaRendimiento(CalcularPrecioDiaRendimientoRequestDTO request);
+
+        List<PorcentajeRendimientoBE> ConsultarPorcentajeRendimiento(CalcularPrecioDiaRendimientoRequestDTO request);
     }
 }

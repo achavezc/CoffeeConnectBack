@@ -269,6 +269,25 @@ namespace CoffeeConnect.Service
             return result;
         }
 
+        public int AsignarAcopio(AsignarAcopioContratoRequestDTO request)
+        {
+            int cantidadContratosAsignados = _IContratoRepository.ValidadContratoAsignado(request.EmpresaId, ContratoEstados.Asignado);
+
+            if(cantidadContratosAsignados>0)
+            {
+               throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Contrato.ValidacionContratoAsignado.Label" });
+
+            }
+
+            int result = 0;
+            if (request.ContratoId > 0)
+            {
+                result = _IContratoRepository.AsignarAcopio(request.ContratoId, DateTime.Now, request.Usuario, ContratoEstados.Asignado, request.KGPergaminoAsignacion, request.PorcentajeRendimientoAsignacion, request.TotalKGPergaminoAsignacion);
+            }
+            return result;
+        }
+
+
         public ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(ConsultaTrackingContratoPorContratoIdRequestDTO request)
         {
             return _IContratoRepository.ConsultarTrackingContratoPorContratoId(request.ContratoId,request.Idioma);
@@ -285,6 +304,13 @@ namespace CoffeeConnect.Service
 
             return list.ToList();
         }
+
+
+        public ConsultaContratoAsignado ConsultarContratoAsignado(ConsultaContratoAsignadoRequestDTO request)
+        {
+            return _IContratoRepository.ConsultarContratoAsignado(request.EmpresaId,ContratoEstados.Asignado);
+        }
+
 
 
     }

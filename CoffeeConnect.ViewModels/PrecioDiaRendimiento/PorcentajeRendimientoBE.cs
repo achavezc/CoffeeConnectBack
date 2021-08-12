@@ -4,9 +4,9 @@ using System.Text;
 
 namespace CoffeeConnect.DTO
 {
-    public class CalculoPrecioDiaRendimientoBE
+    public class PorcentajeRendimientoBE
     {
-        public CalculoPrecioDiaRendimientoBE()
+        public PorcentajeRendimientoBE()
         {
 
         }
@@ -14,7 +14,7 @@ namespace CoffeeConnect.DTO
         public decimal RendimientoInicio { get; set; }
         public decimal RendimientoFin { get; set; }
         public decimal KGPergamino { get; set; }
-        public decimal PrecioDia { get; set; }
+
      
         
     }

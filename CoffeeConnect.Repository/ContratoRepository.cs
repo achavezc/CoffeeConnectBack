@@ -208,6 +208,31 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+        public int AsignarAcopio(int contratoId, DateTime fecha, string usuario, string estadoId, decimal kgPergaminoAsignacion, decimal porcentajeRendimientoAsignacion, decimal totalKGPergaminoAsignacion)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", contratoId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+            parameters.Add("@KGPergaminoAsignacion", kgPergaminoAsignacion);
+            parameters.Add("@PorcentajeRendimientoAsignacion", porcentajeRendimientoAsignacion);
+            parameters.Add("@TotalKGPergaminoAsignacion", totalKGPergaminoAsignacion);
+            
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspContratoAsignarAcopio", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
+
         public ConsultaContratoPorIdBE ConsultarContratoPorId(int contratoId)
         {
             ConsultaContratoPorIdBE itemBE = null;
@@ -224,6 +249,26 @@ namespace CoffeeConnect.Repository
             }
             return itemBE;
         }
+
+        public ConsultaContratoAsignado ConsultarContratoAsignado(int empresaId, string estadoId)
+        {
+            ConsultaContratoAsignado itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", empresaId);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaContratoAsignado>("uspContratoAsignadoConsultar", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+            return itemBE;
+        }
+
+
 
         public ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(int contratoId, string idioma)
         {
@@ -264,6 +309,37 @@ namespace CoffeeConnect.Repository
             {
                 return db.Query<ConsultarTrackingContratoPorContratoIdBE>("uspTrackingContratoConsultar", parameters, commandType: CommandType.StoredProcedure);
             }
+        }
+
+        public decimal CalcularPrecioDiaContrato(int empresaId)
+        {
+            decimal precioPromedio = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", empresaId);            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                precioPromedio = db.ExecuteScalar<decimal>("uspPrecioPromedioDiaContratoCalcular", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return precioPromedio;
+        }
+
+        public int ValidadContratoAsignado(int empresaId,string estadoId)
+        {
+            int cantidadContratos = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", empresaId);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                cantidadContratos = db.ExecuteScalar<int>("uspContratoValidarAsignado", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return cantidadContratos;
         }
 
     }
