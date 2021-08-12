@@ -3,6 +3,7 @@ using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adelanto;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
+using CoffeeConnect.Models;
 using Core.Common.Domain.Model;
 using Microsoft.Extensions.Options;
 using System;

@@ -1,5 +1,6 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adelanto;
+using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

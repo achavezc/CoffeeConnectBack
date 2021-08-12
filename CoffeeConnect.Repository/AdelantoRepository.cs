@@ -1,6 +1,7 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adelanto;
 using CoffeeConnect.Interface.Repository;
+using CoffeeConnect.Models;
 using Dapper;
 using Microsoft.Extensions.Options;
 using System;
@@ -81,7 +82,7 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspAdelantoInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-            int id = parameters.Get<int>("AduanaId");
+            int id = parameters.Get<int>("AdelantoId");
 
             return id;
         }

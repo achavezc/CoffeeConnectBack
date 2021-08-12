@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoffeeConnect.DTO.Adelanto
+namespace CoffeeConnect.DTO
 {
     public class RegistrarActualizarAdelantoRequestDTO
     {
