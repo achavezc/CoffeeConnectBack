@@ -271,6 +271,14 @@ namespace CoffeeConnect.Service
 
         public int AsignarAcopio(AsignarAcopioContratoRequestDTO request)
         {
+            int cantidadContratosAsignados = _IContratoRepository.ValidadContratoAsignado(request.EmpresaId, ContratoEstados.Asignado);
+
+            if(cantidadContratosAsignados>0)
+            {
+               throw new ResultException(new Result { ErrCode = "01", Message = "Comercial.Contrato.ValidacionContratoAsignado.Label" });
+
+            }
+
             int result = 0;
             if (request.ContratoId > 0)
             {
@@ -296,6 +304,13 @@ namespace CoffeeConnect.Service
 
             return list.ToList();
         }
+
+
+        public ConsultaContratoAsignado ConsultarContratoAsignado(ConsultaContratoAsignadoRequestDTO request)
+        {
+            return _IContratoRepository.ConsultarContratoAsignado(request.EmpresaId,ContratoEstados.Asignado);
+        }
+
 
 
     }

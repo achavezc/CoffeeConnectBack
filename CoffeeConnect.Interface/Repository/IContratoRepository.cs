@@ -26,5 +26,9 @@ namespace CoffeeConnect.Interface.Repository
 
         int AsignarAcopio(int contratoId, DateTime fecha, string usuario, string estadoId, decimal kgPergaminoAsignacion, decimal porcentajeRendimientoAsignacion, decimal totalKGPergaminoAsignacion);
 
+        int ValidadContratoAsignado(int empresaId, string estadoId);
+
+        ConsultaContratoAsignado ConsultarContratoAsignado(int empresaId, string estadoId);
+
     }
 }

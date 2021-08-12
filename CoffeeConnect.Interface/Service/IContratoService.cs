@@ -21,5 +21,7 @@ namespace CoffeeConnect.Interface.Service
 
         int AsignarAcopio(AsignarAcopioContratoRequestDTO request);
 
+        ConsultaContratoAsignado ConsultarContratoAsignado(ConsultaContratoAsignadoRequestDTO request);
+
     }
 }

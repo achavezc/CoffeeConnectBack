@@ -8,6 +8,7 @@ namespace CoffeeConnect.DTO
 {
    public class AsignarAcopioContratoRequestDTO
     {
+        public int EmpresaId { get; set; }
 
         public int ContratoId { get; set; }
         public String Usuario { get; set; }
