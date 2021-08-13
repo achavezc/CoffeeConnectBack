@@ -12,6 +12,8 @@ namespace CoffeeConnect.DTO
 
         }
 
+        public int PrecioDiaRendimientoId { get; set; }
+
         public int EmpresaId { get; set; }
         public string MonedaId { get; set; }
         public decimal TipoCambio { get; set; }

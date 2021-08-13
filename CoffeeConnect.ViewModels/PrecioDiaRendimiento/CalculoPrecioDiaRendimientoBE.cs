@@ -15,7 +15,9 @@ namespace CoffeeConnect.DTO
         public decimal RendimientoFin { get; set; }
         public decimal KGPergamino { get; set; }
         public decimal PrecioDia { get; set; }
-     
-        
+
+        public string MonedaId { get; set; }
+
+
     }
 }

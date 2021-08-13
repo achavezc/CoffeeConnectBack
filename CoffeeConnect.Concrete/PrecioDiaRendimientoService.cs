@@ -32,12 +32,28 @@ namespace CoffeeConnect.Service
             int id = 0;
             request.FechaRegistro = DateTime.Now;
             id = _IPrecioDiaRendimientoRepository.RegistrarPrecioDiaRendimiento(request);
+
+            request.PrecioDiaRendimientoId = id;
+            _IPrecioDiaRendimientoRepository.RegistrarPrecioDiaRendimientoDetalle(request);
+
             return id;
         }
 
-        public List<ConsultaPrecioDiaRendimientoBE> ConsultaPrecioDiaRendimiento(ConsultarPrecioDiaRendimientoRequestDTO request)
+        public int ActualizarPrecioDiaRendimiento(RegistrarActualizarPrecioDiaRendimientoRequestDTO request)
         {
-            var list = _IPrecioDiaRendimientoRepository.ConsultaPrecioDiaRendimiento(request);
+            int id = 0;
+            request.FechaRegistro = DateTime.Now;
+            _IPrecioDiaRendimientoRepository.ActualizarPrecioDiaRendimiento(request);
+
+
+            id = _IPrecioDiaRendimientoRepository.RegistrarPrecioDiaRendimientoDetalle(request);
+
+            return id;
+        }
+
+        public List<ConsultaPrecioDiaRendimientoBE> ConsultarPrecioDiaRendimiento(ConsultarPrecioDiaRendimientoRequestDTO request)
+        {
+            var list = _IPrecioDiaRendimientoRepository.ConsultarPrecioDiaRendimiento(request);
             return list.ToList();
         }
 
@@ -58,74 +74,96 @@ namespace CoffeeConnect.Service
                         
             decimal precioPromedio = _IContratoRepository.CalcularPrecioDiaContrato(request.EmpresaId);
 
-            calculoPrecioDiaRendimientoDTO.PrecioPromedioContrato = precioPromedio;
+            calculoPrecioDiaRendimientoDTO.PrecioPromedioContrato = Math.Round(precioPromedio,2);
 
-            calculoPrecioDiaRendimientoDTO.TipoCambio = 4.1M;
+            decimal tipoCambio = 4.1M;
+
+
+            calculoPrecioDiaRendimientoDTO.TipoCambio = tipoCambio;
 
             List<CalculoPrecioDiaRendimientoBE> precios = new List<CalculoPrecioDiaRendimientoBE>();
 
             int valorConstante = 46;
 
+            string monedaId = "01"; 
+            
+
+            if (monedaId!="01")
+            {
+                tipoCambio = 1;
+
+            }
             CalculoPrecioDiaRendimientoBE precio1 = new CalculoPrecioDiaRendimientoBE();                 
-            precio1.RendimientoInicio = 64;
+            precio1.RendimientoInicio = 64.00M;
             precio1.RendimientoFin = 65.99M;
-            precio1.KGPergamino = valorConstante/(precio1.RendimientoInicio/100);
-            precio1.PrecioDia = precioPromedio / precio1.KGPergamino;
+            precio1.KGPergamino = Math.Round(valorConstante /(precio1.RendimientoInicio/100), 2);
+            precio1.PrecioDia = Math.Round((precioPromedio / precio1.KGPergamino)*tipoCambio, 2);
+            precio1.MonedaId = monedaId;
 
             CalculoPrecioDiaRendimientoBE precio2 = new CalculoPrecioDiaRendimientoBE();
-            precio2.RendimientoInicio = 66;
-            precio2.RendimientoFin = 67.99M;
-            precio2.KGPergamino = valorConstante / (precio2.RendimientoInicio / 100);
-            precio2.PrecioDia = precioPromedio / precio2.KGPergamino;
+            precio2.RendimientoInicio = 66.00M;
+            precio2.RendimientoFin = 67.99M;     
+            precio2.KGPergamino = Math.Round(valorConstante / (precio2.RendimientoInicio / 100),2);
+            precio2.PrecioDia = Math.Round((precioPromedio / precio2.KGPergamino)* tipoCambio, 2);
+            precio2.MonedaId = monedaId;
+
+
 
             CalculoPrecioDiaRendimientoBE precio3 = new CalculoPrecioDiaRendimientoBE();           
-            precio3.RendimientoInicio = 68;
+            precio3.RendimientoInicio = 68.00M;
             precio3.RendimientoFin = 69.99M;
-            precio3.KGPergamino = valorConstante / (precio3.RendimientoInicio / 100);
-            precio3.PrecioDia = precioPromedio / precio3.KGPergamino;
-
+            precio3.KGPergamino = Math.Round(valorConstante / (precio3.RendimientoInicio / 100), 2);
+            precio3.PrecioDia = Math.Round((precioPromedio / precio3.KGPergamino) * tipoCambio, 2);
+            precio3.MonedaId = monedaId;
 
 
             CalculoPrecioDiaRendimientoBE precio4 = new CalculoPrecioDiaRendimientoBE();         
-            precio4.RendimientoInicio = 70;
+            precio4.RendimientoInicio = 70.00M;
             precio4.RendimientoFin = 71.99M;
-            precio4.KGPergamino = valorConstante / (precio4.RendimientoInicio / 100);
-            precio4.PrecioDia = precioPromedio / precio4.KGPergamino;
-
+            precio4.KGPergamino = Math.Round(valorConstante / (precio4.RendimientoInicio / 100), 2);
+            precio4.PrecioDia = Math.Round((precioPromedio / precio4.KGPergamino) * tipoCambio, 2);
+            precio4.MonedaId = monedaId;
 
             CalculoPrecioDiaRendimientoBE precio5 = new CalculoPrecioDiaRendimientoBE();
-            precio5.RendimientoInicio = 72;
+            precio5.RendimientoInicio = 72.00M;
             precio5.RendimientoFin = 73.99M;
-            precio5.KGPergamino = valorConstante / (precio5.RendimientoInicio / 100);
-            precio5.PrecioDia = precioPromedio / precio5.KGPergamino;
+            precio5.KGPergamino = Math.Round(valorConstante / (precio5.RendimientoInicio / 100), 2);
+            precio5.PrecioDia = Math.Round((precioPromedio / precio5.KGPergamino) * tipoCambio, 2);
+            precio5.MonedaId = monedaId;
+
+
 
             CalculoPrecioDiaRendimientoBE precio6 = new CalculoPrecioDiaRendimientoBE();        
-            precio6.RendimientoInicio = 74;
+            precio6.RendimientoInicio = 74.00M;
             precio6.RendimientoFin = 75.99M;
-            precio6.KGPergamino = valorConstante / (precio6.RendimientoInicio / 100);
-            precio6.PrecioDia = precioPromedio / precio6.KGPergamino;
-
+            precio6.KGPergamino = Math.Round(valorConstante / (precio6.RendimientoInicio / 100), 2);
+            precio6.PrecioDia = Math.Round((precioPromedio / precio6.KGPergamino) * tipoCambio, 2);
+            precio6.MonedaId = monedaId;
 
 
             CalculoPrecioDiaRendimientoBE precio7 = new CalculoPrecioDiaRendimientoBE();         
-            precio7.RendimientoInicio = 76;
+            precio7.RendimientoInicio = 76.00M;
             precio7.RendimientoFin = 77.99M;
-            precio7.KGPergamino = valorConstante / (precio7.RendimientoInicio / 100);
-            precio7.PrecioDia = precioPromedio / precio7.KGPergamino;
+            precio7.KGPergamino = Math.Round(valorConstante / (precio7.RendimientoInicio / 100), 2);
+            precio7.PrecioDia = Math.Round((precioPromedio / precio7.KGPergamino) * tipoCambio, 2);
+            precio7.MonedaId = monedaId;
+
 
             CalculoPrecioDiaRendimientoBE precio8 = new CalculoPrecioDiaRendimientoBE();     
-            precio8.RendimientoInicio = 78;
+            precio8.RendimientoInicio = 78.00M;
             precio8.RendimientoFin = 79.99M;
-            precio8.KGPergamino = valorConstante / (precio8.RendimientoInicio / 100);
-            precio8.PrecioDia = precioPromedio / precio8.KGPergamino;
+            precio8.KGPergamino = Math.Round(valorConstante / (precio8.RendimientoInicio / 100), 2);
+            precio8.PrecioDia = Math.Round((precioPromedio / precio8.KGPergamino) * tipoCambio, 2);
+            precio8.MonedaId = monedaId;
+
 
             CalculoPrecioDiaRendimientoBE precio9 = new CalculoPrecioDiaRendimientoBE();
       
-            precio9.RendimientoInicio = 80;
-            precio9.RendimientoFin = 80;
-            precio9.KGPergamino = valorConstante / (precio9.RendimientoInicio / 100);
-            precio9.PrecioDia = precioPromedio / precio9.KGPergamino;
-
+            precio9.RendimientoInicio = 80.00M;
+            precio9.RendimientoFin = 80.00M;
+            precio9.KGPergamino = Math.Round(valorConstante / (precio9.RendimientoInicio / 100), 2);
+            precio9.PrecioDia = Math.Round((precioPromedio / precio9.KGPergamino) * tipoCambio, 2);
+            precio9.MonedaId = monedaId;
 
 
             precios.Add(precio1);
@@ -144,7 +182,6 @@ namespace CoffeeConnect.Service
             return calculoPrecioDiaRendimientoDTO;
         }
 
-
         public List<PorcentajeRendimientoBE> ConsultarPorcentajeRendimiento(CalcularPrecioDiaRendimientoRequestDTO request)
         {    
             List<PorcentajeRendimientoBE> rendimientos = new List<PorcentajeRendimientoBE>();
@@ -152,59 +189,57 @@ namespace CoffeeConnect.Service
             int valorConstante = 46;
 
             PorcentajeRendimientoBE rendimiento1 = new PorcentajeRendimientoBE();
-            rendimiento1.RendimientoInicio = 64;
+            rendimiento1.RendimientoInicio = 64.00M;
             rendimiento1.RendimientoFin = 65.99M;
-            rendimiento1.KGPergamino = valorConstante / (rendimiento1.RendimientoInicio / 100);
-            
+            rendimiento1.KGPergamino = Math.Round(valorConstante / (rendimiento1.RendimientoInicio / 100), 2);
+
 
             PorcentajeRendimientoBE rendimiento2 = new PorcentajeRendimientoBE();
-            rendimiento2.RendimientoInicio = 66;
-            rendimiento2.RendimientoFin = 67.99M;
-            rendimiento2.KGPergamino = valorConstante / (rendimiento2.RendimientoInicio / 100);
-           
+            rendimiento2.RendimientoInicio = 66.00M;
+            rendimiento2.RendimientoFin = 67.99M;          
+            rendimiento2.KGPergamino = Math.Round(valorConstante / (rendimiento2.RendimientoInicio / 100), 2);
 
             PorcentajeRendimientoBE rendimiento3 = new PorcentajeRendimientoBE();
-            rendimiento3.RendimientoInicio = 68;
+            rendimiento3.RendimientoInicio = 68.00M;
             rendimiento3.RendimientoFin = 69.99M;
-            rendimiento3.KGPergamino = valorConstante / (rendimiento3.RendimientoInicio / 100);
+            rendimiento3.KGPergamino = Math.Round(valorConstante / (rendimiento3.RendimientoInicio / 100), 2);
 
             PorcentajeRendimientoBE rendimiento4 = new PorcentajeRendimientoBE();
-            rendimiento4.RendimientoInicio = 70;
+            rendimiento4.RendimientoInicio = 70.00M;
             rendimiento4.RendimientoFin = 71.99M;
-            rendimiento4.KGPergamino = valorConstante / (rendimiento4.RendimientoInicio / 100);
-           
+            rendimiento4.KGPergamino = Math.Round(valorConstante / (rendimiento4.RendimientoInicio / 100), 2);
+
 
             PorcentajeRendimientoBE rendimiento5 = new PorcentajeRendimientoBE();
-            rendimiento5.RendimientoInicio = 72;
+            rendimiento5.RendimientoInicio = 72.00M;
             rendimiento5.RendimientoFin = 73.99M;
-            rendimiento5.KGPergamino = valorConstante / (rendimiento5.RendimientoInicio / 100);
-            
+            rendimiento5.KGPergamino = Math.Round(valorConstante / (rendimiento5.RendimientoInicio / 100), 2);
+
 
             PorcentajeRendimientoBE rendimiento6 = new PorcentajeRendimientoBE();
-            rendimiento6.RendimientoInicio = 74;
+            rendimiento6.RendimientoInicio = 74.00M;
             rendimiento6.RendimientoFin = 75.99M;
-            rendimiento6.KGPergamino = valorConstante / (rendimiento6.RendimientoInicio / 100);
-            
+            rendimiento6.KGPergamino = Math.Round(valorConstante / (rendimiento6.RendimientoInicio / 100), 2);
+
 
 
 
             PorcentajeRendimientoBE rendimiento7 = new PorcentajeRendimientoBE();
-            rendimiento7.RendimientoInicio = 76;
+            rendimiento7.RendimientoInicio = 76.00M;
             rendimiento7.RendimientoFin = 77.99M;
-            rendimiento7.KGPergamino = valorConstante / (rendimiento7.RendimientoInicio / 100);
-            
+            rendimiento7.KGPergamino = Math.Round(valorConstante / (rendimiento7.RendimientoInicio / 100), 2);
+
 
             PorcentajeRendimientoBE rendimiento8 = new PorcentajeRendimientoBE();
-            rendimiento8.RendimientoInicio = 78;
+            rendimiento8.RendimientoInicio = 78.00M;
             rendimiento8.RendimientoFin = 79.99M;
-            rendimiento8.KGPergamino = valorConstante / (rendimiento8.RendimientoInicio / 100);
-           
+            rendimiento8.KGPergamino = Math.Round(valorConstante / (rendimiento8.RendimientoInicio / 100), 2);
+
             PorcentajeRendimientoBE rendimiento9 = new PorcentajeRendimientoBE();
 
-            rendimiento9.RendimientoInicio = 80;
-            rendimiento9.RendimientoFin = 80;
-            rendimiento9.KGPergamino = valorConstante / (rendimiento9.RendimientoInicio / 100);
-           
+            rendimiento9.RendimientoInicio = 80.00M;
+            rendimiento9.RendimientoFin = 80.00M;
+            rendimiento9.KGPergamino = Math.Round(valorConstante / (rendimiento9.RendimientoInicio / 100), 2);
 
 
 
@@ -222,6 +257,20 @@ namespace CoffeeConnect.Service
 
 
             return rendimientos;
+        }
+
+
+        public ConsultaPrecioDiaRendimientoBE ConsultarPrecioDiaRendimientoPorId(ConsultaPrecioDiaRendimientoPorIdRequestDTO request)
+        {
+            ConsultaPrecioDiaRendimientoBE consultaPrecioDiaRendimientoBE = new ConsultaPrecioDiaRendimientoBE();
+
+            consultaPrecioDiaRendimientoBE = _IPrecioDiaRendimientoRepository.ConsultarPrecioDiaRendimientoPorId(request.PrecioDiaRendimientoId);
+
+
+            consultaPrecioDiaRendimientoBE.PrecioDiaRendimientoDetalle =_IPrecioDiaRendimientoRepository.ConsultarPrecioDiaRendimientoDetallePorId(request.PrecioDiaRendimientoId).ToList();
+                    
+
+            return consultaPrecioDiaRendimientoBE;
         }
 
     }

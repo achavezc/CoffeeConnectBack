@@ -33,7 +33,7 @@ namespace CoffeeConnect.API.Controllers
 
             try
             {
-                response.Result.Data = _PrecioDiaRendimientoService.ConsultaPrecioDiaRendimiento(request);
+                response.Result.Data = _PrecioDiaRendimientoService.ConsultarPrecioDiaRendimiento(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
@@ -80,6 +80,37 @@ namespace CoffeeConnect.API.Controllers
 
             return Ok(response);
         }
+
+        [Route("ConsultarPrecioDiaRendimientoPorId")]
+        [HttpPost]
+        public IActionResult ConsultarPrecioDiaRendimientoPorId([FromBody] ConsultaPrecioDiaRendimientoPorIdRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaPrecioDiaRendimientoPorIdResponseDTO response = new ConsultaPrecioDiaRendimientoPorIdResponseDTO();
+            try
+            {
+                response.Result.Data = _PrecioDiaRendimientoService.ConsultarPrecioDiaRendimientoPorId(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
 
 
 
