@@ -104,6 +104,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@SocioFincaId", guiaRecepcionMateriaPrima.SocioFincaId);
             parameters.Add("@TerceroFincaId", guiaRecepcionMateriaPrima.TerceroFincaId);
             parameters.Add("@IntermediarioFinca", guiaRecepcionMateriaPrima.IntermediarioFinca);
+            parameters.Add("@KilosNetosPesado", guiaRecepcionMateriaPrima.KilosNetosPesado);
             parameters.Add("@FechaUltimaActualizacion", guiaRecepcionMateriaPrima.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", guiaRecepcionMateriaPrima.UsuarioUltimaActualizacion);
             parameters.Add("@TipoProduccionId", guiaRecepcionMateriaPrima.TipoProduccionId);
@@ -140,6 +141,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UnidadMedidaIdPesado", guiaRecepcionMateriaPrima.UnidadMedidaIdPesado);
             parameters.Add("@CantidadPesado", guiaRecepcionMateriaPrima.CantidadPesado);
             parameters.Add("@KilosBrutosPesado", guiaRecepcionMateriaPrima.KilosBrutosPesado);
+            parameters.Add("@KilosNetosPesado", guiaRecepcionMateriaPrima.KilosNetosPesado);
             parameters.Add("@TaraPesado", guiaRecepcionMateriaPrima.TaraPesado);
             parameters.Add("@ObservacionPesado", guiaRecepcionMateriaPrima.ObservacionPesado);
             parameters.Add("@EstadoId", guiaRecepcionMateriaPrima.EstadoId);

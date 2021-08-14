@@ -103,6 +103,8 @@ namespace CoffeeConnect.DTO
 		public decimal KilosBrutosPesado
 		{ get; set; }
 
+
+
 		/// <summary>
 		/// Gets or sets the TaraPesado value.
 		/// </summary>

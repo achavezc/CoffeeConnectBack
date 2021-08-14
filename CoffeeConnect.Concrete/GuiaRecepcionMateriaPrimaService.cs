@@ -18,13 +18,15 @@ namespace CoffeeConnect.Service
         private ISocioFincaRepository _ISocioFincaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<ParametrosSettings> _ParametrosSettings;
+        private IContratoRepository _IContratoRepository;
 
-        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima, ISocioFincaRepository socioFincaRepository, INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings)
+        public GuiaRecepcionMateriaPrimaService(IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrima, ISocioFincaRepository socioFincaRepository, INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository, IContratoRepository contratoRepository, IOptions<ParametrosSettings> parametrosSettings)
         {
             _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrima;
             _INotaCompraRepository = notaCompraRepository;
             _ISocioFincaRepository = socioFincaRepository;
             _ICorrelativoRepository = correlativoRepository;
+            _IContratoRepository = contratoRepository;
             _ParametrosSettings = parametrosSettings;
         }
         public List<ConsultaGuiaRecepcionMateriaPrimaBE> ConsultarGuiaRecepcionMateriaPrima(ConsultaGuiaRecepcionMateriaPrimaRequestDTO request)
@@ -126,6 +128,24 @@ namespace CoffeeConnect.Service
 
         public int RegistrarPesadoGuiaRecepcionMateriaPrima(RegistrarActualizarPesadoGuiaRecepcionMateriaPrimaRequestDTO request)
         {
+
+            ConsultaContratoAsignado consultaContratoAsignado = _IContratoRepository.ConsultarContratoAsignado(request.EmpresaId, ContratoEstados.Asignado);
+
+            if(consultaContratoAsignado==null || consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion==0)
+            {
+                throw new ResultException(new Result { ErrCode = "03", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionContratoNoAsignado.Label" });
+            }
+
+            decimal kilosNetosPesado = request.KilosBrutosPesado - request.TaraPesado;
+
+            if (kilosNetosPesado > consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion)
+            {
+                throw new ResultException(new Result { ErrCode = "04", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionKilosNetosPesadoMayorContratoNoAsignado.Label" });
+            }
+
+
+
+
             GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima = new GuiaRecepcionMateriaPrima();
 
             guiaRecepcionMateriaPrima.EmpresaId = request.EmpresaId;
@@ -153,6 +173,7 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.EstadoId = GuiaRecepcionMateriaPrimaEstados.Pesado;
             guiaRecepcionMateriaPrima.FechaRegistro = DateTime.Now;
             guiaRecepcionMateriaPrima.UsuarioRegistro = request.UsuarioPesado;
+            guiaRecepcionMateriaPrima.KilosNetosPesado = kilosNetosPesado;
 
             string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
             string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
@@ -192,6 +213,9 @@ namespace CoffeeConnect.Service
         {
             GuiaRecepcionMateriaPrima guiaRecepcionMateriaPrima = new GuiaRecepcionMateriaPrima();
 
+            decimal kilosNetosPesado = request.KilosBrutosPesado - request.TaraPesado;
+
+
             guiaRecepcionMateriaPrima.GuiaRecepcionMateriaPrimaId = request.GuiaRecepcionMateriaPrimaId;
             guiaRecepcionMateriaPrima.EmpresaId = request.EmpresaId;
             guiaRecepcionMateriaPrima.TipoProvedorId = request.TipoProvedorId;
@@ -207,6 +231,8 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.UnidadMedidaIdPesado = request.UnidadMedidaIdPesado;
             guiaRecepcionMateriaPrima.CantidadPesado = request.CantidadPesado;
             guiaRecepcionMateriaPrima.KilosBrutosPesado = request.KilosBrutosPesado;
+            guiaRecepcionMateriaPrima.KilosNetosPesado = kilosNetosPesado;
+
             guiaRecepcionMateriaPrima.TaraPesado = request.TaraPesado;
             guiaRecepcionMateriaPrima.ObservacionPesado = request.ObservacionPesado;
             guiaRecepcionMateriaPrima.SocioFincaId = request.SocioFincaId;

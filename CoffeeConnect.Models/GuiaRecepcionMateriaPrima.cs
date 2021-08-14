@@ -102,6 +102,9 @@ namespace CoffeeConnect.Models
 		public decimal KilosBrutosPesado
 		{ get; set; }
 
+		public decimal KilosNetosPesado
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the TaraPesado value.
 		/// </summary>
