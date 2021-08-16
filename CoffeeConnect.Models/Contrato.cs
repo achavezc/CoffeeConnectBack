@@ -74,6 +74,11 @@ namespace CoffeeConnect.Models
         public string ProductoId
         { get; set; }
 
+        public string TipoContratoId
+        { get; set; }
+        
+
+
         public string SubProductoId
         { get; set; }
 

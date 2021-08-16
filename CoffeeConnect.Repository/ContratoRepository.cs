@@ -53,6 +53,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaEmbarque", contrato.FechaEmbarque);
             parameters.Add("EmpresaId", contrato.EmpresaId);
             parameters.Add("@FechaContrato", contrato.FechaContrato);
+            parameters.Add("@TipoContratoId", contrato.TipoContratoId);
             parameters.Add("@FechaFacturacion", contrato.FechaFacturacion);
             parameters.Add("@PaisDestinoId", contrato.PaisDestinoId);
             parameters.Add("@PeriodosCosecha", contrato.PeriodosCosecha);
@@ -129,6 +130,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("EmpresaId", contrato.EmpresaId);
             parameters.Add("@CondicionEmbarqueId", contrato.CondicionEmbarqueId);
             parameters.Add("@FechaEmbarque", contrato.FechaEmbarque);
+            parameters.Add("@TipoContratoId", contrato.TipoContratoId);
             parameters.Add("@FechaContrato", contrato.FechaContrato);
             parameters.Add("@FechaFacturacion", contrato.FechaFacturacion);
             parameters.Add("@PaisDestinoId", contrato.PaisDestinoId);

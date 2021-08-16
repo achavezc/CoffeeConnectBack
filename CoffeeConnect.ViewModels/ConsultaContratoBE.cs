@@ -60,7 +60,7 @@ namespace CoffeeConnect.DTO
         public DateTime FechaContrato { get; set; }
 
         public int EmpresaId { get; set; }
-        public string TipoContradoId { get; set; }
+        public string TipoContratoId { get; set; }
         public string TipoContrato { get; set; }
         #endregion
     }

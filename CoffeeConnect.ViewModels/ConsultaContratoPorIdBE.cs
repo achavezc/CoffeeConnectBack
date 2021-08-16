@@ -122,6 +122,10 @@ namespace CoffeeConnect.DTO
         public string TipoCertificacionId
         { get; set; }
 
+        public string TipoContratoId
+        { get; set; }
+
+
         /// <summary>
         /// Gets or sets the CalidadId value.
         /// </summary>

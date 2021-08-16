@@ -184,6 +184,8 @@ namespace CoffeeConnect.DTO
         public string EmpaqueId { get; set; }
         public string TipoId { get; set; }
 
+        public string TipoContratoId { get; set; }
+
         /// <summary>
         /// Gets or sets the UsuarioRegistro value.
         /// </summary>

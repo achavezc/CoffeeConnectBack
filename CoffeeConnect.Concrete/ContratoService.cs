@@ -80,7 +80,7 @@ namespace CoffeeConnect.Service
 
                 }
                 List<ConsultaDetalleTablaBE> tipoContratos = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoContrato")).ToList();
-                ConsultaDetalleTablaBE tipoContrato = tipoContratos.Where(a => a.Codigo == contrato.TipoContradoId).FirstOrDefault();
+                ConsultaDetalleTablaBE tipoContrato = tipoContratos.Where(a => a.Codigo == contrato.TipoContratoId).FirstOrDefault();
                 if (tipoContrato != null)
                 {
                     tipoContratoLabel = tipoContratoLabel + tipoContrato.Label + " ";
