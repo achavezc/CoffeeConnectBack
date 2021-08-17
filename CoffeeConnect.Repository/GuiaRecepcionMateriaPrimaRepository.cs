@@ -139,6 +139,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaPesado", guiaRecepcionMateriaPrima.FechaPesado);
             parameters.Add("@UsuarioPesado", guiaRecepcionMateriaPrima.UsuarioPesado);
             parameters.Add("@UnidadMedidaIdPesado", guiaRecepcionMateriaPrima.UnidadMedidaIdPesado);
+            parameters.Add("@ContratoAsignadoId", guiaRecepcionMateriaPrima.ContratoAsignadoId);
+            
+
             parameters.Add("@CantidadPesado", guiaRecepcionMateriaPrima.CantidadPesado);
             parameters.Add("@KilosBrutosPesado", guiaRecepcionMateriaPrima.KilosBrutosPesado);
             parameters.Add("@KilosNetosPesado", guiaRecepcionMateriaPrima.KilosNetosPesado);

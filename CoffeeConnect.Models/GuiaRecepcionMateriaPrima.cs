@@ -90,6 +90,11 @@ namespace CoffeeConnect.Models
 		public string UnidadMedidaIdPesado
 		{ get; set; }
 
+		public int ContratoAsignadoId
+		{ get; set; }
+
+
+		
 		/// <summary>
 		/// Gets or sets the CantidadPesado value.
 		/// </summary>

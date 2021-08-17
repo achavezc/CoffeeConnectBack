@@ -14,8 +14,13 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		public int EmpresaId
-		{ get; set; }		
+		{ get; set; }
 
+
+
+		public int ContratoAsignadoId
+		{ get; set; }
+		
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>

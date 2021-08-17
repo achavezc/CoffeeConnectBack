@@ -174,6 +174,7 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.FechaRegistro = DateTime.Now;
             guiaRecepcionMateriaPrima.UsuarioRegistro = request.UsuarioPesado;
             guiaRecepcionMateriaPrima.KilosNetosPesado = kilosNetosPesado;
+            guiaRecepcionMateriaPrima.ContratoAsignadoId = consultaContratoAsignado.ContratoId;
 
             string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
             string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
@@ -205,6 +206,17 @@ namespace CoffeeConnect.Service
                     }
                 }
             }
+
+            _IContratoRepository.ActualizarSaldoPendienteAsignacionAcopio(consultaContratoAsignado.ContratoId, kilosNetosPesado);
+
+            if((consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion - kilosNetosPesado)==0)
+            {
+                _IContratoRepository.ActualizarEstado(consultaContratoAsignado.ContratoId, DateTime.Now, request.UsuarioPesado, ContratoEstados.Completado);
+
+            }
+
+
+
 
             return affected;
         }

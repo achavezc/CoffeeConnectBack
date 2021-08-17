@@ -264,7 +264,7 @@ namespace CoffeeConnect.Service
             int result = 0;
             if (request.ContratoId > 0)
             {
-                result = _IContratoRepository.Anular(request.ContratoId, DateTime.Now, request.Usuario, ContratoEstados.Anulado);
+                result = _IContratoRepository.ActualizarEstado(request.ContratoId, DateTime.Now, request.Usuario, ContratoEstados.Anulado);
             }
             return result;
         }

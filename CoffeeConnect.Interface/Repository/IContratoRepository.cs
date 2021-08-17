@@ -16,7 +16,7 @@ namespace CoffeeConnect.Interface.Repository
 
         ConsultaContratoPorIdBE ConsultarContratoPorId(int contratoId);
 
-        int Anular(int contratoId, DateTime fecha, string usuario, string estadoId);
+        int ActualizarEstado(int contratoId, DateTime fecha, string usuario, string estadoId);
 
         ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(int contratoId,string idioma);
 
@@ -29,6 +29,9 @@ namespace CoffeeConnect.Interface.Repository
         int ValidadContratoAsignado(int empresaId, string estadoId);
 
         ConsultaContratoAsignado ConsultarContratoAsignado(int empresaId, string estadoId);
+
+        int ActualizarSaldoPendienteAsignacionAcopio(int contratoId, decimal totalKGPergaminoIngreso);
+
 
     }
 }

@@ -225,6 +225,12 @@ namespace CoffeeConnect.DTO
         /// Gets or sets the EstadoId value.
         /// </summary>
         public string EstadoId { get; set; }
+
+        public string EstadoContrato { get; set; }
+
+        
+
+
         public string NumeroCliente { get; set; }
         public string Cliente { get; set; }
 

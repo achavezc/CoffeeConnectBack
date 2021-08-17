@@ -153,6 +153,8 @@ namespace CoffeeConnect.Service
 
         public static string Asignado { get { return "02"; } }
 
+        public static string Completado { get { return "03"; } }
+
     }
 
     public static class LoteEstados

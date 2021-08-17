@@ -192,7 +192,7 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-        public int Anular(int contratoId, DateTime fecha, string usuario, string estadoId)
+        public int ActualizarEstado(int contratoId, DateTime fecha, string usuario, string estadoId)
         {
             int affected = 0;
 
@@ -204,7 +204,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                affected = db.Execute("uspContratoAnular", parameters, commandType: CommandType.StoredProcedure);
+                affected = db.Execute("uspContratoActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;
@@ -232,6 +232,27 @@ namespace CoffeeConnect.Repository
 
             return affected;
         }
+
+
+        public int ActualizarSaldoPendienteAsignacionAcopio(int contratoId, decimal totalKGPergaminoIngreso)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", contratoId);
+            parameters.Add("@TotalKGPergaminoIngreso", totalKGPergaminoIngreso);
+            
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspContratoActualizarSaldoPendienteAsignacionAcopio", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
 
 
 
