@@ -61,14 +61,14 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        public IEnumerable<ConsultaPrecioDiaRendimientoBE> ConsultarPrecioDiaRendimientoPorEmpresa(int empresaId)
+        public IEnumerable<ConsultaPrecioDiaRendimientoDetalleBE> ConsultarPrecioDiaRendimientoPorEmpresa(int empresaId)
         {
             var parameters = new DynamicParameters();
             parameters.Add("EmpresaId", empresaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ConsultaPrecioDiaRendimientoBE>("uspPrecioDiaRendimientoConsultarPorEmpresa", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ConsultaPrecioDiaRendimientoDetalleBE>("uspPrecioDiaRendimientoConsultarPorEmpresa", parameters, commandType: CommandType.StoredProcedure);
             }
         }
     }
