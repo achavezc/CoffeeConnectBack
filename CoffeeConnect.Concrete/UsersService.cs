@@ -5,6 +5,7 @@ using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using CoffeeConnect.Models.User;
 using Core.Common.Domain.Model;
+using Core.Common.Encryption;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,15 @@ namespace CoffeeConnect.Service
     public class UsersService : IUsersService
     {
         private IUsersRepository _UsersRepository;
+        private IClienteRepository _ClienteRepository;
+
         private IEmpresaRepository _EmpresaRepository;
         private IProductoPrecioDiaRepository _ProductoPrecioDiaRepository;
 
-        public UsersService(IUsersRepository usersRepository, IEmpresaRepository empresaRepository, IProductoPrecioDiaRepository productoPrecioDiaRepository)
+        public UsersService(IUsersRepository usersRepository, IClienteRepository clienteRepository, IEmpresaRepository empresaRepository, IProductoPrecioDiaRepository productoPrecioDiaRepository)
         {
             _UsersRepository = usersRepository;
+            _ClienteRepository = clienteRepository;
             _EmpresaRepository = empresaRepository;
             _ProductoPrecioDiaRepository = productoPrecioDiaRepository;
         }
@@ -458,8 +462,7 @@ namespace CoffeeConnect.Service
                 loginDTO.LogoEmpresa = empresa.Logo;
                 loginDTO.MonedaId = "01";
                 loginDTO.Moneda = "Soles";
-                loginDTO.Cliente = "CLIENTE 1";
-                loginDTO.CodigoCliente = "CLI00000001";
+                
 
 
                 
@@ -486,6 +489,21 @@ namespace CoffeeConnect.Service
 
                 //loginDTO.ProductoPreciosDia = precios;
 
+            }
+
+            
+            
+
+            if (usuario.ClienteId.HasValue)
+            {
+                ConsultaClientePorIdBE consultaClientePorIdBE = _ClienteRepository.ConsultarClientePorId(usuario.ClienteId.Value);
+
+                if(consultaClientePorIdBE!=null)
+                {
+                    loginDTO.Cliente = consultaClientePorIdBE.RazonSocial;
+                    loginDTO.CodigoCliente = consultaClientePorIdBE.Numero;
+
+                }
             }
 
             List<ConsultaOpcionesPorUsuario> opcionesUsuario = _UsersRepository.ConsultarOpcionesPorUsuario(usuario.UserId).ToList();
@@ -536,6 +554,7 @@ namespace CoffeeConnect.Service
 
         public int RegistrarUsuario(User request)
         {
+            request.Password = EncryptionLibrary.EncryptText(request.Password);
             int id = _UsersRepository.Insertar(request);
             return id;
         }

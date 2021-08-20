@@ -13,5 +13,9 @@ namespace CoffeeConnect.Models.User
         public DateTime CreatedDate { get; set; }
         public int EmpresaId { get; set; }
 
+        public int? ClienteId { get; set; }
+
+        
+
     }
 }

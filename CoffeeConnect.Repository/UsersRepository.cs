@@ -354,6 +354,21 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaOpcionesPorUsuario>("uspOpcionesPorUsuario", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public IEnumerable<ConsultaRolesPorUsuario> ConsultarRolesPorUsuario(int usuarioId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("UserId", usuarioId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaRolesPorUsuario>("uspUsuarioRolConsultarPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
         public int Insertar(User user)
         {
             int result = 0;
@@ -365,7 +380,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmailId", user.EmailId);
             parameters.Add("@Password", user.Password);
             parameters.Add("@CreatedDate", user.CreatedDate);
-            parameters.Add("@EmpresaId", user.EmpresaId); 
+            parameters.Add("@EmpresaId", user.EmpresaId);
+            parameters.Add("@ClienteId", user.ClienteId);
+
+            
+
             parameters.Add("@UserId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

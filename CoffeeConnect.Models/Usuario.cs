@@ -22,6 +22,8 @@ namespace CoffeeConnect.Models
 
         public int EmpresaId { get; set; }
         public bool Status { get; set; }
+
+        public int? ClienteId { get; set; }
     }
 
 }

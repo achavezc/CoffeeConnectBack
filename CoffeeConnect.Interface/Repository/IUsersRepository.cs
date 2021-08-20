@@ -15,5 +15,6 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaOpcionesPorUsuario> ConsultarOpcionesPorUsuario(int usuarioId);
         int Insertar(User user);
         int InsertarRoles(int userId, int userRolId);
+        IEnumerable<ConsultaRolesPorUsuario> ConsultarRolesPorUsuario(int usuarioId);
     }
 }

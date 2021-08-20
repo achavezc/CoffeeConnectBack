@@ -51,21 +51,22 @@ namespace CoffeeConnect.Service
             cliente.UsuarioRegistro = request.Usuario;
             cliente.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.Cliente);
 
-            int affected = _IClienteRepository.Insertar(cliente);
+            int clienteId = _IClienteRepository.Insertar(cliente);
 
             User user = new User();
             user.UserName = request.CorreoElectronico;
             user.FullName = request.RazonSocial;
             user.EmailId = request.CorreoElectronico;
-            user.Password = request.Numero;
+            user.Password = cliente.Numero;
             user.CreatedDate = DateTime.Now;
             user.EmpresaId = request.EmpresaId;
+            user.ClienteId = clienteId;
             int userId = _IUsersService.RegistrarUsuario(user);
             int rolId = int.Parse(_ParametrosSettings.Value.RoleId);
             int userRolId = _IUsersService.RegistrarRolUsuario(userId, rolId);
 
 
-            return affected;
+            return clienteId;
         }
 
         public int ActualizarCliente(RegistrarActualizarClienteRequestDTO request)
