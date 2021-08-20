@@ -11,6 +11,7 @@ using Dapper;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using CoffeeConnect.DTO;
+using CoffeeConnect.Models.User;
 
 namespace CoffeeConnect.Repository
 {
@@ -353,7 +354,50 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaOpcionesPorUsuario>("uspOpcionesPorUsuario", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+        public int Insertar(User user)
+        {
+            int result = 0;
 
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@UserName", user.UserName);
+            parameters.Add("@FullName", user.FullName);
+            parameters.Add("@EmailId", user.EmailId);
+            parameters.Add("@Password", user.Password);
+            parameters.Add("@CreatedDate", user.CreatedDate);
+            parameters.Add("@EmpresaId", user.EmpresaId); 
+            parameters.Add("@UserId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspUserInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            int id = parameters.Get<int>("UserId");
+
+            return id;
+        }
+
+        public int InsertarRoles(int userId ,int userRolId)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@UserId", userId);
+            parameters.Add("@RoleIdint", userRolId);
+            
+            parameters.Add("@UserRolesId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspUserRolesInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            int id = parameters.Get<int>("UserRolesId");
+
+            return id;
+        }
 
 
     }
