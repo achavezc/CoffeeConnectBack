@@ -51,9 +51,9 @@ namespace CoffeeConnect.Service
             return precios;
         }
 
-        public List<ConsultaPrecioDiaRendimientoBE> ConsultarPrecioDiaRendimiento(ConsultaPrecioDiaRendimientoRequestDTO request)
+        public List<ConsultaPrecioDiaRendimientoDetalleBE> ConsultarPrecioDiaRendimiento(ConsultaPrecioDiaRendimientoRequestDTO request)
         {
-            List<ConsultaPrecioDiaRendimientoBE> resultados = _IMaestroRepository.ConsultarPrecioDiaRendimientoPorEmpresa(request.EmpresaId).ToList();
+            List<ConsultaPrecioDiaRendimientoDetalleBE> resultados = _IMaestroRepository.ConsultarPrecioDiaRendimientoPorEmpresa(request.EmpresaId).ToList();
 
             return resultados;
             //List<ConsultaPrecioDiaRendimientoBE> precios = new List<ConsultaPrecioDiaRendimientoBE>();
