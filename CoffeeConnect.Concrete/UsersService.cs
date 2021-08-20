@@ -3,6 +3,7 @@ using CoffeeConnect.DTO.Seguridad;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
+using CoffeeConnect.Models.User;
 using Core.Common.Domain.Model;
 using Newtonsoft.Json;
 using System;
@@ -531,5 +532,18 @@ namespace CoffeeConnect.Service
             return loginDTO;
 
         }
+
+
+        public int RegistrarUsuario(User request)
+        {
+            int id = _UsersRepository.Insertar(request);
+            return id;
+        }
+        public int RegistrarRolUsuario(int userId, int userRolId)
+        {
+            int id = _UsersRepository.InsertarRoles(userId,userRolId);
+            return id;
+        }
     }
+
 }

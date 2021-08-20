@@ -40,7 +40,9 @@ namespace Integracion.Deuda.Controller
             {
                 List<ConsultaDetalleTablaBE> lista = _maestroService.ConsultarDetalleTablaDeTablas(request.EmpresaId, request.Idioma);
 
-                response.Result.Data = lista.Where(a => a.CodigoTabla.Trim().Equals(request.CodigoTabla.Trim())).ToList();
+                List<ConsultaDetalleTablaBE> lista2 = lista.Where(a => a.CodigoTabla.Trim().Equals(request.CodigoTabla.Trim())).ToList();
+
+                response.Result.Data = lista2.OrderBy(x => x.Label).ToList();
 
                 response.Result.Success = true;
 

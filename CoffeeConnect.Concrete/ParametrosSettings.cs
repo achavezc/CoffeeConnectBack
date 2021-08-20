@@ -8,5 +8,6 @@ namespace CoffeeConnect.Service
     {
         public string ProductoIdCafePergamino { get; set; }
         public string SubProductoIdCafeSeco { get; set; }
+        public string RoleId { get; set; }
     }
 }
