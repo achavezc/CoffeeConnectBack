@@ -275,7 +275,8 @@ namespace CoffeeConnect.DTO
         public decimal? TotalKGPergaminoAsignacion
         { get; set; }
 
-
+        public decimal? SaldoPendienteKGPergaminoAsignacion
+        { get; set; }
 
         #endregion
     }

@@ -4,7 +4,9 @@ using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
+using CoffeeConnect.Models.User;
 using Core.Common.Domain.Model;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +17,17 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private IClienteRepository _IClienteRepository;
+        private IUsersService _IUsersService;
         private ICorrelativoRepository _ICorrelativoRepository;
+        public IOptions<ParametrosSettings> _ParametrosSettings;
 
-        public ClienteService(IClienteRepository clienteRepository, ICorrelativoRepository correlativoRepository, IMapper mapper)
+        public ClienteService(IClienteRepository clienteRepository, IUsersService userService, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<ParametrosSettings> parametrosSettings)
         {
             _IClienteRepository = clienteRepository;
-
+            _IUsersService = userService;
             _ICorrelativoRepository = correlativoRepository;
-
             _Mapper = mapper;
-
-
-
+            _ParametrosSettings = parametrosSettings;
         }
 
         public List<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request)
@@ -51,6 +52,18 @@ namespace CoffeeConnect.Service
             cliente.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.Cliente);
 
             int affected = _IClienteRepository.Insertar(cliente);
+
+            User user = new User();
+            user.UserName = request.CorreoElectronico;
+            user.FullName = request.RazonSocial;
+            user.EmailId = request.CorreoElectronico;
+            user.Password = request.Numero;
+            user.CreatedDate = DateTime.Now;
+            user.EmpresaId = request.EmpresaId;
+            int userId = _IUsersService.RegistrarUsuario(user);
+            int rolId = int.Parse(_ParametrosSettings.Value.RoleId);
+            int userRolId = _IUsersService.RegistrarRolUsuario(userId, rolId);
+
 
             return affected;
         }
