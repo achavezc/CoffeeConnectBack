@@ -49,13 +49,31 @@ namespace CoffeeConnect.Service
 
         public int AnularGuiaRecepcionMateriaPrima(AnularGuiaRecepcionMateriaPrimaRequestDTO request)
         {
+
+            ConsultaGuiaRecepcionMateriaPrimaPorIdBE consultaGuiaRecepcionMateriaPrimaPorIdBE = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(request.GuiaRecepcionMateriaPrimaId);
+            int contratoId = consultaGuiaRecepcionMateriaPrimaPorIdBE.ContratoAsignadoId;
+
+            ConsultaContratoPorIdBE consultaContratoPorIdBE = _IContratoRepository.ConsultarContratoPorId(contratoId);
+
+            if(consultaContratoPorIdBE.EstadoId == ContratoEstados.Completado)
+            {
+                //throw new ResultException(new Result { ErrCode = "04", Message = "Acopio.GuiaRecepcionMateriaPrima.ContratoCompletado.Label" });
+                throw new ResultException(new Result { ErrCode = "04", Message = "No se puede anular una guía con contrato asignado completado." });
+            }
+            else if (consultaContratoPorIdBE.EstadoId == ContratoEstados.Asignado)
+            {
+                decimal kilosNetosPesado = consultaGuiaRecepcionMateriaPrimaPorIdBE.KilosNetosPesado;
+
+                _IContratoRepository.ActualizarSaldoPendienteAsignacionAcopio(contratoId, kilosNetosPesado * (-1));
+            }
+
+
             int affected = _IGuiaRecepcionMateriaPrimaRepository.AnularGuiaRecepcionMateriaPrima(request.GuiaRecepcionMateriaPrimaId, DateTime.Now, request.Usuario, GuiaRecepcionMateriaPrimaEstados.Anulado);
 
             string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
             string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
 
-            ConsultaGuiaRecepcionMateriaPrimaPorIdBE consultaGuiaRecepcionMateriaPrimaPorIdBE = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrimaPorId(request.GuiaRecepcionMateriaPrimaId);
-
+            
            
 
             if (consultaGuiaRecepcionMateriaPrimaPorIdBE.ProductoId == productoIdCafePergamino && consultaGuiaRecepcionMateriaPrimaPorIdBE.SubProductoId == subProductoIdCafeSeco && consultaGuiaRecepcionMateriaPrimaPorIdBE.SocioFincaCertificacion != String.Empty)

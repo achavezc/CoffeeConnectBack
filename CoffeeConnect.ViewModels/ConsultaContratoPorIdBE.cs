@@ -35,6 +35,10 @@ namespace CoffeeConnect.DTO
         public string FloId
         { get; set; }
 
+      
+        
+
+
         /// <summary>
         /// Gets or sets the CondicionEmbarqueId value.
         /// </summary>
