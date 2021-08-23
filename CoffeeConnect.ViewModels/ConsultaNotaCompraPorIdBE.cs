@@ -359,6 +359,11 @@ namespace CoffeeConnect.DTO
         public decimal DescartePorcentajeAnalisisFisico { get; set; }
         public decimal CascarillaPorcentajeAnalisisFisico { get; set; }
         public decimal TotalPorcentajeAnalisisFisico { get; set; }
+
+        public decimal? TotalAdelanto { get; set; }
+
+        public decimal TotalPagar { get; set; }
+
         #endregion
     }
 }

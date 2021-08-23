@@ -123,8 +123,10 @@ namespace CoffeeConnect.Service
 
     public static class AdelantoEstados
     {
-        public static string Activo { get { return "01"; } }
+        public static string PorLiquidar { get { return "01"; } }
         public static string Anulado { get { return "00"; } }
+
+        public static string Liquidado { get { return "02"; } }
 
     }
     public static class PrecioDiaRendimientoEstados
