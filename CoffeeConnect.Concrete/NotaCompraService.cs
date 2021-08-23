@@ -1,5 +1,6 @@
 ﻿
 using CoffeeConnect.DTO;
+using CoffeeConnect.DTO.Adelanto;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
@@ -13,12 +14,14 @@ namespace CoffeeConnect.Service
     public partial class NotaCompraService : INotaCompraService
     {
         private INotaCompraRepository _INotaCompraRepository;
+        private IAdelantoRepository _IAdelantoRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
 
-        public NotaCompraService(INotaCompraRepository notaCompraRepository, ICorrelativoRepository correlativoRepository)
+        public NotaCompraService(INotaCompraRepository notaCompraRepository, IAdelantoRepository adelantoRepository,  ICorrelativoRepository correlativoRepository)
         {
             _INotaCompraRepository = notaCompraRepository;
             _ICorrelativoRepository = correlativoRepository;
+            _IAdelantoRepository = adelantoRepository;
         }
 
         public int RegistrarNotaCompra(RegistrarActualizarNotaCompraRequestDTO request)
@@ -96,7 +99,8 @@ namespace CoffeeConnect.Service
 
         public int LiquidarNotaCompra(LiquidarNotaCompraRequestDTO request)
         {
-            int affected = _INotaCompraRepository.Liquidar(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.Liquidado, request.MonedaId, request.PrecioPagado, request.Importe);
+
+            int affected = _INotaCompraRepository.Liquidar(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.Liquidado, request.MonedaId, request.PrecioPagado, request.Importe, request.TotalAdelanto,request.TotalPagar);
 
             return affected;
         }
@@ -131,7 +135,35 @@ namespace CoffeeConnect.Service
 
         public ConsultaNotaCompraPorIdBE ConsultarNotaCompraPorId(ConsultaNotaCompraPorIdRequestDTO request)
         {
-            return _INotaCompraRepository.ConsultarNotaCompraPorId(request.NotaCompraId);
+            ConsultaNotaCompraPorIdBE consultaNotaCompraPorIdBE = _INotaCompraRepository.ConsultarNotaCompraPorId(request.NotaCompraId);
+            if(consultaNotaCompraPorIdBE.EstadoId== NotaCompraEstados.PorLiquidar)
+            {
+                List<ConsultaAdelantoBE> _adelantos = _IAdelantoRepository.ConsultarAdelantosPorNotaCompra(request.NotaCompraId,AdelantoEstados.PorLiquidar).ToList();
+
+                if(_adelantos.Count>0)
+                {
+
+                    decimal montoAdelanto = _adelantos.Sum(x => x.Monto);
+                    consultaNotaCompraPorIdBE.TotalAdelanto = montoAdelanto;
+
+                }
+            }
+
+            if(!consultaNotaCompraPorIdBE.TotalAdelanto.HasValue)
+            {
+                consultaNotaCompraPorIdBE.TotalAdelanto = 0;
+                
+            }
+
+            if (!consultaNotaCompraPorIdBE.Importe.HasValue)
+            {
+                consultaNotaCompraPorIdBE.Importe = 0;
+
+            }
+
+            consultaNotaCompraPorIdBE.TotalPagar = consultaNotaCompraPorIdBE.Importe.Value + consultaNotaCompraPorIdBE.TotalAdelanto.Value;
+
+            return consultaNotaCompraPorIdBE;
         }
 
     }

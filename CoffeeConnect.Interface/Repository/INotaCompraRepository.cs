@@ -14,8 +14,7 @@ namespace CoffeeConnect.Interface.Repository
 
         int Anular(int notaCompraId, DateTime fecha, string usuario, string estadoId);
 
-        int Liquidar(int notaCompraId, DateTime fecha, string usuario, string estadoId, string monedaId, decimal precioPagado, decimal importe);
-
+        int Liquidar(int notaCompraId, DateTime fecha, string usuario, string estadoId, string monedaId, decimal precioPagado, decimal importe, decimal? totalAdelanto, decimal totalPagar);
         IEnumerable<ConsultaNotaCompraBE> ConsultarNotaCompra(ConsultaNotaCompraRequestDTO request);
 
         ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarNotaCompraPorGuiaRecepcionMateriaPrimaId(int guiaRecepcionMateriaPrimaId);

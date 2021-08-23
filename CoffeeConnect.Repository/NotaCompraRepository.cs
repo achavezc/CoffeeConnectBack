@@ -113,7 +113,7 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-        public int Liquidar(int notaCompraId, DateTime fecha, string usuario, string estadoId, string monedaId, decimal precioPagado, decimal importe)
+        public int Liquidar(int notaCompraId, DateTime fecha, string usuario, string estadoId, string monedaId, decimal precioPagado, decimal importe, decimal? totalAdelanto, decimal totalPagar)
         {
             int affected = 0;
 
@@ -125,6 +125,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MonedaId", monedaId);
             parameters.Add("@PrecioPagado", precioPagado);
             parameters.Add("@Importe", importe);
+            parameters.Add("@TotalAdelanto", totalAdelanto);
+            parameters.Add("@TotalPagar", totalPagar);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

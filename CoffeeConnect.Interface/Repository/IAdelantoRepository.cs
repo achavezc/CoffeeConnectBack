@@ -17,5 +17,7 @@ namespace CoffeeConnect.Interface.Repository
         int Anular(int adelantoId, DateTime fecha, string usuario, string estadoId);
 
         int AsociarNotaCompra(int adelantoId, int notaCompraId, DateTime fecha, string usuario);
+
+        IEnumerable<ConsultaAdelantoBE> ConsultarAdelantosPorNotaCompra(int notaCompraId, string estadoId);
     }
 }

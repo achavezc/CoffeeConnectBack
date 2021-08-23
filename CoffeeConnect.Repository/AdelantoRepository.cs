@@ -53,6 +53,21 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ConsultaAdelantoBE> ConsultarAdelantosPorNotaCompra(int notaCompraId,string estadoId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaCompraId", notaCompraId);
+            parameters.Add("@EstadoId", estadoId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaAdelantoBE>("uspAdelantoConsultaPorNotaCompra", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
 
         public int Insertar(Adelanto adelanto)
         {

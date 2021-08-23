@@ -23,6 +23,14 @@ namespace CoffeeConnect.DTO
 		public decimal Importe
 		{ get; set; }
 
+		
+
+
+		public decimal? TotalAdelanto
+		{ get; set; }
+
+		public decimal TotalPagar
+		{ get; set; }
 
 	}
 }
