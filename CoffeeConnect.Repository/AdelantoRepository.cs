@@ -86,7 +86,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaPago", adelanto.FechaPago);
             parameters.Add("@Motivo", adelanto.Motivo);
             parameters.Add("@FechaEntregaProducto", adelanto.FechaEntregaProducto);
-            parameters.Add("@NotaCompraId", adelanto.NotaCompraId);
+            parameters.Add("@NotaCompraId", adelanto.NotaCompraId == 0 ? null : adelanto.NotaCompraId);
             parameters.Add("@EstadoId", adelanto.EstadoId);
             parameters.Add("@FechaRegistro", adelanto.FechaRegistro);
             parameters.Add("@UsuarioRegistro", adelanto.UsuarioRegistro);
