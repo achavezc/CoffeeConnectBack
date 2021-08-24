@@ -98,11 +98,33 @@ namespace CoffeeConnect.Service
         }
 
         public int LiquidarNotaCompra(LiquidarNotaCompraRequestDTO request)
-        {
+        {                        
+            List<ConsultaAdelantoBE> _adelantos = _IAdelantoRepository.ConsultarAdelantosPorNotaCompra(request.NotaCompraId, AdelantoEstados.PorLiquidar).ToList();
+
+            if (_adelantos.Count > 0)
+            {
+                decimal montoAdelanto = _adelantos.Sum(x => x.Monto);
+                request.TotalAdelanto = montoAdelanto;
+            }
+
+            if (!request.TotalAdelanto.HasValue)
+            {
+                request.TotalAdelanto = 0;
+
+            }
+
+            request.TotalPagar = request.Importe - request.TotalAdelanto.Value;
+
+
 
             int affected = _INotaCompraRepository.Liquidar(request.NotaCompraId, DateTime.Now, request.Usuario, NotaCompraEstados.Liquidado, request.MonedaId, request.PrecioPagado, request.Importe, request.TotalAdelanto,request.TotalPagar);
 
-            return affected;
+            if (_adelantos.Count > 0)
+            {
+                _IAdelantoRepository.ActualizarEstadoPorNotaCompra(request.NotaCompraId, DateTime.Now, request.Usuario, AdelantoEstados.Liquidado);
+            }
+
+                return affected;
         }
 
         public List<ConsultaNotaCompraBE> ConsultarNotaCompra(ConsultaNotaCompraRequestDTO request)
@@ -161,7 +183,7 @@ namespace CoffeeConnect.Service
 
             }
 
-            consultaNotaCompraPorIdBE.TotalPagar = consultaNotaCompraPorIdBE.Importe.Value + consultaNotaCompraPorIdBE.TotalAdelanto.Value;
+            consultaNotaCompraPorIdBE.TotalPagar = consultaNotaCompraPorIdBE.Importe.Value - consultaNotaCompraPorIdBE.TotalAdelanto.Value;
 
             return consultaNotaCompraPorIdBE;
         }
