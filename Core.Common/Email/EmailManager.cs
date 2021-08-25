@@ -11,25 +11,26 @@ namespace WebGYM.Common
     public class EmailManager
     {
 
-        public bool SendEmailBienvenida(string path, string nombre, string correo, string usuario, string clave,string url)
+        public bool SendEmailBienvenida(string path,string asunto, string nombre, string correo, string usuario, string clave,string url,string from,string logo)
         {
            
 
             var html = File.ReadAllText(path);//File.ReadAllText("~/plantillas_correo/bienvenida.html");
            
-             string cuerpo = html.Replace("{nombre}", nombre.ToUpper());
-             string cuerpo2 = cuerpo.Replace("{usuario}", usuario.ToUpper());
-             string cuerpo3 = cuerpo2.Replace("{clave}", clave.ToUpper());
-             string cuerpo4 = cuerpo3.Replace("{url}", url.ToUpper());
+             string cuerpo = html.Replace("{nombre}", nombre);
+             string cuerpo2 = cuerpo.Replace("{usuario}", usuario);
+             string cuerpo3 = cuerpo2.Replace("{clave}", clave);
+             string cuerpo4 = cuerpo3.Replace("{url}", url);
+             string cuerpo5= cuerpo4.Replace("{logo}", logo);
 
 
-            return enviarCorreo(correo, "Bienvenido a Coffee Connect!", cuerpo4);
+            return enviarCorreo(correo, asunto, cuerpo5, from);
             
         }
 
 
 
-        public bool SendEmailRecuperarPassword(string nombre,string password, string correo)
+        public bool SendEmailRecuperarPassword(string nombre,string password, string correo, string from)
         {
 
             string html = @"<p>&nbsp;</p>
@@ -436,13 +437,13 @@ namespace WebGYM.Common
             //}
 
 
-            return enviarCorreo(correo, "Recuperación de contraseña BEE QUEEN COIN", cuerpo);
+            return enviarCorreo(correo, "Recuperación de contraseña BEE QUEEN COIN", cuerpo, from);
 
         }
 
  
 
-        private bool enviarCorreo(string correo, string asunto, string cuerpo, string fileAttachments = "", string fileAttachments2 = "")
+        private bool enviarCorreo(string correo, string asunto, string cuerpo, string from,  string fileAttachments = "", string fileAttachments2 = "")
         {
             
             MailMessage m = new MailMessage();
@@ -462,9 +463,9 @@ namespace WebGYM.Common
             }
 
             SmtpClient sc = new SmtpClient();
-            m.From = new MailAddress("postmaster@beequeencoin.com");
-            m.Bcc.Add("manuel@beequeencoin.com");
-            m.Bcc.Add("postmaster@beequeencoin.com");
+            m.From = new MailAddress(from);
+            //m.Bcc.Add("manuel@beequeencoin.com");
+            //m.Bcc.Add("postmaster@beequeencoin.com");
             m.To.Add(correo);
             m.Subject = asunto;
             m.IsBodyHtml = true;

@@ -18,6 +18,9 @@ namespace CoffeeConnect.Models
         public string Direccion { get; set; }
         public string Logo { get; set; }
         public string TipoImpresaid { get; set; }
+        
+        public string CorreoFrom { get; set; }
+
         public bool Activo { get; set; }
        
     }
