@@ -6,10 +6,13 @@ using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using CoffeeConnect.Models.User;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using WebGYM.Common;
 
 namespace CoffeeConnect.Service
 {
@@ -20,15 +23,18 @@ namespace CoffeeConnect.Service
         private IUsersService _IUsersService;
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<ParametrosSettings> _ParametrosSettings;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ClienteService(IClienteRepository clienteRepository, IUsersService userService, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<ParametrosSettings> parametrosSettings)
+        public ClienteService(IClienteRepository clienteRepository, IUsersService userService, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<ParametrosSettings> parametrosSettings, IWebHostEnvironment webHostEnvironment)
         {
             _IClienteRepository = clienteRepository;
             _IUsersService = userService;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
             _ParametrosSettings = parametrosSettings;
+            _webHostEnvironment = webHostEnvironment;
         }
+
 
         public List<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request)
         {
@@ -65,6 +71,13 @@ namespace CoffeeConnect.Service
             int rolId = int.Parse(_ParametrosSettings.Value.RoleId);
             int userRolId = _IUsersService.RegistrarRolUsuario(userId, rolId);
 
+            EmailManager emailManager = new EmailManager();
+
+            //emailManager.SendEmail();
+            var path = $"{this._webHostEnvironment.ContentRootPath}\\plantillas_correo\\bienvenida.html";
+
+            string url = _ParametrosSettings.Value.UrlSistema;
+            var responseTask = Task.Run(() => emailManager.SendEmailBienvenida(path, request.RazonSocial, request.CorreoElectronico, request.CorreoElectronico, cliente.Numero,url)) ;
 
             return clienteId;
         }
