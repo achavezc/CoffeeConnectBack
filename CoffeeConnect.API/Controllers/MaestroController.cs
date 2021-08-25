@@ -40,9 +40,9 @@ namespace Integracion.Deuda.Controller
             {
                 List<ConsultaDetalleTablaBE> lista = _maestroService.ConsultarDetalleTablaDeTablas(request.EmpresaId, request.Idioma);
 
-                List<ConsultaDetalleTablaBE> lista2 = lista.Where(a => a.CodigoTabla.Trim().Equals(request.CodigoTabla.Trim())).ToList();
+                lista = lista.Where(a => a.CodigoTabla.Trim().Equals(request.CodigoTabla.Trim())).ToList();
 
-                response.Result.Data = lista2.OrderBy(x => x.Label).ToList();
+                response.Result.Data = lista.OrderBy(x => x.Label).ToList();
 
                 response.Result.Success = true;
 
@@ -77,12 +77,15 @@ namespace Integracion.Deuda.Controller
 
                 if(request.CodigoPais=="PE")
                 {
-                    response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("0000")).ToList();
+                    lista = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("0000")).ToList();
+                    response.Result.Data = lista.OrderBy(x => x.DescripcionPais).ToList();
+
                 }
                 else
                 {
-                    response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.StartsWith("C"))
+                    lista  = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.StartsWith("C"))
                                         .ToList();
+                    response.Result.Data = lista.OrderBy(x => x.DescripcionPais).ToList();
                 }
                 
 
@@ -118,10 +121,12 @@ namespace Integracion.Deuda.Controller
                 string prefijoDepartamento = !String.IsNullOrEmpty(request.CodigoDepartamento.ToString())
                                                 && request.CodigoDepartamento.Length >= 2 ? request.CodigoDepartamento.Substring(0, 2) : "-";
 
-                response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("00")
+                lista = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("00")
                                                 && a.Codigo.StartsWith(prefijoDepartamento)
                                                 && !a.Codigo.EndsWith("0000"))
                                         .ToList();
+
+                response.Result.Data =  lista.OrderBy(x => x.DescripcionPais).ToList();
 
                 response.Result.Success = true;
 
@@ -159,10 +164,12 @@ namespace Integracion.Deuda.Controller
                 string prefijoProvincia = !String.IsNullOrEmpty(request.CodigoProvincia.ToString())
                                                 && request.CodigoProvincia.Length >= 4 ? request.CodigoProvincia.Substring(0, 4) : "-";
 
-                response.Result.Data = lista.Where(a => a.CodigoPais == request.CodigoPais
+                lista = lista.Where(a => a.CodigoPais == request.CodigoPais
                                                         && !a.Codigo.EndsWith("00")
                                                         && a.Codigo.StartsWith(prefijoProvincia))
                                         .ToList();
+
+                response.Result.Data = lista.OrderBy(x => x.DescripcionPais).ToList();
 
                 response.Result.Success = true;
 
@@ -194,7 +201,7 @@ namespace Integracion.Deuda.Controller
             {
                 List<Zona> lista = _maestroService.ConsultarZona(request.CodigoDistrito);
 
-                response.Result.Data = lista;
+                response.Result.Data = lista.OrderBy(x => x.Nombre).ToList();
 
                 response.Result.Success = true;
 
@@ -226,7 +233,7 @@ namespace Integracion.Deuda.Controller
             {
                 List<ConsultaPaisBE> lista = _maestroService.ConsultarPais();
 
-                response.Result.Data = lista;
+                response.Result.Data = lista.OrderBy(x => x.Descripcion).ToList(); ;
 
                 response.Result.Success = true;
 
