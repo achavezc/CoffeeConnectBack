@@ -86,7 +86,7 @@ namespace CoffeeConnect.Service
 
             if (empresa!=null && !String.IsNullOrEmpty(empresa.CorreoFrom))
             {
-                correoFrom = empresa.CorreoFrom;
+                //correoFrom = empresa.CorreoFrom;
                 logo = empresa.Logo;
             }            
 

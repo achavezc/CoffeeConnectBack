@@ -21,7 +21,7 @@ namespace WebGYM.Common
              string cuerpo2 = cuerpo.Replace("{usuario}", usuario);
              string cuerpo3 = cuerpo2.Replace("{clave}", clave);
              string cuerpo4 = cuerpo3.Replace("{url}", url);
-             string cuerpo5= cuerpo4.Replace("{logo}", logo);
+             string cuerpo5= cuerpo4.Replace("{logo}", url + logo);
 
 
             return enviarCorreo(correo, asunto, cuerpo5, from);
