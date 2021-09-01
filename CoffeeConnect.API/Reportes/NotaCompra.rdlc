@@ -1057,7 +1057,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -3087,7 +3086,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>QQ55,2/Kg</Value>
+                              <Value>QQ/Kg</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -4546,7 +4545,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Importe.Value</Value>
+                              <Value>=Fields!TotalPagar.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -4590,6 +4589,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -5075,6 +5075,10 @@
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Importe">
+          <DataField>Importe</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+		<Field Name="TotalPagar">
           <DataField>Importe</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
