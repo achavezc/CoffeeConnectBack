@@ -12,10 +12,9 @@ namespace CoffeeConnect.DTO.PrecioDiaRendimiento
         }
         public decimal RendimientoInicio { get; set; }
         public decimal RendimientoFin { get; set; }
-
         public decimal PrecioDia { get; set; }
         public decimal Valor1 { get; set; }
         public decimal Valor2 { get; set; }
-        public decimal Valor3 { get; set; }
+        public decimal? Valor3 { get; set; }
     }
 }
