@@ -15,7 +15,7 @@ namespace CoffeeConnect.DTO
         public double RendimientoFin { get; set; }
         public double Valor1 { get; set; }
         public double Valor2 { get; set; }
-        public double Valor3 { get; set; }
+        public double? Valor3 { get; set; }
         public double KGPergamino { get; set; }
         public double PrecioDia { get; set; }
        
