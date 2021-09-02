@@ -299,6 +299,12 @@ namespace CoffeeConnect.DTO
         public decimal Importe
         { get; set; }
 
+        public decimal TotalPagar
+        { get; set; }
+
+        public decimal TotalAdelanto
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the FechaRegistro value.
         /// </summary>
