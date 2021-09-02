@@ -54,6 +54,11 @@ namespace CoffeeConnect.Service
 
         public int RegistrarCliente(RegistrarActualizarClienteRequestDTO request)
         {
+            int validarUsuario = _IUsersService.ValidarUsuario(request.CorreoElectronico);
+            if (validarUsuario > 0)
+            {
+                throw new ResultException(new Result { ErrCode = "01", Message = "Ya existe un cliente con el mismo Email" });
+            }
             Cliente cliente = _Mapper.Map<Cliente>(request);
             cliente.FechaRegistro = DateTime.Now;
             cliente.UsuarioRegistro = request.Usuario;
@@ -69,6 +74,11 @@ namespace CoffeeConnect.Service
             user.CreatedDate = DateTime.Now;
             user.EmpresaId = request.EmpresaId;
             user.ClienteId = clienteId;
+            user.Activo = 1;
+            user.EstadoId = "01";
+            
+          
+         
             int userId = _IUsersService.RegistrarUsuario(user);
             int rolId = int.Parse(_ParametrosSettings.Value.RoleId);
             int userRolId = _IUsersService.RegistrarRolUsuario(userId, rolId);

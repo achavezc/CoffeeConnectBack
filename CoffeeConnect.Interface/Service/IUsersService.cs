@@ -11,5 +11,6 @@ namespace CoffeeConnect.Interface.Service
         LoginBE AuthenticateUsers(string username, string password);
         int RegistrarUsuario(User request);
         int RegistrarRolUsuario(int userId, int userRolId);
+        int ValidarUsuario(string correo);
     }
 }
