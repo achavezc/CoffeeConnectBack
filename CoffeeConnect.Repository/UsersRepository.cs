@@ -382,8 +382,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CreatedDate", user.CreatedDate);
             parameters.Add("@EmpresaId", user.EmpresaId);
             parameters.Add("@ClienteId", user.ClienteId);
+            parameters.Add("@Activo", user.Activo);
+            parameters.Add("@EstadoId", user.EstadoId);
 
-            
+
 
             parameters.Add("@UserId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -417,7 +419,28 @@ namespace CoffeeConnect.Repository
 
             return id;
         }
+        public int ValidarUsuario(string correo)
+        {
+            int result = 0;
 
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Email", correo);
+            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<Object>("uspValidarUsuario", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Count() > 0)
+                    result = 1;
+               // result = db.Execute("uspValidarUsuario", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            
+
+            return result;
+        }
 
     }
 }

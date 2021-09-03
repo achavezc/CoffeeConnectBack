@@ -24,8 +24,9 @@ namespace CoffeeConnect.Service
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<ParametrosSettings> _ParametrosSettings;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private IEmpresaRepository _IEmpresaRepository;
 
-        public ClienteService(IClienteRepository clienteRepository, IUsersService userService, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<ParametrosSettings> parametrosSettings, IWebHostEnvironment webHostEnvironment)
+        public ClienteService(IClienteRepository clienteRepository, IEmpresaRepository empresaRepository, IUsersService userService, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<ParametrosSettings> parametrosSettings, IWebHostEnvironment webHostEnvironment)
         {
             _IClienteRepository = clienteRepository;
             _IUsersService = userService;
@@ -33,6 +34,7 @@ namespace CoffeeConnect.Service
             _Mapper = mapper;
             _ParametrosSettings = parametrosSettings;
             _webHostEnvironment = webHostEnvironment;
+            _IEmpresaRepository = empresaRepository;
         }
 
 
@@ -52,6 +54,11 @@ namespace CoffeeConnect.Service
 
         public int RegistrarCliente(RegistrarActualizarClienteRequestDTO request)
         {
+            int validarUsuario = _IUsersService.ValidarUsuario(request.CorreoElectronico);
+            if (validarUsuario > 0)
+            {
+                throw new ResultException(new Result { ErrCode = "01", Message = "Ya existe un cliente con el mismo Email" });
+            }
             Cliente cliente = _Mapper.Map<Cliente>(request);
             cliente.FechaRegistro = DateTime.Now;
             cliente.UsuarioRegistro = request.Usuario;
@@ -67,17 +74,48 @@ namespace CoffeeConnect.Service
             user.CreatedDate = DateTime.Now;
             user.EmpresaId = request.EmpresaId;
             user.ClienteId = clienteId;
+            user.Activo = 1;
+            user.EstadoId = "01";
+            
+          
+         
             int userId = _IUsersService.RegistrarUsuario(user);
             int rolId = int.Parse(_ParametrosSettings.Value.RoleId);
             int userRolId = _IUsersService.RegistrarRolUsuario(userId, rolId);
 
             EmailManager emailManager = new EmailManager();
 
+            string pathPlantilla = String.Empty;
+            string asunto = String.Empty;
+
+            Empresa empresa= _IEmpresaRepository.ObtenerEmpresaPorId(request.EmpresaId);
+            
+
+            string correoFrom = _ParametrosSettings.Value.CorreoFrom;
+            string logo = String.Empty;
+
+            if (empresa!=null && !String.IsNullOrEmpty(empresa.CorreoFrom))
+            {
+                //correoFrom = empresa.CorreoFrom;
+                logo = empresa.Logo;
+            }            
+
+            if (cliente.TipoClienteId == ClienteTipo.Nacional)
+            {
+                pathPlantilla = $"{this._webHostEnvironment.ContentRootPath}\\plantillas_correo\\bienvenidaES.html";
+                asunto = "Bienvenido a Coffee Connect!";
+            }
+            else
+            {
+                pathPlantilla = $"{this._webHostEnvironment.ContentRootPath}\\plantillas_correo\\bienvenidaEN.html";
+                asunto = "Welcome to Coffee Connect!";
+            }
             //emailManager.SendEmail();
-            var path = $"{this._webHostEnvironment.ContentRootPath}\\plantillas_correo\\bienvenida.html";
+          
 
             string url = _ParametrosSettings.Value.UrlSistema;
-            var responseTask = Task.Run(() => emailManager.SendEmailBienvenida(path, request.RazonSocial, request.CorreoElectronico, request.CorreoElectronico, cliente.Numero,url)) ;
+
+            var responseTask = Task.Run(() => emailManager.SendEmailBienvenida(pathPlantilla, asunto, request.RazonSocial, request.CorreoElectronico, request.CorreoElectronico, cliente.Numero,url, correoFrom, "/assets/img/"+ logo)) ;
 
             return clienteId;
         }

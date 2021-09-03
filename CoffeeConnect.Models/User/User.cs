@@ -14,8 +14,10 @@ namespace CoffeeConnect.Models.User
         public int EmpresaId { get; set; }
 
         public int? ClienteId { get; set; }
+        public int  Activo { get; set; }
+        public string EstadoId { get; set; }
 
-        
+
 
     }
 }

@@ -75,7 +75,12 @@ namespace CoffeeConnect.DTO
 		public string RazonSocialEmpresaProductora
 		{ get; set; }
 
-		public string Estado
+		public string EstadoContrato
+
+
+		{ get; set; }
+
+		public string EstadoAduana
 
 
 		{ get; set; }
@@ -181,7 +186,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
-		public string Numero
+		public string NumeroAduana
 		{ get; set; }
 
 		/// <summary>

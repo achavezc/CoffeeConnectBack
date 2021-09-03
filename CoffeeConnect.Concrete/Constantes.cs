@@ -19,6 +19,13 @@ namespace CoffeeConnect.Service
         public static string Anulado { get { return "00"; } }
     }
 
+    public static class ClienteTipo
+    {
+        public static string Nacional { get { return "01"; } }
+        public static string Internacional { get { return "02"; } }
+    }
+
+
     public static class GuiaRemisionAlmacenEstados
     {
         public static string Ingresado { get { return "01"; } }

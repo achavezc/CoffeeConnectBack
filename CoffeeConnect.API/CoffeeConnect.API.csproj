@@ -65,6 +65,15 @@
     <ProjectReference Include="..\Core.Utils\Core.Utils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="plantillas_correo\bienvenidaES.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="plantillas_correo\bienvenidaEN.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 

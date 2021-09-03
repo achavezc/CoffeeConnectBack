@@ -558,6 +558,11 @@ namespace CoffeeConnect.Service
             int id = _UsersRepository.Insertar(request);
             return id;
         }
+        public int ValidarUsuario(string correo)
+        {
+            int result = _UsersRepository.ValidarUsuario(correo);
+            return result;
+        }
         public int RegistrarRolUsuario(int userId, int userRolId)
         {
             int id = _UsersRepository.InsertarRoles(userId,userRolId);

@@ -169,6 +169,26 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+        public int ActualizarEstadoPorNotaCompra(int notaCompraId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaCompraId", notaCompraId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspAdelantoActualizarEstadoPorNotaCompra", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
+
 
         public int AsociarNotaCompra(int adelantoId, int notaCompraId, DateTime fecha, string usuario)
         {

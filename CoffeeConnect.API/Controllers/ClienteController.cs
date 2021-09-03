@@ -12,6 +12,11 @@ namespace Integracion.Deuda.Controller
     {
         private IClienteService _clienteService;
 
+        
+
+        
+
+
         private Core.Common.Logger.ILog _log;
         public ClienteController(IClienteService clienteService, Core.Common.Logger.ILog log)
         {
