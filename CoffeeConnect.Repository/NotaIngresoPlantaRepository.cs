@@ -84,6 +84,7 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", NotaIngresoPlanta.EmpresaId);
             parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlanta.NotaIngresoPlantaId);
             parameters.Add("@NumeroGuiaRemision", NotaIngresoPlanta.NumeroGuiaRemision);
             parameters.Add("@FechaGuiaRemision", NotaIngresoPlanta.FechaGuiaRemision);
