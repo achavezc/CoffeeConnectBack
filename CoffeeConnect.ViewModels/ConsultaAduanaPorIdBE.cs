@@ -190,7 +190,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the FechaRecepcionMuestra value.
         /// </summary>
-        public DateTime FechaRecepcionMuestra
+        public DateTime? FechaRecepcionMuestra
         { get; set; }
 
         /// <summary>
