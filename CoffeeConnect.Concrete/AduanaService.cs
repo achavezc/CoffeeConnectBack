@@ -156,6 +156,7 @@ namespace CoffeeConnect.Service
                 item.CodigoCertificacion = z.CodigoCertificacion;
                 item.TipoCertificacionId = z.TipoCertificacionId;
                 item.EmpresaProveedoraAcreedoraId = z.EmpresaProveedoraAcreedoraId;
+                item.TipoId = z.TipoId;
 
                 aduanaCertificacionTipoList.Add(item);
             });
