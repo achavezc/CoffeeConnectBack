@@ -26,7 +26,9 @@ namespace CoffeeConnect.DTO
 		public string CodigoCertificacion
 		{ get; set; }
 
-		
+		public string TipoId
+		{ get; set; }
+
 
 		#endregion
 	}

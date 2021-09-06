@@ -29,7 +29,8 @@ namespace CoffeeConnect.Models
 		public string CodigoCertificacion
 		{ get; set; }
 
-		
+		public string TipoId
+		{ get; set; }
 
 		#endregion
 	}
