@@ -30,16 +30,18 @@ namespace CoffeeConnect.Repository
             parameters.Add("@AlmacenId", NotaIngresoAlmacenPlanta.AlmacenId);
             parameters.Add("@NotaIngresoPlantaId", NotaIngresoAlmacenPlanta.NotaIngresoPlantaId);
             parameters.Add("@Numero", NotaIngresoAlmacenPlanta.Numero);
+            parameters.Add("@ProductoId", NotaIngresoAlmacenPlanta.ProductoId);
+            parameters.Add("@SubProductoId", NotaIngresoAlmacenPlanta.SubProductoId);
             parameters.Add("@TipoProduccionId", NotaIngresoAlmacenPlanta.TipoProduccionId);
             parameters.Add("@CertificacionId", NotaIngresoAlmacenPlanta.CertificacionId);
             parameters.Add("@EntidadCertificadoraId", NotaIngresoAlmacenPlanta.EntidadCertificadoraId);            
-            parameters.Add("@ProductoId", NotaIngresoAlmacenPlanta.ProductoId);
-            parameters.Add("@SubProductoId", NotaIngresoAlmacenPlanta.SubProductoId);
+           
             parameters.Add("@UnidadMedidaIdPesado", NotaIngresoAlmacenPlanta.UnidadMedidaIdPesado);
             parameters.Add("@CalidadId", NotaIngresoAlmacenPlanta.CalidadId);
             parameters.Add("@GradoId", NotaIngresoAlmacenPlanta.GradoId);
             parameters.Add("@CantidadDefectos", NotaIngresoAlmacenPlanta.CantidadDefectos);
             parameters.Add("@CantidadPesado", NotaIngresoAlmacenPlanta.CantidadPesado);
+            parameters.Add("@PesoPorSaco", NotaIngresoAlmacenPlanta.PesoporSaco);
             parameters.Add("@KilosBrutosPesado", NotaIngresoAlmacenPlanta.KilosBrutosPesado);
             parameters.Add("@TaraPesado", NotaIngresoAlmacenPlanta.TaraPesado);
             parameters.Add("@KilosNetosPesado", NotaIngresoAlmacenPlanta.KilosNetosPesado);
@@ -54,9 +56,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TotalAnalisisSensorial", NotaIngresoAlmacenPlanta.TotalAnalisisSensorial);
             parameters.Add("@HumedadPorcentajeAnalisisFisico", NotaIngresoAlmacenPlanta.HumedadPorcentajeAnalisisFisico);     
             parameters.Add("@RendimientoPorcentaje", NotaIngresoAlmacenPlanta.RendimientoPorcentaje);
-            parameters.Add("@RendimientoPorcentajePesado", NotaIngresoAlmacenPlanta.RendimientoPorcentajePesado);
-            parameters.Add("@HumedadPorcentajePesado", NotaIngresoAlmacenPlanta.HumedadPorcentajePesado);
-
+            //parameters.Add("@RendimientoPorcentajePesado", NotaIngresoAlmacenPlanta.RendimientoPorcentajePesado);
+            //parameters.Add("@HumedadPorcentajePesado", NotaIngresoAlmacenPlanta.HumedadPorcentajePesado);
+            
             parameters.Add("@EstadoId", NotaIngresoAlmacenPlanta.EstadoId);
             parameters.Add("@FechaRegistro", NotaIngresoAlmacenPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", NotaIngresoAlmacenPlanta.UsuarioRegistro);

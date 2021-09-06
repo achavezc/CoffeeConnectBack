@@ -71,6 +71,7 @@ namespace CoffeeConnect.Service
             NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
             NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;
             NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+            NotaIngresoAlmacenPlanta.PesoporSaco = notaIngresoPlanta.PesoPorSaco;
 
 
 

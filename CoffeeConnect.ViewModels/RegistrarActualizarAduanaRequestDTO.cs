@@ -81,7 +81,6 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public string NumeroSeguimientoMuestra
         { get; set; }
-
         /// <summary>
         /// Gets or sets the EstadoMuestraId value.
         /// </summary>

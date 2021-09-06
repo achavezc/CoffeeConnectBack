@@ -86,7 +86,10 @@ namespace CoffeeConnect.Models
 		public decimal CantidadPesado
 		{ get; set; }
 
-		
+		public decimal? PesoporSaco
+		{ get; set; }
+
+
 
 		/// <summary>
 		/// Gets or sets the KilosBrutosPesado value.
