@@ -8,8 +8,14 @@ namespace Core.Common
 {
     public static class Util
     {
-
-        public static DataTable ToDataTable<T>(this IEnumerable<T> collection)
+        /// <summary>
+        /// Convert a list to a datatable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="SkipGenericTypes">Parameter to bypass generic types</param>
+        /// <returns></returns>
+        public static DataTable ToDataTable<T>(this IEnumerable<T> collection, bool SkipGenericTypes = false)
         {
             DataTable dt = new DataTable("DataTable");
             Type t = typeof(T);
@@ -21,7 +27,14 @@ namespace Core.Common
                 Type ColumnType = pi.PropertyType;
                 if ((ColumnType.IsGenericType))
                 {
-                    ColumnType = ColumnType.GetGenericArguments()[0];
+                    if (!SkipGenericTypes)
+                    {
+                        ColumnType = ColumnType.GetGenericArguments()[0];
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
                 dt.Columns.Add(pi.Name, ColumnType);
             }
@@ -35,7 +48,10 @@ namespace Core.Common
                 {
                     if (pi.GetValue(item, null) != null)
                     {
-                        dr[pi.Name] = pi.GetValue(item, null);
+                        if (dr.Table.Columns.Contains(pi.Name))
+                        {
+                            dr[pi.Name] = pi.GetValue(item, null);
+                        }
                     }
                 }
                 dr.EndEdit();
