@@ -13,6 +13,7 @@
     <None Remove="libwkhtmltox.so" />
     <None Remove="Reportes\ListaProductoresPorNotaSalidaAlmacen.rdlc" />
     <None Remove="Reportes\NotaCompra.rdlc" />
+    <None Remove="Reportes\rptAdelanto.rdlc" />
     <None Remove="Reportes\rptGuiaRemision.rdlc" />
     <None Remove="Reportes\rptOrdenProceso.rdlc" />
     <None Remove="Reportes\rptRegistroSeguridadLimpieza.rdlc" />
@@ -32,6 +33,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reportes\NotaCompra.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reportes\rptAdelanto.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reportes\rptGuiaRemision.rdlc">

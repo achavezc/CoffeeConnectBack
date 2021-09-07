@@ -179,7 +179,6 @@ namespace Integracion.Deuda.Controller
                 ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request = new ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO();
                 request.GuiaRecepcionMateriaPrimaId = id;
 
-
                 ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO impresionListaProductores = _notaSalidaAlmacenService.ConsultarImpresionListaProductoresPorNotaSalidaAlmacen(id);
 
                 impresionListaProductores.FechaImpresion = DateTime.Now;
@@ -194,7 +193,7 @@ namespace Integracion.Deuda.Controller
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
                 //TODO: impresionListaProductores
-                lr.AddDataSource("dsCabeceraLP", reportCabecera);
+                lr.AddDataSource("dsCabeceraLP", Util.ToDataTable(reportCabecera, true));
                 lr.AddDataSource("dsDetalleLP", Util.ToDataTable(impresionListaProductores.ListaProductores));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
@@ -210,7 +209,7 @@ namespace Integracion.Deuda.Controller
                 _log.RegistrarEvento(ex, guid.ToString());
             }
 
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
         }
