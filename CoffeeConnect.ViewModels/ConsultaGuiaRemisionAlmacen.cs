@@ -4,88 +4,65 @@ using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
-	public class ConsultaGuiaRemisionAlmacen
-	{
-		#region Properties
-		public int GuiaRemisionAlmacenId { get; set; }
-		public int NotaSalidaAlmacenId { get; set; }
-		public String Numero { get; set; }
-		public int EmpresaId { get; set; }
-		public String RazonSocialEmpresa { get; set; }
-		public String RucEmpresa { get; set; }
-		public String AlmacenId { get; set; }
-		public String Almacen { get; set; }
+    public class ConsultaGuiaRemisionAlmacen
+    {
+        #region Properties
+        public int GuiaRemisionAlmacenId { get; set; }
+        public int NotaSalidaAlmacenId { get; set; }
+        public string Numero { get; set; }
+        public int EmpresaId { get; set; }
+        public string RazonSocialEmpresa { get; set; }
+        public string RucEmpresa { get; set; }
+        public string AlmacenId { get; set; }
+        public string Almacen { get; set; }
+        public string Soat { get; set; }
+        public string Color { get; set; }
+        public string Dni { get; set; }
+        public string MotivoTrasladoId { get; set; }
+        public string TipoProduccionId { get; set; }
+        public string TipoProduccion { get; set; }
+        public string TipoCertificacionId { get; set; }
+        public string Certificacion { get; set; }
+        public string MotivoTrasladoReferencia { get; set; }
+        public string Motivo { get; set; }
+        public string Destinatario { get; set; }
+        public string RucDestinatario { get; set; }
+        public string DireccionPartida { get; set; }
+        public string DireccionDestino { get; set; }
+        public int EmpresaTransporteId { get; set; }
+        public string Transportista { get; set; }
+        public string DireccionTransportista { get; set; }
+        public string RucTransportista { get; set; }
+        public string Conductor { get; set; }
 
-		public String Soat { get; set; }
+        public string Propietario { get; set; }
+        public string LicenciaConductor { get; set; }
+        public string TransporteId { get; set; }
+        public string MarcaCarretaId { get; set; }
+        public string MarcaCarreta { get; set; }
+        public string MarcaTractorId { get; set; }
+        public string MarcaTractor { get; set; }
+        public string PlacaTractor { get; set; }
+        public string PlacaCarreta { get; set; }
+        public string ConfiguracionVehicularId { get; set; }
+        public string ConfiguracionVehicular { get; set; }
+        public string NumeroConstanciaMTC { get; set; }
+        public string Observacion { get; set; }
+        public Decimal CantidadLotes { get; set; }
+        public Decimal PromedioPorcentajeRendimiento { get; set; }
+        public Decimal HumedadPorcentajeAnalisisFisico { get; set; }
+        public Decimal CantidadTotal { get; set; }
+        public Decimal PesoKilosBrutos { get; set; }
+        public string EstadoId { get; set; }
+        public string FechaRegistro { get; set; }
+        public string UsuarioRegistro { get; set; }
+        public string FechaUltimaActualizacion { get; set; }
+        public string UsuarioUltimaActualizacion { get; set; }
+        public bool Activo { get; set; }
 
-		public String Color { get; set; }
-		public String Dni { get; set; }
+        public IEnumerable<ConsultaGuiaRemisionAlmacenDetalle> lstConsultaGuiaRemisionAlmacenDetalle { get; set; }
 
-
-		public String MotivoTrasladoId { get; set; }
-
-		public String TipoProduccionId { get; set; }
-
-
-		public String TipoProduccion { get; set; }
-
-
-
-		public String TipoCertificacionId { get; set; }
-
-
-		public String Certificacion { get; set; }
-
-
-
-		public String MotivoTrasladoReferencia { get; set; }
-		public String Motivo { get; set; }
-		public String Destinatario { get; set; }
-		public String RucDestinatario { get; set; }
-		public String DireccionPartida { get; set; }
-		public String DireccionDestino { get; set; }
-		public int EmpresaTransporteId { get; set; }
-		public String Transportista { get; set; }
-		public String DireccionTransportista { get; set; }
-		public String RucTransportista { get; set; }
-		public String Conductor { get; set; }
-
-		public String Propietario { get; set; }
-		public String LicenciaConductor { get; set; }
-		public String TransporteId { get; set; }
-		public String MarcaCarretaId { get; set; }
-		public String MarcaCarreta { get; set; }
-		public String MarcaTractorId { get; set; }
-		public String MarcaTractor { get; set; }
-		public String PlacaTractor { get; set; }
-		public String PlacaCarreta { get; set; }
-
-		public String ConfiguracionVehicularId { get; set; }
-
-		public String ConfiguracionVehicular { get; set; }
-
-		
-		public String NumeroConstanciaMTC { get; set; }
-		public String Observacion { get; set; }
-		public Decimal CantidadLotes { get; set; }
-		public Decimal PromedioPorcentajeRendimiento { get; set; }
-
-		public Decimal HumedadPorcentajeAnalisisFisico { get; set; }
-
-		
-
-		public Decimal CantidadTotal { get; set; }
-		public Decimal PesoKilosBrutos { get; set; }
-		public String EstadoId { get; set; }
-		public DateTime FechaRegistro { get; set; }
-		public String UsuarioRegistro { get; set; }
-		public DateTime? FechaUltimaActualizacion { get; set; }
-		public String UsuarioUltimaActualizacion { get; set; }
-		public bool Activo { get; set; }
-
-		public IEnumerable<ConsultaGuiaRemisionAlmacenDetalle> lstConsultaGuiaRemisionAlmacenDetalle { get; set; }
-
-		#endregion
+        #endregion
 
     }
 }

@@ -811,7 +811,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Format(Fields!FechaNotaIngresoAlmacen.Value, "dd/MM/yyyy")</Value>
+                              <Value>=Fields!FechaNotaIngresoAlmacen.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -1139,7 +1139,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Format(Fields!FechaGuiaRecepcionMateriaPrima.Value, "dd/MM/yyyy")</Value>
+                              <Value>=Fields!FechaGuiaRecepcionMateriaPrima.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -2342,7 +2342,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=Format(First(Fields!FechaImpresion.Value, "dsCabeceraLP"), "dd/MM/yyyy")</Value>
+                          <Value>=First(Fields!FechaImpresion.Value, "dsCabeceraLP")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -2476,7 +2476,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=CDate(First(Fields!FechaNotaSalidaAlmacen.Value, "dsCabeceraLP")).ToString("dd/MM/yyyy")</Value>
+                      <Value>=First(Fields!FechaNotaSalidaAlmacen.Value, "dsCabeceraLP")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -2812,11 +2812,11 @@
         </Field>
         <Field Name="FechaImpresion">
           <DataField>FechaImpresion</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FechaNotaSalidaAlmacen">
           <DataField>FechaNotaSalidaAlmacen</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NumeroNotaSalidaAlmacen">
           <DataField>NumeroNotaSalidaAlmacen</DataField>
@@ -2834,27 +2834,23 @@
           <DataField>UsuarioNotaSalidaAlmacen</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ListaProductores">
-          <DataField>ListaProductores</DataField>
-          <rd:TypeName>System.Object</rd:TypeName>
-        </Field>
         <Field Name="Producto">
           <DataField>Producto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TipoProduccion">
-          <DataField>TipoProduccion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Certificacion">
           <DataField>Certificacion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="TipoProduccion">
+          <DataField>TipoProduccion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsImpresionListaProductores</rd:DataSetName>
-        <rd:SchemaPath>D:\JORDAN\FL\MR\CoreRDLCReport-master\RDLCDesign\dsImpresionListaProductores.xsd</rd:SchemaPath>
-        <rd:TableName>dsCabeceraLP</rd:TableName>
+        <rd:DataSetName>dsReportes</rd:DataSetName>
+        <rd:SchemaPath>C:\jdavilat\MR\CoreRDLCReport-master\RDLCDesign\dsReportes.xsd</rd:SchemaPath>
+        <rd:TableName>dtProductoresCabecera</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
@@ -2874,17 +2870,13 @@
           <DataField>CodigoSocio</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Certificacion">
-          <DataField>Certificacion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="FechaGuiaRecepcionMateriaPrima">
           <DataField>FechaGuiaRecepcionMateriaPrima</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FechaNotaIngresoAlmacen">
           <DataField>FechaNotaIngresoAlmacen</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="KilosBrutosPesado">
           <DataField>KilosBrutosPesado</DataField>
@@ -2918,10 +2910,6 @@
           <DataField>TipoDocumento</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Producto">
-          <DataField>Producto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="TipoDocumentoId">
           <DataField>TipoDocumentoId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -2936,9 +2924,9 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsImpresionListaProductores</rd:DataSetName>
-        <rd:SchemaPath>D:\JORDAN\FL\MR\CoreRDLCReport-master\RDLCDesign\dsImpresionListaProductores.xsd</rd:SchemaPath>
-        <rd:TableName>dsDetalleLP</rd:TableName>
+        <rd:DataSetName>dsReportes</rd:DataSetName>
+        <rd:SchemaPath>C:\jdavilat\MR\CoreRDLCReport-master\RDLCDesign\dsReportes.xsd</rd:SchemaPath>
+        <rd:TableName>dtProductoresDetalle</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

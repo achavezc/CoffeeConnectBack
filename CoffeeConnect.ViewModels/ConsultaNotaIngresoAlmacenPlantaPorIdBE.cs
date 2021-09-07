@@ -32,10 +32,10 @@ namespace CoffeeConnect.DTO
 		public int EmpresaId
 		{ get; set; }
 
-		public string NombreOrganizacion
+		public string RazonSocialOrganizacion
 		{ get; set; }
 
-		public string CodigoOrganizacion
+		public string RucOrganizacion
 		{ get; set; }
 
 		public string Certificacion
@@ -84,6 +84,11 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public string SubProducto
 		{ get; set; }
+
+		public string TipoProduccion
+		{ get; set; }
+
+		
 
 		/// <summary>
 		/// Gets or sets the CertificacionID value.
@@ -139,11 +144,7 @@ namespace CoffeeConnect.DTO
 		public string RazonSocial
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the Ruc value.
-		/// </summary>
-		public string Ruc
-		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the Logo value.

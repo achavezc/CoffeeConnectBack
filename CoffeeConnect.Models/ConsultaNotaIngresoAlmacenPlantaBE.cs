@@ -38,8 +38,12 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the RazonSocial value.
 		/// </summary>
-		public string RazonSocial
+		public string RazonSocialOrganizacion
 		{ get; set; }
+
+		public string RucOrganizacion
+		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the TipoProduccionId value.

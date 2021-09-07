@@ -77,6 +77,8 @@ namespace CoffeeConnect.Service
 
         public static string Contrato { get { return "Contrato"; } }
         public static string NotaIngresoAlmacenPlanta { get { return "NotaIngresoAlmacenPlanta  "; } }
+
+        public static string NotaIngresoPlanta { get { return "NotaIngresoPlanta  "; } }
     }
 
     public static class NotaCompraEstados

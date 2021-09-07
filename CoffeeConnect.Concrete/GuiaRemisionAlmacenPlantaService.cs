@@ -32,7 +32,7 @@ namespace CoffeeConnect.Service
             List<ConsultaGuiaRemisionAlmacenPlantaDetalle> detalleGuiaRemision = _IGuiaRemisionAlmacenPlantaRepository.ConsultaGuiaRemisionAlmacenPlantaDetallePorGuiaRemisionAlmacenPlantaId(consultaImpresionGuiaRemision.GuiaRemisionAlmacenPlantaId).ToList();
 
             int contador = 1;
-          
+
 
             detalleGuiaRemision.ForEach(z =>
             {
@@ -45,11 +45,11 @@ namespace CoffeeConnect.Service
                 //agenciasTotal = agenciasTotal.Concat(agencias).ToArray();
                 //certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
 
-                
+
                 guiaRemisionListaDetalle.TipoProducto = z.Producto.Trim();
                 guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida + " Yute";
                 guiaRemisionListaDetalle.Cantidad = z.CantidadPesado;
-                guiaRemisionListaDetalle.PesoNeto = z.KilosNetosPesado;               
+                guiaRemisionListaDetalle.PesoNeto = z.KilosNetosPesado;
                 guiaRemisionListaDetalle.TipoCertificacion = z.TipoCertificacion.Trim();
                 guiaRemisionListaDetalle.TipoProduccion = z.TipoProduccion.Trim();
                 guiaRemisionListaDetalle.Producto = z.Producto.Trim();
@@ -85,21 +85,12 @@ namespace CoffeeConnect.Service
             cabeceraGuiaRemision.TipoProduccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.TipoProduccion) ? consultaImpresionGuiaRemision.TipoProduccion.Trim() : String.Empty;
             cabeceraGuiaRemision.NumeroGuiaRemision = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Numero) ? consultaImpresionGuiaRemision.Numero.Trim() : String.Empty;
             cabeceraGuiaRemision.RucDestinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucDestinatario) ? consultaImpresionGuiaRemision.RucDestinatario.Trim() : String.Empty;
+            cabeceraGuiaRemision.FechaEmision = DateTime.Now.ToString("dd/MM/yyyy");
+            cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now.ToString("dd/MM/yyyy");
 
-
-
-            
-            cabeceraGuiaRemision.FechaEmision = DateTime.Now;
-            cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
-
-
-
-            
             //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
 
-
             generarPDFGuiaRemisionResponseDTO.Cabecera.Add(cabeceraGuiaRemision);
-
 
             GuiaRemisionDetalle guiaRemisionDetalle = new GuiaRemisionDetalle();
             guiaRemisionDetalle.TotalLotes = consultaImpresionGuiaRemision.CantidadLotes;
@@ -109,10 +100,6 @@ namespace CoffeeConnect.Service
             guiaRemisionDetalle.TotalKGBrutos = consultaImpresionGuiaRemision.PesoKilosBrutos;
             guiaRemisionDetalle.ModalidadTransporte = "TRANSPORTE PRIVADO";
             guiaRemisionDetalle.TipoTraslado = "TRANSPORTE PRIVADO";
-
-
-           
-
             guiaRemisionDetalle.MotivoTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Motivo) ? consultaImpresionGuiaRemision.Motivo.Trim() : String.Empty;
             //guiaRemisionDetalle.MotivoDetalleTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoReferencia) ? consultaImpresionGuiaRemision.MotivoTrasladoReferencia.Trim() : String.Empty;
             guiaRemisionDetalle.PropietarioTransportista = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Propietario) ? consultaImpresionGuiaRemision.Propietario.Trim() : String.Empty;
@@ -137,7 +124,7 @@ namespace CoffeeConnect.Service
 
 
 
-           
+
 
 
             generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);
