@@ -817,7 +817,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=CDate(First(Fields!FechaEmision.Value, "dsGRCabecera")).ToString("dd/MM/yyyy")</Value>
+                <Value>=First(Fields!FechaEmision.Value, "dsGRCabecera")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -851,7 +851,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Format(First(Fields!FechaEntregaTransportista.Value, "dsGRCabecera"), "dd/MM/yyyy")</Value>
+                <Value>=First(Fields!FechaEntregaTransportista.Value, "dsGRCabecera")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1227,7 +1227,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!TransportistaMarca.Value, "dsGRDetalle") &amp; "/" &amp; First(Fields!TransportistaPlaca.Value, "dsGRDetalle")</Value>
+                <Value>=Trim(First(Fields!TransportistaMarca.Value, "dsGRDetalle")) &amp; "/" &amp; Trim(First(Fields!TransportistaPlaca.Value, "dsGRDetalle"))</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1510,7 +1510,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="	  " &amp; Sum(Fields!Cantidad.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!UnidadMedida.Value, "dsGRListaDetalle") &amp; "	   " &amp; First(Fields!Producto.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!SubProducto.Value, "dsGRListaDetalle") &amp; " " &amp; First(Fields!TipoProduccion.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!TipoCertificacion.Value, "dsGRListaDetalle")</Value>
+                <Value>="	  " &amp; CStr(Sum(Fields!Cantidad.Value, "dsGRListaDetalle")) &amp; "	" &amp; Trim(First(Fields!UnidadMedida.Value, "dsGRListaDetalle")) &amp; "	   " &amp; Trim(First(Fields!Producto.Value, "dsGRListaDetalle")) &amp; "	" &amp; First(Fields!SubProducto.Value, "dsGRListaDetalle") &amp; " " &amp; First(Fields!TipoProduccion.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!TipoCertificacion.Value, "dsGRListaDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1825,7 +1825,7 @@ RUC </Value>
         </Field>
         <Field Name="FechaEmision">
           <DataField>FechaEmision</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Ruc">
           <DataField>Ruc</DataField>
@@ -1861,7 +1861,7 @@ RUC </Value>
         </Field>
         <Field Name="FechaEntregaTransportista">
           <DataField>FechaEntregaTransportista</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
@@ -1905,7 +1905,7 @@ RUC </Value>
         </Field>
         <Field Name="FechaLote">
           <DataField>FechaLote</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TipoCertificacion">
           <DataField>TipoCertificacion</DataField>
@@ -2029,6 +2029,22 @@ RUC </Value>
         </Field>
         <Field Name="TipoTraslado">
           <DataField>TipoTraslado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaDni">
+          <DataField>TransportistaDni</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaColor">
+          <DataField>TransportistaColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaPlacaCarreta">
+          <DataField>TransportistaPlacaCarreta</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaSoat">
+          <DataField>TransportistaSoat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

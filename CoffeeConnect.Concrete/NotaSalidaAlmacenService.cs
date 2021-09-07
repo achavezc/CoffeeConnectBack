@@ -337,7 +337,7 @@ namespace CoffeeConnect.Service
 
             if (consultaImpresionGuiaRemision != null)
             {
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.FechaNotaSalidaAlmacen = consultaImpresionGuiaRemision.FechaRegistro.ToString("dd/MM/yyyy");
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.FechaNotaSalidaAlmacen = consultaImpresionGuiaRemision.FechaRegistro;
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.NumeroNotaSalidaAlmacen = consultaImpresionGuiaRemision.Numero;
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.UsuarioNotaSalidaAlmacen = consultaImpresionGuiaRemision.UsuarioRegistro;
 
