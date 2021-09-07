@@ -86,7 +86,7 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta NotaIngresoPlanta = _Mapper.Map<NotaIngresoPlanta>(request);
 
 
-            NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRecepcion);
+            NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
 
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
             NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
