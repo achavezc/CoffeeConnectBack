@@ -14,7 +14,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the FechaNotaIngresoAlmacen value.
         /// </summary>
-        public DateTime FechaNotaIngresoAlmacen
+        public string FechaNotaIngresoAlmacen
         { get; set; }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the FechaGuiaRecepcionMateriaPrima value.
         /// </summary>
-        public DateTime FechaGuiaRecepcionMateriaPrima
+        public string FechaGuiaRecepcionMateriaPrima
         { get; set; }
 
         /// <summary>

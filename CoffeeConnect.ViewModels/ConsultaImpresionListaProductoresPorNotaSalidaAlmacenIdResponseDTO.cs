@@ -19,10 +19,10 @@ namespace CoffeeConnect.DTO
         public string UsuarioNotaSalidaAlmacen
         { get; set; }
 
-        public DateTime FechaNotaSalidaAlmacen
+        public string FechaNotaSalidaAlmacen
         { get; set; }
 
-        public DateTime FechaImpresion
+        public string FechaImpresion
         { get; set; }
 
         public string Producto

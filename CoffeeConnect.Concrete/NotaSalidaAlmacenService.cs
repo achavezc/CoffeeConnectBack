@@ -337,15 +337,12 @@ namespace CoffeeConnect.Service
 
             if (consultaImpresionGuiaRemision != null)
             {
-                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.FechaNotaSalidaAlmacen = consultaImpresionGuiaRemision.FechaRegistro;
+                consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.FechaNotaSalidaAlmacen = consultaImpresionGuiaRemision.FechaRegistro.ToString("dd/MM/yyyy");
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.NumeroNotaSalidaAlmacen = consultaImpresionGuiaRemision.Numero;
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.UsuarioNotaSalidaAlmacen = consultaImpresionGuiaRemision.UsuarioRegistro;
 
-
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.Certificacion = consultaImpresionGuiaRemision.Certificacion; ;
-
                 consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.TipoProduccion = consultaImpresionGuiaRemision.TipoProduccion; ;
-
 
                 Empresa empresa = _EmpresaRepository.ObtenerEmpresaPorId(consultaImpresionGuiaRemision.EmpresaId);
 
@@ -355,8 +352,6 @@ namespace CoffeeConnect.Service
                     consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.RucEmpresa = empresa.Ruc;
                     consultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO.DireccionEmpresa = empresa.Direccion;
                 }
-
-
 
                 List<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenIdBE> listaProductores = _INotaSalidaAlmacenRepository.ConsultarImpresionListaProductoresPorNotaSalida(notaSalidaAlmacenId).ToList();
 

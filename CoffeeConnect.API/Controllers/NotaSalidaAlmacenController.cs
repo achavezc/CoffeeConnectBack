@@ -181,7 +181,7 @@ namespace Integracion.Deuda.Controller
 
                 ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO impresionListaProductores = _notaSalidaAlmacenService.ConsultarImpresionListaProductoresPorNotaSalidaAlmacen(id);
 
-                impresionListaProductores.FechaImpresion = DateTime.Now;
+                impresionListaProductores.FechaImpresion = DateTime.Now.ToString("dd/MM/yyyy");
                 List<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO> reportCabecera = new List<ConsultaImpresionListaProductoresPorNotaSalidaAlmacenResponseDTO>();
                 reportCabecera.Add(impresionListaProductores);
 
