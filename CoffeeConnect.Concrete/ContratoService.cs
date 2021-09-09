@@ -23,15 +23,17 @@ namespace CoffeeConnect.Service
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
         private IMaestroRepository _IMaestroRepository;
+        private IEmpresaRepository _IEmpresaRepository;
 
-
-        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
+        
+        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository, IEmpresaRepository empresaRepository)
         {
             _IContratoRepository = contratoRepository;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
             _IMaestroRepository = maestroRepository;
+            _IEmpresaRepository = empresaRepository;
         }
 
         private String getRutaFisica(string pathFile)
@@ -153,6 +155,13 @@ namespace CoffeeConnect.Service
             //        contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
             //    }
             //}
+
+            Empresa empresa = _IEmpresaRepository.ObtenerEmpresaPorId(request.EmpresaId);
+
+            if(empresa.TipoEmpresaid != "02")
+            {
+                contrato.EstadoId = ContratoEstados.Completado;
+            }
 
             int affected = _IContratoRepository.Insertar(contrato);
 

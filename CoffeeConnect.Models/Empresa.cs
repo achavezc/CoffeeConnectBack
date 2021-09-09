@@ -17,7 +17,7 @@ namespace CoffeeConnect.Models
         public string Ruc { get; set; }
         public string Direccion { get; set; }
         public string Logo { get; set; }
-        public string TipoImpresaid { get; set; }
+        public string TipoEmpresaid { get; set; }
         
         public string CorreoFrom { get; set; }
 

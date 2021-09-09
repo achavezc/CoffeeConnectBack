@@ -44,6 +44,7 @@ namespace CoffeeConnect.Service
             NotaIngresoAlmacenPlanta.KilosBrutosPesado = notaIngresoPlanta.KilosBrutos;
             NotaIngresoAlmacenPlanta.TaraPesado = notaIngresoPlanta.Tara;
             NotaIngresoAlmacenPlanta.KilosNetosPesado = notaIngresoPlanta.KilosBrutos - notaIngresoPlanta.Tara;
+   
 
             NotaIngresoAlmacenPlanta.ExportableGramosAnalisisFisico = notaIngresoPlanta.ExportableGramosAnalisisFisico;
             //NotaIngresoAlmacenPlanta.ExportableGramosAnalisisFisico = (notaIngresoPlanta.ExportableGramosAnalisisFisico.HasValue) ? notaIngresoPlanta.ExportableGramosAnalisisFisico.Value : 0;
