@@ -84,8 +84,8 @@ namespace CoffeeConnect.DTO
 		public string SubProducto
 		{ get; set; }
 
-		public string TipoProduccion
-		{ get; set; }
+		//public string TipoProduccion
+		//{ get; set; }
 
 		
 

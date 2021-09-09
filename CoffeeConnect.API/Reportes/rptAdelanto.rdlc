@@ -261,7 +261,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Format(First(Fields!FechaRegistro.Value, "dsAdelanto"), "dd/MM/yyyy")</Value>
+                    <Value>=First(Fields!FechaRegistro.Value, "dsAdelanto")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1272,7 +1272,7 @@
         </Field>
         <Field Name="FechaRegistro">
           <DataField>FechaRegistro</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="UsuarioRegistro">
           <DataField>UsuarioRegistro</DataField>
