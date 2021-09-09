@@ -47,13 +47,13 @@ namespace CoffeeConnect.DTO
         public decimal TotalSacos { get; set; }
         public decimal PesoKilos { get; set; }
         public decimal PreparacionCantidadDefectos { get; set; }
-        public DateTime FechaFinProceso { get; set; }
+        public string FechaFinProceso { get; set; }
         public decimal CantidadContenedores { get; set; }
         public string NombreArchivo { get; set; }
         public string DescripcionArchivo { get; set; }
         public string PathArchivo { get; set; }
         public string EstadoId { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public string FechaRegistro { get; set; }
         public string UsuarioRegistro { get; set; }
         public string FechaUltimaActualizacion { get; set; }
         public string UsuarioUltimaActualizacion { get; set; }

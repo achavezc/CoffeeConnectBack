@@ -298,7 +298,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=cdate(Fields!FechaCosecha.Value).ToString("dd/MM/yyyy")</Value>
+                              <Value>=Fields!FechaCosecha.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -5168,7 +5168,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=cdate(First(Fields!FechaRegistro.Value, "dsNotaCompra")).ToString("dd/MM/yyyy")</Value>
+                          <Value>=First(Fields!FechaRegistro.Value, "dsNotaCompra")</Value>
                           <Style>
                             <FontFamily>Segoe UI</FontFamily>
                             <FontSize>8pt</FontSize>
@@ -5285,15 +5285,15 @@
         </Field>
         <Field Name="FechaCosecha">
           <DataField>FechaCosecha</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FechaLiquidacion">
           <DataField>FechaLiquidacion</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FechaRegistro">
           <DataField>FechaRegistro</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="GuiaRecepcionMateriaPrimaId">
           <DataField>GuiaRecepcionMateriaPrimaId</DataField>
@@ -5305,14 +5305,6 @@
         </Field>
         <Field Name="Importe">
           <DataField>Importe</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="TotalAdelanto">
-          <DataField>TotalAdelanto</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="TotalPagar">
-          <DataField>TotalPagar</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="KilosBrutosPesado">
@@ -5487,11 +5479,19 @@
           <DataField>TipoProduccion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="TotalAdelanto">
+          <DataField>TotalAdelanto</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalPagar">
+          <DataField>TotalPagar</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>NotaCompra</rd:DataSetName>
-        <rd:SchemaPath>C:\jdavilat\MR\CoreRDLCReport-master\RDLCDesign\NotaCompra.xsd</rd:SchemaPath>
-        <rd:TableName>NotaCompra</rd:TableName>
+        <rd:DataSetName>dsReportes</rd:DataSetName>
+        <rd:SchemaPath>C:\jdavilat\MR\CoreRDLCReport-master\RDLCDesign\dsReportes.xsd</rd:SchemaPath>
+        <rd:TableName>dtNotaCompra</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

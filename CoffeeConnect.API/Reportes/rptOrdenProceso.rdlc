@@ -821,7 +821,7 @@ NETOS</Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Format(Fields!FechaNotaIngresoPlanta.Value, "dd/MM/yyyy")</Value>
+                              <Value>=Fields!FechaNotaIngresoPlanta.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -2519,7 +2519,7 @@ NETOS</Value>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Format(First(Fields!FechaRegistro.Value, "dsOrdenProceso"), "dd/MM/yyyy")</Value>
+                      <Value>=First(Fields!FechaRegistro.Value, "dsOrdenProceso")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2607,7 +2607,7 @@ NETOS</Value>
         </Field>
         <Field Name="FechaRegistro">
           <DataField>FechaRegistro</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="EmpresaDestinoRazonSocial">
           <DataField>EmpresaDestinoRazonSocial</DataField>
@@ -2699,7 +2699,7 @@ NETOS</Value>
         </Field>
         <Field Name="FechaNotaIngresoPlanta">
           <DataField>FechaNotaIngresoPlanta</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RendimientoPorcentaje">
           <DataField>RendimientoPorcentaje</DataField>
