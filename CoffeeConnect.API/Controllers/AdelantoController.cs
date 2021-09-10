@@ -260,7 +260,6 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-
         [Route("Asociar")]
         [HttpPost]
         public IActionResult Asociar([FromBody] AsociarAdelantoRequestDTO request)
@@ -290,10 +289,6 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
-
-
-
-
 
         [Route("GenerarPDFAdelanto")]
         [HttpGet]

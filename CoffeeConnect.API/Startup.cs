@@ -187,15 +187,11 @@ namespace CoffeeConnect.API
             services.AddTransient<IUbigeoService, UbigeoService>();
             services.AddTransient<IUbigeoRepository, UbigeoRepository>();
 
-
             services.AddTransient<IInspeccionInternaService, InspeccionInternaService>();
             services.AddTransient<IInspeccionInternaRepository, InspeccionInternaRepository>();
 
             services.AddTransient<INotaSalidaAlmacenPlantaService, NotaSalidaAlmacenPlantaService>();
             services.AddTransient<INotaSalidaAlmacenPlantaRepository, NotaSalidaAlmacenPlantaRepository>();
-
-
-
 
             services.AddTransient<ISocioProyectoService, SocioProyectoService>();
             services.AddTransient<ISocioProyectoRepository, SocioProyectoRepository>();
@@ -217,7 +213,7 @@ namespace CoffeeConnect.API
 
             services.AddTransient<IAdelantoService, AdelantoService>();
             services.AddTransient<IAdelantoRepository, AdelantoRepository>();
-
+            services.AddTransient<IKardexService, KardexService>();
 
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
