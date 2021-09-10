@@ -51,18 +51,26 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaExportadoraId", aduana.EmpresaExportadoraId);
             parameters.Add("@EmpresaProductoraId", aduana.EmpresaProductoraId);
             parameters.Add("@Courier", aduana.Courier);
+
+            parameters.Add("@FechaZarpeNave", aduana.FechaZarpeNave);
+            parameters.Add("@NumeroContratoInternoProductor", aduana.NumeroContratoInternoProductor);
+            parameters.Add("@Puerto", aduana.Puerto);
+            parameters.Add("@NumeroContenedores", aduana.NumeroContenedores);
+            parameters.Add("@FechaEstampado", aduana.FechaEstampado);
+            parameters.Add("@FechaEnvioDocumentos", aduana.FechaEnvioDocumentos);
+            parameters.Add("@FechaLlegadaDocumentos", aduana.FechaLlegadaDocumentos);
+
+
             parameters.Add("@EmpresaId", aduana.EmpresaId);
             parameters.Add("@Numero", aduana.Numero);
             parameters.Add("@Marca", aduana.Marca);
             parameters.Add("@FechaEmbarque", aduana.FechaEmbarque);
             parameters.Add("@FechaFacturacion", aduana.FechaFacturacion);
-            parameters.Add("@PO", aduana.PO);
-            parameters.Add("@LaboratorioId", aduana.LaboratorioId);
+            parameters.Add("@PO", aduana.PO);           
             parameters.Add("@FechaEnvioMuestra", aduana.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", aduana.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", aduana.EstadoMuestraId);
-            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);
-            parameters.Add("@NavieraId", aduana.NavieraId);
+            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);         
             parameters.Add("@Observacion", aduana.Observacion);
             parameters.Add("@FechaRegistro", aduana.FechaRegistro);
             parameters.Add("@UsuarioRegistro", aduana.UsuarioRegistro);
@@ -94,17 +102,23 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Courier", aduana.Courier);
             parameters.Add("@FechaFacturacion", aduana.FechaFacturacion);
             parameters.Add("@Marca", aduana.Marca);
-            parameters.Add("@PO", aduana.PO);
-            parameters.Add("@LaboratorioId", aduana.LaboratorioId);
+            parameters.Add("@PO", aduana.PO);            
             parameters.Add("@FechaEnvioMuestra", aduana.FechaEnvioMuestra);
             parameters.Add("@NumeroSeguimientoMuestra", aduana.NumeroSeguimientoMuestra);
             parameters.Add("@EstadoMuestraId", aduana.EstadoMuestraId);
-            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);
-            parameters.Add("@NavieraId", aduana.NavieraId);
+            parameters.Add("@FechaRecepcionMuestra", aduana.FechaRecepcionMuestra);           
             parameters.Add("@Observacion", aduana.Observacion);
             parameters.Add("@FechaUltimaActualizacion", aduana.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", aduana.UsuarioUltimaActualizacion);
             parameters.Add("@pEstadoSeguimientoId", aduana.EstadoSeguimientoId);
+            parameters.Add("@FechaZarpeNave", aduana.FechaZarpeNave);
+            parameters.Add("@NumeroContratoInternoProductor", aduana.NumeroContratoInternoProductor);
+            parameters.Add("@Puerto", aduana.Puerto);
+            parameters.Add("@NumeroContenedores", aduana.NumeroContenedores);
+            parameters.Add("@FechaEstampado", aduana.FechaEstampado);
+            parameters.Add("@FechaEnvioDocumentos", aduana.FechaEnvioDocumentos);
+            parameters.Add("@FechaLlegadaDocumentos", aduana.FechaLlegadaDocumentos);
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

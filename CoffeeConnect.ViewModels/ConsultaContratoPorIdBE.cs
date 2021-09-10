@@ -282,6 +282,12 @@ namespace CoffeeConnect.DTO
         public decimal? SaldoPendienteKGPergaminoAsignacion
         { get; set; }
 
+        public string EstadoPagoFacturaId { get; set; }        
+
+        public DateTime? FechaPagoFactura { get; set; }
+       
+
+
         #endregion
     }
 }

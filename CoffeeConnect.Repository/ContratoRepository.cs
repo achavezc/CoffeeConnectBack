@@ -107,6 +107,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@pTotalFacturar1", contrato.TotalFacturar1);
             parameters.Add("@pTotalFacturar2", contrato.TotalFacturar2);
             parameters.Add("@pTotalFacturar3", contrato.TotalFacturar3);
+            parameters.Add("@EstadoPagoFacturaId", contrato.EstadoPagoFacturaId);
+            parameters.Add("@FechaPagoFactura", contrato.FechaPagoFactura);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

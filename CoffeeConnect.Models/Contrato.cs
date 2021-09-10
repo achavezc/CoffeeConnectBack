@@ -251,6 +251,12 @@ namespace CoffeeConnect.Models
         public DateTime? FechaFijacionContrato { get; set; }
         public decimal? KilosNetosQQ { get; set; }
         public string EstadoFijacionId { get; set; }
+
+        public string EstadoPagoFacturaId { get; set; }
+
+        public DateTime? FechaPagoFactura { get; set; }
+
+
         public decimal? KilosNetosLB { get; set; }
         public decimal? PrecioNivelFijacion { get; set; }
         public decimal? Diferencial { get; set; }

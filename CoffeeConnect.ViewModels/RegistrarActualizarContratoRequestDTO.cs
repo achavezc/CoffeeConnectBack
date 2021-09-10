@@ -206,5 +206,9 @@ namespace CoffeeConnect.DTO
         public decimal? TotalFacturar1 { get; set; }
         public decimal? TotalFacturar2 { get; set; }
         public decimal? TotalFacturar3 { get; set; }
+
+        public string EstadoPagoFacturaId { get; set; }
+
+        public DateTime? FechaPagoFactura { get; set; }
     }
 }

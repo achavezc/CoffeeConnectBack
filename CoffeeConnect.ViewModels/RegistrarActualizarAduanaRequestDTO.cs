@@ -64,11 +64,7 @@ namespace CoffeeConnect.DTO
         public string PO
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the LaboratorioId value.
-        /// </summary>
-        public string LaboratorioId
-        { get; set; }
+       
 
         /// <summary>
         /// Gets or sets the FechaEnvioMuestra value.
@@ -93,11 +89,7 @@ namespace CoffeeConnect.DTO
         public DateTime? FechaRecepcionMuestra
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the NavieraId value.
-        /// </summary>
-        public string NavieraId
-        { get; set; }
+       
 
         /// <summary>
         /// Gets or sets the Observacion value.
@@ -123,6 +115,27 @@ namespace CoffeeConnect.DTO
         public List<ActualizarAduanaCertificacionRequestDTO> Certificaciones { get; set; }
 
         public List<AduanaDetalle> Detalle { get; set; }
+
+        public DateTime? FechaZarpeNave
+        { get; set; }
+
+        public DateTime? FechaEstampado
+        { get; set; }
+
+        public DateTime? FechaEnvioDocumentos
+        { get; set; }
+
+        public DateTime? FechaLlegadaDocumentos
+        { get; set; }
+
+        public string NumeroContratoInternoProductor
+        { get; set; }
+
+        public string Puerto
+        { get; set; }
+
+        public decimal NumeroContenedores
+        { get; set; }
 
         #endregion
     }
