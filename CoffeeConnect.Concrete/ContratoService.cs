@@ -158,7 +158,7 @@ namespace CoffeeConnect.Service
 
             Empresa empresa = _IEmpresaRepository.ObtenerEmpresaPorId(request.EmpresaId);
 
-            if(empresa.TipoEmpresaid != "02")
+            if(empresa.TipoEmpresaid != "01")
             {
                 contrato.EstadoId = ContratoEstados.Completado;
             }

@@ -64,6 +64,13 @@ namespace CoffeeConnect.DTO
         public int EmpresaId { get; set; }
         public string TipoContratoId { get; set; }
         public string TipoContrato { get; set; }
+
+        public string EstadoPagoFacturaId { get; set; }
+        public string EstadoPagoFactura { get; set; }
+
+        public DateTime? FechaPagoFactura { get; set; }
+
+
         #endregion
     }
 }
