@@ -259,7 +259,7 @@ namespace CoffeeConnect.DTO
         
 
 
-        public string you { get; set; }
+       
 
         public List<ConsultaAduanaCertificacionPorIdBE> Certificaciones
         { get; set; }
