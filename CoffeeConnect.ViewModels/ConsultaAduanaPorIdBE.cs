@@ -239,6 +239,10 @@ namespace CoffeeConnect.DTO
         { get; set; }
         public string EstadoSeguimientoId { get; set; }
 
+        public string EstadoSeguimientoDescripcion { get; set; }
+
+        public string you { get; set; }
+
         public List<ConsultaAduanaCertificacionPorIdBE> Certificaciones
         { get; set; }
 
