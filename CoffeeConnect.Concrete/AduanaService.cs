@@ -47,6 +47,40 @@ namespace CoffeeConnect.Service
                 throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Aduana.ValidacionRangoFechaMayor2anios.Label" });
 
             var list = _IAduanaRepository.ConsultarAduana(request);
+
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+
+            foreach (ConsultaAduanaBE aduana in list)
+            {
+                string[] certificacionesIds = aduana.TipoCertificacionId.Split('|');
+
+                string certificacionLabel = string.Empty;
+                string tipoContratoLabel = string.Empty;
+
+
+                if (certificacionesIds.Length > 0)
+                {
+
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+
+                }
+
+                aduana.TipoCertificacion = certificacionLabel;
+            }
+
+
+
             return list.ToList();
         }
 
@@ -190,7 +224,7 @@ namespace CoffeeConnect.Service
                 string[] certificacionesIds = consultaAduanaPorIdBE.TipoCertificacionId.Split('|');
 
                 string certificacionLabel = string.Empty;
-                string tipoContratoLabel = string.Empty;
+               
 
 
                 if (certificacionesIds.Length > 0)
