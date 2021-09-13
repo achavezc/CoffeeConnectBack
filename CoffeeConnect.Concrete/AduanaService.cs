@@ -20,13 +20,15 @@ namespace CoffeeConnect.Service
         private IAduanaRepository _IAduanaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
+        private IMaestroRepository _IMaestroRepository;
 
-        public AduanaService(IAduanaRepository AduanaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
+        public AduanaService(IAduanaRepository AduanaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _IAduanaRepository = AduanaRepository;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
+            _IMaestroRepository = maestroRepository;
         }
 
         private String getRutaFisica(string pathFile)
@@ -179,6 +181,41 @@ namespace CoffeeConnect.Service
         public ConsultaAduanaPorIdBE ConsultarAduanaPorId(ConsultaAduanaPorIdRequestDTO request)
         {
             ConsultaAduanaPorIdBE consultaAduanaPorIdBE = _IAduanaRepository.ConsultarAduanaPorId(request.AduanaId);
+
+
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaAduanaPorIdBE.EmpresaId, String.Empty).ToList();
+
+
+           
+                string[] certificacionesIds = consultaAduanaPorIdBE.TipoCertificacionId.Split('|');
+
+                string certificacionLabel = string.Empty;
+                string tipoContratoLabel = string.Empty;
+
+
+                if (certificacionesIds.Length > 0)
+                {
+
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+
+                }
+
+
+
+            consultaAduanaPorIdBE.TipoCertificacion = certificacionLabel;
+            
+
 
             consultaAduanaPorIdBE.Certificaciones = _IAduanaRepository.ConsultarAduanaCertificacionPorId(request.AduanaId).ToList();
 

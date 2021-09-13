@@ -19,6 +19,18 @@ namespace CoffeeConnect.DTO
         public string FloId
         { get; set; }
 
+        public string TipoCertificacionId
+        { get; set; }
+
+        public string TipoCertificacion
+        { get; set; }
+
+        public decimal? PreparacionCantidadDefectos
+        { get; set; }
+
+        
+
+
         public string Courier
         { get; set; }
 
@@ -240,6 +252,12 @@ namespace CoffeeConnect.DTO
         public string EstadoSeguimientoId { get; set; }
 
         public string EstadoSeguimientoDescripcion { get; set; }
+
+        public string EstadoPagoFactura { get; set; }
+
+        public DateTime? FechaPagoFactura { get; set; }
+        
+
 
         public string you { get; set; }
 
