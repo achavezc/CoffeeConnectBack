@@ -7,18 +7,25 @@ namespace CoffeeConnect.DTO
     public class RegistrarActualizarAduanaRequestDTO
     {
         #region Properties
-        /// <summary>
-        /// Gets or sets the AduanaId value.
-        /// </summary>
+        public int EmpresaId
+        { get; set; }
+
+
         public int AduanaId
         { get; set; }
 
+        public string Numero
+        { get; set; }
         /// <summary>
         /// Gets or sets the ContratoId value.
         /// </summary>
         public int ContratoId
         { get; set; }
 
+        
+
+        public int EmpresaAgenciaAduaneraId
+        { get; set; }
         /// <summary>
         /// Gets or sets the EmpresaExportadoraId value.
         /// </summary>
@@ -31,30 +38,24 @@ namespace CoffeeConnect.DTO
         public int EmpresaProductoraId
         { get; set; }
 
-        public string Courier
+        public string NumeroContratoInternoProductor
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the EmpresaId value.
-        /// </summary>
-        public int EmpresaId
+
+
+        public DateTime? FechaEmbarque
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Numero value.
-        /// </summary>
-        public string Numero
-        { get; set; }
-
-        public DateTime FechaEmbarque
+        public DateTime? FechaZarpeNave
         { get; set; }
 
         public DateTime? FechaFacturacion
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Marca value.
-        /// </summary>
+        public string Puerto
+        { get; set; }
+
+
         public string Marca
         { get; set; }
 
@@ -64,63 +65,44 @@ namespace CoffeeConnect.DTO
         public string PO
         { get; set; }
 
-       
 
-        /// <summary>
-        /// Gets or sets the FechaEnvioMuestra value.
-        /// </summary>
-        public DateTime FechaEnvioMuestra
+
+
+        public decimal NumeroContenedores
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the NumeroSeguimientoMuestra value.
-        /// </summary>
-        public string NumeroSeguimientoMuestra
-        { get; set; }
-        /// <summary>
-        /// Gets or sets the EstadoMuestraId value.
-        /// </summary>
-        public string EstadoMuestraId
+
+        public string EstadoSeguimientoId { get; set; }
+
+
+        public DateTime? FechaEstampado { get; set; }
+
+
+        public DateTime? FechaEnvioMuestra
         { get; set; }
 
-        /// <summary>
-        /// Gets or sets the FechaRecepcionMuestra value.
-        /// </summary>
         public DateTime? FechaRecepcionMuestra
         { get; set; }
 
-       
 
-        /// <summary>
-        /// Gets or sets the Observacion value.
-        /// </summary>
+        public string EstadoMuestraId
+        { get; set; }
+
+
+
+
+
+        public string Courier
+        { get; set; }
+
+        public string NumeroSeguimientoMuestra
+        { get; set; }
+
         public string Observacion
         { get; set; }
 
 
-        /// <summary>
-        /// Gets or sets the FechaRegistro value.
-        /// </summary>
 
-        /// <summary>
-        /// Gets or sets the UsuarioRegistro value.
-        /// </summary>
-        public string Usuario
-        { get; set; }
-
-        public int EmpresaAgenciaAduaneraId
-        { get; set; }
-        public string EstadoSeguimientoId { get; set; }
-
-        public List<ActualizarAduanaCertificacionRequestDTO> Certificaciones { get; set; }
-
-        public List<AduanaDetalle> Detalle { get; set; }
-
-        public DateTime? FechaZarpeNave
-        { get; set; }
-
-        public DateTime? FechaEstampado
-        { get; set; }
 
         public DateTime? FechaEnvioDocumentos
         { get; set; }
@@ -128,14 +110,29 @@ namespace CoffeeConnect.DTO
         public DateTime? FechaLlegadaDocumentos
         { get; set; }
 
-        public string NumeroContratoInternoProductor
+       
+
+        
+
+        
+        
+
+        public List<ActualizarAduanaCertificacionRequestDTO> Certificaciones { get; set; }
+
+        public List<AduanaDetalle> Detalle { get; set; }
+
+
+        public string Usuario
         { get; set; }
 
-        public string Puerto
-        { get; set; }
 
-        public decimal NumeroContenedores
-        { get; set; }
+
+
+
+
+
+
+
 
         #endregion
     }

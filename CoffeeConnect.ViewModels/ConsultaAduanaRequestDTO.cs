@@ -25,5 +25,7 @@ namespace CoffeeConnect.DTO
 
         public DateTime FechaFin { get; set; }
 
+        public String RucEmpresaAgenciaAduanera { get; set; }
+
     }
 }
