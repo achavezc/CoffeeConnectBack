@@ -20,22 +20,44 @@ namespace CoffeeConnect.Service
                     IXLWorksheet worksheet = workbook.Worksheets.Add("Kardex");
                     worksheet.Column("A").Width = 1.71;
                     worksheet.Column("B").Width = 11.29;
-                    worksheet.Columns().AdjustToContents();
-                    worksheet.Rows().AdjustToContents();
+                    
                     worksheet.Cell(2, 2).Value = "Kardex:";
+                    worksheet.Cell(2, 2).Style.Font.Bold = true;
                     worksheet.Cell(3, 2).Value = "Producto:";
+                    worksheet.Cell(3, 2).Style.Font.Bold = true;
                     worksheet.Cell(4, 2).Value = "Sub Producto:";
+                    worksheet.Cell(4, 2).Style.Font.Bold = true;
                     worksheet.Cell(5, 2).Value = "Fecha Inicio:";
+                    worksheet.Cell(5, 2).Style.Font.Bold = true;
                     worksheet.Cell(6, 2).Value = "Fecha Fin:";
+                    worksheet.Cell(6, 2).Style.Font.Bold = true;
                     //PRIMERA TABLA
                     worksheet.Cell(2, 8).Value = "Sacos";
+                    worksheet.Cell(2, 8).Style.Font.Bold = true;
+                    worksheet.Cell(2, 8).Style.Border.OutsideBorder = XLBorderStyleValues.Hair;
+                    worksheet.Cell(2, 8).Style.Alignment.WrapText = true;
                     worksheet.Cell(2, 9).Value = "Kgs Netos a pagar";
+                    worksheet.Cell(2, 9).Style.Font.Bold = true;
                     worksheet.Cell(2, 10).Value = "Moneda";
+                    worksheet.Cell(2, 10).Style.Font.Bold = true;
                     worksheet.Cell(2, 11).Value = "Importe";
+                    worksheet.Cell(2, 11).Style.Font.Bold = true;
                     worksheet.Cell(3, 7).Value = "Inventario Actual:";
+                    worksheet.Cell(3, 7).Style.Font.Bold = true;
 
                     worksheet.Cell(8, 2).Value = "INGRESOS";
-                    worksheet.Range(worksheet.Cell(8, 2), worksheet.Cell(8, 33)).Merge();
+                    worksheet.Cell(8, 2).Style.Font.Bold = true;
+                    worksheet.Cell(8, 2).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                    worksheet.Cell(8, 2).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    IXLRange rangeIngresos = worksheet.Range(worksheet.Cell(8, 2), worksheet.Cell(8, 34));
+                    rangeIngresos.Merge();
+
+                    worksheet.Cell(8, 35).Value = "SALIDAS";
+                    worksheet.Cell(8, 35).Style.Font.Bold = true;
+                    worksheet.Cell(8, 35).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                    worksheet.Cell(8, 35).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    IXLRange rangeSalidas = worksheet.Range(worksheet.Cell(8, 35), worksheet.Cell(8, 52));
+                    rangeSalidas.Merge();
 
                     worksheet.Cell(9, 2).Value = "Fecha Recepcion";
                     worksheet.Cell(9, 3).Value = "Nro. Guia de Recepcion";
@@ -89,11 +111,33 @@ namespace CoffeeConnect.Service
                     worksheet.Cell(9, 51).Value = "% Humedad";
                     worksheet.Cell(9, 52).Value = "% Rendimiento";
 
+                    for (int i = 2; i <= 34; i++)
+                    {
+                        worksheet.Cell(9, i).Style.Fill.SetBackgroundColor(XLColor.YellowProcess);
+                        worksheet.Cell(9, i).Style.Font.Bold = true;
+                        worksheet.Cell(9, i).Style.Alignment.WrapText = true;
+                        worksheet.Cell(9, i).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                        worksheet.Cell(9, i).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                    }
+
+                    for (int i = 35; i <= 52; i++)
+                    {
+                        worksheet.Cell(9, i).Style.Fill.SetBackgroundColor(XLColor.BlueGray);
+                        worksheet.Cell(9, i).Style.Font.Bold = true;
+                        worksheet.Cell(9, i).Style.Alignment.WrapText = true;
+                        worksheet.Cell(9, i).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                        worksheet.Cell(9, i).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                    }
+
+                    worksheet.ColumnsUsed().AdjustToContents();
+                    worksheet.RowsUsed().AdjustToContents();
+
                     using (var stream = new MemoryStream())
                     {
                         workbook.SaveAs(stream);
                         respose.content = stream.ToArray();
                     }
+
                 }
             }
             catch (Exception ex)
