@@ -133,7 +133,7 @@ namespace CoffeeConnect.Service
                         },
                         pathFile = _fileServerSettings.Value.Contrato
                     });
-                    contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
+                    contrato.PathArchivo = _fileServerSettings.Value.Contrato + "\\" + response.ficheroReal;
                 }
 
             }

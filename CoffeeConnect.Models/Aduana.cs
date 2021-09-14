@@ -29,7 +29,7 @@ namespace CoffeeConnect.Models
 
 
 
-        public DateTime FechaEmbarque
+        public DateTime? FechaEmbarque
         { get; set; }
 
         public DateTime? FechaFacturacion
@@ -78,7 +78,7 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the FechaEnvioMuestra value.
         /// </summary>
-        public DateTime FechaEnvioMuestra
+        public DateTime? FechaEnvioMuestra
         { get; set; }
 
         /// <summary>

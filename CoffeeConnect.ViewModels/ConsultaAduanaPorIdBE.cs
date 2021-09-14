@@ -139,7 +139,7 @@ namespace CoffeeConnect.DTO
         public int EmpresaExportadoraId
         { get; set; }
 
-        public DateTime FechaEmbarque
+        public DateTime? FechaEmbarque
         { get; set; }
 
         public DateTime? FechaFacturacion
@@ -180,7 +180,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the FechaEnvioMuestra value.
         /// </summary>
-        public DateTime FechaEnvioMuestra
+        public DateTime? FechaEnvioMuestra
         { get; set; }
 
         /// <summary>
