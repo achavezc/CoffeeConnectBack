@@ -821,7 +821,7 @@ NETOS</Value>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!FechaNotaIngresoPlanta.Value</Value>
+                              <Value>=Fields!FechaNotaIngresoPlantaString.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -2697,8 +2697,8 @@ NETOS</Value>
           <DataField>NroNotaIngresoPlanta</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaNotaIngresoPlanta">
-          <DataField>FechaNotaIngresoPlanta</DataField>
+        <Field Name="FechaNotaIngresoPlantaString">
+          <DataField>FechaNotaIngresoPlantaString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RendimientoPorcentaje">

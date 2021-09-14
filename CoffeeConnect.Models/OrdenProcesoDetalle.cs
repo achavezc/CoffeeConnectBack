@@ -30,7 +30,7 @@ namespace CoffeeConnect.Models
         public decimal KilosBrutos { get; set; }
         public decimal Tara { get; set; }
         public decimal KilosNetos { get; set; }
-
+        public string FechaNotaIngresoPlantaString { get; set; }
         #endregion
     }
 }

@@ -137,7 +137,6 @@ namespace CoffeeConnect.Service
                 _IOrdenProcesoRepository.InsertarProcesoDetalle(detalle);
             }
 
-
             return affected;
         }
 
@@ -145,35 +144,30 @@ namespace CoffeeConnect.Service
         {
             ConsultaOrdenProcesoPorIdBE consultaOrdenProcesoPorIdBE = _IOrdenProcesoRepository.ConsultarOrdenProcesoPorId(request.OrdenProcesoId);
 
-            string [] certificacionesIds = consultaOrdenProcesoPorIdBE.TipoCertificacionId.Split('|');
+            string[] certificacionesIds = consultaOrdenProcesoPorIdBE.TipoCertificacionId.Split('|');
 
             string certificacionLabel = string.Empty;
 
-            if(certificacionesIds.Length>0)
+            if (certificacionesIds.Length > 0)
             {
-                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaOrdenProcesoPorIdBE.EmpresaId,String.Empty).ToList();
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaOrdenProcesoPorIdBE.EmpresaId, String.Empty).ToList();
 
                 List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
 
-                foreach(string certificacionId in certificacionesIds)
+                foreach (string certificacionId in certificacionesIds)
                 {
 
                     ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
 
-                    if(certificacion!=null)
+                    if (certificacion != null)
                     {
                         certificacionLabel = certificacionLabel + certificacion.Label + " ";
                     }
-
-                    
                 }
             }
 
             consultaOrdenProcesoPorIdBE.Certificacion = certificacionLabel;
-
-
             consultaOrdenProcesoPorIdBE.detalle = _IOrdenProcesoRepository.ConsultarOrdenProcesoDetallePorId(request.OrdenProcesoId).ToList();
-
 
             return consultaOrdenProcesoPorIdBE;
         }
@@ -181,7 +175,7 @@ namespace CoffeeConnect.Service
         public int AnularOrdenProceso(AnularOrdenProcesoRequestDTO request)
         {
             int result = 0;
-            if(request.OrdenProcesoId > 0)
+            if (request.OrdenProcesoId > 0)
             {
                 result = _IOrdenProcesoRepository.Anular(request.OrdenProcesoId, DateTime.Now, request.Usuario, OrdenProcesoEstados.Anulado);
             }
