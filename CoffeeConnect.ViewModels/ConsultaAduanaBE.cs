@@ -247,7 +247,9 @@ namespace CoffeeConnect.DTO
         public string UsuarioRegistro
         { get; set; }
 
-    
+        public string EstadoMuestra { get; set; }
+
+        
 
         public string EstadoSeguimientoDescripcion { get; set; }
 
