@@ -25,8 +25,10 @@ namespace CoffeeConnect.DTO
         public string RazonSocial { get; set; }
         public string NumeroGuiaRemision { get; set; }
         public string Direccion { get; set; }
-        public string FechaEmision { get; set; }
-        public string FechaEntregaTransportista { get; set; }
+        public DateTime FechaEmision { get; set; }
+        public string FechaEmisionString { get; set; }
+        public DateTime FechaEntregaTransportista { get; set; }
+        public string FechaEntregaTransportistaString { get; set; }
         public string Ruc { get; set; }
         public string Almacen { get; set; }
         public string Destinatario { get; set; }
@@ -41,7 +43,8 @@ namespace CoffeeConnect.DTO
     {
         public int correlativo { get; set; }
         public string NumeroLote { get; set; }
-        public string FechaLote { get; set; }
+        public DateTime FechaLote { get; set; }
+        public string FechaLoteString { get; set; }
         public string TipoProducto { get; set; }
         public string TipoCertificacion { get; set; }
         public string TipoProduccion { get; set; }

@@ -54,12 +54,13 @@ namespace CoffeeConnect.DTO
         public Decimal CantidadTotal { get; set; }
         public Decimal PesoKilosBrutos { get; set; }
         public string EstadoId { get; set; }
-        public string FechaRegistro { get; set; }
+        public DateTime FechaRegistro { get; set; }
         public string UsuarioRegistro { get; set; }
-        public string FechaUltimaActualizacion { get; set; }
+        public DateTime FechaUltimaActualizacion { get; set; }
         public string UsuarioUltimaActualizacion { get; set; }
         public bool Activo { get; set; }
-
+        public string FechaRegistroString { get; set; }
+        public string FechaUltimaActualizacionString { get; set; }
         public IEnumerable<ConsultaGuiaRemisionAlmacenDetalle> lstConsultaGuiaRemisionAlmacenDetalle { get; set; }
 
         #endregion
