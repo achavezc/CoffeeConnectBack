@@ -24,12 +24,12 @@ namespace CoffeeConnect.DTO
 
         
 
-        public int EmpresaAgenciaAduaneraId
+        public int? EmpresaAgenciaAduaneraId
         { get; set; }
         /// <summary>
         /// Gets or sets the EmpresaExportadoraId value.
         /// </summary>
-        public int EmpresaExportadoraId
+        public int? EmpresaExportadoraId
         { get; set; }
 
         /// <summary>

@@ -85,8 +85,10 @@ namespace CoffeeConnect.Service
             cabeceraGuiaRemision.TipoProduccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.TipoProduccion) ? consultaImpresionGuiaRemision.TipoProduccion.Trim() : String.Empty;
             cabeceraGuiaRemision.NumeroGuiaRemision = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Numero) ? consultaImpresionGuiaRemision.Numero.Trim() : String.Empty;
             cabeceraGuiaRemision.RucDestinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucDestinatario) ? consultaImpresionGuiaRemision.RucDestinatario.Trim() : String.Empty;
-            cabeceraGuiaRemision.FechaEmision = DateTime.Now.ToString("dd/MM/yyyy");
-            cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now.ToString("dd/MM/yyyy");
+            cabeceraGuiaRemision.FechaEmision = DateTime.Now;
+            cabeceraGuiaRemision.FechaEmisionString = DateTime.Now.ToString("dd/MM/yyyy");
+            cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
+            cabeceraGuiaRemision.FechaEntregaTransportistaString = DateTime.Now.ToString("dd/MM/yyyy");
 
             //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
 

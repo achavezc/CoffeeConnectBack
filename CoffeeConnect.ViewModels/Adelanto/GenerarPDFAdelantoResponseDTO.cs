@@ -38,7 +38,8 @@ namespace CoffeeConnect.DTO
         public string Estado { get; set; }
         public string TipoDocumento { get; set; }
         public string Moneda { get; set; }
-        public string FechaRegistro { get; set; }
+        public DateTime FechaRegistro { get; set; }
+        public string FechaRegistroString { get; set; }
         public string UsuarioRegistro { get; set; }
         public string RazonSocial { get; set; }
         public string Ruc { get; set; }

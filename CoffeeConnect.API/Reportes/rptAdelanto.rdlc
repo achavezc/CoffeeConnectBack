@@ -261,7 +261,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!FechaRegistro.Value, "dsAdelanto")</Value>
+                    <Value>=First(Fields!FechaRegistroString.Value, "dsAdelanto")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -1270,8 +1270,8 @@
           <DataField>Moneda</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaRegistro">
-          <DataField>FechaRegistro</DataField>
+        <Field Name="FechaRegistroString">
+          <DataField>FechaRegistroString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="UsuarioRegistro">

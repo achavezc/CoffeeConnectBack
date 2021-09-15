@@ -164,9 +164,10 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the FechaCosecha value.
         /// </summary>
-        public string FechaCosecha
+        public DateTime FechaCosecha
         { get; set; }
-
+        public string FechaCosechaString
+        { get; set; }
         /// <summary>
         /// Gets or sets the EstadoId value.
         /// </summary>
@@ -308,9 +309,9 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the FechaRegistro value.
         /// </summary>
-        public string FechaRegistro
+        public DateTime FechaRegistro
         { get; set; }
-
+        public string FechaRegistroString { get; set; }
         /// <summary>
         /// Gets or sets the UsuarioRegistro value.
         /// </summary>
@@ -326,9 +327,9 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the FechaLiquidacion value.
         /// </summary>
-        public string FechaLiquidacion
+        public DateTime FechaLiquidacion
         { get; set; }
-
+        public string FechaLiquidacionString { get; set; }
         /// <summary>
         /// Gets or sets the FechaUltimaActualizacion value.
         /// </summary>
