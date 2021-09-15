@@ -817,7 +817,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!FechaEmision.Value, "dsGRCabecera")</Value>
+                <Value>=First(Fields!FechaEmisionString.Value, "dsGRCabecera")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -851,7 +851,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!FechaEntregaTransportista.Value, "dsGRCabecera")</Value>
+                <Value>=First(Fields!FechaEntregaTransportistaString.Value, "dsGRCabecera")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1823,8 +1823,8 @@ RUC </Value>
           <DataField>Direccion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaEmision">
-          <DataField>FechaEmision</DataField>
+        <Field Name="FechaEmisionString">
+          <DataField>FechaEmisionString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Ruc">
@@ -1859,8 +1859,8 @@ RUC </Value>
           <DataField>TipoProduccion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaEntregaTransportista">
-          <DataField>FechaEntregaTransportista</DataField>
+        <Field Name="FechaEntregaTransportistaString">
+          <DataField>FechaEntregaTransportistaString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -1903,8 +1903,8 @@ RUC </Value>
           <DataField>PesoNeto</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="FechaLote">
-          <DataField>FechaLote</DataField>
+        <Field Name="FechaLoteString">
+          <DataField>FechaLoteString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TipoCertificacion">

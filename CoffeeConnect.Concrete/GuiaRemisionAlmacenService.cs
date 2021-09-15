@@ -43,14 +43,14 @@ namespace CoffeeConnect.Service
                     GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
                     guiaRemisionListaDetalle.correlativo = contador;
                     contador++;
-                //string[] agencias = z.AgenciaCertificadora.Split("|");
-                //string[] certificaciones = z.Certificacion.Split("|");
+                    //string[] agencias = z.AgenciaCertificadora.Split("|");
+                    //string[] certificaciones = z.Certificacion.Split("|");
 
-                //agenciasTotal = agenciasTotal.Concat(agencias).ToArray();
-                //certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
+                    //agenciasTotal = agenciasTotal.Concat(agencias).ToArray();
+                    //certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
 
-                guiaRemisionListaDetalle.NumeroLote = z.NumeroLote.Trim();
-                    guiaRemisionListaDetalle.FechaLote = z.FechaLote.ToString("dd/MM/yyyy");
+                    guiaRemisionListaDetalle.NumeroLote = z.NumeroLote.Trim();
+                    guiaRemisionListaDetalle.FechaLoteString = z.FechaLoteString;
                     guiaRemisionListaDetalle.TipoProducto = z.Producto.Trim();
                     guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida + " Plastico";
                     guiaRemisionListaDetalle.Cantidad = z.CantidadPesado;
@@ -92,8 +92,10 @@ namespace CoffeeConnect.Service
                 cabeceraGuiaRemision.TipoProduccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.TipoProduccion) ? consultaImpresionGuiaRemision.TipoProduccion.Trim() : String.Empty;
                 cabeceraGuiaRemision.NumeroGuiaRemision = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Numero) ? consultaImpresionGuiaRemision.Numero.Trim() : String.Empty;
                 cabeceraGuiaRemision.RucDestinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucDestinatario) ? consultaImpresionGuiaRemision.RucDestinatario.Trim() : String.Empty;
-                cabeceraGuiaRemision.FechaEmision = DateTime.Now.ToString("dd/MM/yyyy");
-                cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now.ToString("dd/MM/yyyy");
+                cabeceraGuiaRemision.FechaEmision = DateTime.Now;
+                cabeceraGuiaRemision.FechaEmisionString = DateTime.Now.ToString("dd/MM/yyyy");
+                cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
+                cabeceraGuiaRemision.FechaEntregaTransportistaString = DateTime.Now.ToString("dd/MM/yyyy");
 
                 //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
                 generarPDFGuiaRemisionResponseDTO.Cabecera.Add(cabeceraGuiaRemision);
