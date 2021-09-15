@@ -13,7 +13,7 @@ namespace CoffeeConnect.DTO
         public int AduanaId
         { get; set; }
 
-        public int EmpresaAgenciaAduaneraId
+        public int? EmpresaAgenciaAduaneraId
         { get; set; }
 
         public string FloId
@@ -136,7 +136,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the EmpresaExportadoraId value.
         /// </summary>
-        public int EmpresaExportadoraId
+        public int? EmpresaExportadoraId
         { get; set; }
 
         public DateTime? FechaEmbarque
@@ -148,7 +148,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the EmpresaProductoraId value.
         /// </summary>
-        public int EmpresaProductoraId
+        public int? EmpresaProductoraId
         { get; set; }
 
         /// <summary>

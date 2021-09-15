@@ -20,10 +20,10 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the EmpresaExportadoraId value.
         /// </summary>
-        public int EmpresaExportadoraId
+        public int? EmpresaExportadoraId
         { get; set; }
 
-        public int EmpresaAgenciaAduaneraId
+        public int? EmpresaAgenciaAduaneraId
         { get; set; }
 
 
@@ -39,7 +39,7 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the EmpresaProductoraId value.
         /// </summary>
-        public int EmpresaProductoraId
+        public int? EmpresaProductoraId
         { get; set; }
 
         /// <summary>
