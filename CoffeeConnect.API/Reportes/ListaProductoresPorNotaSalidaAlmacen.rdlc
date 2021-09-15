@@ -811,7 +811,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!FechaNotaIngresoAlmacen.Value</Value>
+                              <Value>=Fields!FechaNotaIngresoAlmacenString.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -1139,7 +1139,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!FechaGuiaRecepcionMateriaPrima.Value</Value>
+                              <Value>=Fields!FechaGuiaRecepcionMateriaPrimaString.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>7pt</FontSize>
@@ -2476,7 +2476,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!FechaNotaSalidaAlmacen.Value, "dsCabeceraLP")</Value>
+                      <Value>=First(Fields!FechaNotaSalidaAlmacenString.Value, "dsCabeceraLP")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -2814,8 +2814,8 @@
           <DataField>FechaImpresion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaNotaSalidaAlmacen">
-          <DataField>FechaNotaSalidaAlmacen</DataField>
+        <Field Name="FechaNotaSalidaAlmacenString">
+          <DataField>FechaNotaSalidaAlmacenString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NumeroNotaSalidaAlmacen">
@@ -2870,12 +2870,12 @@
           <DataField>CodigoSocio</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaGuiaRecepcionMateriaPrima">
-          <DataField>FechaGuiaRecepcionMateriaPrima</DataField>
+        <Field Name="FechaGuiaRecepcionMateriaPrimaString">
+          <DataField>FechaGuiaRecepcionMateriaPrimaString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaNotaIngresoAlmacen">
-          <DataField>FechaNotaIngresoAlmacen</DataField>
+        <Field Name="FechaNotaIngresoAlmacenString">
+          <DataField>FechaNotaIngresoAlmacenString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="KilosBrutosPesado">
