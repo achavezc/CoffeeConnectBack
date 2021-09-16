@@ -30,6 +30,10 @@ namespace CoffeeConnect.DTO
         /// Gets or sets the NombreRazonSocial value.
         /// </summary>
         public string Cliente { get; set; }
+
+        public decimal? CantidadContenedores
+        { get; set; }
+
         public DateTime FechaEmbarque { get; set; }
         public string ProductoId { get; set; }
         public string SubProductoId { get; set; }

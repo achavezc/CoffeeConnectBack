@@ -146,6 +146,12 @@ namespace CoffeeConnect.Models
         public decimal? TotalSacos
         { get; set; }
 
+        public decimal? CantidadContenedores
+        { get; set; }
+
+        
+
+
         public decimal? PesoKilos
         { get; set; }
 

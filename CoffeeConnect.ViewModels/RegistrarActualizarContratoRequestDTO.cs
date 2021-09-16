@@ -199,6 +199,10 @@ namespace CoffeeConnect.DTO
         public decimal? PrecioNivelFijacion { get; set; }
         public decimal? Diferencial { get; set; }
         public decimal? PUTotalA { get; set; }
+
+        public decimal? CantidadContenedores
+        { get; set; }
+
         public decimal? PUTotalB { get; set; }
         public decimal? PUTotalC { get; set; }
         public decimal? NotaCreditoComision { get; set; }

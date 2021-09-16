@@ -28,6 +28,9 @@ namespace CoffeeConnect.DTO
         public string PeriodosCosecha
         { get; set; }
 
+        public decimal? CantidadContenedores
+        { get; set; }
+
 
         /// <summary>
         /// Gets or sets the FloId value.

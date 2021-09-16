@@ -109,6 +109,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@pTotalFacturar3", contrato.TotalFacturar3);
             parameters.Add("@EstadoPagoFacturaId", contrato.EstadoPagoFacturaId);
             parameters.Add("@FechaPagoFactura", contrato.FechaPagoFactura);
+            parameters.Add("@CantidadContenedores", contrato.CantidadContenedores);
+
+           
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -149,6 +152,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CalidadId", contrato.CalidadId);
             parameters.Add("@GradoId", contrato.GradoId);
             parameters.Add("@TotalSacos", contrato.TotalSacos);
+            parameters.Add("@CantidadContenedores", contrato.CantidadContenedores);
             parameters.Add("@PesoEnContrato", contrato.PesoEnContrato);
             parameters.Add("@PeriodosCosecha", contrato.PeriodosCosecha);
             parameters.Add("@PesoKilos", contrato.PesoKilos);
