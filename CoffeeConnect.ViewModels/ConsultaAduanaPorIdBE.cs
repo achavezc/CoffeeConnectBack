@@ -142,6 +142,9 @@ namespace CoffeeConnect.DTO
         public DateTime? FechaEmbarque
         { get; set; }
 
+        public DateTime? FechaEmbarquePlanta
+        { get; set; }
+
         public DateTime? FechaFacturacion
         { get; set; }
 
