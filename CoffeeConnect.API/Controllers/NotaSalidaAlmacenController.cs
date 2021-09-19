@@ -400,10 +400,6 @@ namespace Integracion.Deuda.Controller
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
                 return File(result.MainStream, "application/pdf");
-
-
-
-
             }
             catch (ResultException ex)
             {

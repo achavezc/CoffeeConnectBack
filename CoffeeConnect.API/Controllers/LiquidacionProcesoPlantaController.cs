@@ -69,7 +69,7 @@ namespace CoffeeConnect.API.Controllers
             RegistrarActualizarLiquidacionProcesoPlantaResponseDTO response = new RegistrarActualizarLiquidacionProcesoPlantaResponseDTO();
             try
             {
-               
+
                 response.Result.Data = LiquidacionProcesoPlantaService.RegistrarLiquidacionProcesoPlanta(request);
                 response.Result.Success = true;
             }
@@ -125,7 +125,7 @@ namespace CoffeeConnect.API.Controllers
             RegistrarActualizarLiquidacionProcesoPlantaResponseDTO response = new RegistrarActualizarLiquidacionProcesoPlantaResponseDTO();
             try
             {
-               
+
                 response.Result.Data = LiquidacionProcesoPlantaService.ActualizarLiquidacionProcesoPlanta(request);
                 response.Result.Success = true;
             }
@@ -172,8 +172,6 @@ namespace CoffeeConnect.API.Controllers
 
         //    return Ok(response);
         //}
-
-
 
         [Route("ConsultarPorId")]
         [HttpPost]
@@ -363,5 +361,45 @@ namespace CoffeeConnect.API.Controllers
         //    }
         //    return null;
         //}
+
+        [Route("GenerarPDFLiquidacionProceso")]
+        [HttpGet]
+        public IActionResult GenerarPDFLiquidacionProceso(int id)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
+
+            //ES MOMENTANEO SE DEBE ELIMINAR
+            GenerarPDFLiquidacionProcesoResponseDTO response = new GenerarPDFLiquidacionProcesoResponseDTO(); ;
+
+            try
+            {
+                response.DatosPDf.Add(new DatosPDf { Empresa = "Ejemplo" }); //DATA HARDCODE
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionProceso.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                lr.AddDataSource("dsLiquidacionProceso", Util.ToDataTable(response.DatosPDf));
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+                return File(result.MainStream, "application/pdf");
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
     }
 }
