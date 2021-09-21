@@ -46,6 +46,9 @@ namespace CoffeeConnect.DTO
 		public string TipoCertificacionId
 		{ get; set; }
 
+
+		public string TipoCertificacion
+		{ get; set; }
 		/// <summary>
 		/// Gets or sets the EntidadCertificadoraId value.
 		/// </summary>

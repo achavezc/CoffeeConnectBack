@@ -21,13 +21,16 @@ namespace CoffeeConnect.Service
         private ILiquidacionProcesoPlantaRepository _ILiquidacionProcesoPlantaRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
         private ICorrelativoRepository _ICorrelativoRepository;
+        private IMaestroRepository _IMaestroRepository;
 
-        public LiquidacionProcesoPlantaService(ILiquidacionProcesoPlantaRepository LiquidacionProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
+
+        public LiquidacionProcesoPlantaService(ILiquidacionProcesoPlantaRepository LiquidacionProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _ILiquidacionProcesoPlantaRepository = LiquidacionProcesoPlantaRepository;
             _Mapper = mapper;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
+            _IMaestroRepository = maestroRepository;
         }
 
         public List<ConsultaLiquidacionProcesoPlantaBE> ConsultarLiquidacionProcesoPlanta(ConsultaLiquidacionProcesoPlantaRequestDTO request)
@@ -100,10 +103,37 @@ namespace CoffeeConnect.Service
         {
             ConsultaLiquidacionProcesoPlantaPorIdBE consultaLiquidacionProcesoPlantaPorIdBE = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaPorId(request.LiquidacionProcesoPlantaId);
 
-            //if (consultaLiquidacionProcesoPlantaPorIdBE != null)
-            //{
-            //    consultaLiquidacionProcesoPlantaPorIdBE.detalle = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaDetallePorId(request.LiquidacionProcesoPlantaId).ToList();
-            //}
+            if (consultaLiquidacionProcesoPlantaPorIdBE != null)
+            {
+                //consultaLiquidacionProcesoPlantaPorIdBE.detalle = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaDetallePorId(request.LiquidacionProcesoPlantaId).ToList();
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaLiquidacionProcesoPlantaPorIdBE.EmpresaId, String.Empty).ToList();
+
+
+                string[] certificacionesIds = consultaLiquidacionProcesoPlantaPorIdBE.TipoCertificacionId.Split('|');
+
+                string certificacionLabel = string.Empty;
+
+
+                if (certificacionesIds.Length > 0)
+                {
+
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+
+                }
+
+                consultaLiquidacionProcesoPlantaPorIdBE.TipoCertificacion = certificacionLabel;
+            }
 
             return consultaLiquidacionProcesoPlantaPorIdBE;
         }

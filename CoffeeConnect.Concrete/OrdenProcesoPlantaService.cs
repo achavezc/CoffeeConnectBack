@@ -21,13 +21,15 @@ namespace CoffeeConnect.Service
         private IOrdenProcesoPlantaRepository _IOrdenProcesoPlantaRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
         private ICorrelativoRepository _ICorrelativoRepository;
+        private IMaestroRepository _IMaestroRepository;
 
-        public OrdenProcesoPlantaService(IOrdenProcesoPlantaRepository OrdenProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
+        public OrdenProcesoPlantaService(IOrdenProcesoPlantaRepository OrdenProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _IOrdenProcesoPlantaRepository = OrdenProcesoPlantaRepository;
             _Mapper = mapper;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
+            _IMaestroRepository = maestroRepository;
         }
 
         public List<ConsultaOrdenProcesoPlantaBE> ConsultarOrdenProcesoPlanta(ConsultaOrdenProcesoPlantaRequestDTO request)
@@ -38,6 +40,39 @@ namespace CoffeeConnect.Service
                 throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionRangoFechaMayor2anios.Label" });
 
             var list = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlanta(request);
+
+
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+
+            foreach (ConsultaOrdenProcesoPlantaBE orden in list)
+            {
+                string[] certificacionesIds = orden.TipoCertificacionId.Split('|');
+
+                string certificacionLabel = string.Empty;
+                
+
+                if (certificacionesIds.Length > 0)
+                {
+
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+
+                }
+
+                orden.TipoCertificacion = certificacionLabel;
+            }
+
+
             return list.ToList();
         }
 
@@ -145,6 +180,37 @@ namespace CoffeeConnect.Service
             if (consultaOrdenProcesoPlantaPorIdBE != null)
             {
                 consultaOrdenProcesoPlantaPorIdBE.detalle = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaDetallePorId(request.OrdenProcesoPlantaId).ToList();
+
+
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaOrdenProcesoPlantaPorIdBE.EmpresaId, String.Empty).ToList();
+
+                
+                string[] certificacionesIds = consultaOrdenProcesoPlantaPorIdBE.TipoCertificacionId.Split('|');
+
+                string certificacionLabel = string.Empty;
+
+
+                if (certificacionesIds.Length > 0)
+                {
+
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+
+                }
+
+                consultaOrdenProcesoPlantaPorIdBE.TipoCertificacion = certificacionLabel;
+               
+
             }
 
             return consultaOrdenProcesoPlantaPorIdBE;

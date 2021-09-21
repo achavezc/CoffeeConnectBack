@@ -8,7 +8,7 @@ namespace CoffeeConnect.DTO
     {
         public ConsultaOrdenProcesoPlantaBE()
         {
-            
+
         }
 
         public int? OrdenProcesoPlantaId { get; set; }
@@ -20,10 +20,10 @@ namespace CoffeeConnect.DTO
         public int? ContratoId { get; set; }
         public string Numero { get; set; }
         public string NumeroContrato { get; set; }
-  
+
         public string RucOrganizacion { get; set; }
-       
-        public string RazonOrganizacion { get; set; }
+
+        public string RazonSocialOrganizacion { get; set; }
         public string TipoProceso { get; set; }
         public string EstadoId { get; set; }
         public string Estado { get; set; }
