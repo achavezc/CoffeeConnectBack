@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -83,14 +84,11 @@ namespace CoffeeConnect.DTO
 
 		public string TipoCertificacion
 		{ get; set; }
-		
+
 
 
 		/// <summary>
-		/// Gets or sets the Certificacion value.
-		/// </summary>
-		public string Certificacion
-		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the EntidadCertificadoraId value.
@@ -168,6 +166,12 @@ namespace CoffeeConnect.DTO
 
 		public string NumeroOrdenProcesoPlanta
 		{ get; set; }
+		public IEnumerable<ConsultaLiquidacionProcesoPlantaDetalleBE> Detalle { get; set; }
+
+		public IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> Resultado { get; set; }
+
+		
+
 
 		#endregion
 	}

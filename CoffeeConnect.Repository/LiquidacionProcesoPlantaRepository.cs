@@ -212,6 +212,31 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+        public IEnumerable<ConsultaLiquidacionProcesoPlantaDetalleBE> ConsultarLiquidacionProcesoPlantaDetallePorId(int liquidacionProcesoPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaLiquidacionProcesoPlantaDetalleBE>("uspLiquidacionProcesoPlantaDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> ConsultarLiquidacionProcesoPlantaResultadoPorId(int liquidacionProcesoPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaLiquidacionProcesoPlantaResultadoBE>("uspLiquidacionProcesoPlantaResultadoConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
+
         //        //public IEnumerable<LiquidacionProcesoPlantaDTO> ConsultarImpresionLiquidacionProcesoPlanta(int LiquidacionProcesoPlantaId)
         //        //{
         //        //    var parameters = new DynamicParameters();
