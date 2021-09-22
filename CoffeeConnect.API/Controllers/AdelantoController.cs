@@ -1,18 +1,14 @@
 ﻿using AspNetCore.Reporting;
 using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adelanto;
-using CoffeeConnect.DTO.Adjunto;
 using CoffeeConnect.Interface.Service;
 using Core.Common;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Net.Mime;
 
 namespace Integracion.Deuda.Controller
 {
