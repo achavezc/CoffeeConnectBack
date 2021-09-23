@@ -20,7 +20,6 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
         public int Insertar(GuiaRemisionAlmacenPlanta GuiaRemisionAlmacenPlanta)
         {
             int result = 0;
@@ -62,8 +61,6 @@ namespace CoffeeConnect.Repository
             }
 
             result = parameters.Get<int>("GuiaRemisionAlmacenPlantaId");
-
-
             return result;
         }
 
@@ -91,7 +88,6 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NumeroConstanciaMTC", GuiaRemisionAlmacenPlanta.NumeroConstanciaMTC);
             parameters.Add("@TipoProduccionId", GuiaRemisionAlmacenPlanta.TipoProduccionId);
             parameters.Add("@TipoCertificacionId", GuiaRemisionAlmacenPlanta.TipoCertificacionId);
-
             parameters.Add("@CantidadLotes", GuiaRemisionAlmacenPlanta.CantidadLotes);
             parameters.Add("@PromedioPorcentajeRendimiento", GuiaRemisionAlmacenPlanta.PromedioPorcentajeRendimiento);
             parameters.Add("@HumedadPorcentajeAnalisisFisico", GuiaRemisionAlmacenPlanta.HumedadPorcentajeAnalisisFisico);
@@ -101,16 +97,13 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UsuarioUltimaActualizacion", GuiaRemisionAlmacenPlanta.UsuarioUltimaActualizacion);
             parameters.Add("@GuiaRemisionAlmacenPlantaId", GuiaRemisionAlmacenPlanta.GuiaRemisionAlmacenPlantaId);
 
-
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspGuiaRemisionAlmacenPlantaActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-
             return result;
         }
-                        
 
         public int ActualizarGuiaRemisionAlmacenPlantaDetalle(List<GuiaRemisionAlmacenPlantaDetalleTipo> GuiaRemisionAlmacenPlantaDetalle)
         {
@@ -128,14 +121,12 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-
         public ConsultaGuiaRemisionAlmacenPlanta ConsultaGuiaRemisionAlmacenPlantaPorNotaSalidaAlmacenPlantaId(int NotaSalidaAlmacenPlantaId)
         {
             ConsultaGuiaRemisionAlmacenPlanta itemBE = null;
 
             var parameters = new DynamicParameters();
             parameters.Add("@NotaSalidaAlmacenPlantaId", NotaSalidaAlmacenPlantaId);
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -148,21 +139,16 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
-
-
         public IEnumerable<ConsultaGuiaRemisionAlmacenPlantaDetalle> ConsultaGuiaRemisionAlmacenPlantaDetallePorGuiaRemisionAlmacenPlantaId(int GuiaRemisionAlmacenPlantaId)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@GuiaRemisionAlmacenPlantaId", GuiaRemisionAlmacenPlantaId);
-
-
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 return db.Query<ConsultaGuiaRemisionAlmacenPlantaDetalle>("uspGuiaAlmacenPlantaDetalleConsultaPorIdGuia", parameters, commandType: CommandType.StoredProcedure);
             }
         }
-
 
         public ConsultaGuiaRemisionAlmacenPlanta ConsultaGuiaRemisionAlmacenPlantaPorId(int guiaRemisionAlmacenPlantaId)
         {

@@ -21,7 +21,6 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-
         public IEnumerable<ConsultaLiquidacionProcesoPlantaBE> ConsultarLiquidacionProcesoPlanta(ConsultaLiquidacionProcesoPlantaRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -43,8 +42,8 @@ namespace CoffeeConnect.Repository
 
         public int Insertar(LiquidacionProcesoPlanta liquidacionProcesoPlanta)
         {
-            var parameters = new DynamicParameters();        
-            
+            var parameters = new DynamicParameters();
+
             parameters.Add("@OrdenProcesoPlantaId", liquidacionProcesoPlanta.OrdenProcesoPlantaId);
             parameters.Add("@Numero", liquidacionProcesoPlanta.Numero);
             parameters.Add("@EmpresaId", liquidacionProcesoPlanta.EmpresaId);
@@ -54,7 +53,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", liquidacionProcesoPlanta.EstadoId);
             parameters.Add("@FechaRegistro", liquidacionProcesoPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", liquidacionProcesoPlanta.UsuarioRegistro);
-            
+
             parameters.Add("@LiquidacionProcesoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -66,21 +65,19 @@ namespace CoffeeConnect.Repository
             return id;
         }
 
-
-
         public int Actualizar(LiquidacionProcesoPlanta liquidacionProcesoPlanta)
         {
             int result = 0;
 
             var parameters = new DynamicParameters();
             parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlanta.LiquidacionProcesoPlantaId);
-            parameters.Add("@OrdenProcesoPlantaId", liquidacionProcesoPlanta.OrdenProcesoPlantaId);           
+            parameters.Add("@OrdenProcesoPlantaId", liquidacionProcesoPlanta.OrdenProcesoPlantaId);
             parameters.Add("@EmpresaId", liquidacionProcesoPlanta.EmpresaId);
             parameters.Add("@Observacion", liquidacionProcesoPlanta.Observacion);
             parameters.Add("@EnvasesProductos", liquidacionProcesoPlanta.EnvasesProductos);
-            parameters.Add("@TrabajosRealizados", liquidacionProcesoPlanta.TrabajosRealizados);            
+            parameters.Add("@TrabajosRealizados", liquidacionProcesoPlanta.TrabajosRealizados);
             parameters.Add("@FechaUltimaActualizacion", liquidacionProcesoPlanta.FechaUltimaActualizacion);
-            parameters.Add("@UsuarioUltimaActualizacion", liquidacionProcesoPlanta.UsuarioUltimaActualizacion);          
+            parameters.Add("@UsuarioUltimaActualizacion", liquidacionProcesoPlanta.UsuarioUltimaActualizacion);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -121,8 +118,6 @@ namespace CoffeeConnect.Repository
         //            }
         //        }
 
-
-
         public int InsertarLiquidacionProcesoPlantaResultado(LiquidacionProcesoPlantaResultado liquidacionProcesoPlantaResultado)
         {
             int result = 0;
@@ -140,10 +135,6 @@ namespace CoffeeConnect.Repository
 
             return result;
         }
-
-
-
-
 
         public int EliminarLiquidacionProcesoPlantaDetalle(int liquidacionProcesoPlantaPlantaId)
         {
@@ -183,7 +174,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaDetalle.LiquidacionProcesoPlantaId);
             parameters.Add("@NotaIngresoPlantaId", liquidacionProcesoPlantaDetalle.NotaIngresoPlantaId);
-           
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -192,7 +183,6 @@ namespace CoffeeConnect.Repository
 
             return result;
         }
-
 
         public ConsultaLiquidacionProcesoPlantaPorIdBE ConsultarLiquidacionProcesoPlantaPorId(int liquidacionProcesoPlantaId)
         {
@@ -233,10 +223,6 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaLiquidacionProcesoPlantaResultadoBE>("uspLiquidacionProcesoPlantaResultadoConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
-
-
-
-
         //        //public IEnumerable<LiquidacionProcesoPlantaDTO> ConsultarImpresionLiquidacionProcesoPlanta(int LiquidacionProcesoPlantaId)
         //        //{
         //        //    var parameters = new DynamicParameters();
