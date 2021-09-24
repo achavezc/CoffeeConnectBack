@@ -145,7 +145,14 @@ namespace CoffeeConnect.Service
 
     }
 
-    
+    public static class TipoCambioDiaEstados
+    {
+        public static string Activo { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+    }
+
+
 
 
     public static class AduanaEstados

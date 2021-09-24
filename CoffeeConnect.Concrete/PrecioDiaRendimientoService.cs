@@ -14,14 +14,17 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private IPrecioDiaRendimientoRepository _IPrecioDiaRendimientoRepository;
+        private ITipoCambioDiaRepository _ITipoCambioDiaRepository;
+
         private IContratoRepository _IContratoRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
 
-        public PrecioDiaRendimientoService(IPrecioDiaRendimientoRepository PrecioDiaRendimientoRepository, IContratoRepository ContratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
+        public PrecioDiaRendimientoService(IPrecioDiaRendimientoRepository PrecioDiaRendimientoRepository, IContratoRepository ContratoRepository, ICorrelativoRepository correlativoRepository, ITipoCambioDiaRepository TipoCambioDiaRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings)
         {
             _IPrecioDiaRendimientoRepository = PrecioDiaRendimientoRepository;
             _IContratoRepository = ContratoRepository;
+            _ITipoCambioDiaRepository = TipoCambioDiaRepository;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
@@ -76,7 +79,7 @@ namespace CoffeeConnect.Service
 
             calculoPrecioDiaRendimientoDTO.PrecioPromedioContrato = Math.Round(precioPromedio,2);
 
-            decimal tipoCambio = 4.1M;
+            decimal tipoCambio = _ITipoCambioDiaRepository.ObtenerTipoCambioDia(request.EmpresaId);
 
 
             calculoPrecioDiaRendimientoDTO.TipoCambio = tipoCambio;

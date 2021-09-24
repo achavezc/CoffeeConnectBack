@@ -66,8 +66,17 @@ namespace CoffeeConnect.Service
 
             NotaIngresoAlmacenPlanta.ExportablePorcentajeAnalisisFisico = notaIngresoPlanta.ExportablePorcentajeAnalisisFisico;
 
+            if (notaIngresoPlanta.TotalGramosAnalisisFisico.HasValue && notaIngresoPlanta.TotalGramosAnalisisFisico.Value >0)
+            {
+                NotaIngresoAlmacenPlanta.RendimientoPorcentaje = (notaIngresoPlanta.ExportableGramosAnalisisFisico / notaIngresoPlanta.TotalGramosAnalisisFisico) * 100;
+            }
+            else
+            {
+                NotaIngresoAlmacenPlanta.RendimientoPorcentaje = 0;
 
-            NotaIngresoAlmacenPlanta.RendimientoPorcentaje = (notaIngresoPlanta.ExportableGramosAnalisisFisico / notaIngresoPlanta.TotalGramosAnalisisFisico) * 100;
+            }
+                
+            
             //NotaIngresoAlmacenPlanta.Observacion = guiaRecepcionMateriaPrima.Observacion;
             NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
             NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;

@@ -128,6 +128,10 @@ namespace CoffeeConnect.API
             services.AddTransient<IProductoPrecioDiaService, ProductoPrecioDiaService>();
             services.AddTransient<IProductoPrecioDiaRepository, ProductoPrecioDiaRepository>();
 
+
+            services.AddTransient<ITipoCambioDiaService, TipoCambioDiaService>();
+            services.AddTransient<ITipoCambioDiaRepository, TipoCambioDiaRepository>();
+
             services.AddTransient<ISocioService, SocioService>();
             services.AddTransient<ISocioRepository, SocioRepository>();
 
