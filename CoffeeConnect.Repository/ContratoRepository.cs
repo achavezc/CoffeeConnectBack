@@ -373,5 +373,21 @@ namespace CoffeeConnect.Repository
             return cantidadContratos;
         }
 
+        public int ValidadContratoExistente(int empresaId, string numero)
+        {
+            int cantidadContratos = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", empresaId);
+            parameters.Add("@Numero", numero);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                cantidadContratos = db.ExecuteScalar<int>("uspContratoValidarExistente", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return cantidadContratos;
+        }
+
     }
 }

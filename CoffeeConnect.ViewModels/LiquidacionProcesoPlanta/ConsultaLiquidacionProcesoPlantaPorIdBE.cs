@@ -18,6 +18,10 @@ namespace CoffeeConnect.DTO
 		public int OrdenProcesoPlantaId
 		{ get; set; }
 
+
+		public decimal? NumeroDefectos
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>

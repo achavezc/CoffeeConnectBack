@@ -41,6 +41,11 @@ namespace CoffeeConnect.Models
 		public string EnvasesProductos
 		{ get; set; }
 
+		public decimal? NumeroDefectos
+		{ get; set; }
+
+		
+
 		/// <summary>
 		/// Gets or sets the TrabajosRealizados value.
 		/// </summary>

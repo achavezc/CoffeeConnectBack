@@ -50,6 +50,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Observacion", liquidacionProcesoPlanta.Observacion);
             parameters.Add("@EnvasesProductos", liquidacionProcesoPlanta.EnvasesProductos);
             parameters.Add("@TrabajosRealizados", liquidacionProcesoPlanta.TrabajosRealizados);
+            parameters.Add("@NumeroDefectos", liquidacionProcesoPlanta.NumeroDefectos);
             parameters.Add("@EstadoId", liquidacionProcesoPlanta.EstadoId);
             parameters.Add("@FechaRegistro", liquidacionProcesoPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", liquidacionProcesoPlanta.UsuarioRegistro);
@@ -78,7 +79,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TrabajosRealizados", liquidacionProcesoPlanta.TrabajosRealizados);
             parameters.Add("@FechaUltimaActualizacion", liquidacionProcesoPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", liquidacionProcesoPlanta.UsuarioUltimaActualizacion);
-
+            parameters.Add("@NumeroDefectos", liquidacionProcesoPlanta.NumeroDefectos);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

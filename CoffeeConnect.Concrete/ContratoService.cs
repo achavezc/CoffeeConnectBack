@@ -163,6 +163,14 @@ namespace CoffeeConnect.Service
                 contrato.EstadoId = ContratoEstados.Completado;
             }
 
+            int cantidadContratosExistentes = _IContratoRepository.ValidadContratoExistente(request.EmpresaId, request.Numero);
+            
+            if (cantidadContratosExistentes > 0) 
+            {
+                throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionContratoExistente.Label" });
+
+            }
+
             int affected = _IContratoRepository.Insertar(contrato);
 
             return affected;

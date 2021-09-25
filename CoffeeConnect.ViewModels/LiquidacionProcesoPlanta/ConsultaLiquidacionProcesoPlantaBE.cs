@@ -21,7 +21,8 @@ namespace CoffeeConnect.DTO
 
 
 
-
+        public decimal? NumeroDefectos
+        { get; set; }
 
 
         public int? OrdenProcesoId { get; set; }

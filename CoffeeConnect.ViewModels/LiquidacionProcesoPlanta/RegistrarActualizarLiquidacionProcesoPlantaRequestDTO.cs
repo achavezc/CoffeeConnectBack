@@ -57,7 +57,9 @@ namespace CoffeeConnect.DTO
 		public string Usuario
 		{ get; set; }
 
-		
+		public decimal? NumeroDefectos
+		{ get; set; }
+
 		public List<LiquidacionProcesoPlantaDetalle> LiquidacionProcesoPlantaDetalle { get; set; }
 		public List<LiquidacionProcesoPlantaResultado> LiquidacionProcesoPlantaResultado { get; set; }
 	}
