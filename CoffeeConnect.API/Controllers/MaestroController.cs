@@ -42,8 +42,14 @@ namespace Integracion.Deuda.Controller
 
                 lista = lista.Where(a => a.CodigoTabla.Trim().Equals(request.CodigoTabla.Trim())).ToList();
 
-                response.Result.Data = lista.OrderBy(x => x.Label).ToList();
-
+                if (request.CodigoTabla.Equals("SensorialAtributos"))
+                {
+                    response.Result.Data = lista;
+                }
+                else
+                {
+                    response.Result.Data = lista.OrderBy(x => x.Label).ToList();
+                }
                 response.Result.Success = true;
 
             }
