@@ -139,6 +139,10 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
+		public string Grado
+		{ get; set; }
+
+
 		public string RazonSocial
 		{ get; set; }
 

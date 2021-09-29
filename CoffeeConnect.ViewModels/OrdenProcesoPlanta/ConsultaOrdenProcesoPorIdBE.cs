@@ -40,6 +40,10 @@ namespace CoffeeConnect.DTO
 		public string Numero
 		{ get; set; }
 
+		public string NumeroOrdenProcesoComercial
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the TipoCertificacionId value.
 		/// </summary>
