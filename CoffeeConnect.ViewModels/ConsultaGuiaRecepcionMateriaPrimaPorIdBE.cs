@@ -403,6 +403,17 @@ namespace CoffeeConnect.DTO
 		//public decimal? Importe
 		//{ get; set; }
 
+		public decimal? SubTotalAnalisisSensorial
+		{ get; set; }
+
+		public decimal? DefectosTasaAnalisisSensorial
+		{ get; set; }
+
+
+		public decimal? DefectosIntensidadAnalisisSensorial
+		{ get; set; }
+
+
 
 		public List<GuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
 		{ get; set; }

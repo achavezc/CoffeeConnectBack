@@ -346,11 +346,13 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.UsuarioCalidad = request.UsuarioCalidad;
             guiaRecepcionMateriaPrima.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
             guiaRecepcionMateriaPrima.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
+            guiaRecepcionMateriaPrima.DefectosTasaAnalisisSensorial = request.DefectosTasaAnalisisSensorial ;
+            guiaRecepcionMateriaPrima.DefectosIntensidadAnalisisSensorial = request.DefectosIntensidadAnalisisSensorial;
             guiaRecepcionMateriaPrima.UsuarioCalidad = request.UsuarioCalidad;
             guiaRecepcionMateriaPrima.EstadoId = GuiaRecepcionMateriaPrimaEstados.Analizado;
             guiaRecepcionMateriaPrima.FechaCalidad = DateTime.Now;
 
-            decimal totalAnalisisSensorial = 0;
+            decimal subTotalAnalisisSensorial = 0;
 
             if (request.AnalisisSensorialAtributoDetalleList.FirstOrDefault() != null)
             {
@@ -360,7 +362,7 @@ namespace CoffeeConnect.Service
                 {
                     if (z.Valor.HasValue)
                     {
-                        totalAnalisisSensorial = totalAnalisisSensorial + z.Valor.Value;
+                        subTotalAnalisisSensorial = subTotalAnalisisSensorial + z.Valor.Value;
                     }
                 });
 
@@ -368,7 +370,9 @@ namespace CoffeeConnect.Service
 
 
 
-            guiaRecepcionMateriaPrima.TotalAnalisisSensorial = totalAnalisisSensorial;
+            guiaRecepcionMateriaPrima.SubTotalAnalisisSensorial = subTotalAnalisisSensorial;
+
+            guiaRecepcionMateriaPrima.TotalAnalisisSensorial = subTotalAnalisisSensorial - guiaRecepcionMateriaPrima.DefectosTasaAnalisisSensorial - guiaRecepcionMateriaPrima.DefectosTasaAnalisisSensorial;
 
             int affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarAnalisisCalidad(guiaRecepcionMateriaPrima);
 

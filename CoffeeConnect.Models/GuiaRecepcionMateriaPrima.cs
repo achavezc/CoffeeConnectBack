@@ -179,6 +179,16 @@ namespace CoffeeConnect.Models
 		public decimal? TotalAnalisisSensorial
 		{ get; set; }
 
+		public decimal? SubTotalAnalisisSensorial
+		{ get; set; }
+
+		public decimal? DefectosTasaAnalisisSensorial
+		{ get; set; }
+
+
+		public decimal? DefectosIntensidadAnalisisSensorial
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the ObservacionAnalisisFisico value.
 		/// </summary>

@@ -46,6 +46,10 @@ namespace Integracion.Deuda.Controller
                 {
                     response.Result.Data = lista;
                 }
+                else if(request.CodigoTabla.Equals("IndicadorTostado"))
+                {
+                    response.Result.Data = lista;
+                }
                 else
                 {
                     response.Result.Data = lista.OrderBy(x => x.Label).ToList();

@@ -93,7 +93,18 @@ namespace CoffeeConnect.DTO
 		public string ObservacionAnalisisSensorial
 		{ get; set; }
 
-        public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleRequestDTO> AnalisisFisicoColorDetalleList { get; set; }
+
+		public decimal? SubTotalAnalisisSensorial
+		{ get; set; }
+
+		public decimal? DefectosTasaAnalisisSensorial
+		{ get; set; }
+
+
+		public decimal? DefectosIntensidadAnalisisSensorial
+		{ get; set; }
+
+		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoColorDetalleRequestDTO> AnalisisFisicoColorDetalleList { get; set; }
 
         public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoPrimarioDetalleRequestDTO>  AnalisisFisicoDefectoPrimarioDetalleList{ get; set; }
 		public List<ActualizarGuiaRecepcionMateriaPrimaAnalisisFisicoDefectoSecundarioDetalleRequestDTO> AnalisisFisicoDefectoSecundarioDetalleList { get; set; }
