@@ -38,7 +38,13 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", socioFinca.FechaRegistro);
             parameters.Add("@UsuarioRegistro", socioFinca.UsuarioRegistro);
             parameters.Add("@EstadoId", socioFinca.EstadoId);
-
+            parameters.Add("@AreaTotal", socioFinca.AreaTotal);
+            parameters.Add("@AreaCafeEnProduccion", socioFinca.AreaCafeEnProduccion);
+            parameters.Add("@Crecimiento", socioFinca.Crecimiento);
+            parameters.Add("@Bosque", socioFinca.Bosque);
+            parameters.Add("@Purma", socioFinca.Purma);
+            parameters.Add("@PanLlevar", socioFinca.PanLlevar);
+            parameters.Add("@Vivienda", socioFinca.Vivienda);
 
             parameters.Add("@SocioFincaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -71,7 +77,13 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaUltimaActualizacion", socioFinca.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", socioFinca.UsuarioUltimaActualizacion);
             parameters.Add("@EstadoId", socioFinca.EstadoId);
-
+            parameters.Add("@AreaTotal", socioFinca.AreaTotal);
+            parameters.Add("@AreaCafeEnProduccion", socioFinca.AreaCafeEnProduccion);
+            parameters.Add("@Crecimiento", socioFinca.Crecimiento);
+            parameters.Add("@Bosque", socioFinca.Bosque);
+            parameters.Add("@Purma", socioFinca.Purma);
+            parameters.Add("@PanLlevar", socioFinca.PanLlevar);
+            parameters.Add("@Vivienda", socioFinca.Vivienda);
 
 
 

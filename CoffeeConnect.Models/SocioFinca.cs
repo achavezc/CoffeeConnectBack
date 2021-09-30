@@ -102,5 +102,45 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 		#endregion
+
+		public decimal? AreaTotal
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the AreaCafeEnProduccion value.
+		/// </summary>
+		public decimal? AreaCafeEnProduccion
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Crecimiento value.
+		/// </summary>
+		public decimal? Crecimiento
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Bosque value.
+		/// </summary>
+		public decimal? Bosque
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Purma value.
+		/// </summary>
+		public decimal? Purma
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the PanLlevar value.
+		/// </summary>
+		public decimal? PanLlevar
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the Vivienda value.
+		/// </summary>
+		public decimal? Vivienda
+		{ get; set; }
+
 	}
 }
