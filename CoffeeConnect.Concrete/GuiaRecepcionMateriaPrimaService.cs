@@ -372,7 +372,7 @@ namespace CoffeeConnect.Service
 
             guiaRecepcionMateriaPrima.SubTotalAnalisisSensorial = subTotalAnalisisSensorial;
 
-            guiaRecepcionMateriaPrima.TotalAnalisisSensorial = subTotalAnalisisSensorial - guiaRecepcionMateriaPrima.DefectosTasaAnalisisSensorial - guiaRecepcionMateriaPrima.DefectosTasaAnalisisSensorial;
+            guiaRecepcionMateriaPrima.TotalAnalisisSensorial = subTotalAnalisisSensorial - (guiaRecepcionMateriaPrima.DefectosTasaAnalisisSensorial * guiaRecepcionMateriaPrima.DefectosIntensidadAnalisisSensorial);
 
             int affected = _IGuiaRecepcionMateriaPrimaRepository.ActualizarAnalisisCalidad(guiaRecepcionMateriaPrima);
 
