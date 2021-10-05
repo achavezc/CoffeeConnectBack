@@ -17,6 +17,12 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the Numero value.
         /// </summary>
+        /// 
+
+
+        public string NombreProductor
+        { get; set; }
+        
         public string Nombre
         { get; set; }
 

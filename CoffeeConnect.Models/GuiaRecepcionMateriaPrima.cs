@@ -90,7 +90,7 @@ namespace CoffeeConnect.Models
 		public string UnidadMedidaIdPesado
 		{ get; set; }
 
-		public int ContratoAsignadoId
+		public int? ContratoAsignadoId
 		{ get; set; }
 
 

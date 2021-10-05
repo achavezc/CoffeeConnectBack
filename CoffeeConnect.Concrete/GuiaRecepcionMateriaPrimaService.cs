@@ -146,20 +146,37 @@ namespace CoffeeConnect.Service
 
         public int RegistrarPesadoGuiaRecepcionMateriaPrima(RegistrarActualizarPesadoGuiaRecepcionMateriaPrimaRequestDTO request)
         {
+            string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
+            string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
 
-            ConsultaContratoAsignado consultaContratoAsignado = _IContratoRepository.ConsultarContratoAsignado(request.EmpresaId, ContratoEstados.Asignado);
+            ConsultaContratoAsignado consultaContratoAsignado = null;
 
-            if(consultaContratoAsignado==null || consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion==0)
-            {
-                throw new ResultException(new Result { ErrCode = "03", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionContratoNoAsignado.Label" });
-            }
 
             decimal kilosNetosPesado = request.KilosBrutosPesado - request.TaraPesado;
 
-            if (kilosNetosPesado > consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion)
+            int? contratoAsignadoId=null;
+
+            if (request.ProductoId == productoIdCafePergamino && request.SubProductoId == subProductoIdCafeSeco)
             {
-                throw new ResultException(new Result { ErrCode = "04", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionKilosNetosPesadoMayorContratoNoAsignado.Label" });
+
+                consultaContratoAsignado = _IContratoRepository.ConsultarContratoAsignado(request.EmpresaId, ContratoEstados.Asignado);
+
+                if (consultaContratoAsignado == null || consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion == 0)
+                {
+                    throw new ResultException(new Result { ErrCode = "03", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionContratoNoAsignado.Label" });
+                }
+
+               
+
+                if (kilosNetosPesado > consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion)
+                {
+                    throw new ResultException(new Result { ErrCode = "04", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionKilosNetosPesadoMayorContratoNoAsignado.Label" });
+                }
+
+                contratoAsignadoId = consultaContratoAsignado.ContratoId;
             }
+
+            
 
 
 
@@ -192,10 +209,10 @@ namespace CoffeeConnect.Service
             guiaRecepcionMateriaPrima.FechaRegistro = DateTime.Now;
             guiaRecepcionMateriaPrima.UsuarioRegistro = request.UsuarioPesado;
             guiaRecepcionMateriaPrima.KilosNetosPesado = kilosNetosPesado;
-            guiaRecepcionMateriaPrima.ContratoAsignadoId = consultaContratoAsignado.ContratoId;
 
-            string productoIdCafePergamino = _ParametrosSettings.Value.ProductoIdCafePergamino;
-            string subProductoIdCafeSeco = _ParametrosSettings.Value.SubProductoIdCafeSeco;
+            guiaRecepcionMateriaPrima.ContratoAsignadoId = contratoAsignadoId;
+            
+           
 
 
 
@@ -225,12 +242,15 @@ namespace CoffeeConnect.Service
                 }
             }
 
-            _IContratoRepository.ActualizarSaldoPendienteAsignacionAcopio(consultaContratoAsignado.ContratoId, kilosNetosPesado);
-
-            if((consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion - kilosNetosPesado)==0)
+            if (contratoAsignadoId.HasValue)
             {
-                _IContratoRepository.ActualizarEstado(consultaContratoAsignado.ContratoId, DateTime.Now, request.UsuarioPesado, ContratoEstados.Completado);
+                _IContratoRepository.ActualizarSaldoPendienteAsignacionAcopio(contratoAsignadoId.Value, kilosNetosPesado);
 
+                if ((consultaContratoAsignado.SaldoPendienteKGPergaminoAsignacion - kilosNetosPesado) == 0)
+                {
+                    _IContratoRepository.ActualizarEstado(contratoAsignadoId.Value, DateTime.Now, request.UsuarioPesado, ContratoEstados.Completado);
+
+                }
             }
 
 
