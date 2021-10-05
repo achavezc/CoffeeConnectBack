@@ -61,7 +61,7 @@ namespace Integracion.Deuda.Controller
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
-
+            //test
             RegistrarActualizarSocioFincaResponseDTO response = new RegistrarActualizarSocioFincaResponseDTO();
             try
             {
