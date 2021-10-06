@@ -50,7 +50,7 @@ namespace CoffeeConnect.Service
             liquidacionProcesoPlanta.FechaRegistro = DateTime.Now;
             liquidacionProcesoPlanta.UsuarioRegistro = request.Usuario;
             liquidacionProcesoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
-                       
+
 
             int LiquidacionProcesoPlantaId = _ILiquidacionProcesoPlantaRepository.Insertar(liquidacionProcesoPlanta);
 

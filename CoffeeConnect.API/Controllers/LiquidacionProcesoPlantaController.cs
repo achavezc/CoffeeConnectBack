@@ -374,7 +374,17 @@ namespace CoffeeConnect.API.Controllers
 
             try
             {
-                response.DatosPDf.Add(new DatosPDf { Empresa = "Ejemplo" }); //DATA HARDCODE
+                List<ConsultaLiquidacionProcesoPlantaPorIdBE> listaLiquidacionProcesoPlanta = new List<ConsultaLiquidacionProcesoPlantaPorIdBE>();
+                response.data = LiquidacionProcesoPlantaService.ConsultarLiquidacionProcesoPlantaPorId(new ConsultaLiquidacionProcesoPlantaPorIdRequestDTO
+                {
+                    LiquidacionProcesoPlantaId = id
+                });
+
+                if (response != null && response.data != null)
+                {
+                    listaLiquidacionProcesoPlanta.Add(response.data);
+                }
+
                 string mimetype = "";
                 int extension = 1;
                 var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionProceso.rdlc";
@@ -382,7 +392,18 @@ namespace CoffeeConnect.API.Controllers
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                lr.AddDataSource("dsLiquidacionProceso", Util.ToDataTable(response.DatosPDf));
+                if (listaLiquidacionProcesoPlanta.Count > 0)
+                {
+                    lr.AddDataSource("dsLiquidacionProceso", Util.ToDataTable(listaLiquidacionProcesoPlanta));
+                }
+                if (response != null && response.data.Detalle != null)
+                {
+                    lr.AddDataSource("dsLiquidProcesoDetalle", Util.ToDataTable(response.data.Detalle));
+                }
+                if (response != null && response.data.Resultado != null)
+                {
+                    lr.AddDataSource("dsLiquidProcesoResultado", Util.ToDataTable(response.data.Resultado));
+                }
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
                 return File(result.MainStream, "application/pdf");

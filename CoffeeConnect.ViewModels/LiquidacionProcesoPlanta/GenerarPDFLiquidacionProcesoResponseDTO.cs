@@ -10,15 +10,10 @@ namespace CoffeeConnect.DTO
         public GenerarPDFLiquidacionProcesoResponseDTO()
         {
             Result = new Result();
-            DatosPDf = new List<DatosPDf>();
+            data = new ConsultaLiquidacionProcesoPlantaPorIdBE();
         }
 
         public Result Result { get; set; }
-        public IList<DatosPDf> DatosPDf { get; set; }
-    }
-
-    public class DatosPDf
-    {
-        public string Empresa { get; set; }
+        public ConsultaLiquidacionProcesoPlantaPorIdBE data { get; set; }
     }
 }
