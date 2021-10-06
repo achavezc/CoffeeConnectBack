@@ -26,9 +26,9 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("@Numero", request.Numero);
-            parameters.Add("@NumeroContrato", request.NumeroContrato);           
+            parameters.Add("@NumeroContrato", request.NumeroContrato);
             parameters.Add("@RazonSocialOrganizacion", request.RazonSocialOrganizacion);
-            parameters.Add("@RucOrganizacion", request.RucOrganizacion);            
+            parameters.Add("@RucOrganizacion", request.RucOrganizacion);
             parameters.Add("@TipoProcesoId", request.TipoProcesoId);
             parameters.Add("@EstadoId", request.EstadoId);
             parameters.Add("@EmpresaId", request.EmpresaId);
@@ -44,7 +44,7 @@ namespace CoffeeConnect.Repository
         public int Insertar(OrdenProcesoPlanta ordenProcesoPlanta)
         {
             var parameters = new DynamicParameters();
-            
+
             parameters.Add("@EmpresaId", ordenProcesoPlanta.EmpresaId);
             parameters.Add("@OrganizacionId", ordenProcesoPlanta.OrganizacionId);
             parameters.Add("@TipoProcesoId", ordenProcesoPlanta.TipoProcesoId);
@@ -97,7 +97,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", ordenProcesoPlanta.EmpresaId);
             parameters.Add("@OrganizacionId", ordenProcesoPlanta.OrganizacionId);
             parameters.Add("@TipoProcesoId", ordenProcesoPlanta.TipoProcesoId);
-            parameters.Add("@OrdenProcesoId", ordenProcesoPlanta.OrdenProcesoId);            
+            parameters.Add("@OrdenProcesoId", ordenProcesoPlanta.OrdenProcesoId);
             parameters.Add("@TipoCertificacionId", ordenProcesoPlanta.TipoCertificacionId);
             parameters.Add("@EntidadCertificadoraId", ordenProcesoPlanta.EntidadCertificadoraId);
             parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
@@ -119,10 +119,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NombreArchivo", ordenProcesoPlanta.NombreArchivo);
             parameters.Add("@DescripcionArchivo", ordenProcesoPlanta.DescripcionArchivo);
             parameters.Add("@PathArchivo", ordenProcesoPlanta.PathArchivo);
-            parameters.Add("@Observacion", ordenProcesoPlanta.Observacion);            
+            parameters.Add("@Observacion", ordenProcesoPlanta.Observacion);
             parameters.Add("@FechaUltimaActualizacion", ordenProcesoPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", ordenProcesoPlanta.UsuarioUltimaActualizacion);
-           
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -170,7 +170,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaDetalle.OrdenProcesoPlantaId);
             parameters.Add("@NotaIngresoPlantaId", ordenProcesoPlantaDetalle.NotaIngresoPlantaId);
-            
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -209,7 +209,7 @@ namespace CoffeeConnect.Repository
 
                 if (list.Any())
                     itemBE = list.First();
-                
+
             }
             return itemBE;
         }

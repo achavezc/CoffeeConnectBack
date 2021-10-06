@@ -49,7 +49,7 @@ namespace CoffeeConnect.Service
                 string[] certificacionesIds = orden.TipoCertificacionId.Split('|');
 
                 string certificacionLabel = string.Empty;
-                
+
 
                 if (certificacionesIds.Length > 0)
                 {
@@ -116,7 +116,7 @@ namespace CoffeeConnect.Service
 
             foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
             {
-                detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;                
+                detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;
                 _IOrdenProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
             }
             return OrdenProcesoPlantaId;
@@ -161,11 +161,11 @@ namespace CoffeeConnect.Service
 
             _IOrdenProcesoPlantaRepository.EliminarProcesoPlantaDetalle(ordenProcesoPlanta.OrdenProcesoPlantaId);
 
-            
+
             foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
             {
                 detalle.OrdenProcesoPlantaId = request.OrdenProcesoPlantaId;
-               
+
                 _IOrdenProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
             }
 
@@ -184,7 +184,7 @@ namespace CoffeeConnect.Service
 
                 List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaOrdenProcesoPlantaPorIdBE.EmpresaId, String.Empty).ToList();
 
-                
+
                 string[] certificacionesIds = consultaOrdenProcesoPlantaPorIdBE.TipoCertificacionId.Split('|');
 
                 string certificacionLabel = string.Empty;
@@ -209,7 +209,7 @@ namespace CoffeeConnect.Service
                 }
 
                 consultaOrdenProcesoPlantaPorIdBE.TipoCertificacion = certificacionLabel;
-               
+
 
             }
 
@@ -220,9 +220,9 @@ namespace CoffeeConnect.Service
         {
             ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE = new ConsultaOrdenProcesoPlantaPorIdBE();
 
-            
-             consultaOrdenProcesoPlantaPorIdBE.detalle = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaDetallePorId(request.OrdenProcesoPlantaId).ToList();
-            
+
+            consultaOrdenProcesoPlantaPorIdBE.detalle = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaDetallePorId(request.OrdenProcesoPlantaId).ToList();
+
 
             return consultaOrdenProcesoPlantaPorIdBE;
         }
