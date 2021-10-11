@@ -375,6 +375,7 @@ namespace CoffeeConnect.API.Controllers
             try
             {
                 List<ConsultaLiquidacionProcesoPlantaPorIdBE> listaLiquidacionProcesoPlanta = new List<ConsultaLiquidacionProcesoPlantaPorIdBE>();
+                
                 response.data = LiquidacionProcesoPlantaService.ConsultarLiquidacionProcesoPlantaPorId(new ConsultaLiquidacionProcesoPlantaPorIdRequestDTO
                 {
                     LiquidacionProcesoPlantaId = id
@@ -394,7 +395,7 @@ namespace CoffeeConnect.API.Controllers
 
                 if (listaLiquidacionProcesoPlanta.Count > 0)
                 {
-                    lr.AddDataSource("dsLiquidacionProceso", Util.ToDataTable(listaLiquidacionProcesoPlanta));
+                    lr.AddDataSource("dsLiquidacionProceso", Util.ToDataTable(listaLiquidacionProcesoPlanta, true));
                 }
                 if (response != null && response.data.Detalle != null)
                 {
