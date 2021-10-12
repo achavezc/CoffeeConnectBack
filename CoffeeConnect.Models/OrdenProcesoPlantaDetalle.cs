@@ -19,8 +19,13 @@ namespace CoffeeConnect.Models
 
         public int NotaIngresoPlantaId { get; set; }
 
+        public int CantidadPesado { get; set; }
 
-        
+
+        public decimal KilosExportables { get; set; }
+
+
+
         #endregion
     }
 }
