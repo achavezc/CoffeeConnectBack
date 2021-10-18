@@ -88,10 +88,6 @@ namespace CoffeeConnect.DTO
         public string EstadoMuestraId
         { get; set; }
 
-
-
-
-
         public string Courier
         { get; set; }
 
@@ -100,8 +96,6 @@ namespace CoffeeConnect.DTO
 
         public string Observacion
         { get; set; }
-
-
 
 
         public DateTime? FechaEnvioDocumentos

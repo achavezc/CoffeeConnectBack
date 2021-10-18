@@ -19,9 +19,9 @@ namespace CoffeeConnect.API.Controllers
         private ILog _log;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public KardexProcesoController( ILog log, IWebHostEnvironment webHostEnvironment)
+        public KardexProcesoController(IKardexProcesoService kardexProcesoService, ILog log, IWebHostEnvironment webHostEnvironment)
         {
-            
+            _kardexProcesoService = kardexProcesoService;
             _log = log;
             _webHostEnvironment = webHostEnvironment;
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -44,6 +44,96 @@ namespace CoffeeConnect.API.Controllers
             try
             {
                 response.Result.Data = _kardexProcesoService.ConsultarKardexProceso(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("Registrar")]
+        [HttpPost]
+        public IActionResult Registrar(RegistrarActualizarKardexProcesoRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            RegistrarActualizarKardexProcesoResponseDTO response = new RegistrarActualizarKardexProcesoResponseDTO();
+            try
+            {
+                response.Result.Data = _kardexProcesoService.Registrar(request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
+        [Route("Actualizar")]
+        [HttpPost]
+        public IActionResult Actualizar([FromBody] RegistrarActualizarKardexProcesoRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            RegistrarActualizarKardexProcesoResponseDTO response = new RegistrarActualizarKardexProcesoResponseDTO();
+            try
+            {
+                response.Result.Data = _kardexProcesoService.Actualizar(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
+        [Route("ConsultarPorId")]
+        [HttpPost]
+        public IActionResult ConsultarPorId([FromBody] ConsultaKardexProcesoPorIdRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaKardexProcesoPorIdResponseDTO response = new ConsultaKardexProcesoPorIdResponseDTO();
+            try
+            {
+                response.Result.Data = _kardexProcesoService.ConsultarKardexProcesoPorId(request);
 
                 response.Result.Success = true;
 
