@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoffeeConnect.API.Controllers
+namespace Integracion.Deuda.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,14 +17,11 @@ namespace CoffeeConnect.API.Controllers
     {
         private IKardexProcesoService _kardexProcesoService;
         private ILog _log;
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public KardexProcesoController(IKardexProcesoService kardexProcesoService, ILog log, IWebHostEnvironment webHostEnvironment)
+        public KardexProcesoController(IKardexProcesoService kardexProcesoService, ILog log)
         {
             _kardexProcesoService = kardexProcesoService;
             _log = log;
-            _webHostEnvironment = webHostEnvironment;
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
         [HttpGet("version")]

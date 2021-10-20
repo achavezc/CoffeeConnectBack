@@ -218,6 +218,8 @@ namespace CoffeeConnect.API
             services.AddTransient<IAdelantoService, AdelantoService>();
             services.AddTransient<IAdelantoRepository, AdelantoRepository>();
             services.AddTransient<IKardexService, KardexService>();
+            services.AddTransient<IKardexProcesoService, KardexProcesoService>();
+            services.AddTransient<IKardexProcesoRepository, KardexProcesoRepository>();
 
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
