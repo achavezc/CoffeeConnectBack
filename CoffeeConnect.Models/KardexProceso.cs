@@ -17,7 +17,7 @@ namespace CoffeeConnect.Models
 
         public String NumeroContrato { get; set; }
 
-        public DateTime FechaContrato { get; set; }
+        public DateTime? FechaContrato { get; set; }
 
         public int ClienteId { get; set; }
 
@@ -35,7 +35,7 @@ namespace CoffeeConnect.Models
         public Decimal QQIngresados { get; set; }
 
         public Decimal QQDespachados { get; set; }
-        public DateTime FechaFactura { get; set; }
+        public DateTime? FechaFactura { get; set; }
         public String NumeroFactura { get; set; }
 
         public Decimal PrecioUnitarioCP { get; set; }
@@ -47,10 +47,10 @@ namespace CoffeeConnect.Models
 
         public String PlantaProcesoAlmacenId { get; set; }
 
-        public DateTime FechaIngreso { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public DateTime? FechaIngreso { get; set; }
+        public DateTime? FechaRegistro { get; set; }
 
-        public DateTime FechaActualizacion { get; set; }
+        public DateTime? FechaActualizacion { get; set; }
 
         public String UsuarioRegistro { get; set; }
 

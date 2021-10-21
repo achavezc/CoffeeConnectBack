@@ -72,5 +72,7 @@ namespace CoffeeConnect.DTO
         public String Direccion { get; set; }
         public String Estado { get; set; }
 
+        public String CodigoCliente { get; set; }
+
     }
 }

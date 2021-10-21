@@ -8,6 +8,9 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the AduanaId value.
         /// </summary>
+        /// 
+        public int EmpresaId
+        { get; set; }
         public int AduanaId
         { get; set; }
 
@@ -45,8 +48,7 @@ namespace CoffeeConnect.Models
         /// <summary>
         /// Gets or sets the EmpresaId value.
         /// </summary>
-        public int EmpresaId
-        { get; set; }
+        
 
         /// <summary>
         /// Gets or sets the Numero value.
