@@ -21,6 +21,8 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		
+
+
 		/// <summary>
 		/// Gets or sets the UsuarioRegistro value.
 		/// </summary>
