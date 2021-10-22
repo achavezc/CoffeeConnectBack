@@ -150,5 +150,23 @@ namespace CoffeeConnect.Repository
             }
             return itemBE;
         }
+
+        public int Anular(int KardexProcesoId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@KardexProcesoId", KardexProcesoId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspKardexProcesoAnular", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
     }
 }

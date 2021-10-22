@@ -14,5 +14,7 @@ namespace CoffeeConnect.Interface.Service
         public int Actualizar(RegistrarActualizarKardexProcesoRequestDTO request);
 
         public ConsultaKardexProcesoPorIdBE ConsultarKardexProcesoPorId(ConsultaKardexProcesoPorIdRequestDTO request);
+
+        public int Anular(AnularKardeProcesoRequestDTO request);
     }
 }

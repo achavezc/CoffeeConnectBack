@@ -15,5 +15,7 @@ namespace CoffeeConnect.Interface.Repository
         public int Actualizar(KardexProceso kardexProceso);
 
         public ConsultaKardexProcesoPorIdBE ConsultarKardexProcesoPorId(int KardexProcesoId);
+
+        public int Anular(int KardexProcesoId, DateTime fecha, string usuario, string estadoId);
     }
 }

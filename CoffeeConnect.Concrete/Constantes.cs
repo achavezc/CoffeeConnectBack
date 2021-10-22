@@ -162,7 +162,14 @@ namespace CoffeeConnect.Service
 
     }
 
-    
+    public static class KardexProcesoEstados
+    {
+        public static string Registrado { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+    }
+
+
 
     public static class ContratoEstados
     {

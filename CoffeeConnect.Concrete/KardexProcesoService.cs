@@ -58,5 +58,15 @@ namespace CoffeeConnect.Service
         {
             return _IKardexProcesoRepository.ConsultarKardexProcesoPorId(request.KardexProcesoId);
         }
+
+        public int Anular(AnularKardeProcesoRequestDTO request)
+        {
+            int result = 0;
+            if (request.KardexProcesoId > 0)
+            {
+                result = _IKardexProcesoRepository.Anular(request.KardexProcesoId, DateTime.Now, request.Usuario, KardexProcesoEstados.Anulado);
+            }
+            return result;
+        }
     }
 }

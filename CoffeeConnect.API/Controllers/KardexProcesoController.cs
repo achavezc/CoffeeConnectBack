@@ -149,5 +149,41 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
+
+        [Route("Anular")]
+        [HttpPost]
+        public IActionResult Anular([FromBody] AnularKardeProcesoRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            guid = NewMethod(request, guid);
+
+            AnularKardexProcesoResponseDTO response = new AnularKardexProcesoResponseDTO();
+            try
+            {
+                response.Result.Data = _kardexProcesoService.Anular(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        private Guid NewMethod(AnularKardeProcesoRequestDTO request, Guid guid)
+        {
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+            return guid;
+        }
     }
 }
