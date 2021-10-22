@@ -29,6 +29,8 @@ namespace CoffeeConnect.Models
 		public DateTime FechaRegistro
 		{ get; set; }
 
+		public int EmpresaId { get; set; }
+
 		/// <summary>
 		/// Gets or sets the UsuarioRegistro value.
 		/// </summary>

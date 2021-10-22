@@ -23,7 +23,7 @@ namespace CoffeeConnect.DTO
 
         public DateTime FechaFin { get; set; }
 
-        
+        public int EmpresaId { get; set; }
 
     }
 }
