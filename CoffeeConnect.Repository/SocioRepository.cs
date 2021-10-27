@@ -48,7 +48,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
-
+            parameters.Add("@EmpresaID", request.EmpresaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -66,7 +66,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UsuarioRegistro", socio.UsuarioRegistro);
             parameters.Add("@EstadoId", socio.EstadoId);
             parameters.Add("@FechaRegistro", socio.FechaRegistro);
-
+            parameters.Add("@@EmpresaID", socio.EmpresaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
