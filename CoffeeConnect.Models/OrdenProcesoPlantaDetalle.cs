@@ -27,7 +27,7 @@ namespace CoffeeConnect.Models
         public decimal PorcentajeExportable { get; set; }
         public decimal PorcentajeDescarte { get; set; }
         public decimal PorcentajeCascarilla { get; set; }
-        public decimal PorcentajeRendimiento { get; set; }
+        public decimal RendimientoPorcentaje { get; set; }
 
         public decimal KilosExportables { get; set; }
 
