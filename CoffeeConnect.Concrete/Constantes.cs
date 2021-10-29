@@ -79,6 +79,9 @@ namespace CoffeeConnect.Service
         public static string NotaIngresoAlmacenPlanta { get { return "NotaIngresoAlmacenPlanta  "; } }
 
         public static string NotaIngresoPlanta { get { return "NotaIngresoPlanta  "; } }
+
+        public static string KardexProceso { get { return "KardexProceso"; } }
+        
     }
 
     public static class NotaCompraEstados

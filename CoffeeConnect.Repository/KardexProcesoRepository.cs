@@ -25,8 +25,7 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("@NumeroContrato", request.NumeroContrato);
-            parameters.Add("@NumeroCliente", request.NumeroCliente);
-            parameters.Add("@RazonSocial", request.RazonSocial);
+            parameters.Add("@RucCliente", request.RucCliente);
             parameters.Add("@PlantaProcesoAlmacenId", request.PlantaProcesoAlmacenId);
             parameters.Add("@TipoDocumentoInternoId", request.TipoDocumentoInternoId);
             parameters.Add("@TipoOperacionId", request.TipoOperacionId);
@@ -54,10 +53,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoOperacionId", kardexProceso.TipoOperacionId);
             parameters.Add("@EmpresaId", kardexProceso.EmpresaId);
             parameters.Add("@Numero", kardexProceso.Numero);
+            parameters.Add("@NumeroComprobanteInterno", kardexProceso.NumeroComprobanteInterno);
             parameters.Add("@NumeroGuiaRemision", kardexProceso.NumeroGuiaRemision);
             parameters.Add("@NumeroContrato", kardexProceso.NumeroContrato);
             parameters.Add("@FechaContrato", kardexProceso.FechaContrato);
-            parameters.Add("@ClienteId", kardexProceso.ClienteId);
+            parameters.Add("@RucCliente", kardexProceso.RucCliente);
             parameters.Add("@TipoCertificacionId", kardexProceso.TipoCertificacionId);
             parameters.Add("@CalidadId", kardexProceso.CalidadId);
             parameters.Add("@CantidadSacosIngresados", kardexProceso.CantidadSacosIngresados);
@@ -99,11 +99,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TipoDocumentoInternoId", kardexProceso.TipoDocumentoInternoId);
             parameters.Add("@TipoOperacionId", kardexProceso.TipoOperacionId);
             parameters.Add("@EmpresaId", kardexProceso.EmpresaId);
-            parameters.Add("@Numero", kardexProceso.Numero);
+            parameters.Add("@NumeroComprobanteInterno", kardexProceso.NumeroComprobanteInterno);
             parameters.Add("@NumeroGuiaRemision", kardexProceso.NumeroGuiaRemision);
             parameters.Add("@NumeroContrato", kardexProceso.NumeroContrato);
             parameters.Add("@FechaContrato", kardexProceso.FechaContrato);
-            parameters.Add("@ClienteId", kardexProceso.ClienteId);
+            parameters.Add("@RucCliente", kardexProceso.RucCliente);
             parameters.Add("@TipoCertificacionId", kardexProceso.TipoCertificacionId);
             parameters.Add("@CalidadId", kardexProceso.CalidadId);
             parameters.Add("@CantidadSacosIngresados", kardexProceso.CantidadSacosIngresados);
