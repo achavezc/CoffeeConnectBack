@@ -32,5 +32,10 @@ namespace CoffeeConnect.DTO
 
         public decimal KilosNetos { get; set; }
 
+        public decimal PorcentajeExportable { get; set; }
+	    public decimal PorcentajeDescarte { get; set; }
+	    public decimal PorcentajeCascarilla { get; set; }
+	    public decimal SacosCalculo { get; set; }
+
     }
 }

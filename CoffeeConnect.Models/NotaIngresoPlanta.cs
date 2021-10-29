@@ -305,6 +305,8 @@ namespace CoffeeConnect.Models
 		public bool Activo
 		{ get; set; }
 
+		public string Direccion { get; set; }
+
 		#endregion
 	}
 }

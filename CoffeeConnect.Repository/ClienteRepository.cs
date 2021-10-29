@@ -22,15 +22,15 @@ namespace CoffeeConnect.Repository
         public IEnumerable<ConsultaClienteBE> ConsultarCliente(ConsultaClienteRequestDTO request)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("Numero", request.Numero);
-            parameters.Add("RazonSocial", request.RazonSocial);
-            parameters.Add("TipoClienteId", request.TipoClienteId);
-            parameters.Add("PaisId", request.PaisId);
-            parameters.Add("EmpresaId", request.EmpresaId);
-            parameters.Add("Ruc", request.Ruc);
-            parameters.Add("EstadoId", request.EstadoId);
-            parameters.Add("FechaInicio", request.FechaInicio);
-            parameters.Add("FechaFin", request.FechaFin);
+            parameters.Add("@Numero", request.Numero);
+            parameters.Add("@RazonSocial", request.RazonSocial);
+            parameters.Add("@TipoClienteId", request.TipoClienteId);
+            parameters.Add("@PaisId", request.PaisId);
+            parameters.Add("@EmpresaId", request.EmpresaId);
+            parameters.Add("@Ruc", request.Ruc);
+            parameters.Add("@EstadoId", request.EstadoId);
+            parameters.Add("@FechaInicio", request.FechaInicio);
+            parameters.Add("@FechaFin", request.FechaFin);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
