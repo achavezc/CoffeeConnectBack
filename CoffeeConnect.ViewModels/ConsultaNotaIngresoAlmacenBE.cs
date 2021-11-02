@@ -170,6 +170,10 @@ namespace CoffeeConnect.DTO
         public string TipoCertificacionId
         { get; set; }
 
+        public string EntidadCertificadoraId
+        { get; set; }
+
+
         public string Certificacion
         { get; set; }
 

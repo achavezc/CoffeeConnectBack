@@ -15,12 +15,17 @@ namespace CoffeeConnect.Service
         private INotaIngresoAlmacenRepository _INotaIngresoAlmacenRepository;
         private IGuiaRecepcionMateriaPrimaRepository _IGuiaRecepcionMateriaPrimaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
+        private IMaestroRepository _IMaestroRepository;
+        private ISocioFincaCertificacionRepository _ISocioFincaCertificacionRepository;
 
-        public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrimaRepository, ICorrelativoRepository correlativoRepository)
+        public NotaIngresoAlmacenService(INotaIngresoAlmacenRepository notaIngresoAlmacenRepository, ISocioFincaCertificacionRepository socioFincaCertificacionRepository,  IMaestroRepository maestroRepository, IGuiaRecepcionMateriaPrimaRepository guiaRecepcionMateriaPrimaRepository, ICorrelativoRepository correlativoRepository)
         {
             _INotaIngresoAlmacenRepository = notaIngresoAlmacenRepository;
             _IGuiaRecepcionMateriaPrimaRepository = guiaRecepcionMateriaPrimaRepository;
             _ICorrelativoRepository = correlativoRepository;
+            _IMaestroRepository = maestroRepository;
+            _ISocioFincaCertificacionRepository = socioFincaCertificacionRepository;
+
         }
 
         /*
@@ -75,6 +80,20 @@ namespace CoffeeConnect.Service
             notaIngresoAlmacen.TotalAnalisisSensorial = guiaRecepcionMateriaPrima.TotalAnalisisSensorial;
             notaIngresoAlmacen.HumedadPorcentajeAnalisisFisico = guiaRecepcionMateriaPrima.HumedadPorcentajeAnalisisFisico.Value;
 
+            List<ConsultaSocioFincaCertificacionPorSocioFincaId> certificacionesSocio = _ISocioFincaCertificacionRepository.ConsultarSocioFincaCertificacionPorSocioFincaId(guiaRecepcionMateriaPrima.SocioFincaId.Value).ToList();
+
+            string certificaciones = String.Empty;
+            string certificadoras = String.Empty;
+
+            foreach (ConsultaSocioFincaCertificacionPorSocioFincaId certificacion in certificacionesSocio)
+            {
+                certificaciones = certificacion.TipoCertificacionId + "|";
+                certificadoras = certificacion.EntidadCertificadoraId + "|";
+            }
+
+            notaIngresoAlmacen.TipoCertificacionId = certificaciones;
+            notaIngresoAlmacen.EntidadCertificadoraId = certificadoras;
+
             if (guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico.HasValue && guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico > 0)
             {
                 notaIngresoAlmacen.RendimientoPorcentaje = (guiaRecepcionMateriaPrima.ExportableGramosAnalisisFisico / guiaRecepcionMateriaPrima.TotalGramosAnalisisFisico) * 100;
@@ -109,6 +128,52 @@ namespace CoffeeConnect.Service
                 throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaCompra.ValidacionRangoFechaMayor2anios.Label" });
 
             var list = _INotaIngresoAlmacenRepository.ConsultarNotaIngresoAlmacen(request);
+
+
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+
+            foreach (ConsultaNotaIngresoAlmacenBE consultaNotaIngresoAlmacenBE in list)
+            {
+                string[] certificacionesIds = consultaNotaIngresoAlmacenBE.TipoCertificacionId.Split('|');
+
+                string[] certificadorasIds = consultaNotaIngresoAlmacenBE.EntidadCertificadoraId.Split('|');
+
+                string certificacionLabel = string.Empty;
+
+                string certificadoraLabel = string.Empty;
+
+                if (certificacionesIds.Length > 0)
+                {
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                    List<ConsultaDetalleTablaBE> certificadoras = lista.Where(a => a.CodigoTabla.Trim().Equals("EntidadCertificadoraPlanta")).ToList();
+
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+
+                    foreach (string certificadoraId in certificadorasIds)
+                    {
+                        ConsultaDetalleTablaBE certificadora = certificadoras.Where(a => a.Codigo == certificadoraId).FirstOrDefault();
+
+                        if (certificadora != null)
+                        {
+                            certificadoraLabel = certificadoraLabel + certificadora.Label + " ";
+                        }
+                    }
+
+                }
+
+                consultaNotaIngresoAlmacenBE.Certificacion = certificacionLabel;
+                consultaNotaIngresoAlmacenBE.Certificadora = certificadoraLabel;
+
+            }
             return list.ToList();
         }
 

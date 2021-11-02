@@ -183,6 +183,13 @@ namespace CoffeeConnect.Models
 		public string Observacion
 		{ get; set; }
 
+		public string TipoCertificacionId
+		{ get; set; }
+
+		public string EntidadCertificadoraId
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the EstadoId value.
 		/// </summary>

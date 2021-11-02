@@ -168,6 +168,10 @@ namespace CoffeeConnect.DTO
 		public string NumeroDocumento
 		{ get; set; }
 
+		public string TipoCertificacionId
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the Departamento value.
 		/// </summary>
