@@ -188,6 +188,7 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaPesado
 		{ get; set; }
 
+		public string Direccion { get; set; }
 
 	}
 }

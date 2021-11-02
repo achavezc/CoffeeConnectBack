@@ -7,8 +7,7 @@ namespace CoffeeConnect.DTO
     public class ConsultaKardexProcesoRequestDTO
     {
         public String NumeroContrato { get; set; }
-        public String NumeroCliente { get; set; }
-        public String RazonSocial { get; set; }
+        public String RucCliente { get; set; }
 
         public String PlantaProcesoAlmacenId { get; set; }
         public String TipoDocumentoInternoId { get; set; }

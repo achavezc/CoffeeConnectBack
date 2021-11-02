@@ -16,11 +16,14 @@ namespace CoffeeConnect.Service
 
         private readonly IMapper _Mapper;
 
-        public KardexProcesoService(IKardexProcesoRepository kardexProcesoRepository, IMapper mapper)
+        private ICorrelativoRepository _ICorrelativoRepository;
+        public KardexProcesoService(IKardexProcesoRepository kardexProcesoRepository, IMapper mapper, ICorrelativoRepository correlativoRepository)
         {
             _IKardexProcesoRepository = kardexProcesoRepository;
 
             _Mapper = mapper;
+
+            _ICorrelativoRepository = correlativoRepository;
         }
 
         public List<ConsultaKardexProcesoBE> ConsultarKardexProceso(ConsultaKardexProcesoRequestDTO request)
@@ -36,6 +39,8 @@ namespace CoffeeConnect.Service
         public int Registrar(RegistrarActualizarKardexProcesoRequestDTO request)
         {
             KardexProceso kardexProceso = _Mapper.Map<KardexProceso>(request);
+
+            kardexProceso.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.KardexProceso);
             kardexProceso.FechaRegistro = DateTime.Now;
             kardexProceso.UsuarioRegistro = request.Usuario;
 
@@ -57,6 +62,16 @@ namespace CoffeeConnect.Service
         public ConsultaKardexProcesoPorIdBE ConsultarKardexProcesoPorId(ConsultaKardexProcesoPorIdRequestDTO request)
         {
             return _IKardexProcesoRepository.ConsultarKardexProcesoPorId(request.KardexProcesoId);
+        }
+
+        public int Anular(AnularKardeProcesoRequestDTO request)
+        {
+            int result = 0;
+            if (request.KardexProcesoId > 0)
+            {
+                result = _IKardexProcesoRepository.Anular(request.KardexProcesoId, DateTime.Now, request.Usuario, KardexProcesoEstados.Anulado);
+            }
+            return result;
         }
     }
 }

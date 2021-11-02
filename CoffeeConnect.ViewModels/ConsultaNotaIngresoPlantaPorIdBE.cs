@@ -374,7 +374,6 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
-
 		
 		public List<NotaIngresoPlantaAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
 		{ get; set; }

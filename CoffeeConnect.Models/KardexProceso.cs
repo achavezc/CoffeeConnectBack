@@ -13,13 +13,17 @@ namespace CoffeeConnect.Models
         public int EmpresaId { get; set; }
         public String Numero { get; set; }
 
+
+        public String NumeroComprobanteInterno { get; set; }
+
+
         public String NumeroGuiaRemision { get; set; }
 
         public String NumeroContrato { get; set; }
 
         public DateTime? FechaContrato { get; set; }
 
-        public int ClienteId { get; set; }
+        public String RucCliente { get; set; }
 
         public String TipoCertificacionId { get; set; }
 

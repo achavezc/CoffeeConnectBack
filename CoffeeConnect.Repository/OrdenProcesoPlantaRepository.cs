@@ -170,8 +170,18 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaDetalle.OrdenProcesoPlantaId);
             parameters.Add("@NotaIngresoPlantaId", ordenProcesoPlantaDetalle.NotaIngresoPlantaId);
-
-
+            parameters.Add("@NumeroNotaIngresoPlanta", ordenProcesoPlantaDetalle.NumeroIngresoPlanta);
+            parameters.Add("@FechaIngresoAlmacen", ordenProcesoPlantaDetalle.FechaRegistroFinal);
+            parameters.Add("@CantidadPesado", ordenProcesoPlantaDetalle.CantidadPesado);
+            parameters.Add("@KilosNetos", ordenProcesoPlantaDetalle.KilosNetosPesado);
+            parameters.Add("@PorcentajeHumedad", ordenProcesoPlantaDetalle.HumedadPorcentaje);
+            parameters.Add("@PorcentajeExportable", ordenProcesoPlantaDetalle.PorcentajeExportable);
+            parameters.Add("@PorcentajeDescarte", ordenProcesoPlantaDetalle.PorcentajeDescarte);
+            parameters.Add("@PorcentajeCascarilla", ordenProcesoPlantaDetalle.PorcentajeCascarilla);
+            parameters.Add("@PorcentajeRendimiento", ordenProcesoPlantaDetalle.RendimientoPorcentaje);
+            parameters.Add("@KilosExportables", ordenProcesoPlantaDetalle.KilosExportables);
+            parameters.Add("@SacosCalculo", ordenProcesoPlantaDetalle.SacosCalculo);
+            
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 db.Execute("uspOrdenProcesoPlantaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);

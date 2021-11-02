@@ -14,10 +14,11 @@ namespace CoffeeConnect.DTO
         public String TipoOperacionId { get; set; }
         public String EmpresaId { get; set; }
         public String Numero { get; set; }
+        public String NumeroComprobanteInterno { get; set; }
         public String NumeroGuiaRemision { get; set; }
         public String NumeroContrato { get; set; }
         public String FechaContrato { get; set; }
-        public String ClienteId { get; set; }
+        public String RucCliente { get; set; }
 
         public String TipoCertificacionId { get; set; }
 
@@ -72,7 +73,6 @@ namespace CoffeeConnect.DTO
         public String Direccion { get; set; }
         public String Estado { get; set; }
 
-        public String CodigoCliente { get; set; }
 
     }
 }
