@@ -50,6 +50,10 @@ namespace Integracion.Deuda.Controller
                 {
                     response.Result.Data = lista;
                 }
+                else if (request.CodigoTabla.Equals("TiposCafeProcesado"))
+                {
+                    response.Result.Data = lista.OrderBy(x => x.Codigo).ToList();
+                }
                 else
                 {
                     response.Result.Data = lista.OrderBy(x => x.Label).ToList();
