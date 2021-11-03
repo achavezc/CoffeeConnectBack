@@ -84,11 +84,24 @@ namespace CoffeeConnect.Service
 
             string certificaciones = String.Empty;
             string certificadoras = String.Empty;
+            int contador = 1;
+
 
             foreach (ConsultaSocioFincaCertificacionPorSocioFincaId certificacion in certificacionesSocio)
             {
-                certificaciones = certificacion.TipoCertificacionId + "|";
-                certificadoras = certificacion.EntidadCertificadoraId + "|";
+                if(contador==1)
+                {
+                    certificaciones = certificacion.TipoCertificacionId + "|";
+                    certificadoras = certificacion.EntidadCertificadoraId + "|";
+                }
+                else
+                {
+                    certificaciones = certificaciones + certificacion.TipoCertificacionId + "|";
+                    certificadoras = certificadoras + certificacion.EntidadCertificadoraId + "|";
+
+                }
+                contador = contador + 1;
+                
             }
 
             notaIngresoAlmacen.TipoCertificacionId = certificaciones;
@@ -134,45 +147,51 @@ namespace CoffeeConnect.Service
 
             foreach (ConsultaNotaIngresoAlmacenBE consultaNotaIngresoAlmacenBE in list)
             {
-                string[] certificacionesIds = consultaNotaIngresoAlmacenBE.TipoCertificacionId.Split('|');
 
-                string[] certificadorasIds = consultaNotaIngresoAlmacenBE.EntidadCertificadoraId.Split('|');
-
-                string certificacionLabel = string.Empty;
-
-                string certificadoraLabel = string.Empty;
-
-                if (certificacionesIds.Length > 0)
+                if (!string.IsNullOrEmpty(consultaNotaIngresoAlmacenBE.TipoCertificacionId) && !string.IsNullOrEmpty(consultaNotaIngresoAlmacenBE.EntidadCertificadoraId))
                 {
-                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
 
-                    List<ConsultaDetalleTablaBE> certificadoras = lista.Where(a => a.CodigoTabla.Trim().Equals("EntidadCertificadoraPlanta")).ToList();
 
-                    foreach (string certificacionId in certificacionesIds)
+                    string[] certificacionesIds = consultaNotaIngresoAlmacenBE.TipoCertificacionId.Split('|');
+
+                    string[] certificadorasIds = consultaNotaIngresoAlmacenBE.EntidadCertificadoraId.Split('|');
+
+                    string certificacionLabel = string.Empty;
+
+                    string certificadoraLabel = string.Empty;
+
+                    if (certificacionesIds.Length > 0)
                     {
-                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                        List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
 
-                        if (certificacion != null)
+                        List<ConsultaDetalleTablaBE> certificadoras = lista.Where(a => a.CodigoTabla.Trim().Equals("EntidadCertificadora")).ToList();
+
+                        foreach (string certificacionId in certificacionesIds)
                         {
-                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                            ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                            if (certificacion != null)
+                            {
+                                certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                            }
                         }
+
+                        foreach (string certificadoraId in certificadorasIds)
+                        {
+                            ConsultaDetalleTablaBE certificadora = certificadoras.Where(a => a.Codigo == certificadoraId).FirstOrDefault();
+
+                            if (certificadora != null)
+                            {
+                                certificadoraLabel = certificadoraLabel + certificadora.Label + " ";
+                            }
+                        }
+
                     }
 
-                    foreach (string certificadoraId in certificadorasIds)
-                    {
-                        ConsultaDetalleTablaBE certificadora = certificadoras.Where(a => a.Codigo == certificadoraId).FirstOrDefault();
-
-                        if (certificadora != null)
-                        {
-                            certificadoraLabel = certificadoraLabel + certificadora.Label + " ";
-                        }
-                    }
+                    consultaNotaIngresoAlmacenBE.Certificacion = certificacionLabel;
+                    consultaNotaIngresoAlmacenBE.Certificadora = certificadoraLabel;
 
                 }
-
-                consultaNotaIngresoAlmacenBE.Certificacion = certificacionLabel;
-                consultaNotaIngresoAlmacenBE.Certificadora = certificadoraLabel;
-
             }
             return list.ToList();
         }
