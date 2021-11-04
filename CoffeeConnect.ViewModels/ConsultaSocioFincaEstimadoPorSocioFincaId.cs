@@ -40,6 +40,10 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the VigenciaAnios value.
 		/// </summary>
+		/// 
+
+		public DateTime FechaEmision
+		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the FechaCaducidad value.

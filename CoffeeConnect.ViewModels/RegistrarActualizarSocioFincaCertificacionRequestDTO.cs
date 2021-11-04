@@ -39,7 +39,11 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaCaducidad
 		{ get; set; }
 
-	
+		public DateTime FechaEmision
+		{ get; set; }
+
+		
+
 
 		/// <summary>
 		/// Gets or sets the UsuarioRegistro value.

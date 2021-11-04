@@ -39,6 +39,10 @@ namespace CoffeeConnect.Models
 		public DateTime FechaCaducidad
 		{ get; set; }
 
+		public DateTime FechaEmision
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
 		/// </summary>
