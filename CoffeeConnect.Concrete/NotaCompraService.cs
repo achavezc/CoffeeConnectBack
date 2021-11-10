@@ -185,7 +185,7 @@ namespace CoffeeConnect.Service
 
                 }
 
-                consultaNotaCompraPorIdBE.TotalPagar = consultaNotaCompraPorIdBE.Importe.Value - consultaNotaCompraPorIdBE.TotalAdelanto.Value;
+                //consultaNotaCompraPorIdBE.TotalPagar = consultaNotaCompraPorIdBE.Importe.Value - consultaNotaCompraPorIdBE.TotalAdelanto.Value;
             }
             return consultaNotaCompraPorIdBE;
         }

@@ -49,18 +49,35 @@ namespace CoffeeConnect.Service
                     //agenciasTotal = agenciasTotal.Concat(agencias).ToArray();
                     //certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
 
-                    guiaRemisionListaDetalle.NumeroLote = z.NumeroLote.Trim();
-                    guiaRemisionListaDetalle.FechaLoteString = z.FechaLoteString;
-                    guiaRemisionListaDetalle.TipoProducto = z.Producto.Trim();
-                    guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida + " Plastico";
+                    //guiaRemisionListaDetalle.NumeroLote = z.NumeroLote.Trim();
+                    //guiaRemisionListaDetalle.FechaLoteString = z.FechaLoteString;
+                    //guiaRemisionListaDetalle.TipoProducto = z.Producto.Trim();
+                    guiaRemisionListaDetalle.TipoProducto = !string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty;
+
+
+                    //guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida + " Plastico";
+                    guiaRemisionListaDetalle.UnidadMedida = !string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty + " Plastico";
+
+
+
                     guiaRemisionListaDetalle.Cantidad = z.CantidadPesado;
-                    guiaRemisionListaDetalle.PesoNeto = z.KilosNetosPesado;
-                    guiaRemisionListaDetalle.HumedadPorcentaje = z.HumedadPorcentaje;
-                    guiaRemisionListaDetalle.RendimientoPorcentaje = z.RendimientoPorcentaje;
-                    guiaRemisionListaDetalle.TipoCertificacion = z.TipoCertificacion.Trim();
-                    guiaRemisionListaDetalle.TipoProduccion = z.TipoProduccion.Trim();
-                    guiaRemisionListaDetalle.Producto = z.Producto.Trim();
-                    guiaRemisionListaDetalle.SubProducto = z.SubProducto.Trim();
+                    guiaRemisionListaDetalle.PesoNeto = z.KilosBrutosPesado;
+                    //guiaRemisionListaDetalle.HumedadPorcentaje = z.HumedadPorcentaje;
+                    //guiaRemisionListaDetalle.RendimientoPorcentaje = z.RendimientoPorcentaje;
+                    //guiaRemisionListaDetalle.TipoCertificacion = z.TipoCertificacion.Trim();
+                    guiaRemisionListaDetalle.TipoCertificacion = !string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty;
+
+                    //guiaRemisionListaDetalle.TipoProduccion = z.TipoProduccion.Trim();
+                    guiaRemisionListaDetalle.TipoProduccion = !string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty;
+
+                    //guiaRemisionListaDetalle.Producto = z.Producto.Trim();
+                    guiaRemisionListaDetalle.Producto = !string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty;
+
+                    //guiaRemisionListaDetalle.SubProducto = z.SubProducto.Trim();
+                    guiaRemisionListaDetalle.SubProducto = !string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty;
+
+
+
                     generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
 
                 });

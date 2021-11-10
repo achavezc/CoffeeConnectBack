@@ -1883,10 +1883,6 @@ RUC </Value>
           <DataField>correlativo</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="NumeroLote">
-          <DataField>NumeroLote</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="TipoProducto">
           <DataField>TipoProducto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1903,10 +1899,7 @@ RUC </Value>
           <DataField>PesoNeto</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="FechaLoteString">
-          <DataField>FechaLoteString</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
+        
         <Field Name="TipoCertificacion">
           <DataField>TipoCertificacion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1914,15 +1907,7 @@ RUC </Value>
         <Field Name="TipoProduccion">
           <DataField>TipoProduccion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="HumedadPorcentaje">
-          <DataField>HumedadPorcentaje</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="RendimientoPorcentaje">
-          <DataField>RendimientoPorcentaje</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
+        </Field>        
         <Field Name="Producto">
           <DataField>Producto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
