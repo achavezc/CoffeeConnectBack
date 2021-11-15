@@ -1509,9 +1509,9 @@
         <Paragraphs>
           <Paragraph>
             <TextRuns>
-              <TextRun>
-                <Value>="	  " &amp; CStr(Sum(Fields!Cantidad.Value, "dsGRListaDetalle")) &amp; "	" &amp; Trim(First(Fields!UnidadMedida.Value, "dsGRListaDetalle")) &amp; "	   " &amp; Trim(First(Fields!Producto.Value, "dsGRListaDetalle")) &amp; "	" &amp; First(Fields!SubProducto.Value, "dsGRListaDetalle") &amp; " " &amp; First(Fields!TipoProduccion.Value, "dsGRListaDetalle") &amp; "	" &amp; First(Fields!TipoCertificacion.Value, "dsGRListaDetalle")</Value>
-                <Style>
+              <TextRun>                
+				<Value>=First(Fields!Descripcion.Value, "dsGRListaDetalle")</Value>
+				<Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
@@ -1883,39 +1883,14 @@ RUC </Value>
           <DataField>correlativo</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="TipoProducto">
-          <DataField>TipoProducto</DataField>
+        <Field Name="Descripcion">
+          <DataField>Descripcion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="UnidadMedida">
-          <DataField>UnidadMedida</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Cantidad">
-          <DataField>Cantidad</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
+        </Field>        
         <Field Name="PesoNeto">
           <DataField>PesoNeto</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        
-        <Field Name="TipoCertificacion">
-          <DataField>TipoCertificacion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TipoProduccion">
-          <DataField>TipoProduccion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>        
-        <Field Name="Producto">
-          <DataField>Producto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SubProducto">
-          <DataField>SubProducto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
+        </Field>  
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsReportes</rd:DataSetName>
