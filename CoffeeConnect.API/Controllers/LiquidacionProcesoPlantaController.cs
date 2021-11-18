@@ -364,7 +364,7 @@ namespace CoffeeConnect.API.Controllers
 
         [Route("GenerarPDFLiquidacionProceso")]
         [HttpGet]
-        public IActionResult GenerarPDFLiquidacionProceso(int id)
+        public IActionResult GenerarPDFLiquidacionProceso(int id, int empresaId)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
@@ -378,7 +378,8 @@ namespace CoffeeConnect.API.Controllers
                 
                 response.data = LiquidacionProcesoPlantaService.ConsultarLiquidacionProcesoPlantaPorId(new ConsultaLiquidacionProcesoPlantaPorIdRequestDTO
                 {
-                    LiquidacionProcesoPlantaId = id
+                    LiquidacionProcesoPlantaId = id,
+                    EmpresaId = empresaId
                 });
 
                 if (response != null && response.data != null)

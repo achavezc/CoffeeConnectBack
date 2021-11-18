@@ -214,10 +214,11 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        public IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> ConsultarLiquidacionProcesoPlantaResultadoPorId(int liquidacionProcesoPlantaId)
+        public IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> ConsultarLiquidacionProcesoPlantaResultadoPorId(int liquidacionProcesoPlantaId, int EmpresaId)
         {
             var parameters = new DynamicParameters();
             parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaId);
+            parameters.Add("@EmpresaId", EmpresaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
