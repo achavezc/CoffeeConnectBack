@@ -131,16 +131,23 @@ namespace Integracion.Deuda.Controller
             ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
             try
             {
-                List<ConsultaUbigeoBE> lista = _maestroService.ConsultaUbibeo();
-                string prefijoDepartamento = !String.IsNullOrEmpty(request.CodigoDepartamento.ToString())
-                                                && request.CodigoDepartamento.Length >= 2 ? request.CodigoDepartamento.Substring(0, 2) : "-";
+                List<ConsultaUbigeoBE> lista = new List<ConsultaUbigeoBE>();
 
-                lista = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("00")
-                                                && a.Codigo.StartsWith(prefijoDepartamento)
-                                                && !a.Codigo.EndsWith("0000"))
-                                        .ToList();
+                if (!string.IsNullOrEmpty(request.CodigoDepartamento))
+                {
+                    _maestroService.ConsultaUbibeo();
+                    string prefijoDepartamento = !String.IsNullOrEmpty(request.CodigoDepartamento.ToString())
+                                                    && request.CodigoDepartamento.Length >= 2 ? request.CodigoDepartamento.Substring(0, 2) : "-";
 
-                response.Result.Data =  lista.OrderBy(x => x.DescripcionPais).ToList();
+                    lista = lista.Where(a => a.CodigoPais == request.CodigoPais && a.Codigo.EndsWith("00")
+                                                    && a.Codigo.StartsWith(prefijoDepartamento)
+                                                    && !a.Codigo.EndsWith("0000"))
+                                            .ToList();
+
+                    lista = lista.OrderBy(x => x.DescripcionPais).ToList();
+                }
+
+                response.Result.Data = lista;
 
                 response.Result.Success = true;
 
