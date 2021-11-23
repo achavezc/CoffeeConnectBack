@@ -127,6 +127,10 @@ namespace CoffeeConnect.DTO
         public DateTime FechaRegistro
         { get; set; }
         public string FechaRegistroString { get; set; }
+
+        public string FechaInicioProcesoString { get; set; }
+
+        public string FechaFinProcesoString { get; set; }
         /// <summary>
         /// Gets or sets the UsuarioRegistro value.
         /// </summary>
