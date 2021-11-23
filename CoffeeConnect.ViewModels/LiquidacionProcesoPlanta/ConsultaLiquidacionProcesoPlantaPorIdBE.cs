@@ -159,6 +159,41 @@ namespace CoffeeConnect.DTO
 
         public IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> Resultado { get; set; }
 
+
+
+        public string ProductoIdTerminado
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Producto value.
+        /// </summary>
+        public string ProductoTerminado
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SubProductoId value.
+        /// </summary>
+        public string SubProductoIdTerminado
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SubProducto value.
+        /// </summary>
+        public string SubProductoTerminado
+        { get; set; }
+
+
+        public string CalidadId
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SubProducto value.
+        /// </summary>
+        public string Calidad
+        { get; set; }
+
+
+
         #endregion
     }
 }
