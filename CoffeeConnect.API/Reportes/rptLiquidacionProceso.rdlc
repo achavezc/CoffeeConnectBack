@@ -460,7 +460,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>CAFÉ ORO/VERDE (ARABICA) - EXPORTACIÓN MCM</Value>
+                <Value>=First(Fields!Preparacion.Value, "dsLiquidacionProceso")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1454,7 +1454,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!Porcentaje.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1490,7 +1490,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!KGN.Value</Value>
+                              <Value>=IIF(Fields!KGN.Value = 0 , "", Fields!KGN.Value)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1677,7 +1677,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Sum(Fields!Porcentaje.Value)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2553,6 +2553,11 @@
           <DataField>FechaFinProcesoString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Preparacion">
+          <DataField>Preparacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>dsReportes</rd:DataSetName>
@@ -2635,6 +2640,10 @@
         </Field>
         <Field Name="KilosNetos">
           <DataField>KilosNetos</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Porcentaje">
+          <DataField>Porcentaje</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>

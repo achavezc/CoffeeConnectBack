@@ -102,11 +102,23 @@ namespace CoffeeConnect.Service
         public ConsultaLiquidacionProcesoPlantaPorIdBE ConsultarLiquidacionProcesoPlantaPorId(ConsultaLiquidacionProcesoPlantaPorIdRequestDTO request)
         {
             ConsultaLiquidacionProcesoPlantaPorIdBE consultaLiquidacionProcesoPlantaPorIdBE = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaPorId(request.LiquidacionProcesoPlantaId);
+            consultaLiquidacionProcesoPlantaPorIdBE.Preparacion = consultaLiquidacionProcesoPlantaPorIdBE.ProductoTerminado + " - " + consultaLiquidacionProcesoPlantaPorIdBE.SubProductoTerminado + " - " + consultaLiquidacionProcesoPlantaPorIdBE.Calidad;
 
             if (consultaLiquidacionProcesoPlantaPorIdBE != null)
             {
                 consultaLiquidacionProcesoPlantaPorIdBE.Detalle = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaDetallePorId(request.LiquidacionProcesoPlantaId).ToList();
                 consultaLiquidacionProcesoPlantaPorIdBE.Resultado = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaResultadoPorId(request.LiquidacionProcesoPlantaId, request.EmpresaId).ToList();
+
+                decimal totalKilosNetos = 0;
+                foreach (ConsultaLiquidacionProcesoPlantaResultadoBE item in consultaLiquidacionProcesoPlantaPorIdBE.Resultado)
+                {
+                    totalKilosNetos = totalKilosNetos  + item.KilosNetos; 
+                }
+
+                foreach (ConsultaLiquidacionProcesoPlantaResultadoBE item in consultaLiquidacionProcesoPlantaPorIdBE.Resultado)
+                {
+                    item.Porcentaje = decimal.Round(((item.KilosNetos / totalKilosNetos) * 100), 2); 
+                }
 
 
                 List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaLiquidacionProcesoPlantaPorIdBE.EmpresaId, String.Empty).ToList();

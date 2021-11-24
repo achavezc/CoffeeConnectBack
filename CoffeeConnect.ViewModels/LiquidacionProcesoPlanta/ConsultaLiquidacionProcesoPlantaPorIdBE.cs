@@ -159,6 +159,14 @@ namespace CoffeeConnect.DTO
 
         public string NumeroOrdenProcesoPlanta { get; set; }
 
+        public string ProductoTerminado { get; set; }
+
+        public string SubProductoTerminado { get; set; }
+
+        public string Calidad { get; set; }
+
+        public string Preparacion { get; set; }
+
         public IEnumerable<ConsultaLiquidacionProcesoPlantaDetalleBE> Detalle { get; set; }
 
         public IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> Resultado { get; set; }

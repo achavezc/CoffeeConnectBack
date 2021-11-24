@@ -18,5 +18,6 @@ namespace CoffeeConnect.DTO
         public decimal CantidadSacos { get; set; }
         public decimal KGN { get; set; }
         public decimal KilosNetos { get; set; }
+        public decimal Porcentaje { get; set; }
     }
 }
