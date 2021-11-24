@@ -179,8 +179,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the Producto value.
         /// </summary>
-        public string ProductoTerminado
-        { get; set; }
+        
 
         /// <summary>
         /// Gets or sets the SubProductoId value.
@@ -191,8 +190,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the SubProducto value.
         /// </summary>
-        public string SubProductoTerminado
-        { get; set; }
+       
 
 
         public string CalidadId
@@ -201,8 +199,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the SubProducto value.
         /// </summary>
-        public string Calidad
-        { get; set; }
+       
 
 
 
