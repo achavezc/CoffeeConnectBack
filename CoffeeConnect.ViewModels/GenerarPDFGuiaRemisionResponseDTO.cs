@@ -46,6 +46,9 @@ namespace CoffeeConnect.DTO
         public DateTime FechaLote { get; set; }
         public string FechaLoteString { get; set; }
         public string TipoProducto { get; set; }
+
+        public string Descripcion { get; set; }
+
         public string TipoCertificacion { get; set; }
         public string TipoProduccion { get; set; }
         public string UnidadMedida { get; set; }

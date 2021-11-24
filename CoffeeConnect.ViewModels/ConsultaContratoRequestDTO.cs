@@ -27,5 +27,11 @@ namespace CoffeeConnect.DTO
 
         public DateTime FechaFin { get; set; }
 
+
+        public string EstadoFijacionId { get; set; }
+
+        public string CondicionEmbarqueId
+        { get; set; }
+
     }
 }

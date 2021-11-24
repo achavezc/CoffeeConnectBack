@@ -31,7 +31,7 @@ namespace CoffeeConnect.Interface.Repository
         ///
         IEnumerable<ConsultaLiquidacionProcesoPlantaDetalleBE> ConsultarLiquidacionProcesoPlantaDetallePorId(int liquidacionProcesoPlantaId);
 
-        IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> ConsultarLiquidacionProcesoPlantaResultadoPorId(int liquidacionProcesoPlantaId);
+        IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> ConsultarLiquidacionProcesoPlantaResultadoPorId(int liquidacionProcesoPlantaId, int EmpresaId);
 
     }
 }

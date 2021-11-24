@@ -100,6 +100,9 @@ namespace CoffeeConnect.DTO
         public decimal? NotaCreditoComision { get; set; }
 
         public decimal? PUTotalB { get; set; }
+        
+        public decimal? PUTotalC { get; set; }
+
 
         public decimal? TotalFacturar2 { get; set; }
 
@@ -107,6 +110,8 @@ namespace CoffeeConnect.DTO
         public decimal? GastosExpCostos { get; set; }
 
         public decimal? TotalFacturar3 { get; set; }
+
+
 
 
 

@@ -30,6 +30,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("NumeroCliente", request.NumeroCliente);
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("CondicionEmbarqueId", request.CondicionEmbarqueId);
+            parameters.Add("EstadoFijacionId", request.EstadoFijacionId);
             parameters.Add("TipoContratoId", request.TipoContratoId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
