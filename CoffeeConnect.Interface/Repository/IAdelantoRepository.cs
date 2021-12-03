@@ -21,5 +21,7 @@ namespace CoffeeConnect.Interface.Repository
         IEnumerable<ConsultaAdelantoBE> ConsultarAdelantosPorNotaCompra(int notaCompraId, string estadoId);
 
         int ActualizarEstadoPorNotaCompra(int notaCampraId, DateTime fecha, string usuario, string estadoId);
+
+        IEnumerable<ConsultaImpresionAdelantoBE> ConsultarImpresionAdelantosPorNotaCompra(int notaCompraId);
     }
 }

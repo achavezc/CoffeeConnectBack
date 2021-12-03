@@ -1,5 +1,6 @@
 ﻿using AspNetCore.Reporting;
 using CoffeeConnect.DTO;
+using CoffeeConnect.DTO.Adelanto;
 using CoffeeConnect.Interface.Service;
 using Core.Common;
 using Core.Common.Domain.Model;
@@ -256,6 +257,10 @@ namespace Integracion.Deuda.Controller
 
                 ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE item = _notaCompraService.ConsultarImpresionNotaCompraPorGuiaRecepcionMateriaPrimaId(request);
 
+                List< ConsultaImpresionAdelantoBE> adelantos = _notaCompraService.ConsultarImpresionNotaCompraAdelantosPorGuiaRecepcionMateriaPrimaId(item.NotaCompraId);
+
+
+
                 List<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE> lista = new List<ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE>();
                 lista.Add(item);
 
@@ -268,6 +273,8 @@ namespace Integracion.Deuda.Controller
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
                 lr.AddDataSource("dsNotaCompra", Util.ToDataTable(lista));
+                lr.AddDataSource("dsAdelanto", Util.ToDataTable(adelantos));
+
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
                 return File(result.MainStream, "application/pdf");

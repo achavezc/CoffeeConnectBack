@@ -152,8 +152,26 @@ namespace CoffeeConnect.Service
 
         public ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE ConsultarImpresionNotaCompraPorGuiaRecepcionMateriaPrimaId(ConsultaNotaCompraPorGuiaRecepcionMateriaPrimaIdRequestDTO request)
         {
-            return _INotaCompraRepository.ConsultarImpresionNotaCompraPorGuiaRecepcionMateriaPrimaId(request.GuiaRecepcionMateriaPrimaId);
+            ConsultaImpresionNotaCompraPorGuiaRecepcionMateriaPrimaIdBE consultaNotaCompraPorIdBE = _INotaCompraRepository.ConsultarImpresionNotaCompraPorGuiaRecepcionMateriaPrimaId(request.GuiaRecepcionMateriaPrimaId);
+
+
+
+
+            
+
+            return consultaNotaCompraPorIdBE;
         }
+
+        public List<ConsultaImpresionAdelantoBE> ConsultarImpresionNotaCompraAdelantosPorGuiaRecepcionMateriaPrimaId(int notaCompraId)
+        {
+         
+            return _IAdelantoRepository.ConsultarImpresionAdelantosPorNotaCompra(notaCompraId).ToList();
+
+
+
+            
+        }
+
 
         public ConsultaNotaCompraPorIdBE ConsultarNotaCompraPorId(ConsultaNotaCompraPorIdRequestDTO request)
         {
