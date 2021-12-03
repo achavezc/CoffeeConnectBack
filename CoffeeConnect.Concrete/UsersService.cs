@@ -544,8 +544,11 @@ namespace CoffeeConnect.Service
             
             List<MenuBE> opciones = JsonConvert.DeserializeObject<List<MenuBE>>(dataMenu);
 
+            var opcionesEscritura = opcionesUsuario.Where(c => c.Type == "Opcion" && c.Escritura == true).ToList();
 
             loginDTO.Opciones = rootList;
+
+            loginDTO.OpcionesEscritura = opcionesEscritura;
 
             return loginDTO;
 

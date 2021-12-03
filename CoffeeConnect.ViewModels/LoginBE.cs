@@ -22,7 +22,11 @@ namespace CoffeeConnect.DTO
         public string DireccionEmpresa { get; set; }
         public string LogoEmpresa { get; set; }
         public List<Root> Opciones { get; set; }
-        
+
+        public List<ConsultaOpcionesPorUsuario> OpcionesEscritura { get; set; }
+               
+
+
         public List<ConsultaProductoPrecioDiaBE> ProductoPreciosDia { get; set; }
 
         public string MonedaId { get; set; }
