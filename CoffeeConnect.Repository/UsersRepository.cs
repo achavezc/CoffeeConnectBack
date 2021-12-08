@@ -355,6 +355,9 @@ namespace CoffeeConnect.Repository
             }
         }
 
+
+
+
         public IEnumerable<ConsultaRolesPorUsuario> ConsultarRolesPorUsuario(int usuarioId)
         {
             var parameters = new DynamicParameters();

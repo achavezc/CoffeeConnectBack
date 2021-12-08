@@ -1,4 +1,6 @@
+using CoffeeConnect.DTO.Adelanto;
 using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -350,6 +352,13 @@ namespace CoffeeConnect.DTO
 
         public string TipoProduccionId { get; set; }
         public string TipoProduccion { get; set; }
+        //public List<ConsultaImpresionAdelantoBE> Adelantos { get; set; }
+
+
+       
+        
+
+
 
         #endregion
     }

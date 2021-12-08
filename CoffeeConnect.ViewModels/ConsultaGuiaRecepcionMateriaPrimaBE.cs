@@ -79,6 +79,11 @@ namespace CoffeeConnect.DTO
 
         public bool Activo { get; set; }
 
-        
+
+        public decimal? ExportablePorcentajeAnalisisFisico { get; set; }
+
+        public decimal? HumedadPorcentajeAnalisisFisico { get; set; }
+
+
     }
 }

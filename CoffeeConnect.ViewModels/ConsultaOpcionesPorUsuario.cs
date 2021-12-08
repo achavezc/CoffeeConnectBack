@@ -14,6 +14,8 @@ namespace CoffeeConnect.DTO
 		public String Type { get; set; }
 		public int OpcionPadreId { get; set; }		
 		public bool Activo { get; set; }
-		
+
+		public bool Escritura { get; set; }
+
 	}
 }
