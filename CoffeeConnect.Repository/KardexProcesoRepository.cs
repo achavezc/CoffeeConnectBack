@@ -1,6 +1,7 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
+using CoffeeConnect.Models.Kardex;
 using Dapper;
 using Microsoft.Extensions.Options;
 using System;
@@ -167,6 +168,32 @@ namespace CoffeeConnect.Repository
             }
 
             return affected;
+        }
+
+        public IEnumerable<KardexPergaminoIngresoConsultaResponse> KardexPergaminoIngresoConsulta(KardexPergaminoIngresoConsultaRequest request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", request.EmpresaId);
+            parameters.Add("@FechaInicio", request.FechaInicio);
+            parameters.Add("@FechaFin", request.FechaFin);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<KardexPergaminoIngresoConsultaResponse>("uspKardexPergaminoIngresoConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<KardexPergaminoSalidaConsultaResponse> KardexPergaminoSalidadConsulta(KardexPergaminoSalidaConsultaRequest request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@EmpresaId", request.EmpresaId);
+            parameters.Add("@FechaInicio", request.FechaInicio);
+            parameters.Add("@FechaFin", request.FechaFin);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<KardexPergaminoSalidaConsultaResponse>("uspKardexPergaminoSalidaConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }

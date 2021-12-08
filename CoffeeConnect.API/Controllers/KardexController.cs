@@ -1,5 +1,6 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
+using CoffeeConnect.Models.Kardex;
 using Core.Common.Domain.Model;
 using Core.Common.Logger;
 using Microsoft.AspNetCore.Mvc;
@@ -26,14 +27,17 @@ namespace CoffeeConnect.API.Controllers
 
         [Route("GenerarKardex")]
         [HttpGet]
-        public IActionResult GenerarKardex()
+        public IActionResult GenerarKardex([FromQuery(Name = "fechaInicio")] string fechaInicio, [FromQuery(Name = "fechaFin")] string fechaFin, [FromQuery(Name = "empresaId")] int empresaId)
         {
             Guid guid = Guid.NewGuid();
-            //_log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
+            KardexPergaminoIngresoConsultaRequest request = new KardexPergaminoIngresoConsultaRequest();
+            request.FechaInicio = Convert.ToDateTime(fechaInicio);
+            request.FechaFin = Convert.ToDateTime(fechaFin);
+            request.EmpresaId = empresaId;
             ExportarKardexResponseDTO response = new ExportarKardexResponseDTO();
             try
             {
-                response = _kardexService.ExportarKardex();
+                response = _kardexService.ExportarKardex(request);
                 return File(response.content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", string.Format("Kardex-{0}_{1}.xlsx", DateTime.Now.ToString("yyyyMMdd"), DateTime.Now.ToString("HHmmss")));
             }
             catch (ResultException ex)
