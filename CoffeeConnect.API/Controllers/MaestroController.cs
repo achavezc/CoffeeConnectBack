@@ -135,7 +135,7 @@ namespace Integracion.Deuda.Controller
 
                 if (!string.IsNullOrEmpty(request.CodigoDepartamento))
                 {
-                    _maestroService.ConsultaUbibeo();
+                    lista = _maestroService.ConsultaUbibeo();
                     string prefijoDepartamento = !String.IsNullOrEmpty(request.CodigoDepartamento.ToString())
                                                     && request.CodigoDepartamento.Length >= 2 ? request.CodigoDepartamento.Substring(0, 2) : "-";
 
