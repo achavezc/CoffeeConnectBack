@@ -1,8 +1,10 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
+using Core.Common;
 using Dapper;
 using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -42,6 +44,21 @@ namespace CoffeeConnect.Repository
 
         public IEnumerable<ConsultaSocioBE> ConsultarSocio(ConsultaSocioRequestDTO request)
         {
+            List<TablaIdsStringTipo> certificaciones = new List<TablaIdsStringTipo>();
+
+            
+
+            string[] certificacionesId = request.Certificacion.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
+            
+
+            foreach (string certificacionId in certificacionesId)
+            {
+                TablaIdsStringTipo id = new TablaIdsStringTipo();
+                id.Id = certificacionId;
+                certificaciones.Add(id);
+            }
+
+
             var parameters = new DynamicParameters();
             parameters.Add("Codigo", request.Codigo);
             parameters.Add("NombreRazonSocial", request.NombreRazonSocial);
@@ -50,7 +67,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
-            parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("EmpresaId", request.EmpresaId);         
+
+            parameters.Add("TablaIdsStringTipo", certificaciones.ToDataTable().AsTableValuedParameter());
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
