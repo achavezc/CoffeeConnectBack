@@ -109,8 +109,8 @@ namespace CoffeeConnect.Service
 
 
                     //SALIDAS
-                    ws.Cell(9, 20).Value = "Nro. Guia de Remisión Electronia";
-                    ws.Cell(9, 21).Value = "Fecha Guia de Remisión Electronia";
+                    ws.Cell(9, 20).Value = "Nro. Guia de Remisión Electronica";
+                    ws.Cell(9, 21).Value = "Fecha Guia de Remisión Electronica";
                     ws.Cell(9, 22).Value = "Calculo (Kilos Netos * % Humedad)";
                     ws.Cell(9, 23).Value = "Calculo (Kilos Netos * % Rendimiento)";
                     ws.Cell(9, 24).Value = "Cantidad";
