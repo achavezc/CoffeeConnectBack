@@ -82,7 +82,7 @@ namespace CoffeeConnect.Service
                     ws.Cell(8, 20).Style.Font.Bold = true;
                     ws.Cell(8, 20).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
                     ws.Cell(8, 20).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                    IXLRange rangeSalidas = ws.Range(ws.Cell(8, 20), ws.Cell(8, 29));
+                    IXLRange rangeSalidas = ws.Range(ws.Cell(8, 20), ws.Cell(8, 30));
                     rangeSalidas.Merge();
                     rangeSalidas.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
                     rangeSalidas.Style.Fill.BackgroundColor = XLColor.FromHtml("#479d9c");
@@ -98,7 +98,7 @@ namespace CoffeeConnect.Service
                     ws.Cell(9, 9).Value = "Cantidad";
                     ws.Cell(9, 10).Value = "Kilos Brutos";
                     ws.Cell(9, 11).Value = "Tara";
-                    ws.Cell(9, 12).Value = "Dscto. Por Humedad";
+                    ws.Cell(9, 12).Value = "Kilos Netos a Descontar";
                     ws.Cell(9, 13).Value = "Kilos Netos a Pagar";
                     ws.Cell(9, 14).Value = "Precio del Día";
                     ws.Cell(9, 15).Value = "Importe";
@@ -110,15 +110,16 @@ namespace CoffeeConnect.Service
 
                     //SALIDAS
                     ws.Cell(9, 20).Value = "Nro. Guia de Remisión Electronia";
-                    ws.Cell(9, 21).Value = "Calculo (Kilos Netos * % Humedad)";
-                    ws.Cell(9, 22).Value = "Calculo (Kilos Netos * % Rendimiento)";
-                    ws.Cell(9, 23).Value = "Cantidad";
-                    ws.Cell(9, 24).Value = "Kilos Brutos";
-                    ws.Cell(9, 25).Value = "Tara";
-                    ws.Cell(9, 26).Value = "Kilos Netos";
-                    ws.Cell(9, 27).Value = "% Humedad";
-                    ws.Cell(9, 28).Value = "% Rendimiento";
-                    ws.Cell(9, 29).Value = "Saldo";
+                    ws.Cell(9, 21).Value = "Fecha Guia de Remisión Electronia";
+                    ws.Cell(9, 22).Value = "Calculo (Kilos Netos * % Humedad)";
+                    ws.Cell(9, 23).Value = "Calculo (Kilos Netos * % Rendimiento)";
+                    ws.Cell(9, 24).Value = "Cantidad";
+                    ws.Cell(9, 25).Value = "Kilos Brutos";
+                    ws.Cell(9, 26).Value = "Tara";
+                    ws.Cell(9, 27).Value = "Kilos Netos";
+                    ws.Cell(9, 28).Value = "% Humedad";
+                    ws.Cell(9, 29).Value = "% Rendimiento";
+                    ws.Cell(9, 30).Value = "Saldo";
 
                     for (int i = 2; i <= 19; i++)
                     {
@@ -130,7 +131,7 @@ namespace CoffeeConnect.Service
                         ws.Cell(9, i).Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
                     }
 
-                    for (int i = 20; i <= 29; i++)
+                    for (int i = 20; i <= 30; i++)
                     {
                         ws.Cell(9, i).Style.Fill.SetBackgroundColor(XLColor.FromHtml("#479d9c"));
                         ws.Cell(9, i).Style.Font.Bold = true;
@@ -200,7 +201,7 @@ namespace CoffeeConnect.Service
                         ws.Cell(9 + i, 9).Value = listaIngreso[i-1].CantidadPesado;
                         ws.Cell(9 + i, 10).Value = listaIngreso[i-1].KilosBrutosPesado; 
                         ws.Cell(9 + i, 11).Value = listaIngreso[i-1].TaraPesado;
-                        ws.Cell(9 + i, 12).Value = listaIngreso[i-1].DescuentoPorHumedad;
+                        ws.Cell(9 + i, 12).Value = listaIngreso[i-1].KilosNetosDescontar;
                         ws.Cell(9 + i, 13).Value = listaIngreso[i-1].KilosNetosPagar;
                         ws.Cell(9 + i, 14).Value = listaIngreso[i-1].PrecioPagado;
                         ws.Cell(9 + i, 15).Value = listaIngreso[i-1].Importe;
@@ -238,37 +239,38 @@ namespace CoffeeConnect.Service
                     for (int i = 1; i <= listaSalida.Count; i++)
                     {
                         ws.Cell(9 + i, 20).Value = listaSalida[i - 1].NumeroGuiaRemision;
-                        ws.Cell(9 + i, 21).Value = listaSalida[i - 1].CalculoKilosNetosPagarPorHumedad;
-                        ws.Cell(9 + i, 22).Value = listaSalida[i - 1].CalculoKilosNetosPagarPorRendimiento;
-                        ws.Cell(9 + i, 23).Value = listaSalida[i - 1].Cantidad;
-                        ws.Cell(9 + i, 24).Value = listaSalida[i - 1].TotalKilosBrutosPesado;
-                        ws.Cell(9 + i, 25).Value = listaSalida[i - 1].Tara;
-                        ws.Cell(9 + i, 26).Value = listaSalida[i - 1].TotalKilosNetosPesado;
-                        ws.Cell(9 + i, 27).Value = listaSalida[i - 1].HumedadPorcentajeAnalisisFisico;
-                        ws.Cell(9 + i, 28).Value = listaSalida[i - 1].RendimientoPorcentaje;
+                        ws.Cell(9 + i, 21).Value = listaSalida[i - 1].FechaGuiaRemision.ToShortDateString();
+                        ws.Cell(9 + i, 22).Value = listaSalida[i - 1].CalculoKilosNetosPagarPorHumedad;
+                        ws.Cell(9 + i, 23).Value = listaSalida[i - 1].CalculoKilosNetosPagarPorRendimiento;
+                        ws.Cell(9 + i, 24).Value = listaSalida[i - 1].Cantidad;
+                        ws.Cell(9 + i, 25).Value = listaSalida[i - 1].TotalKilosBrutosPesado;
+                        ws.Cell(9 + i, 26).Value = listaSalida[i - 1].Tara;
+                        ws.Cell(9 + i, 27).Value = listaSalida[i - 1].TotalKilosNetosPesado;
+                        ws.Cell(9 + i, 28).Value = listaSalida[i - 1].HumedadPorcentajeAnalisisFisico;
+                        ws.Cell(9 + i, 29).Value = listaSalida[i - 1].RendimientoPorcentaje;
                         sumaKilosBrutosSalida = sumaKilosBrutosSalida + listaSalida[i - 1].TotalKilosBrutosPesado;
                         sumaTaraSalida = sumaTaraSalida + listaSalida[i - 1].Tara;
                         sumaKilosNetosSalida = sumaKilosNetosSalida + listaSalida[i - 1].TotalKilosNetosPesado;
                     }
 
-                    ws.Cell(9 + listaIngreso.Count + 1, 24).Value = sumaKilosBrutosSalida;
-                    ws.Cell(9 + listaIngreso.Count + 1, 24).Style.Font.Bold = true;
-
-                    ws.Cell(9 + listaIngreso.Count + 1, 25).Value = sumaTaraSalida;
+                    ws.Cell(9 + listaIngreso.Count + 1, 25).Value = sumaKilosBrutosSalida;
                     ws.Cell(9 + listaIngreso.Count + 1, 25).Style.Font.Bold = true;
 
-                    ws.Cell(9 + listaIngreso.Count + 1, 26).Value = sumaKilosNetosSalida;
+                    ws.Cell(9 + listaIngreso.Count + 1, 26).Value = sumaTaraSalida;
                     ws.Cell(9 + listaIngreso.Count + 1, 26).Style.Font.Bold = true;
 
-                    ws.Cell(9 + listaIngreso.Count + 1, 29).Value = sumaKilosNetos - sumaKilosNetosSalida;
-                    ws.Cell(9 + listaIngreso.Count + 1, 29).Style.Font.Bold = true;
+                    ws.Cell(9 + listaIngreso.Count + 1, 27).Value = sumaKilosNetosSalida;
+                    ws.Cell(9 + listaIngreso.Count + 1, 27).Style.Font.Bold = true;
+
+                    ws.Cell(9 + listaIngreso.Count + 1, 30).Value = sumaKilosNetos - sumaKilosNetosSalida;
+                    ws.Cell(9 + listaIngreso.Count + 1, 30).Style.Font.Bold = true;
 
                     int g = 0;
 
                     for (int i = 0; i <= listaIngreso.Count -1; i++)
                     {
                         g = 10 + i;
-                        for (int y = 2; y <= 29; y++)
+                        for (int y = 2; y <= 30; y++)
                         {
                             ws.Cell(g, y).Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
                         }

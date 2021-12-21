@@ -7,6 +7,7 @@ namespace CoffeeConnect.Models.Kardex
     public class KardexPergaminoSalidaConsultaResponse
     {
         public string NumeroGuiaRemision { get; set; }
+        public DateTime FechaGuiaRemision { get; set; }
         public decimal CalculoKilosNetosPagarPorHumedad { get; set; }
         public decimal CalculoKilosNetosPagarPorRendimiento { get; set; }
         public decimal Cantidad { get; set; }

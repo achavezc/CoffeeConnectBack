@@ -20,6 +20,7 @@ namespace CoffeeConnect.Models.Kardex
         public decimal TaraPesado { get; set; }
         public decimal DescuentoPorHumedad { get; set; }
         public decimal KilosNetosPagar { get; set; }
+        public decimal KilosNetosDescontar { get; set; }
         public decimal PrecioPagado { get; set; }
         public decimal Importe { get; set; }
         public decimal HumedadPorcentajeAnalisisFisico { get; set; }
