@@ -342,6 +342,10 @@ namespace CoffeeConnect.DTO
 		public string Finca
 		{ get; set; }
 
+		public decimal? KilosNetosPagar
+		{ get; set; }
+
+		
 		public List<GuiaRecepcionMateriaPrimaAnalisisSensorialDefectoDetalle> AnalisisSensorialDefectoDetalle
 		{ get; set; }
 
