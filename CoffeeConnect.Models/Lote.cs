@@ -43,6 +43,8 @@ namespace CoffeeConnect.Models
 
 		public decimal TotalKilosBrutosPesado
 		{ get; set; }
+		public decimal TotalKilosNetosPagar
+		{ get; set; }
 
 		
 		public string UnidadMedidaId

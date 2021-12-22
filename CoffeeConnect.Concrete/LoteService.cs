@@ -43,6 +43,7 @@ namespace CoffeeConnect.Service
             int loteId = 0;
 
             decimal totalKilosNetosPesado = 0;
+            decimal totalKilosNetosPagar = 0;
             decimal totalKilosBrutosPesado = 0;
             decimal totalCantidad = 0;
             string unidadMedidaId = String.Empty;
@@ -84,6 +85,7 @@ namespace CoffeeConnect.Service
                     totalKilosBrutosPesado = totalKilosBrutosPesado + item.KilosBrutosPesado;
                     totalRendimientoPorcentaje = totalRendimientoPorcentaje + item.RendimientoPorcentaje.Value;
                     totalAnalisisSensorial = totalAnalisisSensorial + item.TotalAnalisisSensorial;
+                    totalKilosNetosPagar = totalKilosNetosPagar + (notaingreso.KilosNetosPagar.HasValue ? notaingreso.KilosNetosPagar.Value : 0);
                     totalHumedadPorcentaje = totalHumedadPorcentaje + item.HumedadPorcentaje;
                     totalCantidad = totalCantidad + item.CantidadPesado;
                     unidadMedidaId = item.UnidadMedidaIdPesado;
@@ -94,6 +96,7 @@ namespace CoffeeConnect.Service
 
                 lote.TotalKilosNetosPesado = totalKilosNetosPesado;
                 lote.TotalKilosBrutosPesado = totalKilosBrutosPesado;
+                lote.TotalKilosNetosPagar = totalKilosNetosPagar;
                 //lote.PromedioRendimientoPorcentaje = totalRendimientoPorcentaje / lotesDetalle.Count;
                 //lote.PromedioHumedadPorcentaje = totalHumedadPorcentaje / lotesDetalle.Count;
                 lote.UnidadMedidaId = unidadMedidaId;
