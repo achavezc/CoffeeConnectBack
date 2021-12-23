@@ -53,6 +53,8 @@ namespace CoffeeConnect.DTO
         public Decimal HumedadPorcentajeAnalisisFisico { get; set; }
         public Decimal CantidadTotal { get; set; }
         public Decimal PesoKilosBrutos { get; set; }
+
+
         public string EstadoId { get; set; }
         public DateTime FechaRegistro { get; set; }
         public string UsuarioRegistro { get; set; }
