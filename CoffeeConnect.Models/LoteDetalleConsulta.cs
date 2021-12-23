@@ -36,6 +36,9 @@ namespace CoffeeConnect.Models
         public Decimal TotalAnalisisSensorial { get; set; }
         public decimal? KilosBrutosPesado { get; set; }
 
+        public decimal? KilosNetosPagar { get; set; }
+
+        
         public string TipoCertificacionId
         { get; set; }
 

@@ -250,7 +250,8 @@ namespace CoffeeConnect.DTO
 		public decimal KilosNetosPesado
 		{ get; set; }
 
-		
+		public decimal? KilosNetosPagar
+		{ get; set; }
 
 
 		/// <summary>

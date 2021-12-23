@@ -84,6 +84,8 @@ namespace CoffeeConnect.DTO
 
         public decimal? HumedadPorcentajeAnalisisFisico { get; set; }
 
+        public decimal? KilosNetosPagar { get; set; }
+        
 
     }
 }
