@@ -115,6 +115,8 @@ namespace CoffeeConnect.DTO
 
         public List<AduanaDetalle> Detalle { get; set; }
 
+        public List<AduanaCargamento> Cargamentos { get; set; }
+
 
         public string Usuario
         { get; set; }

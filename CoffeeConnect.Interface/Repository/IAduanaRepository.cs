@@ -28,5 +28,9 @@ namespace CoffeeConnect.Interface.Repository
 
         IEnumerable<AduanaDetalle> ConsultarAduanaDetallePorId(int aduanaId);
 
+        int InsertarAduanaCargamento(AduanaCargamento aduanaCargamento);
+
+        int EliminarAduanaCargamento(int aduanaId);
+
     }
 }

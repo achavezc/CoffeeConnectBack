@@ -110,10 +110,10 @@ namespace CoffeeConnect.Service
 
             _IAduanaRepository.ActualizarAduanaCertificacion(aduanaCertificacionTipoList, id);
 
-            foreach (AduanaDetalle detalle in request.Detalle)
+            foreach (AduanaCargamento cargamento in request.Cargamentos)
             {
-                detalle.AduanaId = id;
-                _IAduanaRepository.InsertarAduanaDetalle(detalle);
+                cargamento.AduanaId = id;
+                _IAduanaRepository.InsertarAduanaCargamento(cargamento);
             }
 
             return id;
@@ -200,13 +200,14 @@ namespace CoffeeConnect.Service
 
             _IAduanaRepository.ActualizarAduanaCertificacion(aduanaCertificacionTipoList, request.AduanaId);
 
-            _IAduanaRepository.EliminarAduanaDetalle(request.AduanaId);
+            _IAduanaRepository.EliminarAduanaCargamento(request.AduanaId);
 
-            foreach (AduanaDetalle detalle in request.Detalle)
+            foreach (AduanaCargamento cargamento in request.Cargamentos)
             {
-                detalle.AduanaId = request.AduanaId;
-                _IAduanaRepository.InsertarAduanaDetalle(detalle);
+                cargamento.AduanaId = request.AduanaId;
+                _IAduanaRepository.InsertarAduanaCargamento(cargamento);
             }
+
 
 
             return affected;

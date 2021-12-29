@@ -213,6 +213,34 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+
+        public int InsertarAduanaCargamento(AduanaCargamento aduanaCargamento)
+        {
+            int result = 0;
+            var parameters = new DynamicParameters();
+            parameters.Add("@AduanaCargamentoId", aduanaCargamento.AduanaCargamentoId);
+            parameters.Add("@AduanaId", aduanaCargamento.AduanaId);
+            parameters.Add("@Cantidad", aduanaCargamento.Cantidad);
+            parameters.Add("@PesoPorSacoKilos", aduanaCargamento.PesoPorSacoKilos);
+            parameters.Add("@TotalKilosNetos", aduanaCargamento.TotalKilosNetos);
+            parameters.Add("@NumeroContenedorEmbarcar", aduanaCargamento.NumeroContenedorEmbarcar);
+            parameters.Add("@FechaSalidaPlanta", aduanaCargamento.FechaSalidaPlanta);
+            parameters.Add("@FechaZarpeNave", aduanaCargamento.FechaZarpeNave);
+            parameters.Add("@FechaFacturacion", aduanaCargamento.FechaFacturacion);
+            parameters.Add("@Puerto", aduanaCargamento.Puerto);
+            parameters.Add("@Marca", aduanaCargamento.Marca);
+            parameters.Add("@PO", aduanaCargamento.PO);
+            parameters.Add("@EstadoSeguimientoId", aduanaCargamento.EstadoSeguimientoId);
+            parameters.Add("@FechaEstampado", aduanaCargamento.FechaEstampado);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspAduanaCargamentoInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
         public int EliminarAduanaDetalle(int aduanaId)
         {
             int affected = 0;
@@ -224,6 +252,22 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 affected = db.Execute("uspAduanaDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        public int EliminarAduanaCargamento(int aduanaId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@AduanaId", aduanaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspAduanaCargamentoEliminar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;
