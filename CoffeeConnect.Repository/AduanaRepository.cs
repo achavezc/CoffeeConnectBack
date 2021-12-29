@@ -195,6 +195,17 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ConsultaAduanaCargamentoPorIdBE> ConsultarAduanaCargamentoPorId(int aduanaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@AduanaId", aduanaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaAduanaCargamentoPorIdBE>("uspAduanaCargamentoConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public int InsertarAduanaDetalle(AduanaDetalle aduanaDetalle)
         {
             int result = 0;

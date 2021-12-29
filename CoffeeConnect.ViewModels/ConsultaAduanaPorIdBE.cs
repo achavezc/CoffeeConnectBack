@@ -259,10 +259,11 @@ namespace CoffeeConnect.DTO
         public string EstadoPagoFactura { get; set; }
 
         public DateTime? FechaPagoFactura { get; set; }
-        
 
 
-       
+
+        public List<ConsultaAduanaCargamentoPorIdBE> Cargamentos
+        { get; set; }
 
         public List<ConsultaAduanaCertificacionPorIdBE> Certificaciones
         { get; set; }

@@ -254,7 +254,7 @@ namespace CoffeeConnect.Service
 
             consultaAduanaPorIdBE.Certificaciones = _IAduanaRepository.ConsultarAduanaCertificacionPorId(request.AduanaId).ToList();
 
-            consultaAduanaPorIdBE.Detalle = _IAduanaRepository.ConsultarAduanaDetallePorId(request.AduanaId).ToList();
+            consultaAduanaPorIdBE.Cargamentos = _IAduanaRepository.ConsultarAduanaCargamentoPorId(request.AduanaId).ToList();
 
             return consultaAduanaPorIdBE;
         }

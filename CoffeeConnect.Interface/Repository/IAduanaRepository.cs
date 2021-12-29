@@ -18,6 +18,9 @@ namespace CoffeeConnect.Interface.Repository
 
         int Anular(int AduanaId, DateTime fecha, string usuario, string estadoId);
 
+        
+
+            IEnumerable<ConsultaAduanaCargamentoPorIdBE> ConsultarAduanaCargamentoPorId(int aduanaId);
 
         IEnumerable<ConsultaAduanaCertificacionPorIdBE> ConsultarAduanaCertificacionPorId(int aduanaId);
         int ActualizarAduanaCertificacion(List<AduanaCertificacionTipo> request, int aduanaId);
