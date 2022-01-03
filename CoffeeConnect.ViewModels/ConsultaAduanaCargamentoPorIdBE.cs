@@ -83,6 +83,9 @@ namespace CoffeeConnect.DTO
 		public string EstadoSeguimientoId
 		{ get; set; }
 
+		public string EstadoSeguimiento
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the FechaEstampado value.
 		/// </summary>

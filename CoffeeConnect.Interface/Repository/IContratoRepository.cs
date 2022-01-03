@@ -33,7 +33,7 @@ namespace CoffeeConnect.Interface.Repository
         int ActualizarSaldoPendienteAsignacionAcopio(int contratoId, decimal totalKGPergaminoIngreso);
 
         int ValidadContratoExistente(int empresaId, string numero);
-
+        IEnumerable<ConsultaAduanaCargamentoPorIdBE> ConsultarTrackingContratoCargamentoPorContratoId(int contratoId, string idioma);
 
     }
 }

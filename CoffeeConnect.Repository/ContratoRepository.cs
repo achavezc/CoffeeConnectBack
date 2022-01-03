@@ -321,6 +321,19 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+
+        public IEnumerable<ConsultaAduanaCargamentoPorIdBE> ConsultarTrackingContratoCargamentoPorContratoId(int contratoId, string idioma)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", contratoId);
+            parameters.Add("@Idioma", idioma);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaAduanaCargamentoPorIdBE>("uspTrackingContratoCargamentoConsultaPorContratoId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public IEnumerable<ConsultarTrackingContratoPorContratoIdBE> ConsultarTrackingContrato(ConsultaTrackingContratoRequestDTO request)
         {
             var parameters = new DynamicParameters();

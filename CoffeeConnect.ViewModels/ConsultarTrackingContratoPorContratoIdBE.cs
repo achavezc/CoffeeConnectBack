@@ -304,6 +304,8 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 		public IEnumerable<AduanaDetalle> Detalle { get; set; }
+		public List<ConsultaAduanaCargamentoPorIdBE> Cargamentos
+		{ get; set; }
 
 		#endregion
 	}

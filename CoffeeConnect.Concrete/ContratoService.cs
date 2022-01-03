@@ -20,15 +20,17 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private IContratoRepository _IContratoRepository;
+        private IAduanaRepository _IAduanaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
         private IMaestroRepository _IMaestroRepository;
         private IEmpresaRepository _IEmpresaRepository;
 
         
-        public ContratoService(IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository, IEmpresaRepository empresaRepository)
+        public ContratoService(IAduanaRepository AduanaRepository, IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository, IEmpresaRepository empresaRepository)
         {
             _IContratoRepository = contratoRepository;
+            _IAduanaRepository = AduanaRepository;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
@@ -307,7 +309,12 @@ namespace CoffeeConnect.Service
 
         public ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(ConsultaTrackingContratoPorContratoIdRequestDTO request)
         {
-            return _IContratoRepository.ConsultarTrackingContratoPorContratoId(request.ContratoId,request.Idioma);
+            ConsultarTrackingContratoPorContratoIdBE consultarTrackingContratoPorContratoIdBE =  _IContratoRepository.ConsultarTrackingContratoPorContratoId(request.ContratoId,request.Idioma);
+
+            consultarTrackingContratoPorContratoIdBE.Cargamentos = _IContratoRepository.ConsultarTrackingContratoCargamentoPorContratoId(request.ContratoId, request.Idioma).ToList();
+
+            return consultarTrackingContratoPorContratoIdBE;
+
         }
 
         public List<ConsultarTrackingContratoPorContratoIdBE> ConsultarTrackingContrato(ConsultaTrackingContratoRequestDTO request)
