@@ -35,5 +35,7 @@ namespace CoffeeConnect.Interface.Repository
         int ValidadContratoExistente(int empresaId, string numero);
         IEnumerable<ConsultaAduanaCargamentoPorIdBE> ConsultarTrackingContratoCargamentoPorContratoId(int contratoId, string idioma);
 
+        IEnumerable<ConsultaAduanaCertificacionPorIdBE> ConsultarTrackingContratoCertificacionPorContratoId(int contratoId, string idioma);
+
     }
 }

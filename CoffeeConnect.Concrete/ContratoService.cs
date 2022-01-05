@@ -313,6 +313,9 @@ namespace CoffeeConnect.Service
 
             consultarTrackingContratoPorContratoIdBE.Cargamentos = _IContratoRepository.ConsultarTrackingContratoCargamentoPorContratoId(request.ContratoId, request.Idioma).ToList();
 
+            consultarTrackingContratoPorContratoIdBE.Certificaciones = _IContratoRepository.ConsultarTrackingContratoCertificacionPorContratoId(request.ContratoId, request.Idioma).ToList();
+
+
             return consultarTrackingContratoPorContratoIdBE;
 
         }
