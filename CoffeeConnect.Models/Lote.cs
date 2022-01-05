@@ -46,7 +46,11 @@ namespace CoffeeConnect.Models
 		public decimal TotalKilosNetosPagar
 		{ get; set; }
 
+		public decimal TotalKilosNetosDescontar
+		{ get; set; }
 		
+
+
 		public string UnidadMedidaId
 		{ get; set; }
 

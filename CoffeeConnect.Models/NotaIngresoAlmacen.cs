@@ -230,7 +230,11 @@ namespace CoffeeConnect.Models
 
 		public decimal? KilosNetosPagar
 		{ get; set; }
+
+		public decimal? KilosNetosDescontar
+		{ get; set; }
 		
+
 		#endregion
 	}
 }

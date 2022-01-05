@@ -14,6 +14,8 @@ namespace CoffeeConnect.Models.Kardex
         public decimal TotalKilosBrutosPesado { get; set; }
         public decimal Tara { get; set; }
         public decimal TotalKilosNetosPesado { get; set; }
+        public decimal TotalKilosNetosDescontar { get; set; }
+        
         public decimal HumedadPorcentajeAnalisisFisico { get; set; }
         public decimal RendimientoPorcentaje { get; set; }
     }

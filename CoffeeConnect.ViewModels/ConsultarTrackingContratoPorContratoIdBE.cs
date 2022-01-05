@@ -68,8 +68,9 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
+		public decimal? PreparacionCantidadDefectos
+		{ get; set; }
 
-		
 
 
 		public string RazonSocialEmpresaProductora
@@ -292,6 +293,20 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public string EstadoId
 		{ get; set; }
+
+
+		public string NumeroContratoInternoProductor
+		{ get; set; }
+	
+
+		public decimal NumeroContenedores
+		{ get; set; }
+
+		public string EstadoPagoFactura { get; set; }
+
+		public string EstadoPagoFacturaId { get; set; }
+
+		
 
 		/// <summary>
 		/// Gets or sets the Activo value.
