@@ -229,7 +229,7 @@ namespace CoffeeConnect.Repository
         {
             int result = 0;
             var parameters = new DynamicParameters();
-            parameters.Add("@AduanaCargamentoId", aduanaCargamento.AduanaCargamentoId);
+           // parameters.Add("@AduanaCargamentoId", aduanaCargamento.AduanaCargamentoId);
             parameters.Add("@AduanaId", aduanaCargamento.AduanaId);
             parameters.Add("@Cantidad", aduanaCargamento.Cantidad);
             parameters.Add("@PesoPorSacoKilos", aduanaCargamento.PesoPorSacoKilos);
