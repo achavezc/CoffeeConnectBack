@@ -15,6 +15,7 @@
     <None Remove="Reportes\NotaCompra.rdlc" />
     <None Remove="Reportes\rptAdelanto.rdlc" />
     <None Remove="Reportes\rptGuiaRemision.rdlc" />
+    <None Remove="Reportes\rptNotaIngreso.rdlc" />
     <None Remove="Reportes\rptOrdenProceso.rdlc" />
     <None Remove="Reportes\rptRegistroSeguridadLimpieza.rdlc" />
   </ItemGroup>
@@ -36,6 +37,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reportes\rptAdelanto.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reportes\rptNotaIngreso.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reportes\rptGuiaRemision.rdlc">
