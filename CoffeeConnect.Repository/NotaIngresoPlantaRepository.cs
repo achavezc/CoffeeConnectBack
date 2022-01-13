@@ -24,7 +24,7 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("Numero", request.Numero);
-            parameters.Add("NumeroGuiaRemision", request.NumeroGuiaRemision);           
+            parameters.Add("NumeroGuiaRemision", request.NumeroGuiaRemision);
             parameters.Add("RazonSocialOrganizacion", request.RazonSocialOrganizacion);
             parameters.Add("RucOrganizacion", request.RucOrganizacion);
             parameters.Add("ProductoId", request.ProductoId);
@@ -34,6 +34,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
+            parameters.Add("FechaGuiaRemisionInicio", request.FechaInicio);
+            parameters.Add("FechaGuiaRemisionFin", request.FechaFin);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -211,6 +213,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", NotaIngresoPlanta.EstadoId);
             parameters.Add("@FechaUltimaActualizacion", NotaIngresoPlanta.FechaCalidad);
             parameters.Add("@UsuarioUltimaActualizacion", NotaIngresoPlanta.UsuarioCalidad);
+            parameters.Add("@Taza", NotaIngresoPlanta.Taza);
+            parameters.Add("@Intensidad", NotaIngresoPlanta.Intensidad);
+            parameters.Add("@TazaIntensidad", NotaIngresoPlanta.TazaIntensidad);
+            parameters.Add("@PuntajeFinal", NotaIngresoPlanta.PuntajeFinal);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

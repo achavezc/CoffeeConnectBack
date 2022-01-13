@@ -51,10 +51,17 @@ namespace CoffeeConnect.DTO
         public decimal RendimientoPorcentaje
         { get; set; }
 
+        public decimal HumedadPorcentaje
+        { get; set; }
+
+        public decimal PuntajeFinal
+        { get; set; }
         public decimal Tara
         { get; set; }
 
         public DateTime FechaRegistro { get; set; }
+
+        public DateTime FechaGuiaRemision { get; set; }
 
         public string UsuarioRegistro { get; set; }
 

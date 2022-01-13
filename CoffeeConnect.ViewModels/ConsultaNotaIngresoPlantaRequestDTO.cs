@@ -13,8 +13,6 @@ namespace CoffeeConnect.DTO
 
         public String NumeroGuiaRemision { get; set; }
 
-
-
         public String RazonSocialOrganizacion { get; set; }
 
         public String RucOrganizacion { get; set; }
@@ -30,6 +28,10 @@ namespace CoffeeConnect.DTO
         public DateTime FechaInicio { get; set; }
 
         public DateTime FechaFin { get; set; }
+
+        public DateTime FechaGuiaRemisionInicio { get; set; }
+
+        public DateTime FechaGuiaRemisionFin { get; set; }
 
         public int EmpresaId { get; set; }
 

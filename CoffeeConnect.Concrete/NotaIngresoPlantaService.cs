@@ -139,6 +139,10 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta.UsuarioCalidad = request.UsuarioCalidad;
             NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Analizado;
             NotaIngresoPlanta.FechaCalidad = DateTime.Now;
+            NotaIngresoPlanta.Taza = request.Taza;
+            NotaIngresoPlanta.Intensidad = request.Intensidad;
+            NotaIngresoPlanta.PuntajeFinal = request.PuntajeFinal;
+            NotaIngresoPlanta.TazaIntensidad = request.TazaIntensidad;
 
             decimal totalAnalisisSensorial = 0;
 

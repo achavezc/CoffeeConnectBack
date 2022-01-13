@@ -100,8 +100,13 @@ namespace CoffeeConnect.DTO
 
 		public List<ActualizarNotaIngresoPlantaRegistroTostadoIndicadorDetalleRequestDTO> RegistroTostadoIndicadorDetalleList { get; set; }
         public decimal TotalAnalisisSensorial { get; set; }
+		public decimal Taza { get; set; }
+		public decimal Intensidad { get; set; }
+		public decimal TazaIntensidad { get; set; }
+		public decimal PuntajeFinal { get; set; }
 
-        public ActualizarNotaIngresoPlantaAnalisisCalidadRequestDTO() {
+
+		public ActualizarNotaIngresoPlantaAnalisisCalidadRequestDTO() {
 
 			AnalisisFisicoColorDetalleList = new List<ActualizarNotaIngresoPlantaAnalisisFisicoColorDetalleRequestDTO>();
 			AnalisisFisicoDefectoPrimarioDetalleList = new List<ActualizarNotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalleRequestDTO>();

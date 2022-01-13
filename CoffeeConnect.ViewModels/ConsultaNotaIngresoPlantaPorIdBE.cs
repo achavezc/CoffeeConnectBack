@@ -374,7 +374,10 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
-		
+		public decimal Taza { get; set; }
+		public decimal Intensidad { get; set; }
+		public decimal TazaIntensidad { get; set; }
+		public decimal PuntajeFinal { get; set; }
 		public List<NotaIngresoPlantaAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
 		{ get; set; }
 
