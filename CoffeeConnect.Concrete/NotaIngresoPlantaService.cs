@@ -306,5 +306,142 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
+
+        public GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaIngreso(int notaSalidaAlmacenIdId)
+        {
+            GenerarPDFGuiaRemisionResponseDTO generarPDFGuiaRemisionResponseDTO = new GenerarPDFGuiaRemisionResponseDTO();
+
+            ConsultaNotaIngresoPlantaPorIdBE consultaImpresionGuiaRemision = new ConsultaNotaIngresoPlantaPorIdBE();
+            consultaImpresionGuiaRemision = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(notaSalidaAlmacenIdId);
+
+            if (consultaImpresionGuiaRemision != null)
+            {
+                List<ConsultaGuiaRemisionAlmacenDetalle> detalleGuiaRemision = new List<ConsultaGuiaRemisionAlmacenDetalle>();// _INotaIngresoPlantaRepository.ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(consultaImpresionGuiaRemision.GuiaRemisionAlmacenId).ToList();
+
+                int contador = 1;
+
+                //string[] agenciasTotal= { };
+                //string[] certificacionTotal = { };
+
+                detalleGuiaRemision.ForEach(z =>
+                {
+                    string descripcion = String.Empty;
+
+                    // ="	  " & CStr(Sum(Fields!Cantidad.Value, "dsGRListaDetalle")) & "	" & Trim(First(Fields!UnidadMedida.Value, "dsGRListaDetalle")) & "	   " & Trim(First(Fields!Producto.Value, "dsGRListaDetalle")) & "	" & First(Fields!SubProducto.Value, "dsGRListaDetalle") & " " & First(Fields!TipoProduccion.Value, "dsGRListaDetalle") & "	" & First(Fields!TipoCertificacion.Value, "dsGRListaDetalle")
+
+                    GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
+                    guiaRemisionListaDetalle.correlativo = contador;
+                    contador++;
+                    //string[] agencias = z.AgenciaCertificadora.Split("|");
+                    //string[] certificaciones = z.Certificacion.Split("|");
+
+                    //agenciasTotal = agenciasTotal.Concat(agencias).ToArray();
+                    //certificacionTotal = certificacionTotal.Concat(certificaciones).ToArray();
+
+                    //guiaRemisionListaDetalle.NumeroLote = z.NumeroLote.Trim();
+                    //guiaRemisionListaDetalle.FechaLoteString = z.FechaLoteString;
+                    //guiaRemisionListaDetalle.TipoProducto = z.Producto.Trim();
+
+                    descripcion = "  " + Convert.ToString(z.CantidadPesado) + " " + Convert.ToString(!string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty) + " Plastico" + "   " + Convert.ToString(!string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty);
+
+                    //guiaRemisionListaDetalle.TipoProducto = !string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty;
+
+                    //guiaRemisionListaDetalle.UnidadMedida = z.UnidadMedida + " Plastico";
+                    //guiaRemisionListaDetalle.UnidadMedida = !string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty + " Plastico";
+
+                    guiaRemisionListaDetalle.Descripcion = descripcion;
+
+                    //guiaRemisionListaDetalle.Cantidad = z.CantidadPesado;
+                    guiaRemisionListaDetalle.PesoNeto = z.KilosBrutosPesado;
+                    //guiaRemisionListaDetalle.HumedadPorcentaje = z.HumedadPorcentaje;
+                    //guiaRemisionListaDetalle.RendimientoPorcentaje = z.RendimientoPorcentaje;
+                    //guiaRemisionListaDetalle.TipoCertificacion = z.TipoCertificacion.Trim();
+                    //guiaRemisionListaDetalle.TipoCertificacion = !string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty;
+
+                    //guiaRemisionListaDetalle.TipoProduccion = z.TipoProduccion.Trim();
+                    //guiaRemisionListaDetalle.TipoProduccion = !string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty;
+
+                    //guiaRemisionListaDetalle.Producto = z.Producto.Trim();
+                    //guiaRemisionListaDetalle.Producto = !string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty;
+
+                    //guiaRemisionListaDetalle.SubProducto = z.SubProducto.Trim();
+                    //guiaRemisionListaDetalle.SubProducto = !string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty;
+
+
+
+                    generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
+
+                });
+
+                //agenciasTotal = agenciasTotal.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+                //certificacionTotal = certificacionTotal.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+
+                //agenciasTotal = agenciasTotal.Distinct().ToArray();
+
+                //certificacionTotal = certificacionTotal.Distinct().ToArray();
+
+                //string separator = ", ";
+
+                //string agenciaCertificadora = string.Join(separator, agenciasTotal);
+                //string certificacion = string.Join(separator, certificacionTotal);
+
+
+                CabeceraGuiaRemision cabeceraGuiaRemision = new CabeceraGuiaRemision();
+
+
+                cabeceraGuiaRemision.RazonSocial = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocial) ? consultaImpresionGuiaRemision.RazonSocial.Trim() : String.Empty;
+                cabeceraGuiaRemision.Direccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Direccion) ? consultaImpresionGuiaRemision.Direccion.Trim() : String.Empty;
+                cabeceraGuiaRemision.Ruc = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Ruc) ? consultaImpresionGuiaRemision.RucEmpresaTransporte.Trim() : String.Empty;
+                //cabeceraGuiaRemision.Almacen = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.almacen) ? consultaImpresionGuiaRemision.Almacen.Trim() : String.Empty;
+                cabeceraGuiaRemision.Destinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocial) ? consultaImpresionGuiaRemision.RazonSocial.Trim() : String.Empty;
+                //cabeceraGuiaRemision.DireccionPartida = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionPartida) ? consultaImpresionGuiaRemision.DireccionPartida.Trim() : String.Empty;
+                //cabeceraGuiaRemision.DireccionDestino = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionDestino) ? consultaImpresionGuiaRemision.DireccionDestino.Trim() : String.Empty;
+                cabeceraGuiaRemision.Certificacion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.CertificacionId) ? consultaImpresionGuiaRemision.CertificacionId.Trim() : String.Empty;
+                cabeceraGuiaRemision.TipoProduccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.TipoProduccionId) ? consultaImpresionGuiaRemision.TipoProduccionId.Trim() : String.Empty;
+                cabeceraGuiaRemision.NumeroGuiaRemision = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Numero) ? consultaImpresionGuiaRemision.Numero.Trim() : String.Empty;
+                cabeceraGuiaRemision.RucDestinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucOrganizacion) ? consultaImpresionGuiaRemision.RucOrganizacion.Trim() : String.Empty;
+                cabeceraGuiaRemision.FechaEmision = DateTime.Now;
+                cabeceraGuiaRemision.FechaEmisionString = DateTime.Now.ToString("dd/MM/yyyy");
+                cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
+                cabeceraGuiaRemision.FechaEntregaTransportistaString = DateTime.Now.ToString("dd/MM/yyyy");
+
+                //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
+                generarPDFGuiaRemisionResponseDTO.Cabecera.Add(cabeceraGuiaRemision);
+
+                GuiaRemisionDetalle guiaRemisionDetalle = new GuiaRemisionDetalle();
+                //guiaRemisionDetalle.TotalLotes = consultaImpresionGuiaRemision.CantidadLotes;
+                guiaRemisionDetalle.Rendimiento = consultaImpresionGuiaRemision.RendimientoPorcentaje;
+                guiaRemisionDetalle.PorcentajeHumedad = consultaImpresionGuiaRemision.HumedadPorcentaje;
+                guiaRemisionDetalle.CantidadTotal = consultaImpresionGuiaRemision.Cantidad;
+                guiaRemisionDetalle.TotalKGBrutos = consultaImpresionGuiaRemision.KilosBrutos;
+                guiaRemisionDetalle.ModalidadTransporte = "TRANSPORTE PRIVADO";
+                guiaRemisionDetalle.TipoTraslado = "TRANSPORTE PRIVADO";
+                guiaRemisionDetalle.MotivoTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoIngresoId) ? consultaImpresionGuiaRemision.MotivoIngresoId.Trim() : String.Empty;
+                //guiaRemisionDetalle.MotivoTrasladoId = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoId) ? consultaImpresionGuiaRemision.MotivoTrasladoId.Trim() : String.Empty;
+                //guiaRemisionDetalle.MotivoDetalleTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoReferencia) ? consultaImpresionGuiaRemision.MotivoTrasladoReferencia.Trim() : String.Empty;
+                //guiaRemisionDetalle.PropietarioTransportista = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Propietario) ? consultaImpresionGuiaRemision.Propietario.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaDomicilio = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionTransportista) ? consultaImpresionGuiaRemision.DireccionTransportista.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaCodigoVehicular = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ConfiguracionVehicular) ? consultaImpresionGuiaRemision.ConfiguracionVehicular.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaMarca = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MarcaTractor) ? consultaImpresionGuiaRemision.MarcaTractor.Trim() : String.Empty;
+                guiaRemisionDetalle.TransportistaRuc = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucEmpresaTransporte) ? consultaImpresionGuiaRemision.RucEmpresaTransporte.Trim() : String.Empty;
+                guiaRemisionDetalle.PropietarioTransportista = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonEmpresaTransporte) ? consultaImpresionGuiaRemision.RazonEmpresaTransporte.Trim() : String.Empty;
+                guiaRemisionDetalle.TransportistaPlaca = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.PlacaTractorEmpresaTransporte) ? consultaImpresionGuiaRemision.PlacaTractorEmpresaTransporte.Trim() : String.Empty;
+                guiaRemisionDetalle.TransportistaPlacaCarreta = String.Empty;
+                guiaRemisionDetalle.TransportistaConductor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ConductorEmpresaTransporte) ? consultaImpresionGuiaRemision.ConductorEmpresaTransporte.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaColor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Color) ? consultaImpresionGuiaRemision.Color.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaSoat = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Soat) ? consultaImpresionGuiaRemision.Soat.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaDni = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Dni) ? consultaImpresionGuiaRemision.Dni.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaColor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Color) ? consultaImpresionGuiaRemision.Color.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaSoat = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Soat) ? consultaImpresionGuiaRemision.Soat.Trim() : String.Empty;
+                //guiaRemisionDetalle.TransportistaConstancia = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.NumeroConstanciaMTC) ? consultaImpresionGuiaRemision.NumeroConstanciaMTC.Trim() : String.Empty;
+                guiaRemisionDetalle.TransportistaBrevete = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.LicenciaConductorEmpresaTransporte) ? consultaImpresionGuiaRemision.LicenciaConductorEmpresaTransporte.Trim() : String.Empty;
+                guiaRemisionDetalle.Observaciones = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ObservacionPesado) ? consultaImpresionGuiaRemision.ObservacionPesado.Trim() : String.Empty;
+                guiaRemisionDetalle.Responsable = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.UsuarioRegistro) ? consultaImpresionGuiaRemision.UsuarioRegistro.Trim() : String.Empty;
+
+                generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);
+            }
+            return generarPDFGuiaRemisionResponseDTO;
+        }
+
     }
 }

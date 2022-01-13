@@ -1,8 +1,12 @@
-﻿using CoffeeConnect.DTO;
+﻿using AspNetCore.Reporting;
+using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
+using Core.Common;
 using Core.Common.Domain.Model;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 
 namespace Integracion.Deuda.Controller
 {
@@ -12,11 +16,12 @@ namespace Integracion.Deuda.Controller
     {
         private INotaIngresoPlantaService _NotaIngresoPlantaService;
         private Core.Common.Logger.ILog _log;
-
-        public NotaIngresoPlantaController(INotaIngresoPlantaService NotaIngresoPlantaService, Core.Common.Logger.ILog log)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public NotaIngresoPlantaController(INotaIngresoPlantaService NotaIngresoPlantaService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
             _NotaIngresoPlantaService = NotaIngresoPlantaService;
             _log = log;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet("version")]
@@ -204,5 +209,48 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
+
+        [Route("GenerarPDFNotaIngreso")]
+        [HttpGet]
+        public IActionResult GenerarPDFNotaIngreso(int id)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
+
+            GenerarPDFGuiaRemisionResponseDTO response = _NotaIngresoPlantaService.GenerarPDFGuiaRemisionPorNotaIngreso(id);
+
+            try
+            {
+                GenerarPDFGuiaRemisionRequestDTO request = new GenerarPDFGuiaRemisionRequestDTO { LoteId = id };
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptNotaIngreso.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));
+                lr.AddDataSource("dsGRListaDetalle", Util.ToDataTable(response.listaDetalleGM));
+                lr.AddDataSource("dsGRDetalle", Util.ToDataTable(response.detalleGM));
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+                return File(result.MainStream, "application/pdf");
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
     }
 }
