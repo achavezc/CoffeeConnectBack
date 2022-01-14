@@ -58,6 +58,10 @@ namespace CoffeeConnect.DTO
         public decimal RendimientoPorcentaje { get; set; }
         public string Producto { get; set; }
         public string SubProducto { get; set; }
+
+        public string Empaque { get; set; }
+        public string TipoEmpaque { get; set; }
+        public decimal MontoBruto { get; set; }
     }
 
     public class GuiaRemisionDetalle

@@ -119,6 +119,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaUltimaActualizacion", NotaIngresoPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", NotaIngresoPlanta.UsuarioUltimaActualizacion);
             parameters.Add("@Direccion", NotaIngresoPlanta.Direccion);
+            parameters.Add("@Marca", NotaIngresoPlanta.Marca);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -171,7 +172,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaRegistro", NotaIngresoPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", NotaIngresoPlanta.UsuarioRegistro);
             parameters.Add("@Direccion", NotaIngresoPlanta.Direccion);
-
+            parameters.Add("@Marca", NotaIngresoPlanta.Marca);
             parameters.Add("@NotaIngresoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 

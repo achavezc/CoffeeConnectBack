@@ -306,6 +306,7 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 		public string Direccion { get; set; }
+		public string Marca { get; set; }
 
 		#endregion
 	}

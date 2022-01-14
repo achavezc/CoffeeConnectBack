@@ -396,7 +396,13 @@ namespace CoffeeConnect.DTO
 		public List<NotaIngresoPlantaRegistroTostadoIndicadorDetalle> RegistroTostadoIndicadorDetalle
 		{ get; set; }
 
+		public string MotivoIngreso { get; set; }
+		
+		public string Marca { get; set; }
 
+		public string Producto { get; set; }
+		public string Empaque { get; set; }
+		public string TipoEmpaque { get; set; }
 		#endregion
 	}
 }
