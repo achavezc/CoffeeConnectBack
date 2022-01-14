@@ -308,6 +308,12 @@ namespace CoffeeConnect.Models
 		public string Direccion { get; set; }
 		public string Marca { get; set; }
 
+		public decimal Taza { get; set; }
+		public decimal Intensidad { get; set; }
+		public decimal TazaIntensidad { get; set; }
+		public decimal PuntajeFinal { get; set; }
+
+
 		#endregion
 	}
 }
