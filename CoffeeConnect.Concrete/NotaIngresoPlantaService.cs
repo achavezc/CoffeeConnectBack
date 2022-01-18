@@ -364,7 +364,7 @@ namespace CoffeeConnect.Service
                 cabeceraGuiaRemision.FechaEmisionString = DateTime.Now.ToString("dd/MM/yyyy");
                 cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
                 cabeceraGuiaRemision.FechaEntregaTransportistaString = DateTime.Now.ToString("dd/MM/yyyy");
-
+                cabeceraGuiaRemision.CGR = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.NumeroGuiaRemision) ? consultaImpresionGuiaRemision.NumeroGuiaRemision.Trim() : String.Empty;
                 //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
                 generarPDFGuiaRemisionResponseDTO.Cabecera.Add(cabeceraGuiaRemision);
 
