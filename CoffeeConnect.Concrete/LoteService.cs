@@ -78,7 +78,11 @@ namespace CoffeeConnect.Service
                     item.KilosBrutosPesado = notaingreso.KilosBrutosPesado;
                     item.RendimientoPorcentaje = notaingreso.RendimientoPorcentaje;
                     item.HumedadPorcentaje = notaingreso.HumedadPorcentajeAnalisisFisico;
-                    item.TotalAnalisisSensorial = notaingreso.TotalAnalisisSensorial.Value;
+                    if(notaingreso.TotalAnalisisSensorial != null)
+                    {
+                        item.TotalAnalisisSensorial = notaingreso.TotalAnalisisSensorial.Value;
+                    }
+                   
 
 
                     item.NotaIngresoAlmacenId = notaingreso.NotaIngresoAlmacenId;
