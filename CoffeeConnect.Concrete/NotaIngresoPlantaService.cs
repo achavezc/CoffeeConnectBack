@@ -321,9 +321,10 @@ namespace CoffeeConnect.Service
                 //descripcion = "  " + Convert.ToString(z.CantidadPesado) + " " + Convert.ToString(!string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty) + " Plastico" + "   " + Convert.ToString(!string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty);
                 guiaRemisionListaDetalle.TipoEmpaque = consultaImpresionGuiaRemision.TipoEmpaque;
                 guiaRemisionListaDetalle.Empaque = consultaImpresionGuiaRemision.Empaque;
-                guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto;
+                guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + consultaImpresionGuiaRemision.Certificacion;
                 guiaRemisionListaDetalle.MontoBruto = consultaImpresionGuiaRemision.KilosBrutos;
-                guiaRemisionListaDetalle.PesoNeto = consultaImpresionGuiaRemision.PesoPorSaco.Value;
+                guiaRemisionListaDetalle.PesoNeto = consultaImpresionGuiaRemision.KilosNetos;
+                guiaRemisionListaDetalle.Cantidad = consultaImpresionGuiaRemision.Cantidad;
                 generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
                 /*
                 List<ConsultaGuiaRemisionAlmacenDetalle> detalleGuiaRemision = new List<ConsultaGuiaRemisionAlmacenDetalle>();// _INotaIngresoPlantaRepository.ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(consultaImpresionGuiaRemision.GuiaRemisionAlmacenId).ToList();
