@@ -737,8 +737,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>2.27417in</Top>
-        <Left>1.07918in</Left>
+        <Top>2.26028in</Top>
+        <Left>1.09306in</Left>
         <Height>0.25in</Height>
         <Width>2.02167in</Width>
         <ZIndex>20</ZIndex>
@@ -771,7 +771,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>2.27417in</Top>
+        <Top>2.26028in</Top>
         <Left>4.62458in</Left>
         <Height>0.25in</Height>
         <Width>1.57542in</Width>
@@ -883,9 +883,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>3.13194in</Top>
-        <Left>4.27779in</Left>
+        <Left>4.48612in</Left>
         <Height>0.25in</Height>
-        <Width>0.97415in</Width>
+        <Width>0.76582in</Width>
         <ZIndex>24</ZIndex>
         <Style>
           <Border>
@@ -905,7 +905,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>1</Value>
+                <Value>=Sum(Fields!Cantidad.Value, "dsGRListaDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -955,9 +955,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>3.38194in</Top>
-        <Left>2.99307in</Left>
+        <Left>2.75696in</Left>
         <Height>0.25in</Height>
-        <Width>1.28472in</Width>
+        <Width>1.71528in</Width>
         <ZIndex>26</ZIndex>
         <Style>
           <Border>
@@ -991,9 +991,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>3.38194in</Top>
-        <Left>4.27779in</Left>
+        <Left>4.48612in</Left>
         <Height>0.25in</Height>
-        <Width>0.97415in</Width>
+        <Width>0.76582in</Width>
         <ZIndex>27</ZIndex>
         <Style>
           <Border>
@@ -1062,9 +1062,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>3.13194in</Top>
-        <Left>2.96529in</Left>
+        <Left>2.77085in</Left>
         <Height>0.25in</Height>
-        <Width>1.3125in</Width>
+        <Width>1.70139in</Width>
         <ZIndex>29</ZIndex>
         <Style>
           <Border>
@@ -1101,7 +1101,7 @@
         <Top>3.13194in</Top>
         <Left>1.79488in</Left>
         <Height>0.25in</Height>
-        <Width>1.17041in</Width>
+        <Width>0.96208in</Width>
         <ZIndex>30</ZIndex>
         <Style>
           <Border>
@@ -1210,7 +1210,7 @@
         <Top>3.38194in</Top>
         <Left>1.79488in</Left>
         <Height>0.25in</Height>
-        <Width>1.17041in</Width>
+        <Width>0.96208in</Width>
         <ZIndex>33</ZIndex>
         <Style>
           <Border>
@@ -1902,6 +1902,10 @@
         <Field Name="TipoEmpaque">
           <DataField>TipoEmpaque</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Cantidad">
+          <DataField>Cantidad</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

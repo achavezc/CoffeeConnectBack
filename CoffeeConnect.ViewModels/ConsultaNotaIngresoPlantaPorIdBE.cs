@@ -406,6 +406,7 @@ namespace CoffeeConnect.DTO
 		public string Producto { get; set; }
 		public string Empaque { get; set; }
 		public string TipoEmpaque { get; set; }
+		public string Certificacion { get; set; }
 		#endregion
 	}
 }
