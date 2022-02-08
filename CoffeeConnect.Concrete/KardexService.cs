@@ -224,7 +224,7 @@ namespace CoffeeConnect.Service
                     ws.Cell(9 + listaIngreso.Count + 1, 15).Value = sumaImporte;
                     ws.Cell(9 + listaIngreso.Count + 1, 15).Style.Font.Bold = true;
 
-                    ws.Cell(9 + listaIngreso.Count + 1, 17).Value = sumaRemdimiento / listaIngreso.Count;
+                    ws.Cell(9 + listaIngreso.Count + 1, 17).Value = listaIngreso.Count>0 ? sumaRemdimiento / listaIngreso.Count : 0;
                     ws.Cell(9 + listaIngreso.Count + 1, 17).Style.Font.Bold = true;
 
                     KardexPergaminoSalidaConsultaRequest requestSalida = new KardexPergaminoSalidaConsultaRequest();
@@ -240,6 +240,7 @@ namespace CoffeeConnect.Service
                     decimal sumaKilosNetosDescontar = 0;
                     
 
+                   
                     for (int i = 1; i <= listaSalida.Count; i++)
                     {
                         ws.Cell(9 + i, 20).Value = listaSalida[i - 1].NumeroGuiaRemision;
