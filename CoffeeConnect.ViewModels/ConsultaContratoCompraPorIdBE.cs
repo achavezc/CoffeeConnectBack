@@ -25,7 +25,9 @@ namespace CoffeeConnect.DTO
         public int ProductorId
         { get; set; }
 
-       
+        public int? ContratoVentaId
+        { get; set; }
+
 
         public decimal? CantidadContenedores
         { get; set; }

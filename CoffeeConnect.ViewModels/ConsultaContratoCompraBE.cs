@@ -11,6 +11,9 @@ namespace CoffeeConnect.DTO
         public int ContratoCompraId
         { get; set; }
 
+        public int? ContratoVentaId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the Numero value.
         /// </summary>

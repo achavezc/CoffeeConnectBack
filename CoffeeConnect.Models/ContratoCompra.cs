@@ -23,6 +23,9 @@ namespace CoffeeConnect.Models
         public int ProductorId
         { get; set; }
 
+        public int? ContratoVentaId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the FloId value.
         /// </summary>
