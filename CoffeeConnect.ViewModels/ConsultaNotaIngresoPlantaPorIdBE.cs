@@ -355,6 +355,11 @@ namespace CoffeeConnect.DTO
 		public string RucOrganizacion
 		{ get; set; }
 
+		public string DireccionOrganizacion
+		{ get; set; }
+
+		
+
 		/// <summary>
 		/// Gets or sets the ProvinciaId value.
 		/// </summary>
