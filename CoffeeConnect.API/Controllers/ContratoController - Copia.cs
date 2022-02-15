@@ -61,6 +61,8 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
+         
+
         [Route("Registrar")]
         [HttpPost]
         //public IActionResult Registrar([FromBody] RegistrarActualizarContratoCompraRequestDTO request)

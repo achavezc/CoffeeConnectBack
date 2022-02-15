@@ -49,7 +49,8 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
             parameters.Add("@Numero", ContratoCompra.Numero);
-            parameters.Add("@ProductoId", ContratoCompra.ProductoId);
+            parameters.Add("@ProductorId", ContratoCompra.ProductorId);
+            parameters.Add("@ContratoVentaId", ContratoCompra.ContratoVentaId);
             parameters.Add("@FloId", ContratoCompra.FloId);
             parameters.Add("@CondicionEntregaId", ContratoCompra.CondicionEntregaId);
             parameters.Add("@FechaEntrega", ContratoCompra.FechaEntrega);
@@ -90,7 +91,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TotalSacos", ContratoCompra.TotalSacos);
             parameters.Add("@PesoEnContrato", ContratoCompra.PesoEnContrato);
             parameters.Add("@PesoKilos", ContratoCompra.PesoKilos);
-            parameters.Add("@ContratoCompraId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@ContratoId", dbType: DbType.Int32, direction: ParameterDirection.Output);
             parameters.Add("@pFacturarEnId", ContratoCompra.FacturarEnId);
             parameters.Add("@pFechaFijacionContrato", ContratoCompra.FechaFijacionContrato);
             parameters.Add("@pKilosNetosQQ", ContratoCompra.KilosNetosQQ);
@@ -119,7 +120,7 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspContratoCompraInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-            int id = parameters.Get<int>("ContratoCompraId");
+            int id = parameters.Get<int>("ContratoId");
 
             return id;
         }
@@ -130,8 +131,9 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
             parameters.Add("@ContratoCompraId", ContratoCompra.ContratoCompraId);
+            parameters.Add("@ContratoVentaId", ContratoCompra.ContratoVentaId);
             parameters.Add("@Numero", ContratoCompra.Numero);
-            parameters.Add("@ProductoId", ContratoCompra.ProductoId);
+            parameters.Add("@ProductorId", ContratoCompra.ProductorId);
             parameters.Add("@FloId", ContratoCompra.FloId);
             parameters.Add("EmpresaId", ContratoCompra.EmpresaId);
             parameters.Add("@CondicionEntregaId", ContratoCompra.CondicionEntregaId);
@@ -235,7 +237,7 @@ namespace CoffeeConnect.Repository
             ConsultaContratoCompraPorIdBE itemBE = null;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@ContratoCompraId", ContratoCompraId);
+            parameters.Add("@ContratoId", ContratoCompraId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
