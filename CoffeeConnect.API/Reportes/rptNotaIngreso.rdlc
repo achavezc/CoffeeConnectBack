@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>  DATOS DEL INICIO DEL TRASLADO</Value>
+                <Value>  DATOS DEL CLIENTE</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -602,7 +602,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
         <Top>1.77417in</Top>
-        <Left>1.63125in</Left>
+        <Left>1.61389in</Left>
         <Height>0.25in</Height>
         <Width>2.96556in</Width>
         <ZIndex>16</ZIndex>
