@@ -58,6 +58,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("EmpresaId", ContratoCompra.EmpresaId);
             parameters.Add("@FechaContrato", ContratoCompra.FechaContrato);
             parameters.Add("@TipoContratoId", ContratoCompra.TipoContratoId);
+            parameters.Add("@PeriodosCosecha", ContratoCompra.PeriodosCosecha);
             parameters.Add("@FechaFacturacion", ContratoCompra.FechaFacturacion);            
             parameters.Add("@ProductoId", ContratoCompra.ProductoId);
             parameters.Add("@SubProductoId", ContratoCompra.SubProductoId);
@@ -145,6 +146,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductoId", ContratoCompra.ProductoId);
             parameters.Add("@SubProductoId", ContratoCompra.SubProductoId);
             parameters.Add("@TipoProduccionId", ContratoCompra.TipoProduccionId);
+            parameters.Add("@PeriodosCosecha", ContratoCompra.PeriodosCosecha);
             parameters.Add("@MonedadId", ContratoCompra.MonedadId);
             parameters.Add("@Monto", ContratoCompra.Monto);
             parameters.Add("@UnidadMedicionId", ContratoCompra.UnidadMedicionId);
