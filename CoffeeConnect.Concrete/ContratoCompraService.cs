@@ -290,12 +290,12 @@ namespace CoffeeConnect.Service
 
 
 
-        public int AsignarContratoVenta(AsignarContratoVentaRequestDTO request)
+        public int AsignarContratoCompra(AsignarContratoCompraRequestDTO request)
         { 
             int result = 0;
             if (request.ContratoVentaId > 0)
             {                
-                result = _IContratoCompraRepository.AsignarContratoVenta(request.ContratoVentaId , request.ContratoCompraId, DateTime.Now, request.Usuario, ContratoCompraEstados.Asignado);
+                result = _IContratoCompraRepository.AsignarContratoCompra(request.ContratoVentaId , request.ContratoCompraId, DateTime.Now, request.Usuario, ContratoCompraEstados.Asignado);
             }
             return result;
         }

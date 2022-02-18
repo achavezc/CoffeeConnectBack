@@ -269,7 +269,7 @@ namespace CoffeeConnect.Repository
 
 
 
-        public int AsignarContratoVenta(int contratoVentaId , int contratoCompraId, DateTime fecha, string usuario, string estadoId)
+        public int AsignarContratoCompra(int contratoVentaId , int contratoCompraId, DateTime fecha, string usuario, string estadoId)
         {
             int affected = 0;
 

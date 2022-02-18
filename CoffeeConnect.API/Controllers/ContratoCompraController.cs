@@ -258,9 +258,9 @@ namespace Integracion.Deuda.Controller
         }
 
 
-        [Route("AsignarContratoVenta")]
+        [Route("AsignarContratoCompra")]
         [HttpPost]
-        public IActionResult AsignarContratoVenta([FromBody] AsignarContratoVentaRequestDTO request)
+        public IActionResult AsignarContratoCompra([FromBody] AsignarContratoCompraRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
@@ -268,7 +268,7 @@ namespace Integracion.Deuda.Controller
             AsignarContratoVentaResponseDTO response = new AsignarContratoVentaResponseDTO();
             try
             {
-                response.Result.Data = _ContratoCompraService.AsignarContratoVenta(request);
+                response.Result.Data = _ContratoCompraService.AsignarContratoCompra(request);
 
                 response.Result.Success = true;
 

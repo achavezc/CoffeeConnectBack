@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeConnect.DTO
 {
-   public class AsignarContratoVentaRequestDTO
+   public class AsignarContratoCompraRequestDTO
     {
         public int EmpresaId { get; set; }
 
