@@ -14,7 +14,7 @@ namespace CoffeeConnect.Interface.Service
         ResponseDescargarArchivoDTO DescargarArchivo(RequestDescargarArchivoDTO request);
         int AnularContratoCompra(AnularContratoCompraRequestDTO request);
 
-      
+        int AsignarContratoVenta(AsignarContratoVentaRequestDTO request);
 
     }
 }

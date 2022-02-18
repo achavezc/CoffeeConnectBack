@@ -269,7 +269,27 @@ namespace CoffeeConnect.Repository
 
 
 
+        public int AsignarContratoVenta(int contratoVentaId , int contratoCompraId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
 
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoCompraId", contratoCompraId);
+            parameters.Add("@ContratoVentaId", contratoVentaId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+           
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("usContratoCompraAsignarContratoVenta", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
 
 
 

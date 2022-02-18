@@ -20,6 +20,8 @@ namespace CoffeeConnect.Interface.Repository
 
         int ValidadContratoCompraExistente(int empresaId, string numero);
 
+        int AsignarContratoVenta(int contratoVentaId, int contratoCompraId, DateTime fecha, string usuario, string estadoId);
+
 
 
     }

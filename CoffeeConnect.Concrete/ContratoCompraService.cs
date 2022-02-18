@@ -287,11 +287,20 @@ namespace CoffeeConnect.Service
             }
             return result;
         }
-        
 
 
-       
-        
+
+        public int AsignarContratoVenta(AsignarContratoVentaRequestDTO request)
+        { 
+            int result = 0;
+            if (request.ContratoVentaId > 0)
+            {                
+                result = _IContratoCompraRepository.AsignarContratoVenta(request.ContratoVentaId , request.ContratoCompraId, DateTime.Now, request.Usuario, ContratoCompraEstados.Asignado);
+            }
+            return result;
+        }
+
+
 
 
 
