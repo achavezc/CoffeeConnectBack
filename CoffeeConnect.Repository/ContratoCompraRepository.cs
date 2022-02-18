@@ -35,6 +35,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("TipoContratoId", request.TipoContratoId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
+            parameters.Add("EstadoPagoFacturaId", request.EstadoPagoFacturaId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

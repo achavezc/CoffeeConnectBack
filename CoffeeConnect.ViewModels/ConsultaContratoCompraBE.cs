@@ -60,6 +60,7 @@ namespace CoffeeConnect.DTO
         public decimal PesoPorSaco { get; set; }
         public string Grado { get; set; }
 
+        public string NumeroContratoVenta { get; set; }
         public string FloId { get; set; }
         public string Empaque { get; set; }
         public string TipoEmpaque { get; set; }

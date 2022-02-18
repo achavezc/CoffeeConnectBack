@@ -164,6 +164,8 @@ namespace CoffeeConnect.DTO
         public string EstadoMuestraId { get; set; }
         public DateTime? FechaEnvioMuestra { get; set; }
         public DateTime? FechaRecepcionMuestra { get; set; }
+
+
         public string ObservacionMuestra { get; set; }
         public string NavieraId { get; set; }
 
