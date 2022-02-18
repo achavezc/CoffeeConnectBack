@@ -38,6 +38,11 @@ namespace CoffeeConnect.Models
         public string CondicionEntregaId
         { get; set; }
 
+        public string PeriodosCosecha
+        { get; set; }
+
+
+
         /// <summary>
         /// Gets or sets the FechaEmbarque value.
         /// </summary>

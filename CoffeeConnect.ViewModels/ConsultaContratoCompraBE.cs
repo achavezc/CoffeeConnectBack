@@ -81,6 +81,26 @@ namespace CoffeeConnect.DTO
 
         public string CondicionEntrega { get; set; }
 
+        /// <summary>
+		/// Gets or sets the Departamento value.
+		/// </summary>
+		public string Departamento
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Provincia value.
+        /// </summary>
+        public string Provincia
+        { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Distrito value.
+        /// </summary>
+        public string Distrito
+        { get; set; }
+
+
+
         public decimal? KilosNetosLB { get; set; }
 
         public decimal? KilosNetosQQ { get; set; }

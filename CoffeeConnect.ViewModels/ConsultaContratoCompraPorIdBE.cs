@@ -33,6 +33,11 @@ namespace CoffeeConnect.DTO
         { get; set; }
 
 
+        public string PeriodosCosecha
+        { get; set; }
+
+
+
         /// <summary>
         /// Gets or sets the FloId value.
         /// </summary>
