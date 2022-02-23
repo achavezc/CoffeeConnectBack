@@ -95,6 +95,9 @@ namespace CoffeeConnect.DTO
 		public string Clasificacion
 		{ get; set; }
 
+		public string Floid
+		{ get; set; }
+
 		#endregion
 	}
 }

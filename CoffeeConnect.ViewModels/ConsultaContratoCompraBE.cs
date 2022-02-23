@@ -143,7 +143,12 @@ namespace CoffeeConnect.DTO
 
         public DateTime? FechaEntregaProducto { get; set; }
 
+        public string MonedaFactura
+        { get; set; }
 
+
+        public decimal? MontoFactura
+        { get; set; }
 
         #endregion
     }

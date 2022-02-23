@@ -88,6 +88,12 @@ namespace CoffeeConnect.DTO
         public string MonedadId
         { get; set; }
 
+        public string? MonedaFacturaId
+        { get; set; }
+
+
+        public decimal? MontoFactura
+        { get; set; }
         /// <summary>
         /// Gets or sets the Monto value.
         /// </summary>

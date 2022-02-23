@@ -115,6 +115,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NumeroFactura", ContratoCompra.NumeroFactura);
             parameters.Add("@FechaFactura", ContratoCompra.FechaFactura);
             parameters.Add("@FechaEntregaProducto", ContratoCompra.FechaEntregaProducto);
+            parameters.Add("@MonedaFacturaId", ContratoCompra.MonedaFacturaId);
+            parameters.Add("@MontoFactura", ContratoCompra.MontoFactura);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -199,6 +201,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NumeroFactura", ContratoCompra.NumeroFactura);
             parameters.Add("@FechaFactura", ContratoCompra.FechaFactura);
             parameters.Add("@FechaEntregaProducto", ContratoCompra.FechaEntregaProducto);
+            parameters.Add("@MonedaFacturaId", ContratoCompra.MonedaFacturaId);
+            parameters.Add("@MontoFactura", ContratoCompra.MontoFactura);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
