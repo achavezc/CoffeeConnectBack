@@ -24,6 +24,9 @@
         public string FloId
         { get; set; }
 
+        public string CodigoInterno
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the Ruc value.
         /// </summary>

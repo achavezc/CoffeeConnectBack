@@ -29,6 +29,11 @@ namespace CoffeeConnect.Models
         public string Ruc
         { get; set; }
 
+        public string CodigoInterno
+        { get; set; }
+        
+
+
         public string FloId
         { get; set; }
 

@@ -17,7 +17,9 @@ namespace CoffeeConnect.DTO
 
         public string FloId
         { get; set; }
-        
+
+        public string CodigoInterno
+        { get; set; }
 
 
         /// <summary>
@@ -47,6 +49,17 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public string Pais
         { get; set; }
+
+        public string Departamento
+        { get; set; }
+
+        public string Provincia
+        { get; set; }
+
+        public string Distrito
+        { get; set; }
+
+
 
 
         public string Direccion

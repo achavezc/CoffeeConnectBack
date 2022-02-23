@@ -15,6 +15,10 @@ namespace CoffeeConnect.DTO
         { get; set; }
 
 
+        public string CodigoInterno
+        { get; set; }
+
+
         /// <summary>
         /// Gets or sets the Numero value.
         /// </summary>
