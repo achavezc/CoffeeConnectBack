@@ -292,7 +292,7 @@ namespace CoffeeConnect.DTO
 
         public DateTime? FechaEntregaProducto { get; set; }
 
-
+       
         #endregion
     }
 }

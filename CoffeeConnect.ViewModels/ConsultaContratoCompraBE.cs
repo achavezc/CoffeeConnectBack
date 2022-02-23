@@ -29,6 +29,8 @@ namespace CoffeeConnect.DTO
         public string RucProductor
         { get; set; }
 
+        public string PeriodosCosecha { get; set; }
+
         /// <summary>
         /// Gets or sets the NombreRazonSocial value.
         /// </summary>
