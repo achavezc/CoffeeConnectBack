@@ -112,8 +112,11 @@ namespace CoffeeConnect.DTO
         public decimal? TotalFacturar3 { get; set; }
 
 
+        public string CodigoInterno { get; set; }
 
-
+        public decimal? KGPergaminoAsignacion { get; set; }
+        public decimal? PorcentajeRendimientoAsignacion { get; set; }
+        public decimal? TotalKGPergaminoAsignacion { get; set; }
 
         #endregion
     }

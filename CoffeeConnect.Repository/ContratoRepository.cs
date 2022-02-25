@@ -35,6 +35,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("TipoContratoId", request.TipoContratoId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
+            parameters.Add("EstadoPagoFacturaId", request.EstadoPagoFacturaId);
+            parameters.Add("CodigoInterno", request.CodigoInterno);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -113,7 +115,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaPagoFactura", contrato.FechaPagoFactura);
             parameters.Add("@CantidadContenedores", contrato.CantidadContenedores);
 
-           
+            parameters.Add("@NumeroFactura", contrato.NumeroFacturaVenta);
+            parameters.Add("@MonedaIdFactura", contrato.MonedaFacturaVenta);
+            parameters.Add("@MontoFactura", contrato.MontoFacturaVenta);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -194,6 +198,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@pTotalFacturar3", contrato.TotalFacturar3);
             parameters.Add("@EstadoPagoFacturaId", contrato.EstadoPagoFacturaId);
             parameters.Add("@FechaPagoFactura", contrato.FechaPagoFactura);
+
+            parameters.Add("@NumeroFactura", contrato.NumeroFacturaVenta);
+            parameters.Add("@MonedaIdFactura", contrato.MonedaFacturaVenta);
+            parameters.Add("@MontoFactura", contrato.MontoFacturaVenta);
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

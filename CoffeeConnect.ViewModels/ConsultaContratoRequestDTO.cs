@@ -33,5 +33,8 @@ namespace CoffeeConnect.DTO
         public string CondicionEmbarqueId
         { get; set; }
 
+        public string EstadoPagoFacturaId { get; set; }
+        public string CodigoInterno { get; set; }
+
     }
 }

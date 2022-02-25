@@ -275,6 +275,10 @@ namespace CoffeeConnect.Models
         public decimal? TotalFacturar2 { get; set; }
         public decimal? TotalFacturar3 { get; set; }
 
+        public string NumeroFacturaVenta { get; set; }
+        public string MonedaFacturaVenta { get; set; }
+        public decimal? MontoFacturaVenta { get; set; }
+
         #endregion
     }
 }

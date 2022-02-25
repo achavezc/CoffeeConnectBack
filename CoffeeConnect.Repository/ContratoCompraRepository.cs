@@ -292,7 +292,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                affected = db.Execute("usContratoCompraAsignarContratoVenta", parameters, commandType: CommandType.StoredProcedure);
+                affected = db.Execute("uspContratoCompraAsignarContratoVenta", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;

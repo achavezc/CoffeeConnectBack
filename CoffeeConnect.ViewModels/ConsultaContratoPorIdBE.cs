@@ -288,7 +288,11 @@ namespace CoffeeConnect.DTO
         public string EstadoPagoFacturaId { get; set; }        
 
         public DateTime? FechaPagoFactura { get; set; }
-       
+
+        public string NumeroFactura { get; set; }
+        public string MonedaIdFactura { get; set; }
+        public decimal? MontoFactura { get; set; }
+
 
 
         #endregion
