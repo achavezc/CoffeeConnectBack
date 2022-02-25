@@ -118,6 +118,21 @@ namespace CoffeeConnect.DTO
         public decimal? PorcentajeRendimientoAsignacion { get; set; }
         public decimal? TotalKGPergaminoAsignacion { get; set; }
 
+
+        public string ContratoCompra { get; set; }
+        public DateTime FechaContratoCompra { get; set; }
+        public string RucProductor { get; set; }
+        public string Productor { get; set; }
+        public string Distrito { get; set; }
+        public string NumeroContenedor { get; set; }
+        public decimal Cantidad { get; set; }
+        public string TipoEmpaqueCompra { get; set; }
+        public decimal KilosNetos { get; set; }
+        public DateTime FechaFijacionContratoCompra { get; set; }
+        public string NumeroFactura { get; set; }
+        public DateTime FechaFactura { get; set; }
+        public string MontoFactura { get; set; }
+        public string FechaEntregaProducto { get; set; }
         #endregion
     }
 }
