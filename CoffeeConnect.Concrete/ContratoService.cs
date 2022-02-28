@@ -160,10 +160,10 @@ namespace CoffeeConnect.Service
 
             Empresa empresa = _IEmpresaRepository.ObtenerEmpresaPorId(request.EmpresaId);
 
-            if(empresa.TipoEmpresaid != "01")
-            {
-                contrato.EstadoId = ContratoEstados.Completado;
-            }
+            //if(empresa.TipoEmpresaid != "01")
+            //{
+            //    contrato.EstadoId = ContratoEstados.Asignado;
+            //}
 
             int cantidadContratosExistentes = _IContratoRepository.ValidadContratoExistente(request.EmpresaId, request.Numero);
             

@@ -276,7 +276,7 @@ namespace CoffeeConnect.Repository
 
 
 
-        public int AsignarContratoCompra(int contratoVentaId , int contratoCompraId, DateTime fecha, string usuario, string estadoId)
+        public int AsignarContratoCompra(int contratoVentaId , int contratoCompraId, DateTime fecha, string usuario, string estadoId, string contratoVentaEstadoId)
         {
             int affected = 0;
 
@@ -286,7 +286,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
             parameters.Add("@EstadoId", estadoId);
-           
+            parameters.Add("@ContratoVentaEstadoId", contratoVentaEstadoId);
 
 
 

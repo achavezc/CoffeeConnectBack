@@ -20,6 +20,7 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private IContratoCompraRepository _IContratoCompraRepository;
+
         private IAduanaRepository _IAduanaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
@@ -295,7 +296,9 @@ namespace CoffeeConnect.Service
             int result = 0;
             if (request.ContratoVentaId > 0)
             {                
-                result = _IContratoCompraRepository.AsignarContratoCompra(request.ContratoVentaId , request.ContratoCompraId, DateTime.Now, request.Usuario, ContratoCompraEstados.Asignado);
+                result = _IContratoCompraRepository.AsignarContratoCompra(request.ContratoVentaId , request.ContratoCompraId, DateTime.Now, request.Usuario, ContratoCompraEstados.Asignado,ContratoEstados.Completado);
+            
+            
             }
             return result;
         }
