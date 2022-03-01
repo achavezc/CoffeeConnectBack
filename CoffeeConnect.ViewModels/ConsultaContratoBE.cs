@@ -130,9 +130,17 @@ namespace CoffeeConnect.DTO
         public decimal KilosNetos { get; set; }
         public DateTime FechaFijacionContratoCompra { get; set; }
         public string NumeroFactura { get; set; }
-        public DateTime FechaFactura { get; set; }
+        public DateTime? FechaFactura { get; set; }
         public string MontoFactura { get; set; }
-        public string FechaEntregaProducto { get; set; }
+        public string FechaEntregaProductoCompra { get; set; }
+
+
+
+        public string NumeroFacturaCompra { get; set; }
+        public DateTime? FechaFacturaCompra { get; set; }
+        public string MontoFacturaCompra { get; set; }
+        public string MonedaFactura { get; set; }
+
         #endregion
     }
 }

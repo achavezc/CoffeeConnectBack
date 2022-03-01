@@ -188,11 +188,9 @@ namespace CoffeeConnect.Service
     public static class ContratoCompraEstados
     {
         public static string Activo { get { return "01"; } }
-        public static string Anulado { get { return "00"; } }
+        public static string Anulado { get { return "00"; } }       
 
-        public static string Asignado { get { return "02"; } }
-
-        public static string Completado { get { return "03"; } }
+        public static string Asignado { get { return "03"; } }
 
     }
 
