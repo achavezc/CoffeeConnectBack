@@ -23,7 +23,12 @@ namespace CoffeeConnect.DTO
 		public string CodigoCertificacion
 		{ get; set; }
 
-		
+		public string EstadoId
+		{ get; set; }
+
+		public DateTime? FechaVigencia
+		{ get; set; }
+
 
 		#endregion
 	}

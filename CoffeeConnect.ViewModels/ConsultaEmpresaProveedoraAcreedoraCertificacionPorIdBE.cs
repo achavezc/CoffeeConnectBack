@@ -30,8 +30,13 @@ namespace CoffeeConnect.DTO
 		public string Certificacion
 		{ get; set; }
 
+		public string EstadoId
+		{ get; set; }
 
-		
+		public string Estado
+		{ get; set; }
 
+		public DateTime? FechaVigencia
+		{ get; set; }
 	}
 }
