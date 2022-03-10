@@ -48,6 +48,8 @@ namespace CoffeeConnect.Service
                 item.CodigoCertificacion = z.CodigoCertificacion;
                 item.TipoCertificacionId = z.TipoCertificacionId;
                 item.EmpresaProveedoraAcreedoraId = id;
+                item.FechaVigencia = z.FechaVigencia;
+                item.EstadoId = z.EstadoId;
 
                 empresaProveedoraAcreedoraCertificacionTipoList.Add(item);
             });
@@ -76,7 +78,9 @@ namespace CoffeeConnect.Service
                 item.CodigoCertificacion = z.CodigoCertificacion;
                 item.TipoCertificacionId = z.TipoCertificacionId;
                 item.EmpresaProveedoraAcreedoraId = request.EmpresaProveedoraAcreedoraId;
-
+                item.FechaVigencia = z.FechaVigencia;
+                item.EstadoId = z.EstadoId;
+                
                 empresaProveedoraAcreedoraCertificacionTipoList.Add(item);
             });
 

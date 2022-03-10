@@ -16,5 +16,7 @@ namespace CoffeeConnect.Interface.Service
 
         int AsignarContratoCompra(AsignarContratoCompraRequestDTO request);
 
+        
+
     }
 }

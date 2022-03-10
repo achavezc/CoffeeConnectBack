@@ -53,6 +53,8 @@ namespace CoffeeConnect.Service
         public static string Aduana { get { return "Aduana"; } }
         public static string Adelanto { get { return "Adelanto"; } }
 
+        public static string Anticipo { get { return "Anticipo"; } }
+
 
         public static string NotaSalidaAlmacenPlanta { get { return "NotaSalidaAlmacenPlanta"; } }
 
@@ -134,6 +136,15 @@ namespace CoffeeConnect.Service
     }
 
     public static class AdelantoEstados
+    {
+        public static string PorLiquidar { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+        public static string Liquidado { get { return "02"; } }
+
+    }
+
+    public static class AnticipoEstados
     {
         public static string PorLiquidar { get { return "01"; } }
         public static string Anulado { get { return "00"; } }

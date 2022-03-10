@@ -256,6 +256,23 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+        public ConsultaContratoCompraPorIdBE ConsultarContratoCompraPorContratoVentaId(int ContratoVentaId)
+        {
+            ConsultaContratoCompraPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", ContratoVentaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaContratoCompraPorIdBE>("[uspContratoCompraConsultaPorContratoVentaId]", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+            return itemBE;
+        }
+
 
         public int ValidadContratoCompraExistente(int empresaId, string numero)
         {
@@ -298,7 +315,27 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+        public int DesasignarContratoCompra(int contratoVentaId, int contratoCompraId, DateTime fecha, string usuario, string estadoId, string contratoVentaEstadoId)
+        {
+            int affected = 0;
 
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoCompraId", contratoCompraId);
+            parameters.Add("@ContratoVentaId", contratoVentaId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+            parameters.Add("@ContratoVentaEstadoId", contratoVentaEstadoId);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspContratoCompraDesasignarContratoVenta", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
 
 
 

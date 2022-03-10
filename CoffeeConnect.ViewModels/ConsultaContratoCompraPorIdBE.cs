@@ -19,6 +19,9 @@ namespace CoffeeConnect.DTO
         public string Numero
         { get; set; }
 
+        public string NumeroContratoVenta
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the ClienteId value.
         /// </summary>

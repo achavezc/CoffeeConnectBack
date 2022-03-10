@@ -1,47 +1,50 @@
-﻿using CoffeeConnect.DTO;
-using CoffeeConnect.DTO.Adjunto;
+﻿using AspNetCore.Reporting;
+using CoffeeConnect.DTO;
+using CoffeeConnect.DTO.Anticipo;
 using CoffeeConnect.Interface.Service;
+using Core.Common;
 using Core.Common.Domain.Model;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
-using System.IO;
-using System.Net.Mime;
+using System.Collections.Generic;
 
 namespace Integracion.Deuda.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ContratoController : ControllerBase
+    public class AnticipoController : ControllerBase
     {
-        private IContratoService _contratoService;
-
+        private IAnticipoService _AnticipoService;
         private Core.Common.Logger.ILog _log;
-        public ContratoController(IContratoService contratoService, Core.Common.Logger.ILog log)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public AnticipoController(IAnticipoService AnticipoService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
-            _contratoService = contratoService;
+            _AnticipoService = AnticipoService;
             _log = log;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet("version")]
         public IActionResult Version()
         {
-            return Ok("Contrato Service. version: 1.20.01.03");
+            return Ok("Anticipo Service. version: 1.20.01.03");
         }
 
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("Consultar")]
         [HttpPost]
-        public IActionResult Consultar([FromBody] ConsultaContratoRequestDTO request)
+        public IActionResult Consultar([FromBody] ConsultaAnticipoRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            ConsultaContratoResponseDTO response = new ConsultaContratoResponseDTO();
+            ConsultaAnticipoResponseDTO response = new ConsultaAnticipoResponseDTO();
             try
             {
-                response.Result.Data = _contratoService.ConsultarContrato(request);
+                response.Result.Data = _AnticipoService.ConsultarAnticipo(request);
 
                 response.Result.Success = true;
 
@@ -63,17 +66,17 @@ namespace Integracion.Deuda.Controller
 
         [Route("Registrar")]
         [HttpPost]
-        //public IActionResult Registrar([FromBody] RegistrarActualizarContratoRequestDTO request)
-        public IActionResult Registrar(IFormFile file, [FromForm] string request)
+        //public IActionResult Registrar([FromBody] RegistrarActualizarAduanaRequestDTO request)
+        public IActionResult Registrar(RegistrarActualizarAnticipoRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            RegistrarActualizarContratoResponseDTO response = new RegistrarActualizarContratoResponseDTO();
+            RegistrarActualizarAnticipoResponseDTO response = new RegistrarActualizarAnticipoResponseDTO();
             try
             {
-                var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarContratoRequestDTO>(request);
-                response.Result.Data = _contratoService.RegistrarContrato(myJsonObject, file);
+                //var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarAduanaRequestDTO>(request);
+                response.Result.Data = _AnticipoService.RegistrarAnticipo(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
@@ -93,16 +96,16 @@ namespace Integracion.Deuda.Controller
 
         [Route("Actualizar")]
         [HttpPost]
-        public IActionResult Actualizar(IFormFile file, [FromForm] string request)
+        public IActionResult Actualizar(RegistrarActualizarAnticipoRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
-            RegistrarActualizarContratoResponseDTO response = new RegistrarActualizarContratoResponseDTO();
+            RegistrarActualizarAnticipoResponseDTO response = new RegistrarActualizarAnticipoResponseDTO();
             try
             {
-                var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarContratoRequestDTO>(request);
-                response.Result.Data = _contratoService.ActualizarContrato(myJsonObject, file);
+                //var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarAduanaRequestDTO>(request);
+                response.Result.Data = _AnticipoService.ActualizarAnticipo(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
@@ -122,15 +125,15 @@ namespace Integracion.Deuda.Controller
 
         [Route("ConsultarPorId")]
         [HttpPost]
-        public IActionResult ConsultarPorId([FromBody] ConsultaContratoPorIdRequestDTO request)
+        public IActionResult ConsultarPorId([FromBody] ConsultaAnticipoPorIdRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
-            ConsultaContratoPorIdResponseDTO response = new ConsultaContratoPorIdResponseDTO();
+            ConsultaAnticipoPorIdResponseDTO response = new ConsultaAnticipoPorIdResponseDTO();
             try
             {
-                response.Result.Data = _contratoService.ConsultarContratoPorId(request);
+                response.Result.Data = _AnticipoService.ConsultarAnticipoPorId(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
@@ -147,35 +150,7 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-        [Route("ConsultarContratoAsignado")]
-        [HttpPost]
-        public IActionResult ConsultarContratoAsignado([FromBody] ConsultaContratoAsignadoRequestDTO request)
-        {
-            Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
-
-            ConsultaContratoAsignadoResponseDTO response = new ConsultaContratoAsignadoResponseDTO();
-            try
-            {
-                response.Result.Data = _contratoService.ConsultarContratoAsignado(request);
-                response.Result.Success = true;
-            }
-            catch (ResultException ex)
-            {
-                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-            }
-            catch (Exception ex)
-            {
-                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-                _log.RegistrarEvento(ex, guid.ToString());
-            }
-
-            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
-            return Ok(response);
-        }
-
-
-
+        /*
         [Route("DescargarArchivo")]
         //[HttpPost]
         [HttpGet()]
@@ -190,7 +165,7 @@ namespace Integracion.Deuda.Controller
             request.ArchivoVisual = name;
             try
             {
-                response.Result.Data = _contratoService.DescargarArchivo(request);
+                response.Result.Data = _AduanaService.DescargarArchivo(request);
                 response.Result.Success = true;
 
                 string extension = Path.GetExtension(request.PathFile);
@@ -249,18 +224,49 @@ namespace Integracion.Deuda.Controller
 
             return null;
         }
+        */
+
 
         [Route("Anular")]
         [HttpPost]
-        public IActionResult Anular([FromBody] AnularContratoRequestDTO request)
+        public IActionResult Anular([FromBody] AnularAnticipoRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            AnularLoteResponseDTO response = new AnularLoteResponseDTO();
+            AnularAnticipoResponseDTO response = new AnularAnticipoResponseDTO();
             try
             {
-                response.Result.Data = _contratoService.AnularContrato(request);
+                response.Result.Data = _AnticipoService.AnularAnticipo(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+            return Ok(response);
+        }
+
+        [Route("Asociar")]
+        [HttpPost]
+        public IActionResult Asociar([FromBody] AsociarAnticipoRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            AsociarAnticipoResponseDTO response = new AsociarAnticipoResponseDTO();
+            try
+            {
+                response.Result.Data = _AnticipoService.AsociarAnticipo(request);
 
                 response.Result.Success = true;
 
@@ -280,51 +286,29 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
-        [Route("AsignarAcopio")]
-        [HttpPost]
-        public IActionResult AsignarAcopio([FromBody] AsignarAcopioContratoRequestDTO request)
+        [Route("GenerarPDFAnticipo")]
+        [HttpGet]
+        public IActionResult GenerarPDFAnticipo(int id)
         {
             Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
 
-            AsignarAcopioContratoResponseDTO response = new AsignarAcopioContratoResponseDTO();
+            //ES MOMENTANEO SE DEBE ELIMINAR
+            GenerarPDFAnticipoResponseDTO response = _AnticipoService.GenerarPDF(id);
+
             try
             {
-                response.Result.Data = _contratoService.AsignarAcopio(request);
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptAnticipo.rdlc";
 
-                response.Result.Success = true;
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-            }
-            catch (ResultException ex)
-            {
-                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-            }
-            catch (Exception ex)
-            {
-                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-                _log.RegistrarEvento(ex, guid.ToString());
-            }
+                lr.AddDataSource("dsAnticipo", Util.ToDataTable(response.resultado));
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
-
-            return Ok(response);
-        }
-
-
-
-
-        [Route("ConsultarTrackingContratoPorContratoId")]
-        [HttpPost]
-        public IActionResult ConsultarTrackingContratoPorContratoId([FromBody] ConsultaTrackingContratoPorContratoIdRequestDTO request)
-        {
-            Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
-
-            ConsultaTrackingContratoPorContratoIdResponseDTO response = new ConsultaTrackingContratoPorContratoIdResponseDTO();
-            try
-            {
-                response.Result.Data = _contratoService.ConsultarTrackingContratoPorContratoId(request);
-                response.Result.Success = true;
+                return File(result.MainStream, "application/pdf");
             }
             catch (ResultException ex)
             {
@@ -337,68 +321,8 @@ namespace Integracion.Deuda.Controller
             }
 
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
-            return Ok(response);
-        }
-
-        [Route("ConsultarTrackingContrato")]
-        [HttpPost]
-        public IActionResult ConsultarTrackingContrato([FromBody] ConsultaTrackingContratoRequestDTO request)
-        {
-            Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
-
-            ConsultaTrackingContratoResponseDTO response = new ConsultaTrackingContratoResponseDTO();
-            try
-            {
-                response.Result.Data = _contratoService.ConsultarTrackingContrato(request);
-                response.Result.Success = true;
-            }
-            catch (ResultException ex)
-            {
-                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-            }
-            catch (Exception ex)
-            {
-                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-                _log.RegistrarEvento(ex, guid.ToString());
-            }
-
-            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
-            return Ok(response);
-        }
-
-        [Route("DesasignarContrato")]
-        [HttpPost]
-        public IActionResult DesasignarContrato([FromBody] AsignarContratoCompraRequestDTO request)
-        {
-            Guid guid = Guid.NewGuid();
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
-
-            AsignarContratoVentaResponseDTO response = new AsignarContratoVentaResponseDTO();
-            try
-            {
-                response.Result.Data = _contratoService.DesasignarContrato(request);
-
-                response.Result.Success = true;
-
-            }
-            catch (ResultException ex)
-            {
-                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
-            }
-            catch (Exception ex)
-            {
-                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
-                _log.RegistrarEvento(ex, guid.ToString());
-            }
-
-            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
         }
-
-
-
-
     }
 }

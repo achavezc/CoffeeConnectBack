@@ -25,9 +25,10 @@ namespace CoffeeConnect.Service
         public IOptions<FileServerSettings> _fileServerSettings;
         private IMaestroRepository _IMaestroRepository;
         private IEmpresaRepository _IEmpresaRepository;
-
+        private IContratoCompraRepository _IContratoCompraRepository;
         
-        public ContratoService(IAduanaRepository AduanaRepository, IContratoRepository contratoRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository, IEmpresaRepository empresaRepository)
+
+        public ContratoService(IAduanaRepository AduanaRepository, IContratoRepository contratoRepository, IContratoCompraRepository contratoCompraRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository, IEmpresaRepository empresaRepository)
         {
             _IContratoRepository = contratoRepository;
             _IAduanaRepository = AduanaRepository;
@@ -36,6 +37,7 @@ namespace CoffeeConnect.Service
             _Mapper = mapper;
             _IMaestroRepository = maestroRepository;
             _IEmpresaRepository = empresaRepository;
+            _IContratoCompraRepository = contratoCompraRepository;
         }
 
         private String getRutaFisica(string pathFile)
@@ -338,7 +340,20 @@ namespace CoffeeConnect.Service
             return _IContratoRepository.ConsultarContratoAsignado(request.EmpresaId,ContratoEstados.Asignado);
         }
 
+        public int DesasignarContrato(AsignarContratoCompraRequestDTO request)
+        {
+            int result = 0;
+            if (request.ContratoVentaId > 0)
+            {
 
+                ConsultaContratoCompraPorIdBE contrato = _IContratoCompraRepository.ConsultarContratoCompraPorContratoVentaId(request.ContratoVentaId);
+
+                result = _IContratoCompraRepository.DesasignarContratoCompra(request.ContratoVentaId, contrato.ContratoCompraId, DateTime.Now, request.Usuario, ContratoCompraEstados.Activo, ContratoEstados.Activo);
+
+
+            }
+            return result;
+        }
 
     }
 }

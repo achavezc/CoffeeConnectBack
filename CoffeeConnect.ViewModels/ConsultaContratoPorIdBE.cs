@@ -18,6 +18,11 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public string Numero
         { get; set; }
+        public string NumeroContratoCompra
+        { get; set; }
+
+        
+
 
         /// <summary>
         /// Gets or sets the ClienteId value.
@@ -292,6 +297,7 @@ namespace CoffeeConnect.DTO
         public string NumeroFactura { get; set; }
         public string MonedaIdFactura { get; set; }
         public decimal? MontoFactura { get; set; }
+
 
 
 

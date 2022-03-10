@@ -22,7 +22,10 @@ namespace CoffeeConnect.Interface.Repository
 
         int AsignarContratoCompra(int contratoVentaId, int contratoCompraId, DateTime fecha, string usuario, string estadoId, string contratoVentaEstadoId);
 
+        int DesasignarContratoCompra(int contratoVentaId, int contratoCompraId, DateTime fecha, string usuario, string estadoId, string contratoVentaEstadoId);
 
+
+        ConsultaContratoCompraPorIdBE ConsultarContratoCompraPorContratoVentaId(int ContratoVentaId);
 
     }
 }

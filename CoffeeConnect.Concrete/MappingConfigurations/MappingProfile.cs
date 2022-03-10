@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CoffeeConnect.DTO;
+using CoffeeConnect.DTO.Anticipo;
 using CoffeeConnect.Models;
 
 namespace CoffeeConnect.Service.MappingConfigurations
@@ -46,6 +47,7 @@ namespace CoffeeConnect.Service.MappingConfigurations
             CreateMap<RegistrarActualizarDiagnosticoRequestDTO, Diagnostico>();
             CreateMap<RegistrarActualizarNotaIngresoPlantaDocumentoAdjuntoRequestDTO, NotaIngresoPlantaDocumentoAdjunto>();
             CreateMap<RegistrarActualizarAdelantoRequestDTO, Adelanto>();
+            CreateMap<RegistrarActualizarAnticipoRequestDTO, Anticipo>();
             CreateMap<RegistrarActualizarKardexProcesoRequestDTO, KardexProceso>();
         }
     }

@@ -221,7 +221,14 @@ namespace CoffeeConnect.API
             services.AddTransient<IPrecioDiaRendimientoRepository, PrecioDiaRendimientoRepository>();
 
             services.AddTransient<IAdelantoService, AdelantoService>();
+
+            
+
             services.AddTransient<IAdelantoRepository, AdelantoRepository>();
+
+            services.AddTransient<IAnticipoService, AnticipoService>();
+            services.AddTransient<IAnticipoRepository, AnticipoRepository>();
+
             services.AddTransient<IKardexService, KardexService>();
             services.AddTransient<IKardexProcesoService, KardexProcesoService>();
             services.AddTransient<IKardexProcesoRepository, KardexProcesoRepository>();

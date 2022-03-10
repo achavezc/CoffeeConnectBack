@@ -23,5 +23,7 @@ namespace CoffeeConnect.Interface.Service
 
         ConsultaContratoAsignado ConsultarContratoAsignado(ConsultaContratoAsignadoRequestDTO request);
 
+        public int DesasignarContrato(AsignarContratoCompraRequestDTO request);
+
     }
 }
