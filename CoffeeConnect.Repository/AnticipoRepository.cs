@@ -38,7 +38,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@Numero", request.Numero);
             parameters.Add("@NumeroNotaIngresoPlanta", request.NumeroNotaIngresoPlanta);
-            parameters.Add("@Ruc", request.RucProveedor);
+            parameters.Add("@RucProveedor", request.RucProveedor);
             parameters.Add("@RazonSocialProveedor", request.RazonSocialProveedor);           
             parameters.Add("@EstadoId", request.EstadoId);
             parameters.Add("@EmpresaId", request.EmpresaId);
