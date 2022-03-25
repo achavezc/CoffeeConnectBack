@@ -205,7 +205,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                affected = db.Execute("uspAnticipoAsociarNotaCompra", parameters, commandType: CommandType.StoredProcedure);
+                affected = db.Execute("uspAnticipoAsociarNotaIngresoPlanta", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;
