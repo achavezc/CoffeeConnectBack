@@ -91,9 +91,15 @@ namespace CoffeeConnect.DTO
 
         public decimal? PrecioNivelFijacion { get; set; }
 
+        public decimal? PrecioNivelFijacionCompra { get; set; }
+        public decimal? PUTotalACompra { get; set; }
+
         public decimal? Diferencial { get; set; }
+        public decimal? DiferencialCompra { get; set; }
 
         public decimal? PUTotalA { get; set; }
+
+        public decimal? TotalFactura1Compra { get; set; }
 
         public decimal? TotalFacturar1 { get; set; }
 
