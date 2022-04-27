@@ -9,7 +9,6 @@ namespace CoffeeConnect.DTO
         public int ContratoId { get; set; }
         public String TipoDocumentoInternoId { get; set; }
         public String TipoOperacionId { get; set; }
-
         public String TipoRegistroId { get; set; }
 
         public int EmpresaId { get; set; }
@@ -20,6 +19,7 @@ namespace CoffeeConnect.DTO
 
         public String NumeroContrato { get; set; }
 
+        public DateTime? FechaContrato { get; set; }
 
         public String RucCliente { get; set; }
 
@@ -31,21 +31,21 @@ namespace CoffeeConnect.DTO
 
         public int CantidadSacosDespachados { get; set; }
 
-        public Decimal KilosIngresados { get; set; }
-        public Decimal KilosDespachados { get; set; }
+        public decimal KilosIngresados { get; set; }
+        public decimal KilosDespachados { get; set; }
 
-        public Decimal QQIngresados { get; set; }
+        public decimal QQIngresados { get; set; }
 
-        public Decimal QQDespachados { get; set; }
+        public decimal QQDespachados { get; set; }
         public DateTime? FechaFactura { get; set; }
         public String NumeroFactura { get; set; }
 
-        public Decimal PrecioUnitarioCP { get; set; }
-        public Decimal PrecioUnitarioVenta { get; set; }
+        public decimal PrecioUnitarioCP { get; set; }
+        public decimal PrecioUnitarioVenta { get; set; }
 
-        public Decimal TotalVenta { get; set; }
+        public decimal TotalVenta { get; set; }
 
-        public Decimal TotalCP { get; set; }
+        public decimal TotalCP { get; set; }
 
         public String PlantaProcesoAlmacenId { get; set; }
 
@@ -55,15 +55,14 @@ namespace CoffeeConnect.DTO
 
         public int KardexPlantaId { get; set; }
 
-
-        public Decimal? CompraBruta { get; set; }
-        public Decimal? Tara { get; set; }
-        public Decimal? PorcentajeRendimiento { get; set; }
-        public Decimal? PorcentajeHumedad { get; set; }
-        public Decimal? Tasa { get; set; }
-        public Decimal? AproxExp { get; set; }
-        public Decimal? AproxSacos { get; set; }
-        public Decimal? AproxSeg { get; set; }
+        public decimal? CompraBruta { get; set; }
+        public decimal? Tara { get; set; }
+        public decimal? PorcentajeRendimiento { get; set; }
+        public decimal? PorcentajeHumedad { get; set; }
+        public decimal? Tasa { get; set; }
+        public decimal? AproxExp { get; set; }
+        public decimal? AproxSacos { get; set; }
+        public decimal? AproxSeg { get; set; }
 
     }
 }
