@@ -23,20 +23,21 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("Numero", request.Numero);
-            parameters.Add("RazonSocial", request.RazonSocial);
-            parameters.Add("TipoProduccionId", request.TipoProduccionId);
-            parameters.Add("ProductoId", request.ProductoId);
-            parameters.Add("CalidadId", request.CalidadId);
             parameters.Add("NumeroCliente", request.NumeroCliente);
+            parameters.Add("RazonSocial", request.RazonSocial);
+            parameters.Add("ProductoId", request.ProductoId);
+            parameters.Add("TipoProduccionId", request.TipoProduccionId);
+            parameters.Add("CalidadId", request.CalidadId);
             parameters.Add("EstadoId", request.EstadoId);
-            parameters.Add("EmpresaId", request.EmpresaId);
-            parameters.Add("CondicionEmbarqueId", request.CondicionEmbarqueId);
             parameters.Add("EstadoFijacionId", request.EstadoFijacionId);
+            parameters.Add("CondicionEmbarqueId", request.CondicionEmbarqueId);
+            parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("TipoContratoId", request.TipoContratoId);
+
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
-            parameters.Add("EstadoPagoFacturaId", request.EstadoPagoFacturaId);
-            parameters.Add("CodigoInterno", request.CodigoInterno);
+            //parameters.Add("EstadoPagoFacturaId", request.EstadoPagoFacturaId);
+            //parameters.Add("CodigoInterno", request.CodigoInterno);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
