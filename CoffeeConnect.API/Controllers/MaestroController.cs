@@ -5,6 +5,7 @@ using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Integracion.Deuda.Controller
@@ -46,13 +47,33 @@ namespace Integracion.Deuda.Controller
                 {
                     response.Result.Data = lista;
                 }
-                else if(request.CodigoTabla.Equals("IndicadorTostado"))
+                else if (request.CodigoTabla.Equals("IndicadorTostado"))
                 {
                     response.Result.Data = lista;
                 }
                 else if (request.CodigoTabla.Equals("TiposCafeProcesado"))
                 {
                     response.Result.Data = lista.OrderBy(x => x.Codigo).ToList();
+                }
+                else if (request.CodigoTabla.Equals("MesEmbarqueCompra"))
+                {
+                    response.Result.Data = lista.OrderBy(x => x.Codigo).ToList();
+                }
+                else if (request.CodigoTabla.Equals("MesEmbarqueVenta"))
+                {
+                    DateTime fin = DateTime.Now.AddMonths(1);
+                    DateTime inicio = DateTime.Now.AddYears(-2);
+                    DateTime temp = inicio;
+                    while (temp <= fin) 
+                    {
+                        ConsultaDetalleTablaBE consultaDetalleTablaBE = new ConsultaDetalleTablaBE();
+                        consultaDetalleTablaBE.Label = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(temp.ToString("MMMM")) + " " + temp.Year.ToString();
+                        consultaDetalleTablaBE.Codigo = temp.Month.ToString() + "-" + temp.Year.ToString();
+                        lista.Add(consultaDetalleTablaBE);
+                        temp = temp.AddMonths(1);
+                    }
+
+                        response.Result.Data = lista;
                 }
                 else
                 {

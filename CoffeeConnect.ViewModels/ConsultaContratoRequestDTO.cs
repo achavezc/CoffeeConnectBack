@@ -30,6 +30,8 @@ namespace CoffeeConnect.DTO
 
         public string EstadoFijacionId { get; set; }
 
+        public string MesEmbarque { get; set; }
+
         public string CondicionEmbarqueId
         { get; set; }
 
