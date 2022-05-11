@@ -55,10 +55,6 @@ namespace Integracion.Deuda.Controller
                 {
                     response.Result.Data = lista.OrderBy(x => x.Codigo).ToList();
                 }
-                else if (request.CodigoTabla.Equals("MesEmbarqueCompra"))
-                {
-                    response.Result.Data = lista.OrderBy(x => x.Codigo).ToList();
-                }
                 else if (request.CodigoTabla.Equals("MesEmbarqueVenta"))
                 {
                     DateTime fin = DateTime.Now.AddMonths(1);
@@ -67,6 +63,7 @@ namespace Integracion.Deuda.Controller
                     while (temp <= fin) 
                     {
                         ConsultaDetalleTablaBE consultaDetalleTablaBE = new ConsultaDetalleTablaBE();
+                        consultaDetalleTablaBE.Mnemonico = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(temp.ToString("MMMM", CultureInfo.CreateSpecificCulture("en-US"))) + " " + temp.Year.ToString();
                         consultaDetalleTablaBE.Label = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(temp.ToString("MMMM")) + " " + temp.Year.ToString();
                         consultaDetalleTablaBE.Codigo = temp.Month.ToString() + "-" + temp.Year.ToString();
                         lista.Add(consultaDetalleTablaBE);
