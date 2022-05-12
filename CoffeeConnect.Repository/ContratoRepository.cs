@@ -36,8 +36,8 @@ namespace CoffeeConnect.Repository
 
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
-            parameters.Add("MesEmbarque", request.MesEmbarque.Split("-")[0]);
-            parameters.Add("AnioEmbarque", request.MesEmbarque.Split("-")[1]);
+            parameters.Add("MesEmbarque", request.MesEmbarque != "" ? request.MesEmbarque.Split("-")[0] : "");
+            parameters.Add("AnioEmbarque", request.MesEmbarque != "" ? request.MesEmbarque.Split("-")[1] : "");
             //parameters.Add("EstadoPagoFacturaId", request.EstadoPagoFacturaId);
             //parameters.Add("CodigoInterno", request.CodigoInterno);
 
