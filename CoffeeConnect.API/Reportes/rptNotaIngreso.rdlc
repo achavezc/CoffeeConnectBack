@@ -1738,7 +1738,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Direccion.Value, "dsGRCabecera")</Value>
+                      <Value>=First(Fields!DireccionCliente.Value, "dsGRCabecera")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -1861,6 +1861,10 @@
         </Field>
         <Field Name="CGR">
           <DataField>CGR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DireccionCliente">
+          <DataField>DireccionCliente</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
