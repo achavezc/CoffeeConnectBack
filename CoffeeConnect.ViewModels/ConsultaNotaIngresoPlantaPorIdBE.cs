@@ -337,6 +337,13 @@ namespace CoffeeConnect.DTO
 		public string Direccion
 		{ get; set; }
 
+		public string Distrito
+		{ get; set; }
+		public string Provincia
+		{ get; set; }
+		public string Departamento
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the RazonSocialOrganizacion value.
 		/// </summary>
