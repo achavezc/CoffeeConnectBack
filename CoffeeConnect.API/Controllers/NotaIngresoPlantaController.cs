@@ -212,12 +212,12 @@ namespace Integracion.Deuda.Controller
 
         [Route("GenerarPDFNotaIngreso")]
         [HttpGet]
-        public IActionResult GenerarPDFNotaIngreso(int id)
+        public IActionResult GenerarPDFNotaIngreso(int id, int empresaId)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
 
-            GenerarPDFGuiaRemisionResponseDTO response = _NotaIngresoPlantaService.GenerarPDFGuiaRemisionPorNotaIngreso(id);
+            GenerarPDFGuiaRemisionResponseDTO response = _NotaIngresoPlantaService.GenerarPDFGuiaRemisionPorNotaIngreso(id, empresaId);
 
             try
             {

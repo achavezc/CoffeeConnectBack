@@ -18,13 +18,14 @@ namespace CoffeeConnect.Service
         private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
         public IOptions<ParametrosSettings> _ParametrosSettings;
-
-        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings, IMapper mapper)
+        private IMaestroRepository _IMaestroRepository;
+        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings, IMapper mapper, IMaestroRepository maestroRepository)
         {
             _INotaIngresoPlantaRepository = NotaIngresoPlanta;
             _ICorrelativoRepository = correlativoRepository;
             _ParametrosSettings = parametrosSettings;
             _Mapper = mapper;
+            _IMaestroRepository = maestroRepository;
         }
         
         public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request)
@@ -307,7 +308,7 @@ namespace CoffeeConnect.Service
         }
 
 
-        public GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaIngreso(int notaSalidaAlmacenIdId)
+        public GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaIngreso(int notaSalidaAlmacenIdId, int empresaId)
         {
              GenerarPDFGuiaRemisionResponseDTO generarPDFGuiaRemisionResponseDTO = new GenerarPDFGuiaRemisionResponseDTO();
 
@@ -319,9 +320,30 @@ namespace CoffeeConnect.Service
                 GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
 
                 //descripcion = "  " + Convert.ToString(z.CantidadPesado) + " " + Convert.ToString(!string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty) + " Plastico" + "   " + Convert.ToString(!string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty);
+
+                // obtener certificaciones
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(empresaId, String.Empty).ToList();
+                string[] certificacionesIds = consultaImpresionGuiaRemision.CertificacionId.Split('|');
+                string certificacionLabel = string.Empty;
+                if (certificacionesIds.Length > 0)
+                {
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+                }
+
+                // obtener certificaciones
+
+
                 guiaRemisionListaDetalle.TipoEmpaque = consultaImpresionGuiaRemision.TipoEmpaque;
                 guiaRemisionListaDetalle.Empaque = consultaImpresionGuiaRemision.Empaque;
-                guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + consultaImpresionGuiaRemision.Certificacion;
+                guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + certificacionLabel;
                 guiaRemisionListaDetalle.MontoBruto = consultaImpresionGuiaRemision.KilosBrutos;
                 guiaRemisionListaDetalle.PesoNeto = consultaImpresionGuiaRemision.KilosNetos;
                 guiaRemisionListaDetalle.Cantidad = consultaImpresionGuiaRemision.Cantidad;
