@@ -309,7 +309,7 @@ namespace CoffeeConnect.Service
 
         public GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaIngreso(int notaSalidaAlmacenIdId)
         {
-            GenerarPDFGuiaRemisionResponseDTO generarPDFGuiaRemisionResponseDTO = new GenerarPDFGuiaRemisionResponseDTO();
+             GenerarPDFGuiaRemisionResponseDTO generarPDFGuiaRemisionResponseDTO = new GenerarPDFGuiaRemisionResponseDTO();
 
             ConsultaNotaIngresoPlantaPorIdBE consultaImpresionGuiaRemision = new ConsultaNotaIngresoPlantaPorIdBE();
             consultaImpresionGuiaRemision = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(notaSalidaAlmacenIdId);
