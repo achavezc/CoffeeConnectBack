@@ -28,19 +28,47 @@ namespace CoffeeConnect.Service
             _IMaestroRepository = maestroRepository;
         }
         
-        public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request)
+        public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request )
         {
-            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
-                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaIngresoPlanta.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
-            var timeSpan = request.FechaFin - request.FechaInicio;
+            {
+                if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                    throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaIngresoPlanta.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
-            if (timeSpan.Days > 730)
-                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaIngresoPlanta.ValidacionRangoFechaMayor2anios.Label" });
+                var timeSpan = request.FechaFin - request.FechaInicio;
 
-            var list = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlanta(request);
-            return list.ToList();
-        }
+                if (timeSpan.Days > 730)
+                    throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaIngresoPlanta.ValidacionRangoFechaMayor2anios.Label" });
+
+                var list = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlanta(request);
+                
+                foreach(ConsultaNotaIngresoPlantaBE obj in list)
+                {
+                    // obtener certificaciones
+                    List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+                    string[] certificacionesIds = obj.CertificacionId.Split('|');
+                    string certificacionLabel = string.Empty;
+                    if (certificacionesIds.Length > 0)
+                    {
+                        List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
+                        foreach (string certificacionId in certificacionesIds)
+                        {
+                            ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                            if (certificacion != null)
+                            {
+                                certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                            }
+                        }
+                    }
+
+                    // obtener certificaciones
+                    obj.Certificacion = certificacionLabel;
+                }
+                return list.ToList();
+         
+            }
+           
+       }
 
         public int AnularNotaIngresoPlanta(AnularNotaIngresoPlantaRequestDTO request)
         {
