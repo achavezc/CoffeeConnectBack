@@ -9,6 +9,6 @@ namespace CoffeeConnect.Interface.Repository
     public interface ICorrelativoRepository
     {
         string Obtener(int? empresaId, string documento);
-
+        string ObtenerCorrelativoNotaIngreso(string Campaña, string CodigoTipo, string CodigoTipoConcepto);
     }
 }

@@ -35,5 +35,28 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+        public string ObtenerCorrelativoNotaIngreso(string Campaña,string CodigoTipo,string CodigoTipoConcepto)
+        {
+            string result = String.Empty;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@Campanha", Campaña );
+            parameters.Add("@CodigoTipo", CodigoTipo);
+            parameters.Add("@CodigoTipoConcepto", CodigoTipoConcepto);
+            parameters.Add("@Numero", dbType: DbType.String, direction: ParameterDirection.Output, size: 5215585);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspCorrelativoPlantaGenerar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            result = parameters.Get<string>("Numero");
+
+            return result;
+        }
+
+
+
     }
 }

@@ -17,9 +17,11 @@ namespace CoffeeConnect.Service
         private readonly IMapper _Mapper;
         private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
+ 
         public IOptions<ParametrosSettings> _ParametrosSettings;
         private IMaestroRepository _IMaestroRepository;
-        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings, IMapper mapper, IMaestroRepository maestroRepository)
+        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository,
+        IOptions<ParametrosSettings> parametrosSettings, IMapper mapper, IMaestroRepository maestroRepository)
         {
             _INotaIngresoPlantaRepository = NotaIngresoPlanta;
             _ICorrelativoRepository = correlativoRepository;
@@ -116,6 +118,8 @@ namespace CoffeeConnect.Service
 
 
             NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
+            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.ToString(), "02","02");
+
 
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
             NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
