@@ -38,7 +38,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("FechaGuiaRemisionFin", request.FechaFin);
             parameters.Add("CodigoCampania", request.CodigoCampania);
             parameters.Add("CodigoTipoConcepto", request.CodigoTipoConcepto);
-
+            parameters.Add("CodigoTipo", request.CodigoTipo);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

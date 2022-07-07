@@ -38,6 +38,7 @@ namespace CoffeeConnect.DTO
         public String CodigoCampania { get; set; }
 
         public String CodigoTipoConcepto { get; set; }
+        public string CodigoTipo { get; set; }
 
     }
 }

@@ -42,6 +42,8 @@ namespace CoffeeConnect.Service
                 if (timeSpan.Days > 730)
                     throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaIngresoPlanta.ValidacionRangoFechaMayor2anios.Label" });
 
+
+                request.CodigoTipo = Documentos.NotaIngresoPlantaTipo;
                 var list = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlanta(request);
                 
                 foreach(ConsultaNotaIngresoPlantaBE obj in list)
