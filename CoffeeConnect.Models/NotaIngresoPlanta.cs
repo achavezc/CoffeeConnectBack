@@ -312,7 +312,9 @@ namespace CoffeeConnect.Models
 		public decimal Intensidad { get; set; }
 		public decimal TazaIntensidad { get; set; }
 		public decimal PuntajeFinal { get; set; }
+		public string CodigoCampania { get; set; }
 
+		public string CodigoTipoConcepto { get; set; }
 
 		#endregion
 	}
