@@ -157,6 +157,8 @@ namespace CoffeeConnect.API
             services.AddTransient<IEmpresaProveedoraAcreedoraService, EmpresaProveedoraAcreedoraService>();
             services.AddTransient<IEmpresaProveedoraAcreedoraRepository, EmpresaProveedoraAcreedoraRepository>();
             services.AddTransient<INotaSalidaAlmacenRepository, NotaSalidaAlmacenRepository>();
+
+            services.AddTransient<ICorrelativoPlantaService, CorrelativoPlantaService>();
             services.AddTransient<ICorrelativoRepository, CorrelativoRepository>();
 
             services.AddTransient<INotaCompraService, NotaCompraService>();
@@ -237,7 +239,7 @@ namespace CoffeeConnect.API
             services.AddTransient<IKardexPlantaService, KardexPlantaService>();
             services.AddTransient<IKardexPlantaRepository, KardexPlantaRepository>();
 
-
+           
 
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })

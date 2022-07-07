@@ -1,7 +1,9 @@
 ﻿using CoffeeConnect.Interface.Repository;
+using CoffeeConnect.Models;
 using Dapper;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -56,6 +58,18 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+
+        public IEnumerable<CorrelativoPlanta> ObtenerCorrelativoPlanta(string codigoTipo)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@CodigoTipo", codigoTipo);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<CorrelativoPlanta>("uspObtenerCorrelativoPlanta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
 
     }

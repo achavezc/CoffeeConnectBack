@@ -15,10 +15,12 @@ namespace Integracion.Deuda.Controller
     public class MaestroController : ControllerBase
     {
         private IMaestroService _maestroService;
+        private ICorrelativoPlantaService _correlativoPlantaService;
         private Core.Common.Logger.ILog _log;
-        public MaestroController(IMaestroService maestroService, Core.Common.Logger.ILog log)
+        public MaestroController(IMaestroService maestroService, Core.Common.Logger.ILog log, ICorrelativoPlantaService correlativoPlantaService)
         {
             _maestroService = maestroService;
+            _correlativoPlantaService = correlativoPlantaService;
             _log = log;
         }
 
@@ -76,6 +78,71 @@ namespace Integracion.Deuda.Controller
                 {
                     response.Result.Data = lista.OrderBy(x => x.Label).ToList();
                 }
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("ConsultarConceptos")]
+        [HttpPost]
+        public IActionResult ConsultarConceptos([FromBody] ConsultarMaestroCorrelativoRequest request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
+            try
+            {
+                List<ConsultaDetalleTablaBE> lista = _correlativoPlantaService.obtenerConceptos(request.CodigoTipo);
+                    response.Result.Data = lista;
+               
+             
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
+        [Route("ConsultarCampanias")]
+        [HttpPost]
+        public IActionResult ConsultarCampanias([FromBody] ConsultarMaestroCorrelativoRequest request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
+            try
+            {
+                List<ConsultaDetalleTablaBE> lista = _correlativoPlantaService.obtenerCampanias(request.CodigoTipo);
+                response.Result.Data = lista;
+
+
                 response.Result.Success = true;
 
             }
