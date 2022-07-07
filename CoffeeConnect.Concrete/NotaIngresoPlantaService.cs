@@ -118,7 +118,7 @@ namespace CoffeeConnect.Service
 
 
            // NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
-            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), Documentos.NotaIngresoPlantaTipo,request.CodigoConcepto);
+            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), Documentos.NotaIngresoPlantaTipo,request.CodigoTipoConcepto);
 
 
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
