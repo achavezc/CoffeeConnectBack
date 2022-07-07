@@ -46,13 +46,14 @@ namespace CoffeeConnect.Service
             List<ConsultaDetalleTablaBE> result = new List<ConsultaDetalleTablaBE>();
             List<CorrelativoPlanta> listCorrelativos = new List<CorrelativoPlanta>();
             listCorrelativos = _ICorrelativoRepository.ObtenerCorrelativoPlanta(codigoTipo).ToList();
-            listCorrelativos.Select(o => o.Campanha).Distinct().ToList();
-            foreach (var obj in listCorrelativos)
+            var list = listCorrelativos.Select(o => o.Campanha).Distinct();
+            
+            foreach (var obj in list)
             {
                 result.Add(new ConsultaDetalleTablaBE
                 {
-                    Codigo = obj.Campanha,
-                    Label = obj.Campanha
+                    Codigo = obj,
+                    Label = obj
                 });
             }
 
