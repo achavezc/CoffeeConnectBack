@@ -50,6 +50,14 @@ namespace CoffeeConnect.Service
         public static string Socio { get { return "Socio"; } }
         public static string NotaSalidaAlmacen { get { return "NotaSalidaAlmacen"; } }
 
+        /// campo nuevo >
+        public static string NotaIngresoPlantaTipo { get{ return "02"; } }
+
+
+        /// //
+
+
+
         public static string Aduana { get { return "Aduana"; } }
         public static string Adelanto { get { return "Adelanto"; } }
 
