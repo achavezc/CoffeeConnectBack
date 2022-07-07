@@ -34,6 +34,7 @@ namespace CoffeeConnect.Service
         {
 
             {
+                /*
                 if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
                     throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaIngresoPlanta.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
@@ -41,7 +42,7 @@ namespace CoffeeConnect.Service
 
                 if (timeSpan.Days > 730)
                     throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaIngresoPlanta.ValidacionRangoFechaMayor2anios.Label" });
-
+                */
 
                 request.CodigoTipo = Documentos.NotaIngresoPlantaTipo;
                 var list = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlanta(request);
