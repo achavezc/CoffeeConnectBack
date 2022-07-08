@@ -93,7 +93,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("campanhnia", request.campanhnia);
             parameters.Add("Codigotipo", request.Codigotipo);
             parameters.Add("CodigoConcepto", request.CodigoConcepto);
-            
+            parameters.Add("Activo", request.Activo);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
