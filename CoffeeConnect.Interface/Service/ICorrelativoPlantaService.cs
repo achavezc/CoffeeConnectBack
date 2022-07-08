@@ -12,6 +12,6 @@ namespace CoffeeConnect.Interface.Service
         public List<CorrelativoPlantaBE> ConsultarCorrelativo(ConsultaCorrelativoPlantaRequestDTO request);
         public int RegistrarCorrelativo(RegistrarActualizarCorrelativoPlantaRequestDTO request);
         public int ActualizarCorrelativoPlanta(RegistrarActualizarCorrelativoPlantaRequestDTO request);
-        public CorrelativoPlantaBE ConsultarCorrelativoPlantaPorId(ConsultaCorrelativoPlantaPorIdRequestDTO request)
+        public CorrelativoPlantaBE ConsultarCorrelativoPlantaPorId(ConsultaCorrelativoPlantaPorIdRequestDTO request);
     }
 }
