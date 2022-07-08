@@ -50,6 +50,8 @@ namespace CoffeeConnect.Service.MappingConfigurations
             CreateMap<RegistrarActualizarAnticipoRequestDTO, Anticipo>();
             CreateMap<RegistrarActualizarKardexProcesoRequestDTO, KardexProceso>();
             CreateMap<RegistrarActualizarKardexPlantaRequestDTO, KardexPlanta>();
+
+            CreateMap<RegistrarActualizarCorrelativoPlantaRequestDTO, CorrelativoPlanta>();
         }
     }
 

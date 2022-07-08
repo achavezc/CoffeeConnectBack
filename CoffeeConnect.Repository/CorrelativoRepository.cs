@@ -127,6 +127,7 @@ namespace CoffeeConnect.Repository
 
 
             var parameters = new DynamicParameters();
+            parameters.Add("@CorrelativoPlantaId", correlativoPlanta.CorrelativoPlantaId);
             parameters.Add("@Campanha", correlativoPlanta.Campanha);
             parameters.Add("@CodigoTipo", correlativoPlanta.CodigoTipo);
             parameters.Add("@CodigoTipoConcepto", correlativoPlanta.CodigoTipoConcepto);
@@ -135,7 +136,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Contador", correlativoPlanta.Contador);
             parameters.Add("@Tipo", correlativoPlanta.Tipo);
             parameters.Add("@Concepto", correlativoPlanta.Concepto);
-            parameters.Add("@Activo", true);
+            parameters.Add("@Activo", correlativoPlanta.Activo);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
