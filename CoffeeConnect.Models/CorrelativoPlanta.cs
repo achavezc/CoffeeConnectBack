@@ -10,7 +10,7 @@ namespace CoffeeConnect.Models
         public string Campanha { get; set; }
         public string CodigoTipo { get; set; }
         public string CodigoTipoConcepto { get; set; }
-        public string CantidadDigitosPlanta { get; set; }
+        public string? CantidadDigitosPlanta { get; set; }
         public string Prefijo { get; set; }
         public string Contador { get; set; }
         public string Tipo { get; set; }

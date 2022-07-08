@@ -9,5 +9,9 @@ namespace CoffeeConnect.Interface.Service
     {
         List<ConsultaDetalleTablaBE> obtenerConceptos(string codigoTipo);
         List<ConsultaDetalleTablaBE> obtenerCampanias(string codigoTipo);
+        public List<CorrelativoPlantaBE> ConsultarCorrelativo(ConsultaCorrelativoPlantaRequestDTO request);
+        public int RegistrarCorrelativo(RegistrarActualizarCorrelativoPlantaRequestDTO request);
+        public int ActualizarCorrelativoPlanta(RegistrarActualizarCorrelativoPlantaRequestDTO request);
+        public CorrelativoPlantaBE ConsultarCorrelativoPlantaPorId(ConsultaCorrelativoPlantaPorIdRequestDTO request)
     }
 }

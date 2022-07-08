@@ -1,4 +1,5 @@
-﻿using CoffeeConnect.Interface.Repository;
+﻿using CoffeeConnect.DTO;
+using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Models;
 using Dapper;
 using Microsoft.Extensions.Options;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace CoffeeConnect.Repository
 {
@@ -71,6 +73,97 @@ namespace CoffeeConnect.Repository
             }
         }
 
+
+        ////metodo de  maestro correlativo//////////////////////////////////////
+
+        public IEnumerable<CorrelativoPlantaBE> ConsultarCorrelativo(ConsultaCorrelativoPlantaRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("campanhnia", request.campanhnia);
+            parameters.Add("Codigotipo", request.Codigotipo);
+            parameters.Add("CodigoConcepto", request.CodigoConcepto);
+            
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<CorrelativoPlantaBE>("uspCorrelativoplantaConsulta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
+        public int InsertarCorrelativo(CorrelativoPlanta correlativoPlanta)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@Campanha", correlativoPlanta.Campanha);
+            parameters.Add("@CodigoTipo", correlativoPlanta.CodigoTipo);
+            parameters.Add("@CodigoTipoConcepto", correlativoPlanta.CodigoTipoConcepto);
+            parameters.Add("@CantidadDigitosPlanta", correlativoPlanta.CantidadDigitosPlanta);
+            parameters.Add("@Prefijo", correlativoPlanta.Prefijo);
+            parameters.Add("@Contador", correlativoPlanta.Contador);
+            parameters.Add("@Tipo", correlativoPlanta.Tipo);
+            parameters.Add("@Concepto", correlativoPlanta.Concepto);
+            parameters.Add("@Activo", true);
+
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspCorrelativoplantaInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+
+            return result;
+        }
+
+
+        public int ActualizarCorrelativo(CorrelativoPlanta correlativoPlanta)
+        {
+            int result = 0;
+
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@Campanha", correlativoPlanta.Campanha);
+            parameters.Add("@CodigoTipo", correlativoPlanta.CodigoTipo);
+            parameters.Add("@CodigoTipoConcepto", correlativoPlanta.CodigoTipoConcepto);
+            parameters.Add("@CantidadDigitosPlanta", correlativoPlanta.CantidadDigitosPlanta);
+            parameters.Add("@Prefijo", correlativoPlanta.Prefijo);
+            parameters.Add("@Contador", correlativoPlanta.Contador);
+            parameters.Add("@Tipo", correlativoPlanta.Tipo);
+            parameters.Add("@Concepto", correlativoPlanta.Concepto);
+            parameters.Add("@Activo", true);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspCorrelativoplantaActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
+
+
+        public CorrelativoPlantaBE ConsultarCorrelativoPlantaPorId(int CorrelativoPlantaId)
+        {
+            CorrelativoPlantaBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@CorrelativoPlantaId ", CorrelativoPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<CorrelativoPlantaBE>("uspCorrelativoplantaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
 
     }
 }

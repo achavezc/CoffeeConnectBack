@@ -1,4 +1,5 @@
-﻿using CoffeeConnect.DTO;
+﻿using AutoMapper;
+using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
@@ -14,6 +15,7 @@ namespace CoffeeConnect.Service
 
         private ICorrelativoRepository _ICorrelativoRepository;
 
+        private readonly IMapper _Mapper;
         public CorrelativoPlantaService(ICorrelativoRepository correlativoRepository)
         {
            
@@ -61,5 +63,60 @@ namespace CoffeeConnect.Service
 
 
         }
+
+        /////Creando el service para correlativos 
+
+        public List<CorrelativoPlantaBE> ConsultarCorrelativo(ConsultaCorrelativoPlantaRequestDTO request)
+        {
+            var lista = _ICorrelativoRepository.ConsultarCorrelativo(request);
+
+            return lista.ToList();
+        }
+
+        public int RegistrarCorrelativo(RegistrarActualizarCorrelativoPlantaRequestDTO request)
+        {
+            CorrelativoPlanta correlativo = _Mapper.Map<CorrelativoPlanta>(request);
+            correlativo.CorrelativoPlantaId = request.CorrelativoPlantaId;
+            correlativo.Campanha = request.Campanha;
+            correlativo.CodigoTipo = request.CodigoTipo;
+            correlativo.CodigoTipoConcepto = request.CodigoTipoConcepto;
+            correlativo.CantidadDigitosPlanta = request.CantidadDigitosPlanta;
+            correlativo.Prefijo = request.Prefijo;
+            correlativo.Contador = request.Contador;
+            correlativo.Tipo = request.Tipo;
+            correlativo.Concepto = request.Concepto;
+            correlativo.Activo = request.Activo;
+
+
+            int affected = _ICorrelativoRepository.InsertarCorrelativo(correlativo);
+
+            return affected;
+        }
+        public int ActualizarCorrelativoPlanta(RegistrarActualizarCorrelativoPlantaRequestDTO request)
+        {
+            CorrelativoPlanta correlativoActualizar = _Mapper.Map<CorrelativoPlanta>(request);
+            correlativoActualizar.CorrelativoPlantaId = request.CorrelativoPlantaId;
+            correlativoActualizar.Campanha = request.Campanha;
+            correlativoActualizar.CodigoTipo = request.CodigoTipo;
+            correlativoActualizar.CodigoTipoConcepto = request.CodigoTipoConcepto;
+            correlativoActualizar.CantidadDigitosPlanta = request.CantidadDigitosPlanta;
+            correlativoActualizar.Prefijo = request.Prefijo;
+            correlativoActualizar.Contador = request.Contador;
+            correlativoActualizar.Tipo = request.Tipo;
+            correlativoActualizar.Concepto = request.Concepto;
+            correlativoActualizar.Activo = request.Activo;
+
+
+            int affected = _ICorrelativoRepository.ActualizarCorrelativo(correlativoActualizar);
+
+            return affected;
+        }
+
+        public CorrelativoPlantaBE ConsultarCorrelativoPlantaPorId(ConsultaCorrelativoPlantaPorIdRequestDTO request)
+        {
+            return _ICorrelativoRepository.ConsultarCorrelativoPlantaPorId(request.CorrelativoPlantaId);
+        }
+
+        ////
     }
 }
