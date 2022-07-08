@@ -72,6 +72,17 @@ namespace CoffeeConnect.Repository
                 return db.Query<CorrelativoPlanta>("uspObtenerCorrelativoPlanta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+        public IEnumerable<CorrelativoPlanta> ObtenerTipoCorrelativoPlanta()
+        {
+            var parameters = new DynamicParameters();
+       
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<CorrelativoPlanta>("uspObtenerTipoCorrelativoPlanta", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
 
         ////metodo de  maestro correlativo//////////////////////////////////////

@@ -16,5 +16,6 @@ namespace CoffeeConnect.Interface.Repository
         public int ActualizarCorrelativo(CorrelativoPlanta correlativoPlanta);
         public int InsertarCorrelativo(CorrelativoPlanta correlativoPlanta);
         IEnumerable<CorrelativoPlanta> ObtenerCorrelativoPlanta(string codigoTipo);
+        IEnumerable<CorrelativoPlanta> ObtenerTipoCorrelativoPlanta();
     }
 }

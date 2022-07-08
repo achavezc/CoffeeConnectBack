@@ -65,6 +65,27 @@ namespace CoffeeConnect.Service
 
         }
 
+        public List<ConsultaDetalleTablaBE> obtenerTipo()
+
+        {
+            List<ConsultaDetalleTablaBE> result = new List<ConsultaDetalleTablaBE>();
+            List<CorrelativoPlanta> listCorrelativos = new List<CorrelativoPlanta>();
+            listCorrelativos = _ICorrelativoRepository.ObtenerTipoCorrelativoPlanta().ToList();
+          
+            foreach (var obj in listCorrelativos)
+            {
+                result.Add(new ConsultaDetalleTablaBE
+                {
+                    Codigo = obj.CodigoTipo,
+                    Label = obj.Tipo
+                });
+            }
+
+            return result;
+
+
+        }
+
         /////Creando el service para correlativos 
 
         public List<CorrelativoPlantaBE> ConsultarCorrelativo(ConsultaCorrelativoPlantaRequestDTO request)

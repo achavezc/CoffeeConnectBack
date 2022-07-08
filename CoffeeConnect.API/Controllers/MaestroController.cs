@@ -162,6 +162,39 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
+
+        [Route("ConsultarTipoCorrelativo")]
+        [HttpPost]
+        public IActionResult ConsultarTipoCorrelativo([FromBody] ConsultarMaestroCorrelativoRequest request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
+            try
+            {
+                List<ConsultaDetalleTablaBE> lista = _correlativoPlantaService.obtenerTipo();
+                response.Result.Data = lista;
+
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
         /// llamaar mis apis aqui de correlativo
 
         [Route("ConsultarCorrelativo")]
