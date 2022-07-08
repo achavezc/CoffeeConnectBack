@@ -16,10 +16,11 @@ namespace CoffeeConnect.Service
         private ICorrelativoRepository _ICorrelativoRepository;
 
         private readonly IMapper _Mapper;
-        public CorrelativoPlantaService(ICorrelativoRepository correlativoRepository)
+        public CorrelativoPlantaService(ICorrelativoRepository correlativoRepository, IMapper mapper)
         {
            
             _ICorrelativoRepository = correlativoRepository;
+            _Mapper = mapper;
         }
 
 
