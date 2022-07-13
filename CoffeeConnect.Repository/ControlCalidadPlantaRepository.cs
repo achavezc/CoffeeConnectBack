@@ -142,6 +142,7 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlanta.NotaIngresoPlantaId);
             parameters.Add("@EmpresaId", NotaIngresoPlanta.EmpresaId);
             parameters.Add("@Numero", NotaIngresoPlanta.Numero);
             parameters.Add("@NumeroGuiaRemision", NotaIngresoPlanta.NumeroGuiaRemision);
@@ -188,7 +189,7 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspControlCalidadPlantaPesadoInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-            int id = parameters.Get<int>("NotaIngresoPlantaId");
+            int id = parameters.Get<int>("ControlCalidadPlantaId");
 
             return id;
         }
