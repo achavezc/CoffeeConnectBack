@@ -41,7 +41,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ConsultaControlCalidadPlantaBE>("uspNotaIngresoPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ConsultaControlCalidadPlantaBE>("uspControlCalidadPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -63,17 +63,17 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-        public ConsultaControlCalidadPlantaPorIdBE ConsultaControlCalidadPlantaPorId(int notaIngresoPlantaId)
+        public ConsultaControlCalidadPlantaPorIdBE ConsultaControlCalidadPlantaPorId(int ControlCalidadPlantaId)
         {
             ConsultaControlCalidadPlantaPorIdBE itemBE = null;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", notaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                var list = db.Query<ConsultaControlCalidadPlantaPorIdBE>("uspNotaIngresoPlantaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+                var list = db.Query<ConsultaControlCalidadPlantaPorIdBE>("[uspControlCalidadPlantaObtenerPorId]", parameters, commandType: CommandType.StoredProcedure);
 
                 if (list.Any())
                     itemBE = list.First();
@@ -128,7 +128,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaPesadoActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaPesadoActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
 
@@ -185,7 +185,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaPesadoInsertar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaPesadoInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             int id = parameters.Get<int>("NotaIngresoPlantaId");
