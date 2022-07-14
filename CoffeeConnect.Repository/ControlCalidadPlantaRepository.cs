@@ -136,6 +136,32 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+        /// api nuevo de estados Porcesar////
+
+        public int ControlCalidadPlantaActualizarProcesar(ControlCalidadPlanta ControlCalidadPlanta)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlanta.ControlCalidadPlantaId);
+            parameters.Add("@EstadoCalidadId", ControlCalidadPlanta.EstadoCalidadId);
+            parameters.Add("@FechaUltimaActualizacion", ControlCalidadPlanta.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", ControlCalidadPlanta.UsuarioUltimaActualizacion);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspControlCalidadPlantaActualizarProcesar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+
+            return result;
+        }
+
+        ///////////
+
+
 
         public int InsertarPesadoControlCalidadPlanta(ControlCalidadPlanta NotaIngresoPlanta)
         {
@@ -173,6 +199,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@LicenciaConductorEmpresaTransporte", NotaIngresoPlanta.LicenciaConductorEmpresaTransporte);
             parameters.Add("@ObservacionPesado", NotaIngresoPlanta.ObservacionPesado);
             parameters.Add("@EstadoId", NotaIngresoPlanta.EstadoId);
+            parameters.Add("@EstadoCalidadId", NotaIngresoPlanta.EstadoCalidadId);
             parameters.Add("@FechaPesado", NotaIngresoPlanta.FechaPesado);
             parameters.Add("@UsuarioPesado", NotaIngresoPlanta.UsuarioPesado);
             parameters.Add("@FechaRegistro", NotaIngresoPlanta.FechaRegistro);
@@ -181,7 +208,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Marca", NotaIngresoPlanta.Marca);
             parameters.Add("@CodigoCampania", NotaIngresoPlanta.CodigoCampania);
             parameters.Add("@CodigoTipoConcepto", NotaIngresoPlanta.CodigoTipoConcepto);
-            parameters.Add("@NotaIngresoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@ControlCalidadPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -233,6 +260,9 @@ namespace CoffeeConnect.Repository
 
             return result;
         }
+
+
+
 
         public IEnumerable<ControlCalidadPlantaAnalisisFisicoColorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(int NotaIngresoPlantaId)
         {

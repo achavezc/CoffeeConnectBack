@@ -307,6 +307,11 @@ namespace CoffeeConnect.DTO
 		public bool Activo
 		{ get; set; }
 
+		public int ControlCalidadPlantaId
+		{ get; set; }
+		public string EstadoCalidadId
+		{ get; set; }
+
 		public string Direccion { get; set; }
 		public string Marca { get; set; }
 

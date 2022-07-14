@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CoffeeConnect.DTO
 {
-   public  class RegistrarActualizarPesadoControlCalidadPlantaRequestDTO
-    { 
+    public class RegistrarActualizarEstadoiControlCalidadPlantaRequestDTO
+    {
 		public int NotaIngresoPlantaId
 		{ get; set; }
 
@@ -186,8 +186,6 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaPesado
 		{ get; set; }
 
-	
-
 		public string Direccion { get; set; }
 		public string Marca { get; set; }
 
@@ -198,3 +196,4 @@ namespace CoffeeConnect.DTO
 		public string CodigoTipoConcepto { get; set; }
 	}
 }
+

@@ -8,6 +8,8 @@ namespace CoffeeConnect.DTO
     {
         public int NotaIngresoPlantaId { get; set; }
 
+        public int ControlCalidadPlantaId { get; set; }
+
         public string Numero { get; set; }
 
         public string NumeroGuiaRemision { get; set; }

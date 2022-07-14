@@ -9,12 +9,13 @@ namespace CoffeeConnect.Interface.Repository
     {
         IEnumerable<ConsultaControlCalidadPlantaBE> ConsultarControlCalidadPlanta(ConsultaControlCalidadPlantaRequestDTO request);
         int AnularControlCalidadPlanta(int NotaIngresoPlantaId, DateTime fecha, string usuario, string estadoId);
-        ConsultaControlCalidadPlantaPorIdBE ConsultaControlCalidadPlantaPorId(int notaIngresoPlantaId);
+        ConsultaControlCalidadPlantaPorIdBE ConsultaControlCalidadPlantaPorId(int ControlCalidadPlantaId);
         int InsertarPesadoControlCalidadPlanta(ControlCalidadPlanta NotaIngresoPlanta);
 
         int ActualizarPesadoControlCalidadPlanta(ControlCalidadPlanta NotaIngresoPlanta);
 
         int ActualizarAnalisisCalidad(ControlCalidadPlanta NotaIngresoPlanta);
+        public int ControlCalidadPlantaActualizarProcesar(ControlCalidadPlanta ControlCalidadPlanta);
 
         IEnumerable<ControlCalidadPlantaAnalisisFisicoColorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(int NotaIngresoPlantaId);
 

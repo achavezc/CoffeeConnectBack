@@ -6,6 +6,6 @@ namespace CoffeeConnect.DTO
 {
     public class ConsultaControlCalidadPlantaPorIdRequestDTO
     {
-        public int NotaIngresoPlantaId { get; set; }
+        public int ControlCalidadPlantaId { get; set; }
     }
 }
