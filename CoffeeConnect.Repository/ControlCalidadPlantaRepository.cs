@@ -1,5 +1,6 @@
 ﻿using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
+using CoffeeConnect.Models;
 using Core.Common;
 using Dapper;
 using Microsoft.Extensions.Options;
@@ -263,6 +264,27 @@ namespace CoffeeConnect.Repository
 
 
 
+        public int ActualizarControlCalidad(NotaIngresoPlanta NotaIngresoPlanta)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@ControlCalidadPlantaId", NotaIngresoPlanta.ControlCalidadPlantaId);
+            parameters.Add("@CantidadControlCalidad", NotaIngresoPlanta.CantidadControlCalidad);
+            parameters.Add("@PesoBrutoControlCalidad", NotaIngresoPlanta.PesoBrutoControlCalidad);
+            parameters.Add("@TaraControlCalidad", NotaIngresoPlanta.TaraControlCalidad);
+            parameters.Add("@KilosNetosControlCalidad", NotaIngresoPlanta.KilosNetosControlCalidad);
+       
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspActualizarControlCalidad", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
 
         public IEnumerable<ControlCalidadPlantaAnalisisFisicoColorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(int NotaIngresoPlantaId)
         {

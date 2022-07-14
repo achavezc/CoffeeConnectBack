@@ -16,18 +16,21 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
+
+        private IControlCalidadPlantaRepository _IControlCalidadPlantaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
  
         public IOptions<ParametrosSettings> _ParametrosSettings;
         private IMaestroRepository _IMaestroRepository;
         public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository,
-        IOptions<ParametrosSettings> parametrosSettings, IMapper mapper, IMaestroRepository maestroRepository)
+        IOptions<ParametrosSettings> parametrosSettings, IMapper mapper, IMaestroRepository maestroRepository, IControlCalidadPlantaRepository controlCalidadRepository)
         {
             _INotaIngresoPlantaRepository = NotaIngresoPlanta;
             _ICorrelativoRepository = correlativoRepository;
             _ParametrosSettings = parametrosSettings;
             _Mapper = mapper;
             _IMaestroRepository = maestroRepository;
+            _IControlCalidadPlantaRepository = controlCalidadRepository;
         }
         
         public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request )
@@ -157,6 +160,14 @@ namespace CoffeeConnect.Service
         {
 
             NotaIngresoPlanta NotaIngresoPlanta = new NotaIngresoPlanta();
+            //para control calidad
+            NotaIngresoPlanta.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
+            NotaIngresoPlanta.CantidadControlCalidad = request.CantidadControlCalidad;
+            NotaIngresoPlanta.PesoBrutoControlCalidad = request.PesoBrutoControlCalidad;
+            NotaIngresoPlanta.TaraControlCalidad = request.TaraControlCalidad;
+            NotaIngresoPlanta.KilosNetosControlCalidad = request.KilosNetosControlCalidad;
+            //para control calidad
+
 
             NotaIngresoPlanta.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
             NotaIngresoPlanta.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
@@ -201,7 +212,7 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta.TotalAnalisisSensorial = totalAnalisisSensorial;
 
             int affected = _INotaIngresoPlantaRepository.ActualizarAnalisisCalidad(NotaIngresoPlanta);
-
+            int affected2 = _IControlCalidadPlantaRepository.ActualizarControlCalidad(NotaIngresoPlanta);
 
             #region "Analisis Fisico Color"
             if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)

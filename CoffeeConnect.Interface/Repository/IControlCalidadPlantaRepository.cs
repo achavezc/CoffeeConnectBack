@@ -1,4 +1,5 @@
 ﻿using CoffeeConnect.DTO;
+using CoffeeConnect.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -38,5 +39,6 @@ namespace CoffeeConnect.Interface.Repository
 
 
         int ActualizarEstadoControlCalidad(int NotaIngresoPlantaId, DateTime fecha, string usuario, string estadoId);
+        int ActualizarControlCalidad(NotaIngresoPlanta NotaIngresoPlanta);
     }
 }

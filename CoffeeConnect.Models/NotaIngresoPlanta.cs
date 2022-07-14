@@ -4,6 +4,20 @@ namespace CoffeeConnect.Models
 {
 	public class NotaIngresoPlanta
 	{
+		//para control calidad
+		public int ControlCalidadPlantaId
+		{ get; set; }
+
+		public decimal CantidadControlCalidad
+		{ get; set; }
+		public decimal PesoBrutoControlCalidad
+		{ get; set; }
+		public decimal TaraControlCalidad
+		{ get; set; }
+		public decimal KilosNetosControlCalidad
+		{ get; set; }
+		//para control calidad
+
 		#region Properties
 		/// <summary>
 		/// Gets or sets the NotaIngresoPlantaId value.
