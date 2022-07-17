@@ -6,7 +6,7 @@ namespace CoffeeConnect.DTO
 {
   public   class AnularControlCalidadPlantaRequestDTO
     {
-        public int NotaIngresoPlantaId { get; set; }
+        public int ControlCalidadPlantaId { get; set; }
         public String Usuario { get; set; }
 
     }

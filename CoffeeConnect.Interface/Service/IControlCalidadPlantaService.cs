@@ -15,6 +15,8 @@ namespace CoffeeConnect.Interface.Service
         int ActualizarPesadoControlCalidadPlanta(RegistrarActualizarPesadoControlCalidadPlantaRequestDTO request);
 
         public int ControlCalidadPlantaActualizarProcesar(RegistrarActualizarEstadoControlCalidadPlantaRequestDTO request);
+
+        public int ControlCalidadPlantaActualizarEstadoRechazado(RegistrarActualizarEstadoControlCalidadPlantaRequestDTO request);
         int ActualizarControlCalidadPlantaAnalisisCalidad(ActualizarControlCalidadPlantaAnalisisCalidadRequestDTO request);
         GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaIngreso(int notaSalidaAlmacenIdId, int empresaId);
 

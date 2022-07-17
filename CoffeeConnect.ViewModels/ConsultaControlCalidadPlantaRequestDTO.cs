@@ -21,6 +21,7 @@ namespace CoffeeConnect.DTO
         public String SubProductoId { get; set; }
 
         public String EstadoId { get; set; }
+ 
 
         public DateTime FechaInicio { get; set; }
 

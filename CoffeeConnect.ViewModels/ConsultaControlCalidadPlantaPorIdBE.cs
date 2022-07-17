@@ -13,6 +13,9 @@ namespace CoffeeConnect.DTO
 		public int ControlCalidadPlantaId
 		{ get; set; }
 
+
+		public int NotaIngresoPlantaId
+		{ get; set; }
 		/// <summary>
 		/// Gets or sets the EmpresaId value.
 		/// </summary>
@@ -422,6 +425,12 @@ namespace CoffeeConnect.DTO
 
 		public string CodigoCampania { get; set; }
 		public string CodigoTipoConcepto { get; set; }
+
+		public decimal CantidadControlCalidad { get; set; }
+		public decimal PesoBrutoControlCalidad { get; set; }
+		public decimal TaraControlCalidad { get; set; }
+		public decimal KilosNetosControlCalidad { get; set; }
+
 		#endregion
 
 	}

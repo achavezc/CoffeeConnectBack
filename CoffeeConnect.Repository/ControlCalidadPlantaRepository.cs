@@ -46,19 +46,19 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        public int AnularControlCalidadPlanta(int NotaIngresoPlantaId, DateTime fecha, string usuario, string estadoId)
+        public int AnularControlCalidadPlanta(int ControlCalidadPlantaId, DateTime fecha, string usuario, string estadoId)
         {
             int affected = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
-            parameters.Add("@EstadoId", estadoId);
+            parameters.Add("@EstadoCalidadId", estadoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                affected = db.Execute("uspNotaIngresoPlantaAnular", parameters, commandType: CommandType.StoredProcedure);
+                affected = db.Execute("uspControlCalidadPlantaAnular", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;
@@ -74,7 +74,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                var list = db.Query<ConsultaControlCalidadPlantaPorIdBE>("[uspControlCalidadPlantaObtenerPorId]", parameters, commandType: CommandType.StoredProcedure);
+                var list = db.Query<ConsultaControlCalidadPlantaPorIdBE>("uspControlCalidadPlantaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
 
                 if (list.Any())
                     itemBE = list.First();
@@ -154,6 +154,29 @@ namespace CoffeeConnect.Repository
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 result = db.Execute("uspControlCalidadPlantaActualizarProcesar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+
+            return result;
+        }
+
+
+
+        public int ControlCalidadPlantaActualizarEstadoRechazado(ControlCalidadPlanta ControlCalidadPlanta)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlanta.ControlCalidadPlantaId);
+            parameters.Add("@EstadoCalidadId", ControlCalidadPlanta.EstadoCalidadId);
+            parameters.Add("@Fecha", ControlCalidadPlanta.FechaUltimaActualizacion);
+            parameters.Add("@Usuario", ControlCalidadPlanta.UsuarioUltimaActualizacion);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspControlCalidadPlantaRechazado", parameters, commandType: CommandType.StoredProcedure);
             }
 
 
@@ -269,6 +292,31 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlanta.NotaIngresoPlantaId);
+            parameters.Add("@ExportableGramosAnalisisFisico", NotaIngresoPlanta.ExportableGramosAnalisisFisico);
+            parameters.Add("@ExportablePorcentajeAnalisisFisico", NotaIngresoPlanta.ExportablePorcentajeAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", NotaIngresoPlanta.DescarteGramosAnalisisFisico);
+            parameters.Add("@DescartePorcentajeAnalisisFisico", NotaIngresoPlanta.DescartePorcentajeAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", NotaIngresoPlanta.CascarillaGramosAnalisisFisico);
+            parameters.Add("@CascarillaPorcentajeAnalisisFisico", NotaIngresoPlanta.CascarillaPorcentajeAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", NotaIngresoPlanta.TotalGramosAnalisisFisico);
+            parameters.Add("@TotalPorcentajeAnalisisFisico", NotaIngresoPlanta.TotalPorcentajeAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", NotaIngresoPlanta.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TotalAnalisisSensorial", NotaIngresoPlanta.TotalAnalisisSensorial);
+
+            parameters.Add("@ObservacionAnalisisFisico", NotaIngresoPlanta.ObservacionAnalisisFisico);
+            parameters.Add("@FechaCalidad", NotaIngresoPlanta.FechaCalidad);
+            parameters.Add("@UsuarioCalidad", NotaIngresoPlanta.UsuarioCalidad);
+            parameters.Add("@ObservacionRegistroTostado", NotaIngresoPlanta.ObservacionRegistroTostado);
+            parameters.Add("@ObservacionAnalisisSensorial", NotaIngresoPlanta.ObservacionAnalisisSensorial);
+            parameters.Add("@EstadoId", NotaIngresoPlanta.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", NotaIngresoPlanta.FechaCalidad);
+            parameters.Add("@UsuarioUltimaActualizacion", NotaIngresoPlanta.UsuarioCalidad);
+            parameters.Add("@Taza", NotaIngresoPlanta.Taza);
+            parameters.Add("@Intensidad", NotaIngresoPlanta.Intensidad);
+            parameters.Add("@TazaIntensidad", NotaIngresoPlanta.TazaIntensidad);
+            parameters.Add("@PuntajeFinal", NotaIngresoPlanta.PuntajeFinal);
 
             parameters.Add("@ControlCalidadPlantaId", NotaIngresoPlanta.ControlCalidadPlantaId);
             parameters.Add("@CantidadControlCalidad", NotaIngresoPlanta.CantidadControlCalidad);

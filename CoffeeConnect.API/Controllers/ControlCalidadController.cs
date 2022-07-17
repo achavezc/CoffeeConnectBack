@@ -61,7 +61,7 @@ namespace CoffeeConnect.API.Controllers
             return Ok(response);
         }
 
-        [Route("Anular")]
+        [Route("AnularControlCalidad")]
         [HttpPost]
         public IActionResult Anular([FromBody] AnularControlCalidadPlantaRequestDTO request)
         {
@@ -267,6 +267,39 @@ namespace CoffeeConnect.API.Controllers
             try
             {
                 response.Result.Data = _ControlCalidadPlantaService.ControlCalidadPlantaActualizarProcesar(request);
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
+
+
+        [Route("Rechazado")]
+        [HttpPost]
+        public IActionResult ControlCalidadPlantaEstadoRechazado([FromBody] RegistrarActualizarEstadoControlCalidadPlantaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            RegistrarActualizarEstadoControlCalidadPlantaResponseDTO response = new RegistrarActualizarEstadoControlCalidadPlantaResponseDTO();
+            try
+            {
+                response.Result.Data = _ControlCalidadPlantaService.ControlCalidadPlantaActualizarEstadoRechazado(request);
 
                 response.Result.Success = true;
 

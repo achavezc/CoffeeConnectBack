@@ -17,6 +17,7 @@ namespace CoffeeConnect.Interface.Repository
 
         int ActualizarAnalisisCalidad(ControlCalidadPlanta NotaIngresoPlanta);
         public int ControlCalidadPlantaActualizarProcesar(ControlCalidadPlanta ControlCalidadPlanta);
+        public int ControlCalidadPlantaActualizarEstadoRechazado(ControlCalidadPlanta ControlCalidadPlanta);
 
         IEnumerable<ControlCalidadPlantaAnalisisFisicoColorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(int NotaIngresoPlantaId);
 
