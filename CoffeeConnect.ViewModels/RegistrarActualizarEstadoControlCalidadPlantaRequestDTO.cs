@@ -10,10 +10,17 @@ namespace CoffeeConnect.DTO
 		{
 			get; set;
 		}
+		public int NotaIngresoPlantaId
+		{ get; set; }
+		public decimal CantidadProcesada
+		{ get; set; }
 		public string UsuarioUltimaActualizacion
 		{ get; set; 
 		
 		}
+		public decimal CantidadControlCalidad { get; set; }
+		public decimal KilosNetosControlCalidad { get; set; }
+
 
 	}
 }

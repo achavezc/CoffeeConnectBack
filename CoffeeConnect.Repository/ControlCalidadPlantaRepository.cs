@@ -146,6 +146,8 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlanta.ControlCalidadPlantaId);
             parameters.Add("@EstadoCalidadId", ControlCalidadPlanta.EstadoCalidadId);
+            parameters.Add("@NotaIngresoPlantaId", ControlCalidadPlanta.NotaIngresoPlantaId);
+            parameters.Add("@CantidadControlCalidad", ControlCalidadPlanta.CantidadProcesada);
             parameters.Add("@FechaUltimaActualizacion", ControlCalidadPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", ControlCalidadPlanta.UsuarioUltimaActualizacion);
 
@@ -170,6 +172,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlanta.ControlCalidadPlantaId);
             parameters.Add("@EstadoCalidadId", ControlCalidadPlanta.EstadoCalidadId);
             parameters.Add("@Fecha", ControlCalidadPlanta.FechaUltimaActualizacion);
+            parameters.Add("@CantidadControlCalidad", ControlCalidadPlanta.CantidadControlCalidad);
+            parameters.Add("@KilosNetosControlCalidad", ControlCalidadPlanta.KilosNetosControlCalidad);
             parameters.Add("@Usuario", ControlCalidadPlanta.UsuarioUltimaActualizacion);
 
 

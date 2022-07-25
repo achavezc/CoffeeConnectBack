@@ -167,6 +167,8 @@ namespace CoffeeConnect.Service
             ControlCalidadPlanta.FechaUltimaActualizacion = DateTime.Now;
             ControlCalidadPlanta.UsuarioUltimaActualizacion = request.UsuarioUltimaActualizacion;
             ControlCalidadPlanta.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
+            ControlCalidadPlanta.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+            ControlCalidadPlanta.CantidadProcesada = request.CantidadProcesada;
 
 
             int affected = _IControlCalidadPlantaRepository.ControlCalidadPlantaActualizarProcesar(ControlCalidadPlanta);
@@ -174,8 +176,6 @@ namespace CoffeeConnect.Service
 
             return affected;
         }
-
-
 
 
         public int ControlCalidadPlantaActualizarEstadoRechazado(RegistrarActualizarEstadoControlCalidadPlantaRequestDTO request)
@@ -188,6 +188,8 @@ namespace CoffeeConnect.Service
             ControlCalidadPlanta.FechaUltimaActualizacion = DateTime.Now;
             ControlCalidadPlanta.UsuarioUltimaActualizacion = request.UsuarioUltimaActualizacion;
             ControlCalidadPlanta.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
+            ControlCalidadPlanta.CantidadControlCalidad = request.CantidadControlCalidad;
+            ControlCalidadPlanta.KilosNetosControlCalidad = request.KilosNetosControlCalidad;
 
 
             int affected = _IControlCalidadPlantaRepository.ControlCalidadPlantaActualizarEstadoRechazado(ControlCalidadPlanta);

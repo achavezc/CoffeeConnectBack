@@ -256,7 +256,7 @@ namespace CoffeeConnect.API.Controllers
 
 
 
-        [Route("Procesar")]
+        [Route("ProcesarControlCalidad")]
         [HttpPost]
         public IActionResult ActualizarProcesarControlCalidadPlanta([FromBody] RegistrarActualizarEstadoControlCalidadPlantaRequestDTO request)
         {
@@ -289,7 +289,7 @@ namespace CoffeeConnect.API.Controllers
 
 
 
-        [Route("Rechazado")]
+        [Route("RechazarConrolCalidad")]
         [HttpPost]
         public IActionResult ControlCalidadPlantaEstadoRechazado([FromBody] RegistrarActualizarEstadoControlCalidadPlantaRequestDTO request)
         {

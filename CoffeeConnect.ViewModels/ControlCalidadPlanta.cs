@@ -304,6 +304,17 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the Activo value.
 		/// </summary>
+
+		///campos nuevos en grilla  ///(/>
+
+		public decimal CantidadControlCalidad { get; set; }
+		public decimal PesoBrutoControlCalidad { get; set; }
+		public decimal TaraControlCalidad { get; set; }
+		public decimal KilosNetosControlCalidad { get; set; }
+
+		///campos nuevos en grilla  ///(/>
+
+
 		public bool Activo
 		{ get; set; }
 
@@ -311,7 +322,8 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 		public string EstadoCalidadId
 		{ get; set; }
-
+		public decimal CantidadProcesada
+		{ get; set; }
 		public string Direccion { get; set; }
 		public string Marca { get; set; }
 

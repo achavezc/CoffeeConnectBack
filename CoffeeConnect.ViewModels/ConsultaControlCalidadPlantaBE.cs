@@ -64,7 +64,7 @@ namespace CoffeeConnect.DTO
         public decimal Tara
         { get; set; }
 
-        //////campos nuevos a la tabla ///
+        //////campos nuevos a la tabla y grilla ///
 
         public decimal CantidadProcesada
         { get; set; }
@@ -79,7 +79,15 @@ namespace CoffeeConnect.DTO
         public decimal KilosNetosDisponibles
         { get; set; }
 
+        ///campos nuevos en grilla  ///(/>
 
+        public decimal CantidadControlCalidad {get;set;}
+        public decimal PesoBrutoControlCalidad { get; set; }
+        public decimal TaraControlCalidad { get; set; }
+        public decimal KilosNetosControlCalidad { get; set; }
+
+
+        ///campos nuevos ((/
         public DateTime FechaRegistro { get; set; }
 
         public DateTime FechaGuiaRemision { get; set; }
