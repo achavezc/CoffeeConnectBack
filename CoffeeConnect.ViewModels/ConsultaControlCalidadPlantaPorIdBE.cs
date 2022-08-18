@@ -431,6 +431,9 @@ namespace CoffeeConnect.DTO
 		public decimal TaraControlCalidad { get; set; }
 		public decimal KilosNetosControlCalidad { get; set; }
 
+		public string ControlCalidadTipoId { get; set; }
+		public string ControlCalidadEmpaqueId { get; set; }
+
 		#endregion
 
 	}
