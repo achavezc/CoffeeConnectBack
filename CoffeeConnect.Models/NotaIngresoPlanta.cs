@@ -16,6 +16,12 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 		public decimal KilosNetosControlCalidad
 		{ get; set; }
+
+		public string ControlCalidadTipoId
+		{ get; set; } 
+        public string ControlCalidadEmpaqueId
+		{ get; set; }
+
 		//para control calidad
 
 		#region Properties

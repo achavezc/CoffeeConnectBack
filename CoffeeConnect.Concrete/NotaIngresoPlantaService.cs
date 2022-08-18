@@ -166,6 +166,9 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta.PesoBrutoControlCalidad = request.PesoBrutoControlCalidad;
             NotaIngresoPlanta.TaraControlCalidad = request.TaraControlCalidad;
             NotaIngresoPlanta.KilosNetosControlCalidad = request.KilosNetosControlCalidad;
+            NotaIngresoPlanta.ControlCalidadTipoId = request.ControlCalidadTipoId;
+            NotaIngresoPlanta.ControlCalidadEmpaqueId = request.ControlCalidadEmpaqueId;
+
             //para control calidad
 
 

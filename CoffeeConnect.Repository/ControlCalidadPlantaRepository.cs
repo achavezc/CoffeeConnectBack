@@ -327,7 +327,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PesoBrutoControlCalidad", NotaIngresoPlanta.PesoBrutoControlCalidad);
             parameters.Add("@TaraControlCalidad", NotaIngresoPlanta.TaraControlCalidad);
             parameters.Add("@KilosNetosControlCalidad", NotaIngresoPlanta.KilosNetosControlCalidad);
-       
+            parameters.Add("@ControlCalidadTipoId", NotaIngresoPlanta.ControlCalidadTipoId);
+            parameters.Add("@ControlCalidadEmpaqueId", NotaIngresoPlanta.ControlCalidadEmpaqueId);
+
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
