@@ -4,6 +4,26 @@ namespace CoffeeConnect.Models
 {
 	public class NotaIngresoPlanta
 	{
+		//para control calidad
+		public int ControlCalidadPlantaId
+		{ get; set; }
+
+		public decimal CantidadControlCalidad
+		{ get; set; }
+		public decimal PesoBrutoControlCalidad
+		{ get; set; }
+		public decimal TaraControlCalidad
+		{ get; set; }
+		public decimal KilosNetosControlCalidad
+		{ get; set; }
+
+		public string ControlCalidadTipoId
+		{ get; set; } 
+        public string ControlCalidadEmpaqueId
+		{ get; set; }
+
+		//para control calidad
+
 		#region Properties
 		/// <summary>
 		/// Gets or sets the NotaIngresoPlantaId value.
@@ -312,7 +332,9 @@ namespace CoffeeConnect.Models
 		public decimal Intensidad { get; set; }
 		public decimal TazaIntensidad { get; set; }
 		public decimal PuntajeFinal { get; set; }
+		public string CodigoCampania { get; set; }
 
+		public string CodigoTipoConcepto { get; set; }
 
 		#endregion
 	}

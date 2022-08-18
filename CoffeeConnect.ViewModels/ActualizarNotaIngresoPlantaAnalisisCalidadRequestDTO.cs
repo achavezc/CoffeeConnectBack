@@ -8,6 +8,25 @@ namespace CoffeeConnect.DTO
 {
    public class ActualizarNotaIngresoPlantaAnalisisCalidadRequestDTO
 	{
+		//para control calidad
+		public int ControlCalidadPlantaId
+		{ get; set; }
+
+		public decimal CantidadControlCalidad
+		{ get; set; }
+		public decimal PesoBrutoControlCalidad
+		{ get; set; }
+		public decimal TaraControlCalidad
+		{ get; set; }
+		public decimal KilosNetosControlCalidad
+		{ get; set; }
+
+		public string ControlCalidadTipoId
+		{ get; set; }
+			public string ControlCalidadEmpaqueId
+		{ get; set; }
+
+		//para control calidad
 		/// <summary>
 		/// Gets or sets the GuiaRecepcionMateriaPrimaId value.
 		/// </summary>

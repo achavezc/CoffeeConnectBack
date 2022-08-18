@@ -191,5 +191,10 @@ namespace CoffeeConnect.DTO
 		public string Direccion { get; set; }
 		public string Marca { get; set; }
 
+		public string CodigoConcepto { get; set; }
+
+		public string CodigoCampania { get; set; }
+
+		public string CodigoTipoConcepto { get; set; }
 	}
 }

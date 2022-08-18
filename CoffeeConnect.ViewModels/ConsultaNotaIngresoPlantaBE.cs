@@ -59,6 +59,22 @@ namespace CoffeeConnect.DTO
         public decimal Tara
         { get; set; }
 
+        //////campos nuevos a la tabla ///
+
+        public decimal CantidadProcesada
+        { get;set;}
+        public decimal KilosNetosProcesado
+        { get; set; }
+        public decimal CantidadRechazada
+        { get; set; }
+        public decimal KilosNetosRechazados
+        { get; set; }
+        public decimal CantidadDisponible
+        { get; set; }
+        public decimal KilosNetosDisponibles
+        { get; set; }
+
+
         public DateTime FechaRegistro { get; set; }
 
         public DateTime FechaGuiaRemision { get; set; }
@@ -67,6 +83,10 @@ namespace CoffeeConnect.DTO
 
 
 
-        
+        public string CodigoCampania { get; set; }
+
+        public string CodigoTipoConcepto { get; set; }
+        public string DescripcionConcepto { get; set;
+        }
     }
 }

@@ -35,5 +35,10 @@ namespace CoffeeConnect.DTO
 
         public int EmpresaId { get; set; }
 
+        public String CodigoCampania { get; set; }
+
+        public String CodigoTipoConcepto { get; set; }
+        public string CodigoTipo { get; set; }
+
     }
 }

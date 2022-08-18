@@ -16,30 +16,67 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
-        private ICorrelativoRepository _ICorrelativoRepository;
-        public IOptions<ParametrosSettings> _ParametrosSettings;
 
-        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository, IOptions<ParametrosSettings> parametrosSettings, IMapper mapper)
+        private IControlCalidadPlantaRepository _IControlCalidadPlantaRepository;
+        private ICorrelativoRepository _ICorrelativoRepository;
+ 
+        public IOptions<ParametrosSettings> _ParametrosSettings;
+        private IMaestroRepository _IMaestroRepository;
+        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository,
+        IOptions<ParametrosSettings> parametrosSettings, IMapper mapper, IMaestroRepository maestroRepository, IControlCalidadPlantaRepository controlCalidadRepository)
         {
             _INotaIngresoPlantaRepository = NotaIngresoPlanta;
             _ICorrelativoRepository = correlativoRepository;
             _ParametrosSettings = parametrosSettings;
             _Mapper = mapper;
+            _IMaestroRepository = maestroRepository;
+            _IControlCalidadPlantaRepository = controlCalidadRepository;
         }
         
-        public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request)
+        public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request )
         {
-            if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
-                throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaIngresoPlanta.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
-            var timeSpan = request.FechaFin - request.FechaInicio;
+            {
+                /*
+                if (request.FechaInicio == null || request.FechaInicio == DateTime.MinValue || request.FechaFin == null || request.FechaFin == DateTime.MinValue || string.IsNullOrEmpty(request.EstadoId))
+                    throw new ResultException(new Result { ErrCode = "01", Message = "Acopio.NotaIngresoPlanta.ValidacionSeleccioneMinimoUnFiltro.Label" });
 
-            if (timeSpan.Days > 730)
-                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaIngresoPlanta.ValidacionRangoFechaMayor2anios.Label" });
+                var timeSpan = request.FechaFin - request.FechaInicio;
 
-            var list = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlanta(request);
-            return list.ToList();
-        }
+                if (timeSpan.Days > 730)
+                    throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaIngresoPlanta.ValidacionRangoFechaMayor2anios.Label" });
+                */
+
+                request.CodigoTipo = Documentos.NotaIngresoPlantaTipo;
+                var list = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlanta(request);
+                
+                foreach(ConsultaNotaIngresoPlantaBE obj in list)
+                {
+                    // obtener certificaciones
+                    List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+                    string[] certificacionesIds = obj.CertificacionId.Split('|');
+                    string certificacionLabel = string.Empty;
+                    if (certificacionesIds.Length > 0)
+                    {
+                        List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
+                        foreach (string certificacionId in certificacionesIds)
+                        {
+                            ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                            if (certificacion != null)
+                            {
+                                certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                            }
+                        }
+                    }
+
+                    // obtener certificaciones
+                    obj.Certificacion = certificacionLabel;
+                }
+                return list.ToList();
+         
+            }
+           
+       }
 
         public int AnularNotaIngresoPlanta(AnularNotaIngresoPlantaRequestDTO request)
         {
@@ -86,7 +123,9 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta NotaIngresoPlanta = _Mapper.Map<NotaIngresoPlanta>(request);
 
 
-            NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
+           // NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
+            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), Documentos.NotaIngresoPlantaTipo,request.CodigoTipoConcepto);
+
 
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
             NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
@@ -121,6 +160,17 @@ namespace CoffeeConnect.Service
         {
 
             NotaIngresoPlanta NotaIngresoPlanta = new NotaIngresoPlanta();
+            //para control calidad
+            NotaIngresoPlanta.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
+            NotaIngresoPlanta.CantidadControlCalidad = request.CantidadControlCalidad;
+            NotaIngresoPlanta.PesoBrutoControlCalidad = request.PesoBrutoControlCalidad;
+            NotaIngresoPlanta.TaraControlCalidad = request.TaraControlCalidad;
+            NotaIngresoPlanta.KilosNetosControlCalidad = request.KilosNetosControlCalidad;
+            NotaIngresoPlanta.ControlCalidadTipoId = request.ControlCalidadTipoId;
+            NotaIngresoPlanta.ControlCalidadEmpaqueId = request.ControlCalidadEmpaqueId;
+
+            //para control calidad
+
 
             NotaIngresoPlanta.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
             NotaIngresoPlanta.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
@@ -165,7 +215,7 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta.TotalAnalisisSensorial = totalAnalisisSensorial;
 
             int affected = _INotaIngresoPlantaRepository.ActualizarAnalisisCalidad(NotaIngresoPlanta);
-
+            int affected2 = _IControlCalidadPlantaRepository.ActualizarControlCalidad(NotaIngresoPlanta);
 
             #region "Analisis Fisico Color"
             if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)
@@ -307,9 +357,9 @@ namespace CoffeeConnect.Service
         }
 
 
-        public GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaIngreso(int notaSalidaAlmacenIdId)
+        public GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaIngreso(int notaSalidaAlmacenIdId, int empresaId)
         {
-            GenerarPDFGuiaRemisionResponseDTO generarPDFGuiaRemisionResponseDTO = new GenerarPDFGuiaRemisionResponseDTO();
+             GenerarPDFGuiaRemisionResponseDTO generarPDFGuiaRemisionResponseDTO = new GenerarPDFGuiaRemisionResponseDTO();
 
             ConsultaNotaIngresoPlantaPorIdBE consultaImpresionGuiaRemision = new ConsultaNotaIngresoPlantaPorIdBE();
             consultaImpresionGuiaRemision = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(notaSalidaAlmacenIdId);
@@ -319,9 +369,30 @@ namespace CoffeeConnect.Service
                 GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
 
                 //descripcion = "  " + Convert.ToString(z.CantidadPesado) + " " + Convert.ToString(!string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty) + " Plastico" + "   " + Convert.ToString(!string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty);
+
+                // obtener certificaciones
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(empresaId, String.Empty).ToList();
+                string[] certificacionesIds = consultaImpresionGuiaRemision.CertificacionId.Split('|');
+                string certificacionLabel = string.Empty;
+                if (certificacionesIds.Length > 0)
+                {
+                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+                }
+
+                // obtener certificaciones
+
+
                 guiaRemisionListaDetalle.TipoEmpaque = consultaImpresionGuiaRemision.TipoEmpaque;
                 guiaRemisionListaDetalle.Empaque = consultaImpresionGuiaRemision.Empaque;
-                guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + consultaImpresionGuiaRemision.Certificacion;
+                guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + certificacionLabel;
                 guiaRemisionListaDetalle.MontoBruto = consultaImpresionGuiaRemision.KilosBrutos;
                 guiaRemisionListaDetalle.PesoNeto = consultaImpresionGuiaRemision.KilosNetos;
                 guiaRemisionListaDetalle.Cantidad = consultaImpresionGuiaRemision.Cantidad;
@@ -351,7 +422,13 @@ namespace CoffeeConnect.Service
 
 
                 cabeceraGuiaRemision.RazonSocial = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocial) ? consultaImpresionGuiaRemision.RazonSocial.Trim() : String.Empty;
-                cabeceraGuiaRemision.Direccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionOrganizacion) ? consultaImpresionGuiaRemision.DireccionOrganizacion.Trim() : String.Empty;
+
+                cabeceraGuiaRemision.Direccion = consultaImpresionGuiaRemision.DireccionOrganizacion + " - " + 
+               consultaImpresionGuiaRemision.Distrito + " - " + consultaImpresionGuiaRemision.Provincia +" - "+consultaImpresionGuiaRemision.Departamento;
+
+                //cabeceraGuiaRemision.Direccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionOrganizacion) ? consultaImpresionGuiaRemision.DireccionOrganizacion.Trim() : String.Empty;
+
+                cabeceraGuiaRemision.DireccionCliente = consultaImpresionGuiaRemision.Direccion;
                 cabeceraGuiaRemision.Ruc = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Ruc) ? consultaImpresionGuiaRemision.RucEmpresaTransporte.Trim() : String.Empty;
                 //cabeceraGuiaRemision.Almacen = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.almacen) ? consultaImpresionGuiaRemision.Almacen.Trim() : String.Empty;
                 cabeceraGuiaRemision.Destinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocialOrganizacion) ? consultaImpresionGuiaRemision.RazonSocialOrganizacion.Trim() : String.Empty;

@@ -36,10 +36,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("FechaFin", request.FechaFin);
             parameters.Add("FechaGuiaRemisionInicio", request.FechaInicio);
             parameters.Add("FechaGuiaRemisionFin", request.FechaFin);
-            parameters.Add("CodigoCampania", "");
-            parameters.Add("CodigoTipoConcepto", "");
-            parameters.Add("CodigoTipo", "");
-
+            parameters.Add("CodigoCampania", request.CodigoCampania);
+            parameters.Add("CodigoTipoConcepto", request.CodigoTipoConcepto);
+            parameters.Add("CodigoTipo", request.CodigoTipo);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -125,6 +124,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UsuarioUltimaActualizacion", NotaIngresoPlanta.UsuarioUltimaActualizacion);
             parameters.Add("@Direccion", NotaIngresoPlanta.Direccion);
             parameters.Add("@Marca", NotaIngresoPlanta.Marca);
+            parameters.Add("@CodigoCampania", NotaIngresoPlanta.CodigoCampania);
+            parameters.Add("@CodigoTipoConcepto", NotaIngresoPlanta.CodigoTipoConcepto);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -178,6 +179,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UsuarioRegistro", NotaIngresoPlanta.UsuarioRegistro);
             parameters.Add("@Direccion", NotaIngresoPlanta.Direccion);
             parameters.Add("@Marca", NotaIngresoPlanta.Marca);
+            parameters.Add("@CodigoCampania", NotaIngresoPlanta.CodigoCampania);
+            parameters.Add("@CodigoTipoConcepto", NotaIngresoPlanta.CodigoTipoConcepto);
             parameters.Add("@NotaIngresoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 

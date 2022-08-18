@@ -40,6 +40,16 @@ namespace CoffeeConnect.Service
         public static string Anulado { get { return "00"; } }
     }
 
+
+    public static class ControlCalidadEstados
+    {
+        public static string  Anulado { get { return "00"; } }
+        public static string Analizado { get { return "01"; } }
+        public static string Rechazado { get { return "02"; } }
+        public static string Procesado { get { return "03"; } }
+    
+    }
+
     public static class Documentos
     {
         public static string GuiaRecepcion { get { return "GuiaRecepcion"; } }
@@ -49,6 +59,14 @@ namespace CoffeeConnect.Service
         public static string Productor { get { return "Productor"; } }
         public static string Socio { get { return "Socio"; } }
         public static string NotaSalidaAlmacen { get { return "NotaSalidaAlmacen"; } }
+
+        /// campo nuevo >
+        public static string NotaIngresoPlantaTipo { get{ return "01"; } }
+
+
+        /// //
+
+
 
         public static string Aduana { get { return "Aduana"; } }
         public static string Adelanto { get { return "Adelanto"; } }

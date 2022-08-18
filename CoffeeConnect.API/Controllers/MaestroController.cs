@@ -3,6 +3,7 @@ using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,10 +16,12 @@ namespace Integracion.Deuda.Controller
     public class MaestroController : ControllerBase
     {
         private IMaestroService _maestroService;
+        private ICorrelativoPlantaService _correlativoPlantaService;
         private Core.Common.Logger.ILog _log;
-        public MaestroController(IMaestroService maestroService, Core.Common.Logger.ILog log)
+        public MaestroController(IMaestroService maestroService, Core.Common.Logger.ILog log, ICorrelativoPlantaService correlativoPlantaService)
         {
             _maestroService = maestroService;
+            _correlativoPlantaService = correlativoPlantaService;
             _log = log;
         }
 
@@ -93,6 +96,231 @@ namespace Integracion.Deuda.Controller
 
             return Ok(response);
         }
+
+        [Route("ConsultarConceptos")]
+        [HttpPost]
+        public IActionResult ConsultarConceptos([FromBody] ConsultarMaestroCorrelativoRequest request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
+            try
+            {
+                List<ConsultaDetalleTablaBE> lista = _correlativoPlantaService.obtenerConceptos(request.CodigoTipo);
+                    response.Result.Data = lista;
+               
+             
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
+        [Route("ConsultarCampanias")]
+        [HttpPost]
+        public IActionResult ConsultarCampanias([FromBody] ConsultarMaestroCorrelativoRequest request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
+            try
+            {
+                List<ConsultaDetalleTablaBE> lista = _correlativoPlantaService.obtenerCampanias(request.CodigoTipo);
+                response.Result.Data = lista;
+
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+
+        [Route("ConsultarTipoCorrelativo")]
+        [HttpPost]
+        public IActionResult ConsultarTipoCorrelativo([FromBody] ConsultarMaestroCorrelativoRequest request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
+            try
+            {
+                List<ConsultaDetalleTablaBE> lista = _correlativoPlantaService.obtenerTipo();
+                response.Result.Data = lista;
+
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        /// llamaar mis apis aqui de correlativo
+
+        [Route("ConsultarCorrelativo")]
+        [HttpPost]
+        public IActionResult ConsultarCorrelativoPlanta([FromBody] ConsultaCorrelativoPlantaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            ConsultaTablaDeTablasResponseDTO response = new ConsultaTablaDeTablasResponseDTO();
+            try
+            {
+                List<CorrelativoPlantaBE> lista = _correlativoPlantaService.ConsultarCorrelativo(request);
+
+                response.Result.Data = lista;
+
+                response.Result.Success = true;
+
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////
+
+        [Route("RegistrarCorrelativo")]
+        [HttpPost]
+        //public IActionResult Registrar([FromBody] RegistrarActualizarEmpresaProveedoraAcreedoraRequestDTO request)
+        public IActionResult RegistrarCorrelativo(RegistrarActualizarCorrelativoPlantaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
+
+            RegistrarActualizarCorrelativoPlantaResponseDTO response = new RegistrarActualizarCorrelativoPlantaResponseDTO();
+
+            try
+            {
+                response.Result.Data = _correlativoPlantaService.RegistrarCorrelativo (request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
+        [Route("ActualizarCorrelativo")]
+        [HttpPost]
+        public IActionResult ActualizarCorrelativo(RegistrarActualizarCorrelativoPlantaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
+
+            RegistrarActualizarCorrelativoPlantaResponseDTO response = new RegistrarActualizarCorrelativoPlantaResponseDTO();
+            try
+            {
+
+                response.Result.Data = _correlativoPlantaService.ActualizarCorrelativoPlanta(request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////7777
+
+        [Route("ConsultarCorrelativoPorId")]
+        [HttpPost]
+        public IActionResult ConsultarCorrelativoPorId([FromBody] ConsultaCorrelativoPlantaPorIdRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
+
+            ConsultaCorrelativoPlamtaPorIdResponseDTO response = new ConsultaCorrelativoPlamtaPorIdResponseDTO();
+            try
+            {
+                response.Result.Data = _correlativoPlantaService.ConsultarCorrelativoPlantaPorId(request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+            return Ok(response);
+        }
+
+
+
+        /// 
 
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [Route("ConsultarDepartamento")]
