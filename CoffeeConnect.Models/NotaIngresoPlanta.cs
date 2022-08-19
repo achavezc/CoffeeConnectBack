@@ -10,6 +10,12 @@ namespace CoffeeConnect.Models
 
 		public decimal CantidadControlCalidad
 		{ get; set; }
+
+		public decimal CantidadProcesada
+		{ get; set; }
+
+		public decimal KilosNetosProcesados
+		{ get; set; }
 		public decimal PesoBrutoControlCalidad
 		{ get; set; }
 		public decimal TaraControlCalidad

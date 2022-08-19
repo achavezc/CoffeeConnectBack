@@ -390,6 +390,14 @@ namespace CoffeeConnect.DTO
 		public decimal Intensidad { get; set; }
 		public decimal TazaIntensidad { get; set; }
 		public decimal PuntajeFinal { get; set; }
+
+		public decimal CantidadRechazada
+		{ get; set; }
+
+		public decimal CantidadProcesada
+		{ get; set; }
+		public decimal CantidadDisponible
+		{ get; set; }
 		public List<NotaIngresoPlantaAnalisisFisicoColorDetalle> AnalisisFisicoColorDetalle
 		{ get; set; }
 

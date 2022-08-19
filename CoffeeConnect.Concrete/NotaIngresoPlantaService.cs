@@ -187,7 +187,17 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
             NotaIngresoPlanta.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
             NotaIngresoPlanta.UsuarioCalidad = request.UsuarioCalidad;
-            NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Analizado;
+            ConsultaNotaIngresoPlantaPorIdRequestDTO consultaNotaIngresoPlantaPorIdRequestDTO = new ConsultaNotaIngresoPlantaPorIdRequestDTO();
+            consultaNotaIngresoPlantaPorIdRequestDTO.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+            ConsultaNotaIngresoPlantaPorIdBE consultaNotaIngresoPlantaPorIdBE = this.ConsultarNotaIngresoPlantaPorId(consultaNotaIngresoPlantaPorIdRequestDTO);
+            decimal saldoDisponible = consultaNotaIngresoPlantaPorIdBE.Cantidad - consultaNotaIngresoPlantaPorIdBE.CantidadProcesada - consultaNotaIngresoPlantaPorIdBE.CantidadRechazada;
+            if (saldoDisponible == request.CantidadControlCalidad)
+            {
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Analizado;
+            }
+            else {
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+            }
             NotaIngresoPlanta.FechaCalidad = DateTime.Now;
             NotaIngresoPlanta.Taza = request.Taza;
             NotaIngresoPlanta.Intensidad = request.Intensidad;
@@ -213,7 +223,7 @@ namespace CoffeeConnect.Service
 
 
             NotaIngresoPlanta.TotalAnalisisSensorial = totalAnalisisSensorial;
-
+            NotaIngresoPlanta.CantidadProcesada = consultaNotaIngresoPlantaPorIdBE.CantidadProcesada + NotaIngresoPlanta.CantidadControlCalidad;
             int affected = _INotaIngresoPlantaRepository.ActualizarAnalisisCalidad(NotaIngresoPlanta);
             int affected2 = _IControlCalidadPlantaRepository.ActualizarControlCalidad(NotaIngresoPlanta);
 

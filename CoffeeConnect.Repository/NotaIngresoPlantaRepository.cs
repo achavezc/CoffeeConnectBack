@@ -200,6 +200,7 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
 
+
             parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlanta.NotaIngresoPlantaId);
             parameters.Add("@ExportableGramosAnalisisFisico", NotaIngresoPlanta.ExportableGramosAnalisisFisico);
             parameters.Add("@ExportablePorcentajeAnalisisFisico", NotaIngresoPlanta.ExportablePorcentajeAnalisisFisico);
@@ -224,6 +225,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Intensidad", NotaIngresoPlanta.Intensidad);
             parameters.Add("@TazaIntensidad", NotaIngresoPlanta.TazaIntensidad);
             parameters.Add("@PuntajeFinal", NotaIngresoPlanta.PuntajeFinal);
+            parameters.Add("@CantidadProcesada", NotaIngresoPlanta.CantidadProcesada);
+            parameters.Add("@KilosNetosProcesados", NotaIngresoPlanta.KilosNetosControlCalidad);
+
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
