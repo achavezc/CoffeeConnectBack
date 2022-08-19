@@ -118,10 +118,12 @@ namespace CoffeeConnect.DTO
 
 		public decimal KilosNetos
 		{ get; set; }
+		public decimal KilosNetosProcesado
+		{ get; set; }
 
 		
 
-		
+
 
 		public decimal Tara
 		{ get; set; }

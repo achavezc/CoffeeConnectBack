@@ -170,6 +170,7 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
             parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlanta.ControlCalidadPlantaId);
+            parameters.Add("@NotaIngresoPlantaId", ControlCalidadPlanta.NotaIngresoPlantaId);
             parameters.Add("@EstadoCalidadId", ControlCalidadPlanta.EstadoCalidadId);
             parameters.Add("@Fecha", ControlCalidadPlanta.FechaUltimaActualizacion);
             parameters.Add("@CantidadControlCalidad", ControlCalidadPlanta.CantidadControlCalidad);

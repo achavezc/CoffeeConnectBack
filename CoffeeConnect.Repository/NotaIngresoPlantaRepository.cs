@@ -226,7 +226,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TazaIntensidad", NotaIngresoPlanta.TazaIntensidad);
             parameters.Add("@PuntajeFinal", NotaIngresoPlanta.PuntajeFinal);
             parameters.Add("@CantidadProcesada", NotaIngresoPlanta.CantidadProcesada);
-            parameters.Add("@KilosNetosProcesados", NotaIngresoPlanta.KilosNetosControlCalidad);
+            parameters.Add("@KilosNetosProcesados", NotaIngresoPlanta.KilosNetosProcesados);
 
 
 

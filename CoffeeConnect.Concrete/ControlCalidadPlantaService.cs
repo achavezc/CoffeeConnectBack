@@ -190,7 +190,8 @@ namespace CoffeeConnect.Service
             ControlCalidadPlanta.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
             ControlCalidadPlanta.CantidadControlCalidad = request.CantidadControlCalidad;
             ControlCalidadPlanta.KilosNetosControlCalidad = request.KilosNetosControlCalidad;
-
+            ControlCalidadPlanta.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+           
 
             int affected = _IControlCalidadPlantaRepository.ControlCalidadPlantaActualizarEstadoRechazado(ControlCalidadPlanta);
 
