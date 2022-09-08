@@ -25,6 +25,9 @@ namespace CoffeeConnect.DTO
 		public string Numero
 		{ get; set; }
 
+		public string NumeroControlCalidad
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the NumeroGuiaRemision value.
 		/// </summary>

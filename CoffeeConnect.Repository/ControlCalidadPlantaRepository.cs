@@ -237,6 +237,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Marca", NotaIngresoPlanta.Marca);
             parameters.Add("@CodigoCampania", NotaIngresoPlanta.CodigoCampania);
             parameters.Add("@CodigoTipoConcepto", NotaIngresoPlanta.CodigoTipoConcepto);
+            parameters.Add("@NumeroCalidadPlanta", NotaIngresoPlanta.NumeroControlCalidad);
             parameters.Add("@ControlCalidadPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 

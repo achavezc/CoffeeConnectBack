@@ -121,7 +121,7 @@ namespace CoffeeConnect.Service
             ControlCalidadPlanta NotaIngresoPlanta = _Mapper.Map<ControlCalidadPlanta>(request);
 
 
-            // NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
+             NotaIngresoPlanta.NumeroControlCalidad = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaControlCalidadPlanta);
             // NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), Documentos.NotaIngresoPlantaTipo, request.CodigoTipoConcepto);
 
 

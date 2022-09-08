@@ -100,6 +100,8 @@ namespace CoffeeConnect.Service
 
         public static string NotaIngresoPlanta { get { return "NotaIngresoPlanta  "; } }
 
+        public static string NotaControlCalidadPlanta { get { return "CalidadPlanta  "; } }
+
         public static string KardexProceso { get { return "KardexProceso"; } }
 
         public static string KardexPlanta { get { return "KardexPlanta"; } }

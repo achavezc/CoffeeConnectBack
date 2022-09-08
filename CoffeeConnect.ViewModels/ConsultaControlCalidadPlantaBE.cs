@@ -10,6 +10,8 @@ namespace CoffeeConnect.DTO
 
         public int ControlCalidadPlantaId { get; set; }
 
+        public string NumeroCalidadPlanta { get; set; }
+
         public string Numero { get; set; }
 
         public string NumeroGuiaRemision { get; set; }

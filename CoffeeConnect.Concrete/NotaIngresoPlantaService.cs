@@ -190,7 +190,7 @@ namespace CoffeeConnect.Service
             ConsultaNotaIngresoPlantaPorIdRequestDTO consultaNotaIngresoPlantaPorIdRequestDTO = new ConsultaNotaIngresoPlantaPorIdRequestDTO();
             consultaNotaIngresoPlantaPorIdRequestDTO.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
             ConsultaNotaIngresoPlantaPorIdBE consultaNotaIngresoPlantaPorIdBE = this.ConsultarNotaIngresoPlantaPorId(consultaNotaIngresoPlantaPorIdRequestDTO);
-            decimal saldoDisponible = consultaNotaIngresoPlantaPorIdBE.Cantidad - consultaNotaIngresoPlantaPorIdBE.CantidadProcesada - consultaNotaIngresoPlantaPorIdBE.CantidadRechazada;
+            decimal saldoDisponible = consultaNotaIngresoPlantaPorIdBE.Cantidad - consultaNotaIngresoPlantaPorIdBE.CantidadProcesada;
             if (saldoDisponible == request.CantidadControlCalidad)
             {
                 NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Analizado;
