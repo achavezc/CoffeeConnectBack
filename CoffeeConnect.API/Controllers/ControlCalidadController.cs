@@ -213,7 +213,7 @@ namespace CoffeeConnect.API.Controllers
             return Ok(response);
         }
 
-        [Route("GenerarPDFNotaIngreso")]
+        [Route("GenerarPDFControlCalidad")]
         [HttpGet]
         public IActionResult GenerarPDFNotaIngreso(int id, int empresaId)
         {
@@ -227,13 +227,13 @@ namespace CoffeeConnect.API.Controllers
                 GenerarPDFGuiaRemisionRequestDTO request = new GenerarPDFGuiaRemisionRequestDTO { LoteId = id };
                 string mimetype = "";
                 int extension = 1;
-                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptNotaIngreso.rdlc";
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptControlCalidad.rdlc";
 
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
                 lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));
-                lr.AddDataSource("dsGRListaDetalle", Util.ToDataTable(response.listaDetalleGM));
+                //lr.AddDataSource("dsGRListaDetalle", Util.ToDataTable(response.listaDetalleGM));
                 lr.AddDataSource("dsGRDetalle", Util.ToDataTable(response.detalleGM));
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 

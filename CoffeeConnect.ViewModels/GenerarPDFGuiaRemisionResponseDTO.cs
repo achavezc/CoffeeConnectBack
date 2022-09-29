@@ -94,5 +94,53 @@ namespace CoffeeConnect.DTO
         public string TransportistaBrevete { get; set; }
         public string Observaciones { get; set; }
         public string Responsable { get; set; }
+
+        public string Fecha { get; set; }
+        public string GuiaRemision { get; set; }
+        public string NotaIngreso { get; set; }
+        public string Cliente { get; set; }
+        public string Calidad { get; set; }
+        public string Sacos { get; set; }
+        public string SacosAptos { get; set; }
+        public string Certificado { get; set; }
+        public string KilosBrutos { get; set; }
+        public string KilosNetos { get; set; }
+        public string HumedadRecepcion { get; set; }
+        public string HumedadAnalisis { get; set; }
+        public string ExportableGramos { get; set; }
+        public string ExportablePorcentaje { get; set; }
+        public string DescarteGramos { get; set; }
+        public string DescartePorcentaje { get; set; }
+        public string CascarillaGramos { get; set; }
+        public string CascarillaPorcentaje { get; set; }
+        public string TotalGramos { get; set; }
+        public string TotalPorcentaje { get; set; }
+        public string FraganciaValor { get; set; }
+        public string FraganciaEscala { get; set; }
+        public string SaborValor { get; set; }
+        public string SaborEscala { get; set; }
+        public string GustoValor { get; set; }
+        public string GustoEscala { get; set; }
+        public string AcidezValor { get; set; }
+        public string AcidezEscala { get; set; }
+        public string CuerpoValor { get; set; }
+        public string CuerpoEscala { get; set; }
+        public string UniformidadValor { get; set; }
+        public string UniformidadEscala { get; set; }
+        public string BalanceValor { get; set; }
+        public string BalanceEscala { get; set; }
+        public string TazaLimpiaValor { get; set; }
+        public string TazaLimpiaEscala { get; set; }
+        public string DulzorValor { get; set; }
+        public string DulzorEscala { get; set; }
+        public string PuntajeCatadorValor { get; set; }
+        public string PuntajeCatadorEscala { get; set; }
+        public string PuntajeTotalValor { get; set; }
+        public string Taza { get; set; }
+        public string Intensidad { get; set; }
+        public string Intensidad2 { get; set; }
+        public string PuntajeFinal { get; set; }
+
+
     }
 }

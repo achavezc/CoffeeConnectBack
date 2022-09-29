@@ -399,9 +399,18 @@ namespace CoffeeConnect.Service
         public GenerarPDFGuiaRemisionResponseDTO GenerarPDFGuiaRemisionPorNotaIngreso(int notaSalidaAlmacenIdId, int empresaId)
         {
             GenerarPDFGuiaRemisionResponseDTO generarPDFGuiaRemisionResponseDTO = new GenerarPDFGuiaRemisionResponseDTO();
-
+            List<ConsultaDetalleTablaBE> listaRanking = new List<ConsultaDetalleTablaBE>();
             ConsultaControlCalidadPlantaPorIdBE consultaImpresionGuiaRemision = new ConsultaControlCalidadPlantaPorIdBE();
             consultaImpresionGuiaRemision = _IControlCalidadPlantaRepository.ConsultaControlCalidadPlantaPorId(notaSalidaAlmacenIdId);
+
+            ConsultaControlCalidadPlantaPorIdBE consultaControlCalidadPlantaPorIdBE = new ConsultaControlCalidadPlantaPorIdBE();
+
+            if (consultaImpresionGuiaRemision != null)
+            {
+
+                consultaControlCalidadPlantaPorIdBE.AnalisisSensorialAtributoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(consultaImpresionGuiaRemision.NotaIngresoPlantaId).ToList();
+
+            }
 
             if (consultaImpresionGuiaRemision != null)
             {
@@ -411,6 +420,8 @@ namespace CoffeeConnect.Service
 
                 // obtener certificaciones
                 List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(empresaId, String.Empty).ToList();
+                listaRanking = lista.Where(a => a.CodigoTabla.Trim().Equals("SensorialRanking")).ToList();
+
                 string[] certificacionesIds = consultaImpresionGuiaRemision.CertificacionId.Split('|');
                 string certificacionLabel = string.Empty;
                 if (certificacionesIds.Length > 0)
@@ -461,61 +472,159 @@ namespace CoffeeConnect.Service
 
 
                 cabeceraGuiaRemision.RazonSocial = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocial) ? consultaImpresionGuiaRemision.RazonSocial.Trim() : String.Empty;
-
                 cabeceraGuiaRemision.Direccion = consultaImpresionGuiaRemision.DireccionOrganizacion + " - " +
-               consultaImpresionGuiaRemision.Distrito + " - " + consultaImpresionGuiaRemision.Provincia + " - " + consultaImpresionGuiaRemision.Departamento;
-
-                //cabeceraGuiaRemision.Direccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionOrganizacion) ? consultaImpresionGuiaRemision.DireccionOrganizacion.Trim() : String.Empty;
-
+                consultaImpresionGuiaRemision.Distrito + " - " + consultaImpresionGuiaRemision.Provincia + " - " + consultaImpresionGuiaRemision.Departamento;
                 cabeceraGuiaRemision.DireccionCliente = consultaImpresionGuiaRemision.Direccion;
                 cabeceraGuiaRemision.Ruc = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Ruc) ? consultaImpresionGuiaRemision.RucEmpresaTransporte.Trim() : String.Empty;
-                //cabeceraGuiaRemision.Almacen = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.almacen) ? consultaImpresionGuiaRemision.Almacen.Trim() : String.Empty;
                 cabeceraGuiaRemision.Destinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocialOrganizacion) ? consultaImpresionGuiaRemision.RazonSocialOrganizacion.Trim() : String.Empty;
-                //cabeceraGuiaRemision.DireccionPartida = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionPartida) ? consultaImpresionGuiaRemision.DireccionPartida.Trim() : String.Empty;
-                //cabeceraGuiaRemision.DireccionDestino = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionDestino) ? consultaImpresionGuiaRemision.DireccionDestino.Trim() : String.Empty;
-                cabeceraGuiaRemision.Certificacion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.CertificacionId) ? consultaImpresionGuiaRemision.CertificacionId.Trim() : String.Empty;
-                cabeceraGuiaRemision.TipoProduccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.TipoProduccionId) ? consultaImpresionGuiaRemision.TipoProduccionId.Trim() : String.Empty;
-                cabeceraGuiaRemision.NumeroGuiaRemision = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Numero) ? consultaImpresionGuiaRemision.Numero.Trim() : String.Empty;
+                //cabeceraGuiaRemision.Certificacion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.CertificacionId) ? consultaImpresionGuiaRemision.CertificacionId.Trim() : String.Empty;
+                // cabeceraGuiaRemision.TipoProduccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.TipoProduccionId) ? consultaImpresionGuiaRemision.TipoProduccionId.Trim() : String.Empty;
+                cabeceraGuiaRemision.NumeroGuiaRemision = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.NumeroCalidadPlanta) ? consultaImpresionGuiaRemision.NumeroCalidadPlanta.Trim() : String.Empty;
                 cabeceraGuiaRemision.RucDestinatario = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucOrganizacion) ? consultaImpresionGuiaRemision.RucOrganizacion.Trim() : String.Empty;
-                cabeceraGuiaRemision.FechaEmision = DateTime.Now;
-                cabeceraGuiaRemision.FechaEmisionString = DateTime.Now.ToString("dd/MM/yyyy");
-                cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
-                cabeceraGuiaRemision.FechaEntregaTransportistaString = DateTime.Now.ToString("dd/MM/yyyy");
-                cabeceraGuiaRemision.CGR = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.NumeroGuiaRemision) ? consultaImpresionGuiaRemision.NumeroGuiaRemision.Trim() : String.Empty;
-                //cabeceraGuiaRemision.Certificadora = agenciaCertificadora;
+                //cabeceraGuiaRemision.FechaEmision = DateTime.Now;
+                //cabeceraGuiaRemision.FechaEmisionString = DateTime.Now.ToString("dd/MM/yyyy");
+                //cabeceraGuiaRemision.FechaEntregaTransportista = DateTime.Now;
+                //cabeceraGuiaRemision.FechaEntregaTransportistaString = DateTime.Now.ToString("dd/MM/yyyy");
+                //cabeceraGuiaRemision.CGR = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.NumeroGuiaRemision) ? consultaImpresionGuiaRemision.NumeroGuiaRemision.Trim() : String.Empty;
                 generarPDFGuiaRemisionResponseDTO.Cabecera.Add(cabeceraGuiaRemision);
 
                 GuiaRemisionDetalle guiaRemisionDetalle = new GuiaRemisionDetalle();
-                //guiaRemisionDetalle.TotalLotes = consultaImpresionGuiaRemision.CantidadLotes;
-                guiaRemisionDetalle.Rendimiento = consultaImpresionGuiaRemision.RendimientoPorcentaje;
-                guiaRemisionDetalle.PorcentajeHumedad = consultaImpresionGuiaRemision.HumedadPorcentaje;
-                guiaRemisionDetalle.CantidadTotal = consultaImpresionGuiaRemision.Cantidad;
-                guiaRemisionDetalle.TotalKGBrutos = consultaImpresionGuiaRemision.KilosBrutos;
-                guiaRemisionDetalle.ModalidadTransporte = "TRANSPORTE PRIVADO";
-                guiaRemisionDetalle.TipoTraslado = "TRANSPORTE PRIVADO";
-                guiaRemisionDetalle.MotivoTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoIngreso) ? consultaImpresionGuiaRemision.MotivoIngreso.Trim() : String.Empty;
-                //guiaRemisionDetalle.MotivoTrasladoId = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoId) ? consultaImpresionGuiaRemision.MotivoTrasladoId.Trim() : String.Empty;
-                //guiaRemisionDetalle.MotivoDetalleTraslado = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoTrasladoReferencia) ? consultaImpresionGuiaRemision.MotivoTrasladoReferencia.Trim() : String.Empty;
-                //guiaRemisionDetalle.PropietarioTransportista = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Propietario) ? consultaImpresionGuiaRemision.Propietario.Trim() : String.Empty;
-                //guiaRemisionDetalle.TransportistaDomicilio = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionTransportista) ? consultaImpresionGuiaRemision.DireccionTransportista.Trim() : String.Empty;
-                //guiaRemisionDetalle.TransportistaCodigoVehicular = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ConfiguracionVehicular) ? consultaImpresionGuiaRemision.ConfiguracionVehicular.Trim() : String.Empty;
-                guiaRemisionDetalle.TransportistaMarca = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Marca) ? consultaImpresionGuiaRemision.Marca.Trim() : String.Empty;
-                guiaRemisionDetalle.TransportistaRuc = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RucEmpresaTransporte) ? consultaImpresionGuiaRemision.RucEmpresaTransporte.Trim() : String.Empty;
-                guiaRemisionDetalle.PropietarioTransportista = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonEmpresaTransporte) ? consultaImpresionGuiaRemision.RazonEmpresaTransporte.Trim() : String.Empty;
-                guiaRemisionDetalle.TransportistaPlaca = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.PlacaTractorEmpresaTransporte) ? consultaImpresionGuiaRemision.PlacaTractorEmpresaTransporte.Trim() : String.Empty;
-                guiaRemisionDetalle.TransportistaPlacaCarreta = String.Empty;
-                guiaRemisionDetalle.TransportistaConductor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ConductorEmpresaTransporte) ? consultaImpresionGuiaRemision.ConductorEmpresaTransporte.Trim() : String.Empty;
-                //guiaRemisionDetalle.TransportistaColor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Color) ? consultaImpresionGuiaRemision.Color.Trim() : String.Empty;
-                //guiaRemisionDetalle.TransportistaSoat = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Soat) ? consultaImpresionGuiaRemision.Soat.Trim() : String.Empty;
-                //guiaRemisionDetalle.TransportistaDni = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Dni) ? consultaImpresionGuiaRemision.Dni.Trim() : String.Empty;
-                //guiaRemisionDetalle.TransportistaColor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Color) ? consultaImpresionGuiaRemision.Color.Trim() : String.Empty;
-                //guiaRemisionDetalle.TransportistaSoat = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Soat) ? consultaImpresionGuiaRemision.Soat.Trim() : String.Empty;
-                //guiaRemisionDetalle.TransportistaConstancia = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.NumeroConstanciaMTC) ? consultaImpresionGuiaRemision.NumeroConstanciaMTC.Trim() : String.Empty;
-                guiaRemisionDetalle.TransportistaBrevete = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.LicenciaConductorEmpresaTransporte) ? consultaImpresionGuiaRemision.LicenciaConductorEmpresaTransporte.Trim() : String.Empty;
-                guiaRemisionDetalle.Observaciones = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ObservacionPesado) ? consultaImpresionGuiaRemision.ObservacionPesado.Trim() : String.Empty;
-                guiaRemisionDetalle.Responsable = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.UsuarioRegistro) ? consultaImpresionGuiaRemision.UsuarioRegistro.Trim() : String.Empty;
+                guiaRemisionDetalle.Fecha = consultaImpresionGuiaRemision.FechaCalidad.Value.ToString("dd/MM/yyyy");
+                guiaRemisionDetalle.GuiaRemision = consultaImpresionGuiaRemision.NumeroGuiaRemision;
+                guiaRemisionDetalle.NotaIngreso = consultaImpresionGuiaRemision.Numero;
+                guiaRemisionDetalle.Cliente = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocialOrganizacion) ? consultaImpresionGuiaRemision.RazonSocialOrganizacion.Trim() : String.Empty;
+                guiaRemisionDetalle.Calidad = consultaImpresionGuiaRemision.Producto;
+                guiaRemisionDetalle.Sacos = Convert.ToString(consultaImpresionGuiaRemision.Cantidad);
+                guiaRemisionDetalle.SacosAptos = Convert.ToString(consultaImpresionGuiaRemision.Cantidad);
+                guiaRemisionDetalle.KilosBrutos = Convert.ToString(consultaImpresionGuiaRemision.KilosBrutos);
+                guiaRemisionDetalle.KilosNetos = Convert.ToString(consultaImpresionGuiaRemision.KilosNetos);
+                guiaRemisionDetalle.Certificado = certificacionLabel;
+                guiaRemisionDetalle.HumedadRecepcion = Convert.ToString(consultaImpresionGuiaRemision.HumedadPorcentaje);
+                guiaRemisionDetalle.HumedadAnalisis = Convert.ToString(consultaImpresionGuiaRemision.HumedadPorcentajeAnalisisFisico);
 
+                guiaRemisionDetalle.ExportableGramos = Convert.ToString(consultaImpresionGuiaRemision.ExportableGramosAnalisisFisico);
+                guiaRemisionDetalle.ExportablePorcentaje = Convert.ToString(consultaImpresionGuiaRemision.ExportablePorcentajeAnalisisFisico);
+                guiaRemisionDetalle.DescarteGramos = Convert.ToString(consultaImpresionGuiaRemision.DescarteGramosAnalisisFisico);
+                guiaRemisionDetalle.DescartePorcentaje = Convert.ToString(consultaImpresionGuiaRemision.DescartePorcentajeAnalisisFisico);
+                guiaRemisionDetalle.CascarillaGramos = Convert.ToString(consultaImpresionGuiaRemision.CascarillaGramosAnalisisFisico);
+                guiaRemisionDetalle.CascarillaPorcentaje = Convert.ToString(consultaImpresionGuiaRemision.CascarillaPorcentajeAnalisisFisico);
+                guiaRemisionDetalle.TotalGramos = Convert.ToString(consultaImpresionGuiaRemision.TotalGramosAnalisisFisico);
+                guiaRemisionDetalle.TotalPorcentaje = Convert.ToString(consultaImpresionGuiaRemision.TotalPorcentajeAnalisisFisico);
+
+
+                listaRanking = listaRanking.Where(obj => obj.Val1 != null && obj.Val2 != null).ToList();
+                foreach (var item in consultaControlCalidadPlantaPorIdBE.AnalisisSensorialAtributoDetalle)
+                {
+                    if (item.AtributoDetalleId == "01" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.FraganciaValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.FraganciaEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "02" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.SaborValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.SaborEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "03" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.GustoValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.GustoEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "04" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.AcidezValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.AcidezEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "05" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.CuerpoValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.CuerpoEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "06" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.UniformidadValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.UniformidadEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "07" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.BalanceValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.BalanceEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "08" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.TazaLimpiaValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.TazaLimpiaEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "09" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.DulzorValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.DulzorEscala = escala[0].Label;
+                        }
+                    }
+                    if (item.AtributoDetalleId == "10" && item.Valor != null)
+                    {
+                        guiaRemisionDetalle.PuntajeCatadorValor = Convert.ToString(item.Valor);
+
+                        var escala = listaRanking.Where(obj => item.Valor >= Convert.ToDecimal(obj.Val1) && item.Valor <= Convert.ToDecimal(obj.Val2)).ToList();
+                        if (escala.Count > 0)
+                        {
+                            guiaRemisionDetalle.PuntajeCatadorEscala = escala[0].Label;
+                        }
+                    }
+                }
+
+                guiaRemisionDetalle.PuntajeTotalValor = Convert.ToString(consultaImpresionGuiaRemision.PuntajeFinal);
+                guiaRemisionDetalle.Taza = Convert.ToString(consultaImpresionGuiaRemision.Taza);
+                guiaRemisionDetalle.Intensidad = Convert.ToString(consultaImpresionGuiaRemision.TazaIntensidad);
+                guiaRemisionDetalle.Intensidad2 = Convert.ToString(consultaImpresionGuiaRemision.Intensidad);
+                guiaRemisionDetalle.PuntajeFinal = Convert.ToString(consultaImpresionGuiaRemision.PuntajeFinal);
+                guiaRemisionDetalle.Observaciones = consultaImpresionGuiaRemision.ObservacionAnalisisSensorial;
                 generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);
+
             }
             return generarPDFGuiaRemisionResponseDTO;
         }

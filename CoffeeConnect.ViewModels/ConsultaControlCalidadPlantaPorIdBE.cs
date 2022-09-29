@@ -434,6 +434,7 @@ namespace CoffeeConnect.DTO
 		public string ControlCalidadTipoId { get; set; }
 		public string ControlCalidadEmpaqueId { get; set; }
 
+		public string NumeroCalidadPlanta { get; set; }
 		#endregion
 
 	}

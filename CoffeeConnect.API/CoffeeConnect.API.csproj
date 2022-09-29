@@ -15,6 +15,7 @@
     <None Remove="Reportes\NotaCompra.rdlc" />
     <None Remove="Reportes\rptAdelanto.rdlc" />
     <None Remove="Reportes\rptAnticipo.rdlc" />
+    <None Remove="Reportes\rptControlCalidad.rdlc" />
     <None Remove="Reportes\rptGuiaRemision.rdlc" />
     <None Remove="Reportes\rptNotaIngreso.rdlc" />
     <None Remove="Reportes\rptOrdenProceso.rdlc" />
@@ -41,6 +42,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reportes\rptAnticipo.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reportes\rptControlCalidad.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reportes\rptNotaIngreso.rdlc">
