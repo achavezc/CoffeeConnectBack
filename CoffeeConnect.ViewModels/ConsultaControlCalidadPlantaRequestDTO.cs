@@ -6,6 +6,7 @@ namespace CoffeeConnect.DTO
 {
    public  class ConsultaControlCalidadPlantaRequestDTO
     {
+        public String NumeroControlCalidad { get; set; }
         public String Numero { get; set; }
 
         public String NumeroGuiaRemision { get; set; }

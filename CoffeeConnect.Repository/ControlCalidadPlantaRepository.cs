@@ -23,6 +23,7 @@ namespace CoffeeConnect.Repository
         public IEnumerable<ConsultaControlCalidadPlantaBE> ConsultarControlCalidadPlanta(ConsultaControlCalidadPlantaRequestDTO request)
         {
             var parameters = new DynamicParameters();
+            parameters.Add("NumeroControlCalidad", request.NumeroControlCalidad);
             parameters.Add("Numero", request.Numero);
             parameters.Add("NumeroGuiaRemision", request.NumeroGuiaRemision);
             parameters.Add("RazonSocialOrganizacion", request.RazonSocialOrganizacion);
