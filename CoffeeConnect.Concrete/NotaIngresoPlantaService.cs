@@ -236,108 +236,108 @@ namespace CoffeeConnect.Service
             if (request.AnalisisFisicoColorDetalleList.FirstOrDefault() != null)
             {
 
-                List<NotaIngresoPlantaAnalisisFisicoColorDetalleTipo> AnalisisFisicoColorDetalleList = new List<NotaIngresoPlantaAnalisisFisicoColorDetalleTipo>();
+                List<ControlCalidadPlantaAnalisisFisicoColorDetalleTipo > AnalisisFisicoColorDetalleList = new List<ControlCalidadPlantaAnalisisFisicoColorDetalleTipo>();
 
                 request.AnalisisFisicoColorDetalleList.ForEach(z =>
                 {
-                    NotaIngresoPlantaAnalisisFisicoColorDetalleTipo item = new NotaIngresoPlantaAnalisisFisicoColorDetalleTipo();
+                    ControlCalidadPlantaAnalisisFisicoColorDetalleTipo item = new ControlCalidadPlantaAnalisisFisicoColorDetalleTipo();
                     item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
                     item.ColorDetalleId = z.ColorDetalleId;
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoColorDetalleList.Add(item);
                 });
 
-                affected = _INotaIngresoPlantaRepository.ActualizarNotaIngresoPlantaAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.NotaIngresoPlantaId);
             }
             #endregion
 
             #region Analisis Fisico Defecto Primario
             if (request.AnalisisFisicoDefectoPrimarioDetalleList.FirstOrDefault() != null)
             {
-                List<NotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> AnalisisFisicoDefectoPrimarioDetalleList = new List<NotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalleTipo>();
+                List<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> AnalisisFisicoDefectoPrimarioDetalleList = new List<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo>();
 
                 request.AnalisisFisicoDefectoPrimarioDetalleList.ForEach(z =>
                 {
-                    NotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalleTipo item = new NotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalleTipo();
+                    ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo item = new ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo();
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
                     item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoDefectoPrimarioDetalleList.Add(item);
                 });
 
-                affected = _INotaIngresoPlantaRepository.ActualizarNotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalle(AnalisisFisicoDefectoPrimarioDetalleList, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle(AnalisisFisicoDefectoPrimarioDetalleList, request.NotaIngresoPlantaId);
             }
             #endregion
 
             #region "Analisis Fisico Defecto Secundario Detalle"
             if (request.AnalisisFisicoDefectoSecundarioDetalleList.FirstOrDefault() != null)
             {
-                List<NotaIngresoPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<NotaIngresoPlantaAnalisisFisicoDefectoSecundarioDetalleTipo>();
+                List<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo>();
 
                 request.AnalisisFisicoDefectoSecundarioDetalleList.ForEach(z =>
                 {
-                    NotaIngresoPlantaAnalisisFisicoDefectoSecundarioDetalleTipo item = new NotaIngresoPlantaAnalisisFisicoDefectoSecundarioDetalleTipo();
+                    ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo item = new ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo();
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
                     item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
                 });
 
-                affected = _INotaIngresoPlantaRepository.ActualizarNotaIngresoPlantaAnalisisFisicoDefectoSecundarioDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.NotaIngresoPlantaId);
             }
             #endregion
 
             #region "Analisis Fisico Olor Detalle"
             if (request.AnalisisFisicoOlorDetalleList.FirstOrDefault() != null)
             {
-                List<NotaIngresoPlantaAnalisisFisicoOlorDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<NotaIngresoPlantaAnalisisFisicoOlorDetalleTipo>();
+                List<ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo>();
 
                 request.AnalisisFisicoOlorDetalleList.ForEach(z =>
                 {
-                    NotaIngresoPlantaAnalisisFisicoOlorDetalleTipo item = new NotaIngresoPlantaAnalisisFisicoOlorDetalleTipo();
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo item = new ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo();
+                    item.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
                     item.OlorDetalleDescripcion = z.OlorDetalleDescripcion;
                     item.OlorDetalleId = z.OlorDetalleId;
                     item.Valor = z.Valor;
                     AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
                 });
 
-                affected = _INotaIngresoPlantaRepository.ActualizarNotaIngresoPlantaAnalisisFisicoOlorDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoOlorDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.NotaIngresoPlantaId);
             }
             #endregion
 
             #region "Analisis Sensorial Atributo"
             if (request.AnalisisSensorialAtributoDetalleList.FirstOrDefault() != null)
             {
-                List<NotaIngresoPlantaAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<NotaIngresoPlantaAnalisisSensorialAtributoDetalleTipo>();
+                List<ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo>();
 
                 request.AnalisisSensorialAtributoDetalleList.ForEach(z =>
                 {
-                    NotaIngresoPlantaAnalisisSensorialAtributoDetalleTipo item = new NotaIngresoPlantaAnalisisSensorialAtributoDetalleTipo();
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo item = new ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo();
+                    item.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
                     item.AtributoDetalleDescripcion = z.AtributoDetalleDescripcion;
                     item.AtributoDetalleId = z.AtributoDetalleId;
                     item.Valor = z.Valor;
                     AnalisisSensorialAtributoDetalle.Add(item);
                 });
 
-                affected = _INotaIngresoPlantaRepository.ActualizarNotaIngresoPlantaAnalisisSensorialAtributoDetalle(AnalisisSensorialAtributoDetalle, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisSensorialAtributoDetalle(AnalisisSensorialAtributoDetalle, request.NotaIngresoPlantaId);
             }
             #endregion
 
             if (request.AnalisisSensorialDefectoDetalleList.FirstOrDefault() != null)
             {
-                List<NotaIngresoPlantaAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<NotaIngresoPlantaAnalisisSensorialDefectoDetalleTipo>();
+                List<ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo>();
 
                 request.AnalisisSensorialDefectoDetalleList.ForEach(z =>
                 {
-                    NotaIngresoPlantaAnalisisSensorialDefectoDetalleTipo item = new NotaIngresoPlantaAnalisisSensorialDefectoDetalleTipo();
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo item = new ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo();
+                    item.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
                     item.DefectoDetalleId = z.DefectoDetalleId;
 
@@ -345,19 +345,19 @@ namespace CoffeeConnect.Service
                     AnalisisSensorialDefectoDetalle.Add(item);
                 });
 
-                affected = _INotaIngresoPlantaRepository.ActualizarNotaIngresoPlantaAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.NotaIngresoPlantaId);
             }
 
 
             if (request.RegistroTostadoIndicadorDetalleList.FirstOrDefault() != null)
             {
-                List<NotaIngresoPlantaRegistroTostadoIndicadorDetalleTipo> RegistroTostadoIndicadorDetalle = new List<NotaIngresoPlantaRegistroTostadoIndicadorDetalleTipo>();
+                List<ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo> RegistroTostadoIndicadorDetalle = new List<ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo>();
 
                 request.RegistroTostadoIndicadorDetalleList.ForEach(z =>
                 {
 
-                    NotaIngresoPlantaRegistroTostadoIndicadorDetalleTipo item = new NotaIngresoPlantaRegistroTostadoIndicadorDetalleTipo();
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo item = new ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo();
+                    item.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
                     item.IndicadorDetalleDescripcion = z.IndicadorDetalleDescripcion;
                     item.IndicadorDetalleId = z.IndicadorDetalleId;
                     item.Valor = z.Valor;
@@ -365,7 +365,7 @@ namespace CoffeeConnect.Service
                     RegistroTostadoIndicadorDetalle.Add(item);
                 });
 
-                affected = _INotaIngresoPlantaRepository.ActualizarNotaIngresoPlantaRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, request.NotaIngresoPlantaId);
             }
 
             return affected;

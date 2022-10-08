@@ -211,7 +211,7 @@ namespace CoffeeConnect.Service
 
             ControlCalidadPlanta ControlCalidadPlanta = new ControlCalidadPlanta();
 
-            ControlCalidadPlanta.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+            ControlCalidadPlanta.ControlCalidadPlantaId = request.NotaIngresoPlantaId;
             ControlCalidadPlanta.ExportableGramosAnalisisFisico = request.ExportableGramosAnalisisFisico;
             ControlCalidadPlanta.ExportablePorcentajeAnalisisFisico = request.ExportablePorcentajeAnalisisFisico;
             ControlCalidadPlanta.DescarteGramosAnalisisFisico = request.DescarteGramosAnalisisFisico;
@@ -267,7 +267,7 @@ namespace CoffeeConnect.Service
                     ControlCalidadPlantaAnalisisFisicoColorDetalleTipo item = new ControlCalidadPlantaAnalisisFisicoColorDetalleTipo();
                     item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
                     item.ColorDetalleId = z.ColorDetalleId;
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.NotaIngresoPlantaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoColorDetalleList.Add(item);
                 });
@@ -287,7 +287,7 @@ namespace CoffeeConnect.Service
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
                     item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.NotaIngresoPlantaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoDefectoPrimarioDetalleList.Add(item);
                 });
@@ -307,7 +307,7 @@ namespace CoffeeConnect.Service
                     item.DefectoDetalleId = z.DefectoDetalleId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
                     item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.NotaIngresoPlantaId;
                     item.Valor = z.Valor;
                     AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
                 });
@@ -324,7 +324,7 @@ namespace CoffeeConnect.Service
                 request.AnalisisFisicoOlorDetalleList.ForEach(z =>
                 {
                     ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo item = new ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo();
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.NotaIngresoPlantaId;
                     item.OlorDetalleDescripcion = z.OlorDetalleDescripcion;
                     item.OlorDetalleId = z.OlorDetalleId;
                     item.Valor = z.Valor;
@@ -343,7 +343,7 @@ namespace CoffeeConnect.Service
                 request.AnalisisSensorialAtributoDetalleList.ForEach(z =>
                 {
                     ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo item = new ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo();
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.NotaIngresoPlantaId;
                     item.AtributoDetalleDescripcion = z.AtributoDetalleDescripcion;
                     item.AtributoDetalleId = z.AtributoDetalleId;
                     item.Valor = z.Valor;
@@ -361,7 +361,7 @@ namespace CoffeeConnect.Service
                 request.AnalisisSensorialDefectoDetalleList.ForEach(z =>
                 {
                     ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo item = new ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo();
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.NotaIngresoPlantaId;
                     item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
                     item.DefectoDetalleId = z.DefectoDetalleId;
 
@@ -381,7 +381,7 @@ namespace CoffeeConnect.Service
                 {
 
                     ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo item = new ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo();
-                    item.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+                    item.ControlCalidadPlantaId = request.NotaIngresoPlantaId;
                     item.IndicadorDetalleDescripcion = z.IndicadorDetalleDescripcion;
                     item.IndicadorDetalleId = z.IndicadorDetalleId;
                     item.Valor = z.Valor;
