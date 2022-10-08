@@ -226,7 +226,9 @@ namespace CoffeeConnect.Service
             //NotaIngresoPlanta.CantidadProcesada = consultaNotaIngresoPlantaPorIdBE.CantidadProcesada + NotaIngresoPlanta.CantidadControlCalidad;
             //NotaIngresoPlanta.KilosNetosProcesados = consultaNotaIngresoPlantaPorIdBE.KilosNetosProcesado + NotaIngresoPlanta.KilosNetosControlCalidad;
 
-            int affected2 = _IControlCalidadPlantaRepository.ActualizarControlCalidad(NotaIngresoPlanta);
+            ControlCalidadPlanta controlCalidadPlanta = _Mapper.Map<ControlCalidadPlanta>(NotaIngresoPlanta);
+
+            int affected2 = _IControlCalidadPlantaRepository.ActualizarControlCalidad(controlCalidadPlanta);
             int affected = _INotaIngresoPlantaRepository.ActualizarAnalisisCalidad(NotaIngresoPlanta);
           
 

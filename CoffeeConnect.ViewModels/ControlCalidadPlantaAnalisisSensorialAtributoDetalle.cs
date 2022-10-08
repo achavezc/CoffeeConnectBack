@@ -10,13 +10,13 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the NotaIngresoPlantaAnalisisSensorialAtributoDetalleId value.
 		/// </summary>
-		public int NotaIngresoPlantaAnalisisSensorialAtributoDetalleId
+		public int ControlCalidadPlantaAnalisisSensorialAtributoDetalleId
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the NotaIngresoPlantaId value.
 		/// </summary>
-		public int NotaIngresoPlantaId
+		public int ControlCalidadPlantaId
 		{ get; set; }
 
 		/// <summary>

@@ -93,19 +93,19 @@ namespace CoffeeConnect.Service
             {
                // if (consultaControlCalidadPlantaPorIdBE.EstadoId != NotaIngresoPlantaEstados.Pesado)
                 //{
-                    consultaControlCalidadPlantaPorIdBE.AnalisisFisicoColorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(consultaControlCalidadPlantaPorIdBE.NotaIngresoPlantaId).ToList();
+                    consultaControlCalidadPlantaPorIdBE.AnalisisFisicoColorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(consultaControlCalidadPlantaPorIdBE.ControlCalidadPlantaId).ToList();
 
-                    consultaControlCalidadPlantaPorIdBE.AnalisisFisicoOlorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoOlorDetallePorId(consultaControlCalidadPlantaPorIdBE.NotaIngresoPlantaId).ToList();
+                    consultaControlCalidadPlantaPorIdBE.AnalisisFisicoOlorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoOlorDetallePorId(consultaControlCalidadPlantaPorIdBE.ControlCalidadPlantaId).ToList();
 
-                    consultaControlCalidadPlantaPorIdBE.AnalisisFisicoDefectoPrimarioDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetallePorId(consultaControlCalidadPlantaPorIdBE.NotaIngresoPlantaId).ToList();
+                    consultaControlCalidadPlantaPorIdBE.AnalisisFisicoDefectoPrimarioDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetallePorId(consultaControlCalidadPlantaPorIdBE.ControlCalidadPlantaId).ToList();
 
-                    consultaControlCalidadPlantaPorIdBE.AnalisisFisicoDefectoSecundarioDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetallePorId(consultaControlCalidadPlantaPorIdBE.NotaIngresoPlantaId).ToList();
+                    consultaControlCalidadPlantaPorIdBE.AnalisisFisicoDefectoSecundarioDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetallePorId(consultaControlCalidadPlantaPorIdBE.ControlCalidadPlantaId).ToList();
 
-                    consultaControlCalidadPlantaPorIdBE.AnalisisSensorialAtributoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(consultaControlCalidadPlantaPorIdBE.NotaIngresoPlantaId).ToList();
+                    consultaControlCalidadPlantaPorIdBE.AnalisisSensorialAtributoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(consultaControlCalidadPlantaPorIdBE.ControlCalidadPlantaId).ToList();
 
-                    consultaControlCalidadPlantaPorIdBE.AnalisisSensorialDefectoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialDefectoDetallePorId(consultaControlCalidadPlantaPorIdBE.NotaIngresoPlantaId).ToList();
+                    consultaControlCalidadPlantaPorIdBE.AnalisisSensorialDefectoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialDefectoDetallePorId(consultaControlCalidadPlantaPorIdBE.ControlCalidadPlantaId).ToList();
 
-                    consultaControlCalidadPlantaPorIdBE.RegistroTostadoIndicadorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaRegistroTostadoIndicadorDetallePorId(consultaControlCalidadPlantaPorIdBE.NotaIngresoPlantaId).ToList();
+                    consultaControlCalidadPlantaPorIdBE.RegistroTostadoIndicadorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaRegistroTostadoIndicadorDetallePorId(consultaControlCalidadPlantaPorIdBE.ControlCalidadPlantaId).ToList();
 
                 //}
             }

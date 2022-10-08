@@ -19,27 +19,27 @@ namespace CoffeeConnect.Interface.Repository
         public int ControlCalidadPlantaActualizarProcesar(ControlCalidadPlanta ControlCalidadPlanta);
         public int ControlCalidadPlantaActualizarEstadoRechazado(ControlCalidadPlanta ControlCalidadPlanta);
 
-        IEnumerable<ControlCalidadPlantaAnalisisFisicoColorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(int NotaIngresoPlantaId);
+        IEnumerable<ControlCalidadPlantaAnalisisFisicoColorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(int ControlCalidadPlantaId);
 
-        IEnumerable<ControlCalidadPlantaAnalisisFisicoOlorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoOlorDetallePorId(int NotaIngresoPlantaId);
+        IEnumerable<ControlCalidadPlantaAnalisisFisicoOlorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoOlorDetallePorId(int ControlCalidadPlantaId);
 
-        IEnumerable<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle> ConsultarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetallePorId(int NotaIngresoPlantaId);
+        IEnumerable<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle> ConsultarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetallePorId(int ControlCalidadPlantaId);
 
-        IEnumerable<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle> ConsultarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetallePorId(int NotaIngresoPlantaId);
-        IEnumerable<ControlCalidadPlantaAnalisisSensorialAtributoDetalle> ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(int NotaIngresoPlantaId);
-        IEnumerable<ControlCalidadPlantaAnalisisSensorialDefectoDetalle> ConsultarControlCalidadPlantaAnalisisSensorialDefectoDetallePorId(int NotaIngresoPlantaId);
-        IEnumerable<ControlCalidadPlantaRegistroTostadoIndicadorDetalle> ConsultarControlCalidadPlantaRegistroTostadoIndicadorDetallePorId(int NotaIngresoPlantaId);
+        IEnumerable<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle> ConsultarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetallePorId(int ControlCalidadPlantaId);
+        IEnumerable<ControlCalidadPlantaAnalisisSensorialAtributoDetalle> ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(int ControlCalidadPlantaId);
+        IEnumerable<ControlCalidadPlantaAnalisisSensorialDefectoDetalle> ConsultarControlCalidadPlantaAnalisisSensorialDefectoDetallePorId(int ControlCalidadlantaId);
+        IEnumerable<ControlCalidadPlantaRegistroTostadoIndicadorDetalle> ConsultarControlCalidadPlantaRegistroTostadoIndicadorDetallePorId(int ControlCalidadPlantaId);
 
-        int ActualizarControlCalidadPlantaAnalisisFisicoColorDetalle(List<ControlCalidadPlantaAnalisisFisicoColorDetalleTipo> request, int NotaIngresoPlantaId);
-        int ActualizarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle(List<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> request, int NotaIngresoPlantaId);
-        int ActualizarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle(List<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> request, int NotaIngresoPlantaId);
-        int ActualizarControlCalidadPlantaAnalisisFisicoOlorDetalle(List<ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo> request, int NotaIngresoPlantaId);
-        int ActualizarControlCalidadPlantaAnalisisSensorialAtributoDetalle(List<ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo> request, int NotaIngresoPlantaId);
-        int ActualizarControlCalidadPlantaAnalisisSensorialDefectoDetalle(List<ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo> request, int NotaIngresoPlantaId);
-        int ActualizarControlCalidadPlantaRegistroTostadoIndicadorDetalle(List<ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo> request, int NotaIngresoPlantaId);
+        int ActualizarControlCalidadPlantaAnalisisFisicoColorDetalle(List<ControlCalidadPlantaAnalisisFisicoColorDetalleTipo> request, int ControlCalidadPlantaId);
+        int ActualizarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle(List<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> request, int ControlCalidadPlantaId);
+        int ActualizarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle(List<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> request, int ControlCalidadPlantaId);
+        int ActualizarControlCalidadPlantaAnalisisFisicoOlorDetalle(List<ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo> request, int ControlCalidadPlantaId);
+        int ActualizarControlCalidadPlantaAnalisisSensorialAtributoDetalle(List<ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo> request, int ControlCalidadPlantaId);
+        int ActualizarControlCalidadPlantaAnalisisSensorialDefectoDetalle(List<ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo> request, int ControlCalidadPlantaId);
+        int ActualizarControlCalidadPlantaRegistroTostadoIndicadorDetalle(List<ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo> request, int ControlCalidadPlantaId);
 
 
-        int ActualizarEstadoControlCalidad(int NotaIngresoPlantaId, DateTime fecha, string usuario, string estadoId);
-        int ActualizarControlCalidad(NotaIngresoPlanta NotaIngresoPlanta);
+        int ActualizarEstadoControlCalidad(int ControlCalidadPlantaId, DateTime fecha, string usuario, string estadoId);
+        int ActualizarControlCalidad(ControlCalidadPlanta ControlCalidadPlanta);
     }
 }

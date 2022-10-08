@@ -338,6 +338,14 @@ namespace CoffeeConnect.DTO
 
 		public string CodigoTipoConcepto { get; set; }
 
+		public string ControlCalidadTipoId { get; set; }
+
+		public string ControlCalidadEmpaqueId { get; set; }
+
+		
+		  
+
+
 		#endregion
 	}
 }

@@ -258,7 +258,7 @@ namespace CoffeeConnect.Repository
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlanta.NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", NotaIngresoPlanta.ControlCalidadPlantaId);
             parameters.Add("@ExportableGramosAnalisisFisico", NotaIngresoPlanta.ExportableGramosAnalisisFisico);
             parameters.Add("@ExportablePorcentajeAnalisisFisico", NotaIngresoPlanta.ExportablePorcentajeAnalisisFisico);
             parameters.Add("@DescarteGramosAnalisisFisico", NotaIngresoPlanta.DescarteGramosAnalisisFisico);
@@ -286,7 +286,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaCalidadActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaCalidadActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
@@ -294,44 +294,44 @@ namespace CoffeeConnect.Repository
 
 
 
-        public int ActualizarControlCalidad(NotaIngresoPlanta NotaIngresoPlanta)
+        public int ActualizarControlCalidad(ControlCalidadPlanta ControlCalidadPlanta)
         {
             int result = 0;
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlanta.NotaIngresoPlantaId);
-            parameters.Add("@ExportableGramosAnalisisFisico", NotaIngresoPlanta.ExportableGramosAnalisisFisico);
-            parameters.Add("@ExportablePorcentajeAnalisisFisico", NotaIngresoPlanta.ExportablePorcentajeAnalisisFisico);
-            parameters.Add("@DescarteGramosAnalisisFisico", NotaIngresoPlanta.DescarteGramosAnalisisFisico);
-            parameters.Add("@DescartePorcentajeAnalisisFisico", NotaIngresoPlanta.DescartePorcentajeAnalisisFisico);
-            parameters.Add("@CascarillaGramosAnalisisFisico", NotaIngresoPlanta.CascarillaGramosAnalisisFisico);
-            parameters.Add("@CascarillaPorcentajeAnalisisFisico", NotaIngresoPlanta.CascarillaPorcentajeAnalisisFisico);
-            parameters.Add("@TotalGramosAnalisisFisico", NotaIngresoPlanta.TotalGramosAnalisisFisico);
-            parameters.Add("@TotalPorcentajeAnalisisFisico", NotaIngresoPlanta.TotalPorcentajeAnalisisFisico);
-            parameters.Add("@HumedadPorcentajeAnalisisFisico", NotaIngresoPlanta.HumedadPorcentajeAnalisisFisico);
-            parameters.Add("@TotalAnalisisSensorial", NotaIngresoPlanta.TotalAnalisisSensorial);
+            parameters.Add("@NotaIngresoPlantaId", ControlCalidadPlanta.NotaIngresoPlantaId);
+            parameters.Add("@ExportableGramosAnalisisFisico", ControlCalidadPlanta.ExportableGramosAnalisisFisico);
+            parameters.Add("@ExportablePorcentajeAnalisisFisico", ControlCalidadPlanta.ExportablePorcentajeAnalisisFisico);
+            parameters.Add("@DescarteGramosAnalisisFisico", ControlCalidadPlanta.DescarteGramosAnalisisFisico);
+            parameters.Add("@DescartePorcentajeAnalisisFisico", ControlCalidadPlanta.DescartePorcentajeAnalisisFisico);
+            parameters.Add("@CascarillaGramosAnalisisFisico", ControlCalidadPlanta.CascarillaGramosAnalisisFisico);
+            parameters.Add("@CascarillaPorcentajeAnalisisFisico", ControlCalidadPlanta.CascarillaPorcentajeAnalisisFisico);
+            parameters.Add("@TotalGramosAnalisisFisico", ControlCalidadPlanta.TotalGramosAnalisisFisico);
+            parameters.Add("@TotalPorcentajeAnalisisFisico", ControlCalidadPlanta.TotalPorcentajeAnalisisFisico);
+            parameters.Add("@HumedadPorcentajeAnalisisFisico", ControlCalidadPlanta.HumedadPorcentajeAnalisisFisico);
+            parameters.Add("@TotalAnalisisSensorial", ControlCalidadPlanta.TotalAnalisisSensorial);
 
-            parameters.Add("@ObservacionAnalisisFisico", NotaIngresoPlanta.ObservacionAnalisisFisico);
-            parameters.Add("@FechaCalidad", NotaIngresoPlanta.FechaCalidad);
-            parameters.Add("@UsuarioCalidad", NotaIngresoPlanta.UsuarioCalidad);
-            parameters.Add("@ObservacionRegistroTostado", NotaIngresoPlanta.ObservacionRegistroTostado);
-            parameters.Add("@ObservacionAnalisisSensorial", NotaIngresoPlanta.ObservacionAnalisisSensorial);
-            parameters.Add("@EstadoId", NotaIngresoPlanta.EstadoId);
-            parameters.Add("@FechaUltimaActualizacion", NotaIngresoPlanta.FechaCalidad);
-            parameters.Add("@UsuarioUltimaActualizacion", NotaIngresoPlanta.UsuarioCalidad);
-            parameters.Add("@Taza", NotaIngresoPlanta.Taza);
-            parameters.Add("@Intensidad", NotaIngresoPlanta.Intensidad);
-            parameters.Add("@TazaIntensidad", NotaIngresoPlanta.TazaIntensidad);
-            parameters.Add("@PuntajeFinal", NotaIngresoPlanta.PuntajeFinal);
+            parameters.Add("@ObservacionAnalisisFisico", ControlCalidadPlanta.ObservacionAnalisisFisico);
+            parameters.Add("@FechaCalidad", ControlCalidadPlanta.FechaCalidad);
+            parameters.Add("@UsuarioCalidad", ControlCalidadPlanta.UsuarioCalidad);
+            parameters.Add("@ObservacionRegistroTostado", ControlCalidadPlanta.ObservacionRegistroTostado);
+            parameters.Add("@ObservacionAnalisisSensorial", ControlCalidadPlanta.ObservacionAnalisisSensorial);
+            parameters.Add("@EstadoId", ControlCalidadPlanta.EstadoId);
+            parameters.Add("@FechaUltimaActualizacion", ControlCalidadPlanta.FechaCalidad);
+            parameters.Add("@UsuarioUltimaActualizacion", ControlCalidadPlanta.UsuarioCalidad);
+            parameters.Add("@Taza", ControlCalidadPlanta.Taza);
+            parameters.Add("@Intensidad", ControlCalidadPlanta.Intensidad);
+            parameters.Add("@TazaIntensidad", ControlCalidadPlanta.TazaIntensidad);
+            parameters.Add("@PuntajeFinal", ControlCalidadPlanta.PuntajeFinal);
 
-            parameters.Add("@ControlCalidadPlantaId", NotaIngresoPlanta.ControlCalidadPlantaId);
-            parameters.Add("@CantidadControlCalidad", NotaIngresoPlanta.CantidadControlCalidad);
-            parameters.Add("@PesoBrutoControlCalidad", NotaIngresoPlanta.PesoBrutoControlCalidad);
-            parameters.Add("@TaraControlCalidad", NotaIngresoPlanta.TaraControlCalidad);
-            parameters.Add("@KilosNetosControlCalidad", NotaIngresoPlanta.KilosNetosControlCalidad);
-            parameters.Add("@ControlCalidadTipoId", NotaIngresoPlanta.ControlCalidadTipoId);
-            parameters.Add("@ControlCalidadEmpaqueId", NotaIngresoPlanta.ControlCalidadEmpaqueId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlanta.ControlCalidadPlantaId);
+            parameters.Add("@CantidadControlCalidad", ControlCalidadPlanta.CantidadControlCalidad);
+            parameters.Add("@PesoBrutoControlCalidad", ControlCalidadPlanta.PesoBrutoControlCalidad);
+            parameters.Add("@TaraControlCalidad", ControlCalidadPlanta.TaraControlCalidad);
+            parameters.Add("@KilosNetosControlCalidad", ControlCalidadPlanta.KilosNetosControlCalidad);
+            parameters.Add("@ControlCalidadTipoId", ControlCalidadPlanta.ControlCalidadTipoId);
+            parameters.Add("@ControlCalidadEmpaqueId", ControlCalidadPlanta.ControlCalidadEmpaqueId);
 
 
 
@@ -343,158 +343,134 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-        public IEnumerable<ControlCalidadPlantaAnalisisFisicoColorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(int NotaIngresoPlantaId)
+        public IEnumerable<ControlCalidadPlantaAnalisisFisicoColorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(int ControlCalidadPlantaId)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ControlCalidadPlantaAnalisisFisicoColorDetalle>("uspNotaIngresoPlantaAnalisisFisicoColorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ControlCalidadPlantaAnalisisFisicoColorDetalle>("uspControlCalidadPlantaAnalisisFisicoColorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
 
             }
 
 
         }
 
-        public IEnumerable<ControlCalidadPlantaAnalisisFisicoOlorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoOlorDetallePorId(int NotaIngresoPlantaId)
+        public IEnumerable<ControlCalidadPlantaAnalisisFisicoOlorDetalle> ConsultarControlCalidadPlantaAnalisisFisicoOlorDetallePorId(int ControlCalidadPlantaId)
         {
 
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ControlCalidadPlantaAnalisisFisicoOlorDetalle>("uspNotaIngresoPlantaAnalisisFisicoOlorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ControlCalidadPlantaAnalisisFisicoOlorDetalle>("uspControlCalidadPlantaAnalisisFisicoOlorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
 
             }
         }
 
-        public IEnumerable<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle> ConsultarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetallePorId(int NotaIngresoPlantaId)
+        public IEnumerable<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle> ConsultarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetallePorId(int ControlCalidadPlantaId)
         {
 
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle>("uspNotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle>("uspControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
 
-
-            }
-
-
-        }
-
-        public IEnumerable<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle> ConsultarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetallePorId(int NotaIngresoPlantaId)
-        {
-            var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
-
-            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-            {
-                return db.Query<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle>("uspNotaIngresoPlantaAnalisisFisicoDefectoSecundarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
 
             }
 
 
         }
 
-        public IEnumerable<ControlCalidadPlantaAnalisisSensorialAtributoDetalle> ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(int NotaIngresoPlantaId)
+        public IEnumerable<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle> ConsultarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetallePorId(int ControlCalidadPlantaId)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ControlCalidadPlantaAnalisisSensorialAtributoDetalle>("uspNotaIngresoPlantaAnalisisSensorialAtributoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle>("uspControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
             }
+
+
         }
 
-        public IEnumerable<ControlCalidadPlantaAnalisisSensorialDefectoDetalle> ConsultarControlCalidadPlantaAnalisisSensorialDefectoDetallePorId(int NotaIngresoPlantaId)
+        public IEnumerable<ControlCalidadPlantaAnalisisSensorialAtributoDetalle> ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(int ControlCalidadPlantaId)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ControlCalidadPlantaAnalisisSensorialDefectoDetalle>("uspNotaIngresoPlantaAnalisisSensorialDefectoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ControlCalidadPlantaAnalisisSensorialAtributoDetalle>("uspControlCalidadPlantaAnalisisSensorialAtributoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 
-        public IEnumerable<ControlCalidadPlantaRegistroTostadoIndicadorDetalle> ConsultarControlCalidadPlantaRegistroTostadoIndicadorDetallePorId(int NotaIngresoPlantaId)
+        public IEnumerable<ControlCalidadPlantaAnalisisSensorialDefectoDetalle> ConsultarControlCalidadPlantaAnalisisSensorialDefectoDetallePorId(int ControlCalidadPlantaId)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                return db.Query<ControlCalidadPlantaRegistroTostadoIndicadorDetalle>("uspNotaIngresoPlantaRegistroTostadoIndicadorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+                return db.Query<ControlCalidadPlantaAnalisisSensorialDefectoDetalle>("uspControlCalidadPlantaAnalisisSensorialDefectoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 
-        public int ActualizarControlCalidadPlantaAnalisisFisicoColorDetalle(List<ControlCalidadPlantaAnalisisFisicoColorDetalleTipo> request, int NotaIngresoPlantaId)
+        public IEnumerable<ControlCalidadPlantaRegistroTostadoIndicadorDetalle> ConsultarControlCalidadPlantaRegistroTostadoIndicadorDetallePorId(int ControlCalidadPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ControlCalidadPlantaRegistroTostadoIndicadorDetalle>("uspControlCalidadPlantaRegistroTostadoIndicadorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public int ActualizarControlCalidadPlantaAnalisisFisicoColorDetalle(List<ControlCalidadPlantaAnalisisFisicoColorDetalleTipo> request, int ControlCalidadPlantaId)
         {
             //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
             int result = 0;
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
-            parameters.Add("@NotaIngresoPlantaAnalisisFisicoColorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+            parameters.Add("@ControlCalidadPlantaAnalisisFisicoColorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaAnalisisFisicoColorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
 
         }
 
-        public int ActualizarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle(List<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> request, int NotaIngresoPlantaId)
+        public int ActualizarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle(List<ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> request, int ControlCalidadPlantaId)
         {
             //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
             int result = 0;
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
-            parameters.Add("@NotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+            parameters.Add("@ControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaAnalisisFisicoDefectoPrimarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
-            }
-
-            return result;
-
-
-            //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
-
-        }
-
-        public int ActualizarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle(List<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> request, int NotaIngresoPlantaId)
-        {
-            //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
-            int result = 0;
-
-            var parameters = new DynamicParameters();
-
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
-            parameters.Add("@NotaIngresoPlantaAnalisisFisicoDefectoSecundarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
-
-
-
-            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-            {
-                result = db.Execute("uspNotaIngresoPlantaAnalisisFisicoDefectoSecundarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
@@ -503,81 +479,105 @@ namespace CoffeeConnect.Repository
             //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
 
         }
-        public int ActualizarControlCalidadPlantaAnalisisFisicoOlorDetalle(List<ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo> request, int NotaIngresoPlantaId)
+
+        public int ActualizarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle(List<ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> request, int ControlCalidadPlantaId)
         {
             //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
             int result = 0;
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
-            parameters.Add("@NotaIngresoPlantaAnalisisFisicoOlorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+            parameters.Add("@ControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaAnalisisFisicoOlorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
 
+
+            //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
+
         }
-        public int ActualizarControlCalidadPlantaAnalisisSensorialAtributoDetalle(List<ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo> request, int NotaIngresoPlantaId)
+        public int ActualizarControlCalidadPlantaAnalisisFisicoOlorDetalle(List<ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo> request, int ControlCalidadPlantaId)
         {
             //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
             int result = 0;
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
-            parameters.Add("@NotaIngresoPlantaAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+            parameters.Add("@ControlCalidadPlantaAnalisisFisicoOlorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaAnalisisSensorialAtributoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaAnalisisFisicoOlorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
 
         }
-        public int ActualizarControlCalidadPlantaAnalisisSensorialDefectoDetalle(List<ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo> request, int NotaIngresoPlantaId)
+        public int ActualizarControlCalidadPlantaAnalisisSensorialAtributoDetalle(List<ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo> request, int ControlCalidadPlantaId)
         {
             //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
             int result = 0;
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
-            parameters.Add("@NotaIngresoPlantaAnalisisSensorialDefectoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+            parameters.Add("@ControlCalidadPlantaAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaAnalisisSensorialDefectoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaAnalisisSensorialAtributoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
 
         }
-        public int ActualizarControlCalidadPlantaRegistroTostadoIndicadorDetalle(List<ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo> request, int NotaIngresoPlantaId)
+        public int ActualizarControlCalidadPlantaAnalisisSensorialDefectoDetalle(List<ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo> request, int ControlCalidadPlantaId)
         {
             //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
             int result = 0;
 
             var parameters = new DynamicParameters();
 
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
-            parameters.Add("@NotaIngresoPlantaRegistroTostadoIndicadorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+            parameters.Add("@ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
 
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoPlantaRegistroTostadoIndicadorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspControlCalidadPlantaAnalisisSensorialDefectoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarControlCalidadPlantaRegistroTostadoIndicadorDetalle(List<ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo> request, int ControlCalidadPlantaId)
+        {
+            //uspNotaIngresoPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+            parameters.Add("@ControlCalidadPlantaRegistroTostadoIndicadorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspControlCalidadPlantaRegistroTostadoIndicadorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return result;
@@ -585,19 +585,19 @@ namespace CoffeeConnect.Repository
         }
 
 
-        public int ActualizarEstadoControlCalidad(int NotaIngresoPlantaId, DateTime fecha, string usuario, string estadoId)
+        public int ActualizarEstadoControlCalidad(int ControlCalidadPlantaId, DateTime fecha, string usuario, string estadoId)
         {
             int affected = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+            parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
             parameters.Add("@EstadoId", estadoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                affected = db.Execute("uspNotaIngresoPlantaActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
+                affected = db.Execute("uspControlCalidadPlantaActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
             }
 
             return affected;
