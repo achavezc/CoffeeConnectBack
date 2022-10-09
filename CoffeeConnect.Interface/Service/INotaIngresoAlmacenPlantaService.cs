@@ -6,8 +6,8 @@ namespace CoffeeConnect.Interface.Service
 {
     public interface INotaIngresoAlmacenPlantaService
     {
-       
-        int Registrar(EnviarAlmacenNotaIngresoPlantaRequestDTO request);
+
+        int Registrar(RegistrarActualizarNotaIngresoAlmacenPlantaRequestDTO request);
 
         List<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request);
 

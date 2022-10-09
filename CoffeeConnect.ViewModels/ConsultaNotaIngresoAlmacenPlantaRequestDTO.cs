@@ -13,32 +13,42 @@ namespace CoffeeConnect.DTO
 
         public String NumeroNotaIngresoPlanta { get; set; }
 
+        public String NumeroControlCalidad { get; set; }
+
+        public String NumeroGuiaRemision { get; set; }
+
+        public string AlmacenId { get; set; }
+
+        public int EmpresaId { get; set; }
+
+
 
         public String NumeroOrganizacion { get; set; }
 
-        public String RazonSocialOrganizacion { get; set; }
+        public String RazonSocialEmpresaOrigen { get; set; }
 
-        public String RucOrganizacion { get; set; }
-
-        public String CertificacionId { get; set; }
+        public String RucEmpresaOrigen { get; set; }
 
 
-        public String ProductoId { get; set; }
+        public DateTime? FechaInicioGuiaRemision { get; set; }
 
-        public String SubProductoId { get; set; }
+        public DateTime? FechaFinGuiaRemision { get; set; }
 
-    
-
-
-        public String EstadoId { get; set; }
 
         public DateTime FechaInicio { get; set; }
 
         public DateTime FechaFin { get; set; }
 
-        public int EmpresaId { get; set; }
+        public String ProductoId { get; set; }
 
-        public string AlmacenId { get; set; }
+        public String SubProductoId { get; set; }
+
+        public String MotivoIngresoId { get; set; }
+
+
+        public String EstadoId { get; set; }     
+
+       
 
         public decimal? RendimientoPorcentajeInicio
         { get; set; }

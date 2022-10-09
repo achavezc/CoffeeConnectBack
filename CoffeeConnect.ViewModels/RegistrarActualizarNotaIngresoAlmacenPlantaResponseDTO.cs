@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace CoffeeConnect.DTO
 {   
 
-    public class EnviarAlmacenNotaIngresoPlantaResponseDTO
+    public class RegistrarActualizarNotaIngresoAlmacenPlantaResponseDTO
     {
-        public EnviarAlmacenNotaIngresoPlantaResponseDTO()
+        public RegistrarActualizarNotaIngresoAlmacenPlantaResponseDTO()
         {
             this.Result = new Result();
         }

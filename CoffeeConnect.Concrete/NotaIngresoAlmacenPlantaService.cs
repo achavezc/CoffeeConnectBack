@@ -1,4 +1,5 @@
 ﻿
+using AutoMapper;
 using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
@@ -12,83 +13,37 @@ namespace CoffeeConnect.Service
 {
     public partial class NotaIngresoAlmacenPlantaService : INotaIngresoAlmacenPlantaService
     {
-
+        private readonly IMapper _Mapper;
         private INotaIngresoAlmacenPlantaRepository _INotaIngresoAlmacenPlantaRepository;
         private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
 
-        public NotaIngresoAlmacenPlantaService(INotaIngresoAlmacenPlantaRepository NotaIngresoAlmacenPlantaRepository, INotaIngresoPlantaRepository notaIngresoPlantaRepository, ICorrelativoRepository correlativoRepository)
+        public NotaIngresoAlmacenPlantaService(INotaIngresoAlmacenPlantaRepository NotaIngresoAlmacenPlantaRepository, IMapper mapper, INotaIngresoPlantaRepository notaIngresoPlantaRepository, ICorrelativoRepository correlativoRepository)
         {
             _INotaIngresoAlmacenPlantaRepository = NotaIngresoAlmacenPlantaRepository;
             _INotaIngresoPlantaRepository = notaIngresoPlantaRepository;
             _ICorrelativoRepository = correlativoRepository;
+            _Mapper = mapper;
         }
 
-        public int Registrar(EnviarAlmacenNotaIngresoPlantaRequestDTO request)
+        public int Registrar(RegistrarActualizarNotaIngresoAlmacenPlantaRequestDTO request)
         {
-            ConsultaNotaIngresoPlantaPorIdBE notaIngresoPlanta = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(request.NotaIngresoPlantaId);
+            //ConsultaNotaIngresoPlantaPorIdBE notaIngresoPlanta = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(request.NotaIngresoPlantaId);
 
-            NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta = new NotaIngresoAlmacenPlanta();
-            NotaIngresoAlmacenPlanta.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
-
-            NotaIngresoAlmacenPlanta.EmpresaId = notaIngresoPlanta.EmpresaId;
-            NotaIngresoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(notaIngresoPlanta.EmpresaId, Documentos.NotaIngresoAlmacenPlanta);
-            NotaIngresoAlmacenPlanta.AlmacenId = null;
-            NotaIngresoAlmacenPlanta.CertificacionId = notaIngresoPlanta.CertificacionId;
-            NotaIngresoAlmacenPlanta.EntidadCertificadoraId = notaIngresoPlanta.EntidadCertificadoraId;
-            NotaIngresoAlmacenPlanta.TipoProduccionId = notaIngresoPlanta.TipoProduccionId;
-            NotaIngresoAlmacenPlanta.ProductoId = notaIngresoPlanta.ProductoId;
-            NotaIngresoAlmacenPlanta.SubProductoId = notaIngresoPlanta.SubProductoId;
-            NotaIngresoAlmacenPlanta.UnidadMedidaIdPesado = notaIngresoPlanta.EmpaqueId;
-            NotaIngresoAlmacenPlanta.CantidadPesado = notaIngresoPlanta.Cantidad;
-            NotaIngresoAlmacenPlanta.KilosBrutosPesado = notaIngresoPlanta.KilosBrutos;
-            NotaIngresoAlmacenPlanta.TaraPesado = notaIngresoPlanta.Tara;
-            NotaIngresoAlmacenPlanta.KilosNetosPesado = notaIngresoPlanta.KilosBrutos - notaIngresoPlanta.Tara;
-   
-
-            NotaIngresoAlmacenPlanta.ExportableGramosAnalisisFisico = notaIngresoPlanta.ExportableGramosAnalisisFisico;
-            //NotaIngresoAlmacenPlanta.ExportableGramosAnalisisFisico = (notaIngresoPlanta.ExportableGramosAnalisisFisico.HasValue) ? notaIngresoPlanta.ExportableGramosAnalisisFisico.Value : 0;
+            NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
 
 
-            NotaIngresoAlmacenPlanta.ExportablePorcentajeAnalisisFisico = notaIngresoPlanta.ExportablePorcentajeAnalisisFisico;
-            NotaIngresoAlmacenPlanta.DescarteGramosAnalisisFisico = notaIngresoPlanta.DescarteGramosAnalisisFisico;
-            NotaIngresoAlmacenPlanta.DescartePorcentajeAnalisisFisico = notaIngresoPlanta.DescartePorcentajeAnalisisFisico;
-            NotaIngresoAlmacenPlanta.CascarillaGramosAnalisisFisico = notaIngresoPlanta.CascarillaGramosAnalisisFisico;
-            NotaIngresoAlmacenPlanta.CascarillaPorcentajeAnalisisFisico = notaIngresoPlanta.CascarillaPorcentajeAnalisisFisico;
-            NotaIngresoAlmacenPlanta.TotalGramosAnalisisFisico = notaIngresoPlanta.TotalGramosAnalisisFisico;
-
-            //NotaIngresoAlmacenPlanta.TotalGramosAnalisisFisico = (notaIngresoPlanta.TotalGramosAnalisisFisico.HasValue) ? notaIngresoPlanta.TotalGramosAnalisisFisico.Value : 0;
-
-            NotaIngresoAlmacenPlanta.TotalPorcentajeAnalisisFisico = notaIngresoPlanta.TotalPorcentajeAnalisisFisico;
-            NotaIngresoAlmacenPlanta.TotalAnalisisSensorial = notaIngresoPlanta.TotalAnalisisSensorial;
-            NotaIngresoAlmacenPlanta.HumedadPorcentajeAnalisisFisico = notaIngresoPlanta.HumedadPorcentajeAnalisisFisico;
-
-
-            NotaIngresoAlmacenPlanta.ExportablePorcentajeAnalisisFisico = notaIngresoPlanta.ExportablePorcentajeAnalisisFisico;
-
-            if (notaIngresoPlanta.TotalGramosAnalisisFisico.HasValue && notaIngresoPlanta.TotalGramosAnalisisFisico.Value >0)
-            {
-                NotaIngresoAlmacenPlanta.RendimientoPorcentaje = (notaIngresoPlanta.ExportableGramosAnalisisFisico / notaIngresoPlanta.TotalGramosAnalisisFisico) * 100;
-            }
-            else
-            {
-                NotaIngresoAlmacenPlanta.RendimientoPorcentaje = 0;
-
-            }
-                
-            
-            //NotaIngresoAlmacenPlanta.Observacion = guiaRecepcionMateriaPrima.Observacion;
             NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
             NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;
-            NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
-            NotaIngresoAlmacenPlanta.PesoporSaco = notaIngresoPlanta.PesoPorSaco;
+            NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoAlmacenPlantaEstados.Ingresado;
+        
 
 
 
 
             int affected = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
 
-            _INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoAlmacen);
+            //_INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoAlmacen);
 
             return affected;
         }

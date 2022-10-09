@@ -26,42 +26,25 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
+            parameters.Add("@ControlCalidadPlantaId", NotaIngresoAlmacenPlanta.ControlCalidadPlantaId);
             parameters.Add("@EmpresaId", NotaIngresoAlmacenPlanta.EmpresaId);
-            parameters.Add("@AlmacenId", NotaIngresoAlmacenPlanta.AlmacenId);
-            parameters.Add("@NotaIngresoPlantaId", NotaIngresoAlmacenPlanta.NotaIngresoPlantaId);
+            parameters.Add("@AlmacenId", NotaIngresoAlmacenPlanta.AlmacenId);           
             parameters.Add("@Numero", NotaIngresoAlmacenPlanta.Numero);
-            parameters.Add("@ProductoId", NotaIngresoAlmacenPlanta.ProductoId);
-            parameters.Add("@SubProductoId", NotaIngresoAlmacenPlanta.SubProductoId);
-            parameters.Add("@TipoProduccionId", NotaIngresoAlmacenPlanta.TipoProduccionId);
-            parameters.Add("@CertificacionId", NotaIngresoAlmacenPlanta.CertificacionId);
-            parameters.Add("@EntidadCertificadoraId", NotaIngresoAlmacenPlanta.EntidadCertificadoraId);            
-           
-            parameters.Add("@UnidadMedidaIdPesado", NotaIngresoAlmacenPlanta.UnidadMedidaIdPesado);
-            parameters.Add("@CalidadId", NotaIngresoAlmacenPlanta.CalidadId);
-            parameters.Add("@GradoId", NotaIngresoAlmacenPlanta.GradoId);
-            parameters.Add("@CantidadDefectos", NotaIngresoAlmacenPlanta.CantidadDefectos);
-            parameters.Add("@CantidadPesado", NotaIngresoAlmacenPlanta.CantidadPesado);
-            parameters.Add("@PesoPorSaco", NotaIngresoAlmacenPlanta.PesoporSaco);
-            parameters.Add("@KilosBrutosPesado", NotaIngresoAlmacenPlanta.KilosBrutosPesado);
-            parameters.Add("@TaraPesado", NotaIngresoAlmacenPlanta.TaraPesado);
-            parameters.Add("@KilosNetosPesado", NotaIngresoAlmacenPlanta.KilosNetosPesado);
-            parameters.Add("@ExportableGramosAnalisisFisico", NotaIngresoAlmacenPlanta.ExportableGramosAnalisisFisico);
-            parameters.Add("@ExportablePorcentajeAnalisisFisico", NotaIngresoAlmacenPlanta.ExportablePorcentajeAnalisisFisico);
-            parameters.Add("@DescarteGramosAnalisisFisico", NotaIngresoAlmacenPlanta.DescarteGramosAnalisisFisico);
-            parameters.Add("@DescartePorcentajeAnalisisFisico", NotaIngresoAlmacenPlanta.DescartePorcentajeAnalisisFisico);
-            parameters.Add("@CascarillaGramosAnalisisFisico", NotaIngresoAlmacenPlanta.CascarillaGramosAnalisisFisico);
-            parameters.Add("@CascarillaPorcentajeAnalisisFisico", NotaIngresoAlmacenPlanta.CascarillaPorcentajeAnalisisFisico);
-            parameters.Add("@TotalGramosAnalisisFisico", NotaIngresoAlmacenPlanta.TotalGramosAnalisisFisico);
-            parameters.Add("@TotalPorcentajeAnalisisFisico", NotaIngresoAlmacenPlanta.TotalPorcentajeAnalisisFisico);
-            parameters.Add("@TotalAnalisisSensorial", NotaIngresoAlmacenPlanta.TotalAnalisisSensorial);
-            parameters.Add("@HumedadPorcentajeAnalisisFisico", NotaIngresoAlmacenPlanta.HumedadPorcentajeAnalisisFisico);     
-            parameters.Add("@RendimientoPorcentaje", NotaIngresoAlmacenPlanta.RendimientoPorcentaje);
-            //parameters.Add("@RendimientoPorcentajePesado", NotaIngresoAlmacenPlanta.RendimientoPorcentajePesado);
-            //parameters.Add("@HumedadPorcentajePesado", NotaIngresoAlmacenPlanta.HumedadPorcentajePesado);
-            
+            parameters.Add("@TipoId", NotaIngresoAlmacenPlanta.TipoId);
+            parameters.Add("@EmpaqueId", NotaIngresoAlmacenPlanta.EmpaqueId);
+            parameters.Add("@Cantidad", NotaIngresoAlmacenPlanta.Cantidad);
+            parameters.Add("@PesoBruto", NotaIngresoAlmacenPlanta.PesoBruto);
+            parameters.Add("@Tara", NotaIngresoAlmacenPlanta.Tara);
+            parameters.Add("@KilosNetos", NotaIngresoAlmacenPlanta.KilosNetos);
+            parameters.Add("@CantidadDisponible", NotaIngresoAlmacenPlanta.CantidadDisponible);
+            parameters.Add("@KilosNetosDisponibles", NotaIngresoAlmacenPlanta.KilosNetosDisponibles);
+            parameters.Add("@CantidadOrdenProceso", NotaIngresoAlmacenPlanta.CantidadOrdenProceso);
+            parameters.Add("@KilosNetosOrdenProceso", NotaIngresoAlmacenPlanta.KilosNetosOrdenProceso);
             parameters.Add("@EstadoId", NotaIngresoAlmacenPlanta.EstadoId);
             parameters.Add("@FechaRegistro", NotaIngresoAlmacenPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", NotaIngresoAlmacenPlanta.UsuarioRegistro);
+            parameters.Add("@NotaIngresoAlmacenPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -76,21 +59,25 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("Numero", request.Numero);
             parameters.Add("NumeroNotaIngresoPlanta", request.NumeroNotaIngresoPlanta);
-            parameters.Add("NumeroOrganizacion", request.NumeroOrganizacion);
-            parameters.Add("RazonSocialOrganizacion", request.RazonSocialOrganizacion);
-            parameters.Add("RucOrganizacion", request.RucOrganizacion);
-            parameters.Add("CertificacionId", request.CertificacionId);
-            parameters.Add("EstadoId", request.CertificacionId);
-            parameters.Add("ProductoId", request.ProductoId);
-            parameters.Add("SubProductoId", request.SubProductoId); 
+            parameters.Add("NumeroControlCalidad", request.NumeroControlCalidad);
+            parameters.Add("NumeroGuiaRemision", request.NumeroGuiaRemision);           
             parameters.Add("AlmacenId", request.AlmacenId);
             parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("RazonSocialEmpresaOrigen", request.RazonSocialEmpresaOrigen);
+            parameters.Add("RucEmpresaOrigen", request.RucEmpresaOrigen);
+            parameters.Add("FechaInicioGuiaRemision", request.FechaInicioGuiaRemision);
+            parameters.Add("FechaFinGuiaRemision", request.FechaFinGuiaRemision);
+            parameters.Add("FechaInicio", request.FechaInicio);
+            parameters.Add("FechaFin", request.FechaFin);            
+            parameters.Add("ProductoId", request.ProductoId);
+            parameters.Add("SubProductoId", request.SubProductoId);
+            parameters.Add("MotivoIngresoId", request.MotivoIngresoId);
+            parameters.Add("EstadoId", request.EstadoId);
             parameters.Add("RendimientoPorcentajeInicio", request.RendimientoPorcentajeInicio);
             parameters.Add("RendimientoPorcentajeFin", request.RendimientoPorcentajeFin);
             parameters.Add("PuntajeAnalisisSensorialInicio", request.PuntajeAnalisisSensorialInicio);
             parameters.Add("PuntajeAnalisisSensorialFin", request.PuntajeAnalisisSensorialFin);
-            parameters.Add("FechaInicio", request.FechaInicio);
-            parameters.Add("FechaFin", request.FechaFin);
+            
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))

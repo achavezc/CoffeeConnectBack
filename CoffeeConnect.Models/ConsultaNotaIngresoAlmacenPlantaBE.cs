@@ -4,18 +4,6 @@ namespace CoffeeConnect.Models
 {
 	public class ConsultaNotaIngresoAlmacenPlantaBE
 	{
-		#region Properties
-		/// <summary>
-		/// Gets or sets the NotaIngresoAlmacenPlantaId value.
-		/// </summary>
-		public int NotaIngresoAlmacenPlantaId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the NotaIngresoPlantaId value.
-		/// </summary>
-		public int NotaIngresoPlantaId
-		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the Numero value.
@@ -26,8 +14,49 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the NumeroIngresoPlanta value.
 		/// </summary>
-		public string NumeroIngresoPlanta
+		public string NumeroCalidadPlanta
 		{ get; set; }
+
+		public string NumeroNotaIngresoPlanta
+		{ get; set; }
+
+		public string NumeroGuiaRemision
+		{ get; set; }
+
+		public decimal CantidadControlCalidad
+		{ get; set; }
+
+		public decimal PesoBrutoControlCalidad
+		{ get; set; }
+
+		public decimal TaraControlCalidad
+		{ get; set; }
+
+		public decimal KilosNetosControlCalidad
+		{ get; set; }
+
+
+
+		public int NotaIngresoPlantaId
+		{ get; set; }
+
+		#region Properties
+		/// <summary>
+		/// Gets or sets the NotaIngresoAlmacenPlantaId value.
+		/// </summary>
+		public int NotaIngresoAlmacenPlantaId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the NotaIngresoPlantaId value.
+		/// </summary>
+
+		public int ControlCalidadPlantaId
+		{ get; set; }
+
+		public DateTime FechaGuiaRemision
+		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the EmpresaOrigenId value.
@@ -38,10 +67,10 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the RazonSocial value.
 		/// </summary>
-		public string RazonSocialOrganizacion
+		public string RazonSocialEmpresaOrigen
 		{ get; set; }
 
-		public string RucOrganizacion
+		public string RucEmpresaOrigen
 		{ get; set; }
 
 
@@ -105,41 +134,26 @@ namespace CoffeeConnect.Models
 		public string EntidadCertificadora
 		{ get; set; }
 
+		public string MotivoIngresoId
+		{ get; set; }
+
+		public string MotivoIngreso
+		{ get; set; }
+
+
+
 		/// <summary>
-		/// Gets or sets the CantidadPesado value.
+		/// Gets or sets the AlmacenId value.
 		/// </summary>
-		public decimal CantidadPesado
+		public string AlmacenId
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the KilosBrutosPesado value.
+		/// Gets or sets the Almacen value.
 		/// </summary>
-		public decimal KilosBrutosPesado
+		public string Almacen
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the KilosNetosPesado value.
-		/// </summary>
-		public decimal KilosNetosPesado
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TaraPesado value.
-		/// </summary>
-		public decimal TaraPesado
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal? HumedadPorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the RendimientoPorcentaje value.
-		/// </summary>
-		public decimal? RendimientoPorcentaje
-		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the EstadoId value.
@@ -152,6 +166,7 @@ namespace CoffeeConnect.Models
 		/// </summary>
 		public string Estado
 		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
@@ -166,53 +181,63 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the UnidadMedidaIdPesado value.
+		/// Gets or sets the RendimientoPorcentaje value.
 		/// </summary>
-		public string UnidadMedidaIdPesado
+		public decimal? RendimientoPorcentaje
 		{ get; set; }
+
+
+		public decimal? TotalAnalisisSensorial
+		{ get; set; }
+
 
 		/// <summary>
-		/// Gets or sets the UnidadMedida value.
+		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
 		/// </summary>
-		public string UnidadMedida
+		public decimal? HumedadPorcentaje
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the AlmacenId value.
-		/// </summary>
-		public string AlmacenId
-		{ get; set; }
+		
 
-		/// <summary>
-		/// Gets or sets the Almacen value.
-		/// </summary>
-		public string Almacen
-		{ get; set; }
 
-		public string CodigoOrganizacion
-		{ get; set; }
-
-		public string NombreOrganizacion
-		{ get; set; }
-
-		public string Ruc
-		{ get; set; }
-
-		public string CalidadId
-		{ get; set; }
-
-		public string Calidad
+		public decimal? PuntajeFinal
 		{ get; set; }
 
 
-		public string GradoId
+		public decimal? CantidadRechazadaControlCalidad
 		{ get; set; }
 
-		public string Grado
+		public decimal? KilosNetosRechazadosControlCalidad
 		{ get; set; }
 
-		public decimal? CantidadDefectos
+		public decimal? Cantidad
 		{ get; set; }
+
+		public decimal? PesoBruto
+		{ get; set; }
+
+		public decimal? Tara
+		{ get; set; }
+
+		public decimal? KilosNetos
+		{ get; set; }
+
+		public decimal? CantidadDisponible
+		{ get; set; }
+
+		public decimal? KilosNetosDisponibles
+		{ get; set; }
+
+		public decimal? CantidadOrdenProceso
+		{ get; set; }
+
+		public decimal? KilosNetosOrdenProceso
+		{ get; set; }
+
+
+
+
+
 
 		#endregion
 	}

@@ -27,12 +27,12 @@ namespace Integracion.Deuda.Controller
 
         [Route("Registrar")]
         [HttpPost]
-        public IActionResult Registrar([FromBody] EnviarAlmacenNotaIngresoPlantaRequestDTO request)
+        public IActionResult Registrar([FromBody] RegistrarActualizarNotaIngresoAlmacenPlantaRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            EnviarAlmacenNotaIngresoPlantaResponseDTO response = new EnviarAlmacenNotaIngresoPlantaResponseDTO();
+            RegistrarActualizarNotaIngresoAlmacenPlantaResponseDTO response = new RegistrarActualizarNotaIngresoAlmacenPlantaResponseDTO();
             try
             {
                 response.Result.Data = _NotaIngresoAlmacenPlantaService.Registrar(request);

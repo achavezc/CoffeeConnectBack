@@ -11,6 +11,10 @@ namespace CoffeeConnect.Models
 		public int NotaIngresoAlmacenPlantaId
 		{ get; set; }
 
+		public int ControlCalidadPlantaId
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the EmpresaId value.
 		/// </summary>
@@ -23,11 +27,7 @@ namespace CoffeeConnect.Models
 		public string AlmacenId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the NotaIngresoPlantaId value.
-		/// </summary>
-		public int NotaIngresoPlantaId
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the Numero value.
@@ -35,153 +35,6 @@ namespace CoffeeConnect.Models
 		public string Numero
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the TipoProduccionId value.
-		/// </summary>
-		public string TipoProduccionId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ProductoId value.
-		/// </summary>
-		public string ProductoId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the SubProductoId value.
-		/// </summary>
-		public string SubProductoId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CertificacionId value.
-		/// </summary>
-		public string CertificacionId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the UnidadMedidaIdPesado value.
-		/// </summary>
-		public string UnidadMedidaIdPesado
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the EntidadCertificadoraId value.
-		/// </summary>
-		public string EntidadCertificadoraId
-		{ get; set; }
-
-		public string CalidadId
-		{ get; set; }
-
-		public string GradoId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CantidadPesado value.
-		/// </summary>
-		public decimal CantidadDefectos
-		{ get; set; }
-
-		public decimal CantidadPesado
-		{ get; set; }
-
-		public decimal? PesoporSaco
-		{ get; set; }
-
-
-
-		/// <summary>
-		/// Gets or sets the KilosBrutosPesado value.
-		/// </summary>
-		public decimal KilosBrutosPesado
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TaraPesado value.
-		/// </summary>
-		public decimal TaraPesado
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the KilosNetosPesado value.
-		/// </summary>
-		public decimal KilosNetosPesado
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ExportableGramosAnalisisFisico value.
-		/// </summary>
-		public decimal? ExportableGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ExportablePorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal? ExportablePorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the DescarteGramosAnalisisFisico value.
-		/// </summary>
-		public decimal? DescarteGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the DescartePorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal? DescartePorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CascarillaGramosAnalisisFisico value.
-		/// </summary>
-		public decimal? CascarillaGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CascarillaPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal? CascarillaPorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TotalGramosAnalisisFisico value.
-		/// </summary>
-		public decimal? TotalGramosAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TotalPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal? TotalPorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal? HumedadPorcentajeAnalisisFisico
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the RendimientoPorcentaje value.
-		/// </summary>
-		public decimal? RendimientoPorcentaje
-		{ get; set; }
-
-		public decimal? RendimientoPorcentajePesado
-		{ get; set; }
-
-
-		public decimal? HumedadPorcentajePesado
-		{ get; set; }
-
-
-		/// <summary>
-		/// Gets or sets the TotalAnalisisSensorial value.
-		/// </summary>
-		public decimal? TotalAnalisisSensorial
-		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the EstadoId value.
@@ -200,6 +53,48 @@ namespace CoffeeConnect.Models
 		/// </summary>
 		public string UsuarioRegistro
 		{ get; set; }
+
+
+		/// <summary>
+		/// Gets or sets the TipoProduccionId value.
+		/// </summary>
+		public string TipoId
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the ProductoId value.
+		/// </summary>
+		public string EmpaqueId
+		{ get; set; }
+
+
+		/// <summary>
+		/// Gets or sets the CantidadPesado value.
+		/// </summary>
+		public decimal Cantidad
+		{ get; set; }
+
+		public decimal PesoBruto
+		{ get; set; }
+
+		public decimal Tara
+		{ get; set; }
+
+		public decimal KilosNetos
+		{ get; set; }
+
+		public decimal? CantidadDisponible
+		{ get; set; }
+
+		public decimal? KilosNetosDisponibles
+		{ get; set; }
+
+		public decimal? CantidadOrdenProceso
+		{ get; set; }
+
+		public decimal? KilosNetosOrdenProceso
+		{ get; set; }
+			
 
 		/// <summary>
 		/// Gets or sets the FechaUltimaActualizacion value.
