@@ -408,7 +408,7 @@ namespace CoffeeConnect.Service
             if (consultaImpresionGuiaRemision != null)
             {
 
-                consultaControlCalidadPlantaPorIdBE.AnalisisSensorialAtributoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(consultaImpresionGuiaRemision.NotaIngresoPlantaId).ToList();
+                consultaControlCalidadPlantaPorIdBE.AnalisisSensorialAtributoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(consultaImpresionGuiaRemision.ControlCalidadPlantaId).ToList();
 
             }
 
