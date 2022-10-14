@@ -174,7 +174,97 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+        public IEnumerable<NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalle> ConsultarNotaIngresoAlmacenPlantaAnalisisFisicoColorDetallePorId(int NotaIngresoAlmacenPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
 
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalle>("uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
+
+
+        }
+
+        public IEnumerable<NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalle> ConsultarNotaIngresoAlmacenPlantaAnalisisFisicoOlorDetallePorId(int NotaIngresoAlmacenPlantaId)
+        {
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalle>("uspNotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
+        }
+
+        public IEnumerable<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalle> ConsultarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetallePorId(int NotaIngresoAlmacenPlantaId)
+        {
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalle>("uspNotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+
+            }
+
+
+        }
+
+        public IEnumerable<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalle> ConsultarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetallePorId(int NotaIngresoAlmacenPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalle>("uspNotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
+
+
+        }
+
+        public IEnumerable<NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalle> ConsultarNotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetallePorId(int NotaIngresoAlmacenPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalle>("uspNotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalle> ConsultarNotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetallePorId(int NotaIngresoAlmacenPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalle>("uspNotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public IEnumerable<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalle> ConsultarNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetallePorId(int NotaIngresoAlmacenPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalle>("uspNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
 
     }
 }

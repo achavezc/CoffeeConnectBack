@@ -99,6 +99,25 @@ namespace CoffeeConnect.Service
         {
             ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(request.NotaIngresoAlmacenPlantaId);
 
+            if (consultaNotaIngresoAlmacenPlantaPorIdBE != null)
+            {
+               
+                consultaNotaIngresoAlmacenPlantaPorIdBE.AnalisisFisicoColorDetalle = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaAnalisisFisicoColorDetallePorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId).ToList();
+
+                consultaNotaIngresoAlmacenPlantaPorIdBE.AnalisisFisicoOlorDetalle = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaAnalisisFisicoOlorDetallePorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId).ToList();
+
+                consultaNotaIngresoAlmacenPlantaPorIdBE.AnalisisFisicoDefectoPrimarioDetalle = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetallePorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId).ToList();
+
+                consultaNotaIngresoAlmacenPlantaPorIdBE.AnalisisFisicoDefectoSecundarioDetalle = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetallePorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId).ToList();
+
+                consultaNotaIngresoAlmacenPlantaPorIdBE.AnalisisSensorialAtributoDetalle = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetallePorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId).ToList();
+
+                consultaNotaIngresoAlmacenPlantaPorIdBE.AnalisisSensorialDefectoDetalle = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetallePorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId).ToList();
+
+                consultaNotaIngresoAlmacenPlantaPorIdBE.RegistroTostadoIndicadorDetalle = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetallePorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId).ToList();
+
+                
+            }
 
             return consultaNotaIngresoAlmacenPlantaPorIdBE;
         }
