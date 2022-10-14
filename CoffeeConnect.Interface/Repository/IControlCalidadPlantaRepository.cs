@@ -9,7 +9,7 @@ namespace CoffeeConnect.Interface.Repository
    public interface IControlCalidadPlantaRepository
     {
         IEnumerable<ConsultaControlCalidadPlantaBE> ConsultarControlCalidadPlanta(ConsultaControlCalidadPlantaRequestDTO request);
-        int AnularControlCalidadPlanta(int NotaIngresoPlantaId, DateTime fecha, string usuario, string estadoId);
+        int AnularControlCalidadPlanta(int ControlCalidadPlantaId,int NotaIngresoPlantaId,string estadoNotaIngresoId, DateTime fecha, string usuario, string estadoId);
         ConsultaControlCalidadPlantaPorIdBE ConsultaControlCalidadPlantaPorId(int ControlCalidadPlantaId);
         int InsertarPesadoControlCalidadPlanta(ControlCalidadPlanta NotaIngresoPlanta);
 

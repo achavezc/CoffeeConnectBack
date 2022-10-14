@@ -248,7 +248,7 @@ namespace CoffeeConnect.Service
                     AnalisisFisicoColorDetalleList.Add(item);
                 });
 
-                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, request.ControlCalidadPlantaId);
             }
             #endregion
 
@@ -268,7 +268,7 @@ namespace CoffeeConnect.Service
                     AnalisisFisicoDefectoPrimarioDetalleList.Add(item);
                 });
 
-                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle(AnalisisFisicoDefectoPrimarioDetalleList, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetalle(AnalisisFisicoDefectoPrimarioDetalleList, request.ControlCalidadPlantaId);
             }
             #endregion
 
@@ -288,7 +288,7 @@ namespace CoffeeConnect.Service
                     AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
                 });
 
-                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.ControlCalidadPlantaId);
             }
             #endregion
 
@@ -307,7 +307,7 @@ namespace CoffeeConnect.Service
                     AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
                 });
 
-                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoOlorDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisFisicoOlorDetalle(AnalisisFisicoDefectoSecundarioDetalleList, request.ControlCalidadPlantaId);
             }
             #endregion
 
@@ -326,7 +326,7 @@ namespace CoffeeConnect.Service
                     AnalisisSensorialAtributoDetalle.Add(item);
                 });
 
-                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisSensorialAtributoDetalle(AnalisisSensorialAtributoDetalle, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisSensorialAtributoDetalle(AnalisisSensorialAtributoDetalle, request.ControlCalidadPlantaId);
             }
             #endregion
 
@@ -345,7 +345,7 @@ namespace CoffeeConnect.Service
                     AnalisisSensorialDefectoDetalle.Add(item);
                 });
 
-                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.ControlCalidadPlantaId);
             }
 
 
@@ -365,7 +365,7 @@ namespace CoffeeConnect.Service
                     RegistroTostadoIndicadorDetalle.Add(item);
                 });
 
-                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, request.NotaIngresoPlantaId);
+                affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, request.ControlCalidadPlantaId);
             }
 
             return affected;

@@ -47,12 +47,14 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        public int AnularControlCalidadPlanta(int ControlCalidadPlantaId, DateTime fecha, string usuario, string estadoId)
+        public int AnularControlCalidadPlanta(int ControlCalidadPlantaId, int notaIngresoId, string estadoNotaIngresoId, DateTime fecha, string usuario, string estadoId)
         {
             int affected = 0;
 
             var parameters = new DynamicParameters();
             parameters.Add("@ControlCalidadPlantaId", ControlCalidadPlantaId);
+            parameters.Add("@NotaIngresoPlantaId", notaIngresoId);
+            parameters.Add("@EstadoNotaIngresoId", estadoNotaIngresoId);
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
             parameters.Add("@EstadoCalidadId", estadoId);
