@@ -40,6 +40,11 @@ namespace CoffeeConnect.Interface.Repository
 
 
         int ActualizarEstadoControlCalidad(int ControlCalidadPlantaId, DateTime fecha, string usuario, string estadoId);
+
+        int ActualizarCantidadProcesadaEstado(int controlCalidadPlantaId, decimal cantidadProcesada, decimal kilosNetosProcesado, DateTime fecha, string usuario, string estadoId);
+
+
+
         int ActualizarControlCalidad(ControlCalidadPlanta ControlCalidadPlanta);
     }
 }

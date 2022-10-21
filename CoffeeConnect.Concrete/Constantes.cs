@@ -49,7 +49,8 @@ namespace CoffeeConnect.Service
         public static string Analizado { get { return "01"; } }
         public static string Rechazado { get { return "02"; } }
         public static string Procesado { get { return "03"; } }
-    
+        public static string EnviadoAlmacen { get { return "04"; } }
+
     }
 
     public static class Documentos

@@ -15,35 +15,48 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private INotaIngresoAlmacenPlantaRepository _INotaIngresoAlmacenPlantaRepository;
-        private INotaIngresoPlantaRepository _INotaIngresoPlantaRepository;
+        private IControlCalidadPlantaRepository _IControlCalidadPlantaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
 
-        public NotaIngresoAlmacenPlantaService(INotaIngresoAlmacenPlantaRepository NotaIngresoAlmacenPlantaRepository, IMapper mapper, INotaIngresoPlantaRepository notaIngresoPlantaRepository, ICorrelativoRepository correlativoRepository)
+        public NotaIngresoAlmacenPlantaService(INotaIngresoAlmacenPlantaRepository NotaIngresoAlmacenPlantaRepository, IMapper mapper, IControlCalidadPlantaRepository controlCalidadPlantaRepository, ICorrelativoRepository correlativoRepository)
         {
             _INotaIngresoAlmacenPlantaRepository = NotaIngresoAlmacenPlantaRepository;
-            _INotaIngresoPlantaRepository = notaIngresoPlantaRepository;
+            _IControlCalidadPlantaRepository = controlCalidadPlantaRepository;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
         }
 
         public int Registrar(RegistrarActualizarNotaIngresoAlmacenPlantaRequestDTO request)
         {
-            //ConsultaNotaIngresoPlantaPorIdBE notaIngresoPlanta = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(request.NotaIngresoPlantaId);
+            ConsultaControlCalidadPlantaPorIdBE controlCalidadPlanta = _IControlCalidadPlantaRepository.ConsultaControlCalidadPlantaPorId(request.ControlCalidadPlantaId);
 
-            NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
+            int affected = 0;
+
+            if (controlCalidadPlanta.EstadoCalidadId == ControlCalidadEstados.Analizado)
+            {
+                string estado = ControlCalidadEstados.Analizado;
+
+                if (request.Cantidad >= controlCalidadPlanta.CantidadControlCalidad - controlCalidadPlanta.CantidadProcesada)
+                {
+                    estado = ControlCalidadEstados.EnviadoAlmacen;
+                }
+
+                _IControlCalidadPlantaRepository.ActualizarCantidadProcesadaEstado(request.ControlCalidadPlantaId, controlCalidadPlanta.CantidadProcesada + request.Cantidad, controlCalidadPlanta.KilosNetosProcesado + request.KilosNetos, DateTime.Now, request.Usuario, estado);
+
+                NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
+                NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
+                NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;
+                NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoAlmacenPlantaEstados.Ingresado;
+                NotaIngresoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoAlmacenPlanta);
 
 
-            NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
-            NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;
-            NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoAlmacenPlantaEstados.Ingresado;
-        
 
 
+                affected = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
 
+                //_INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoAlmacen);
 
-            int affected = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
-
-            //_INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoAlmacen);
+            }
 
             return affected;
         }

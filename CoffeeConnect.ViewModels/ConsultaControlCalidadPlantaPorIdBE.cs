@@ -284,6 +284,12 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public string EstadoId
 		{ get; set; }
+		public string EstadoCalidadId
+		{ get; set; }
+
+		
+
+
 
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
@@ -435,6 +441,15 @@ namespace CoffeeConnect.DTO
 		public string ControlCalidadEmpaqueId { get; set; }
 
 		public string NumeroCalidadPlanta { get; set; }
+
+
+		public decimal CantidadProcesada
+		{ get; set; }
+
+		public decimal KilosNetosProcesado
+		{ get; set; }
+
+
 		#endregion
 
 	}

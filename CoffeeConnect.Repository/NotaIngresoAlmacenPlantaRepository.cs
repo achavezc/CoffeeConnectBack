@@ -120,18 +120,32 @@ namespace CoffeeConnect.Repository
 
         public int Actualizar(int NotaIngresoAlmacenPlantaId, DateTime fecha, string usuario, string almacenId)
         {
-            int affected = 0;
+            int affected = 0;           
 
-            var parameters = new DynamicParameters();
-            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
-            parameters.Add("@Fecha", fecha);
-            parameters.Add("@Usuario", usuario);
-            parameters.Add("@AlmacenId", almacenId);
+            //var parameters = new DynamicParameters();
+            //parameters.Add("@ControlCalidadPlantaId", NotaIngresoAlmacenPlanta.ControlCalidadPlantaId);
+            //parameters.Add("@EmpresaId", NotaIngresoAlmacenPlanta.EmpresaId);
+            //parameters.Add("@AlmacenId", NotaIngresoAlmacenPlanta.AlmacenId);
+            //parameters.Add("@Numero", NotaIngresoAlmacenPlanta.Numero);
+            //parameters.Add("@TipoId", NotaIngresoAlmacenPlanta.TipoId);
+            //parameters.Add("@EmpaqueId", NotaIngresoAlmacenPlanta.EmpaqueId);
+            //parameters.Add("@Cantidad", NotaIngresoAlmacenPlanta.Cantidad);
+            //parameters.Add("@PesoBruto", NotaIngresoAlmacenPlanta.PesoBruto);
+            //parameters.Add("@Tara", NotaIngresoAlmacenPlanta.Tara);
+            //parameters.Add("@KilosNetos", NotaIngresoAlmacenPlanta.KilosNetos);
+            //parameters.Add("@CantidadDisponible", NotaIngresoAlmacenPlanta.CantidadDisponible);
+            //parameters.Add("@KilosNetosDisponibles", NotaIngresoAlmacenPlanta.KilosNetosDisponibles);
+            //parameters.Add("@CantidadOrdenProceso", NotaIngresoAlmacenPlanta.CantidadOrdenProceso);
+            //parameters.Add("@KilosNetosOrdenProceso", NotaIngresoAlmacenPlanta.KilosNetosOrdenProceso);
+            //parameters.Add("@EstadoId", NotaIngresoAlmacenPlanta.EstadoId);
+            //parameters.Add("@FechaRegistro", NotaIngresoAlmacenPlanta.FechaRegistro);
+            //parameters.Add("@UsuarioRegistro", NotaIngresoAlmacenPlanta.UsuarioRegistro);
+            //parameters.Add("@NotaIngresoAlmacenPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-            {
-                affected = db.Execute("uspNotaIngresoAlmacenPlantaActualizar", parameters, commandType: CommandType.StoredProcedure);
-            }
+            //using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            //{
+            //    affected = db.Execute("uspNotaIngresoAlmacenPlantaActualizar", parameters, commandType: CommandType.StoredProcedure);
+            //}
 
             return affected;
         }
