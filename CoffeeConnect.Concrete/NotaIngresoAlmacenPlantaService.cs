@@ -294,9 +294,22 @@ namespace CoffeeConnect.Service
         public int ActualizarNotaIngresoAlmacenPlanta(ActualizarNotaIngresoAlmacenPlantaRequestDTO request)
         {
             int affected = 0;
+            NotaIngresoAlmacenPlanta notaIngresoAlmacenPlanta = new NotaIngresoAlmacenPlanta();
+            notaIngresoAlmacenPlanta.NotaIngresoAlmacenPlantaId = request.NotaIngresoAlmacenPlantaId;
+            notaIngresoAlmacenPlanta.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
+            notaIngresoAlmacenPlanta.AlmacenId = request.AlmacenId;
+            notaIngresoAlmacenPlanta.EstadoId = request.EstadoId;
+            notaIngresoAlmacenPlanta.TipoId = request.TipoId;
+            notaIngresoAlmacenPlanta.EmpaqueId = request.EmpaqueId;
+            notaIngresoAlmacenPlanta.Cantidad = request.Cantidad;
+            notaIngresoAlmacenPlanta.PesoBruto = request.PesoBruto;
+            notaIngresoAlmacenPlanta.Tara = request.Tara;
+            notaIngresoAlmacenPlanta.KilosNetos = request.KilosNetos;
+            notaIngresoAlmacenPlanta.UsuarioUltimaActualizacion = request.Usuario;
+            notaIngresoAlmacenPlanta.FechaUltimaActualizacion = DateTime.Now;
 
 
-            affected = _INotaIngresoAlmacenPlantaRepository.Actualizar(request.NotaIngresoAlmacenPlantaId, DateTime.Now, request.Usuario, request.AlmacenId);
+            affected = _INotaIngresoAlmacenPlantaRepository.Actualizar(notaIngresoAlmacenPlanta);
 
 
 

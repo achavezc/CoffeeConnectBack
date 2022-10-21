@@ -37,9 +37,9 @@ namespace CoffeeConnect.Interface.Repository
 
         int ActualizarEstado(int NotaIngresoAlmacenPlantaId, DateTime fecha, string usuario, string estadoId);
 
- 
 
-        int Actualizar(int NotaIngresoAlmacenPlantaId, DateTime fecha, string usuario, string almacenId);
+
+        public int Actualizar(NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta);
 
         int ActualizarEstadoPorIds(List<TablaIdsTipo> ids, DateTime fecha, string usuario, string estadoId);
     }
