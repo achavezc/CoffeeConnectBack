@@ -48,6 +48,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PesoKilosBrutos", NotaSalidaAlmacenPlanta.PesoKilosBrutos);
             parameters.Add("@PesoKilosNetos", NotaSalidaAlmacenPlanta.PesoKilosNetos);
             parameters.Add("@Tara", NotaSalidaAlmacenPlanta.Tara);
+            parameters.Add("@ProductoId", NotaSalidaAlmacenPlanta.ProductoId);
+            parameters.Add("@SubProductoId", NotaSalidaAlmacenPlanta.SubProductoId);
+
 
             parameters.Add("@EstadoId", NotaSalidaAlmacenPlanta.EstadoId);
             parameters.Add("@FechaRegistro", NotaSalidaAlmacenPlanta.FechaRegistro);

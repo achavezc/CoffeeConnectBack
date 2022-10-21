@@ -17,11 +17,19 @@ namespace CoffeeConnect.Service
         private INotaIngresoAlmacenPlantaRepository _INotaIngresoAlmacenPlantaRepository;
         private IControlCalidadPlantaRepository _IControlCalidadPlantaRepository;
         private ICorrelativoRepository _ICorrelativoRepository;
+        private INotaSalidaAlmacenPlantaRepository _INotaSalidaAlmacenPlantaRepository;
+        private IGuiaRemisionAlmacenPlantaRepository _IGuiaRemisionAlmacenPlantaRepository;
+        private INotaIngresoAlmacenPlantaRepository _NotaIngresoAlmacenPlantaRepository;
 
-        public NotaIngresoAlmacenPlantaService(INotaIngresoAlmacenPlantaRepository NotaIngresoAlmacenPlantaRepository, IMapper mapper, IControlCalidadPlantaRepository controlCalidadPlantaRepository, ICorrelativoRepository correlativoRepository)
+
+        public NotaIngresoAlmacenPlantaService(INotaIngresoAlmacenPlantaRepository NotaIngresoAlmacenPlantaRepository, INotaSalidaAlmacenPlantaRepository notaSalidaAlmacenPlantaRepository, INotaIngresoAlmacenPlantaRepository notaIngresoAlmacenPlantaRepository,
+            IGuiaRemisionAlmacenPlantaRepository IGuiaRemisionAlmacenPlantaRepository, IMapper mapper, IControlCalidadPlantaRepository controlCalidadPlantaRepository, ICorrelativoRepository correlativoRepository)
         {
             _INotaIngresoAlmacenPlantaRepository = NotaIngresoAlmacenPlantaRepository;
+            _INotaSalidaAlmacenPlantaRepository = notaSalidaAlmacenPlantaRepository;
             _IControlCalidadPlantaRepository = controlCalidadPlantaRepository;
+            _IGuiaRemisionAlmacenPlantaRepository = IGuiaRemisionAlmacenPlantaRepository;
+            _NotaIngresoAlmacenPlantaRepository = notaIngresoAlmacenPlantaRepository;
             _ICorrelativoRepository = correlativoRepository;
             _Mapper = mapper;
         }
@@ -30,7 +38,7 @@ namespace CoffeeConnect.Service
         {
             ConsultaControlCalidadPlantaPorIdBE controlCalidadPlanta = _IControlCalidadPlantaRepository.ConsultaControlCalidadPlantaPorId(request.ControlCalidadPlantaId);
 
-            int affected = 0;
+            int affected = 1;
 
             if (controlCalidadPlanta.EstadoCalidadId == ControlCalidadEstados.Analizado)
             {
@@ -50,13 +58,200 @@ namespace CoffeeConnect.Service
                 NotaIngresoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoAlmacenPlanta);
 
 
-
-
                 affected = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
 
                 //_INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoAlmacen);
 
             }
+            else if (controlCalidadPlanta.EstadoCalidadId == ControlCalidadEstados.Rechazado)
+            {
+                string estado = ControlCalidadEstados.Rechazado;
+
+                _IControlCalidadPlantaRepository.ActualizarCantidadProcesadaEstado(request.ControlCalidadPlantaId, controlCalidadPlanta.CantidadProcesada + request.Cantidad, controlCalidadPlanta.KilosNetosProcesado + request.KilosNetos, DateTime.Now, request.Usuario, estado);
+
+                NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
+                NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
+                NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;
+                NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoAlmacenPlantaEstados.Ingresado;
+                NotaIngresoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoAlmacenPlanta);
+
+
+                int notaIngresoAlmacenPlantaId = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
+
+                RegistrarNotaSalidaAlmacenPlantaRequestDTO registrarNotaSalidaAlmacenPlantaRequestDTO = new RegistrarNotaSalidaAlmacenPlantaRequestDTO();
+
+                registrarNotaSalidaAlmacenPlantaRequestDTO.AlmacenId = request.AlmacenId;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.EmpresaId = request.EmpresaId;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.EmpresaIdDestino = controlCalidadPlanta.EmpresaOrigenId;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.MotivoSalidaId = NotaSalidaAlmacenPlantaMotivos.Rechazo;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.CantidadTotal = request.Cantidad;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.EstadoId = NotaSalidaAlmacenPlantaEstados.Ingresado;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaSalidaAlmacenPlanta);
+                registrarNotaSalidaAlmacenPlantaRequestDTO.Observacion = controlCalidadPlanta.ObservacionAnalisisFisico + " " + controlCalidadPlanta.ObservacionAnalisisSensorial;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.PesoKilosBrutos = request.PesoBruto;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.PesoKilosNetos = request.KilosNetos;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.Tara = request.Tara;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.UsuarioNotaSalidaAlmacenPlanta = request.Usuario;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.SubProductoId = controlCalidadPlanta.SubProductoId;
+                registrarNotaSalidaAlmacenPlantaRequestDTO.ProductoId = controlCalidadPlanta.ProductoId;
+
+
+                registrarNotaSalidaAlmacenPlantaRequestDTO.ListNotaSalidaAlmacenPlantaDetalle = new List<NotaSalidaAlmacenPlantaDetalleDTO>();
+
+
+                NotaSalidaAlmacenPlantaDetalleDTO notaSalidaAlmacenPlantaDetalle = new NotaSalidaAlmacenPlantaDetalleDTO();
+                notaSalidaAlmacenPlantaDetalle.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
+                notaSalidaAlmacenPlantaDetalle.PesoKilosBrutos = request.PesoBruto;
+                notaSalidaAlmacenPlantaDetalle.PesoKilosNetos = request.KilosNetos;
+                notaSalidaAlmacenPlantaDetalle.Tara = request.Tara;
+                notaSalidaAlmacenPlantaDetalle.TipoId = controlCalidadPlanta.TipoId;
+                notaSalidaAlmacenPlantaDetalle.EmpaqueId = controlCalidadPlanta.EmpaqueId;
+                notaSalidaAlmacenPlantaDetalle.Cantidad = request.Cantidad;                
+
+                registrarNotaSalidaAlmacenPlantaRequestDTO.ListNotaSalidaAlmacenPlantaDetalle.Add(notaSalidaAlmacenPlantaDetalle);
+
+                this.registrarNotaSalidaAlmacenPlanta(registrarNotaSalidaAlmacenPlantaRequestDTO);
+
+            }
+
+            return affected;
+        }
+
+
+        private int registrarNotaSalidaAlmacenPlanta(RegistrarNotaSalidaAlmacenPlantaRequestDTO request)
+        {
+            NotaSalidaAlmacenPlanta notaSalidaAlmacen = new NotaSalidaAlmacenPlanta();
+            List<NotaSalidaAlmacenPlantaDetalle> lstnotaSalidaAlmacen = new List<NotaSalidaAlmacenPlantaDetalle>();
+            int affected = 0;
+
+            List<TablaIdsTipo> notaIngresoIdActualizar = new List<TablaIdsTipo>();
+
+            notaSalidaAlmacen.EmpresaId = request.EmpresaId;
+            notaSalidaAlmacen.AlmacenId = request.AlmacenId;
+            notaSalidaAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaSalidaAlmacenPlanta);
+            notaSalidaAlmacen.MotivoSalidaId = request.MotivoSalidaId;
+            notaSalidaAlmacen.ProductoId = request.ProductoId;
+            notaSalidaAlmacen.SubProductoId = request.SubProductoId;
+            notaSalidaAlmacen.MotivoSalidaReferencia = request.MotivoSalidaReferencia;
+            notaSalidaAlmacen.EmpresaIdDestino = request.EmpresaIdDestino;
+            notaSalidaAlmacen.EmpresaTransporteId = request.EmpresaTransporteId;
+            notaSalidaAlmacen.TransporteId = request.TransporteId;
+            notaSalidaAlmacen.NumeroConstanciaMTC = request.NumeroConstanciaMTC;
+            notaSalidaAlmacen.MarcaTractorId = request.MarcaTractorId;
+            notaSalidaAlmacen.PlacaTractor = request.PlacaTractor;
+            notaSalidaAlmacen.MarcaCarretaId = request.MarcaCarretaId;
+            notaSalidaAlmacen.PlacaCarreta = request.PlacaCarreta;
+            notaSalidaAlmacen.Conductor = request.Conductor;
+            notaSalidaAlmacen.Licencia = request.Licencia;
+            notaSalidaAlmacen.Observacion = request.Observacion;
+            //notaSalidaAlmacen.PromedioPorcentajeRendimiento = request.PromedioPorcentajeRendimiento;
+            notaSalidaAlmacen.CantidadTotal = request.CantidadTotal;
+            notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
+            notaSalidaAlmacen.PesoKilosNetos = request.PesoKilosNetos;
+            notaSalidaAlmacen.Tara = request.Tara;
+
+            notaSalidaAlmacen.EstadoId = NotaSalidaAlmacenEstados.Ingresado;
+            notaSalidaAlmacen.FechaRegistro = DateTime.Now;
+            notaSalidaAlmacen.UsuarioRegistro = request.UsuarioNotaSalidaAlmacenPlanta;
+
+            notaSalidaAlmacen.NotaSalidaAlmacenPlantaId = _INotaSalidaAlmacenPlantaRepository.Insertar(notaSalidaAlmacen);
+
+            if (notaSalidaAlmacen.NotaSalidaAlmacenPlantaId != 0)
+            {
+                request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
+                {
+                    NotaSalidaAlmacenPlantaDetalle obj = new NotaSalidaAlmacenPlantaDetalle();
+                    obj.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
+                    obj.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
+                    obj.EmpaqueId = x.EmpaqueId;
+                    obj.TipoId = x.TipoId;
+                    obj.Cantidad = x.Cantidad;
+                    obj.PesoKilosBrutos = x.PesoKilosBrutos;
+                    obj.PesoKilosNetos = x.PesoKilosNetos;
+                    obj.Tara = x.Tara;
+
+
+                    lstnotaSalidaAlmacen.Add(obj);
+
+
+                    if (x.NotaIngresoAlmacenPlantaId.HasValue)
+                    {
+                        TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
+                        tablaLoteIdsTipo.Id = x.NotaIngresoAlmacenPlantaId.Value;
+                        notaIngresoIdActualizar.Add(tablaLoteIdsTipo);
+                    }
+
+
+                });
+
+                affected = _INotaSalidaAlmacenPlantaRepository.ActualizarNotaSalidaAlmacenPlantaDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
+
+            }
+
+            #region Guia Remision
+
+            /*
+            int guiaRemisionAlmacenId;
+            //GuiaRemisionAlmacen guiaRemisionAlmacen = new GuiaRemisionAlmacen();
+
+            GuiaRemisionAlmacenPlanta guiaRemisionAlmacen = _Mapper.Map<GuiaRemisionAlmacenPlanta>(notaSalidaAlmacen);
+            guiaRemisionAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.GuiaRemisionAlmacenPlanta);
+
+
+            string tipoProduccionId = String.Empty;
+            string tipoCertificacionId = String.Empty;
+
+            List<ConsultaNotaSalidaAlmacenPlantaDetallePorIdBE> NotaSalidaDetalle = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenPlantaDetallePorIdBE(notaSalidaAlmacen.NotaSalidaAlmacenPlantaId).ToList();
+
+
+            if (NotaSalidaDetalle.Count > 0)
+            {
+                tipoProduccionId = NotaSalidaDetalle[0].TipoProduccionId;
+                tipoCertificacionId = NotaSalidaDetalle[0].CertificacionId;
+
+            }
+
+            guiaRemisionAlmacen.TipoProduccionId = ""; ;
+            guiaRemisionAlmacen.TipoCertificacionId = "";
+            guiaRemisionAlmacen.EstadoId = GuiaRemisionAlmacenEstados.Ingresado;
+
+            guiaRemisionAlmacenId = _IGuiaRemisionAlmacenPlantaRepository.Insertar(guiaRemisionAlmacen);
+
+            if (guiaRemisionAlmacenId != 0)
+            {
+                List<GuiaRemisionAlmacenPlantaDetalleTipo> listaDetalle = new List<GuiaRemisionAlmacenPlantaDetalleTipo>();
+                if (NotaSalidaDetalle.Any())
+                {
+                    NotaSalidaDetalle.ForEach(x =>
+                    {
+                        GuiaRemisionAlmacenPlantaDetalleTipo item = _Mapper.Map<GuiaRemisionAlmacenPlantaDetalleTipo>(x);
+                        item.GuiaRemisionAlmacenPlantaId = guiaRemisionAlmacenId;
+                        item.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
+                        item.NumeroNotaIngresoAlmacenPlanta = x.NumeroNotaIngresoAlmacenPlanta;
+                        item.ProductoId = x.ProductoId;
+                        item.SubProductoId = x.SubProductoId;
+                        item.UnidadMedidaIdPesado = x.UnidadMedidaIdPesado;
+                        item.CalidadId = x.CalidadId;
+                        item.GradoId = x.GradoId;
+                        item.CantidadPesado = x.CantidadPesado;
+                        item.CantidadDefectos = x.CantidadDefectos;
+                        item.KilosNetosPesado = x.KilosNetosPesado;
+                        item.KilosBrutosPesado = x.KilosBrutosPesado;
+                        item.TaraPesado = x.TaraPesado;
+                        listaDetalle.Add(item);
+                    });
+
+                    _IGuiaRemisionAlmacenPlantaRepository.ActualizarGuiaRemisionAlmacenPlantaDetalle(listaDetalle);
+                }
+
+            }
+            */
+            #endregion Guia Remision
+
+            //if (notaIngresoIdActualizar.Count > 0)
+            //{
+            //    _NotaIngresoAlmacenPlantaRepository.ActualizarEstadoPorIds(notaIngresoIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, NotaIngresoAlmacenPlantaEstados.GeneradoNotaSalida);
+            //}
 
             return affected;
         }

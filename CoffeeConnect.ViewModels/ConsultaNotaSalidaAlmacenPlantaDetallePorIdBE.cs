@@ -13,80 +13,46 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the LoteId value.
 		/// </summary>
+		public int NotaSalidaAlmacenPlantaDetalleId
+		{ get; set; }
+
+		public int NotaSalidaAlmacenPlantaId
+		{ get; set; }
+
 		public int NotaIngresoAlmacenPlantaId
 		{ get; set; }
-
-
-		public string NumeroNotaIngresoAlmacenPlanta
+		
+		public string EmpaqueId
 		{ get; set; }
 
-		public string NumeroNotaIngreso
+		public string Empaque
 		{ get; set; }
 
-		public string HumedadPorcentaje
+		public string TipoId
 		{ get; set; }
 
-		public string RendimientoPorcentaje
-		{ get; set; }
-		/// <summary>
-		/// Gets or sets the FechaIngresoAlmacen value.
-		/// </summary>
-		public DateTime FechaRegistro
-		{ get; set; }
-
-		public string ProductoId
+		public string TipoEmpaque
 		{ get; set; }
 
 		public string Producto
 		{ get; set; }
 
-		public string SubProductoId
-		{ get; set; }
-
-
 		public string SubProducto
 		{ get; set; }
 
-		public string CalidadId
-		{ get; set; }
-
-		public string Calidad
+		public decimal Cantidad
 		{ get; set; }
 
 
-		public string GradoId
+		public decimal PesoKilosBrutos
 		{ get; set; }
 
-		public string Grado
+		public decimal PesoKilosNetos
 		{ get; set; }
 
-		
-
-		public string UnidadMedidaIdPesado
+		public decimal Tara
 		{ get; set; }
 
-		public decimal CantidadDefectos
-		{ get; set; }
-
-		public decimal CantidadPesado
-		{ get; set; }
-
-
-		public decimal KilosBrutosPesado
-		{ get; set; }
-
-
-		public decimal KilosNetosPesado
-		{ get; set; }
-
-		public decimal TaraPesado
-		{ get; set; }
-
-		public string TipoProduccionId
-		{ get; set; }
-
-		public string CertificacionId
-		{ get; set; }
 
 
 		#endregion

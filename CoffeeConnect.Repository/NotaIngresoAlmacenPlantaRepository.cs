@@ -51,7 +51,9 @@ namespace CoffeeConnect.Repository
                 result = db.Execute("uspNotaIngresoAlmacenPlantaInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
-            return result;
+            int id = parameters.Get<int>("NotaIngresoAlmacenPlantaId");
+
+            return id;
         }
 
         public IEnumerable<ConsultaNotaIngresoAlmacenPlantaBE> ConsultarNotaIngresoAlmacenPlanta(ConsultaNotaIngresoAlmacenPlantaRequestDTO request)

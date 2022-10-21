@@ -11,13 +11,18 @@ namespace CoffeeConnect.DTO
 		public int NotaSalidaAlmacenPlantaId { get; set; }
 		public int EmpresaId { get; set; }
 		public String AlmacenId { get; set; }
+
+		public String ProductoId { get; set; }
+
+		public String SubProductoId { get; set; }
+
 		public String Numero { get; set; }
 		public String MotivoSalidaId { get; set; }
         public String MotivoSalidaReferencia { get; set; }
 
         public int EmpresaIdDestino { get; set; }
-		public int EmpresaTransporteId { get; set; }
-		public int TransporteId { get; set; }
+		public int? EmpresaTransporteId { get; set; }
+		public int? TransporteId { get; set; }
 		public String NumeroConstanciaMTC { get; set; }
 		public String MarcaTractorId { get; set; }
 		public String PlacaTractor { get; set; }
@@ -33,7 +38,7 @@ namespace CoffeeConnect.DTO
 
 		public Decimal Tara { get; set; }
 		//public Decimal PromedioPorcentajeRendimiento { get; set; }
-		public int CantidadTotal { get; set; }
+		public decimal CantidadTotal { get; set; }
         public String EstadoId { get; set; }
 		public String UsuarioNotaSalidaAlmacenPlanta { get; set; }
 		//public String Activo { get; set; }

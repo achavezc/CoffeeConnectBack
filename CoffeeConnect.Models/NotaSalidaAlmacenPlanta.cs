@@ -50,13 +50,13 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the EmpresaTransporteId value.
 		/// </summary>
-		public int EmpresaTransporteId
+		public int? EmpresaTransporteId
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the TransporteId value.
 		/// </summary>
-		public int TransporteId
+		public int? TransporteId
 		{ get; set; }
 
 		/// <summary>
@@ -101,10 +101,17 @@ namespace CoffeeConnect.Models
 		public string Licencia
 		{ get; set; }
 
+		public string ProductoId
+		{ get; set; }
+
+		public string SubProductoId
+
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the CantidadTotal value.
 		/// </summary>
-		public int CantidadTotal
+		public decimal CantidadTotal
 		{ get; set; }
 
 		/// <summary>

@@ -147,6 +147,17 @@ namespace CoffeeConnect.Service
         public static string Analizado { get { return "02"; } }
     }
 
+    public static class NotaSalidaAlmacenPlantaMotivos
+    {
+
+        public static string Exportacion { get { return "01"; } }
+
+        public static string Venta { get { return "02"; } }
+        
+        public static string Rechazo { get { return "03"; } }
+        
+    }
+
     public static class NotaSalidaAlmacenPlantaEstados
     {
         public static string Ingresado { get { return "01"; } }
