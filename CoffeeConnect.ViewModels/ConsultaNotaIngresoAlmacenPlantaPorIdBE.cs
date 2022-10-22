@@ -76,6 +76,9 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaGuiaRemision
 		{ get; set; }
 
+		public DateTime FechaCalidad
+		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the EmpresaOrigenId value.
@@ -103,6 +106,12 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the TipoProduccion value.
 		/// </summary>
 		public string TipoProduccion
+		{ get; set; }
+
+		public string TipoId
+		{ get; set; }
+
+		public string EmpaqueId
 		{ get; set; }
 
 		/// <summary>
@@ -179,7 +188,7 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public string EstadoId
 		{ get; set; }
-
+		
 		/// <summary>
 		/// Gets or sets the Estado value.
 		/// </summary>
@@ -274,6 +283,10 @@ namespace CoffeeConnect.DTO
 
 		public List<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalle> RegistroTostadoIndicadorDetalle
 		{ get; set; }
+
+		public string EstadoCalidadId
+		{ get; set; }
+
 
 	}
 }
