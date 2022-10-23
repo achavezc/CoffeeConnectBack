@@ -42,5 +42,17 @@ namespace CoffeeConnect.Interface.Repository
         public int Actualizar(NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta);
 
         int ActualizarEstadoPorIds(List<TablaIdsTipo> ids, DateTime fecha, string usuario, string estadoId);
+
+
+        int ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalle(List<NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleTipo> request, int NotaIngresoAlmacenPlantaId);
+        int ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalle(List<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> request, int NotaIngresoAlmacenPlantaId);
+        int ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalle(List<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> request, int NotaIngresoAlmacenPlantaId);
+        int ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalle(List<NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleTipo> request, int NotaIngresoAlmacenPlantaId);
+        int ActualizarNotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalle(List<NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleTipo> request, int NotaIngresoAlmacenPlantaId);
+        int ActualizarNotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalle(List<NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleTipo> request, int NotaIngresoAlmacenPlantaId);
+        int ActualizarNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalle(List<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleTipo> request, int NotaIngresoAlmacenPlantaId);
+
+
+
     }
 }

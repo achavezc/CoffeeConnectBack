@@ -354,6 +354,8 @@ namespace CoffeeConnect.Service
             }
             #endregion
 
+            #region "Analisis Sensorial Defecto Detalle"
+
             if (request.AnalisisSensorialDefectoDetalleList.FirstOrDefault() != null)
             {
                 List<ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<ControlCalidadPlantaAnalisisSensorialDefectoDetalleTipo>();
@@ -372,6 +374,9 @@ namespace CoffeeConnect.Service
                 affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, request.NotaIngresoPlantaId);
             }
 
+            #endregion "Analisis Sensorial Defecto Detalle"
+
+            #region "Analisis Registro Tostado Indicador Detalle"
 
             if (request.RegistroTostadoIndicadorDetalleList.FirstOrDefault() != null)
             {
@@ -391,6 +396,8 @@ namespace CoffeeConnect.Service
 
                 affected = _IControlCalidadPlantaRepository.ActualizarControlCalidadPlantaRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, request.NotaIngresoPlantaId);
             }
+
+            #endregion "Analisis Registro Tostado Indicador Detalle"
 
             return affected;
         }
