@@ -187,11 +187,17 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta.ObservacionRegistroTostado = request.ObservacionRegistroTostado;
             NotaIngresoPlanta.ObservacionAnalisisSensorial = request.ObservacionAnalisisSensorial;
             NotaIngresoPlanta.UsuarioCalidad = request.UsuarioCalidad;
+            
+            
             ConsultaNotaIngresoPlantaPorIdRequestDTO consultaNotaIngresoPlantaPorIdRequestDTO = new ConsultaNotaIngresoPlantaPorIdRequestDTO();
-            consultaNotaIngresoPlantaPorIdRequestDTO.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+            consultaNotaIngresoPlantaPorIdRequestDTO.NotaIngresoPlantaId = request.NotaIngresoPlantaId;           
             ConsultaNotaIngresoPlantaPorIdBE consultaNotaIngresoPlantaPorIdBE = this.ConsultarNotaIngresoPlantaPorId(consultaNotaIngresoPlantaPorIdRequestDTO);
+           
+            
             decimal saldoDisponible = consultaNotaIngresoPlantaPorIdBE.Cantidad - consultaNotaIngresoPlantaPorIdBE.CantidadProcesada;
-            if (saldoDisponible == request.CantidadControlCalidad)
+            decimal saldoKilosNetosDisponible = consultaNotaIngresoPlantaPorIdBE.KilosNetos  - consultaNotaIngresoPlantaPorIdBE.KilosNetosProcesado;
+
+            if (saldoDisponible == request.CantidadControlCalidad && saldoKilosNetosDisponible == request.KilosNetosControlCalidad)
             {
                 NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Analizado;
             }
