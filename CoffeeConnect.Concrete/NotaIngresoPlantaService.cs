@@ -197,7 +197,7 @@ namespace CoffeeConnect.Service
             decimal saldoDisponible = consultaNotaIngresoPlantaPorIdBE.Cantidad - consultaNotaIngresoPlantaPorIdBE.CantidadProcesada;
             decimal saldoKilosNetosDisponible = consultaNotaIngresoPlantaPorIdBE.KilosNetos  - consultaNotaIngresoPlantaPorIdBE.KilosNetosProcesado;
 
-            if (saldoDisponible == request.CantidadControlCalidad && saldoKilosNetosDisponible == request.KilosNetosControlCalidad)
+            if (saldoDisponible <= request.CantidadControlCalidad && saldoKilosNetosDisponible <= request.KilosNetosControlCalidad)
             {
                 NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Analizado;
             }
