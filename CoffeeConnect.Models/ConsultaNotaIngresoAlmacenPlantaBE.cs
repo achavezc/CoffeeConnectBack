@@ -234,6 +234,14 @@ namespace CoffeeConnect.Models
 		public decimal? KilosNetosOrdenProceso
 		{ get; set; }
 
+		public decimal? DescartePorcentajeAnalisisFisico
+		{ get; set; }
+		public decimal? HumedadPorcentajeAnalisisFisico
+		{ get; set; }
+
+		public decimal? CascarillaPorcentajeAnalisisFisico
+		{ get; set; }
+
 
 
 
