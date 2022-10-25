@@ -518,5 +518,35 @@ namespace CoffeeConnect.Service
 
             return consultaNotaIngresoAlmacenPlantaPorIdBE;
         }
+
+
+        public int AnularNotaIngresoAlmacenPlanta(AnularNotaIngresoAlmacenPlantaRequestDTO request)
+        {
+            int affected = 0;
+
+            ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(request.NotaIngresoAlmacenPlantaId);
+
+            if(consultaNotaIngresoAlmacenPlantaPorIdBE!=null)
+            {
+                ConsultaControlCalidadPlantaPorIdBE controlCalidadPlanta = _IControlCalidadPlantaRepository.ConsultaControlCalidadPlantaPorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId);
+
+                string controlCalidadPlantaEstadoId = String.Empty;
+                                
+
+                if (controlCalidadPlanta.EstadoCalidadId == ControlCalidadEstados.EnviadoAlmacen)
+                {
+                    controlCalidadPlantaEstadoId = ControlCalidadEstados.Analizado;
+                }
+
+                _INotaIngresoAlmacenPlantaRepository.ActualizarEstado(request.NotaIngresoAlmacenPlantaId, DateTime.Now, request.Usuario, NotaIngresoAlmacenPlantaEstados.Anulado);
+
+                _IControlCalidadPlantaRepository.ActualizarCantidadProcesadaEstado(controlCalidadPlanta.ControlCalidadPlantaId, controlCalidadPlanta.CantidadProcesada - consultaNotaIngresoAlmacenPlantaPorIdBE.Cantidad.Value, controlCalidadPlanta.KilosNetosProcesado - consultaNotaIngresoAlmacenPlantaPorIdBE.KilosNetos.Value, DateTime.Now, request.Usuario, controlCalidadPlantaEstadoId);
+
+            }          
+
+          
+
+            return affected;
+        }
     }
 }
