@@ -53,6 +53,6 @@ namespace CoffeeConnect.Interface.Repository
         int ActualizarNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalle(List<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleTipo> request, int NotaIngresoAlmacenPlantaId);
 
 
-
+        int ActualizarCantidadOrdenProcesoEstado(int notaIngresoAlmacenPlantaId, decimal cantidadOrdenProceso, decimal kilosNetosOrdenProceso, DateTime fecha, string usuario, string estadoId);
     }
 }

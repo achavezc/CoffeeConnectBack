@@ -22,10 +22,15 @@ namespace CoffeeConnect.Service
         public IOptions<FileServerSettings> _fileServerSettings;
         private ICorrelativoRepository _ICorrelativoRepository;
         private IMaestroRepository _IMaestroRepository;
+        private INotaIngresoAlmacenPlantaRepository _INotaIngresoAlmacenPlantaRepository;
 
-        public OrdenProcesoPlantaService(IOrdenProcesoPlantaRepository OrdenProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
+        
+
+
+        public OrdenProcesoPlantaService(IOrdenProcesoPlantaRepository OrdenProcesoPlantaRepository, INotaIngresoAlmacenPlantaRepository NotaIngresoAlmacenPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _IOrdenProcesoPlantaRepository = OrdenProcesoPlantaRepository;
+            _INotaIngresoAlmacenPlantaRepository = NotaIngresoAlmacenPlantaRepository;
             _Mapper = mapper;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
@@ -114,9 +119,25 @@ namespace CoffeeConnect.Service
 
             int OrdenProcesoPlantaId = _IOrdenProcesoPlantaRepository.Insertar(OrdenProcesoPlanta);
 
+             
             foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
             {
+                ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE =  _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(detalle.NotaIngresoPlantaId);
+                decimal cantidadDisponible = consultaNotaIngresoAlmacenPlantaPorIdBE.Cantidad.Value - consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value;
+
+
+                string estado = NotaIngresoAlmacenPlantaEstados.Ingresado;
+
+                if (detalle.CantidadPesado >= cantidadDisponible)
+                {
+                    estado = NotaIngresoAlmacenPlantaEstados.Procesado;
+                }
+
+                _INotaIngresoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoPlantaId, consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value + detalle.CantidadPesado, consultaNotaIngresoAlmacenPlantaPorIdBE.KilosNetosOrdenProceso.Value + detalle.KilosNetosPesado, DateTime.Now, request.Usuario, estado);
+
+
                 detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;
+
                 _IOrdenProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
             }
             return OrdenProcesoPlantaId;

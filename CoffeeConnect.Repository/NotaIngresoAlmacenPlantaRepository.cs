@@ -427,7 +427,25 @@ namespace CoffeeConnect.Repository
 
         }
 
+        public int ActualizarCantidadOrdenProcesoEstado(int notaIngresoAlmacenPlantaId, decimal cantidadOrdenProceso, decimal kilosNetosOrdenProceso, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
 
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoAlmacenPlantaId", notaIngresoAlmacenPlantaId);
+            parameters.Add("@CantidadOrdenProceso", cantidadOrdenProceso);
+            parameters.Add("@KilosNetosOrdenProceso", kilosNetosOrdenProceso);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspNotaIngresoAlmacenPlantaActualizarCantidadOrdenProcesoEstado", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
 
     }
 }
