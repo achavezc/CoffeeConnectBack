@@ -277,5 +277,157 @@ namespace CoffeeConnect.Repository
             }
         }
 
+
+        public int ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalle(List<NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleTipo> request, int NotaIngresoAlmacenPlantaId)
+        {
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+        public int ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalle(List<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> request, int NotaIngresoAlmacenPlantaId)
+        {
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+
+        }
+
+        public int ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalle(List<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> request, int NotaIngresoAlmacenPlantaId)
+        {
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+
+        }
+        public int ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalle(List<NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleTipo> request, int NotaIngresoAlmacenPlantaId)
+        {
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarNotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalle(List<NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleTipo> request, int NotaIngresoAlmacenPlantaId)
+        {
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarNotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalle(List<NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleTipo> request, int NotaIngresoAlmacenPlantaId)
+        {
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+        public int ActualizarNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalle(List<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleTipo> request, int NotaIngresoAlmacenPlantaId)
+        {
+            //uspNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleActualizar
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+            parameters.Add("@NotaIngresoAlmacenPlantaId", NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleTipo", request.ToDataTable().AsTableValuedParameter());
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+
+        }
+
+
+
     }
 }

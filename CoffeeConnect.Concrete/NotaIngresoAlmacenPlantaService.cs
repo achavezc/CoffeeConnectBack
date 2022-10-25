@@ -39,6 +39,8 @@ namespace CoffeeConnect.Service
             ConsultaControlCalidadPlantaPorIdBE controlCalidadPlanta = _IControlCalidadPlantaRepository.ConsultaControlCalidadPlantaPorId(request.ControlCalidadPlantaId);
 
             int affected = 1;
+            NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta = null;
+            int notaIngresoAlmacenPlantaId =0;
 
             if (controlCalidadPlanta.EstadoCalidadId == ControlCalidadEstados.Analizado)
             {
@@ -51,14 +53,14 @@ namespace CoffeeConnect.Service
 
                 _IControlCalidadPlantaRepository.ActualizarCantidadProcesadaEstado(request.ControlCalidadPlantaId, controlCalidadPlanta.CantidadProcesada + request.Cantidad, controlCalidadPlanta.KilosNetosProcesado + request.KilosNetos, DateTime.Now, request.Usuario, estado);
 
-                NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
+                NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
                 NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
                 NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;
                 NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoAlmacenPlantaEstados.Ingresado;
                 NotaIngresoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoAlmacenPlanta);
 
 
-                affected = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
+                notaIngresoAlmacenPlantaId = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
 
                 //_INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoAlmacen);
 
@@ -69,14 +71,16 @@ namespace CoffeeConnect.Service
 
                 _IControlCalidadPlantaRepository.ActualizarCantidadProcesadaEstado(request.ControlCalidadPlantaId, controlCalidadPlanta.CantidadProcesada + request.Cantidad, controlCalidadPlanta.KilosNetosProcesado + request.KilosNetos, DateTime.Now, request.Usuario, estado);
 
-                NotaIngresoAlmacenPlanta NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
+                NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
                 NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
                 NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;
                 NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoAlmacenPlantaEstados.Ingresado;
                 NotaIngresoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoAlmacenPlanta);
 
 
-                int notaIngresoAlmacenPlantaId = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
+                notaIngresoAlmacenPlantaId = _INotaIngresoAlmacenPlantaRepository.Insertar(NotaIngresoAlmacenPlanta);
+
+                #region Nota Salida Almacen
 
                 RegistrarNotaSalidaAlmacenPlantaRequestDTO registrarNotaSalidaAlmacenPlantaRequestDTO = new RegistrarNotaSalidaAlmacenPlantaRequestDTO();
 
@@ -112,7 +116,179 @@ namespace CoffeeConnect.Service
 
                 this.registrarNotaSalidaAlmacenPlanta(registrarNotaSalidaAlmacenPlantaRequestDTO);
 
+                #endregion Nota Salida Almacen
+
             }
+
+            #region Detalle 
+
+            if (controlCalidadPlanta != null)
+            {
+                
+                controlCalidadPlanta.AnalisisFisicoColorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoColorDetallePorId(controlCalidadPlanta.ControlCalidadPlantaId).ToList();
+
+                controlCalidadPlanta.AnalisisFisicoOlorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoOlorDetallePorId(controlCalidadPlanta.ControlCalidadPlantaId).ToList();
+
+                controlCalidadPlanta.AnalisisFisicoDefectoPrimarioDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoDefectoPrimarioDetallePorId(controlCalidadPlanta.ControlCalidadPlantaId).ToList();
+
+                controlCalidadPlanta.AnalisisFisicoDefectoSecundarioDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisFisicoDefectoSecundarioDetallePorId(controlCalidadPlanta.ControlCalidadPlantaId).ToList();
+
+                controlCalidadPlanta.AnalisisSensorialAtributoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialAtributoDetallePorId(controlCalidadPlanta.ControlCalidadPlantaId).ToList();
+
+                controlCalidadPlanta.AnalisisSensorialDefectoDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaAnalisisSensorialDefectoDetallePorId(controlCalidadPlanta.ControlCalidadPlantaId).ToList();
+
+                controlCalidadPlanta.RegistroTostadoIndicadorDetalle = _IControlCalidadPlantaRepository.ConsultarControlCalidadPlantaRegistroTostadoIndicadorDetallePorId(controlCalidadPlanta.ControlCalidadPlantaId).ToList();
+
+
+                #region "Analisis Fisico Color"
+                if (controlCalidadPlanta.AnalisisFisicoColorDetalle.FirstOrDefault() != null)
+                {
+
+                    List<NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleTipo> AnalisisFisicoColorDetalleList = new List<NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleTipo>();
+
+                    controlCalidadPlanta.AnalisisFisicoColorDetalle.ForEach(z =>
+                    {
+                        NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleTipo item = new NotaIngresoAlmacenPlantaAnalisisFisicoColorDetalleTipo();
+                        item.ColorDetalleDescripcion = z.ColorDetalleDescripcion;
+                        item.ColorDetalleId = z.ColorDetalleId;
+                        item.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
+                        item.Valor = z.Valor;
+                        AnalisisFisicoColorDetalleList.Add(item);
+                    });
+
+                    affected = _NotaIngresoAlmacenPlantaRepository.ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoColorDetalle(AnalisisFisicoColorDetalleList, notaIngresoAlmacenPlantaId);
+                }
+                #endregion
+
+                #region Analisis Fisico Defecto Primario
+                if (controlCalidadPlanta.AnalisisFisicoDefectoPrimarioDetalle.FirstOrDefault() != null)
+                {
+                    List<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleTipo> AnalisisFisicoDefectoPrimarioDetalleList = new List<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleTipo>();
+
+                    controlCalidadPlanta.AnalisisFisicoDefectoPrimarioDetalle.ForEach(z =>
+                    {
+                        NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleTipo item = new NotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalleTipo();
+                        item.DefectoDetalleId = z.DefectoDetalleId;
+                        item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                        item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
+                        item.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
+                        item.Valor = z.Valor;
+                        AnalisisFisicoDefectoPrimarioDetalleList.Add(item);
+                    });
+
+                    affected = _INotaIngresoAlmacenPlantaRepository.ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoPrimarioDetalle(AnalisisFisicoDefectoPrimarioDetalleList, notaIngresoAlmacenPlantaId);
+                }
+                #endregion
+
+                #region "Analisis Fisico Defecto Secundario Detalle"
+                if (controlCalidadPlanta.AnalisisFisicoDefectoSecundarioDetalle.FirstOrDefault() != null)
+                {
+                    List<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleTipo>();
+
+                    controlCalidadPlanta.AnalisisFisicoDefectoSecundarioDetalle.ForEach(z =>
+                    {
+                        NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleTipo item = new NotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalleTipo();
+                        item.DefectoDetalleId = z.DefectoDetalleId;
+                        item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                        item.DefectoDetalleEquivalente = z.DefectoDetalleEquivalente;
+                        item.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
+                        item.Valor = z.Valor;
+                        AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
+                    });
+
+                    affected = _INotaIngresoAlmacenPlantaRepository.ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoDefectoSecundarioDetalle(AnalisisFisicoDefectoSecundarioDetalleList, notaIngresoAlmacenPlantaId);
+                }
+                #endregion
+
+                #region "Analisis Fisico Olor Detalle"
+                if (controlCalidadPlanta.AnalisisFisicoOlorDetalle.FirstOrDefault() != null)
+                {
+                    List<NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleTipo> AnalisisFisicoDefectoSecundarioDetalleList = new List<NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleTipo>();
+
+                    controlCalidadPlanta.AnalisisFisicoOlorDetalle.ForEach(z =>
+                    {
+                        NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleTipo item = new NotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalleTipo();
+                        item.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
+                        item.OlorDetalleDescripcion = z.OlorDetalleDescripcion;
+                        item.OlorDetalleId = z.OlorDetalleId;
+                        item.Valor = z.Valor;
+                        AnalisisFisicoDefectoSecundarioDetalleList.Add(item);
+                    });
+
+                    affected = _INotaIngresoAlmacenPlantaRepository.ActualizarNotaIngresoAlmacenPlantaAnalisisFisicoOlorDetalle(AnalisisFisicoDefectoSecundarioDetalleList, notaIngresoAlmacenPlantaId);
+                }
+                #endregion
+
+                #region "Analisis Sensorial Atributo"
+                if (controlCalidadPlanta.AnalisisSensorialAtributoDetalle.FirstOrDefault() != null)
+                {
+                    List<NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleTipo> AnalisisSensorialAtributoDetalle = new List<NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleTipo>();
+
+                    controlCalidadPlanta.AnalisisSensorialAtributoDetalle.ForEach(z =>
+                    {
+                        NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleTipo item = new NotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalleTipo();
+                        item.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
+                        item.AtributoDetalleDescripcion = z.AtributoDetalleDescripcion;
+                        item.AtributoDetalleId = z.AtributoDetalleId;
+                        item.Valor = z.Valor;
+                        AnalisisSensorialAtributoDetalle.Add(item);
+                    });
+
+                    affected = _INotaIngresoAlmacenPlantaRepository.ActualizarNotaIngresoAlmacenPlantaAnalisisSensorialAtributoDetalle(AnalisisSensorialAtributoDetalle, notaIngresoAlmacenPlantaId);
+                }
+                #endregion
+
+                #region AnalisisSensorialDefectoDetalle
+
+                if (controlCalidadPlanta.AnalisisSensorialDefectoDetalle.FirstOrDefault() != null)
+                {
+                    List<NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleTipo> AnalisisSensorialDefectoDetalle = new List<NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleTipo>();
+
+                    controlCalidadPlanta.AnalisisSensorialDefectoDetalle.ForEach(z =>
+                    {
+                        NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleTipo item = new NotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalleTipo();
+                        item.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
+                        item.DefectoDetalleDescripcion = z.DefectoDetalleDescripcion;
+                        item.DefectoDetalleId = z.DefectoDetalleId;
+
+                        item.Valor = z.Valor;
+                        AnalisisSensorialDefectoDetalle.Add(item);
+                    });
+
+                    affected = _INotaIngresoAlmacenPlantaRepository.ActualizarNotaIngresoAlmacenPlantaAnalisisSensorialDefectoDetalle(AnalisisSensorialDefectoDetalle, notaIngresoAlmacenPlantaId);
+                }
+
+                #endregion AnalisisSensorialDefectoDetalle
+
+                #region RegistroTostadoIndicadorDetalle
+
+                if (controlCalidadPlanta.RegistroTostadoIndicadorDetalle.FirstOrDefault() != null)
+                {
+                    List<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleTipo> RegistroTostadoIndicadorDetalle = new List<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleTipo>();
+
+                    controlCalidadPlanta.RegistroTostadoIndicadorDetalle.ForEach(z =>
+                    {
+
+                        NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleTipo item = new NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalleTipo();
+                        item.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
+                        item.IndicadorDetalleDescripcion = z.IndicadorDetalleDescripcion;
+                        item.IndicadorDetalleId = z.IndicadorDetalleId;
+                        item.Valor = z.Valor;
+
+                        RegistroTostadoIndicadorDetalle.Add(item);
+                    });
+
+                    affected = _INotaIngresoAlmacenPlantaRepository.ActualizarNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalle(RegistroTostadoIndicadorDetalle, notaIngresoAlmacenPlantaId);
+                }
+
+                #endregion RegistroTostadoIndicadorDetalle
+
+            }
+
+
+
+            #endregion Detalle
+
 
             return affected;
         }
@@ -341,6 +517,36 @@ namespace CoffeeConnect.Service
             }
 
             return consultaNotaIngresoAlmacenPlantaPorIdBE;
+        }
+
+
+        public int AnularNotaIngresoAlmacenPlanta(AnularNotaIngresoAlmacenPlantaRequestDTO request)
+        {
+            int affected = 0;
+
+            ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(request.NotaIngresoAlmacenPlantaId);
+
+            if(consultaNotaIngresoAlmacenPlantaPorIdBE!=null)
+            {
+                ConsultaControlCalidadPlantaPorIdBE controlCalidadPlanta = _IControlCalidadPlantaRepository.ConsultaControlCalidadPlantaPorId(consultaNotaIngresoAlmacenPlantaPorIdBE.ControlCalidadPlantaId);
+
+                string controlCalidadPlantaEstadoId = String.Empty;
+                                
+
+                if (controlCalidadPlanta.EstadoCalidadId == ControlCalidadEstados.EnviadoAlmacen)
+                {
+                    controlCalidadPlantaEstadoId = ControlCalidadEstados.Analizado;
+                }
+
+                _INotaIngresoAlmacenPlantaRepository.ActualizarEstado(request.NotaIngresoAlmacenPlantaId, DateTime.Now, request.Usuario, NotaIngresoAlmacenPlantaEstados.Anulado);
+
+                _IControlCalidadPlantaRepository.ActualizarCantidadProcesadaEstado(controlCalidadPlanta.ControlCalidadPlantaId, controlCalidadPlanta.CantidadProcesada - consultaNotaIngresoAlmacenPlantaPorIdBE.Cantidad.Value, controlCalidadPlanta.KilosNetosProcesado - consultaNotaIngresoAlmacenPlantaPorIdBE.KilosNetos.Value, DateTime.Now, request.Usuario, controlCalidadPlantaEstadoId);
+
+            }          
+
+          
+
+            return affected;
         }
     }
 }
