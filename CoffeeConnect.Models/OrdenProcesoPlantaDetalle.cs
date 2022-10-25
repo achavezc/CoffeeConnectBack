@@ -18,7 +18,7 @@ namespace CoffeeConnect.Models
 
 
         public int NotaIngresoPlantaId { get; set; }
-        public DateTime FechaRegistroFinal { get; set; }
+        public DateTime? FechaRegistroFinal { get; set; }
 
         public int CantidadPesado { get; set; }
 

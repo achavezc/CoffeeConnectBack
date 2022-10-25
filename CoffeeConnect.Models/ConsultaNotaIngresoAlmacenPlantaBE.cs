@@ -234,6 +234,14 @@ namespace CoffeeConnect.Models
 		public decimal? KilosNetosOrdenProceso
 		{ get; set; }
 
+		public decimal? DescartePorcentajeAnalisisFisico
+		{ get; set; }
+		public decimal? HumedadPorcentajeAnalisisFisico
+		{ get; set; }
+
+		public decimal? CascarillaPorcentajeAnalisisFisico
+		{ get; set; }
+
 
 
 
@@ -261,11 +269,6 @@ namespace CoffeeConnect.Models
 		public decimal DescarteGramosAnalisisFisico
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the DescartePorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal DescartePorcentajeAnalisisFisico
-		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the CascarillaGramosAnalisisFisico value.
@@ -273,11 +276,7 @@ namespace CoffeeConnect.Models
 		public decimal CascarillaGramosAnalisisFisico
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the CascarillaPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal CascarillaPorcentajeAnalisisFisico
-		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the TotalGramosAnalisisFisico value.
@@ -291,11 +290,7 @@ namespace CoffeeConnect.Models
 		public decimal TotalPorcentajeAnalisisFisico
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the HumedadPorcentajeAnalisisFisico value.
-		/// </summary>
-		public decimal HumedadPorcentajeAnalisisFisico
-		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the ObservacionAnalisisFisico value.
