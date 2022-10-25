@@ -74,7 +74,10 @@ namespace CoffeeConnect.Service
                 NotaIngresoAlmacenPlanta = _Mapper.Map<NotaIngresoAlmacenPlanta>(request);
                 NotaIngresoAlmacenPlanta.UsuarioRegistro = request.Usuario;
                 NotaIngresoAlmacenPlanta.FechaRegistro = DateTime.Now;
-                NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoAlmacenPlantaEstados.Ingresado;
+                NotaIngresoAlmacenPlanta.EstadoId = NotaIngresoAlmacenPlantaEstados.Procesado;
+                NotaIngresoAlmacenPlanta.KilosNetosOrdenProceso = controlCalidadPlanta.KilosNetosControlCalidad;
+                NotaIngresoAlmacenPlanta.CantidadOrdenProceso = controlCalidadPlanta.CantidadControlCalidad;
+
                 NotaIngresoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoAlmacenPlanta);
 
 
