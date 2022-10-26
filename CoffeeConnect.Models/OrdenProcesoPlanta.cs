@@ -29,60 +29,14 @@ namespace CoffeeConnect.Models
 		public string TipoProcesoId
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the OrdenProcesoId value.
-		/// </summary>
-		public int? OrdenProcesoId
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
 		public string Numero
 		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TipoCertificacionId value.
-		/// </summary>
-		public string TipoCertificacionId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the EntidadCertificadoraId value.
-		/// </summary>
-		public string EntidadCertificadoraId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the ProductoId value.
-		/// </summary>
-		public string ProductoId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the SubProductoId value.
-		/// </summary>
-		public string SubProductoId
-		{ get; set; }
-
-
-
-		public string ProductoIdTerminado
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the SubProductoId value.
-		/// </summary>
-		public string SubProductoIdTerminado
-		{ get; set; }
-
-
-
-		/// <summary>
-		/// Gets or sets the TipoProduccionId value.
-		/// </summary>
-		public string TipoProduccionId
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the EmpaqueId value.
@@ -95,42 +49,7 @@ namespace CoffeeConnect.Models
 		/// </summary>
 		public string TipoId
 		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CalidadId value.
-		/// </summary>
-		public string CalidadId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the GradoId value.
-		/// </summary>
-		public string GradoId
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the TotalSacos value.
-		/// </summary>
-		public decimal TotalSacos
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PesoPorSaco value.
-		/// </summary>
-		public decimal PesoPorSaco
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the PesoKilos value.
-		/// </summary>
-		public decimal PesoKilos
-		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the CantidadContenedores value.
-		/// </summary>
-		public decimal? CantidadContenedores
-		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the CantidadDefectos value.
@@ -141,14 +60,9 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the FechaInicioProceso value.
 		/// </summary>
-		public DateTime? FechaInicioProceso
+		public DateTime? FechaOrdenProceso
 		{ get; set; }
-
-		/// <summary>
-		/// Gets or sets the FechaFinProceso value.
-		/// </summary>
-		public DateTime? FechaFinProceso
-		{ get; set; }
+				
 
 		/// <summary>
 		/// Gets or sets the NombreArchivo value.

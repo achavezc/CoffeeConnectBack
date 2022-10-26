@@ -47,41 +47,11 @@ namespace CoffeeConnect.Service
             var list = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlanta(request);
 
 
-            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
-
-            foreach (ConsultaOrdenProcesoPlantaBE orden in list)
-            {
-                string[] certificacionesIds = orden.TipoCertificacionId.Split('|');
-
-                string certificacionLabel = string.Empty;
-
-
-                if (certificacionesIds.Length > 0)
-                {
-
-                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
-
-                    foreach (string certificacionId in certificacionesIds)
-                    {
-
-                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
-
-                        if (certificacion != null)
-                        {
-                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
-                        }
-                    }
-
-                }
-
-                orden.TipoCertificacion = certificacionLabel;
-            }
-
-
+           
             return list.ToList();
         }
 
-        public int RegistrarOrdenProcesoPlanta(RegistrarActualizarOrdenProcesoPlantaRequestDTO request, IFormFile file)
+        public int RegistrarOrdenProcesoPlanta(RegistrarActualizarOrdenProcesoPlantaRequestDTO request/*, IFormFile file*/)
         {
             OrdenProcesoPlanta OrdenProcesoPlanta = _Mapper.Map<OrdenProcesoPlanta>(request);
             OrdenProcesoPlanta.FechaRegistro = DateTime.Now;
@@ -89,33 +59,34 @@ namespace CoffeeConnect.Service
             OrdenProcesoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.OrdenProcesoPlanta);
 
             var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+           
             byte[] fileBytes = null;
 
-            if (file != null)
-            {
-                if (file.Length > 0)
-                {
-                    using (var ms = new MemoryStream())
-                    {
-                        file.CopyTo(ms);
-                        fileBytes = ms.ToArray();
-                        string s = Convert.ToBase64String(fileBytes);
-                    }
+            //if (file != null)
+            //{
+            //    if (file.Length > 0)
+            //    {
+            //        using (var ms = new MemoryStream())
+            //        {
+            //            file.CopyTo(ms);
+            //            fileBytes = ms.ToArray();
+            //            string s = Convert.ToBase64String(fileBytes);
+            //        }
 
-                    OrdenProcesoPlanta.NombreArchivo = file.FileName;
-                    //Adjuntos
-                    ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
-                    {
-                        filtros = new AdjuntarArchivosDTO()
-                        {
-                            archivoStream = fileBytes,
-                            filename = file.FileName,
-                        },
-                        pathFile = _fileServerSettings.Value.OrdenProcesoPlanta
-                    });
-                    OrdenProcesoPlanta.PathArchivo = _fileServerSettings.Value.OrdenProcesoPlanta + "\\" + response.ficheroReal;
-                }
-            }
+            //        OrdenProcesoPlanta.NombreArchivo = file.FileName;
+            //        Adjuntos
+            //        ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+            //        {
+            //            filtros = new AdjuntarArchivosDTO()
+            //            {
+            //                archivoStream = fileBytes,
+            //                filename = file.FileName,
+            //            },
+            //            pathFile = _fileServerSettings.Value.OrdenProcesoPlanta
+            //        });
+            //        OrdenProcesoPlanta.PathArchivo = _fileServerSettings.Value.OrdenProcesoPlanta + "\\" + response.ficheroReal;
+            //    }
+            //}
 
             int OrdenProcesoPlantaId = _IOrdenProcesoPlantaRepository.Insertar(OrdenProcesoPlanta);
 
@@ -203,33 +174,7 @@ namespace CoffeeConnect.Service
                 consultaOrdenProcesoPlantaPorIdBE.detalle = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaDetallePorId(request.OrdenProcesoPlantaId).ToList();
 
 
-                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaOrdenProcesoPlantaPorIdBE.EmpresaId, String.Empty).ToList();
-
-
-                string[] certificacionesIds = consultaOrdenProcesoPlantaPorIdBE.TipoCertificacionId.Split('|');
-
-                string certificacionLabel = string.Empty;
-
-
-                if (certificacionesIds.Length > 0)
-                {
-
-                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
-
-                    foreach (string certificacionId in certificacionesIds)
-                    {
-
-                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
-
-                        if (certificacion != null)
-                        {
-                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
-                        }
-                    }
-
-                }
-
-                consultaOrdenProcesoPlantaPorIdBE.TipoCertificacion = certificacionLabel;
+                 
 
 
             }
