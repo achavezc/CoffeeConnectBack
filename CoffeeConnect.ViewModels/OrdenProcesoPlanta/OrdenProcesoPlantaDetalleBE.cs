@@ -22,11 +22,14 @@ namespace CoffeeConnect.DTO
         public DateTime FechaNotaIngresoPlanta { get; set; }
 
 
-        public decimal RendimientoPorcentaje { get; set; }
+       
         public decimal HumedadPorcentaje { get; set; }
 
         public decimal Cantidad { get; set; }
         public decimal KilosBrutos { get; set; }
+
+        public decimal CantidadNotaIngreso { get; set; }
+        public decimal KilosNetosNotaIngreso { get; set; }
 
         public decimal Tara { get; set; }
 

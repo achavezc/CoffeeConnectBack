@@ -20,14 +20,20 @@ namespace CoffeeConnect.Models
         public int NotaIngresoPlantaId { get; set; }
         public DateTime? FechaRegistroFinal { get; set; }
 
-        public int CantidadPesado { get; set; }
+        public int Cantidad { get; set; }
 
-        public decimal KilosNetosPesado { get; set; }
+        public decimal KilosNetos { get; set; }
+
+        public int CantidadNotaIngreso { get; set; }
+
+        public decimal KilosNetosNotaIngreso { get; set; }
+
+
         public decimal HumedadPorcentaje { get; set; }
         public decimal PorcentajeExportable { get; set; }
         public decimal PorcentajeDescarte { get; set; }
         public decimal PorcentajeCascarilla { get; set; }
-        public decimal RendimientoPorcentaje { get; set; }
+      
 
         public decimal KilosExportables { get; set; }
 

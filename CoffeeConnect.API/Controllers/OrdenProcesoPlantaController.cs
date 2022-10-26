@@ -62,7 +62,7 @@ namespace CoffeeConnect.API.Controllers
         [Route("Registrar")]
         [HttpPost]
         ////public IActionResult Registrar(/*IFormFile file,*/ [FromForm] string request)
-        public IActionResult Registrar(/*IFormFile file,*/ [FromBody] RegistrarActualizarOrdenProcesoPlantaRequestDTO request)
+        public IActionResult Registrar(IFormFile file, [FromForm] string request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
@@ -70,9 +70,9 @@ namespace CoffeeConnect.API.Controllers
             RegistrarActualizarOrdenProcesoPlantaResponseDTO response = new RegistrarActualizarOrdenProcesoPlantaResponseDTO();
             try
             {
-                //var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarOrdenProcesoPlantaRequestDTO>(request);
-                //response.Result.Data = OrdenProcesoPlantaService.RegistrarOrdenProcesoPlanta(myJsonObject, file);
-                response.Result.Data = OrdenProcesoPlantaService.RegistrarOrdenProcesoPlanta(request);
+                var myJsonObject = JsonConvert.DeserializeObject<RegistrarActualizarOrdenProcesoPlantaRequestDTO>(request);
+                response.Result.Data = OrdenProcesoPlantaService.RegistrarOrdenProcesoPlanta(myJsonObject, file);
+                //response.Result.Data = OrdenProcesoPlantaService.RegistrarOrdenProcesoPlanta(request);
                 response.Result.Success = true;
             }
             catch (ResultException ex)
