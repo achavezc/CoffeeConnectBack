@@ -13,7 +13,7 @@ namespace CoffeeConnect.DTO
 
         public string Numero { get; set; }
         public string RucOrganizacion { get; set; }
-        public string NumeroContrato { get; set; }
+        
         public string RazonSocialOrganizacion { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }      

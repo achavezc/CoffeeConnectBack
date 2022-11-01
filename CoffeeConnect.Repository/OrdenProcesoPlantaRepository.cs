@@ -51,12 +51,21 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpaqueId", ordenProcesoPlanta.EmpaqueId);
             parameters.Add("@TipoId", ordenProcesoPlanta.TipoId);            
             parameters.Add("@CantidadDefectos", ordenProcesoPlanta.CantidadDefectos);
-            parameters.Add("@FechaOrdenProceso", ordenProcesoPlanta.FechaOrdenProceso);
+            
             parameters.Add("@NombreArchivo", ordenProcesoPlanta.NombreArchivo);
             parameters.Add("@DescripcionArchivo", ordenProcesoPlanta.DescripcionArchivo);
             parameters.Add("@PathArchivo", ordenProcesoPlanta.PathArchivo);
             parameters.Add("@Observacion", ordenProcesoPlanta.Observacion);
             parameters.Add("@EstadoId", ordenProcesoPlanta.EstadoId);
+
+            parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
+            parameters.Add("@ProductoTerminadoId", ordenProcesoPlanta.ProductoTerminadoId);
+            parameters.Add("@EntidadCertificadoraId", ordenProcesoPlanta.EntidadCertificadoraId);
+            parameters.Add("@FechaInicioProceso", ordenProcesoPlanta.FechaInicioProceso);
+           
+       
+
+            
             parameters.Add("@FechaRegistro", ordenProcesoPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", ordenProcesoPlanta.UsuarioRegistro);
             parameters.Add("@OrdenProcesoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -90,7 +99,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Observacion", ordenProcesoPlanta.Observacion);
             parameters.Add("@FechaUltimaActualizacion", ordenProcesoPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", ordenProcesoPlanta.UsuarioUltimaActualizacion);
-
+            parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
+            parameters.Add("@ProductoTerminadoId", ordenProcesoPlanta.ProductoTerminadoId);
+            parameters.Add("@EntidadCertificadoraId", ordenProcesoPlanta.EntidadCertificadoraId);
+            parameters.Add("@FechaInicioProceso", ordenProcesoPlanta.FechaInicioProceso);
+            
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

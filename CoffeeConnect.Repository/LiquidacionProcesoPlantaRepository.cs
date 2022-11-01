@@ -24,8 +24,7 @@ namespace CoffeeConnect.Repository
         public IEnumerable<ConsultaLiquidacionProcesoPlantaBE> ConsultarLiquidacionProcesoPlanta(ConsultaLiquidacionProcesoPlantaRequestDTO request)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@Numero", request.Numero);
-            parameters.Add("@NumeroContrato", request.NumeroContrato);
+            parameters.Add("@Numero", request.Numero);            
             parameters.Add("@RazonSocialOrganizacion", request.RazonSocialOrganizacion);
             parameters.Add("@RucOrganizacion", request.RucOrganizacion);
             parameters.Add("@TipoProcesoId", request.TipoProcesoId);

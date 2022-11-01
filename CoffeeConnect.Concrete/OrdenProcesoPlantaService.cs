@@ -52,6 +52,8 @@ namespace CoffeeConnect.Service
         }
 
         public int RegistrarOrdenProcesoPlanta(RegistrarActualizarOrdenProcesoPlantaRequestDTO request, IFormFile file)
+
+        //public int RegistrarOrdenProcesoPlanta(RegistrarActualizarOrdenProcesoPlantaRequestDTO request )
         {
             OrdenProcesoPlanta OrdenProcesoPlanta = _Mapper.Map<OrdenProcesoPlanta>(request);
             OrdenProcesoPlanta.FechaRegistro = DateTime.Now;
@@ -62,31 +64,31 @@ namespace CoffeeConnect.Service
            
             byte[] fileBytes = null;
 
-            if (file != null)
-            {
-                if (file.Length > 0)
-                {
-                    using (var ms = new MemoryStream())
-                    {
-                        file.CopyTo(ms);
-                        fileBytes = ms.ToArray();
-                        string s = Convert.ToBase64String(fileBytes);
-                    }
+            //if (file != null)
+            //{
+            //    if (file.Length > 0)
+            //    {
+            //        using (var ms = new MemoryStream())
+            //        {
+            //            file.CopyTo(ms);
+            //            fileBytes = ms.ToArray();
+            //            string s = Convert.ToBase64String(fileBytes);
+            //        }
 
-                    OrdenProcesoPlanta.NombreArchivo = file.FileName;
-                    //Adjuntos
-                    ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
-                    {
-                        filtros = new AdjuntarArchivosDTO()
-                        {
-                            archivoStream = fileBytes,
-                            filename = file.FileName,
-                        },
-                        pathFile = _fileServerSettings.Value.OrdenProcesoPlanta
-                    });
-                    OrdenProcesoPlanta.PathArchivo = _fileServerSettings.Value.OrdenProcesoPlanta + "\\" + response.ficheroReal;
-                }
-            }
+            //        OrdenProcesoPlanta.NombreArchivo = file.FileName;
+            //        //Adjuntos
+            //        ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+            //        {
+            //            filtros = new AdjuntarArchivosDTO()
+            //            {
+            //                archivoStream = fileBytes,
+            //                filename = file.FileName,
+            //            },
+            //            pathFile = _fileServerSettings.Value.OrdenProcesoPlanta
+            //        });
+            //        OrdenProcesoPlanta.PathArchivo = _fileServerSettings.Value.OrdenProcesoPlanta + "\\" + response.ficheroReal;
+            //    }
+            //}
 
             int OrdenProcesoPlantaId = _IOrdenProcesoPlantaRepository.Insertar(OrdenProcesoPlanta);
 

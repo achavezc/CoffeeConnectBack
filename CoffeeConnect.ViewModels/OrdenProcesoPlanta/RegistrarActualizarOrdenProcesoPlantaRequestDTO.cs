@@ -27,11 +27,28 @@ namespace CoffeeConnect.DTO
 		public string TipoProcesoId
 		{ get; set; }
 
-		 
-		
- 
+		public string NumeroContrato
+		{ get; set; }
 
- 
+		public string ProductoIdTerminado
+		{ get; set; }
+
+		public string EntidadCertificadoraId
+		{ get; set; }
+
+		public DateTime FechaRegistro
+		{ get; set; }
+
+		public DateTime? FechaInicioProceso
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaRegistro value.
+		/// </summary>
+		public DateTime? FechaFinProceso
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the EmpaqueId value.
 		/// </summary>
@@ -55,11 +72,7 @@ namespace CoffeeConnect.DTO
 		public decimal CantidadDefectos
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the FechaInicioProceso value.
-		/// </summary>
-		public DateTime? FechaOrdenProceso
-		{ get; set; }
+
 
 		
 

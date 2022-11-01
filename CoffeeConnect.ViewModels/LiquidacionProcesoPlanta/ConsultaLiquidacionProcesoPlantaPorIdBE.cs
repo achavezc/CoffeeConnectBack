@@ -167,6 +167,13 @@ namespace CoffeeConnect.DTO
 
         public string Preparacion { get; set; }
 
+
+        public DateTime? FechaInicioProceso { get; set; }
+        public DateTime? FechaFinProceso { get; set; }
+
+   
+
+
         public IEnumerable<ConsultaLiquidacionProcesoPlantaDetalleBE> Detalle { get; set; }
 
         public IEnumerable<ConsultaLiquidacionProcesoPlantaResultadoBE> Resultado { get; set; }

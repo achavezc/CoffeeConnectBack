@@ -57,13 +57,7 @@ namespace CoffeeConnect.DTO
 		public decimal CantidadDefectos
 		{ get; set; }
 
-		/// <summary>
-		/// Gets or sets the FechaInicioProceso value.
-		/// </summary>
-		public DateTime? FechaOrdenProceso
-		{ get; set; }
-
-		
+		 
 
 		/// <summary>
 		/// Gets or sets the NombreArchivo value.
@@ -138,7 +132,15 @@ namespace CoffeeConnect.DTO
 
 		public string RazonSocialOrganizacion { get; set; }
 
+		public DateTime? FechaInicioProceso { get; set; }
+		public DateTime? FechaFinProceso { get; set; }
 
+		public string ProductoId { get; set; }
+
+		public string ProductoIdTerminado { get; set; }
+
+
+		public string EntidadCertificadoraId { get; set; }
 
 		public IEnumerable<OrdenProcesoPlantaDetalleBE> detalle { get; set; }
     }

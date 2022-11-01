@@ -7,7 +7,7 @@ namespace CoffeeConnect.Repository
 {
     public class ConnectionString
     {
-
+        
         public string CoffeeConnectDB { get; set; }
     }
 }

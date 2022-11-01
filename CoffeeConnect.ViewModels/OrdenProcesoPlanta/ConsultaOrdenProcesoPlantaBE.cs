@@ -33,8 +33,20 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public decimal CantidadDefectos
         { get; set; }
+ 
 
-        public DateTime? FechaOrdenProceso { get; set; }
+        public DateTime? FechaInicioProceso { get; set; }
+        public DateTime? FechaFinProceso { get; set; }
+
+        public string ProductoId { get; set; }
+        public string Producto { get; set; }
+        public string ProductoIdTerminado { get; set; }
+        public string ProductoTerminado { get; set; }
+
+        public string EntidadCertificadoraId { get; set; }
+        public string EntidadCertificadora { get; set; }
+
+
 
         public string UsuarioRegistro { get; set; }
         public DateTime? FechaUltimaActualizacion { get; set; }

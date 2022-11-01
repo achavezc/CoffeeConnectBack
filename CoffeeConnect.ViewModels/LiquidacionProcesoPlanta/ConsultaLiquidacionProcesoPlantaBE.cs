@@ -29,14 +29,13 @@ namespace CoffeeConnect.DTO
         
         public int OrganizacionId { get; set; }
         public string TipoProcesoId { get; set; }
-        public int? ContratoId { get; set; }
+        
         public string Numero { get; set; }
 
         
 
         public string NumeroOrdenProcesoPlanta { get; set; }
-
-        public string NumeroContrato { get; set; }
+ 
 
         public string RucOrganizacion { get; set; }
        
@@ -48,14 +47,22 @@ namespace CoffeeConnect.DTO
         public string UsuarioRegistro { get; set; }
         public DateTime? FechaUltimaActualizacion { get; set; }
 
-        public DateTime? FechaInicioProceso { get; set; }
+        public DateTime? FechaOrdenProceso { get; set; }
 
+
+        public DateTime? FechaInicioProceso { get; set; }
         public DateTime? FechaFinProceso { get; set; }
 
+        public string ProductoId { get; set; }
+        public string Producto { get; set; }
+        public string ProductoIdTerminado { get; set; }
+        public string ProductoTerminado { get; set; }
 
-        
+        public string EntidadCertificadoraId { get; set; }
+        public string EntidadCertificadora { get; set; }
 
-            
+
+
         public string UsuarioUltimaActualizacion { get; set; }
     }
 }

@@ -61,8 +61,9 @@ namespace CoffeeConnect.API.Controllers
 
         [Route("Registrar")]
         [HttpPost]
-        ////public IActionResult Registrar(/*IFormFile file,*/ [FromForm] string request)
-        public IActionResult Registrar(IFormFile file, [FromForm] string request)
+        public IActionResult Registrar( IFormFile file,  [FromForm] string request)
+        
+        //public IActionResult Registrar( [FromBody] RegistrarActualizarOrdenProcesoPlantaRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");

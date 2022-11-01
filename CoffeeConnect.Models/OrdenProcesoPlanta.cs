@@ -58,12 +58,7 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 		/// <summary>
-		/// Gets or sets the FechaInicioProceso value.
-		/// </summary>
-		public DateTime? FechaOrdenProceso
-		{ get; set; }
-				
-
+	 
 		/// <summary>
 		/// Gets or sets the NombreArchivo value.
 		/// </summary>
@@ -94,10 +89,25 @@ namespace CoffeeConnect.Models
 		public string EstadoId
 		{ get; set; }
 
+		public string ProductoId
+		{ get; set; }
+
+		public string ProductoTerminadoId
+		{ get; set; }
+
+		public string EntidadCertificadoraId
+		{ get; set; }
+
+		public DateTime FechaRegistro
+		{ get; set; }
+
+		public DateTime FechaInicioProceso
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
 		/// </summary>
-		public DateTime FechaRegistro
+		public DateTime FechaFinProceso
 		{ get; set; }
 
 		/// <summary>

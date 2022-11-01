@@ -40,5 +40,9 @@ namespace CoffeeConnect.DTO
 	    public decimal PorcentajeCascarilla { get; set; }
 	    public decimal SacosCalculo { get; set; }
 
+
+       
+         
+
     }
 }
