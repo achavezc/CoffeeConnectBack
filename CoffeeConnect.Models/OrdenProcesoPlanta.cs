@@ -92,7 +92,7 @@ namespace CoffeeConnect.Models
 		public string ProductoId
 		{ get; set; }
 
-		public string ProductoTerminadoId
+		public string ProductoIdTerminado
 		{ get; set; }
 
 		public string EntidadCertificadoraId

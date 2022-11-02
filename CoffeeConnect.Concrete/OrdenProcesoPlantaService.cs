@@ -95,7 +95,7 @@ namespace CoffeeConnect.Service
              
             foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
             {
-                ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE =  _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(detalle.NotaIngresoPlantaId);
+                ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE =  _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(detalle.NotaIngresoAlmacenPlantaId);
                 decimal cantidadDisponible = consultaNotaIngresoAlmacenPlantaPorIdBE.Cantidad.Value - consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value;
 
 
@@ -106,7 +106,7 @@ namespace CoffeeConnect.Service
                     estado = NotaIngresoAlmacenPlantaEstados.Procesado;
                 }
 
-                _INotaIngresoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoPlantaId, consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value + detalle.Cantidad, consultaNotaIngresoAlmacenPlantaPorIdBE.KilosNetosOrdenProceso.Value + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
+                _INotaIngresoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoAlmacenPlantaId, consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value + detalle.Cantidad, consultaNotaIngresoAlmacenPlantaPorIdBE.KilosNetosOrdenProceso.Value + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
 
 
                 detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;

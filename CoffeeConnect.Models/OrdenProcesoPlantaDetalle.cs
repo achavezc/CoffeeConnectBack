@@ -16,30 +16,32 @@ namespace CoffeeConnect.Models
         /// </summary>
         public int OrdenProcesoPlantaDetalleId { get; set; }
 
+        public int NotaIngresoAlmacenPlantaId { get; set; }        
+        public string NumeroIngresoAlmacenPlanta { get; set; }
+        public DateTime? FechaIngresoAlmacen { get; set; }
+        public int CantidadNotaIngreso { get; set; }
 
-        public int NotaIngresoPlantaId { get; set; }
-        public DateTime? FechaRegistroFinal { get; set; }
+        public decimal KilosNetosNotaIngreso { get; set; }
+
+        public decimal PorcentajeHumedad { get; set; }
+
+        public decimal PorcentajeExportable { get; set; }
+
+        public decimal PorcentajeDescarte { get; set; }
+
+        public decimal PorcentajeCascarilla { get; set; }
+
+        public decimal KilosExportables { get; set; }       
+
+        public decimal SacosCalculo { get; set; }
+
+        
 
         public int Cantidad { get; set; }
 
         public decimal KilosNetos { get; set; }
 
-        public int CantidadNotaIngreso { get; set; }
-
-        public decimal KilosNetosNotaIngreso { get; set; }
-
-
-        public decimal HumedadPorcentaje { get; set; }
-        public decimal PorcentajeExportable { get; set; }
-        public decimal PorcentajeDescarte { get; set; }
-        public decimal PorcentajeCascarilla { get; set; }
-      
-
-        public decimal KilosExportables { get; set; }
-
-        public decimal SacosCalculo { get; set; }
-
-        public string NumeroIngresoPlanta { get; set; }
+       
         #endregion
     }
 }

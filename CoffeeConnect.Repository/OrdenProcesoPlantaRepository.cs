@@ -59,7 +59,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", ordenProcesoPlanta.EstadoId);
 
             parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
-            parameters.Add("@ProductoTerminadoId", ordenProcesoPlanta.ProductoTerminadoId);
+            parameters.Add("@ProductoIdTerminado", ordenProcesoPlanta.ProductoIdTerminado);
             parameters.Add("@EntidadCertificadoraId", ordenProcesoPlanta.EntidadCertificadoraId);
             parameters.Add("@FechaInicioProceso", ordenProcesoPlanta.FechaInicioProceso);
            
@@ -100,7 +100,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaUltimaActualizacion", ordenProcesoPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", ordenProcesoPlanta.UsuarioUltimaActualizacion);
             parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
-            parameters.Add("@ProductoTerminadoId", ordenProcesoPlanta.ProductoTerminadoId);
+            parameters.Add("@ProductoIdTerminado", ordenProcesoPlanta.ProductoIdTerminado);
             parameters.Add("@EntidadCertificadoraId", ordenProcesoPlanta.EntidadCertificadoraId);
             parameters.Add("@FechaInicioProceso", ordenProcesoPlanta.FechaInicioProceso);
             
@@ -150,14 +150,14 @@ namespace CoffeeConnect.Repository
             int result = 0;
             var parameters = new DynamicParameters();
             parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaDetalle.OrdenProcesoPlantaId);
-            parameters.Add("@NotaIngresoPlantaId", ordenProcesoPlantaDetalle.NotaIngresoPlantaId);
-            parameters.Add("@NumeroNotaIngresoPlanta", ordenProcesoPlantaDetalle.NumeroIngresoPlanta);
-            parameters.Add("@FechaIngresoAlmacen", ordenProcesoPlantaDetalle.FechaRegistroFinal);
+            parameters.Add("@NotaIngresoAlmacenPlantaId", ordenProcesoPlantaDetalle.NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NumeroIngresoAlmacenPlanta", ordenProcesoPlantaDetalle.NumeroIngresoAlmacenPlanta);
+            parameters.Add("@FechaIngresoAlmacen", ordenProcesoPlantaDetalle.FechaIngresoAlmacen);
             parameters.Add("@Cantidad", ordenProcesoPlantaDetalle.Cantidad);
             parameters.Add("@KilosNetos", ordenProcesoPlantaDetalle.KilosNetos);
             parameters.Add("@CantidadNotaIngreso", ordenProcesoPlantaDetalle.CantidadNotaIngreso);
             parameters.Add("@KilosNetosNotaIngreso", ordenProcesoPlantaDetalle.KilosNetosNotaIngreso);
-            parameters.Add("@PorcentajeHumedad", ordenProcesoPlantaDetalle.HumedadPorcentaje);
+            parameters.Add("@PorcentajeHumedad", ordenProcesoPlantaDetalle.PorcentajeHumedad);
             parameters.Add("@PorcentajeExportable", ordenProcesoPlantaDetalle.PorcentajeExportable);
             parameters.Add("@PorcentajeDescarte", ordenProcesoPlantaDetalle.PorcentajeDescarte);
             parameters.Add("@PorcentajeCascarilla", ordenProcesoPlantaDetalle.PorcentajeCascarilla);       
