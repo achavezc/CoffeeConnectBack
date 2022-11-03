@@ -51,6 +51,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpaqueId", ordenProcesoPlanta.EmpaqueId);
             parameters.Add("@TipoId", ordenProcesoPlanta.TipoId);            
             parameters.Add("@CantidadDefectos", ordenProcesoPlanta.CantidadDefectos);
+            parameters.Add("@NumeroContrato", ordenProcesoPlanta.NumeroContrato);
             
             parameters.Add("@NombreArchivo", ordenProcesoPlanta.NombreArchivo);
             parameters.Add("@DescripcionArchivo", ordenProcesoPlanta.DescripcionArchivo);
@@ -91,7 +92,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@OrganizacionId", ordenProcesoPlanta.OrganizacionId);
             parameters.Add("@TipoProcesoId", ordenProcesoPlanta.TipoProcesoId);           
             parameters.Add("@EmpaqueId", ordenProcesoPlanta.EmpaqueId);
-            parameters.Add("@TipoId", ordenProcesoPlanta.TipoId);           
+            parameters.Add("@TipoId", ordenProcesoPlanta.TipoId);
+            parameters.Add("@NumeroContrato", ordenProcesoPlanta.NumeroContrato);
             parameters.Add("@CantidadDefectos", ordenProcesoPlanta.CantidadDefectos);            
             parameters.Add("@NombreArchivo", ordenProcesoPlanta.NombreArchivo);
             parameters.Add("@DescripcionArchivo", ordenProcesoPlanta.DescripcionArchivo);
@@ -152,6 +154,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaDetalle.OrdenProcesoPlantaId);
             parameters.Add("@NotaIngresoAlmacenPlantaId", ordenProcesoPlantaDetalle.NotaIngresoAlmacenPlantaId);
             parameters.Add("@NumeroIngresoAlmacenPlanta", ordenProcesoPlantaDetalle.NumeroIngresoAlmacenPlanta);
+
+
             parameters.Add("@FechaIngresoAlmacen", ordenProcesoPlantaDetalle.FechaIngresoAlmacen);
             parameters.Add("@Cantidad", ordenProcesoPlantaDetalle.Cantidad);
             parameters.Add("@KilosNetos", ordenProcesoPlantaDetalle.KilosNetos);

@@ -53,6 +53,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", liquidacionProcesoPlanta.EstadoId);
             parameters.Add("@FechaRegistro", liquidacionProcesoPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", liquidacionProcesoPlanta.UsuarioRegistro);
+            parameters.Add("@ProductoId", liquidacionProcesoPlanta.ProductoId);
+            parameters.Add("@ProductoIdTerminado", liquidacionProcesoPlanta.ProductoIdTerminado);
+            parameters.Add("@EntidadCertificadoraId", liquidacionProcesoPlanta.EntidadCertificadoraId);
+            parameters.Add("@FechaInicioProceso", liquidacionProcesoPlanta.FechaInicioProceso);
+            parameters.Add("@FechaFinProceso", liquidacionProcesoPlanta.FechaInicioProceso);
 
             parameters.Add("@LiquidacionProcesoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -79,6 +84,12 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaUltimaActualizacion", liquidacionProcesoPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", liquidacionProcesoPlanta.UsuarioUltimaActualizacion);
             parameters.Add("@NumeroDefectos", liquidacionProcesoPlanta.NumeroDefectos);
+            parameters.Add("@ProductoId", liquidacionProcesoPlanta.ProductoId);
+            parameters.Add("@ProductoIdTerminado", liquidacionProcesoPlanta.ProductoIdTerminado);
+            parameters.Add("@EntidadCertificadoraId", liquidacionProcesoPlanta.EntidadCertificadoraId);
+            parameters.Add("@FechaInicioProceso", liquidacionProcesoPlanta.FechaInicioProceso);
+            parameters.Add("@FechaFinProceso", liquidacionProcesoPlanta.FechaInicioProceso);
+
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

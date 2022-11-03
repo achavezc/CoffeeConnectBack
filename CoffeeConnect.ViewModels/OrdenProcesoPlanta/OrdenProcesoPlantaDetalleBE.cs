@@ -15,11 +15,16 @@ namespace CoffeeConnect.DTO
 
         public int OrdenProcesoPlantaId { get; set; }
         public int EmpresaId { get; set; }
-        public int NotaIngresoPlantaId { get; set; }
+        public int NotaIngresoAlmacenPlantaId { get; set; }
 
-        public string NumeroNotaIngresoPlanta { get; set; }
+        public string NumeroIngresoAlmacenPlanta { get; set; }
 
-        public DateTime FechaNotaIngresoPlanta { get; set; }
+        public string NumeroContrato { get; set; }
+
+        
+
+
+        public DateTime FechaIngresoAlmacen { get; set; }
 
 
        

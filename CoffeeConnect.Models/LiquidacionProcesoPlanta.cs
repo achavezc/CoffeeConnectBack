@@ -88,6 +88,29 @@ namespace CoffeeConnect.Models
 		public bool Activo
 		{ get; set; }
 
+
+		public string ProductoId
+		{ get; set; }
+
+		public string ProductoIdTerminado
+		{ get; set; }
+
+		public string EntidadCertificadoraId
+		{ get; set; }
+
+		
+
+		public DateTime FechaInicioProceso
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the FechaRegistro value.
+		/// </summary>
+		public DateTime FechaFinProceso
+		{ get; set; }
+
+
+
 		#endregion
 	}
 }

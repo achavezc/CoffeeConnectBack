@@ -121,33 +121,33 @@ namespace CoffeeConnect.Service
                 }
 
 
-                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaLiquidacionProcesoPlantaPorIdBE.EmpresaId, String.Empty).ToList();
+                //List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaLiquidacionProcesoPlantaPorIdBE.EmpresaId, String.Empty).ToList();
 
 
-                string[] certificacionesIds = consultaLiquidacionProcesoPlantaPorIdBE.TipoCertificacionId.Split('|');
+                //string[] certificacionesIds = consultaLiquidacionProcesoPlantaPorIdBE.TipoCertificacionId.Split('|');
 
-                string certificacionLabel = string.Empty;
+                //string certificacionLabel = string.Empty;
 
 
-                if (certificacionesIds.Length > 0)
-                {
+                //if (certificacionesIds.Length > 0)
+                //{
 
-                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+                //    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
 
-                    foreach (string certificacionId in certificacionesIds)
-                    {
+                //    foreach (string certificacionId in certificacionesIds)
+                //    {
 
-                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                //        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
 
-                        if (certificacion != null)
-                        {
-                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
-                        }
-                    }
+                //        if (certificacion != null)
+                //        {
+                //            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                //        }
+                //    }
 
-                }
+                //}
 
-                consultaLiquidacionProcesoPlantaPorIdBE.TipoCertificacion = certificacionLabel;
+                //consultaLiquidacionProcesoPlantaPorIdBE.TipoCertificacion = certificacionLabel;
             }
 
             return consultaLiquidacionProcesoPlantaPorIdBE;

@@ -29,7 +29,10 @@ namespace CoffeeConnect.Models
 		public string TipoProcesoId
 		{ get; set; }
 
-		
+
+		public string NumeroContrato
+		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the Numero value.

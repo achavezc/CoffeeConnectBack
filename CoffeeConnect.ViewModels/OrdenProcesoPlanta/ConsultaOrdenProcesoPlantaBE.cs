@@ -18,8 +18,10 @@ namespace CoffeeConnect.DTO
         public string TipoProcesoId { get; set; }
         
         public string Numero { get; set; }
-     
 
+        public string NumeroContrato { get; set; }
+
+        
         public string RucOrganizacion { get; set; }
 
         public string RazonSocialOrganizacion { get; set; }

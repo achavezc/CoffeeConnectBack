@@ -36,7 +36,8 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
-
+		public string NumeroContrato
+		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the EmpaqueId value.

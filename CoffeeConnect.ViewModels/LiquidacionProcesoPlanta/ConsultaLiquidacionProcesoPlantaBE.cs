@@ -64,5 +64,7 @@ namespace CoffeeConnect.DTO
 
 
         public string UsuarioUltimaActualizacion { get; set; }
+
+
     }
 }

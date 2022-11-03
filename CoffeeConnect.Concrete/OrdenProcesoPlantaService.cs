@@ -64,31 +64,31 @@ namespace CoffeeConnect.Service
            
             byte[] fileBytes = null;
 
-            //if (file != null)
-            //{
-            //    if (file.Length > 0)
-            //    {
-            //        using (var ms = new MemoryStream())
-            //        {
-            //            file.CopyTo(ms);
-            //            fileBytes = ms.ToArray();
-            //            string s = Convert.ToBase64String(fileBytes);
-            //        }
+            if (file != null)
+            {
+                if (file.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        fileBytes = ms.ToArray();
+                        string s = Convert.ToBase64String(fileBytes);
+                    }
 
-            //        OrdenProcesoPlanta.NombreArchivo = file.FileName;
-            //        //Adjuntos
-            //        ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
-            //        {
-            //            filtros = new AdjuntarArchivosDTO()
-            //            {
-            //                archivoStream = fileBytes,
-            //                filename = file.FileName,
-            //            },
-            //            pathFile = _fileServerSettings.Value.OrdenProcesoPlanta
-            //        });
-            //        OrdenProcesoPlanta.PathArchivo = _fileServerSettings.Value.OrdenProcesoPlanta + "\\" + response.ficheroReal;
-            //    }
-            //}
+                    OrdenProcesoPlanta.NombreArchivo = file.FileName;
+                    //Adjuntos
+                    ResponseAdjuntarArchivoDTO response = AdjuntoBl.AgregarArchivo(new RequestAdjuntarArchivosDTO()
+                    {
+                        filtros = new AdjuntarArchivosDTO()
+                        {
+                            archivoStream = fileBytes,
+                            filename = file.FileName,
+                        },
+                        pathFile = _fileServerSettings.Value.OrdenProcesoPlanta
+                    });
+                    OrdenProcesoPlanta.PathArchivo = _fileServerSettings.Value.OrdenProcesoPlanta + "\\" + response.ficheroReal;
+                }
+            }
 
             int OrdenProcesoPlantaId = _IOrdenProcesoPlantaRepository.Insertar(OrdenProcesoPlanta);
 
@@ -158,6 +158,22 @@ namespace CoffeeConnect.Service
 
             foreach (OrdenProcesoPlantaDetalle detalle in request.OrdenProcesoPlantaDetalle)
             {
+
+                ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(detalle.NotaIngresoAlmacenPlantaId);
+                decimal cantidadDisponible = consultaNotaIngresoAlmacenPlantaPorIdBE.Cantidad.Value - consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value;
+
+
+                string estado = NotaIngresoAlmacenPlantaEstados.Ingresado;
+
+                if (detalle.Cantidad >= cantidadDisponible)
+                {
+                    estado = NotaIngresoAlmacenPlantaEstados.Procesado;
+                }
+
+                _INotaIngresoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoAlmacenPlantaId, consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value + detalle.Cantidad, consultaNotaIngresoAlmacenPlantaPorIdBE.KilosNetosOrdenProceso.Value + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
+
+
+
                 detalle.OrdenProcesoPlantaId = request.OrdenProcesoPlantaId;
 
                 _IOrdenProcesoPlantaRepository.InsertarProcesoPlantaDetalle(detalle);
