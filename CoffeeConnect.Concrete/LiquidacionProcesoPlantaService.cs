@@ -19,16 +19,18 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private ILiquidacionProcesoPlantaRepository _ILiquidacionProcesoPlantaRepository;
+        private IOrdenProcesoPlantaRepository _IOrdenProcesoPlantaRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
         private ICorrelativoRepository _ICorrelativoRepository;
         private IMaestroRepository _IMaestroRepository;
 
 
-        public LiquidacionProcesoPlantaService(ILiquidacionProcesoPlantaRepository LiquidacionProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
+        public LiquidacionProcesoPlantaService(ILiquidacionProcesoPlantaRepository LiquidacionProcesoPlantaRepository, IOrdenProcesoPlantaRepository OrdenProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _ILiquidacionProcesoPlantaRepository = LiquidacionProcesoPlantaRepository;
             _Mapper = mapper;
             _fileServerSettings = fileServerSettings;
+            _IOrdenProcesoPlantaRepository = OrdenProcesoPlantaRepository;
             _ICorrelativoRepository = correlativoRepository;
             _IMaestroRepository = maestroRepository;
         }
@@ -52,10 +54,21 @@ namespace CoffeeConnect.Service
             liquidacionProcesoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
 
 
+            ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE =_IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaPorId(request.OrdenProcesoPlantaId);
+            liquidacionProcesoPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoId;
+            liquidacionProcesoPlanta.ProductoIdTerminado = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
+            liquidacionProcesoPlanta.EntidadCertificadoraId = consultaOrdenProcesoPlantaPorIdBE.EntidadCertificadoraId;
+            liquidacionProcesoPlanta.FechaInicioProceso = consultaOrdenProcesoPlantaPorIdBE.FechaInicioProceso.Value;
+            liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
+
+
             int LiquidacionProcesoPlantaId = _ILiquidacionProcesoPlantaRepository.Insertar(liquidacionProcesoPlanta);
+
+            _IOrdenProcesoPlantaRepository.ActualizarEstadoLiquidado(request.OrdenProcesoPlantaId, DateTime.Now, request.Usuario, OrdenProcesoPlantaEstados.Liquidado, DateTime.Now);
 
             foreach (LiquidacionProcesoPlantaDetalle detalle in request.LiquidacionProcesoPlantaDetalle)
             {
+
                 detalle.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
                 _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaDetalle(detalle);
             }
@@ -76,6 +89,15 @@ namespace CoffeeConnect.Service
 
             liquidacionProcesoPlanta.FechaUltimaActualizacion = DateTime.Now;
             liquidacionProcesoPlanta.UsuarioUltimaActualizacion = request.Usuario;
+
+            ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaPorId(request.OrdenProcesoPlantaId);
+            liquidacionProcesoPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoId;
+            liquidacionProcesoPlanta.ProductoIdTerminado = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
+            liquidacionProcesoPlanta.EntidadCertificadoraId = consultaOrdenProcesoPlantaPorIdBE.EntidadCertificadoraId;
+            liquidacionProcesoPlanta.FechaInicioProceso = consultaOrdenProcesoPlantaPorIdBE.FechaInicioProceso.Value;
+            liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
+
+
             int affected = _ILiquidacionProcesoPlantaRepository.Actualizar(liquidacionProcesoPlanta);
 
             _ILiquidacionProcesoPlantaRepository.EliminarLiquidacionProcesoPlantaDetalle(liquidacionProcesoPlanta.LiquidacionProcesoPlantaId);

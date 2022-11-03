@@ -285,4 +285,22 @@ namespace CoffeeConnect.Service
     {
         public static string Anulado { get { return "00"; } }
     }
+
+    public static class OrdenProcesoPlantaEstados
+    {
+        public static string Anulado { get { return "00"; } }
+
+        public static string Registrado { get { return "01"; } }
+
+        public static string Liquidado { get { return "02"; } }
+    }
+
+
+    public static class LiquidacionProcesoPlantaEstados
+    {
+        public static string Anulado { get { return "00"; } }
+
+        public static string Liquidado { get { return "01"; } }
+
+    }
 }

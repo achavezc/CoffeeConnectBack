@@ -16,6 +16,12 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public int OrdenProcesoPlantaId { get; set; }
 
+        public string NumeroOrdenProcesoPlanta
+        { get; set; }
+
+        
+
+
         public decimal? NumeroDefectos { get; set; }
 
         /// <summary>
@@ -157,7 +163,6 @@ namespace CoffeeConnect.DTO
 
         public string RazonSocialOrganizacion { get; set; }
 
-        public string NumeroOrdenProcesoPlanta { get; set; }
 
         public string ProductoTerminado { get; set; }
 

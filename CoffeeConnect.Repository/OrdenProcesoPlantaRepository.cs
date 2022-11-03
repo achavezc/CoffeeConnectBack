@@ -114,6 +114,28 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+
+        public int ActualizarEstadoLiquidado(int ordenProcesoPlantaId, DateTime fecha, string usuario, string estadoId, DateTime fechaFinProceso)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaId);
+            parameters.Add("@FechaFinProceso", fechaFinProceso);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@FechaUltimaActualizacion", fecha);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspOrdenProcesoPlantaActualizarEstadoLiquidado", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
+
         //public int Anular(int OrdenProcesoPlantaId, DateTime fecha, string usuario, string estadoId)
         //{
         //    int affected = 0;

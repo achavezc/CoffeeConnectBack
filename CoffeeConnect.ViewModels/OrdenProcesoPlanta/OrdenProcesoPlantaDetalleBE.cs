@@ -28,7 +28,7 @@ namespace CoffeeConnect.DTO
 
 
        
-        public decimal HumedadPorcentaje { get; set; }
+        public decimal PorcentajeHumedad { get; set; }
 
         public decimal Cantidad { get; set; }
         public decimal KilosBrutos { get; set; }

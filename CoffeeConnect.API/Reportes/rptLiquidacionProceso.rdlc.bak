@@ -704,14 +704,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Descripcion">
+                    <Textbox Name="NumeroNotaIngresoPlanta">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Descripcion.Value</Value>
+                              <Value>=Fields!NumeroNotaIngresoPlanta.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -721,7 +721,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Descripcion</rd:DefaultName>
+                      <rd:DefaultName>NumeroNotaIngresoPlanta</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -774,14 +774,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="PorcentajeHumedad">
+                    <Textbox Name="HumedadPorcentaje">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!PorcentajeHumedad.Value</Value>
+                              <Value>=Fields!HumedadPorcentaje.Value</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -793,7 +793,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>PorcentajeHumedad</rd:DefaultName>
+                      <rd:DefaultName>HumedadPorcentaje</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1490,7 +1490,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Round(Fields!KilosNetos.Value/46,2)</Value>
+                              <Value>=IIF(Fields!KGN.Value = 0 , "", Fields!KGN.Value)</Value>
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2573,8 +2573,8 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Descripcion">
-          <DataField>Descripcion</DataField>
+        <Field Name="NumeroNotaIngresoPlanta">
+          <DataField>NumeroNotaIngresoPlanta</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FechaNotaIngresoPlanta">
@@ -2585,8 +2585,8 @@
           <DataField>RendimientoPorcentaje</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="PorcentajeHumedad">
-          <DataField>PorcentajeHumedad</DataField>
+        <Field Name="HumedadPorcentaje">
+          <DataField>HumedadPorcentaje</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Cantidad">

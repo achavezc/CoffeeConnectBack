@@ -57,7 +57,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductoIdTerminado", liquidacionProcesoPlanta.ProductoIdTerminado);
             parameters.Add("@EntidadCertificadoraId", liquidacionProcesoPlanta.EntidadCertificadoraId);
             parameters.Add("@FechaInicioProceso", liquidacionProcesoPlanta.FechaInicioProceso);
-            parameters.Add("@FechaFinProceso", liquidacionProcesoPlanta.FechaInicioProceso);
+            parameters.Add("@FechaFinProceso", liquidacionProcesoPlanta.FechaFinProceso);
 
             parameters.Add("@LiquidacionProcesoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -184,7 +184,11 @@ namespace CoffeeConnect.Repository
             int result = 0;
             var parameters = new DynamicParameters();
             parameters.Add("@LiquidacionProcesoPlantaId", liquidacionProcesoPlantaDetalle.LiquidacionProcesoPlantaId);
-            parameters.Add("@NotaIngresoPlantaId", liquidacionProcesoPlantaDetalle.NotaIngresoPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaId", liquidacionProcesoPlantaDetalle.NotaIngresoAlmacenPlantaId);
+            parameters.Add("@Cantidad", liquidacionProcesoPlantaDetalle.Cantidad);
+            parameters.Add("@KilosNetos", liquidacionProcesoPlantaDetalle.KilosNetos);
+            parameters.Add("@PorcentajeHumedad", liquidacionProcesoPlantaDetalle.PorcentajeHumedad);
+            parameters.Add("@Descripcion", liquidacionProcesoPlantaDetalle.Descripcion);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
