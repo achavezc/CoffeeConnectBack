@@ -188,8 +188,8 @@ namespace CoffeeConnect.Service
         public static string Ingresado { get { return "01"; } }
         public static string Anulado { get { return "00"; } }
 
-        public static string Procesado { get { return "02"; } }
-        public static string GeneradoNotaSalida { get { return "03"; } }
+        public static string Consumido { get { return "02"; } }
+        
     }
 
     public static class AnticipoEstados

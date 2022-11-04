@@ -19,13 +19,14 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private ILiquidacionProcesoPlantaRepository _ILiquidacionProcesoPlantaRepository;
+        private INotaIngresoProductoTerminadoAlmacenPlantaRepository _INotaIngresoProductoTerminadoAlmacenPlantaRepository;
         private IOrdenProcesoPlantaRepository _IOrdenProcesoPlantaRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
         private ICorrelativoRepository _ICorrelativoRepository;
         private IMaestroRepository _IMaestroRepository;
 
 
-        public LiquidacionProcesoPlantaService(ILiquidacionProcesoPlantaRepository LiquidacionProcesoPlantaRepository, IOrdenProcesoPlantaRepository OrdenProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
+        public LiquidacionProcesoPlantaService(ILiquidacionProcesoPlantaRepository LiquidacionProcesoPlantaRepository, INotaIngresoProductoTerminadoAlmacenPlantaRepository NotaIngresoProductoTerminadoAlmacenPlantaRepository, IOrdenProcesoPlantaRepository OrdenProcesoPlantaRepository, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _ILiquidacionProcesoPlantaRepository = LiquidacionProcesoPlantaRepository;
             _Mapper = mapper;
@@ -33,6 +34,7 @@ namespace CoffeeConnect.Service
             _IOrdenProcesoPlantaRepository = OrdenProcesoPlantaRepository;
             _ICorrelativoRepository = correlativoRepository;
             _IMaestroRepository = maestroRepository;
+            _INotaIngresoProductoTerminadoAlmacenPlantaRepository = NotaIngresoProductoTerminadoAlmacenPlantaRepository;
         }
 
         public List<ConsultaLiquidacionProcesoPlantaBE> ConsultarLiquidacionProcesoPlanta(ConsultaLiquidacionProcesoPlantaRequestDTO request)
@@ -75,8 +77,32 @@ namespace CoffeeConnect.Service
 
             foreach (LiquidacionProcesoPlantaResultado detalle in request.LiquidacionProcesoPlantaResultado)
             {
-                detalle.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
-                _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaResultado(detalle);
+                //if((detalle.CantidadSacos.HasValue && detalle.CantidadSacos.Value != 0) || (detalle.KilosNetos.HasValue && detalle.KilosNetos!=0))
+                if (detalle.KilosNetos.HasValue && detalle.KilosNetos.Value >0)
+                {
+                    detalle.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
+                    _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaResultado(detalle);
+
+                    NotaIngresoProductoTerminadoAlmacenPlanta notaIngresoProductoTerminadoAlmacenPlanta = new NotaIngresoProductoTerminadoAlmacenPlanta();
+                    notaIngresoProductoTerminadoAlmacenPlanta.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
+                    notaIngresoProductoTerminadoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoProductoTerminadoAlmacenPlanta);
+                    notaIngresoProductoTerminadoAlmacenPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
+                    notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId = detalle.ReferenciaId;
+                    notaIngresoProductoTerminadoAlmacenPlanta.Cantidad = detalle.CantidadSacos;
+                    notaIngresoProductoTerminadoAlmacenPlanta.KilosNetos = detalle.KilosNetos;
+                    notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN;
+                    notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = "04"; // Liquidacion Proceso
+                    notaIngresoProductoTerminadoAlmacenPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
+                    notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = consultaOrdenProcesoPlantaPorIdBE.EmpaqueId;
+                    notaIngresoProductoTerminadoAlmacenPlanta.EmpresaId = request.EmpresaId;
+                    notaIngresoProductoTerminadoAlmacenPlanta.EstadoId = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
+                    notaIngresoProductoTerminadoAlmacenPlanta.FechaRegistro = DateTime.Now;
+                    notaIngresoProductoTerminadoAlmacenPlanta.UsuarioRegistro = request.Usuario;
+
+
+                    _INotaIngresoProductoTerminadoAlmacenPlantaRepository.Insertar(notaIngresoProductoTerminadoAlmacenPlanta);
+                }
+
             }
             return LiquidacionProcesoPlantaId;
         }

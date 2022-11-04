@@ -122,7 +122,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@OrdenProcesoPlantaId", ordenProcesoPlantaId);
             parameters.Add("@FechaFinProceso", fechaFinProceso);
-            parameters.Add("@Usuario", usuario);
+            parameters.Add("@UsuarioUltimaActualizacion", usuario);
             parameters.Add("@FechaUltimaActualizacion", fecha);
             parameters.Add("@EstadoId", estadoId);
 

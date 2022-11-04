@@ -130,6 +130,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", NotaIngresoProductoTerminadoAlmacenPlanta.EstadoId);
             parameters.Add("@FechaRegistro", NotaIngresoProductoTerminadoAlmacenPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", NotaIngresoProductoTerminadoAlmacenPlanta.UsuarioRegistro);
+            parameters.Add("@NotaIngresoPlantaId", NotaIngresoProductoTerminadoAlmacenPlanta.NotaIngresoPlantaId);
+            
             parameters.Add("@MotivoIngresoId", NotaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId);
             parameters.Add("@ProductoId", NotaIngresoProductoTerminadoAlmacenPlanta.ProductoId);
             parameters.Add("@SubProductoId", NotaIngresoProductoTerminadoAlmacenPlanta.SubProductoId);
@@ -145,7 +147,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
-                result = db.Execute("uspNotaIngresoProductoTerminadoAlmacenPlantaInsertar]", parameters, commandType: CommandType.StoredProcedure);
+                result = db.Execute("uspNotaIngresoProductoTerminadoAlmacenPlantaInsertar", parameters, commandType: CommandType.StoredProcedure);
             }
 
             int id = parameters.Get<int>("NotaIngresoProductoTerminadoAlmacenPlantaId");

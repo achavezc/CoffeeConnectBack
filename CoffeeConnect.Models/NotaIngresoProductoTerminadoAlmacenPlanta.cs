@@ -11,7 +11,7 @@ namespace CoffeeConnect.Models
 		public int NotaIngresoProductoTerminadoAlmacenPlantaId
 		{ get; set; }
 
-		public int NotaIngresoPlantaId
+		public int? NotaIngresoPlantaId
 		{ get; set; }
 
 
@@ -52,14 +52,14 @@ namespace CoffeeConnect.Models
 		public string EmpaqueId
 		{ get; set; }
 
-		public decimal Cantidad
+		public decimal? Cantidad
 		{ get; set; }
 
 
 		public decimal? KGN
 		{ get; set; }
 
-		public decimal KilosNetos
+		public decimal? KilosNetos
 		{ get; set; }
 
 		public decimal? CantidadSalidaAlmacen
