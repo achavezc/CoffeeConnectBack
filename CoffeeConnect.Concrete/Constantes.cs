@@ -66,7 +66,9 @@ namespace CoffeeConnect.Service
         /// campo nuevo >
         public static string NotaIngresoPlantaTipo { get{ return "01"; } }
 
+        public static string NotaIngresoProductoTerminadoAlmacenPlanta { get { return "NotaIngresoProductoTerminadoAlmacenPlanta"; } }
 
+        
         /// //
 
 
@@ -179,6 +181,15 @@ namespace CoffeeConnect.Service
 
         public static string Liquidado { get { return "02"; } }
 
+    }
+
+    public static class NotaIngresoProductoTerminadoAlmacenPlantaEstados
+    {
+        public static string Ingresado { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+        public static string Procesado { get { return "02"; } }
+        public static string GeneradoNotaSalida { get { return "03"; } }
     }
 
     public static class AnticipoEstados
