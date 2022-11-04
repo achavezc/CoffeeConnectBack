@@ -39,5 +39,8 @@ namespace CoffeeConnect.Interface.Repository
         int ActualizarEstado(int NotaIngresoPlantaId, DateTime fecha, string usuario, string estadoId);
 
 
+        int InsertarNotaIngresoPlantaDetalle(NotaIngresoPlantaDetalle notaIngresoPlantaDetalle);
+
+
     }
 }

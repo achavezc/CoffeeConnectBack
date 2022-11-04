@@ -133,9 +133,21 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta.UsuarioRegistro = request.UsuarioPesado;
 
 
-            int affected = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
+            int notaIngresoPlantaId = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
 
-            return affected;
+
+            if(request.NotaIngresoPlantaDetalle!=null && request.NotaIngresoPlantaDetalle.Count>0)
+            {
+                foreach(NotaIngresoPlantaDetalle notaIngresoPlantaDetalle in request.NotaIngresoPlantaDetalle)
+                {
+                    notaIngresoPlantaDetalle.NotaIngresoPlantaId= notaIngresoPlantaId;
+
+                    _INotaIngresoPlantaRepository.InsertarNotaIngresoPlantaDetalle(notaIngresoPlantaDetalle);
+
+                }
+
+            }
+            return notaIngresoPlantaId;
         }
 
         public int ActualizarPesadoNotaIngresoPlanta(RegistrarActualizarPesadoNotaIngresoPlantaRequestDTO request)

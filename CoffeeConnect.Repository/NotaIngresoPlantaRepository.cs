@@ -238,6 +238,34 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+        public int InsertarNotaIngresoPlantaDetalle(NotaIngresoPlantaDetalle notaIngresoPlantaDetalle)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+
+            parameters.Add("@NotaIngresoPlantaId", notaIngresoPlantaDetalle.NotaIngresoPlantaId);
+            parameters.Add("@EmpaqueId", notaIngresoPlantaDetalle.EmpaqueId);
+            parameters.Add("@TipoId", notaIngresoPlantaDetalle.TipoId);
+            parameters.Add("@Cantidad", notaIngresoPlantaDetalle.Cantidad);
+            parameters.Add("@SubProductoId", notaIngresoPlantaDetalle.SubProductoId);
+            parameters.Add("@KilosBrutos", notaIngresoPlantaDetalle.KilosBrutos);
+            parameters.Add("@KilosNetos", notaIngresoPlantaDetalle.KilosNetos);
+            parameters.Add("@Tara", notaIngresoPlantaDetalle.Tara);
+
+
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaIngresoPlantaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
         public IEnumerable<NotaIngresoPlantaAnalisisFisicoColorDetalle> ConsultarNotaIngresoPlantaAnalisisFisicoColorDetallePorId(int NotaIngresoPlantaId)
         {
             var parameters = new DynamicParameters();

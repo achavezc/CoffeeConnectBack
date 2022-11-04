@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeConnect.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -196,5 +197,7 @@ namespace CoffeeConnect.DTO
 		public string CodigoCampania { get; set; }
 
 		public string CodigoTipoConcepto { get; set; }
+
+		public List<NotaIngresoPlantaDetalle> NotaIngresoPlantaDetalle { get; set; }
 	}
 }
