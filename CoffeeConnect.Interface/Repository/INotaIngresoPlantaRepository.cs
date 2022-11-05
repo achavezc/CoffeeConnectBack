@@ -41,6 +41,8 @@ namespace CoffeeConnect.Interface.Repository
 
         int InsertarNotaIngresoPlantaDetalle(NotaIngresoPlantaDetalle notaIngresoPlantaDetalle);
 
+        IEnumerable<ConsultaNotaIngresoPlantaDetalle> ConsultarNotaIngresoPlantaDetallePorId(int NotaIngresoPlantaId);
+
 
     }
 }

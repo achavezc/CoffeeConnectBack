@@ -280,6 +280,21 @@ namespace CoffeeConnect.Repository
 
         }
 
+        public IEnumerable<ConsultaNotaIngresoPlantaDetalle> ConsultarNotaIngresoPlantaDetallePorId(int NotaIngresoPlantaId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaNotaIngresoPlantaDetalle>("uspNotaIngresoPlantaDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+            }
+
+
+        }
+
+
         public IEnumerable<NotaIngresoPlantaAnalisisFisicoOlorDetalle> ConsultarNotaIngresoPlantaAnalisisFisicoOlorDetallePorId(int NotaIngresoPlantaId)
         {
 

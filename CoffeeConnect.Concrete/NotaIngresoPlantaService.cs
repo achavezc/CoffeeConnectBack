@@ -85,6 +85,13 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
+        public int EnviarAlmacen(EnviarAlmacenNotaIngresoPlantaRequestDTO request)
+        {
+            int affected = _INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.Anulado);
+
+            return affected;
+        }
+
         public ConsultaNotaIngresoPlantaPorIdBE ConsultarNotaIngresoPlantaPorId(ConsultaNotaIngresoPlantaPorIdRequestDTO request)
         {
             int NotaIngresoPlantaId = request.NotaIngresoPlantaId;
@@ -109,6 +116,13 @@ namespace CoffeeConnect.Service
 
                     consultaNotaIngresoPlantaPorIdBE.RegistroTostadoIndicadorDetalle = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaRegistroTostadoIndicadorDetallePorId(NotaIngresoPlantaId).ToList();
 
+                }
+
+                IEnumerable<ConsultaNotaIngresoPlantaDetalle> detalle = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaDetallePorId(NotaIngresoPlantaId);
+
+                if(detalle!=null && detalle.Any())
+                {
+                    consultaNotaIngresoPlantaPorIdBE.Detalle = detalle.ToList();
                 }
             }
 
