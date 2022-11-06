@@ -13,7 +13,7 @@ namespace CoffeeConnect.Interface.Service
 
         int AnularNotaIngresoProductoTerminadoAlmacenPlanta(AnularNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request);
 
-        int ActualizarNotaIngresoProductoTerminadoAlmacenPlanta(RegistrarActualizarNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request);
+        int ActualizarNotaIngresoProductoTerminadoAlmacenPlanta(ActualizarNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request);
 
         ConsultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE ConsultarNotaIngresoProductoTerminadoAlmacenPlantaPorId(ConsultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdRequestDTO request);
     }

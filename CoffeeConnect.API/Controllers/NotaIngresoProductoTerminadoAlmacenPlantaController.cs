@@ -152,12 +152,12 @@ namespace Integracion.Deuda.Controller
 
         [Route("Actualizar")]
         [HttpPost]
-        public IActionResult Actualizar([FromBody] RegistrarActualizarNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request)
+        public IActionResult Actualizar([FromBody] ActualizarNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request)
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            RegistrarActualizarNotaIngresoProductoTerminadoAlmacenPlantaResponseDTO response = new RegistrarActualizarNotaIngresoProductoTerminadoAlmacenPlantaResponseDTO();
+            ActualizarNotaIngresoProductoTerminadoAlmacenPlantaResponseDTO response = new ActualizarNotaIngresoProductoTerminadoAlmacenPlantaResponseDTO();
             try
             {
                 response.Result.Data = _NotaIngresoProductoTerminadoAlmacenPlantaService.ActualizarNotaIngresoProductoTerminadoAlmacenPlanta(request);

@@ -7,13 +7,22 @@ namespace CoffeeConnect.DTO
 		public int NumeroNotaIngresoProductoTerminadoAlmacenPlantaId
 		{ get; set; }
 
-
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
 		public string Numero
 		{ get; set; }
+		public string RazonSocial
+		{ get; set; }
 
+		public string Ruc
+		{ get; set; }
+
+		public string Logo
+		{ get; set; }
+
+		public string Direccion
+		{ get; set; }
 
 		public int? NotaIngresoPlantaId
 		{ get; set; }
@@ -127,6 +136,6 @@ namespace CoffeeConnect.DTO
 		public string Observacion
 		{ get; set; }
 
- 
+
 	}
 }

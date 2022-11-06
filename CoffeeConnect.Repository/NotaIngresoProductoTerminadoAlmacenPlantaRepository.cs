@@ -83,30 +83,15 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
-        public int Actualizar(NotaIngresoProductoTerminadoAlmacenPlanta NotaIngresoProductoTerminadoAlmacenPlanta)
+        public int Actualizar(int NotaIngresoProductoTerminadoAlmacenPlantaId, string almacenId, DateTime fecha, string usuario)
         {
             int result = 0;
 
             var parameters = new DynamicParameters();
-            parameters.Add("@EmpresaId", NotaIngresoProductoTerminadoAlmacenPlanta.EmpresaId);
-            parameters.Add("@Numero", NotaIngresoProductoTerminadoAlmacenPlanta.Numero);
-            parameters.Add("@AlmacenId", NotaIngresoProductoTerminadoAlmacenPlanta.AlmacenId);
-            parameters.Add("@EstadoId", NotaIngresoProductoTerminadoAlmacenPlanta.EstadoId);
-            parameters.Add("@FechaRegistro", NotaIngresoProductoTerminadoAlmacenPlanta.FechaRegistro);
-            parameters.Add("@UsuarioRegistro", NotaIngresoProductoTerminadoAlmacenPlanta.UsuarioRegistro);
-            parameters.Add("@MotivoIngresoId", NotaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId);
-            parameters.Add("@ProductoId", NotaIngresoProductoTerminadoAlmacenPlanta.ProductoId);
-            parameters.Add("@SubProductoId", NotaIngresoProductoTerminadoAlmacenPlanta.SubProductoId);
-            parameters.Add("@EmpaqueId", NotaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId);
-            parameters.Add("@TipoId", NotaIngresoProductoTerminadoAlmacenPlanta.TipoId);
-            parameters.Add("@Cantidad", NotaIngresoProductoTerminadoAlmacenPlanta.Cantidad);
-            parameters.Add("@KGN", NotaIngresoProductoTerminadoAlmacenPlanta.KGN);
-            parameters.Add("@KilosNetos", NotaIngresoProductoTerminadoAlmacenPlanta.KilosNetos);
-            parameters.Add("@Observacion", NotaIngresoProductoTerminadoAlmacenPlanta.Observacion);
-            parameters.Add("@LiquidacionProcesoPlantaId", NotaIngresoProductoTerminadoAlmacenPlanta.LiquidacionProcesoPlantaId);
-            parameters.Add("@NotaIngresoProductoTerminadoAlmacenPlantaId", NotaIngresoProductoTerminadoAlmacenPlanta.NotaIngresoProductoTerminadoAlmacenPlantaId);
-            parameters.Add("@FechaUltimaActualizacion", NotaIngresoProductoTerminadoAlmacenPlanta.FechaUltimaActualizacion);
-            parameters.Add("@UsuarioUltimaActualizacion", NotaIngresoProductoTerminadoAlmacenPlanta.UsuarioUltimaActualizacion);
+            parameters.Add("@NotaIngresoProductoTerminadoAlmacenPlantaId", NotaIngresoProductoTerminadoAlmacenPlantaId);            
+            parameters.Add("@AlmacenId", almacenId);
+            parameters.Add("@FechaUltimaActualizacion", fecha);
+            parameters.Add("@UsuarioUltimaActualizacion", usuario);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

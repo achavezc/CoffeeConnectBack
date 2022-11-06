@@ -81,16 +81,12 @@ namespace CoffeeConnect.Service
             return notaIngresoProductoTerminadoAlmacenPlantaId;
         }
 
-        public int ActualizarNotaIngresoProductoTerminadoAlmacenPlanta(RegistrarActualizarNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request)
+        public int ActualizarNotaIngresoProductoTerminadoAlmacenPlanta(ActualizarNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request)
         {
-            NotaIngresoProductoTerminadoAlmacenPlanta NotaIngresoProductoTerminadoAlmacenPlanta = _Mapper.Map<NotaIngresoProductoTerminadoAlmacenPlanta>(request);
+           
 
 
-            NotaIngresoProductoTerminadoAlmacenPlanta.FechaUltimaActualizacion = DateTime.Now;
-            NotaIngresoProductoTerminadoAlmacenPlanta.UsuarioUltimaActualizacion = request.Usuario;
-
-
-            int affected = _INotaIngresoProductoTerminadoAlmacenPlantaRepository.Actualizar(NotaIngresoProductoTerminadoAlmacenPlanta);
+            int affected = _INotaIngresoProductoTerminadoAlmacenPlantaRepository.Actualizar(request.NotaIngresoProductoTerminadoAlmacenPlantaId,request.AlmacenId, DateTime.Now,request.Usuario);
 
 
             return affected;
