@@ -24,6 +24,11 @@ namespace CoffeeConnect.DTO
 		public string NumeroNotaIngresoPlanta
 		{ get; set; }
 
+		public DateTime? FechaGuiaRemision
+		{ get; set; }
+
+
+		
 
 		public string NumeroGuiaRemision
 		{ get; set; }
