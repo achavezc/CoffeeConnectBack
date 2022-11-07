@@ -5,7 +5,8 @@ namespace CoffeeConnect.DTO
 	public class ConsultaNotaIngresoProductoTerminadoAlmacenPlantaBE
 	{
 
-		public int NumeroNotaIngresoProductoTerminadoAlmacenPlantaId
+		
+		public int NotaIngresoProductoTerminadoAlmacenPlantaId
 		{ get; set; }
 
 		/// <summary>

@@ -22,7 +22,10 @@ namespace CoffeeConnect.Service
  
         public IOptions<ParametrosSettings> _ParametrosSettings;
         private IMaestroRepository _IMaestroRepository;
-        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, ICorrelativoRepository correlativoRepository,
+
+        private INotaIngresoProductoTerminadoAlmacenPlantaRepository _INotaIngresoProductoTerminadoAlmacenPlantaRepository;
+
+        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, INotaIngresoProductoTerminadoAlmacenPlantaRepository notaIngresoProductoTerminadoAlmacenPlantaRepository, ICorrelativoRepository correlativoRepository,
         IOptions<ParametrosSettings> parametrosSettings, IMapper mapper, IMaestroRepository maestroRepository, IControlCalidadPlantaRepository controlCalidadRepository)
         {
             _INotaIngresoPlantaRepository = NotaIngresoPlanta;
@@ -31,6 +34,7 @@ namespace CoffeeConnect.Service
             _Mapper = mapper;
             _IMaestroRepository = maestroRepository;
             _IControlCalidadPlantaRepository = controlCalidadRepository;
+            _INotaIngresoProductoTerminadoAlmacenPlantaRepository = notaIngresoProductoTerminadoAlmacenPlantaRepository;
         }
         
         public List<ConsultaNotaIngresoPlantaBE> ConsultarNotaIngresoPlanta(ConsultaNotaIngresoPlantaRequestDTO request )
@@ -87,7 +91,23 @@ namespace CoffeeConnect.Service
 
         public int EnviarAlmacen(EnviarAlmacenNotaIngresoPlantaRequestDTO request)
         {
-            int affected = _INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.Anulado);
+            int notaIngresoPlantaId = request.NotaIngresoPlantaId;
+
+            List<ConsultaNotaIngresoPlantaDetalle> detalle = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaDetallePorId(notaIngresoPlantaId).ToList();
+
+            
+            if (detalle!=null && detalle.Any())
+            {
+                foreach(ConsultaNotaIngresoPlantaDetalle consultaNotaIngresoPlantaDetalle in detalle)
+                {
+                    //NotaIngresoProductoTerminadoAlmacenPlanta notaIngresoProductoTerminadoAlmacenPlanta = new NotaIngresoProductoTerminadoAlmacenPlanta();
+                    //notaIngresoProductoTerminadoAlmacenPlanta.NotaIngresoPlantaId = notaIngresoPlantaId;
+
+                    //_INotaIngresoProductoTerminadoAlmacenPlantaRepository.Insertar(notaIngresoProductoTerminadoAlmacenPlanta);
+                }
+            }
+
+            int affected = _INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoAlmacen);
 
             return affected;
         }
@@ -137,15 +157,34 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta NotaIngresoPlanta = _Mapper.Map<NotaIngresoPlanta>(request);
 
 
-           // NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
-            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), Documentos.NotaIngresoPlantaTipo,request.CodigoTipoConcepto);
+            // NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
+            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), Documentos.NotaIngresoPlantaTipo, request.CodigoTipoConcepto);
 
+            decimal kilosNetos = 0;
+            decimal kilosBrutos = 0;
+            decimal cantidad = 0;
+            decimal tara = 0;
 
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
             NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
             NotaIngresoPlanta.FechaRegistro = DateTime.Now;
             NotaIngresoPlanta.UsuarioRegistro = request.UsuarioPesado;
 
+            if (request.NotaIngresoPlantaDetalle != null && request.NotaIngresoPlantaDetalle.Count > 0)
+            {
+                foreach (NotaIngresoPlantaDetalle notaIngresoPlantaDetalle in request.NotaIngresoPlantaDetalle)
+                {
+                    kilosNetos = kilosNetos + notaIngresoPlantaDetalle.KilosNetos;
+                    kilosBrutos = kilosBrutos + notaIngresoPlantaDetalle.KilosBrutos;
+                    cantidad = cantidad + notaIngresoPlantaDetalle.Cantidad;
+                    tara = tara + notaIngresoPlantaDetalle.Tara;
+                }
+            }
+
+            NotaIngresoPlanta.Cantidad = cantidad;
+            NotaIngresoPlanta.KilosNetos = kilosNetos;
+            NotaIngresoPlanta.KilosBrutos = kilosBrutos;
+            NotaIngresoPlanta.Tara = tara;
 
             int notaIngresoPlantaId = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
 
@@ -154,6 +193,10 @@ namespace CoffeeConnect.Service
             {
                 foreach(NotaIngresoPlantaDetalle notaIngresoPlantaDetalle in request.NotaIngresoPlantaDetalle)
                 {
+                    kilosNetos = kilosNetos + notaIngresoPlantaDetalle.KilosNetos;
+                    kilosBrutos = kilosBrutos + notaIngresoPlantaDetalle.KilosBrutos;
+                    cantidad = cantidad + notaIngresoPlantaDetalle.Cantidad;
+
                     notaIngresoPlantaDetalle.NotaIngresoPlantaId= notaIngresoPlantaId;
 
                     _INotaIngresoPlantaRepository.InsertarNotaIngresoPlantaDetalle(notaIngresoPlantaDetalle);
