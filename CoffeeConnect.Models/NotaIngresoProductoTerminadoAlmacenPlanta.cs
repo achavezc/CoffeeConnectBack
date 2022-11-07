@@ -115,7 +115,7 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 
-		public int LiquidacionProcesoPlantaId
+		public int? LiquidacionProcesoPlantaId
 		{ get; set; }
 
 		#endregion

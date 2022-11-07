@@ -91,21 +91,41 @@ namespace CoffeeConnect.Service
 
         public int EnviarAlmacen(EnviarAlmacenNotaIngresoPlantaRequestDTO request)
         {
-            int notaIngresoPlantaId = request.NotaIngresoPlantaId;
+            int notaIngresoPlantaId = request.NotaIngresoPlantaId;            
 
-            List<ConsultaNotaIngresoPlantaDetalle> detalle = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaDetallePorId(notaIngresoPlantaId).ToList();
+            ConsultaNotaIngresoPlantaPorIdBE consultaNotaIngresoPlantaPorIdBE = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(notaIngresoPlantaId);
+
+            if(consultaNotaIngresoPlantaPorIdBE!=null && consultaNotaIngresoPlantaPorIdBE.NotaIngresoPlantaId !=0)
+            {
+
+                List<ConsultaNotaIngresoPlantaDetalle> detalleNotaIngresoPlantaDetalle = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaDetallePorId(notaIngresoPlantaId).ToList();
+
+                if (detalleNotaIngresoPlantaDetalle != null && detalleNotaIngresoPlantaDetalle.Any())
+                {
+                    foreach (ConsultaNotaIngresoPlantaDetalle detalle in detalleNotaIngresoPlantaDetalle)
+                    {
+                        NotaIngresoProductoTerminadoAlmacenPlanta notaIngresoProductoTerminadoAlmacenPlanta = new NotaIngresoProductoTerminadoAlmacenPlanta();
+
+                        notaIngresoProductoTerminadoAlmacenPlanta.NotaIngresoPlantaId = notaIngresoPlantaId;
+                        notaIngresoProductoTerminadoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(consultaNotaIngresoPlantaPorIdBE.EmpresaId, Documentos.NotaIngresoProductoTerminadoAlmacenPlanta);
+                        notaIngresoProductoTerminadoAlmacenPlanta.ProductoId = consultaNotaIngresoPlantaPorIdBE.ProductoId;
+                        notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId = detalle.SubProductoId;
+                        notaIngresoProductoTerminadoAlmacenPlanta.Cantidad = detalle.Cantidad;
+                        notaIngresoProductoTerminadoAlmacenPlanta.KilosNetos = detalle.KilosNetos;
+                        notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = consultaNotaIngresoPlantaPorIdBE.MotivoIngresoId; // Liquidacion Proceso
+                        notaIngresoProductoTerminadoAlmacenPlanta.TipoId = detalle.TipoId;
+                        notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = detalle.EmpaqueId;
+                        notaIngresoProductoTerminadoAlmacenPlanta.EmpresaId = consultaNotaIngresoPlantaPorIdBE.EmpresaId;
+                        notaIngresoProductoTerminadoAlmacenPlanta.EstadoId = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
+                        notaIngresoProductoTerminadoAlmacenPlanta.FechaRegistro = DateTime.Now;
+                        notaIngresoProductoTerminadoAlmacenPlanta.UsuarioRegistro = request.Usuario;
+
+                        _INotaIngresoProductoTerminadoAlmacenPlantaRepository.Insertar(notaIngresoProductoTerminadoAlmacenPlanta);
+                    }
+                }
+            }          
 
             
-            if (detalle!=null && detalle.Any())
-            {
-                foreach(ConsultaNotaIngresoPlantaDetalle consultaNotaIngresoPlantaDetalle in detalle)
-                {
-                    //NotaIngresoProductoTerminadoAlmacenPlanta notaIngresoProductoTerminadoAlmacenPlanta = new NotaIngresoProductoTerminadoAlmacenPlanta();
-                    //notaIngresoProductoTerminadoAlmacenPlanta.NotaIngresoPlantaId = notaIngresoPlantaId;
-
-                    //_INotaIngresoProductoTerminadoAlmacenPlantaRepository.Insertar(notaIngresoProductoTerminadoAlmacenPlanta);
-                }
-            }
 
             int affected = _INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.EnviadoAlmacen);
 

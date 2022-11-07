@@ -17,5 +17,7 @@ namespace CoffeeConnect.Interface.Service
 
         //int EnviarGuardiolaNotaIngresoPlanta(EnviarGuardiolaNotaIngresoPlantaRequestDTO request);
 
+        int EnviarAlmacen(EnviarAlmacenNotaIngresoPlantaRequestDTO request);
+
     }
 }
