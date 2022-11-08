@@ -16,6 +16,22 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
+
+		public string EmpaqueId
+		{ get; set; }
+
+
+		public string Empaque
+		{ get; set; }
+
+
+
+		public string TipoEmpaque
+		{ get; set; }
+
+
+
+
 		public int? NotaIngresoPlantaId
 		{ get; set; }
 		/// <summary>

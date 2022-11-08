@@ -30,5 +30,7 @@ namespace CoffeeConnect.Interface.Repository
 
         //int ActualizarEstadoPorIds(List<TablaIdsTipo> ids, DateTime fecha, string usuario, string estadoId);
 
+        int InsertarNotaSalidaAlmacenPlantaDetalle(NotaSalidaAlmacenPlantaDetalle notaSalidaAlmacenPlantaDetalle);
+
     }
 }

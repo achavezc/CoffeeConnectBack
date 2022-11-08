@@ -10,7 +10,7 @@ namespace CoffeeConnect.Models
 		/// </summary>
 		public int? NotaSalidaAlmacenPlantaDetalleId
 		{ get; set; }
-		public int? NotaSalidaAlmacenPlantaId
+		public int NotaSalidaAlmacenPlantaId
 		{ get; set; }
 		/// <summary>
 		/// Gets or sets the LoteId value.
@@ -18,8 +18,17 @@ namespace CoffeeConnect.Models
 		public int? NotaIngresoAlmacenPlantaId
 		{ get; set; }
 
+		public int? NotaIngresoProductoTerminadoAlmacenPlantaId
+		{ get; set; }
 
 		public string EmpaqueId
+		{ get; set; }
+
+		public string ProductoId
+		{ get; set; }
+
+
+		public string SubProductoId
 		{ get; set; }
 
 		public string TipoId
@@ -29,10 +38,10 @@ namespace CoffeeConnect.Models
 		public decimal Cantidad
 		{ get; set; }
 
-		public decimal PesoKilosBrutos
+		public decimal KilosBrutos
 		{ get; set; }
 
-		public decimal PesoKilosNetos
+		public decimal KilosNetos
 		{ get; set; }
 
 		public decimal Tara

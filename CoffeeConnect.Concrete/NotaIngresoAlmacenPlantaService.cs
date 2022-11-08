@@ -339,18 +339,22 @@ namespace CoffeeConnect.Service
             {
                 request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
                 {
-                    NotaSalidaAlmacenPlantaDetalle obj = new NotaSalidaAlmacenPlantaDetalle();
-                    obj.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
-                    obj.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
-                    obj.EmpaqueId = x.EmpaqueId;
-                    obj.TipoId = x.TipoId;
-                    obj.Cantidad = x.Cantidad;
-                    obj.PesoKilosBrutos = x.PesoKilosBrutos;
-                    obj.PesoKilosNetos = x.PesoKilosNetos;
-                    obj.Tara = x.Tara;
+                    NotaSalidaAlmacenPlantaDetalle notaSalidaAlmacenPlantaDetalle = new NotaSalidaAlmacenPlantaDetalle();
+                    notaSalidaAlmacenPlantaDetalle.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
+                    notaSalidaAlmacenPlantaDetalle.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
+                    notaSalidaAlmacenPlantaDetalle.EmpaqueId = x.EmpaqueId;
+                    notaSalidaAlmacenPlantaDetalle.TipoId = x.TipoId;
+                    notaSalidaAlmacenPlantaDetalle.ProductoId = request.ProductoId;
+                    notaSalidaAlmacenPlantaDetalle.SubProductoId = request.SubProductoId;
+                    notaSalidaAlmacenPlantaDetalle.Cantidad = x.Cantidad;
+                    notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.PesoKilosBrutos;
+                    notaSalidaAlmacenPlantaDetalle.KilosNetos = x.PesoKilosNetos;
+                    notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
 
 
-                    lstnotaSalidaAlmacen.Add(obj);
+                    //lstnotaSalidaAlmacen.Add(obj);
+
+                    _INotaSalidaAlmacenPlantaRepository.InsertarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacenPlantaDetalle);
 
 
                     if (x.NotaIngresoAlmacenPlantaId.HasValue)
@@ -363,7 +367,7 @@ namespace CoffeeConnect.Service
 
                 });
 
-                affected = _INotaSalidaAlmacenPlantaRepository.ActualizarNotaSalidaAlmacenPlantaDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
+                //affected = _INotaSalidaAlmacenPlantaRepository.ActualizarNotaSalidaAlmacenPlantaDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
 
             }
 

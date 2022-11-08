@@ -202,7 +202,36 @@ namespace CoffeeConnect.Repository
             }
         }
 
-        
+
+        public int InsertarNotaSalidaAlmacenPlantaDetalle(NotaSalidaAlmacenPlantaDetalle notaSalidaAlmacenPlantaDetalle)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+
+
+            parameters.Add("@NotaSalidaAlmacenPlantaId", notaSalidaAlmacenPlantaDetalle.NotaSalidaAlmacenPlantaId);
+            parameters.Add("@NotaIngresoAlmacenPlantaId", notaSalidaAlmacenPlantaDetalle.NotaIngresoAlmacenPlantaId);
+            parameters.Add("@NotaIngresoProductoTerminadoAlmacenPlantaId", notaSalidaAlmacenPlantaDetalle.NotaIngresoProductoTerminadoAlmacenPlantaId);
+            parameters.Add("@ProductoId", notaSalidaAlmacenPlantaDetalle.ProductoId);
+            parameters.Add("@SubProductoId", notaSalidaAlmacenPlantaDetalle.SubProductoId);
+            parameters.Add("@EmpaqueId", notaSalidaAlmacenPlantaDetalle.EmpaqueId);
+            parameters.Add("@TipoId", notaSalidaAlmacenPlantaDetalle.TipoId);
+            parameters.Add("@Cantidad", notaSalidaAlmacenPlantaDetalle.Cantidad);            
+            parameters.Add("@KilosBrutos", notaSalidaAlmacenPlantaDetalle.KilosBrutos);
+            parameters.Add("@KilosNetos", notaSalidaAlmacenPlantaDetalle.KilosNetos);
+            parameters.Add("@Tara", notaSalidaAlmacenPlantaDetalle.Tara);
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspNotaSalidaAlmacenPlantaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
 
 
     }
