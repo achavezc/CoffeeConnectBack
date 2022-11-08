@@ -37,17 +37,23 @@ namespace CoffeeConnect.DTO
 		public string Producto
 		{ get; set; }
 
+		public string ProductoId
+		{ get; set; }
+
 		public string SubProducto
+		{ get; set; }
+
+		public string SubProductoId
 		{ get; set; }
 
 		public decimal Cantidad
 		{ get; set; }
 
 
-		public decimal PesoKilosBrutos
+		public decimal KilosBrutos
 		{ get; set; }
 
-		public decimal PesoKilosNetos
+		public decimal KilosNetos
 		{ get; set; }
 
 		public decimal Tara

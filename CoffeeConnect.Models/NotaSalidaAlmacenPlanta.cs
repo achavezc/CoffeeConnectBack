@@ -174,6 +174,13 @@ namespace CoffeeConnect.Models
 		public bool Activo
 		{ get; set; }
 
+
+		public String CodigoCampania { get; set; }
+
+		public String CodigoTipoConcepto { get; set; }
+
+
+
 		#endregion
 	}
 }

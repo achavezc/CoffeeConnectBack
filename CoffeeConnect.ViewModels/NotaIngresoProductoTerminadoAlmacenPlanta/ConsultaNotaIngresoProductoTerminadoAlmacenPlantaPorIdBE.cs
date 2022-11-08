@@ -88,6 +88,18 @@ namespace CoffeeConnect.DTO
 		public string SubProductoId
 		{ get; set; }
 
+
+		public string EmpaqueId
+		{ get; set; }
+
+		public string TipoId
+
+		{ get; set; }
+
+		
+
+
+
 		/// <summary>
 		/// Gets or sets the SubProducto value.
 		/// </summary>

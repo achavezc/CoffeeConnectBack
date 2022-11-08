@@ -21,6 +21,8 @@ namespace CoffeeConnect.Interface.Repository
 
         public int Actualizar(int NotaIngresoProductoTerminadoAlmacenPlantaId,string almacenId,DateTime fecha, string usuario);
 
+        int ActualizarCantidadSalidaAlmacenEstado(int notaIngresoProductoTerminadoAlmacenPlantaId, decimal cantidadSalidaAlmacen, decimal kilosNetosSalidaAlmacen, DateTime fecha, string usuario, string estadoId);
+
         //int ActualizarCantidadOrdenProcesoEstado(int NotaIngresoProductoTerminadoAlmacenPlantaId, decimal cantidadOrdenProceso, decimal kilosNetosOrdenProceso, DateTime fecha, string usuario, string estadoId);
     }
 }

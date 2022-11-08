@@ -20,7 +20,9 @@ namespace CoffeeConnect.Service
         private ICorrelativoRepository _ICorrelativoRepository;
         private IGuiaRemisionAlmacenPlantaRepository _IGuiaRemisionAlmacenPlantaRepository;
         private INotaIngresoAlmacenPlantaRepository _NotaIngresoAlmacenPlantaRepository;
-        public NotaSalidaAlmacenPlantaService(INotaSalidaAlmacenPlantaRepository notaSalidaAlmacenPlantaRepository, IUsersRepository usersRepository,
+        private INotaIngresoProductoTerminadoAlmacenPlantaRepository _INotaIngresoProductoTerminadoAlmacenPlantaRepository;
+
+        public NotaSalidaAlmacenPlantaService(INotaSalidaAlmacenPlantaRepository notaSalidaAlmacenPlantaRepository, INotaIngresoProductoTerminadoAlmacenPlantaRepository NotaIngresoProductoTerminadoAlmacenPlanta, IUsersRepository usersRepository,
             IEmpresaRepository empresaRepository, INotaIngresoAlmacenPlantaRepository notaIngresoAlmacenPlantaRepository, ICorrelativoRepository ICorrelativoRepository,
             IGuiaRemisionAlmacenPlantaRepository IGuiaRemisionAlmacenPlantaRepository,
             IMapper mapper)
@@ -30,6 +32,9 @@ namespace CoffeeConnect.Service
             _UsersRepository = usersRepository;
 
             _EmpresaRepository = empresaRepository;
+
+            _INotaIngresoProductoTerminadoAlmacenPlantaRepository = NotaIngresoProductoTerminadoAlmacenPlanta;
+
 
             _NotaIngresoAlmacenPlantaRepository = notaIngresoAlmacenPlantaRepository;
 
@@ -50,7 +55,10 @@ namespace CoffeeConnect.Service
 
             notaSalidaAlmacen.EmpresaId = request.EmpresaId;
             notaSalidaAlmacen.AlmacenId = request.AlmacenId;
-            notaSalidaAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaSalidaAlmacenPlanta);
+            //notaSalidaAlmacen.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaSalidaAlmacenPlanta);
+
+            notaSalidaAlmacen.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), TiposCorrelativosPlanta.NotaSalidaPlantaTipo, request.CodigoTipoConcepto);
+
             notaSalidaAlmacen.MotivoSalidaId = request.MotivoSalidaId;
             notaSalidaAlmacen.MotivoSalidaReferencia = request.MotivoSalidaReferencia;
             notaSalidaAlmacen.EmpresaIdDestino = request.EmpresaIdDestino;
@@ -69,6 +77,8 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
             notaSalidaAlmacen.PesoKilosNetos = request.PesoKilosNetos;
             notaSalidaAlmacen.Tara = request.Tara;
+            notaSalidaAlmacen.CodigoTipoConcepto = request.CodigoTipoConcepto;
+            notaSalidaAlmacen.CodigoCampania = request.CodigoCampania;
 
             notaSalidaAlmacen.EstadoId = NotaSalidaAlmacenEstados.Ingresado;
             notaSalidaAlmacen.FechaRegistro = DateTime.Now;
@@ -80,22 +90,45 @@ namespace CoffeeConnect.Service
             {
                 request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
                 {
-                    NotaSalidaAlmacenPlantaDetalle notaSalidaAlmacenPlantaDetalle = new NotaSalidaAlmacenPlantaDetalle();
-                    notaSalidaAlmacenPlantaDetalle.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
-                    notaSalidaAlmacenPlantaDetalle.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
-                    notaSalidaAlmacenPlantaDetalle.ProductoId = request.ProductoId;
-                    notaSalidaAlmacenPlantaDetalle.SubProductoId = request.SubProductoId;
-                    notaSalidaAlmacenPlantaDetalle.EmpaqueId = x.EmpaqueId;
-                    notaSalidaAlmacenPlantaDetalle.TipoId = x.TipoId;
-                    notaSalidaAlmacenPlantaDetalle.Cantidad = x.Cantidad;
-                    notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.PesoKilosBrutos;
-                    notaSalidaAlmacenPlantaDetalle.KilosNetos = x.PesoKilosNetos;
-                    notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
+                    int notaIngresoProductoTerminadoAlmacenPlantaId = x.NotaIngresoProductoTerminadoAlmacenPlantaId.Value;
+
+                    ConsultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE notaIngresoProductoTerminadoAlmacenPlanta = _INotaIngresoProductoTerminadoAlmacenPlantaRepository.ConsultarNotaIngresoProductoTerminadoAlmacenPlantaPorId(notaIngresoProductoTerminadoAlmacenPlantaId);
+
+                    if (notaIngresoProductoTerminadoAlmacenPlanta != null)
+                    {
+                        NotaSalidaAlmacenPlantaDetalle notaSalidaAlmacenPlantaDetalle = new NotaSalidaAlmacenPlantaDetalle();
+                        notaSalidaAlmacenPlantaDetalle.NotaIngresoProductoTerminadoAlmacenPlantaId = notaIngresoProductoTerminadoAlmacenPlantaId;
+                        notaSalidaAlmacenPlantaDetalle.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
+                        notaSalidaAlmacenPlantaDetalle.ProductoId = notaIngresoProductoTerminadoAlmacenPlanta.ProductoId;
+                        notaSalidaAlmacenPlantaDetalle.SubProductoId = notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId;
+                        notaSalidaAlmacenPlantaDetalle.EmpaqueId = notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId;
+                        notaSalidaAlmacenPlantaDetalle.TipoId = notaIngresoProductoTerminadoAlmacenPlanta.TipoId;
+                        notaSalidaAlmacenPlantaDetalle.Cantidad = x.Cantidad;
+                        notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.KilosBrutos;
+                        notaSalidaAlmacenPlantaDetalle.KilosNetos = x.KilosNetos;
+                        notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
 
 
-                    //lstnotaSalidaAlmacen.Add(obj);
+                        //lstnotaSalidaAlmacen.Add(obj);
 
-                    _INotaSalidaAlmacenPlantaRepository.InsertarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacenPlantaDetalle);
+                        _INotaSalidaAlmacenPlantaRepository.InsertarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacenPlantaDetalle);
+
+
+                        decimal cantidadDisponible = notaIngresoProductoTerminadoAlmacenPlanta.CantidadDisponible;
+
+
+                        string estado = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
+
+                        if (x.Cantidad >= cantidadDisponible)
+                        {
+                            estado = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Consumido;
+                        }
+
+                        _INotaIngresoProductoTerminadoAlmacenPlantaRepository.ActualizarCantidadSalidaAlmacenEstado(notaIngresoProductoTerminadoAlmacenPlantaId, notaIngresoProductoTerminadoAlmacenPlanta.CantidadSalidaAlmacen + notaSalidaAlmacenPlantaDetalle.Cantidad, notaIngresoProductoTerminadoAlmacenPlanta.KilosNetosSalidaAlmacen + notaSalidaAlmacenPlantaDetalle.KilosNetos, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, estado);
+
+
+
+                    }
 
 
                     if (x.NotaIngresoAlmacenPlantaId.HasValue)
@@ -112,8 +145,11 @@ namespace CoffeeConnect.Service
                 
             }
 
+            /*
+
             #region Guia Remision
 
+            
 
             int guiaRemisionAlmacenId;
             //GuiaRemisionAlmacen guiaRemisionAlmacen = new GuiaRemisionAlmacen();
@@ -181,6 +217,7 @@ namespace CoffeeConnect.Service
                 _NotaIngresoAlmacenPlantaRepository.ActualizarEstadoPorIds(notaIngresoIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, NotaIngresoAlmacenPlantaEstados.GeneradoNotaSalida);
             }
 
+            */
             return affected;
         }
 

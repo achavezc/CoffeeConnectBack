@@ -272,8 +272,13 @@ namespace CoffeeConnect.DTO
 		public IEnumerable<ConsultaNotaSalidaAlmacenPlantaDetallePorIdBE> Detalle
 		{ get; set; }
 
-	
 
+
+		public String CodigoCampania { get; set; }
+
+		public String CodigoTipoConcepto { get; set; }
+
+		public String Concepto { get; set; }
 		#endregion
 	}
 }

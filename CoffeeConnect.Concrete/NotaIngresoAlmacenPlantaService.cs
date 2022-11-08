@@ -108,9 +108,10 @@ namespace CoffeeConnect.Service
 
                 NotaSalidaAlmacenPlantaDetalleDTO notaSalidaAlmacenPlantaDetalle = new NotaSalidaAlmacenPlantaDetalleDTO();
                 notaSalidaAlmacenPlantaDetalle.NotaIngresoAlmacenPlantaId = notaIngresoAlmacenPlantaId;
-                notaSalidaAlmacenPlantaDetalle.PesoKilosBrutos = request.PesoBruto;
-                notaSalidaAlmacenPlantaDetalle.PesoKilosNetos = request.KilosNetos;
+                notaSalidaAlmacenPlantaDetalle.KilosBrutos = request.PesoBruto;
+                notaSalidaAlmacenPlantaDetalle.KilosNetos = request.KilosNetos;
                 notaSalidaAlmacenPlantaDetalle.Tara = request.Tara;
+                notaSalidaAlmacenPlantaDetalle.AlmacenId = request.AlmacenId;                
                 notaSalidaAlmacenPlantaDetalle.TipoId = controlCalidadPlanta.TipoId;
                 notaSalidaAlmacenPlantaDetalle.EmpaqueId = controlCalidadPlanta.EmpaqueId;
                 notaSalidaAlmacenPlantaDetalle.Cantidad = request.Cantidad;                
@@ -347,8 +348,8 @@ namespace CoffeeConnect.Service
                     notaSalidaAlmacenPlantaDetalle.ProductoId = request.ProductoId;
                     notaSalidaAlmacenPlantaDetalle.SubProductoId = request.SubProductoId;
                     notaSalidaAlmacenPlantaDetalle.Cantidad = x.Cantidad;
-                    notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.PesoKilosBrutos;
-                    notaSalidaAlmacenPlantaDetalle.KilosNetos = x.PesoKilosNetos;
+                    notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.KilosBrutos;
+                    notaSalidaAlmacenPlantaDetalle.KilosNetos = x.KilosNetos;
                     notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
 
 

@@ -47,6 +47,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadTotal", NotaSalidaAlmacenPlanta.CantidadTotal);
             parameters.Add("@PesoKilosBrutos", NotaSalidaAlmacenPlanta.PesoKilosBrutos);
             parameters.Add("@PesoKilosNetos", NotaSalidaAlmacenPlanta.PesoKilosNetos);
+            parameters.Add("@CodigoCampania", NotaSalidaAlmacenPlanta.CodigoCampania);
+            parameters.Add("@CodigoTipoConcepto", NotaSalidaAlmacenPlanta.CodigoTipoConcepto);
             parameters.Add("@Tara", NotaSalidaAlmacenPlanta.Tara);
             parameters.Add("@ProductoId", NotaSalidaAlmacenPlanta.ProductoId);
             parameters.Add("@SubProductoId", NotaSalidaAlmacenPlanta.SubProductoId);
@@ -95,6 +97,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PesoKilosBrutos", NotaSalidaAlmacenPlanta.PesoKilosBrutos);
             parameters.Add("@PesoKilosNetos", NotaSalidaAlmacenPlanta.PesoKilosNetos);
             parameters.Add("@Tara", NotaSalidaAlmacenPlanta.Tara);
+            parameters.Add("@CodigoCampania", NotaSalidaAlmacenPlanta.CodigoCampania);
+            parameters.Add("@CodigoTipoConcepto", NotaSalidaAlmacenPlanta.CodigoTipoConcepto);
 
             parameters.Add("@FechaUltimaActualizacion", NotaSalidaAlmacenPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", NotaSalidaAlmacenPlanta.UsuarioUltimaActualizacion);

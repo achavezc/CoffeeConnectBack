@@ -51,7 +51,7 @@ namespace CoffeeConnect.Service
                     throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.NotaIngresoPlanta.ValidacionRangoFechaMayor2anios.Label" });
                 */
 
-                request.CodigoTipo = Documentos.NotaIngresoPlantaTipo;
+                request.CodigoTipo = TiposCorrelativosPlanta.NotaIngresoPlantaTipo;
                 var list = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlanta(request);
                 
                 foreach(ConsultaNotaIngresoPlantaBE obj in list)
@@ -178,7 +178,7 @@ namespace CoffeeConnect.Service
 
 
             // NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
-            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), Documentos.NotaIngresoPlantaTipo, request.CodigoTipoConcepto);
+            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), TiposCorrelativosPlanta.NotaIngresoPlantaTipo, request.CodigoTipoConcepto);
 
             decimal kilosNetos = 0;
             decimal kilosBrutos = 0;

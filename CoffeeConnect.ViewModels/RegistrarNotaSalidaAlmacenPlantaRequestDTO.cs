@@ -28,6 +28,12 @@ namespace CoffeeConnect.DTO
 		public String PlacaTractor { get; set; }
 		public String MarcaCarretaId { get; set; }
 		public String PlacaCarreta { get; set; }
+
+		public String CodigoCampania { get; set; }
+
+		public String CodigoTipoConcepto { get; set; }
+
+
 		public String Conductor { get; set; }
 		public String Licencia { get; set; }
 		public String Observacion { get; set; }

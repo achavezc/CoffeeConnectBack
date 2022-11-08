@@ -21,5 +21,12 @@ namespace CoffeeConnect.DTO
 
         public String EstadoId { get; set; }
         public String Estado { get; set; }
+
+        public String CodigoCampania { get; set; }
+
+        public String CodigoConcepto { get; set; }
+
+        public String Concepto { get; set; }
+
     }
 }
