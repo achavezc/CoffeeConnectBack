@@ -10,16 +10,25 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		
 
+
 		/// <summary>
 		/// Gets or sets the LoteId value.
 		/// </summary>
 		public int NotaSalidaAlmacenPlantaDetalleId
 		{ get; set; }
 
+		public int? NotaIngresoProductoTerminadoAlmacenPlantaId
+		{ get; set; }
+
+
+
+		
+
+
 		public int NotaSalidaAlmacenPlantaId
 		{ get; set; }
 
-		public int NotaIngresoAlmacenPlantaId
+		public int? NotaIngresoAlmacenPlantaId
 		{ get; set; }
 		
 		public string EmpaqueId
