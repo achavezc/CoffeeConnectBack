@@ -6,7 +6,7 @@ namespace CoffeeConnect.Models
 	{
 		#region Properties
 		public int GuiaRemisionAlmacenPlantaId { get; set; }
-		public int NotaIngresoAlmacenPlantaId { get; set; }
+		public int? NotaIngresoAlmacenPlantaId { get; set; }
 		
 		public String NumeroNotaIngresoAlmacenPlanta { get; set; }
 		

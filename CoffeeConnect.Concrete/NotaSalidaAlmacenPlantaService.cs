@@ -256,65 +256,65 @@ namespace CoffeeConnect.Service
             //notaSalidaAlmacen.EstadoId = request.EstadoId;
             notaSalidaAlmacen.FechaUltimaActualizacion = DateTime.Now;
             notaSalidaAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacenPlanta;
-
            
 
             affected = _INotaSalidaAlmacenPlantaRepository.Actualizar(notaSalidaAlmacen);
 
             if(request.MotivoSalidaId != NotaSalidaAlmacenPlantaMotivos.Rechazo)
             {
+                _INotaSalidaAlmacenPlantaRepository.EliminarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
 
+                request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
+                {
+                    int notaIngresoProductoTerminadoAlmacenPlantaId = x.NotaIngresoProductoTerminadoAlmacenPlantaId.Value;
+
+                    ConsultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE notaIngresoProductoTerminadoAlmacenPlanta = _INotaIngresoProductoTerminadoAlmacenPlantaRepository.ConsultarNotaIngresoProductoTerminadoAlmacenPlantaPorId(notaIngresoProductoTerminadoAlmacenPlantaId);
+
+                    if (notaIngresoProductoTerminadoAlmacenPlanta != null)
+                    {
+                        NotaSalidaAlmacenPlantaDetalle notaSalidaAlmacenPlantaDetalle = new NotaSalidaAlmacenPlantaDetalle();
+                        notaSalidaAlmacenPlantaDetalle.NotaIngresoProductoTerminadoAlmacenPlantaId = notaIngresoProductoTerminadoAlmacenPlantaId;
+                        notaSalidaAlmacenPlantaDetalle.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
+                        notaSalidaAlmacenPlantaDetalle.ProductoId = notaIngresoProductoTerminadoAlmacenPlanta.ProductoId;
+                        notaSalidaAlmacenPlantaDetalle.SubProductoId = notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId;
+                        notaSalidaAlmacenPlantaDetalle.EmpaqueId = notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId;
+                        notaSalidaAlmacenPlantaDetalle.TipoId = notaIngresoProductoTerminadoAlmacenPlanta.TipoId;
+                        notaSalidaAlmacenPlantaDetalle.Cantidad = x.Cantidad;
+                        notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.KilosBrutos;
+                        notaSalidaAlmacenPlantaDetalle.KilosNetos = x.KilosNetos;
+                        notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
+
+                        //lstnotaSalidaAlmacen.Add(obj);
+
+                        _INotaSalidaAlmacenPlantaRepository.InsertarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacenPlantaDetalle);
+
+                        //decimal cantidadDisponible = notaIngresoProductoTerminadoAlmacenPlanta.CantidadDisponible;
+
+                        //string estado = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
+
+                        //if (x.Cantidad >= cantidadDisponible)
+                        //{
+                        //    estado = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Consumido;
+                        //}
+
+                        //_INotaIngresoProductoTerminadoAlmacenPlantaRepository.ActualizarCantidadSalidaAlmacenEstado(notaIngresoProductoTerminadoAlmacenPlantaId, notaIngresoProductoTerminadoAlmacenPlanta.CantidadSalidaAlmacen + notaSalidaAlmacenPlantaDetalle.Cantidad, notaIngresoProductoTerminadoAlmacenPlanta.KilosNetosSalidaAlmacen + notaSalidaAlmacenPlantaDetalle.KilosNetos, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, estado);
+
+                    }
+
+                    if (x.NotaIngresoAlmacenPlantaId.HasValue)
+                    {
+                        TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
+                        tablaLoteIdsTipo.Id = x.NotaIngresoAlmacenPlantaId.Value;
+                        notaIngresoIdActualizar.Add(tablaLoteIdsTipo);
+                    }
+
+                });
             }
 
-            
 
 
-            //if (notaSalidaAlmacen.NotaSalidaAlmacenPlantaId != 0)
-            //{
-            //    request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
-            //    {
-            //        NotaSalidaAlmacenPlantaDetalle obj = new NotaSalidaAlmacenPlantaDetalle();
-            //        obj.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
-            //        obj.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
 
-            //        lstnotaSalidaAlmacen.Add(obj);
-
-
-            //        TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
-            //        tablaLoteIdsTipo.Id = x.NotaIngresoAlmacenPlantaId.Value;
-            //        notaIngresoIdActualizar.Add(tablaLoteIdsTipo);
-
-            //    });
-
-            //    affected = _INotaSalidaAlmacenPlantaRepository.ActualizarNotaSalidaAlmacenPlantaDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
-
-
-            //    _NotaIngresoAlmacenPlantaRepository.ActualizarEstadoPorIds(notaIngresoIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, NotaIngresoAlmacenPlantaEstados.GeneradoNotaSalida);
-            //}
-
-            //request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
-            //{
-
-            //    NotaSalidaAlmacenPlantaDetalle 
-            //    NotaSalidaAlmacenPlantaDetalle notaSalidaAlmacenPlantaDetalle = new NotaSalidaAlmacenPlantaDetalle();
-            //    notaSalidaAlmacenPlantaDetalle.NotaIngresoProductoTerminadoAlmacenPlantaId = x.notaIngresoProductoTerminadoAlmacenPlantaId;
-            //    notaSalidaAlmacenPlantaDetalle.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
-            //    notaSalidaAlmacenPlantaDetalle.ProductoId = notaIngresoProductoTerminadoAlmacenPlanta.ProductoId;
-            //    notaSalidaAlmacenPlantaDetalle.SubProductoId = notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId;
-            //    notaSalidaAlmacenPlantaDetalle.EmpaqueId = notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId;
-            //    notaSalidaAlmacenPlantaDetalle.TipoId = notaIngresoProductoTerminadoAlmacenPlanta.TipoId;
-            //    notaSalidaAlmacenPlantaDetalle.Cantidad = x.Cantidad;
-            //    notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.KilosBrutos;
-            //    notaSalidaAlmacenPlantaDetalle.KilosNetos = x.KilosNetos;
-            //    notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
-            //}
-
-            //_INotaSalidaAlmacenPlantaRepository.EliminarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
-
-
-            ////lstnotaSalidaAlmacen.Add(obj);
-
-            //_INotaSalidaAlmacenPlantaRepository.InsertarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacenPlantaDetalle);
+           
 
 
 
