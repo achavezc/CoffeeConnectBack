@@ -126,8 +126,6 @@ namespace CoffeeConnect.Service
 
                         _INotaIngresoProductoTerminadoAlmacenPlantaRepository.ActualizarCantidadSalidaAlmacenEstado(notaIngresoProductoTerminadoAlmacenPlantaId, notaIngresoProductoTerminadoAlmacenPlanta.CantidadSalidaAlmacen + notaSalidaAlmacenPlantaDetalle.Cantidad, notaIngresoProductoTerminadoAlmacenPlanta.KilosNetosSalidaAlmacen + notaSalidaAlmacenPlantaDetalle.KilosNetos, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, estado);
 
-
-
                     }
 
 
@@ -252,37 +250,72 @@ namespace CoffeeConnect.Service
             notaSalidaAlmacen.PesoKilosBrutos = request.PesoKilosBrutos;
             notaSalidaAlmacen.PesoKilosNetos = request.PesoKilosNetos;
             notaSalidaAlmacen.Tara = request.Tara;
+            notaSalidaAlmacen.CodigoTipoConcepto = request.CodigoTipoConcepto;
+            notaSalidaAlmacen.CodigoCampania = request.CodigoCampania;
 
             //notaSalidaAlmacen.EstadoId = request.EstadoId;
             notaSalidaAlmacen.FechaUltimaActualizacion = DateTime.Now;
             notaSalidaAlmacen.UsuarioUltimaActualizacion = request.UsuarioNotaSalidaAlmacenPlanta;
 
+           
 
             affected = _INotaSalidaAlmacenPlantaRepository.Actualizar(notaSalidaAlmacen);
 
-
-            if (notaSalidaAlmacen.NotaSalidaAlmacenPlantaId != 0)
+            if(request.MotivoSalidaId != NotaSalidaAlmacenPlantaMotivos.Rechazo)
             {
-                request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
-                {
-                    NotaSalidaAlmacenPlantaDetalle obj = new NotaSalidaAlmacenPlantaDetalle();
-                    obj.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
-                    obj.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
 
-                    lstnotaSalidaAlmacen.Add(obj);
-
-
-                    TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
-                    tablaLoteIdsTipo.Id = x.NotaIngresoAlmacenPlantaId.Value;
-                    notaIngresoIdActualizar.Add(tablaLoteIdsTipo);
-
-                });
-
-                affected = _INotaSalidaAlmacenPlantaRepository.ActualizarNotaSalidaAlmacenPlantaDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
-
-
-                _NotaIngresoAlmacenPlantaRepository.ActualizarEstadoPorIds(notaIngresoIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, NotaIngresoAlmacenPlantaEstados.GeneradoNotaSalida);
             }
+
+            
+
+
+            //if (notaSalidaAlmacen.NotaSalidaAlmacenPlantaId != 0)
+            //{
+            //    request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
+            //    {
+            //        NotaSalidaAlmacenPlantaDetalle obj = new NotaSalidaAlmacenPlantaDetalle();
+            //        obj.NotaIngresoAlmacenPlantaId = x.NotaIngresoAlmacenPlantaId;
+            //        obj.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
+
+            //        lstnotaSalidaAlmacen.Add(obj);
+
+
+            //        TablaIdsTipo tablaLoteIdsTipo = new TablaIdsTipo();
+            //        tablaLoteIdsTipo.Id = x.NotaIngresoAlmacenPlantaId.Value;
+            //        notaIngresoIdActualizar.Add(tablaLoteIdsTipo);
+
+            //    });
+
+            //    affected = _INotaSalidaAlmacenPlantaRepository.ActualizarNotaSalidaAlmacenPlantaDetalle(lstnotaSalidaAlmacen, notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
+
+
+            //    _NotaIngresoAlmacenPlantaRepository.ActualizarEstadoPorIds(notaIngresoIdActualizar, DateTime.Now, request.UsuarioNotaSalidaAlmacenPlanta, NotaIngresoAlmacenPlantaEstados.GeneradoNotaSalida);
+            //}
+
+            //request.ListNotaSalidaAlmacenPlantaDetalle.ForEach(x =>
+            //{
+
+            //    NotaSalidaAlmacenPlantaDetalle 
+            //    NotaSalidaAlmacenPlantaDetalle notaSalidaAlmacenPlantaDetalle = new NotaSalidaAlmacenPlantaDetalle();
+            //    notaSalidaAlmacenPlantaDetalle.NotaIngresoProductoTerminadoAlmacenPlantaId = x.notaIngresoProductoTerminadoAlmacenPlantaId;
+            //    notaSalidaAlmacenPlantaDetalle.NotaSalidaAlmacenPlantaId = notaSalidaAlmacen.NotaSalidaAlmacenPlantaId;
+            //    notaSalidaAlmacenPlantaDetalle.ProductoId = notaIngresoProductoTerminadoAlmacenPlanta.ProductoId;
+            //    notaSalidaAlmacenPlantaDetalle.SubProductoId = notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId;
+            //    notaSalidaAlmacenPlantaDetalle.EmpaqueId = notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId;
+            //    notaSalidaAlmacenPlantaDetalle.TipoId = notaIngresoProductoTerminadoAlmacenPlanta.TipoId;
+            //    notaSalidaAlmacenPlantaDetalle.Cantidad = x.Cantidad;
+            //    notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.KilosBrutos;
+            //    notaSalidaAlmacenPlantaDetalle.KilosNetos = x.KilosNetos;
+            //    notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
+            //}
+
+            //_INotaSalidaAlmacenPlantaRepository.EliminarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacen.NotaSalidaAlmacenPlantaId);
+
+
+            ////lstnotaSalidaAlmacen.Add(obj);
+
+            //_INotaSalidaAlmacenPlantaRepository.InsertarNotaSalidaAlmacenPlantaDetalle(notaSalidaAlmacenPlantaDetalle);
+
 
 
             #region Guia Remision

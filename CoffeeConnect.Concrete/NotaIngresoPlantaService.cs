@@ -180,10 +180,7 @@ namespace CoffeeConnect.Service
             // NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
             NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), TiposCorrelativosPlanta.NotaIngresoPlantaTipo, request.CodigoTipoConcepto);
 
-            decimal kilosNetos = 0;
-            decimal kilosBrutos = 0;
-            decimal cantidad = 0;
-            decimal tara = 0;
+            
 
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
             NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
@@ -192,6 +189,11 @@ namespace CoffeeConnect.Service
 
             if (request.NotaIngresoPlantaDetalle != null && request.NotaIngresoPlantaDetalle.Count > 0)
             {
+                decimal kilosNetos = 0;
+                decimal kilosBrutos = 0;
+                decimal cantidad = 0;
+                decimal tara = 0;
+
                 foreach (NotaIngresoPlantaDetalle notaIngresoPlantaDetalle in request.NotaIngresoPlantaDetalle)
                 {
                     kilosNetos = kilosNetos + notaIngresoPlantaDetalle.KilosNetos;
@@ -199,23 +201,30 @@ namespace CoffeeConnect.Service
                     cantidad = cantidad + notaIngresoPlantaDetalle.Cantidad;
                     tara = tara + notaIngresoPlantaDetalle.Tara;
                 }
+
+                NotaIngresoPlanta.Cantidad = cantidad;
+                NotaIngresoPlanta.KilosNetos = kilosNetos;
+                NotaIngresoPlanta.KilosBrutos = kilosBrutos;
+                NotaIngresoPlanta.Tara = tara;
             }
 
-            NotaIngresoPlanta.Cantidad = cantidad;
-            NotaIngresoPlanta.KilosNetos = kilosNetos;
-            NotaIngresoPlanta.KilosBrutos = kilosBrutos;
-            NotaIngresoPlanta.Tara = tara;
+            
 
             int notaIngresoPlantaId = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
 
 
             if(request.NotaIngresoPlantaDetalle!=null && request.NotaIngresoPlantaDetalle.Count>0)
             {
-                foreach(NotaIngresoPlantaDetalle notaIngresoPlantaDetalle in request.NotaIngresoPlantaDetalle)
+                decimal kilosNetos = 0;
+                decimal kilosBrutos = 0;
+                decimal cantidad = 0;
+                //decimal tara = 0;
+
+                foreach (NotaIngresoPlantaDetalle notaIngresoPlantaDetalle in request.NotaIngresoPlantaDetalle)
                 {
-                    kilosNetos = kilosNetos + notaIngresoPlantaDetalle.KilosNetos;
-                    kilosBrutos = kilosBrutos + notaIngresoPlantaDetalle.KilosBrutos;
-                    cantidad = cantidad + notaIngresoPlantaDetalle.Cantidad;
+                    //kilosNetos = kilosNetos + notaIngresoPlantaDetalle.KilosNetos;
+                    //kilosBrutos = kilosBrutos + notaIngresoPlantaDetalle.KilosBrutos;
+                    //cantidad = cantidad + notaIngresoPlantaDetalle.Cantidad;
 
                     notaIngresoPlantaDetalle.NotaIngresoPlantaId= notaIngresoPlantaId;
 

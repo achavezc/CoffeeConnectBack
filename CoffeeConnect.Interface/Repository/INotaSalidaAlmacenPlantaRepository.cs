@@ -18,6 +18,8 @@ namespace CoffeeConnect.Interface.Repository
 
         int ActualizarEstado(int NotaSalidaAlmacenPlantaId, DateTime fecha, string usuario, string estadoId);
 
+        int EliminarNotaSalidaAlmacenPlantaDetalle(int NotaSalidaAlmacenPlantaId);
+
 
         IEnumerable<ConsultaNotaSalidaAlmacenPlantaBE> ConsultarNotaSalidaAlmacenPlanta(ConsultaNotaSalidaAlmacenPlantaRequestDTO request);
        

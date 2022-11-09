@@ -67,7 +67,7 @@ namespace CoffeeConnect.Service
             }
             else if (controlCalidadPlanta.EstadoCalidadId == ControlCalidadEstados.Rechazado)
             {
-                string estado = ControlCalidadEstados.Rechazado;
+                string estado = ControlCalidadEstados.EnviadoAlmacen;
 
                 _IControlCalidadPlantaRepository.ActualizarCantidadProcesadaEstado(request.ControlCalidadPlantaId, controlCalidadPlanta.CantidadProcesada + request.Cantidad, controlCalidadPlanta.KilosNetosProcesado + request.KilosNetos, DateTime.Now, request.Usuario, estado);
 

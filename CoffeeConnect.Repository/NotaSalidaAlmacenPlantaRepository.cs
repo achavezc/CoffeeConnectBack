@@ -132,6 +132,25 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
+
+        public int EliminarNotaSalidaAlmacenPlantaDetalle(int NotaSalidaAlmacenPlantaId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaSalidaAlmacenPlantaId", NotaSalidaAlmacenPlantaId);
+            
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspNotaSalidaAlmacenPlantaDetalleEliminarPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
+
         public IEnumerable<ConsultaNotaSalidaAlmacenPlantaBE> ConsultarNotaSalidaAlmacenPlanta(ConsultaNotaSalidaAlmacenPlantaRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -140,6 +159,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaTransporteId", request.EmpresaTransporteId);
             parameters.Add("@AlmacenId", request.AlmacenId);
             parameters.Add("@MotivoSalidaId", request.MotivoSalidaId);
+            parameters.Add("@EstadoId", request.EstadoId);
             parameters.Add("@EmpresaId", request.EmpresaId);
             parameters.Add("@FechaInicio", request.FechaInicio);
             parameters.Add("@FechaFin", request.FechaFin);
