@@ -485,37 +485,56 @@ namespace CoffeeConnect.Service
 
             if (consultaImpresionGuiaRemision != null)
             {
-                GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
-
-                //descripcion = "  " + Convert.ToString(z.CantidadPesado) + " " + Convert.ToString(!string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty) + " Plastico" + "   " + Convert.ToString(!string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty);
-
-                // obtener certificaciones
-                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(empresaId, String.Empty).ToList();
-                string[] certificacionesIds = consultaImpresionGuiaRemision.CertificacionId.Split('|');
-                string certificacionLabel = string.Empty;
-                if (certificacionesIds.Length > 0)
+                if (consultaImpresionGuiaRemision.ProductoId == "02")
                 {
-                    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
-                    foreach (string certificacionId in certificacionesIds)
+                    IEnumerable<ConsultaNotaIngresoPlantaDetalle> detalle = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaDetallePorId(notaSalidaAlmacenIdId);
+                    foreach (ConsultaNotaIngresoPlantaDetalle notaIngresoPlantaDetalle in detalle)
                     {
-                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
-                        if (certificacion != null)
+                        GuiaRemisionListaDetalle guiaRemisionListaDetalle1 = new GuiaRemisionListaDetalle();
+                        guiaRemisionListaDetalle1.TipoEmpaque = notaIngresoPlantaDetalle.Tipo;
+                        guiaRemisionListaDetalle1.Empaque = notaIngresoPlantaDetalle.Empaque;
+                        guiaRemisionListaDetalle1.Descripcion = notaIngresoPlantaDetalle.SubProducto;
+                        guiaRemisionListaDetalle1.MontoBruto = notaIngresoPlantaDetalle.KilosBrutos;
+                        guiaRemisionListaDetalle1.PesoNeto = notaIngresoPlantaDetalle.KilosNetos;
+                        guiaRemisionListaDetalle1.Cantidad = notaIngresoPlantaDetalle.Cantidad;
+                        generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle1);
+                    }
+
+                }
+                else
+                {
+                    GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
+
+                    //descripcion = "  " + Convert.ToString(z.CantidadPesado) + " " + Convert.ToString(!string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty) + " Plastico" + "   " + Convert.ToString(!string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty);
+
+                    // obtener certificaciones
+                    List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(empresaId, String.Empty).ToList();
+                    string[] certificacionesIds = consultaImpresionGuiaRemision.CertificacionId.Split('|');
+                    string certificacionLabel = string.Empty;
+                    if (certificacionesIds.Length > 0)
+                    {
+                        List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
+                        foreach (string certificacionId in certificacionesIds)
                         {
-                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                            ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                            if (certificacion != null)
+                            {
+                                certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                            }
                         }
                     }
+
+                    // obtener certificaciones
+
+
+                    guiaRemisionListaDetalle.TipoEmpaque = consultaImpresionGuiaRemision.TipoEmpaque;
+                    guiaRemisionListaDetalle.Empaque = consultaImpresionGuiaRemision.Empaque;
+                    guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + certificacionLabel;
+                    guiaRemisionListaDetalle.MontoBruto = consultaImpresionGuiaRemision.KilosBrutos;
+                    guiaRemisionListaDetalle.PesoNeto = consultaImpresionGuiaRemision.KilosNetos;
+                    guiaRemisionListaDetalle.Cantidad = consultaImpresionGuiaRemision.Cantidad;
+                    generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
                 }
-
-                // obtener certificaciones
-
-
-                guiaRemisionListaDetalle.TipoEmpaque = consultaImpresionGuiaRemision.TipoEmpaque;
-                guiaRemisionListaDetalle.Empaque = consultaImpresionGuiaRemision.Empaque;
-                guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + certificacionLabel;
-                guiaRemisionListaDetalle.MontoBruto = consultaImpresionGuiaRemision.KilosBrutos;
-                guiaRemisionListaDetalle.PesoNeto = consultaImpresionGuiaRemision.KilosNetos;
-                guiaRemisionListaDetalle.Cantidad = consultaImpresionGuiaRemision.Cantidad;
-                generarPDFGuiaRemisionResponseDTO.listaDetalleGM.Add(guiaRemisionListaDetalle);
                 /*
                 List<ConsultaGuiaRemisionAlmacenDetalle> detalleGuiaRemision = new List<ConsultaGuiaRemisionAlmacenDetalle>();// _INotaIngresoPlantaRepository.ConsultaGuiaRemisionAlmacenDetallePorGuiaRemisionAlmacenId(consultaImpresionGuiaRemision.GuiaRemisionAlmacenId).ToList();
 
@@ -538,7 +557,6 @@ namespace CoffeeConnect.Service
                 */
 
                 CabeceraGuiaRemision cabeceraGuiaRemision = new CabeceraGuiaRemision();
-
 
                 cabeceraGuiaRemision.RazonSocial = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.RazonSocial) ? consultaImpresionGuiaRemision.RazonSocial.Trim() : String.Empty;
 
