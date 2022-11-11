@@ -187,6 +187,47 @@ namespace Integracion.Deuda.Controller
             return Ok(response);
         }
 
+        [Route("GenerarPDFNotaSalida")]
+        [HttpGet]
+        public IActionResult GenerarPDFNotaSalida(int id, int empresaId)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(id)}");
+
+            GenerarPDFNotaSalidaAlmacenPlantaResponseDTO response = _NotaSalidaAlmacenPlantaService.GenerarPDFNotaSalidaAlmacenPlanta(id, empresaId);
+
+            try
+            {
+                
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptNotaSalida.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                lr.AddDataSource("dsGRCabecera", Util.ToDataTable(response.Cabecera));
+                lr.AddDataSource("dsGRListaDetalle", Util.ToDataTable(response.listaDetalleGM));
+                lr.AddDataSource("dsGRDetalle", Util.ToDataTable(response.detalleGM));
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+                return File(result.MainStream, "application/pdf");
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
         [Route("GenerarPDFGuiaRemision")]
         [HttpGet]
         public IActionResult GenerarPDFGuiaRemisionPlanta(int id)

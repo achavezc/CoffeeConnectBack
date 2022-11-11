@@ -221,7 +221,7 @@ namespace Integracion.Deuda.Controller
 
             try
             {
-                GenerarPDFGuiaRemisionRequestDTO request = new GenerarPDFGuiaRemisionRequestDTO { LoteId = id };
+                
                 string mimetype = "";
                 int extension = 1;
                 var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptNotaIngreso.rdlc";

@@ -24,6 +24,16 @@ namespace CoffeeConnect.DTO
 		public string Almacen
 		{ get; set; }
 
+		public string Departamento
+		{ get; set; }
+
+		public string Provincia
+		{ get; set; }
+
+		public string Distrito
+		{ get; set; }
+
+
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>

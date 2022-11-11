@@ -10,7 +10,7 @@ namespace CoffeeConnect.Interface.Service
         int AnularNotaSalidaAlmacenPlanta(AnularNotaSalidaAlmacenPlantaRequestDTO request);
         List<ConsultaNotaSalidaAlmacenPlantaBE> ConsultarNotaSalidaAlmacenPlanta(ConsultaNotaSalidaAlmacenPlantaRequestDTO request);
         ConsultaNotaSalidaAlmacenPlantaPorIdBE ConsultarNotaSalidaAlmacenPlantaPorId(ConsultaNotaSalidaAlmacenPlantaPorIdRequestDTO request);
+        GenerarPDFNotaSalidaAlmacenPlantaResponseDTO GenerarPDFNotaSalidaAlmacenPlanta(int notaSalidaAlmacenIdId, int empresaId);
 
-        
     }
 }
