@@ -58,6 +58,14 @@ namespace CoffeeConnect.Models
 		public string EstadoId
 		{ get; set; }
 
+		public string EmpaqueId
+		{ get; set; }
+
+		public string TipoId
+		{ get; set; }
+
+
+
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.
 		/// </summary>

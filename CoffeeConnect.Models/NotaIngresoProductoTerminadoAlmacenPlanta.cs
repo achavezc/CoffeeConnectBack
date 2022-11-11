@@ -62,6 +62,9 @@ namespace CoffeeConnect.Models
 		public decimal? KilosNetos
 		{ get; set; }
 
+		public decimal? KilosBrutos
+		{ get; set; }
+
 		public decimal? CantidadSalidaAlmacen
 		{ get; set; }
 

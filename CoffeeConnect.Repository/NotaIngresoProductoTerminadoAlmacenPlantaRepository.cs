@@ -125,6 +125,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Cantidad", NotaIngresoProductoTerminadoAlmacenPlanta.Cantidad);
             parameters.Add("@KGN", NotaIngresoProductoTerminadoAlmacenPlanta.KGN);
             parameters.Add("@KilosNetos", NotaIngresoProductoTerminadoAlmacenPlanta.KilosNetos);
+            parameters.Add("@KilosBrutos", NotaIngresoProductoTerminadoAlmacenPlanta.KilosBrutos);
             parameters.Add("@Observacion", NotaIngresoProductoTerminadoAlmacenPlanta.Observacion);
             parameters.Add("@LiquidacionProcesoPlantaId", NotaIngresoProductoTerminadoAlmacenPlanta.LiquidacionProcesoPlantaId);
             parameters.Add("@NotaIngresoProductoTerminadoAlmacenPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);

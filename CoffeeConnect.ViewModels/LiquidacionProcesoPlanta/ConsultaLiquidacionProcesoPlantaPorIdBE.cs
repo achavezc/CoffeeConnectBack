@@ -19,7 +19,17 @@ namespace CoffeeConnect.DTO
         public string NumeroOrdenProcesoPlanta
         { get; set; }
 
-        
+        public string EmpaqueId
+        { get; set; }
+
+        public string Empaque
+        { get; set; }
+
+        public string TipoId
+        { get; set; }
+
+        public string Tipo
+        { get; set; }
 
 
         public decimal? NumeroDefectos { get; set; }

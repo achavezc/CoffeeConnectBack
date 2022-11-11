@@ -62,6 +62,8 @@ namespace CoffeeConnect.Service
             liquidacionProcesoPlanta.EntidadCertificadoraId = consultaOrdenProcesoPlantaPorIdBE.EntidadCertificadoraId;
             liquidacionProcesoPlanta.FechaInicioProceso = consultaOrdenProcesoPlantaPorIdBE.FechaInicioProceso.Value;
             liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
+            liquidacionProcesoPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
+            liquidacionProcesoPlanta.EmpaqueId = consultaOrdenProcesoPlantaPorIdBE.EmpaqueId;
 
 
             int LiquidacionProcesoPlantaId = _ILiquidacionProcesoPlantaRepository.Insertar(liquidacionProcesoPlanta);
@@ -90,6 +92,7 @@ namespace CoffeeConnect.Service
                     notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId = detalle.ReferenciaId;
                     notaIngresoProductoTerminadoAlmacenPlanta.Cantidad = detalle.CantidadSacos;
                     notaIngresoProductoTerminadoAlmacenPlanta.KilosNetos = detalle.KilosNetos;
+                    notaIngresoProductoTerminadoAlmacenPlanta.KilosBrutos = detalle.KilosBrutos;
                     notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN;
                     notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = "04"; // Liquidacion Proceso
                     notaIngresoProductoTerminadoAlmacenPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
