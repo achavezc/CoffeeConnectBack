@@ -505,7 +505,7 @@ namespace CoffeeConnect.Service
                 guiaRemisionDetalle.SacosAptos = Convert.ToString(consultaImpresionGuiaRemision.Cantidad);
                 guiaRemisionDetalle.KilosBrutos = Convert.ToString(consultaImpresionGuiaRemision.KilosBrutos);
                 guiaRemisionDetalle.KilosNetos = Convert.ToString(consultaImpresionGuiaRemision.KilosNetos);
-                guiaRemisionDetalle.Certificado = certificacionLabel;
+                guiaRemisionDetalle.Certificado = !string.IsNullOrEmpty(certificacionLabel) ? certificacionLabel.Trim() : String.Empty; ;
                 guiaRemisionDetalle.HumedadRecepcion = Convert.ToString(consultaImpresionGuiaRemision.HumedadPorcentaje);
                 guiaRemisionDetalle.HumedadAnalisis = Convert.ToString(consultaImpresionGuiaRemision.HumedadPorcentajeAnalisisFisico);
 

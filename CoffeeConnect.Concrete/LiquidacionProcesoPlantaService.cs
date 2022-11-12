@@ -153,7 +153,37 @@ namespace CoffeeConnect.Service
         public ConsultaLiquidacionProcesoPlantaPorIdBE ConsultarLiquidacionProcesoPlantaPorId(ConsultaLiquidacionProcesoPlantaPorIdRequestDTO request)
         {
             ConsultaLiquidacionProcesoPlantaPorIdBE consultaLiquidacionProcesoPlantaPorIdBE = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaPorId(request.LiquidacionProcesoPlantaId);
-            consultaLiquidacionProcesoPlantaPorIdBE.Preparacion = consultaLiquidacionProcesoPlantaPorIdBE.ProductoTerminado + " - " + consultaLiquidacionProcesoPlantaPorIdBE.SubProductoTerminado + " - " + consultaLiquidacionProcesoPlantaPorIdBE.Calidad;
+            //consultaLiquidacionProcesoPlantaPorIdBE.Preparacion = consultaLiquidacionProcesoPlantaPorIdBE.ProductoTerminado + " - " + consultaLiquidacionProcesoPlantaPorIdBE.SubProductoTerminado + " - " + consultaLiquidacionProcesoPlantaPorIdBE.Calidad;
+
+            string ProductoTerminado = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.ProductoTerminado) ? consultaLiquidacionProcesoPlantaPorIdBE.ProductoTerminado.Trim() : String.Empty;
+            string SubProductoTerminado = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.SubProductoTerminado) ? consultaLiquidacionProcesoPlantaPorIdBE.SubProductoTerminado.Trim() : String.Empty;
+            string Calidad = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.Calidad) ? consultaLiquidacionProcesoPlantaPorIdBE.Calidad.Trim() : String.Empty;
+
+            consultaLiquidacionProcesoPlantaPorIdBE.Preparacion = ProductoTerminado + " - " + SubProductoTerminado + " - " + Calidad;
+
+
+            string Departamento = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.Departamento) ? consultaLiquidacionProcesoPlantaPorIdBE.Departamento.Trim() : String.Empty;
+            string Provincia = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.Provincia) ? consultaLiquidacionProcesoPlantaPorIdBE.Provincia.Trim() : String.Empty;
+            string Distrito = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.Distrito) ? consultaLiquidacionProcesoPlantaPorIdBE.Distrito.Trim() : String.Empty;
+
+            consultaLiquidacionProcesoPlantaPorIdBE.Ubigeo = Distrito + "-" + Provincia + "-" + Departamento;
+
+            consultaLiquidacionProcesoPlantaPorIdBE.FechaInicioProcesoString = consultaLiquidacionProcesoPlantaPorIdBE.FechaInicioProceso.Value.ToString("dd/MM/yyyy");
+            consultaLiquidacionProcesoPlantaPorIdBE.FechaFinProcesoString = consultaLiquidacionProcesoPlantaPorIdBE.FechaFinProceso.Value.ToString("dd/MM/yyyy");
+            consultaLiquidacionProcesoPlantaPorIdBE.RazonSocialOrganizacion = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.RazonSocialOrganizacion) ? consultaLiquidacionProcesoPlantaPorIdBE.RazonSocialOrganizacion.Trim() : String.Empty;
+            consultaLiquidacionProcesoPlantaPorIdBE.RazonSocial  = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.RazonSocial ) ? consultaLiquidacionProcesoPlantaPorIdBE.RazonSocial .Trim() : String.Empty;
+            consultaLiquidacionProcesoPlantaPorIdBE.EntidadCertificadora = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.EntidadCertificadora) ? consultaLiquidacionProcesoPlantaPorIdBE.EntidadCertificadora.Trim() : String.Empty;
+            consultaLiquidacionProcesoPlantaPorIdBE.Producto = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.Producto) ? consultaLiquidacionProcesoPlantaPorIdBE.Producto.Trim() : String.Empty;
+
+            consultaLiquidacionProcesoPlantaPorIdBE.EnvasesProductos = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.EnvasesProductos) ? consultaLiquidacionProcesoPlantaPorIdBE.EnvasesProductos.Trim() : String.Empty;
+            consultaLiquidacionProcesoPlantaPorIdBE.TrabajosRealizados = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.TrabajosRealizados) ? consultaLiquidacionProcesoPlantaPorIdBE.TrabajosRealizados.Trim() : String.Empty;
+            consultaLiquidacionProcesoPlantaPorIdBE.Observacion = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.Observacion) ? consultaLiquidacionProcesoPlantaPorIdBE.Observacion.Trim() : String.Empty;
+
+
+
+
+
+
 
             if (consultaLiquidacionProcesoPlantaPorIdBE != null)
             {

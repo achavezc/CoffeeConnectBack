@@ -529,7 +529,7 @@ namespace CoffeeConnect.Service
                 //string motivo = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.MotivoIngreso) ? consultaImpresionNotaSalidaAlmacenPlanta.MotivoIngreso.Trim() : String.Empty;
                 string observacion = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.Observacion) ? consultaImpresionNotaSalidaAlmacenPlanta.Observacion.Trim() : String.Empty;
 
-                notaSalidaAlmacenPlantaDetalle.Observaciones = observacion;
+                notaSalidaAlmacenPlantaDetalle.Observaciones = notaSalidaAlmacenPlantaDetalle.MotivoTraslado + " " + observacion;
                 notaSalidaAlmacenPlantaDetalle.Responsable = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.UsuarioRegistro) ? consultaImpresionNotaSalidaAlmacenPlanta.UsuarioRegistro.Trim() : String.Empty;
 
                 generarPDFNotaSalidaAlmacenPlantaResponseDTO.detalleGM.Add(notaSalidaAlmacenPlantaDetalle);

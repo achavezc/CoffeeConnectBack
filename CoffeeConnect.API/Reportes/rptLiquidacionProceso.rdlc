@@ -2191,7 +2191,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>AV. FRAY JERONIMO JIMENEZ NRO. 767 URB. SAN CARLOS</Value>
+                  <Value>=Trim(First(Fields!Direccion.Value, "dsLiquidacionProceso"))</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontSize>8pt</FontSize>
@@ -2202,7 +2202,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.18in</Top>
+          <Top>0.16611in</Top>
           <Height>0.18in</Height>
           <Width>3.83333in</Width>
           <ZIndex>1</ZIndex>
@@ -2465,10 +2465,6 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="NumeroDefectos">
-          <DataField>NumeroDefectos</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="Numero">
           <DataField>Numero</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -2485,32 +2481,8 @@
           <DataField>TrabajosRealizados</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Estado">
-          <DataField>Estado</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TipoProceso">
-          <DataField>TipoProceso</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TipoProduccion">
-          <DataField>TipoProduccion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TipoCertificacion">
-          <DataField>TipoCertificacion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="EntidadCertificadora">
           <DataField>EntidadCertificadora</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Producto">
-          <DataField>Producto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SubProducto">
-          <DataField>SubProducto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FechaRegistroString">
@@ -2519,6 +2491,14 @@
         </Field>
         <Field Name="UsuarioRegistro">
           <DataField>UsuarioRegistro</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		<Field Name="Direccion">
+          <DataField>Direccion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		<Field Name="Ubigeo">
+          <DataField>Ubigeo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RazonSocial">
@@ -2541,6 +2521,10 @@
           <DataField>RazonSocialOrganizacion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Producto">
+          <DataField>Producto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="NumeroOrdenProcesoPlanta">
           <DataField>NumeroOrdenProcesoPlanta</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -2549,12 +2533,12 @@
           <DataField>FechaInicioProcesoString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaFinProcesoString">
-          <DataField>FechaFinProcesoString</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Preparacion">
           <DataField>Preparacion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FechaFinProcesoString">
+          <DataField>FechaFinProcesoString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -2577,24 +2561,12 @@
           <DataField>Descripcion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaNotaIngresoPlanta">
-          <DataField>FechaNotaIngresoPlanta</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="RendimientoPorcentaje">
-          <DataField>RendimientoPorcentaje</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="PorcentajeHumedad">
           <DataField>PorcentajeHumedad</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Cantidad">
           <DataField>Cantidad</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="KilosBrutos">
-          <DataField>KilosBrutos</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Tara">
