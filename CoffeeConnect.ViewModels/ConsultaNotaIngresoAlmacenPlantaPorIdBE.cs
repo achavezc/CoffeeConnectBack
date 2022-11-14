@@ -92,9 +92,18 @@ namespace CoffeeConnect.DTO
 		public string RazonSocialEmpresaOrigen
 		{ get; set; }
 
+		
+
+public string Ruc
+		{ get; set; }
+
+
 		public string RucEmpresaOrigen
 		{ get; set; }
 
+		public string DireccionEmpresaOrigen
+		{ get; set; }
+		
 
 		/// <summary>
 		/// Gets or sets the TipoProduccionId value.

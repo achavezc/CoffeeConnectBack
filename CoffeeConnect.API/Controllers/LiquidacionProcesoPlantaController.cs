@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
@@ -375,13 +376,13 @@ namespace CoffeeConnect.API.Controllers
             try
             {
                 List<ConsultaLiquidacionProcesoPlantaPorIdBE> listaLiquidacionProcesoPlanta = new List<ConsultaLiquidacionProcesoPlantaPorIdBE>();
-                
+
                 response.data = LiquidacionProcesoPlantaService.ConsultarLiquidacionProcesoPlantaPorId(new ConsultaLiquidacionProcesoPlantaPorIdRequestDTO
                 {
                     LiquidacionProcesoPlantaId = id,
                     EmpresaId = empresaId
                 });
-                
+
 
                 if (response != null && response.data != null)
                 {
@@ -395,17 +396,22 @@ namespace CoffeeConnect.API.Controllers
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
+                DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
+                DataTable dsLiquidProcesoDetalle = Util.ToDataTable(response.data.Detalle, true);
+                DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
+
+
                 if (listaLiquidacionProcesoPlanta.Count > 0)
                 {
-                    lr.AddDataSource("dsLiquidacionProceso", Util.ToDataTable(listaLiquidacionProcesoPlanta, true));
+                    lr.AddDataSource("dsLiquidacionProceso", dsLiquidacionProceso);
                 }
                 if (response != null && response.data.Detalle != null)
                 {
-                    lr.AddDataSource("dsLiquidProcesoDetalle", Util.ToDataTable(response.data.Detalle));
+                    lr.AddDataSource("dsLiquidProcesoDetalle", dsLiquidProcesoDetalle);
                 }
                 if (response != null && response.data.Resultado != null)
                 {
-                    lr.AddDataSource("dsLiquidProcesoResultado", Util.ToDataTable(response.data.Resultado));
+                    lr.AddDataSource("dsLiquidProcesoResultado", dsLiquidProcesoResultado);
                 }
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
