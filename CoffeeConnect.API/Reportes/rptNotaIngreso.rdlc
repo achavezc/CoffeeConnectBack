@@ -778,8 +778,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsGRListaDetalle</DataSetName>
-        <Top>3.13194in</Top>
-        <Left>0.11043in</Left>
+        <Top>3.26202in</Top>
+        <Left>0.08433in</Left>
         <Height>0.5in</Height>
         <Width>6.11567in</Width>
         <ZIndex>1</ZIndex>
@@ -855,9 +855,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox11</rd:DefaultName>
         <Top>2.89396in</Top>
-        <Left>0.254cm</Left>
+        <Left>0cm</Left>
         <Height>0.25in</Height>
-        <Width>6.1261in</Width>
+        <Width>6.27455in</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -1245,8 +1245,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>4.17174in</Top>
-        <Left>0.11043in</Left>
+        <Top>3.89396in</Top>
+        <Left>0.11651in</Left>
         <Height>0.25in</Height>
         <Width>1.11458in</Width>
         <ZIndex>14</ZIndex>
@@ -1404,7 +1404,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Trim(First(Fields!TransportistaMarca.Value, "dsGRDetalle")) &amp; "/" &amp; Trim(First(Fields!TransportistaPlaca.Value, "dsGRDetalle"))</Value>
+                <Value>=First(Fields!TransportistaMarcaPlaca.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1609,8 +1609,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>5.01375in</Top>
-        <Left>0.11043in</Left>
+        <Top>4.59014in</Top>
+        <Left>0.11651in</Left>
         <Height>0.78125in</Height>
         <Width>1.48957in</Width>
         <ZIndex>23</ZIndex>
@@ -1674,20 +1674,6 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style>
-                  <FontSize>8pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
                 <Value>VERIFICADOR / RECEPCION</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
@@ -1701,7 +1687,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>5.01375in</Top>
+        <Top>4.59014in</Top>
         <Left>2.17146in</Left>
         <Height>0.78125in</Height>
         <Width>1.48957in</Width>
@@ -1793,7 +1779,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>5.01375in</Top>
+        <Top>4.59014in</Top>
         <Left>4.27779in</Left>
         <Height>0.78125in</Height>
         <Width>1.48957in</Width>
@@ -1896,7 +1882,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox50</rd:DefaultName>
-        <Top>4.17174in</Top>
+        <Top>3.89396in</Top>
         <Left>1.3654in</Left>
         <Height>0.53125in</Height>
         <Width>4.01042in</Width>
@@ -1981,7 +1967,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>5.9025in</Height>
+    <Height>5.91639in</Height>
     <Style>
       <Border>
         <Style>Solid</Style>
@@ -2162,7 +2148,7 @@
     <PageHeight>11.69in</PageHeight>
     <PageWidth>8.27in</PageWidth>
     <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
+    <RightMargin>0.99in</RightMargin>
     <TopMargin>1in</TopMargin>
     <BottomMargin>1in</BottomMargin>
     <Style />
@@ -2346,6 +2332,10 @@
         </Field>
         <Field Name="TransportistaMarca">
           <DataField>TransportistaMarca</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TransportistaMarcaPlaca">
+          <DataField>TransportistaMarcaPlaca</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TransportistaRUC">
