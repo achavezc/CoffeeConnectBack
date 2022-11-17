@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
@@ -24,10 +25,11 @@ namespace CoffeeConnect.API.Controllers
         private IOrdenProcesoPlantaService OrdenProcesoPlantaService;
         private Core.Common.Logger.ILog _log;
         private readonly IWebHostEnvironment _webHostEnvironment;
-
-        public OrdenProcesoPlantaController(IOrdenProcesoPlantaService OrdenProcesoPlantaService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
+        private IMaestroService _maestroService;
+        public OrdenProcesoPlantaController(IMaestroService maestroService, IOrdenProcesoPlantaService OrdenProcesoPlantaService, Core.Common.Logger.ILog log, IWebHostEnvironment webHostEnvironment)
         {
             _log = log;
+            _maestroService = maestroService;
             this.OrdenProcesoPlantaService = OrdenProcesoPlantaService;
             _webHostEnvironment = webHostEnvironment;
         }
@@ -365,6 +367,84 @@ namespace CoffeeConnect.API.Controllers
                 response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
             }
             return null;
+        }
+
+
+        [Route("GenerarPDFOrdenProceso")]
+        [HttpGet]
+        public IActionResult GenerarPDFOrdenProceso(int id, int empresaId)
+        {
+            Guid guid = Guid.NewGuid();
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
+
+            //ES MOMENTANEO SE DEBE ELIMINAR
+            GenerarPDFLiquidacionProcesoResponseDTO response = new GenerarPDFLiquidacionProcesoResponseDTO(); ;
+
+            try
+            {
+                List<ConsultaOrdenProcesoPlantaPorIdBE> listaLiquidacionProcesoPlanta = new List<ConsultaOrdenProcesoPlantaPorIdBE>();
+
+                ConsultaOrdenProcesoPlantaPorIdRequestDTO consultaOrdenProcesoPlantaPorIdRequestDTO = new ConsultaOrdenProcesoPlantaPorIdRequestDTO();
+                consultaOrdenProcesoPlantaPorIdRequestDTO.OrdenProcesoPlantaId = id;
+
+                ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE = OrdenProcesoPlantaService.ConsultarOrdenProcesoPlantaPorId(consultaOrdenProcesoPlantaPorIdRequestDTO);
+
+
+                if (consultaOrdenProcesoPlantaPorIdBE != null)
+                {
+                    listaLiquidacionProcesoPlanta.Add(consultaOrdenProcesoPlantaPorIdBE);
+                }
+
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptOrdenProcesoPlanta.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
+                DataTable dsLiquidProcesoDetalle = Util.ToDataTable(consultaOrdenProcesoPlantaPorIdBE.detalle, true);
+                //DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
+                List<ConsultaDetalleTablaBE> tablaTablas = _maestroService.ConsultarDetalleTablaDeTablas(empresaId, "ES");
+
+                List<ConsultaDetalleTablaBE> tiposCafeProcesado = tablaTablas.Where(a => a.CodigoTabla.Trim().Equals("TiposCafeProcesado")).ToList();
+
+                DataTable dsLiquidProcesoResultado = Util.ToDataTable(tiposCafeProcesado, true);
+
+
+
+
+                if (listaLiquidacionProcesoPlanta.Count > 0)
+                {
+                    lr.AddDataSource("dsOrdenProceso", dsLiquidacionProceso);
+                    lr.AddDataSource("dsOrdenProcesoDetalle", dsLiquidProcesoDetalle);
+                    lr.AddDataSource("dsOrdenProcesoResultado", dsLiquidProcesoResultado);
+
+
+                }
+                if (listaLiquidacionProcesoPlanta.Count >0 && consultaOrdenProcesoPlantaPorIdBE.detalle != null)
+                {
+                }
+                //if (response != null && response.data.Resultado != null)
+                //{
+                //}
+                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+                return File(result.MainStream, "application/pdf");
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
         }
     }
 }

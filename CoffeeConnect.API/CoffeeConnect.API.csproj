@@ -20,6 +20,7 @@
     <None Remove="Reportes\rptNotaIngreso.rdlc" />
     <None Remove="Reportes\rptNotaSalida.rdlc" />
     <None Remove="Reportes\rptOrdenProceso.rdlc" />
+    <None Remove="Reportes\rptOrdenProcesoPlanta.rdlc.bak" />
     <None Remove="Reportes\rptRegistroSeguridadLimpieza.rdlc" />
   </ItemGroup>
 

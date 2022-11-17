@@ -22,6 +22,11 @@ namespace CoffeeConnect.DTO
         public string EmpaqueId
         { get; set; }
 
+        public string EntidadCertificadora
+        { get; set; }
+
+        
+
         public string Empaque
         { get; set; }
 
@@ -132,8 +137,7 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the EntidadCertificadora value.
         /// </summary>
-        public string EntidadCertificadora
-        { get; set; }
+       
 
 
         /// <summary>

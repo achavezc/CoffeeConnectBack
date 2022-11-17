@@ -51,6 +51,9 @@ namespace CoffeeConnect.DTO
 		public string TipoId
 		{ get; set; }
 
+
+		public string EmpaqueTipo
+		{ get; set; }
 		
 		/// <summary>
 		/// Gets or sets the CantidadDefectos value.
@@ -94,6 +97,9 @@ namespace CoffeeConnect.DTO
 		/// Gets or sets the FechaRegistro value.
 		/// </summary>
 		public DateTime FechaRegistro
+		{ get; set; }
+
+		public string FechaRegistroString
 		{ get; set; }
 
 		/// <summary>
