@@ -144,6 +144,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@CantidadSacos", liquidacionProcesoPlantaResultado.CantidadSacos);
             parameters.Add("@KGN", liquidacionProcesoPlantaResultado.KGN);
             parameters.Add("@KilosNetos", liquidacionProcesoPlantaResultado.KilosNetos);
+            parameters.Add("@KilosBrutos", liquidacionProcesoPlantaResultado.KilosBrutos);
+            parameters.Add("@Tara", liquidacionProcesoPlantaResultado.Tara);
+            parameters.Add("@TipoId", liquidacionProcesoPlantaResultado.TipoId);
+            parameters.Add("@EmpaqueId", liquidacionProcesoPlantaResultado.EmpaqueId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {

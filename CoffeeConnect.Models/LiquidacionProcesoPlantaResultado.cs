@@ -44,6 +44,18 @@ namespace CoffeeConnect.Models
 		public decimal? KilosBrutos
 		{ get; set; }
 
+		public decimal? Tara
+		{ get; set; }
+
+
+		public string EmpaqueId
+		{ get; set; }
+
+
+		public string TipoId
+		{ get; set; }
+
+
 		#endregion
 	}
 }
