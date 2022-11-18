@@ -33,6 +33,8 @@ namespace CoffeeConnect.DTO
 		public string ProductoIdTerminado
 		{ get; set; }
 
+		public string CertificacionId
+		{ get; set; }
 
 		public string ProductoId
 		{ get; set; }

@@ -41,7 +41,15 @@ namespace CoffeeConnect.DTO
 
         public decimal KilosNetosExportables { get; set; }
 
-        
+
+        public string CertificacionId
+        { get; set; }
+
+
+        public string Certificacion
+        { get; set; }
+
+
 
         public decimal Tara { get; set; }
 

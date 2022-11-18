@@ -58,10 +58,11 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PathArchivo", ordenProcesoPlanta.PathArchivo);
             parameters.Add("@Observacion", ordenProcesoPlanta.Observacion);
             parameters.Add("@EstadoId", ordenProcesoPlanta.EstadoId);
-
+            
             parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
             parameters.Add("@ProductoIdTerminado", ordenProcesoPlanta.ProductoIdTerminado);
             parameters.Add("@EntidadCertificadoraId", ordenProcesoPlanta.EntidadCertificadoraId);
+            parameters.Add("@CertificacionId", ordenProcesoPlanta.CertificacionId);
             parameters.Add("@FechaInicioProceso", ordenProcesoPlanta.FechaInicioProceso);
            
        
@@ -104,6 +105,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductoId", ordenProcesoPlanta.ProductoId);
             parameters.Add("@ProductoIdTerminado", ordenProcesoPlanta.ProductoIdTerminado);
             parameters.Add("@EntidadCertificadoraId", ordenProcesoPlanta.EntidadCertificadoraId);
+            parameters.Add("@CertificacionId", ordenProcesoPlanta.CertificacionId);
             parameters.Add("@FechaInicioProceso", ordenProcesoPlanta.FechaInicioProceso);
             
 
