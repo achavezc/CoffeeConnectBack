@@ -373,6 +373,7 @@ namespace CoffeeConnect.API.Controllers
         [Route("GenerarPDFOrdenProceso")]
         [HttpGet]
         public IActionResult GenerarPDFOrdenProceso(int id, int empresaId)
+        
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
@@ -390,7 +391,16 @@ namespace CoffeeConnect.API.Controllers
                 ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE = OrdenProcesoPlantaService.ConsultarOrdenProcesoPlantaPorId(consultaOrdenProcesoPlantaPorIdRequestDTO);
 
 
-                if (consultaOrdenProcesoPlantaPorIdBE != null)
+               
+                    string[] certificacionesIds = consultaOrdenProcesoPlantaPorIdBE.CertificacionId.Split('|');
+
+                    string certificacionLabel = string.Empty;
+                    string tipoContratoLabel = string.Empty; 
+
+
+                    
+
+                    if (consultaOrdenProcesoPlantaPorIdBE != null)
                 {
                     listaLiquidacionProcesoPlanta.Add(consultaOrdenProcesoPlantaPorIdBE);
                 }
@@ -408,6 +418,29 @@ namespace CoffeeConnect.API.Controllers
                 List<ConsultaDetalleTablaBE> tablaTablas = _maestroService.ConsultarDetalleTablaDeTablas(empresaId, "ES");
 
                 List<ConsultaDetalleTablaBE> tiposCafeProcesado = tablaTablas.Where(a => a.CodigoTabla.Trim().Equals("TiposCafeProcesado")).ToList();
+
+               
+
+                if (certificacionesIds.Length > 0)
+                {
+
+                    List<ConsultaDetalleTablaBE> certificaciones = tablaTablas.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+
+                }
+
+                consultaOrdenProcesoPlantaPorIdBE.Certificacion = certificacionLabel;
+
 
                 DataTable dsLiquidProcesoResultado = Util.ToDataTable(tiposCafeProcesado, true);
 

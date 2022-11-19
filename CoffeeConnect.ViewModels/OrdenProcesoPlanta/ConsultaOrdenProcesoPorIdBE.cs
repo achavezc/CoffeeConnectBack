@@ -156,6 +156,9 @@ namespace CoffeeConnect.DTO
 
 		public string EntidadCertificadoraId { get; set; }
 
+		public string EntidadCertificadora { get; set; }
+		
+
 		public IEnumerable<OrdenProcesoPlantaDetalleBE> detalle { get; set; }
     }
 }

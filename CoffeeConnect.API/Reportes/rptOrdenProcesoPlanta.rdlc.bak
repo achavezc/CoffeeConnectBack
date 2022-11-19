@@ -2388,11 +2388,6 @@
           <DataField>EntidadCertificadora</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-		<Field Name="Certificacion">
-          <DataField>Certificacion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-		
         <Field Name="EmpaqueTipo">
           <DataField>EmpaqueTipo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
