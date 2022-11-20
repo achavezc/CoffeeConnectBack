@@ -47,8 +47,10 @@ namespace CoffeeConnect.DTO
 
         public string EntidadCertificadoraId { get; set; }
         public string EntidadCertificadora { get; set; }
+        public string CertificacionId { get; set; }
 
-
+        public string Certificacion { get; set; }
+        
 
         public string UsuarioRegistro { get; set; }
         public DateTime? FechaUltimaActualizacion { get; set; }

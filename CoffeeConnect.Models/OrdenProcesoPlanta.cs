@@ -30,6 +30,8 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 
+
+
 		public string NumeroContrato
 		{ get; set; }
 

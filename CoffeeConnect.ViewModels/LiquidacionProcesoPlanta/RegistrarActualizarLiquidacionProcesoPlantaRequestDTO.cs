@@ -27,6 +27,9 @@ namespace CoffeeConnect.DTO
 		public int EmpresaId
 		{ get; set; }
 
+		public string CertificacionId
+		{ get; set; }
+		
 		/// <summary>
 		/// Gets or sets the Observacion value.
 		/// </summary>

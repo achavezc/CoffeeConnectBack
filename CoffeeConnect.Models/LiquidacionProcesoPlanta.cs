@@ -60,11 +60,12 @@ namespace CoffeeConnect.Models
 
 		public string EmpaqueId
 		{ get; set; }
-
+		
 		public string TipoId
 		{ get; set; }
 
-
+		public string CertificacionId
+		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.

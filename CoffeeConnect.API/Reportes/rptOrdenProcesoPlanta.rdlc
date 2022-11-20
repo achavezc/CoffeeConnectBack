@@ -1999,7 +1999,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>CERTIFICACON</Value>
+                <Value>CERTIFICACION</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -2388,11 +2388,10 @@
           <DataField>EntidadCertificadora</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-		<Field Name="Certificacion">
+        <Field Name="Certificacion">
           <DataField>Certificacion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-		
         <Field Name="EmpaqueTipo">
           <DataField>EmpaqueTipo</DataField>
           <rd:TypeName>System.String</rd:TypeName>

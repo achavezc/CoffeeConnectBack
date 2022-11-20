@@ -122,11 +122,7 @@ namespace CoffeeConnect.DTO
         public string TipoProduccion
         { get; set; }
 
-        public string TipoCertificacionId
-        { get; set; }
-
-        public string TipoCertificacion
-        { get; set; }
+        
 
         /// <summary>
         /// Gets or sets the EntidadCertificadoraId value.
@@ -134,10 +130,16 @@ namespace CoffeeConnect.DTO
         public string EntidadCertificadoraId
         { get; set; }
 
+        public string CertificacionId
+        { get; set; }
+
+        public string Certificacion 
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the EntidadCertificadora value.
         /// </summary>
-       
+
 
 
         /// <summary>

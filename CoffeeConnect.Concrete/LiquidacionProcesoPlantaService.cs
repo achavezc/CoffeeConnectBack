@@ -45,6 +45,35 @@ namespace CoffeeConnect.Service
                 throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionRangoFechaMayor2anios.Label" });*/
 
             var list = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlanta(request);
+
+            // obtener certificaciones
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+            List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
+
+            foreach (ConsultaLiquidacionProcesoPlantaBE obj in list)
+            {
+                
+
+                string[] certificacionesIds = obj.CertificacionId.Split('|');
+                string certificacionLabel = string.Empty;
+                if (certificacionesIds.Length > 0)
+                {                   
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+                }
+
+                // obtener certificaciones
+                obj.Certificacion = certificacionLabel;
+            }
+
+
+
             return list.ToList();
         }
 
@@ -54,7 +83,7 @@ namespace CoffeeConnect.Service
             liquidacionProcesoPlanta.FechaRegistro = DateTime.Now;
             liquidacionProcesoPlanta.UsuarioRegistro = request.Usuario;
             liquidacionProcesoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
-
+            
 
             ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE =_IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaPorId(request.OrdenProcesoPlantaId);
             liquidacionProcesoPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoId;
@@ -64,7 +93,7 @@ namespace CoffeeConnect.Service
             liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
             liquidacionProcesoPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
             liquidacionProcesoPlanta.EmpaqueId = consultaOrdenProcesoPlantaPorIdBE.EmpaqueId;
-
+            liquidacionProcesoPlanta.CertificacionId = consultaOrdenProcesoPlantaPorIdBE.CertificacionId;
 
             int LiquidacionProcesoPlantaId = _ILiquidacionProcesoPlantaRepository.Insertar(liquidacionProcesoPlanta);
 
@@ -205,33 +234,31 @@ namespace CoffeeConnect.Service
                 }
 
 
-                //List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultaLiquidacionProcesoPlantaPorIdBE.EmpresaId, String.Empty).ToList();
+                // obtener certificaciones
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+                List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
 
+                if (!string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.CertificacionId))
+                    {
 
-                //string[] certificacionesIds = consultaLiquidacionProcesoPlantaPorIdBE.TipoCertificacionId.Split('|');
+                    string[] certificacionesIds = consultaLiquidacionProcesoPlantaPorIdBE.CertificacionId.Split('|');
+                    string certificacionLabel = string.Empty;
+                    if (certificacionesIds.Length > 0)
+                    {
+                        foreach (string certificacionId in certificacionesIds)
+                        {
+                            ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                            if (certificacion != null)
+                            {
+                                certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                            }
+                        }
+                    }
 
-                //string certificacionLabel = string.Empty;
-
-
-                //if (certificacionesIds.Length > 0)
-                //{
-
-                //    List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
-
-                //    foreach (string certificacionId in certificacionesIds)
-                //    {
-
-                //        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
-
-                //        if (certificacion != null)
-                //        {
-                //            certificacionLabel = certificacionLabel + certificacion.Label + " ";
-                //        }
-                //    }
-
-                //}
-
-                //consultaLiquidacionProcesoPlantaPorIdBE.TipoCertificacion = certificacionLabel;
+                    // obtener certificaciones
+                    consultaLiquidacionProcesoPlantaPorIdBE.Certificacion = certificacionLabel;
+                }
+                
             }
 
             return consultaLiquidacionProcesoPlantaPorIdBE;

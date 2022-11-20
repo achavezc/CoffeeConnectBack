@@ -47,7 +47,32 @@ namespace CoffeeConnect.Service
             var list = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlanta(request);
 
 
-           
+            // obtener certificaciones
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+            List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
+
+            foreach (ConsultaOrdenProcesoPlantaBE obj in list)
+            {
+                
+
+                string[] certificacionesIds = obj.CertificacionId.Split('|');
+                string certificacionLabel = string.Empty;
+                if (certificacionesIds.Length > 0)
+                {
+                    foreach (string certificacionId in certificacionesIds)
+                    {
+                        ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+                        if (certificacion != null)
+                        {
+                            certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                        }
+                    }
+                }
+
+                // obtener certificaciones
+                obj.Certificacion = certificacionLabel;
+            }
+
             return list.ToList();
         }
 

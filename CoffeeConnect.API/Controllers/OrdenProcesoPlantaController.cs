@@ -395,36 +395,17 @@ namespace CoffeeConnect.API.Controllers
                     string[] certificacionesIds = consultaOrdenProcesoPlantaPorIdBE.CertificacionId.Split('|');
 
                     string certificacionLabel = string.Empty;
-                    string tipoContratoLabel = string.Empty; 
+                    string tipoContratoLabel = string.Empty;
 
 
-                    
-
-                    if (consultaOrdenProcesoPlantaPorIdBE != null)
-                {
-                    listaLiquidacionProcesoPlanta.Add(consultaOrdenProcesoPlantaPorIdBE);
-                }
-
-                string mimetype = "";
-                int extension = 1;
-                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptOrdenProcesoPlanta.rdlc";
-
-                LocalReport lr = new LocalReport(path);
-                Dictionary<string, string> parameters = new Dictionary<string, string>();
-
-                DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
-                DataTable dsLiquidProcesoDetalle = Util.ToDataTable(consultaOrdenProcesoPlantaPorIdBE.detalle, true);
-                //DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
                 List<ConsultaDetalleTablaBE> tablaTablas = _maestroService.ConsultarDetalleTablaDeTablas(empresaId, "ES");
 
                 List<ConsultaDetalleTablaBE> tiposCafeProcesado = tablaTablas.Where(a => a.CodigoTabla.Trim().Equals("TiposCafeProcesado")).ToList();
 
-               
-
                 if (certificacionesIds.Length > 0)
                 {
 
-                    List<ConsultaDetalleTablaBE> certificaciones = tablaTablas.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+                    List<ConsultaDetalleTablaBE> certificaciones = tablaTablas.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacionPlanta")).ToList();
 
                     foreach (string certificacionId in certificacionesIds)
                     {
@@ -440,6 +421,24 @@ namespace CoffeeConnect.API.Controllers
                 }
 
                 consultaOrdenProcesoPlantaPorIdBE.Certificacion = certificacionLabel;
+
+
+                if (consultaOrdenProcesoPlantaPorIdBE != null)
+                {
+                    listaLiquidacionProcesoPlanta.Add(consultaOrdenProcesoPlantaPorIdBE);
+                }
+
+                string mimetype = "";
+                int extension = 1;
+                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptOrdenProcesoPlanta.rdlc";
+
+                LocalReport lr = new LocalReport(path);
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+                DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
+                DataTable dsLiquidProcesoDetalle = Util.ToDataTable(consultaOrdenProcesoPlantaPorIdBE.detalle, true);
+                //DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
+                
 
 
                 DataTable dsLiquidProcesoResultado = Util.ToDataTable(tiposCafeProcesado, true);
