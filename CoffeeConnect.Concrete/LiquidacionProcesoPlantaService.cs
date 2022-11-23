@@ -114,9 +114,10 @@ namespace CoffeeConnect.Service
                     detalle.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
                     _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaResultado(detalle);
 
-                
 
 
+                if (detalle.KilosNetos.HasValue && detalle.KilosNetos.Value > 0)
+                {
                     NotaIngresoProductoTerminadoAlmacenPlanta notaIngresoProductoTerminadoAlmacenPlanta = new NotaIngresoProductoTerminadoAlmacenPlanta();
                     notaIngresoProductoTerminadoAlmacenPlanta.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
                     notaIngresoProductoTerminadoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoProductoTerminadoAlmacenPlanta);
@@ -124,8 +125,8 @@ namespace CoffeeConnect.Service
                     notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId = detalle.ReferenciaId;
                     notaIngresoProductoTerminadoAlmacenPlanta.Cantidad = detalle.CantidadSacos.HasValue ? detalle.CantidadSacos.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.KilosNetos = detalle.KilosNetos.HasValue ? detalle.KilosNetos.Value : 0;
-                    notaIngresoProductoTerminadoAlmacenPlanta.KilosBrutos = detalle.KilosBrutos.HasValue ? detalle.KilosBrutos.Value : 0;  
-                    notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN.HasValue ? detalle.KGN.Value : 0;  
+                    notaIngresoProductoTerminadoAlmacenPlanta.KilosBrutos = detalle.KilosBrutos.HasValue ? detalle.KilosBrutos.Value : 0;
+                    notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN.HasValue ? detalle.KGN.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = "04"; // Liquidacion Proceso
                     notaIngresoProductoTerminadoAlmacenPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
                     notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = consultaOrdenProcesoPlantaPorIdBE.EmpaqueId;
@@ -136,6 +137,7 @@ namespace CoffeeConnect.Service
 
 
                     _INotaIngresoProductoTerminadoAlmacenPlantaRepository.Insertar(notaIngresoProductoTerminadoAlmacenPlanta);
+                }
                 //}
 
             }
@@ -222,16 +224,16 @@ namespace CoffeeConnect.Service
                 consultaLiquidacionProcesoPlantaPorIdBE.Detalle = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaDetallePorId(request.LiquidacionProcesoPlantaId).ToList();
                 consultaLiquidacionProcesoPlantaPorIdBE.Resultado = _ILiquidacionProcesoPlantaRepository.ConsultarLiquidacionProcesoPlantaResultadoPorId(request.LiquidacionProcesoPlantaId, request.EmpresaId).ToList();
 
-                decimal totalKilosNetos = 0;
-                foreach (ConsultaLiquidacionProcesoPlantaResultadoBE item in consultaLiquidacionProcesoPlantaPorIdBE.Resultado)
-                {
-                    totalKilosNetos = totalKilosNetos  + item.KilosNetos; 
-                }
+                //decimal totalKilosNetos = 0;
+                //foreach (ConsultaLiquidacionProcesoPlantaResultadoBE item in consultaLiquidacionProcesoPlantaPorIdBE.Resultado)
+                //{
+                //    totalKilosNetos = totalKilosNetos  + item.KilosNetos; 
+                //}
 
-                foreach (ConsultaLiquidacionProcesoPlantaResultadoBE item in consultaLiquidacionProcesoPlantaPorIdBE.Resultado)
-                {
-                    item.Porcentaje = decimal.Round(((item.KilosNetos / totalKilosNetos) * 100), 2); 
-                }
+                //foreach (ConsultaLiquidacionProcesoPlantaResultadoBE item in consultaLiquidacionProcesoPlantaPorIdBE.Resultado)
+                //{
+                //    item.Porcentaje = decimal.Round(((item.KilosNetos / totalKilosNetos) * 100), 2); 
+                //}
 
 
                 // obtener certificaciones

@@ -132,7 +132,7 @@ namespace CoffeeConnect.Service
                 }
 
                 _INotaIngresoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoAlmacenPlantaId, consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value + detalle.Cantidad, consultaNotaIngresoAlmacenPlantaPorIdBE.KilosNetosOrdenProceso.Value + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
-
+                detalle.FechaIngresoAlmacen = consultaNotaIngresoAlmacenPlantaPorIdBE.FechaRegistro;
 
                 detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;
 
