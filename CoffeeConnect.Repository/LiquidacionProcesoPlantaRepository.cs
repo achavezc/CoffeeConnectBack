@@ -147,6 +147,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@KilosNetos", liquidacionProcesoPlantaResultado.KilosNetos);
             parameters.Add("@KilosBrutos", liquidacionProcesoPlantaResultado.KilosBrutos);
             parameters.Add("@Tara", liquidacionProcesoPlantaResultado.Tara);
+            parameters.Add("@Porcentaje", liquidacionProcesoPlantaResultado.Porcentaje);
             parameters.Add("@TipoId", liquidacionProcesoPlantaResultado.TipoId);
             parameters.Add("@EmpaqueId", liquidacionProcesoPlantaResultado.EmpaqueId);
 

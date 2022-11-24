@@ -114,7 +114,7 @@ namespace CoffeeConnect.Service
                     detalle.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
                     _ILiquidacionProcesoPlantaRepository.InsertarLiquidacionProcesoPlantaResultado(detalle);
 
-
+                
 
                 if (detalle.KilosNetos.HasValue && detalle.KilosNetos.Value > 0)
                 {
@@ -128,8 +128,8 @@ namespace CoffeeConnect.Service
                     notaIngresoProductoTerminadoAlmacenPlanta.KilosBrutos = detalle.KilosBrutos.HasValue ? detalle.KilosBrutos.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN.HasValue ? detalle.KGN.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = "04"; // Liquidacion Proceso
-                    notaIngresoProductoTerminadoAlmacenPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
-                    notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = consultaOrdenProcesoPlantaPorIdBE.EmpaqueId;
+                    notaIngresoProductoTerminadoAlmacenPlanta.TipoId = detalle.TipoId;
+                    notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = detalle.EmpaqueId;
                     notaIngresoProductoTerminadoAlmacenPlanta.EmpresaId = request.EmpresaId;
                     notaIngresoProductoTerminadoAlmacenPlanta.EstadoId = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
                     notaIngresoProductoTerminadoAlmacenPlanta.FechaRegistro = DateTime.Now;

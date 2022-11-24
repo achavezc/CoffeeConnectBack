@@ -1404,7 +1404,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Trim(First(Fields!TransportistaMarca.Value, "dsGRDetalle")) &amp; "/" &amp; Trim(First(Fields!TransportistaPlaca.Value, "dsGRDetalle"))</Value>
+                <Value>=First(Fields!TransportistaMarcaPlaca.Value, "dsGRDetalle")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -2344,8 +2344,8 @@
           <DataField>TransportistaCodigoVehicular</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="TransportistaMarca">
-          <DataField>TransportistaMarca</DataField>
+        <Field Name="TransportistaMarcaPlaca">
+          <DataField>TransportistaMarcaPlaca</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TransportistaRUC">

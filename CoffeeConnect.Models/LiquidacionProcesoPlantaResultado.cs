@@ -47,6 +47,11 @@ namespace CoffeeConnect.Models
 		public decimal? Tara
 		{ get; set; }
 
+		public decimal? Porcentaje
+		{ get; set; }
+
+
+		
 
 		public string EmpaqueId
 		{ get; set; }

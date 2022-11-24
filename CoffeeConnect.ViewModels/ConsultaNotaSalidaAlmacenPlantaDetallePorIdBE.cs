@@ -21,8 +21,9 @@ namespace CoffeeConnect.DTO
 		{ get; set; }
 
 
+		public string Numero
+		{ get; set; }
 
-		
 
 
 		public int NotaSalidaAlmacenPlantaId

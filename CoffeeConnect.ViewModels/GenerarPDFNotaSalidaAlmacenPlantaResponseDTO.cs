@@ -91,6 +91,11 @@ namespace CoffeeConnect.DTO
         public string TransportistaSoat { get; set; }
         public string TransportistaConductor { get; set; }
         public string TransportistaConstancia { get; set; }
+
+        public string TransportistaMarcaPlaca { get; set; }
+
+
+        
         public string TransportistaBrevete { get; set; }
         public string Observaciones { get; set; }
         public string Responsable { get; set; }

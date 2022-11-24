@@ -476,7 +476,7 @@ namespace CoffeeConnect.Service
                 cabeceraNotaSalidaAlmacenPlanta.RazonSocial = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.RazonSocialEmpresa) ? consultaImpresionNotaSalidaAlmacenPlanta.RazonSocialEmpresa.Trim() : String.Empty;
 
                 cabeceraNotaSalidaAlmacenPlanta.Direccion = consultaImpresionNotaSalidaAlmacenPlanta.DireccionPartida + " - " +
-               consultaImpresionNotaSalidaAlmacenPlanta.Distrito + " - " + consultaImpresionNotaSalidaAlmacenPlanta.Provincia + " - " + consultaImpresionNotaSalidaAlmacenPlanta.Departamento;
+               consultaImpresionNotaSalidaAlmacenPlanta.Departamento + " - " + consultaImpresionNotaSalidaAlmacenPlanta.Provincia + " - " + consultaImpresionNotaSalidaAlmacenPlanta.Distrito;
 
                 //cabeceraGuiaRemision.Direccion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.DireccionOrganizacion) ? consultaImpresionGuiaRemision.DireccionOrganizacion.Trim() : String.Empty;
 
@@ -524,6 +524,10 @@ namespace CoffeeConnect.Service
                 //guiaRemisionDetalle.TransportistaColor = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Color) ? consultaImpresionGuiaRemision.Color.Trim() : String.Empty;
                 //guiaRemisionDetalle.TransportistaSoat = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.Soat) ? consultaImpresionGuiaRemision.Soat.Trim() : String.Empty;
                 //guiaRemisionDetalle.TransportistaConstancia = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.NumeroConstanciaMTC) ? consultaImpresionGuiaRemision.NumeroConstanciaMTC.Trim() : String.Empty;
+                notaSalidaAlmacenPlantaDetalle.TransportistaConstancia = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.NumeroConstanciaMTC) ? consultaImpresionNotaSalidaAlmacenPlanta.NumeroConstanciaMTC.Trim() : String.Empty;
+                notaSalidaAlmacenPlantaDetalle.TransportistaMarcaPlaca = (!string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.MarcaTractor) ? consultaImpresionNotaSalidaAlmacenPlanta.MarcaTractor.Trim() : String.Empty) + "/" + (!string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.PlacaTractor) ? consultaImpresionNotaSalidaAlmacenPlanta.PlacaTractor.Trim() : String.Empty);
+
+                
                 notaSalidaAlmacenPlantaDetalle.TransportistaBrevete = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.LicenciaConductor) ? consultaImpresionNotaSalidaAlmacenPlanta.LicenciaConductor.Trim() : String.Empty;
 
                 //string motivo = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.MotivoIngreso) ? consultaImpresionNotaSalidaAlmacenPlanta.MotivoIngreso.Trim() : String.Empty;
