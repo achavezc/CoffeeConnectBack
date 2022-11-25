@@ -17,11 +17,19 @@
     <None Remove="Reportes\rptAnticipo.rdlc" />
     <None Remove="Reportes\rptControlCalidad.rdlc" />
     <None Remove="Reportes\rptGuiaRemision.rdlc" />
+    <None Remove="Reportes\rptLiquidacionProceso.rdlc" />
     <None Remove="Reportes\rptNotaIngreso.rdlc" />
     <None Remove="Reportes\rptNotaSalida.rdlc" />
     <None Remove="Reportes\rptOrdenProceso.rdlc" />
+    <None Remove="Reportes\rptOrdenProcesoPlanta.rdlc" />
     <None Remove="Reportes\rptOrdenProcesoPlanta.rdlc.bak" />
     <None Remove="Reportes\rptRegistroSeguridadLimpieza.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Reportes\rptLiquidacionProceso.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +69,9 @@
     <Content Include="Reportes\rptOrdenProceso.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Reportes\rptOrdenProcesoPlanta.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reportes\rptRegistroSeguridadLimpieza.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -91,9 +102,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="plantillas_correo\bienvenidaEN.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Reportes\rptLiquidacionProceso.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -14,15 +14,13 @@ namespace CoffeeConnect.DTO
         public int OrdenProcesoPlantaDetalleId { get; set; }
 
         public int OrdenProcesoPlantaId { get; set; }
-        public int EmpresaId { get; set; }
+       
         public int NotaIngresoAlmacenPlantaId { get; set; }
 
-        public string EmpaqueTipo { get; set; }
-
+        
         
         public string NumeroIngresoAlmacenPlanta { get; set; }
-
-        public string NumeroContrato { get; set; }
+ 
 
 
         public string FechaIngresoAlmacenString { get; set; }
@@ -42,14 +40,7 @@ namespace CoffeeConnect.DTO
         public decimal KilosNetosExportables { get; set; }
 
 
-        public string CertificacionId
-        { get; set; }
-
-
-        public string Certificacion
-        { get; set; }
-
-
+ 
 
         public decimal Tara { get; set; }
 
