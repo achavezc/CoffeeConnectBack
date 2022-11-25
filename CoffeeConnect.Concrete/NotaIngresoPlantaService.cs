@@ -290,10 +290,15 @@ namespace CoffeeConnect.Service
             ConsultaNotaIngresoPlantaPorIdRequestDTO consultaNotaIngresoPlantaPorIdRequestDTO = new ConsultaNotaIngresoPlantaPorIdRequestDTO();
             consultaNotaIngresoPlantaPorIdRequestDTO.NotaIngresoPlantaId = request.NotaIngresoPlantaId;           
             ConsultaNotaIngresoPlantaPorIdBE consultaNotaIngresoPlantaPorIdBE = this.ConsultarNotaIngresoPlantaPorId(consultaNotaIngresoPlantaPorIdRequestDTO);
-           
+
+
+            ConsultaControlCalidadPlantaPorIdBE consultaControlCalidadPlantaPorIdBE = _IControlCalidadPlantaRepository.ConsultaControlCalidadPlantaPorId(request.ControlCalidadPlantaId);
             
-            decimal saldoDisponible = consultaNotaIngresoPlantaPorIdBE.Cantidad - consultaNotaIngresoPlantaPorIdBE.CantidadProcesada;
-            decimal saldoKilosNetosDisponible = consultaNotaIngresoPlantaPorIdBE.KilosNetos  - consultaNotaIngresoPlantaPorIdBE.KilosNetosProcesado;
+
+
+
+            decimal saldoDisponible = consultaNotaIngresoPlantaPorIdBE.Cantidad - (consultaNotaIngresoPlantaPorIdBE.CantidadProcesada - consultaControlCalidadPlantaPorIdBE.CantidadControlCalidad) - consultaNotaIngresoPlantaPorIdBE.CantidadRechazada;
+            decimal saldoKilosNetosDisponible = consultaNotaIngresoPlantaPorIdBE.KilosNetos  - (consultaNotaIngresoPlantaPorIdBE.KilosNetosProcesado - consultaControlCalidadPlantaPorIdBE.KilosNetosControlCalidad)- consultaNotaIngresoPlantaPorIdBE.KilosNetosRechazados;
 
             if (saldoDisponible <= request.CantidadControlCalidad && saldoKilosNetosDisponible <= request.KilosNetosControlCalidad)
             {
