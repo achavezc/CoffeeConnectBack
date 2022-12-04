@@ -162,7 +162,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.67944in</Top>
+        <Top>0.92944in</Top>
         <Left>4.54813in</Left>
         <Height>0.18in</Height>
         <Width>1.55208in</Width>
@@ -403,7 +403,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.67944in</Top>
+        <Top>0.92944in</Top>
         <Left>6.02271in</Left>
         <Height>0.18in</Height>
         <Width>3.51395in</Width>
@@ -1026,7 +1026,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsLiquidProcesoDetalle</DataSetName>
-        <Top>1.31667in</Top>
+        <Top>1.56667in</Top>
         <Left>0.14187in</Left>
         <Height>0.54in</Height>
         <Width>4.45188in</Width>
@@ -1771,7 +1771,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsLiquidProcesoResultado</DataSetName>
-        <Top>1.31667in</Top>
+        <Top>1.56667in</Top>
         <Left>4.79813in</Left>
         <Height>0.54in</Height>
         <Width>4.79686in</Width>
@@ -1801,7 +1801,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.89833in</Top>
+        <Top>2.14833in</Top>
         <Left>4.79813in</Left>
         <Height>0.18in</Height>
         <Width>1.85416in</Width>
@@ -1836,7 +1836,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.12in</Top>
+        <Top>2.37in</Top>
         <Left>4.80576in</Left>
         <Height>0.18in</Height>
         <Width>1.85416in</Width>
@@ -1871,7 +1871,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.32778in</Top>
+        <Top>2.57778in</Top>
         <Left>4.80576in</Left>
         <Height>0.18in</Height>
         <Width>1.85416in</Width>
@@ -1905,7 +1905,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.89833in</Top>
+        <Top>2.14833in</Top>
         <Left>6.72937in</Left>
         <Height>0.18in</Height>
         <Width>2.34249in</Width>
@@ -1939,7 +1939,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.12in</Top>
+        <Top>2.37in</Top>
         <Left>6.72937in</Left>
         <Height>0.18in</Height>
         <Width>2.34249in</Width>
@@ -1973,7 +1973,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.32778in</Top>
+        <Top>2.57778in</Top>
         <Left>6.72937in</Left>
         <Height>0.18in</Height>
         <Width>2.80729in</Width>
@@ -2008,7 +2008,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.32778in</Top>
+        <Top>2.57778in</Top>
         <Left>0.35965in</Left>
         <Height>0.18in</Height>
         <Width>0.91666in</Width>
@@ -2043,7 +2043,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.32778in</Top>
+        <Top>2.57778in</Top>
         <Left>2.76069in</Left>
         <Height>0.18in</Height>
         <Width>1.20708in</Width>
@@ -2081,7 +2081,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.13667in</Top>
+        <Top>1.38667in</Top>
         <Left>0.14187in</Left>
         <Height>0.18in</Height>
         <Width>4.45185in</Width>
@@ -2120,7 +2120,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.13667in</Top>
+        <Top>1.38667in</Top>
         <Left>4.79813in</Left>
         <Height>0.18in</Height>
         <Width>4.79687in</Width>
@@ -2156,10 +2156,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.93368in</Top>
-        <Left>4.55449in</Left>
+        <Top>1.10889in</Top>
+        <Left>0.14824in</Left>
         <Height>0.18in</Height>
-        <Width>1.54572in</Width>
+        <Width>1.68287in</Width>
         <ZIndex>27</ZIndex>
         <Style>
           <Border>
@@ -2190,10 +2190,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.93368in</Top>
-        <Left>6.0076in</Left>
+        <Top>1.10889in</Top>
+        <Left>1.845in</Left>
         <Height>0.18in</Height>
-        <Width>3.52906in</Width>
+        <Width>2.37791in</Width>
         <ZIndex>28</ZIndex>
         <Style>
           <Border>
@@ -2206,8 +2206,77 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox30">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>REFERENCIA</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.69618in</Top>
+        <Left>4.54813in</Left>
+        <Height>0.18in</Height>
+        <Width>1.55208in</Width>
+        <ZIndex>29</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox32">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!NumeroContrato.Value, "dsLiquidacionProceso")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.69618in</Top>
+        <Left>6.02271in</Left>
+        <Height>0.18in</Height>
+        <Width>3.51395in</Width>
+        <ZIndex>30</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2.54736in</Height>
+    <Height>2.82236in</Height>
     <Style>
       <Border>
         <Style>Solid</Style>
@@ -2554,7 +2623,7 @@
           <DataField>EntidadCertificadora</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-		<Field Name="Certificacion">
+        <Field Name="Certificacion">
           <DataField>Certificacion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
@@ -2596,6 +2665,10 @@
         </Field>
         <Field Name="Producto">
           <DataField>Producto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+		<Field Name="NumeroContrato">
+          <DataField>NumeroContrato</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NumeroOrdenProcesoPlanta">
@@ -2682,6 +2755,7 @@
           <DataField>KGN</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+		
         <Field Name="KilosNetos">
           <DataField>KilosNetos</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>

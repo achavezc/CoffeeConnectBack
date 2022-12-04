@@ -41,7 +41,11 @@ namespace CoffeeConnect.Models
 
         public decimal KilosNetos { get; set; }
 
-       
+        public string ProductoId { get; set; }
+
+        public string SubProductoId { get; set; }
+
+
         #endregion
     }
 }

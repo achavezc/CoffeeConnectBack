@@ -258,14 +258,7 @@ namespace CoffeeConnect.Service
         {
 
             NotaIngresoPlanta NotaIngresoPlanta = new NotaIngresoPlanta();
-            //para control calidad
-            NotaIngresoPlanta.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
-            NotaIngresoPlanta.CantidadControlCalidad = request.CantidadControlCalidad;
-            NotaIngresoPlanta.PesoBrutoControlCalidad = request.PesoBrutoControlCalidad;
-            NotaIngresoPlanta.TaraControlCalidad = request.TaraControlCalidad;
-            NotaIngresoPlanta.KilosNetosControlCalidad = request.KilosNetosControlCalidad;
-            NotaIngresoPlanta.ControlCalidadTipoId = request.ControlCalidadTipoId;
-            NotaIngresoPlanta.ControlCalidadEmpaqueId = request.ControlCalidadEmpaqueId;
+            
 
             //para control calidad
 
@@ -293,8 +286,33 @@ namespace CoffeeConnect.Service
 
 
             ConsultaControlCalidadPlantaPorIdBE consultaControlCalidadPlantaPorIdBE = _IControlCalidadPlantaRepository.ConsultaControlCalidadPlantaPorId(request.ControlCalidadPlantaId);
-            
 
+            //para control calidad
+            NotaIngresoPlanta.ControlCalidadPlantaId = request.ControlCalidadPlantaId;
+
+            if (consultaNotaIngresoPlantaPorIdBE.ProductoId == ProductoTipo.Pergamino && consultaNotaIngresoPlantaPorIdBE.SubProductoId == SubProductoTipo.Humedo)
+            {    
+                NotaIngresoPlanta.CantidadControlCalidad = consultaNotaIngresoPlantaPorIdBE.Cantidad;
+                NotaIngresoPlanta.PesoBrutoControlCalidad = consultaNotaIngresoPlantaPorIdBE.KilosBrutos;
+                NotaIngresoPlanta.TaraControlCalidad = consultaNotaIngresoPlantaPorIdBE.Tara;
+                NotaIngresoPlanta.KilosNetosControlCalidad = consultaNotaIngresoPlantaPorIdBE.KilosNetos;
+                NotaIngresoPlanta.ControlCalidadTipoId = consultaNotaIngresoPlantaPorIdBE.TipoId;
+                NotaIngresoPlanta.ControlCalidadEmpaqueId = consultaNotaIngresoPlantaPorIdBE.EmpaqueId;
+
+                request.CantidadControlCalidad = consultaNotaIngresoPlantaPorIdBE.Cantidad;
+                  request.KilosNetosControlCalidad = consultaNotaIngresoPlantaPorIdBE.KilosNetos;
+
+            }
+            else
+            {
+                
+                NotaIngresoPlanta.CantidadControlCalidad = request.CantidadControlCalidad;
+                NotaIngresoPlanta.PesoBrutoControlCalidad = request.PesoBrutoControlCalidad;
+                NotaIngresoPlanta.TaraControlCalidad = request.TaraControlCalidad;
+                NotaIngresoPlanta.KilosNetosControlCalidad = request.KilosNetosControlCalidad;
+                NotaIngresoPlanta.ControlCalidadTipoId = request.ControlCalidadTipoId;
+                NotaIngresoPlanta.ControlCalidadEmpaqueId = request.ControlCalidadEmpaqueId;
+            }
 
 
             decimal saldoDisponible = consultaNotaIngresoPlantaPorIdBE.Cantidad - (consultaNotaIngresoPlantaPorIdBE.CantidadProcesada - consultaControlCalidadPlantaPorIdBE.CantidadControlCalidad) - consultaNotaIngresoPlantaPorIdBE.CantidadRechazada;
@@ -619,8 +637,9 @@ namespace CoffeeConnect.Service
 
                 string motivo = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoIngreso) ? consultaImpresionGuiaRemision.MotivoIngreso.Trim() : String.Empty;
                 string observacion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ObservacionPesado) ? consultaImpresionGuiaRemision.ObservacionPesado.Trim() : String.Empty;
+                string certificadora = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.EntidadCertificadora) ? consultaImpresionGuiaRemision.EntidadCertificadora.Trim() : String.Empty;
 
-                guiaRemisionDetalle.Observaciones = motivo + " " + observacion;
+                guiaRemisionDetalle.Observaciones = motivo + " " + observacion + " " + certificadora;
                 guiaRemisionDetalle.Responsable = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.UsuarioRegistro) ? consultaImpresionGuiaRemision.UsuarioRegistro.Trim() : String.Empty;
 
                 generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);

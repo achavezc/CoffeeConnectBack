@@ -19,6 +19,8 @@ namespace CoffeeConnect.DTO
         
         public string Numero { get; set; }
 
+
+
         public string NumeroContrato { get; set; }
 
         

@@ -30,6 +30,11 @@ namespace CoffeeConnect.DTO
         public string Empaque
         { get; set; }
 
+
+        public string NumeroContrato
+        { get; set; }
+
+
         public string Direccion
         { get; set; }
 

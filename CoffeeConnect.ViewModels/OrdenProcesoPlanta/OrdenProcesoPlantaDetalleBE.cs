@@ -28,7 +28,10 @@ namespace CoffeeConnect.DTO
         public DateTime FechaIngresoAlmacen { get; set; }
 
 
-       
+        public string ProductoId { get; set; }
+
+        public string SubProductoId { get; set; }
+
         public decimal PorcentajeHumedad { get; set; }
 
         public decimal Cantidad { get; set; }

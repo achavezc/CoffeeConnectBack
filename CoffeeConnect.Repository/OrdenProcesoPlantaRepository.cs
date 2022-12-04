@@ -191,7 +191,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@PorcentajeCascarilla", ordenProcesoPlantaDetalle.PorcentajeCascarilla);       
             parameters.Add("@KilosExportables", ordenProcesoPlantaDetalle.KilosExportables);
             parameters.Add("@SacosCalculo", ordenProcesoPlantaDetalle.SacosCalculo);
-            
+            parameters.Add("@ProductoId", ordenProcesoPlantaDetalle.ProductoId);
+            parameters.Add("@SubProductoId", ordenProcesoPlantaDetalle.SubProductoId);
+
+
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
                 db.Execute("uspOrdenProcesoPlantaDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);

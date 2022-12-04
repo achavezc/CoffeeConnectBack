@@ -73,6 +73,9 @@ namespace CoffeeConnect.DTO
 		public string EntidadCertificadoraId
 		{ get; set; }
 
+		public string EntidadCertificadora
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the MotivoIngresoId value.
 		/// </summary>

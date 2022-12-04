@@ -79,13 +79,32 @@ namespace CoffeeConnect.Service
 
         public int RegistrarLiquidacionProcesoPlanta(RegistrarActualizarLiquidacionProcesoPlantaRequestDTO request)
         {
+            string correlativo = "";
+            string motivoIngresoAlmacenId = "";
+
+
+
             LiquidacionProcesoPlanta liquidacionProcesoPlanta = _Mapper.Map<LiquidacionProcesoPlanta>(request);
             liquidacionProcesoPlanta.FechaRegistro = DateTime.Now;
             liquidacionProcesoPlanta.UsuarioRegistro = request.Usuario;
-            liquidacionProcesoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
+            
             
 
             ConsultaOrdenProcesoPlantaPorIdBE consultaOrdenProcesoPlantaPorIdBE =_IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlantaPorId(request.OrdenProcesoPlantaId);
+
+            if (consultaOrdenProcesoPlantaPorIdBE.TipoProcesoId == "01") //Transformacion
+            {
+                correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
+                motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.LiquidacionOrdenProceso; // Liquidacion Proceso
+            }
+            else
+            {
+                correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionSecadoPlanta);
+                motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.LiquidacionProcesoSecado; // Liquidación Proceso Secado
+            }
+
+            liquidacionProcesoPlanta.Numero = correlativo;
+
             liquidacionProcesoPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoId;
             liquidacionProcesoPlanta.ProductoIdTerminado = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
             liquidacionProcesoPlanta.EntidadCertificadoraId = consultaOrdenProcesoPlantaPorIdBE.EntidadCertificadoraId;
@@ -127,7 +146,7 @@ namespace CoffeeConnect.Service
                     notaIngresoProductoTerminadoAlmacenPlanta.KilosNetos = detalle.KilosNetos.HasValue ? detalle.KilosNetos.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.KilosBrutos = detalle.KilosBrutos.HasValue ? detalle.KilosBrutos.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN.HasValue ? detalle.KGN.Value : 0;
-                    notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = "04"; // Liquidacion Proceso
+                    notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = motivoIngresoAlmacenId;  
                     notaIngresoProductoTerminadoAlmacenPlanta.TipoId = detalle.TipoId;
                     notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = detalle.EmpaqueId;
                     notaIngresoProductoTerminadoAlmacenPlanta.EmpresaId = request.EmpresaId;
@@ -159,7 +178,8 @@ namespace CoffeeConnect.Service
             liquidacionProcesoPlanta.EntidadCertificadoraId = consultaOrdenProcesoPlantaPorIdBE.EntidadCertificadoraId;
             liquidacionProcesoPlanta.FechaInicioProceso = consultaOrdenProcesoPlantaPorIdBE.FechaInicioProceso.Value;
             liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
-
+            liquidacionProcesoPlanta.EmpaqueId = consultaOrdenProcesoPlantaPorIdBE.EmpaqueId;
+            liquidacionProcesoPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
 
             int affected = _ILiquidacionProcesoPlantaRepository.Actualizar(liquidacionProcesoPlanta);
 

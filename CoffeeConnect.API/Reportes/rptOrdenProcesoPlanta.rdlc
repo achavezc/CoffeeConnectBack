@@ -25,7 +25,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
         <Height>0.2in</Height>
-        <Width>6.64445in</Width>
+        <Width>6.93891in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -57,8 +57,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.22167in</Top>
-        <Left>3.87769in</Left>
+        <Top>0.23in</Top>
+        <Left>4.15269in</Left>
         <Height>0.18in</Height>
         <Width>1.07022in</Width>
         <ZIndex>1</ZIndex>
@@ -263,8 +263,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.71278in</Top>
-        <Left>5.04515in</Left>
+        <Top>0.72111in</Top>
+        <Left>5.29515in</Left>
         <Height>0.18in</Height>
         <Width>1.62709in</Width>
         <ZIndex>7</ZIndex>
@@ -297,8 +297,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.22167in</Top>
-        <Left>5.01736in</Left>
+        <Top>0.23in</Top>
+        <Left>5.28403in</Left>
         <Height>0.18in</Height>
         <Width>1.62709in</Width>
         <ZIndex>8</ZIndex>
@@ -354,7 +354,7 @@
               <Width>0.73722in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65926in</Width>
+              <Width>0.92593in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.52232in</Width>
@@ -1335,7 +1335,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!KilosNetos.Value)</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1372,7 +1372,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!PorcentajeDescarte.Value)</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1549,7 +1549,7 @@
         <Top>1.44167in</Top>
         <Left>0.14187in</Left>
         <Height>0.54in</Height>
-        <Width>6.53037in</Width>
+        <Width>6.79704in</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -1943,7 +1943,7 @@
         <Top>1.26167in</Top>
         <Left>0.13355in</Left>
         <Height>0.18in</Height>
-        <Width>6.53869in</Width>
+        <Width>6.80536in</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -1976,8 +1976,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.71278in</Top>
-        <Left>3.89714in</Left>
+        <Top>0.72111in</Top>
+        <Left>4.17214in</Left>
         <Height>0.18in</Height>
         <Width>1.07855in</Width>
         <ZIndex>13</ZIndex>
@@ -2011,8 +2011,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.45723in</Top>
-        <Left>3.87769in</Left>
+        <Top>0.46556in</Top>
+        <Left>4.15269in</Left>
         <Height>0.18in</Height>
         <Width>1.07022in</Width>
         <ZIndex>14</ZIndex>
@@ -2045,8 +2045,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.45723in</Top>
-        <Left>5.01736in</Left>
+        <Top>0.46556in</Top>
+        <Left>5.26736in</Left>
         <Height>0.18in</Height>
         <Width>1.62709in</Width>
         <ZIndex>15</ZIndex>
@@ -2069,7 +2069,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>6.83542in</Width>
+  <Width>6.93891in</Width>
   <Page>
     <PageHeader>
       <Height>0.79292in</Height>

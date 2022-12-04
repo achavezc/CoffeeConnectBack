@@ -40,7 +40,20 @@ namespace CoffeeConnect.Service
         public static string Anulado { get { return "00"; } }
     }
 
-   
+
+    public static class ProductoTipo
+    {
+        public static string Pergamino { get { return "01"; } }
+         
+    }
+
+    public static class SubProductoTipo
+    {
+        public static string Humedo { get { return "05"; } }
+
+    }
+
+
 
 
     public static class ControlCalidadEstados
@@ -88,6 +101,8 @@ namespace CoffeeConnect.Service
         public static string NotaSalidaAlmacenPlanta { get { return "NotaSalidaAlmacenPlanta"; } }
 
         public static string LiquidacionProcesoPlanta { get { return "LiquidacionProcesoPlanta"; } }
+
+        public static string LiquidacionSecadoPlanta { get { return "LiquidacionSecadoPlanta"; } }
 
         public static string UbigeoCiudad { get { return "UbigeoCiudad"; } }
 
@@ -165,6 +180,29 @@ namespace CoffeeConnect.Service
         public static string Rechazo { get { return "03"; } }
         
     }
+
+    public static class NotaIngresoAlmacenPlantaMotivos 
+    {
+
+        public static string Secado { get { return "01"; } }
+
+        public static string Almacen { get { return "02"; } }
+
+        public static string Transformacion { get { return "03"; } }
+
+        public static string LiquidacionOrdenProceso { get { return "04"; } }
+
+        public static string Compra { get { return "05"; } }
+
+        public static string Reproceso { get { return "06"; } }
+
+
+        public static string LiquidacionProcesoSecado { get { return "07"; } }
+
+
+
+    }
+
 
     public static class NotaSalidaAlmacenPlantaEstados
     {
