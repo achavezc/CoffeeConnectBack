@@ -97,7 +97,7 @@ namespace CoffeeConnect.Service
                 correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
                 motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.LiquidacionOrdenProceso; // Liquidacion Proceso
             }
-            else
+            else if (consultaOrdenProcesoPlantaPorIdBE.TipoProcesoId == "02") //Secado
             {
                 correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionSecadoPlanta);
                 motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.LiquidacionProcesoSecado; // Liquidación Proceso Secado
@@ -145,7 +145,12 @@ namespace CoffeeConnect.Service
                     notaIngresoProductoTerminadoAlmacenPlanta.Cantidad = detalle.CantidadSacos.HasValue ? detalle.CantidadSacos.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.KilosNetos = detalle.KilosNetos.HasValue ? detalle.KilosNetos.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.KilosBrutos = detalle.KilosBrutos.HasValue ? detalle.KilosBrutos.Value : 0;
-                    notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN.HasValue ? detalle.KGN.Value : 0;
+
+                    if (consultaOrdenProcesoPlantaPorIdBE.TipoProcesoId != "02") //Secado
+                    {
+                        notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN.HasValue ? detalle.KGN.Value : 0;
+                    }
+                    
                     notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = motivoIngresoAlmacenId;  
                     notaIngresoProductoTerminadoAlmacenPlanta.TipoId = detalle.TipoId;
                     notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = detalle.EmpaqueId;

@@ -112,6 +112,7 @@ namespace CoffeeConnect.Service
                         notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId = detalle.SubProductoId;
                         notaIngresoProductoTerminadoAlmacenPlanta.Cantidad = detalle.Cantidad;
                         notaIngresoProductoTerminadoAlmacenPlanta.KilosNetos = detalle.KilosNetos;
+                        notaIngresoProductoTerminadoAlmacenPlanta.KilosBrutos = detalle.KilosBrutos;
                         notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = consultaNotaIngresoPlantaPorIdBE.MotivoIngresoId; // Liquidacion Proceso
                         notaIngresoProductoTerminadoAlmacenPlanta.TipoId = detalle.TipoId;
                         notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = detalle.EmpaqueId;
@@ -119,7 +120,7 @@ namespace CoffeeConnect.Service
                         notaIngresoProductoTerminadoAlmacenPlanta.EstadoId = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
                         notaIngresoProductoTerminadoAlmacenPlanta.FechaRegistro = DateTime.Now;
                         notaIngresoProductoTerminadoAlmacenPlanta.UsuarioRegistro = request.Usuario;
-
+                        notaIngresoProductoTerminadoAlmacenPlanta.AlmacenId = "02"; //Almacen Productos Terminados
                         _INotaIngresoProductoTerminadoAlmacenPlantaRepository.Insertar(notaIngresoProductoTerminadoAlmacenPlanta);
                     }
                 }
@@ -549,6 +550,9 @@ namespace CoffeeConnect.Service
                 }
                 else
                 {
+                    string certificadora = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.EntidadCertificadora) ? consultaImpresionGuiaRemision.EntidadCertificadora.Trim() : String.Empty;
+
+
                     GuiaRemisionListaDetalle guiaRemisionListaDetalle = new GuiaRemisionListaDetalle();
 
                     //descripcion = "  " + Convert.ToString(z.CantidadPesado) + " " + Convert.ToString(!string.IsNullOrEmpty(z.UnidadMedida) ? z.UnidadMedida.Trim() : String.Empty) + " Plastico" + "   " + Convert.ToString(!string.IsNullOrEmpty(z.Producto) ? z.Producto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.SubProducto) ? z.SubProducto.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoProduccion) ? z.TipoProduccion.Trim() : String.Empty) + "  " + Convert.ToString(!string.IsNullOrEmpty(z.TipoCertificacion) ? z.TipoCertificacion.Trim() : String.Empty);
@@ -575,7 +579,7 @@ namespace CoffeeConnect.Service
 
                     guiaRemisionListaDetalle.TipoEmpaque = consultaImpresionGuiaRemision.TipoEmpaque;
                     guiaRemisionListaDetalle.Empaque = consultaImpresionGuiaRemision.Empaque;
-                    guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + certificacionLabel;
+                    guiaRemisionListaDetalle.Descripcion = consultaImpresionGuiaRemision.Producto + " - " + certificacionLabel + " - " + certificadora;
                     guiaRemisionListaDetalle.MontoBruto = consultaImpresionGuiaRemision.KilosBrutos;
                     guiaRemisionListaDetalle.PesoNeto = consultaImpresionGuiaRemision.KilosNetos;
                     guiaRemisionListaDetalle.Cantidad = consultaImpresionGuiaRemision.Cantidad;
@@ -660,9 +664,8 @@ namespace CoffeeConnect.Service
 
                 string motivo = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.MotivoIngreso) ? consultaImpresionGuiaRemision.MotivoIngreso.Trim() : String.Empty;
                 string observacion = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.ObservacionPesado) ? consultaImpresionGuiaRemision.ObservacionPesado.Trim() : String.Empty;
-                string certificadora = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.EntidadCertificadora) ? consultaImpresionGuiaRemision.EntidadCertificadora.Trim() : String.Empty;
-
-                guiaRemisionDetalle.Observaciones = motivo + " " + observacion + " " + certificadora;
+                
+                guiaRemisionDetalle.Observaciones = motivo + " " + observacion;
                 guiaRemisionDetalle.Responsable = !string.IsNullOrEmpty(consultaImpresionGuiaRemision.UsuarioRegistro) ? consultaImpresionGuiaRemision.UsuarioRegistro.Trim() : String.Empty;
 
                 generarPDFGuiaRemisionResponseDTO.detalleGM.Add(guiaRemisionDetalle);
