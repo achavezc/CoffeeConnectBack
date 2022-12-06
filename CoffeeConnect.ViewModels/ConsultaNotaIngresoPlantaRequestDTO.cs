@@ -29,9 +29,9 @@ namespace CoffeeConnect.DTO
 
         public DateTime FechaFin { get; set; }
 
-        public DateTime FechaGuiaRemisionInicio { get; set; }
+        public DateTime? FechaGuiaRemisionInicio { get; set; }
 
-        public DateTime FechaGuiaRemisionFin { get; set; }
+        public DateTime? FechaGuiaRemisionFin { get; set; }
 
         public int EmpresaId { get; set; }
 

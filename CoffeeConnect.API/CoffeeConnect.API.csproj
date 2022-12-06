@@ -18,6 +18,8 @@
     <None Remove="Reportes\rptControlCalidad.rdlc" />
     <None Remove="Reportes\rptGuiaRemision.rdlc" />
     <None Remove="Reportes\rptLiquidacionProceso.rdlc" />
+    <None Remove="Reportes\rptLiquidacionSecado.rdlc" />
+    <None Remove="Reportes\rptLiquidacionSecado.rdlc.bak" />
     <None Remove="Reportes\rptNotaIngreso.rdlc" />
     <None Remove="Reportes\rptNotaSalida.rdlc" />
     <None Remove="Reportes\rptOrdenProceso.rdlc" />
@@ -55,6 +57,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reportes\rptControlCalidad.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reportes\rptLiquidacionSecado.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Reportes\rptNotaSalida.rdlc">

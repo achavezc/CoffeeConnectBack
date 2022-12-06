@@ -73,7 +73,7 @@ namespace CoffeeConnect.DTO
 		public int ControlCalidadPlantaId
 		{ get; set; }
 
-		public DateTime FechaGuiaRemision
+		public DateTime? FechaGuiaRemision
 		{ get; set; }
 
 		public DateTime FechaCalidad

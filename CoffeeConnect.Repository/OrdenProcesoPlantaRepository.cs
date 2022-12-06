@@ -185,6 +185,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@KilosNetos", ordenProcesoPlantaDetalle.KilosNetos);
             parameters.Add("@CantidadNotaIngreso", ordenProcesoPlantaDetalle.CantidadNotaIngreso);
             parameters.Add("@KilosNetosNotaIngreso", ordenProcesoPlantaDetalle.KilosNetosNotaIngreso);
+            parameters.Add("@KilosBrutosNotaIngreso", ordenProcesoPlantaDetalle.KilosBrutosNotaIngreso);
             parameters.Add("@PorcentajeHumedad", ordenProcesoPlantaDetalle.PorcentajeHumedad);
             parameters.Add("@PorcentajeExportable", ordenProcesoPlantaDetalle.PorcentajeExportable);
             parameters.Add("@PorcentajeDescarte", ordenProcesoPlantaDetalle.PorcentajeDescarte);

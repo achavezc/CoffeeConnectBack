@@ -23,6 +23,8 @@ namespace CoffeeConnect.Models
 
         public decimal KilosNetosNotaIngreso { get; set; }
 
+        public decimal KilosBrutosNotaIngreso { get; set; }
+
         public decimal PorcentajeHumedad { get; set; }
 
         public decimal PorcentajeExportable { get; set; }

@@ -383,15 +383,27 @@ namespace CoffeeConnect.API.Controllers
                     EmpresaId = empresaId
                 });
 
+                var path = "";
+
+               
+
 
                 if (response != null && response.data != null)
                 {
-                    listaLiquidacionProcesoPlanta.Add(response.data);
+                    if(response.data.TipoProcesoId== "01") //Transformacion)
+                    {
+                        path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionProceso.rdlc";
+                    }
+                    else
+                    {
+                        path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionSecado.rdlc";
+                    }
+                        listaLiquidacionProcesoPlanta.Add(response.data);
                 }
 
                 string mimetype = "";
                 int extension = 1;
-                var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionProceso.rdlc";
+               
 
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();

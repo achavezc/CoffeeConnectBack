@@ -12,6 +12,8 @@ namespace CoffeeConnect.Interface.Repository
         ConsultaNotaIngresoPlantaPorIdBE ConsultarNotaIngresoPlantaPorId(int notaIngresoPlantaId);
         int InsertarPesado(NotaIngresoPlanta NotaIngresoPlanta);
 
+        int EliminarNotaIngresoPlantaDetalle(int notaIngresoPlantaId);
+
         int ActualizarPesado(NotaIngresoPlanta NotaIngresoPlanta);
 
         int ActualizarAnalisisCalidad(NotaIngresoPlanta NotaIngresoPlanta);

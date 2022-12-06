@@ -77,7 +77,7 @@ namespace CoffeeConnect.DTO
 
         public DateTime FechaRegistro { get; set; }
 
-        public DateTime FechaGuiaRemision { get; set; }
+        public DateTime? FechaGuiaRemision { get; set; }
 
         public string UsuarioRegistro { get; set; }
 

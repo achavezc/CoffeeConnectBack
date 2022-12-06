@@ -34,8 +34,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
-            parameters.Add("FechaGuiaRemisionInicio", request.FechaInicio);
-            parameters.Add("FechaGuiaRemisionFin", request.FechaFin);
+            parameters.Add("FechaGuiaRemisionInicio", request.FechaGuiaRemisionInicio);
+            parameters.Add("FechaGuiaRemisionFin", request.FechaGuiaRemisionFin);
             parameters.Add("CodigoCampania", request.CodigoCampania);
             parameters.Add("CodigoTipoConcepto", request.CodigoTipoConcepto);
             parameters.Add("CodigoTipo", request.CodigoTipo);
@@ -45,6 +45,23 @@ namespace CoffeeConnect.Repository
                 return db.Query<ConsultaNotaIngresoPlantaBE>("uspNotaIngresoPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public int EliminarNotaIngresoPlantaDetalle(int notaIngresoPlantaId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoPlantaId", notaIngresoPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspNotaIngresoPlantaDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
 
         public int AnularNotaIngresoPlanta(int NotaIngresoPlantaId, DateTime fecha, string usuario, string estadoId)
         {

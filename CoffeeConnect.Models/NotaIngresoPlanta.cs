@@ -58,7 +58,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the FechaGuiaRemision value.
 		/// </summary>
-		public DateTime FechaGuiaRemision
+		public DateTime? FechaGuiaRemision
 		{ get; set; }
 
 		/// <summary>

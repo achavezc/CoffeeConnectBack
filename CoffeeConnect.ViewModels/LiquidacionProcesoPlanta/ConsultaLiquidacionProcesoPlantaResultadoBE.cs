@@ -20,10 +20,10 @@ namespace CoffeeConnect.DTO
         public decimal KilosNetos { get; set; }
         public decimal Porcentaje { get; set; }
 
-        public decimal? KilosBrutos
+        public decimal KilosBrutos
         { get; set; }
 
-        public decimal? Tara
+        public decimal Tara
         { get; set; }
 
 

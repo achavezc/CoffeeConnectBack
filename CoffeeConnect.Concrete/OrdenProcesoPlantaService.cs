@@ -123,6 +123,7 @@ namespace CoffeeConnect.Service
                 ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE =  _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(detalle.NotaIngresoAlmacenPlantaId);
                 decimal cantidadDisponible = consultaNotaIngresoAlmacenPlantaPorIdBE.Cantidad.Value - consultaNotaIngresoAlmacenPlantaPorIdBE.CantidadOrdenProceso.Value;
 
+                detalle.KilosBrutosNotaIngreso = consultaNotaIngresoAlmacenPlantaPorIdBE.PesoBruto.Value;
 
                 string estado = NotaIngresoAlmacenPlantaEstados.Ingresado;
 

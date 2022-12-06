@@ -29,7 +29,10 @@ namespace CoffeeConnect.DTO
 		public string TipoEmpaque
 		{ get; set; }
 
+		public string TipoId
+		{ get; set; }
 
+		
 
 
 		public int? NotaIngresoPlantaId

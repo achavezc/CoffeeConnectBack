@@ -250,6 +250,29 @@ namespace CoffeeConnect.Service
 
             int affected = _INotaIngresoPlantaRepository.ActualizarPesado(NotaIngresoPlanta);
 
+            if (request.NotaIngresoPlantaDetalle != null && request.NotaIngresoPlantaDetalle.Count > 0)
+            {
+                decimal kilosNetos = 0;
+                decimal kilosBrutos = 0;
+                decimal cantidad = 0;
+                //decimal tara = 0;
+
+                _INotaIngresoPlantaRepository.EliminarNotaIngresoPlantaDetalle(request.NotaIngresoPlantaId);
+
+                foreach (NotaIngresoPlantaDetalle notaIngresoPlantaDetalle in request.NotaIngresoPlantaDetalle)
+                {
+                    //kilosNetos = kilosNetos + notaIngresoPlantaDetalle.KilosNetos;
+                    //kilosBrutos = kilosBrutos + notaIngresoPlantaDetalle.KilosBrutos;
+                    //cantidad = cantidad + notaIngresoPlantaDetalle.Cantidad;
+
+                    notaIngresoPlantaDetalle.NotaIngresoPlantaId = request.NotaIngresoPlantaId;
+
+                    _INotaIngresoPlantaRepository.InsertarNotaIngresoPlantaDetalle(notaIngresoPlantaDetalle);
+
+                }
+
+            }
+
 
             return affected;
         }

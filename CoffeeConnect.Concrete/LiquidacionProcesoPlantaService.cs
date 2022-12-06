@@ -153,7 +153,7 @@ namespace CoffeeConnect.Service
                     notaIngresoProductoTerminadoAlmacenPlanta.EstadoId = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
                     notaIngresoProductoTerminadoAlmacenPlanta.FechaRegistro = DateTime.Now;
                     notaIngresoProductoTerminadoAlmacenPlanta.UsuarioRegistro = request.Usuario;
-
+                    notaIngresoProductoTerminadoAlmacenPlanta.AlmacenId = "02"; // Almacen 2 (Productos Terminados)
 
                     _INotaIngresoProductoTerminadoAlmacenPlantaRepository.Insertar(notaIngresoProductoTerminadoAlmacenPlanta);
                 }
@@ -232,11 +232,6 @@ namespace CoffeeConnect.Service
             consultaLiquidacionProcesoPlantaPorIdBE.EnvasesProductos = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.EnvasesProductos) ? consultaLiquidacionProcesoPlantaPorIdBE.EnvasesProductos.Trim() : String.Empty;
             consultaLiquidacionProcesoPlantaPorIdBE.TrabajosRealizados = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.TrabajosRealizados) ? consultaLiquidacionProcesoPlantaPorIdBE.TrabajosRealizados.Trim() : String.Empty;
             consultaLiquidacionProcesoPlantaPorIdBE.Observacion = !string.IsNullOrEmpty(consultaLiquidacionProcesoPlantaPorIdBE.Observacion) ? consultaLiquidacionProcesoPlantaPorIdBE.Observacion.Trim() : String.Empty;
-
-
-
-
-
 
 
             if (consultaLiquidacionProcesoPlantaPorIdBE != null)
