@@ -363,6 +363,120 @@ namespace CoffeeConnect.API.Controllers
         //    return null;
         //}
 
+        //[Route("GenerarPDFLiquidacionProceso")]
+        //[HttpGet]
+        //public IActionResult GenerarPDFLiquidacionProceso(int id, int empresaId)
+        //{
+        //    Guid guid = Guid.NewGuid();
+        //    _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
+
+        //    //ES MOMENTANEO SE DEBE ELIMINAR
+        //    GenerarPDFLiquidacionProcesoResponseDTO response = new GenerarPDFLiquidacionProcesoResponseDTO(); ;
+
+        //    try
+        //    {
+        //        List<ConsultaLiquidacionProcesoPlantaPorIdBE> listaLiquidacionProcesoPlanta = new List<ConsultaLiquidacionProcesoPlantaPorIdBE>();
+
+        //        response.data = LiquidacionProcesoPlantaService.ConsultarLiquidacionProcesoPlantaPorId(new ConsultaLiquidacionProcesoPlantaPorIdRequestDTO
+        //        {
+        //            LiquidacionProcesoPlantaId = id,
+        //            EmpresaId = empresaId
+        //        });
+
+        //        var path = "";
+
+        //        DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
+
+        //        DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
+
+
+
+        //        if (response != null && response.data != null)
+        //        {
+        //            if(response.data.TipoProcesoId!= "02") //Transformacion)
+        //            {
+        //                path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionProceso.rdlc";
+        //            }
+        //            else
+        //            {
+        //                //List<ConsultaLiquidacionProcesoPlantaDetalleBE> detalle = response.data.Detalle.ToList();
+
+        //                //if (detalle.Count > 0)
+        //                //{
+        //                //    decimal kilosNetos = 0;
+        //                //    decimal kilosBrutos = 0;
+        //                //    decimal cantidad = 0;
+        //                //    decimal h2o = 0;
+
+
+        //                //    List<ConsultaLiquidacionProcesoPlantaDetalleBE> detalle2 = new List<ConsultaLiquidacionProcesoPlantaDetalleBE>();
+        //                //    detalle2.Add(detalle[0]);
+
+        //                //    foreach (ConsultaLiquidacionProcesoPlantaDetalleBE detalleItem in detalle2)
+        //                //    {
+        //                //        kilosNetos = kilosNetos + detalleItem.KilosNetos;
+        //                //        kilosBrutos = kilosBrutos + detalleItem.KilosBrutos;
+        //                //        cantidad = kilosNetos + detalleItem.Cantidad;
+        //                //        h2o = h2o + detalleItem.PorcentajeHumedad;
+        //                //    }
+
+        //                //    detalle2[0].KilosNetos = kilosNetos;
+        //                //    detalle2[0].KilosBrutos = kilosBrutos;
+        //                //    detalle2[0].Cantidad = cantidad;
+        //                //    detalle2[0].PorcentajeHumedad = h2o / detalle2.Count;
+
+        //                //    response.data.Detalle = detalle2;
+        //                //}
+
+
+
+        //                path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionSecado.rdlc";
+        //            }
+        //                listaLiquidacionProcesoPlanta.Add(response.data);
+        //        }
+
+        //        DataTable dsLiquidProcesoDetalle = Util.ToDataTable(response.data.Detalle, true);
+
+        //        string mimetype = "";
+        //        int extension = 1;
+
+
+        //        LocalReport lr = new LocalReport(path);
+        //        Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+
+
+        //        if (listaLiquidacionProcesoPlanta.Count > 0)
+        //        {
+        //            lr.AddDataSource("dsLiquidacionProceso", dsLiquidacionProceso);
+        //        }
+        //        if (response != null && response.data.Detalle != null)
+        //        {
+        //            lr.AddDataSource("dsLiquidProcesoDetalle", dsLiquidProcesoDetalle);
+        //        }
+        //        if (response != null && response.data.Resultado != null)
+        //        {
+        //            lr.AddDataSource("dsLiquidProcesoResultado", dsLiquidProcesoResultado);
+        //        }
+        //        var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+        //        return File(result.MainStream, "application/pdf");
+        //    }
+        //    catch (ResultException ex)
+        //    {
+        //        response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+        //        _log.RegistrarEvento(ex, guid.ToString());
+        //    }
+
+        //    _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+
+        //    return Ok(response);
+        //}
+
         [Route("GenerarPDFLiquidacionProceso")]
         [HttpGet]
         public IActionResult GenerarPDFLiquidacionProceso(int id, int empresaId)
@@ -387,30 +501,73 @@ namespace CoffeeConnect.API.Controllers
 
                
 
+               
+
+                DataTable dsLiquidProcesoDetalle = null;
 
                 if (response != null && response.data != null)
                 {
-                    if(response.data.TipoProcesoId== "01") //Transformacion)
+
+                    if (response.data.TipoProcesoId == "01") //Transformacion)
                     {
+                        dsLiquidProcesoDetalle = Util.ToDataTable(response.data.Detalle, true);
                         path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionProceso.rdlc";
                     }
                     else
                     {
                         path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptLiquidacionSecado.rdlc";
+
+                        List<ConsultaLiquidacionProcesoPlantaDetalleBE> detalle = response.data.Detalle.ToList();
+
+                        if (detalle.Count > 0)
+                        {
+                            decimal kilosNetos = 0;
+                            decimal kilosBrutos = 0;
+                            decimal cantidad = 0;
+                            decimal h2o = 0;
+
+
+                            List<ConsultaLiquidacionProcesoPlantaDetalleBE> detalle2 = new List<ConsultaLiquidacionProcesoPlantaDetalleBE>();
+                            detalle2.Add(detalle[0]);
+
+                            foreach (ConsultaLiquidacionProcesoPlantaDetalleBE detalleItem in detalle)
+                            {
+                                kilosNetos = kilosNetos + detalleItem.KilosNetos;
+                                kilosBrutos = kilosBrutos + detalleItem.KilosBrutos;
+                                cantidad = cantidad + detalleItem.Cantidad;
+                                h2o = h2o + detalleItem.PorcentajeHumedad;
+                            }
+
+                            detalle2[0].KilosNetos = kilosNetos;
+                            detalle2[0].KilosBrutos = kilosBrutos;
+                            detalle2[0].Cantidad = cantidad;
+                            detalle2[0].PorcentajeHumedad = h2o / detalle2.Count;
+
+                            dsLiquidProcesoDetalle = Util.ToDataTable(detalle2, true);
+
+                             
+                        }
                     }
-                        listaLiquidacionProcesoPlanta.Add(response.data);
+
+
+
+                    listaLiquidacionProcesoPlanta.Add(response.data);
+
+                    
                 }
 
-                string mimetype = "";
-                int extension = 1;
-               
+                DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
+
+                DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
 
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
-                DataTable dsLiquidProcesoDetalle = Util.ToDataTable(response.data.Detalle, true);
-                DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
+                string mimetype = "";
+                int extension = 1;
+
+
+                
 
 
                 if (listaLiquidacionProcesoPlanta.Count > 0)

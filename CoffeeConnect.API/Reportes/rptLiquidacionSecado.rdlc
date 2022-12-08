@@ -891,7 +891,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsLiquidProcesoDetalle</DataSetName>
-        <Top>1.56667in</Top>
+        <Top>1.44167in</Top>
         <Left>0.14187in</Left>
         <Height>0.9in</Height>
         <Width>5.15652in</Width>
@@ -1752,7 +1752,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsLiquidProcesoResultado</DataSetName>
-        <Top>1.56667in</Top>
+        <Top>1.44167in</Top>
         <Left>5.29813in</Left>
         <Height>0.9in</Height>
         <Width>4.2552in</Width>
@@ -1782,7 +1782,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.81945in</Top>
+        <Top>2.69445in</Top>
         <Left>0.14187in</Left>
         <Height>0.18in</Height>
         <Width>1.85416in</Width>
@@ -1816,7 +1816,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.81945in</Top>
+        <Top>2.69445in</Top>
         <Left>1.16048in</Left>
         <Height>0.18in</Height>
         <Width>2.80729in</Width>
@@ -1851,7 +1851,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>3.26945in</Top>
+        <Top>3.14445in</Top>
         <Left>4.20236in</Left>
         <Height>0.18in</Height>
         <Width>1.20708in</Width>
@@ -1889,7 +1889,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.38667in</Top>
+        <Top>1.26167in</Top>
         <Left>0.14187in</Left>
         <Height>0.18in</Height>
         <Width>5.15652in</Width>
@@ -1928,7 +1928,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.38667in</Top>
+        <Top>1.26167in</Top>
         <Left>5.29813in</Left>
         <Height>0.18in</Height>
         <Width>2.96353in</Width>
@@ -2104,11 +2104,14 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.13979in</Top>
-        <Left>0.25668in</Left>
+        <Top>0.36479in</Top>
+        <Left>4.64001in</Left>
         <Height>0.18in</Height>
         <Width>1.68287in</Width>
         <ZIndex>12</ZIndex>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2138,11 +2141,14 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.13979in</Top>
-        <Left>1.95344in</Left>
+        <Top>0.36479in</Top>
+        <Left>6.33677in</Left>
         <Height>0.18in</Height>
         <Width>2.37791in</Width>
         <ZIndex>13</ZIndex>
+        <Visibility>
+          <Hidden>true</Hidden>
+        </Visibility>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2312,7 +2318,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.38667in</Top>
+        <Top>1.26167in</Top>
         <Left>8.26166in</Left>
         <Height>0.18in</Height>
         <Width>1.29167in</Width>
@@ -2330,7 +2336,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.86403in</Height>
+    <Height>3.46403in</Height>
     <Style>
       <Border>
         <Style>Solid</Style>
