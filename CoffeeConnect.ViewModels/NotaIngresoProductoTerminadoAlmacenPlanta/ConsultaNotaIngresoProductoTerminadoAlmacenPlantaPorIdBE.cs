@@ -48,6 +48,14 @@ namespace CoffeeConnect.DTO
 		public decimal KilosBrutos
 		{ get; set; }
 
+		public decimal CantidadOrdenProceso
+		{ get; set; }
+
+		public decimal KilosNetosOrdenProceso
+		{ get; set; }
+
+		
+
 		public decimal CantidadSalidaAlmacen
 		{ get; set; }
 
