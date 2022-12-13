@@ -2281,6 +2281,10 @@
       <Border>
         <Style>Solid</Style>
       </Border>
+      <TopBorder>
+        <Color>Black</Color>
+        <Width>1pt</Width>
+      </TopBorder>
     </Style>
   </Body>
   <Width>9.69in</Width>
@@ -2580,10 +2584,10 @@
     </PageHeader>
     <PageHeight>8.27in</PageHeight>
     <PageWidth>11.69in</PageWidth>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
-    <TopMargin>1in</TopMargin>
-    <BottomMargin>1in</BottomMargin>
+    <LeftMargin>0.25in</LeftMargin>
+    <RightMargin>0.25in</RightMargin>
+    <TopMargin>0.25in</TopMargin>
+    <BottomMargin>0.25in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -2667,7 +2671,7 @@
           <DataField>Producto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-		<Field Name="NumeroContrato">
+        <Field Name="NumeroContrato">
           <DataField>NumeroContrato</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
@@ -2755,7 +2759,6 @@
           <DataField>KGN</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-		
         <Field Name="KilosNetos">
           <DataField>KilosNetos</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
