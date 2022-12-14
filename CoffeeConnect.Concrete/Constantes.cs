@@ -82,8 +82,11 @@ namespace CoffeeConnect.Service
         public static string Socio { get { return "Socio"; } }
         public static string NotaSalidaAlmacen { get { return "NotaSalidaAlmacen"; } }
 
+        public static string ServicioPlanta { get { return "ServicioPlanta"; } }
+
+
         /// campo nuevo >
-        
+
 
         public static string NotaIngresoProductoTerminadoAlmacenPlanta { get { return "NotaIngresoProductoTerminadoAlmacenPlanta"; } }
 
@@ -228,6 +231,19 @@ namespace CoffeeConnect.Service
         public static string Liquidado { get { return "02"; } }
 
     }
+
+    public static class ServicioPlantaEstados
+    {
+        public static string Deuda { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+        public static string Cancelado { get { return "02"; } }
+
+    }
+
+    
+
+
 
     public static class NotaIngresoProductoTerminadoAlmacenPlantaEstados
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace CoffeeConnect.Models
+namespace CoffeeConnect.DTO
 {
 	public class RegistrarActualizarServicioPlantaRequestDTO
 	{
