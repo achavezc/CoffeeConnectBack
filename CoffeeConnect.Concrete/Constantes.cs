@@ -104,6 +104,8 @@ namespace CoffeeConnect.Service
 
         public static string LiquidacionSecadoPlanta { get { return "LiquidacionSecadoPlanta"; } }
 
+        public static string LiquidacionReprocesoPlanta { get { return "LiquidacionReprocesoPlanta"; } }
+
         public static string UbigeoCiudad { get { return "UbigeoCiudad"; } }
 
         
@@ -233,7 +235,9 @@ namespace CoffeeConnect.Service
         public static string Anulado { get { return "00"; } }
 
         public static string Consumido { get { return "02"; } }
+        public static string Procesado { get { return "03"; } }
         
+
     }
 
     public static class AnticipoEstados

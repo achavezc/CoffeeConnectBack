@@ -129,7 +129,7 @@ namespace CoffeeConnect.Service
 
                 DateTime? fechaRegistro=null;
 
-                if (OrdenProcesoPlanta.TipoProcesoId =="03")
+                if (OrdenProcesoPlanta.TipoProcesoId =="03") //Reproceso
                 {
                     ConsultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE consultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE =_INotaIngresoProductoTerminadoAlmacenPlantaRepository.ConsultarNotaIngresoProductoTerminadoAlmacenPlantaPorId(detalle.NotaIngresoAlmacenPlantaId);
                     cantidadOrdenProceso = consultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE.CantidadOrdenProceso;
@@ -137,6 +137,16 @@ namespace CoffeeConnect.Service
                     kilosBrutos = consultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE.KilosBrutos;
                     fechaRegistro = consultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE.FechaRegistro;
                     kilosNetosOrdenProceso = consultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE.KilosNetosOrdenProceso;
+
+                    string estado = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
+
+                    if (detalle.Cantidad >= cantidadDisponible)
+                    {
+                        estado = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Procesado;
+                    }
+
+                    _INotaIngresoProductoTerminadoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoAlmacenPlantaId, cantidadOrdenProceso + detalle.Cantidad, kilosNetosOrdenProceso + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
+
                 }
                 else
                 {
@@ -146,19 +156,24 @@ namespace CoffeeConnect.Service
                     kilosBrutos = consultaNotaIngresoAlmacenPlantaPorIdBE.PesoBruto.Value;
                     fechaRegistro= consultaNotaIngresoAlmacenPlantaPorIdBE.FechaRegistro;
                     kilosNetosOrdenProceso = consultaNotaIngresoAlmacenPlantaPorIdBE.KilosNetosOrdenProceso.Value;
+
+                    string estado = NotaIngresoAlmacenPlantaEstados.Ingresado;
+
+                    if (detalle.Cantidad >= cantidadDisponible)
+                    {
+                        estado = NotaIngresoAlmacenPlantaEstados.Procesado;
+                    }
+
+                    _INotaIngresoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoAlmacenPlantaId, cantidadOrdenProceso + detalle.Cantidad, kilosNetosOrdenProceso + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
+
                 }
 
-                
+
                 detalle.KilosBrutosNotaIngreso = kilosBrutos;
 
-                string estado = NotaIngresoAlmacenPlantaEstados.Ingresado;
 
-                if (detalle.Cantidad >= cantidadDisponible)
-                {
-                    estado = NotaIngresoAlmacenPlantaEstados.Procesado;
-                }
-
-                _INotaIngresoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoAlmacenPlantaId, cantidadOrdenProceso + detalle.Cantidad, kilosNetosOrdenProceso + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
+                
+                
                 detalle.FechaIngresoAlmacen = fechaRegistro.Value;
 
                 detalle.OrdenProcesoPlantaId = OrdenProcesoPlantaId;

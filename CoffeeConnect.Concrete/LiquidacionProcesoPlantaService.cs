@@ -102,6 +102,11 @@ namespace CoffeeConnect.Service
                 correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionSecadoPlanta);
                 motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.LiquidacionProcesoSecado; // Liquidación Proceso Secado
             }
+            else if (consultaOrdenProcesoPlantaPorIdBE.TipoProcesoId == "03") //Reproceso
+            {
+                correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionReprocesoPlanta);
+                motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.Reproceso; // Liquidación Proceso Secado
+            }
 
             liquidacionProcesoPlanta.Numero = correlativo;
 

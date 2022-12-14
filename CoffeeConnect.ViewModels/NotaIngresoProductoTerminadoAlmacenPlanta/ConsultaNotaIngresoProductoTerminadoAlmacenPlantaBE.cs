@@ -156,6 +156,12 @@ namespace CoffeeConnect.DTO
 		public string Observacion
 		{ get; set; }
 
- 
+		public decimal CantidadOrdenProceso
+		{ get; set; }
+
+
+		public decimal KilosNetosOrdenProceso
+		{ get; set; }
+
 	}
 }
