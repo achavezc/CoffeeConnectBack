@@ -44,7 +44,8 @@ namespace CoffeeConnect.Service
     public static class ProductoTipo
     {
         public static string Pergamino { get { return "01"; } }
-         
+        public static string Exportacion { get { return "02"; } }
+
     }
 
     public static class SubProductoTipo
@@ -203,6 +204,8 @@ namespace CoffeeConnect.Service
 
 
         public static string LiquidacionProcesoSecado { get { return "07"; } }
+
+        public static string LiquidacionReproceso { get { return "08"; } }
 
 
 

@@ -94,23 +94,26 @@ namespace CoffeeConnect.Service
 
             if (consultaOrdenProcesoPlantaPorIdBE.TipoProcesoId == "01") //Transformacion
             {
+                liquidacionProcesoPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoId;
                 correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionProcesoPlanta);
                 motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.LiquidacionOrdenProceso; // Liquidacion Proceso
             }
             else if (consultaOrdenProcesoPlantaPorIdBE.TipoProcesoId == "02") //Secado
             {
+                liquidacionProcesoPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoId;
                 correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionSecadoPlanta);
                 motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.LiquidacionProcesoSecado; // Liquidación Proceso Secado
             }
             else if (consultaOrdenProcesoPlantaPorIdBE.TipoProcesoId == "03") //Reproceso
             {
+                liquidacionProcesoPlanta.ProductoId = ProductoTipo.Exportacion;
                 correlativo = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.LiquidacionReprocesoPlanta);
-                motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.Reproceso; // Liquidación Proceso Secado
+                motivoIngresoAlmacenId = NotaIngresoAlmacenPlantaMotivos.LiquidacionReproceso; // Liquidación Reproceso
             }
 
             liquidacionProcesoPlanta.Numero = correlativo;
 
-            liquidacionProcesoPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoId;
+            
             liquidacionProcesoPlanta.ProductoIdTerminado = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
             liquidacionProcesoPlanta.EntidadCertificadoraId = consultaOrdenProcesoPlantaPorIdBE.EntidadCertificadoraId;
             liquidacionProcesoPlanta.FechaInicioProceso = consultaOrdenProcesoPlantaPorIdBE.FechaInicioProceso.Value;

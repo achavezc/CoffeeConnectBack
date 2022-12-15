@@ -31,7 +31,7 @@ namespace CoffeeConnect.DTO
 
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }      
-        public string TipoProcesoId { get; set; }
+         
         public string EstadoId { get; set; }
         public int EmpresaId { get; set; }
     }
