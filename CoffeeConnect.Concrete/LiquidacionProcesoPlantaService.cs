@@ -148,7 +148,15 @@ namespace CoffeeConnect.Service
                     NotaIngresoProductoTerminadoAlmacenPlanta notaIngresoProductoTerminadoAlmacenPlanta = new NotaIngresoProductoTerminadoAlmacenPlanta();
                     notaIngresoProductoTerminadoAlmacenPlanta.LiquidacionProcesoPlantaId = LiquidacionProcesoPlantaId;
                     notaIngresoProductoTerminadoAlmacenPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoProductoTerminadoAlmacenPlanta);
-                    notaIngresoProductoTerminadoAlmacenPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
+
+                    if (consultaOrdenProcesoPlantaPorIdBE.TipoProcesoId == "03") //Reproceso
+                    {
+                        notaIngresoProductoTerminadoAlmacenPlanta.ProductoId = ProductoTipo.Exportacion;
+                    }
+                    else
+                    {
+                        notaIngresoProductoTerminadoAlmacenPlanta.ProductoId = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
+                    }
                     notaIngresoProductoTerminadoAlmacenPlanta.SubProductoId = detalle.ReferenciaId;
                     notaIngresoProductoTerminadoAlmacenPlanta.Cantidad = detalle.CantidadSacos.HasValue ? detalle.CantidadSacos.Value : 0;
                     notaIngresoProductoTerminadoAlmacenPlanta.KilosNetos = detalle.KilosNetos.HasValue ? detalle.KilosNetos.Value : 0;

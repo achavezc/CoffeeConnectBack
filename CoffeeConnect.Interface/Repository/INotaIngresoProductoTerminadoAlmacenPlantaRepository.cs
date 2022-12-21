@@ -26,5 +26,8 @@ namespace CoffeeConnect.Interface.Repository
         int ActualizarCantidadOrdenProcesoEstado(int notaIngresoProductoTerminadoAlmacenPlantaId, decimal cantidadOrdenProceso, decimal kilosNetosOrdenProceso, DateTime fecha, string usuario, string estadoId);
 
         //int ActualizarCantidadOrdenProcesoEstado(int NotaIngresoProductoTerminadoAlmacenPlantaId, decimal cantidadOrdenProceso, decimal kilosNetosOrdenProceso, DateTime fecha, string usuario, string estadoId);
+
+        IEnumerable<ResumenNotaIngresoProductoTerminadoAlmacenPlantaBE> ResumenNotaIngresoProductoTerminadoAlmacenPlanta(ResumenNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request);
+
     }
 }

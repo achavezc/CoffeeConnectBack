@@ -16,5 +16,8 @@ namespace CoffeeConnect.Interface.Service
         int ActualizarNotaIngresoProductoTerminadoAlmacenPlanta(ActualizarNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request);
 
         ConsultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE ConsultarNotaIngresoProductoTerminadoAlmacenPlantaPorId(ConsultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdRequestDTO request);
+
+        List<ResumenNotaIngresoProductoTerminadoAlmacenPlantaBE> ResumenNotaIngresoProductoTerminadoAlmacenPlanta(ResumenNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request);
+
     }
 }

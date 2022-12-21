@@ -44,6 +44,13 @@ namespace CoffeeConnect.Service
 
         }
 
+        public List<ResumenNotaIngresoProductoTerminadoAlmacenPlantaBE> ResumenNotaIngresoProductoTerminadoAlmacenPlanta(ResumenNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request)
+        {
+            var list = _INotaIngresoProductoTerminadoAlmacenPlantaRepository.ResumenNotaIngresoProductoTerminadoAlmacenPlanta(request);
+
+            return list.ToList();
+        }
+
         public int AnularNotaIngresoProductoTerminadoAlmacenPlanta(AnularNotaIngresoProductoTerminadoAlmacenPlantaRequestDTO request)
         {
             int affected = _INotaIngresoProductoTerminadoAlmacenPlantaRepository.ActualizarEstado(request.NotaIngresoProductoTerminadoAlmacenPlantaId, DateTime.Now, request.Usuario, NotaIngresoProductoTerminadoAlmacenPlantaEstados.Anulado);

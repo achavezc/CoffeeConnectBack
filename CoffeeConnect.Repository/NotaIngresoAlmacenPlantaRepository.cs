@@ -88,6 +88,28 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ResumenNotaIngresoAlmacenPlantaBE> ResumenNotaIngresoAlmacenPlanta(ResumenNotaIngresoAlmacenPlantaRequestDTO request)
+        {
+            var parameters = new DynamicParameters();
+            
+            parameters.Add("AlmacenId", request.AlmacenId);
+            parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("RazonSocialEmpresaOrigen", request.RazonSocialEmpresaOrigen);
+            parameters.Add("RucEmpresaOrigen", request.RucEmpresaOrigen);            
+            parameters.Add("ProductoId", request.ProductoId);
+            parameters.Add("SubProductoId", request.SubProductoId);
+           
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ResumenNotaIngresoAlmacenPlantaBE>("uspNotaIngresoAlmacenPlantaConsultaResumen", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
         //public IEnumerable<NotaIngresoAlmacenPlanta> ConsultarNotaIngresoPorIds(List<TablaIdsTipo> request)
         //{
         //    var parameters = new DynamicParameters();

@@ -84,6 +84,25 @@ namespace CoffeeConnect.Repository
             return id;
         }
 
+        public ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorId(int ServicioPlantaId)
+        {
+            ConsultaServicioPlantaPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ServicioPlantaId", ServicioPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaServicioPlantaPorIdBE>("uspServicioPlantaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
+
         /*
 
         public int AnularServicioPlanta(int ServicioPlantaId, DateTime fecha, string usuario, string estadoId)
@@ -104,24 +123,7 @@ namespace CoffeeConnect.Repository
             return affected;
         }
 
-        public ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorId(int ServicioPlantaId)
-        {
-            ConsultaServicioPlantaPorIdBE itemBE = null;
-
-            var parameters = new DynamicParameters();
-            parameters.Add("@ServicioPlantaId", ServicioPlantaId);
-
-
-            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-            {
-                var list = db.Query<ConsultaServicioPlantaPorIdBE>("uspServicioPlantaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
-
-                if (list.Any())
-                    itemBE = list.First();
-            }
-
-            return itemBE;
-        }
+        
 
         public int ActualizarPesado(ServicioPlanta ServicioPlanta)
         {

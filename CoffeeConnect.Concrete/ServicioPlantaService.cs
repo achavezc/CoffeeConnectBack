@@ -51,17 +51,17 @@ namespace CoffeeConnect.Service
         //    return affected;
         //}
 
-        //public ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorId(ConsultaServicioPlantaPorIdRequestDTO request)
-        //{
-        //    int ServicioPlantaId = request.ServicioPlantaId;
+        public ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorId(ConsultaServicioPlantaPorIdRequestDTO request)
+        {
+             
 
-        //    ConsultaServicioPlantaPorIdBE consultaServicioPlantaPorIdBE = _IServicioPlantaRepository.ConsultarServicioPlantaPorId(request.ServicioPlantaId);
+            ConsultaServicioPlantaPorIdBE consultaServicioPlantaPorIdBE = _IServicioPlantaRepository.ConsultarServicioPlantaPorId(request.ServicioPlantaId);
 
 
 
-        //    return consultaServicioPlantaPorIdBE;
+            return consultaServicioPlantaPorIdBE;
 
-        //}
+        }
 
         public int RegistrarServicioPlanta(RegistrarActualizarServicioPlantaRequestDTO request)
         {

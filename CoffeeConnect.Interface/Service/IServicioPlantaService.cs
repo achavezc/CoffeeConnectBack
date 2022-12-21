@@ -11,7 +11,7 @@ namespace CoffeeConnect.Interface.Service
        
 
         List<ConsultaServicioPlantaBE> ConsultarServicioPlanta(ConsultaServicioPlantaRequestDTO request);
-       
 
+        ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorId(ConsultaServicioPlantaPorIdRequestDTO request);
     }
 }

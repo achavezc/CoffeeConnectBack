@@ -10,7 +10,8 @@ namespace CoffeeConnect.Interface.Repository
     {   
 
         IEnumerable<ConsultaServicioPlantaBE> ConsultarServicioPlanta(ConsultaServicioPlantaRequestDTO request);
-
+         
+        ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorId(int ServicioPlantaId);
         int InsertarServicioPlanta(ServicioPlanta ServicioPlanta);
 
     }

@@ -458,6 +458,14 @@ namespace CoffeeConnect.Service
             return list.ToList(); 
         }
 
+        public List<ResumenNotaIngresoAlmacenPlantaBE> ResumenNotaIngresoAlmacenPlanta(ResumenNotaIngresoAlmacenPlantaRequestDTO request)
+        {   
+            var list = _INotaIngresoAlmacenPlantaRepository.ResumenNotaIngresoAlmacenPlanta(request);
+            return list.ToList();
+        }
+
+
+
         //public int AnularNotaIngresoAlmacenPlanta(AnularNotaIngresoAlmacenPlantaRequestDTO request)
         //{
         //    ConsultaNotaIngresoAlmacenPlantaPorIdBE consultaNotaIngresoAlmacenPlantaPorIdBE = _INotaIngresoAlmacenPlantaRepository.ConsultarNotaIngresoAlmacenPlantaPorId(request.NotaIngresoAlmacenPlantaId);

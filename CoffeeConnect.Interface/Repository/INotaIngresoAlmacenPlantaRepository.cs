@@ -31,7 +31,7 @@ namespace CoffeeConnect.Interface.Repository
 
         IEnumerable<NotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetalle> ConsultarNotaIngresoAlmacenPlantaRegistroTostadoIndicadorDetallePorId(int NotaIngresoAlmacenPlantaId);
 
-
+        IEnumerable<ResumenNotaIngresoAlmacenPlantaBE> ResumenNotaIngresoAlmacenPlanta(ResumenNotaIngresoAlmacenPlantaRequestDTO request);
 
 
 
