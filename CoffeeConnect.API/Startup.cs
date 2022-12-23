@@ -221,6 +221,10 @@ namespace CoffeeConnect.API
             services.AddTransient<IOrdenProcesoRepository, OrdenProcesoRepository>();
 
 
+            services.AddTransient<IPagoServicioPlantaService, PagoServicioPlantaService>();
+            services.AddTransient<IPagoServicioPlantaRepository, PagoServicioPlantaRepository>();
+
+
             services.AddTransient<ILiquidacionProcesoPlantaService, LiquidacionProcesoPlantaService>();
             services.AddTransient<ILiquidacionProcesoPlantaRepository, LiquidacionProcesoPlantaRepository>();
 
