@@ -25,6 +25,10 @@ namespace CoffeeConnect.DTO
 
         public string MonedaId { get; set; }
 
+        public string TipoComprobanteId { get; set; }
+
+        
+
         public string NumeroOperacionRelacionada { get; set; }
 
         public string TipoServicioId { get; set; }
