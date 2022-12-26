@@ -40,6 +40,14 @@ namespace CoffeeConnect.Service
         public static string Anulado { get { return "00"; } }
     }
 
+    public static class PagoServicioPlantaEstados
+    {
+        public static string Registrado { get { return "01"; } }
+        
+        public static string Anulado { get { return "00"; } }
+    }
+
+
 
     public static class ProductoTipo
     {
@@ -131,6 +139,8 @@ namespace CoffeeConnect.Service
         public static string NotaIngresoAlmacenPlanta { get { return "NotaIngresoAlmacenPlanta  "; } }
 
         public static string NotaIngresoPlanta { get { return "NotaIngresoPlanta  "; } }
+
+        public static string PagoServicioPlanta { get { return "PagoServicioPlanta  "; } }
 
         public static string NotaControlCalidadPlanta { get { return "CalidadPlanta  "; } }
 

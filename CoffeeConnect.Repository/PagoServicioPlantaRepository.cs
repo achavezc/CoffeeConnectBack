@@ -21,54 +21,34 @@ namespace CoffeeConnect.Repository
         }
 
 
-        //public int Insertar(PagoServicioPlanta PagoServicioPlanta)
-        //{
-        //    int result = 0;
+        public int Insertar(PagoServicioPlanta PagoServicioPlanta)
+        {
+            int result = 0;
 
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@EmpresaId", PagoServicioPlanta.EmpresaId);
-        //    parameters.Add("@AlmacenId", PagoServicioPlanta.AlmacenId);
-        //    parameters.Add("@GuiaRecepcionMateriaPrimaId", PagoServicioPlanta.GuiaRecepcionMateriaPrimaId);
-        //    parameters.Add("@Numero", PagoServicioPlanta.Numero);
-        //    parameters.Add("@TipoProduccionId", PagoServicioPlanta.TipoProduccionId);
-        //    parameters.Add("@TipoCertificacionId", PagoServicioPlanta.TipoCertificacionId);
-        //    parameters.Add("@EntidadCertificadoraId", PagoServicioPlanta.EntidadCertificadoraId);
-            
-        //    parameters.Add("@TipoProvedorId", PagoServicioPlanta.TipoProvedorId);
-        //    parameters.Add("@SocioId", PagoServicioPlanta.SocioId);
-        //    parameters.Add("@TerceroId", PagoServicioPlanta.TerceroId);
-        //    parameters.Add("@IntermediarioId", PagoServicioPlanta.IntermediarioId);
-        //    parameters.Add("@ProductoId", PagoServicioPlanta.ProductoId);
-        //    parameters.Add("@SubProductoId", PagoServicioPlanta.SubProductoId);
-        //    parameters.Add("@UnidadMedidaIdPesado", PagoServicioPlanta.UnidadMedidaIdPesado);
-        //    parameters.Add("@CantidadPesado", PagoServicioPlanta.CantidadPesado);
-        //    parameters.Add("@KilosBrutosPesado", PagoServicioPlanta.KilosBrutosPesado);
-        //    parameters.Add("@TaraPesado", PagoServicioPlanta.TaraPesado);
-        //    parameters.Add("@KilosNetosPesado", PagoServicioPlanta.KilosNetosPesado);
-        //    parameters.Add("@QQ55", PagoServicioPlanta.QQ55);
-        //    parameters.Add("@ExportableGramosAnalisisFisico", PagoServicioPlanta.ExportableGramosAnalisisFisico);
-        //    parameters.Add("@ExportablePorcentajeAnalisisFisico", PagoServicioPlanta.ExportablePorcentajeAnalisisFisico);
-        //    parameters.Add("@DescarteGramosAnalisisFisico", PagoServicioPlanta.DescarteGramosAnalisisFisico);
-        //    parameters.Add("@DescartePorcentajeAnalisisFisico", PagoServicioPlanta.DescartePorcentajeAnalisisFisico);
-        //    parameters.Add("@CascarillaGramosAnalisisFisico", PagoServicioPlanta.CascarillaGramosAnalisisFisico);
-        //    parameters.Add("@CascarillaPorcentajeAnalisisFisico", PagoServicioPlanta.CascarillaPorcentajeAnalisisFisico);
-        //    parameters.Add("@TotalGramosAnalisisFisico", PagoServicioPlanta.TotalGramosAnalisisFisico);
-        //    parameters.Add("@TotalPorcentajeAnalisisFisico", PagoServicioPlanta.TotalPorcentajeAnalisisFisico);
-        //    parameters.Add("@TotalAnalisisSensorial", PagoServicioPlanta.TotalAnalisisSensorial);
-        //    parameters.Add("@HumedadPorcentajeAnalisisFisico", PagoServicioPlanta.HumedadPorcentajeAnalisisFisico);
-        //    parameters.Add("@Observacion", PagoServicioPlanta.Observacion);
-        //    parameters.Add("@RendimientoPorcentaje", PagoServicioPlanta.RendimientoPorcentaje);
-        //    parameters.Add("@EstadoId", PagoServicioPlanta.EstadoId);
-        //    parameters.Add("@FechaRegistro", PagoServicioPlanta.FechaRegistro);
-        //    parameters.Add("@UsuarioRegistro", PagoServicioPlanta.UsuarioRegistro);
+            var parameters = new DynamicParameters();
+            parameters.Add("@PagoServicioPlantaId", PagoServicioPlanta.PagoServicioPlantaId);
+            parameters.Add("@EmpresaId", PagoServicioPlanta.EmpresaId);
+            parameters.Add("@ServicioPlantaId", PagoServicioPlanta.ServicioPlantaId);
+            parameters.Add("@Numero", PagoServicioPlanta.Numero);
+            parameters.Add("@NumeroOperacion", PagoServicioPlanta.NumeroOperacion);
+            parameters.Add("@TipoOperacionPagoServicioId", PagoServicioPlanta.TipoOperacionPagoServicioId);
+            parameters.Add("@BancoId", PagoServicioPlanta.BancoId);
+            parameters.Add("@FechaOperacion", PagoServicioPlanta.FechaOperacion);
+            parameters.Add("@Importe", PagoServicioPlanta.Importe);
+            parameters.Add("@MonedaId", PagoServicioPlanta.MonedaId);
+            parameters.Add("@Observaciones", PagoServicioPlanta.Observaciones);
+            parameters.Add("@EstadoId", PagoServicioPlanta.EstadoId);
+            parameters.Add("@FechaRegistro", PagoServicioPlanta.FechaRegistro);
+            parameters.Add("@UsuarioRegistro", PagoServicioPlanta.UsuarioRegistro);
+           
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        result = db.Execute("uspPagoServicioPlantaInsertar", parameters, commandType: CommandType.StoredProcedure);
-        //    }
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspPagoServicioPlantaInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
 
-        //    return result;
-        //}
+            return result;
+        }
 
         public IEnumerable<ConsultaPagoServicioPlantaBE> ConsultarPagoServicioPlanta(ConsultaPagoServicioPlantaRequestDTO request)
         {
@@ -92,24 +72,51 @@ namespace CoffeeConnect.Repository
         }
 
 
-        //public ConsultaPagoServicioPlantaPorIdBE ConsultarPagoServicioPlantaPorId(int PagoServicioPlantaId)
-        //{
-        //    ConsultaPagoServicioPlantaPorIdBE itemBE = null;
+        public ConsultaPagoServicioPlantaPorIdBE ConsultarPagoServicioPlantaPorId(int PagoServicioPlantaId)
+        {
+            ConsultaPagoServicioPlantaPorIdBE itemBE = null;
 
-        //    var parameters = new DynamicParameters();
-        //    parameters.Add("@PagoServicioPlantaId", PagoServicioPlantaId);
+            var parameters = new DynamicParameters();
+            parameters.Add("@PagoServicioPlantaId", PagoServicioPlantaId);
 
 
-        //    using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
-        //    {
-        //        var list = db.Query<ConsultaPagoServicioPlantaPorIdBE>("uspPagoServicioPlantaObtenerPorId", parameters, commandType: CommandType.StoredProcedure);
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaPagoServicioPlantaPorIdBE>("uspPagoServicioPlantaConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
 
-        //        if (list.Any())
-        //            itemBE = list.First();
-        //    }
+                if (list.Any())
+                    itemBE = list.First();
+            }
 
-        //    return itemBE;
-        //}
+            return itemBE;
+        }
+
+        public int Actualizar(PagoServicioPlanta PagoServicioPlanta)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@PagoServicioPlantaId", PagoServicioPlanta.PagoServicioPlantaId);
+            parameters.Add("@EmpresaId", PagoServicioPlanta.EmpresaId);
+            parameters.Add("@ServicioPlantaId", PagoServicioPlanta.ServicioPlantaId);
+            parameters.Add("@Numero", PagoServicioPlanta.Numero);
+            parameters.Add("@NumeroOperacion", PagoServicioPlanta.NumeroOperacion);
+            parameters.Add("@TipoOperacionPagoServicioId", PagoServicioPlanta.TipoOperacionPagoServicioId);
+            parameters.Add("@BancoId", PagoServicioPlanta.BancoId);
+            parameters.Add("@FechaOperacion", PagoServicioPlanta.FechaOperacion);
+            parameters.Add("@Importe", PagoServicioPlanta.Importe);
+            parameters.Add("@MonedaId", PagoServicioPlanta.MonedaId);
+            parameters.Add("@Observaciones", PagoServicioPlanta.Observaciones);
+            parameters.Add("@FechaUltimaActualizacion", PagoServicioPlanta.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", PagoServicioPlanta.UsuarioUltimaActualizacion);
+             
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspPagoServicioPlantaActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
 
 
 

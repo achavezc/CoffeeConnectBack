@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CoffeeConnect.DTO;
-using CoffeeConnect.DTO.Adjunto;
+ 
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
@@ -42,6 +42,45 @@ namespace CoffeeConnect.Service
             var list = _IPagoServicioPlantaRepository.ConsultarPagoServicioPlanta(request);            
 
             return list.ToList();
+        }
+
+        public int RegistrarPagoServicioPlanta(RegistrarActualizarPagoServicioPlantaRequestDTO request)
+        {
+            PagoServicioPlanta pagoServicioPlanta = _Mapper.Map<PagoServicioPlanta>(request);
+
+            pagoServicioPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.PagoServicioPlanta);
+
+            pagoServicioPlanta.EstadoId = PagoServicioPlantaEstados.Registrado;
+            pagoServicioPlanta.FechaRegistro = DateTime.Now;
+            pagoServicioPlanta.UsuarioRegistro = request.Usuario; 
+
+            int notaIngresoPlantaId = _IPagoServicioPlantaRepository.Insertar(pagoServicioPlanta); 
+
+             
+            return notaIngresoPlantaId;
+        }
+
+        public ConsultaPagoServicioPlantaPorIdBE ConsultarPagoServicioPlantaPorId(ConsultaPagoServicioPlantaPorIdRequestDTO request)
+        {
+            return _IPagoServicioPlantaRepository.ConsultarPagoServicioPlantaPorId(request.PagoServicioPlantaId);
+        }
+
+        public int ActualizarPagoServicioPlanta(RegistrarActualizarPagoServicioPlantaRequestDTO request)
+        {
+            int affected = 0;
+
+            PagoServicioPlanta pagoServicioPlanta = _Mapper.Map<PagoServicioPlanta>(request);
+
+            
+            
+            pagoServicioPlanta.FechaUltimaActualizacion = DateTime.Now;
+            pagoServicioPlanta.UsuarioUltimaActualizacion = request.Usuario;
+
+            affected = _IPagoServicioPlantaRepository.Actualizar(pagoServicioPlanta);
+
+
+
+            return affected;
         }
 
        
