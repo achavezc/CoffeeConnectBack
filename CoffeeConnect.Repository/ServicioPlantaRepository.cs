@@ -103,6 +103,44 @@ namespace CoffeeConnect.Repository
             return itemBE;
         }
 
+
+        public int Actualizar(ServicioPlanta ServicioPlanta)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ServicioPlantaId", ServicioPlanta.ServicioPlantaId);
+            parameters.Add("@EmpresaId", ServicioPlanta.EmpresaId);
+            parameters.Add("@EmpresaClienteId", ServicioPlanta.EmpresaClienteId);
+            parameters.Add("@Numero", ServicioPlanta.Numero);
+            parameters.Add("@NumeroOperacionRelacionada", ServicioPlanta.NumeroOperacionRelacionada);
+            parameters.Add("@TipoServicioId", ServicioPlanta.TipoServicioId);
+            parameters.Add("@TipoComprobanteId", ServicioPlanta.TipoComprobanteId);
+            parameters.Add("@SerieComprobante", ServicioPlanta.SerieComprobante);
+            parameters.Add("@NumeroComprobante", ServicioPlanta.NumeroComprobante);
+            parameters.Add("@FechaDocumento", ServicioPlanta.FechaDocumento);
+            parameters.Add("@SerieDocumento", ServicioPlanta.SerieDocumento);
+            parameters.Add("@NumeroDocumento", ServicioPlanta.NumeroDocumento);
+            parameters.Add("@UnidadMedidaId", ServicioPlanta.UnidadMedidaId);
+            parameters.Add("@Cantidad", ServicioPlanta.Cantidad);
+            parameters.Add("@PrecioUnitario", ServicioPlanta.PrecioUnitario);
+            parameters.Add("@Importe", ServicioPlanta.Importe);
+            parameters.Add("@PorcentajeTIRB", ServicioPlanta.PorcentajeTIRB);
+            parameters.Add("@MonedaId", ServicioPlanta.MonedaId);
+            parameters.Add("@TotalImporte", ServicioPlanta.TotalImporte);
+            parameters.Add("@Observaciones", ServicioPlanta.Observaciones);            
+            parameters.Add("@FechaUltimaActualizacion", ServicioPlanta.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", ServicioPlanta.UsuarioUltimaActualizacion);
+            
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspServicioPlantaActualizar", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
+
         /*
 
         public int AnularServicioPlanta(int ServicioPlantaId, DateTime fecha, string usuario, string estadoId)

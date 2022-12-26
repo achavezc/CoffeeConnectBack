@@ -63,17 +63,15 @@ namespace CoffeeConnect.API.Controllers
 
         [Route("Registrar")]
         [HttpPost]
-        public IActionResult Registrar([FromBody] RegistrarActualizarServicioPlantaRequestDTO request)
-                    
+        public IActionResult Registrar([FromBody] RegistrarActualizarServicioPlantaRequestDTO request)                    
         {
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(request)}");
 
-            RegistrarNotaCompraResponseDTO response = new RegistrarNotaCompraResponseDTO();
+            RegistrarActualizarPagoServicioPlantaResponseDTO response = new RegistrarActualizarPagoServicioPlantaResponseDTO();
             try
             {
                 response.Result.Data = ServicioPlantaService.RegistrarServicioPlanta(request);
-
                 response.Result.Success = true;
 
             }
@@ -88,6 +86,35 @@ namespace CoffeeConnect.API.Controllers
             }
 
             _log.RegistrarEvento($"{guid.ToString()}{Environment.NewLine}{Newtonsoft.Json.JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
+        [Route("Actualizar")]
+        [HttpPost]
+        public IActionResult Actualizar(RegistrarActualizarServicioPlantaRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            // _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
+
+            RegistrarActualizarPagoServicioPlantaResponseDTO response = new RegistrarActualizarPagoServicioPlantaResponseDTO();
+
+            try
+            {
+                response.Result.Data = ServicioPlantaService.ActualizarServicioPlanta(request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
 
             return Ok(response);
         }

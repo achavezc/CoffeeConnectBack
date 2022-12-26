@@ -81,16 +81,18 @@ namespace CoffeeConnect.Service
             return ServicioPlantaId;
         }
 
-        //public int ActualizarServicioPlanta(ActualizarServicioPlantaRequestDTO request)
-        //{
+        public int ActualizarServicioPlanta(RegistrarActualizarServicioPlantaRequestDTO request)
+        {
+
+            ServicioPlanta ServicioPlanta = _Mapper.Map<ServicioPlanta>(request);
+            ServicioPlanta.FechaUltimaActualizacion = DateTime.Now;
+            ServicioPlanta.UsuarioUltimaActualizacion = request.Usuario;
+
+            int affected = _IServicioPlantaRepository.Actualizar(ServicioPlanta);
 
 
-
-        //    int affected = _IServicioPlantaRepository.Actualizar(request.ServicioPlantaId,request.AlmacenId, DateTime.Now,request.Usuario);
-
-
-        //    return affected;
-        //}
+            return affected;
+        }
 
     }
 }
