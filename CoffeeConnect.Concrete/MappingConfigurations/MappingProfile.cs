@@ -66,6 +66,7 @@ namespace CoffeeConnect.Service.MappingConfigurations
             CreateMap<NotaIngresoPlanta, ControlCalidadPlanta>();
 
             CreateMap<RegistrarActualizarServicioPlantaRequestDTO, ServicioPlanta>();
+            CreateMap<RegistrarActualizarPagoServicioPlantaRequestDTO, PagoServicioPlanta>();
 
 
         }
