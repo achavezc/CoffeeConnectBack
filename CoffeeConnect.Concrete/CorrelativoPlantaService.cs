@@ -36,7 +36,9 @@ namespace CoffeeConnect.Service
                 result.Add(new ConsultaDetalleTablaBE
                 {
                     Codigo = obj.CodigoTipoConcepto,
-                    Label = obj.Concepto
+                    Label = obj.Concepto,
+                    Val1 = obj.Campanha
+                    
                 }) ;
             }
 
