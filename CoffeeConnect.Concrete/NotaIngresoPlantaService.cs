@@ -177,9 +177,10 @@ namespace CoffeeConnect.Service
         {
             NotaIngresoPlanta NotaIngresoPlanta = _Mapper.Map<NotaIngresoPlanta>(request);
 
+            
 
             // NotaIngresoPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.NotaIngresoPlanta);
-            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(DateTime.Now.Year.ToString(), TiposCorrelativosPlanta.NotaIngresoPlantaTipo, request.CodigoTipoConcepto);
+            NotaIngresoPlanta.Numero = _ICorrelativoRepository.ObtenerCorrelativoNotaIngreso(request.CodigoCampania, TiposCorrelativosPlanta.NotaIngresoPlantaTipo, request.CodigoTipoConcepto);
 
             
 
