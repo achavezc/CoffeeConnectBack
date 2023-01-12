@@ -20,13 +20,14 @@ namespace CoffeeConnect.DTO
 
         public string SerieComprobante { get; set; }
 
+
         public string NumeroComprobante { get; set; }
 
         public string RazonSocialEmpresaCliente { get; set; }
 
         public string RucEmpresaCliente { get; set; }
 
-         
+        public string CodigoCampania { get; set; }
 
 
         public DateTime FechaInicio { get; set; }

@@ -29,6 +29,9 @@ namespace CoffeeConnect.Models
 		public string Numero
 		{ get; set; }
 
+		public string RazonSocialEmpresaCliente { get; set; }
+
+		public string RucEmpresaCliente { get; set; }
 		/// <summary>
 		/// Gets or sets the NumeroOperacionRelacionada value.
 		/// </summary>
@@ -130,6 +133,8 @@ namespace CoffeeConnect.Models
 		/// </summary>
 		public string EstadoId
 		{ get; set; }
+
+		public string CodigoCampania { get; set; }
 
 		/// <summary>
 		/// Gets or sets the FechaRegistro value.

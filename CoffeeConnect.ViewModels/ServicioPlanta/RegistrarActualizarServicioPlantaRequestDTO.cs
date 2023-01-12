@@ -23,6 +23,10 @@ namespace CoffeeConnect.DTO
 		public int EmpresaClienteId
 		{ get; set; }
 
+
+		public string RazonSocialEmpresaCliente { get; set; }
+
+		public string RucEmpresaCliente { get; set; }
 		/// <summary>
 		/// Gets or sets the Numero value.
 		/// </summary>
@@ -130,7 +134,11 @@ namespace CoffeeConnect.DTO
 		/// </summary>
 		public string EstadoId
 		{ get; set; }
- 
+
+
+		public string CodigoCampania
+		{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the UsuarioRegistro value.

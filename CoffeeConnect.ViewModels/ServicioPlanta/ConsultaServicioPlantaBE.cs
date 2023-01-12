@@ -61,6 +61,8 @@ namespace CoffeeConnect.DTO
         public decimal? TotalImporte
         { get; set; }
 
+        public string CodigoCampania { get; set; }
+
         public string Observaciones { get; set; }
 
         public string EstadoId { get; set; }

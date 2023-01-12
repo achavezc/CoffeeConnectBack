@@ -67,7 +67,7 @@ namespace CoffeeConnect.API.Controllers
         [HttpPost]
         public IActionResult Registrar(RegistrarActualizarPagoServicioPlantaRequestDTO request)
         {
-            Guid guid = Guid.NewGuid();
+            Guid guid = Guid.NewGuid(); 
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
 
             RegistrarActualizarPagoServicioPlantaResponseDTO response = new RegistrarActualizarPagoServicioPlantaResponseDTO();

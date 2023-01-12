@@ -34,6 +34,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
             parameters.Add("EmpresaId", request.EmpresaId);
+            parameters.Add("CodigoCampania", request.CodigoCampania);
             parameters.Add("EstadoId", request.EstadoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -68,6 +69,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@TotalImporte", ServicioPlanta.TotalImporte);
             parameters.Add("@Observaciones", ServicioPlanta.Observaciones);
             parameters.Add("@EstadoId", ServicioPlanta.EstadoId);
+            parameters.Add("@CodigoCampania", ServicioPlanta.CodigoCampania);
             parameters.Add("@FechaRegistro", ServicioPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", ServicioPlanta.UsuarioRegistro);
              
@@ -127,6 +129,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Importe", ServicioPlanta.Importe);
             parameters.Add("@PorcentajeTIRB", ServicioPlanta.PorcentajeTIRB);
             parameters.Add("@MonedaId", ServicioPlanta.MonedaId);
+            parameters.Add("@CodigoCampania", ServicioPlanta.CodigoCampania);
             parameters.Add("@TotalImporte", ServicioPlanta.TotalImporte);
             parameters.Add("@Observaciones", ServicioPlanta.Observaciones);            
             parameters.Add("@FechaUltimaActualizacion", ServicioPlanta.FechaUltimaActualizacion);
