@@ -52,17 +52,15 @@ namespace CoffeeConnect.Service
             pagoServicioPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.PagoServicioPlanta);
 
             ///////////////////////////////////////////////////////////////7777////////////////////////////////////////////
-           
 
-            //ServicioActualizarTotalImporteProcesado servicioTotalInmporte = _Mapper.Map<ServicioActualizarTotalImporteProcesado>(ServicioPlanta2);
+            ConsultaServicioPlantaPorIdBE ServicioPlanta21 = _IServicioPlantaRepository.ConsultarServicioPlantaPorId(pagoServicioPlanta.ServicioPlantaId);
 
-            //ServicioPlanta servicioPlanta = _IServicioPlantaRepository.ConsultarServicioPlantaPorId(pagoservicioplanta.ServicioPlantaId);
+            // ServicioPlanta servicioTotalInmporte = _Mapper.Map<ServicioPlanta>(ServicioPlanta2.ServicioPlantaId);
+            var servicioTotalImporteProcesado = new ServicioActualizarTotalImporteProcesado();
 
-            //_IServicioPlantaRepository.ServicioActualizarTotalImporteProcesado(ServicioPlanta2);
-            
-            ///totalImporteProcesado = servicioPlanta.TotalImporteProcesado
+            servicioTotalImporteProcesado.TotalImporteProcesado = _IServicioPlantaRepository.ServicioActualizarTotalImporteProcesado(servicioTotalImporteProcesado);
 
-            //ServicioTotalaImporte.TotalImporteProcesado = totalImporteProcesado + ServicioPlanta2.TotalImporte;
+            ServicioPlanta21.TotalImporteProcesado = servicioTotalImporteProcesado.TotalImporteProcesado + ServicioPlanta21.TotalImporte;
 
 
             pagoServicioPlanta.EstadoId = PagoServicioPlantaEstados.Registrado;
