@@ -17,6 +17,8 @@ namespace CoffeeConnect.DTO
 
         public int EmpresaClienteId { get; set; }
 
+        public decimal? TotalImporteProcesado { get; set; }
+
         public string RazonSocialEmpresaCliente { get; set; }
 
         public string RucEmpresaCliente { get; set; }
