@@ -46,7 +46,7 @@ namespace CoffeeConnect.Service
         
         public static string Anulado { get { return "00"; } }
 
-        public static string Cancelado { get { return "03"; } }
+       
     }
 
 

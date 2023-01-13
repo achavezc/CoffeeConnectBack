@@ -53,14 +53,28 @@ namespace CoffeeConnect.Service
 
             ///////////////////////////////////////////////////////////////7777////////////////////////////////////////////
 
-            ConsultaServicioPlantaPorIdBE ServicioPlanta21 = _IServicioPlantaRepository.ConsultarServicioPlantaPorId(pagoServicioPlanta.ServicioPlantaId);
+            ConsultaServicioPlantaPorIdBE servicioPlanta = _IServicioPlantaRepository.ConsultarServicioPlantaPorId(pagoServicioPlanta.ServicioPlantaId);
 
             // ServicioPlanta servicioTotalInmporte = _Mapper.Map<ServicioPlanta>(ServicioPlanta2.ServicioPlantaId);
-            var servicioTotalImporteProcesado = new ServicioActualizarTotalImporteProcesado();
+            var servicioActualizarTotalImporteProcesado = new ServicioActualizarTotalImporteProcesado();
 
-            servicioTotalImporteProcesado.TotalImporteProcesado = _IServicioPlantaRepository.ServicioActualizarTotalImporteProcesado(servicioTotalImporteProcesado);
+            servicioActualizarTotalImporteProcesado.ServicioPlantaId = servicioPlanta.ServicioPlantaId;
+            string estadoId = ServicioPlantaEstados.Deuda;
+            //if(ServicioPlanta.TotalImporteProcesado >= )
+            servicioActualizarTotalImporteProcesado.TotalImporteProcesado = servicioActualizarTotalImporteProcesado.TotalImporteProcesado + request.Importe;
 
-            ServicioPlanta21.TotalImporteProcesado = servicioTotalImporteProcesado.TotalImporteProcesado + ServicioPlanta21.TotalImporte;
+            if(servicioPlanta.Importe >= servicioActualizarTotalImporteProcesado.TotalImporteProcesado + request.Importe)
+            {
+                estadoId = ServicioPlantaEstados.Cancelado;
+            }
+            servicioActualizarTotalImporteProcesado.EstadoId = estadoId;// ServicioPlantaEstados.Cancelado;
+            servicioActualizarTotalImporteProcesado.FechaUltimaActualizacion = DateTime.Now;
+            servicioActualizarTotalImporteProcesado.UsuarioUltimaActualizacion = request.Usuario;
+
+
+            _IServicioPlantaRepository.ServicioActualizarTotalImporteProcesado(servicioActualizarTotalImporteProcesado);
+
+          
 
 
             pagoServicioPlanta.EstadoId = PagoServicioPlantaEstados.Registrado;
