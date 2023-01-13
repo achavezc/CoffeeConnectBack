@@ -144,6 +144,30 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+
+
+        public int ServicioActualizarTotalImporteProcesado(ServicioActualizarTotalImporteProcesado ServicioPlanta2)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ServicioPlantaId", ServicioPlanta2.ServicioPlantaId);
+            parameters.Add("@EstadoId", ServicioPlanta2.EstadoId);
+            parameters.Add("@TotalImporteProcesado", ServicioPlanta2.TotalImporteProcesado);
+            parameters.Add("@FechaUltimaActualizacion", ServicioPlanta2.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", ServicioPlanta2.UsuarioUltimaActualizacion);
+
+
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspServicioPlantaActualizarTotalImporteProcesado", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
+
         /*
 
         public int AnularServicioPlanta(int ServicioPlantaId, DateTime fecha, string usuario, string estadoId)

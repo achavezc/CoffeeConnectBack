@@ -19,6 +19,7 @@ namespace CoffeeConnect.Service
     {
         private readonly IMapper _Mapper;
         private IPagoServicioPlantaRepository _IPagoServicioPlantaRepository;
+        private IServicioPlantaRepository _IServicioPlantaRepository;
         public IOptions<FileServerSettings> _fileServerSettings;
         private ICorrelativoRepository _ICorrelativoRepository;
         private IMaestroRepository _IMaestroRepository;
@@ -27,10 +28,10 @@ namespace CoffeeConnect.Service
 
 
 
-        public PagoServicioPlantaService(IPagoServicioPlantaRepository PagoServicioPlantaRepository,ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
+        public PagoServicioPlantaService(IPagoServicioPlantaRepository PagoServicioPlantaRepository, IServicioPlantaRepository ServicioPlanta, ICorrelativoRepository correlativoRepository, IMapper mapper, IOptions<FileServerSettings> fileServerSettings, IMaestroRepository maestroRepository)
         {
             _IPagoServicioPlantaRepository = PagoServicioPlantaRepository;
-            
+            _IServicioPlantaRepository = ServicioPlanta;
             _Mapper = mapper;
             _fileServerSettings = fileServerSettings;
             _ICorrelativoRepository = correlativoRepository;
@@ -49,6 +50,20 @@ namespace CoffeeConnect.Service
             PagoServicioPlanta pagoServicioPlanta = _Mapper.Map<PagoServicioPlanta>(request);
 
             pagoServicioPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.PagoServicioPlanta);
+
+            ///////////////////////////////////////////////////////////////7777////////////////////////////////////////////
+           
+
+            //ServicioActualizarTotalImporteProcesado servicioTotalInmporte = _Mapper.Map<ServicioActualizarTotalImporteProcesado>(ServicioPlanta2);
+
+            //ServicioPlanta servicioPlanta = _IServicioPlantaRepository.ConsultarServicioPlantaPorId(pagoservicioplanta.ServicioPlantaId);
+
+            //_IServicioPlantaRepository.ServicioActualizarTotalImporteProcesado(ServicioPlanta2);
+            
+            ///totalImporteProcesado = servicioPlanta.TotalImporteProcesado
+
+            //ServicioTotalaImporte.TotalImporteProcesado = totalImporteProcesado + ServicioPlanta2.TotalImporte;
+
 
             pagoServicioPlanta.EstadoId = PagoServicioPlantaEstados.Registrado;
             pagoServicioPlanta.FechaRegistro = DateTime.Now;

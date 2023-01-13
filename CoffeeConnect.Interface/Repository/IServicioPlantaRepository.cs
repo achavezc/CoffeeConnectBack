@@ -14,6 +14,7 @@ namespace CoffeeConnect.Interface.Repository
         ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorId(int ServicioPlantaId);
         int InsertarServicioPlanta(ServicioPlanta ServicioPlanta);
         int Actualizar(ServicioPlanta ServicioPlanta);
+        int ServicioActualizarTotalImporteProcesado(ServicioActualizarTotalImporteProcesado ServicioPlanta2);
 
     }
 }
