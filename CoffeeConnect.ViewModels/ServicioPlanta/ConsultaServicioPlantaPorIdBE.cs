@@ -29,7 +29,7 @@ namespace CoffeeConnect.DTO
 
         public string TipoComprobanteId { get; set; }
 
-        
+        public decimal? Saldo { get; set; }
 
         public string NumeroOperacionRelacionada { get; set; }
 

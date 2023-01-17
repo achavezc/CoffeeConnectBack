@@ -20,7 +20,13 @@ namespace CoffeeConnect.DTO
         public decimal? TotalImporteProcesado { get; set; }
 
 
-        
+        public string MonedaId
+        { get; set; }
+
+        public string Moneda
+        { get; set; }
+
+
         public string RazonSocialEmpresaCliente { get; set; }
 
         public string RucEmpresaCliente { get; set; }
@@ -66,6 +72,8 @@ namespace CoffeeConnect.DTO
         { get; set; }
 
         public string CodigoCampania { get; set; }
+        
+        public decimal?  Saldo { get; set; }
 
         public string Observaciones { get; set; }
 
