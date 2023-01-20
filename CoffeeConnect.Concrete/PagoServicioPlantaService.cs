@@ -76,9 +76,30 @@ namespace CoffeeConnect.Service
             servicioActualizarTotalImporteProcesado.ServicioPlantaId = servicioPlanta.ServicioPlantaId;
             string estadoId = ServicioPlantaEstados.Deuda;
             //if(ServicioPlanta.TotalImporteProcesado >= )
-            servicioActualizarTotalImporteProcesado.TotalImporteProcesado = servicioActualizarTotalImporteProcesado.TotalImporteProcesado + request.Importe;
+            if ( servicioPlanta.TotalImporteProcesado != null)
+            {
+                servicioActualizarTotalImporteProcesado.TotalImporteProcesado = servicioPlanta.TotalImporteProcesado.Value + request.Importe;
+            }
+            else
+            {
+                servicioActualizarTotalImporteProcesado.TotalImporteProcesado = request.Importe;
+            }
 
-            if(servicioPlanta.Importe >= servicioActualizarTotalImporteProcesado.TotalImporteProcesado + request.Importe)
+            decimal total = 0;
+
+            if (servicioPlanta.TotalImporte != null)
+            {
+                total = servicioPlanta.TotalImporte.Value - servicioActualizarTotalImporteProcesado.TotalImporteProcesado;
+            }
+            else{
+                total = servicioActualizarTotalImporteProcesado.TotalImporteProcesado;
+            }
+
+
+
+            //var to decimal = servicioPlanta.TotalImporte - servicioActualizarTotalImporteProcesado.TotalImporteProcesado
+
+            if (total == 0 )
             {
                 estadoId = ServicioPlantaEstados.Cancelado;
             }
