@@ -23,19 +23,19 @@ namespace CoffeeConnect.Repository
         public IEnumerable<ConsultaServicioPlantaBE> ConsultarServicioPlanta(ConsultaServicioPlantaRequestDTO request)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("Numero", request.Numero);
-            parameters.Add("NumeroOperacionRelacionada", request.NumeroOperacionRelacionada);
-            parameters.Add("TipoServicioId", request.TipoServicioId);
-            parameters.Add("TipoComprobanteId", request.TipoComprobanteId);
-            parameters.Add("SerieComprobante", request.SerieComprobante);
-            parameters.Add("NumeroComprobante", request.NumeroComprobante);
-            parameters.Add("RazonSocialEmpresaCliente", request.RazonSocialEmpresaCliente);
-            parameters.Add("RucEmpresaCliente", request.RucEmpresaCliente);           
-            parameters.Add("FechaInicio", request.FechaInicio);
-            parameters.Add("FechaFin", request.FechaFin);
-            parameters.Add("EmpresaId", request.EmpresaId);
-            parameters.Add("CodigoCampania", request.CodigoCampania);
-            parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("@Numero", request.Numero);
+            parameters.Add("@NumeroOperacionRelacionada", request.NumeroOperacionRelacionada);
+            parameters.Add("@TipoServicioId", request.TipoServicioId);
+            parameters.Add("@TipoComprobanteId", request.TipoComprobanteId);
+            parameters.Add("@SerieComprobante", request.SerieComprobante);
+            parameters.Add("@NumeroComprobante", request.NumeroComprobante);
+            parameters.Add("@RazonSocialEmpresaCliente", request.RazonSocialEmpresaCliente);
+            parameters.Add("@RucEmpresaCliente", request.RucEmpresaCliente);           
+            parameters.Add("@FechaInicio", request.FechaInicio);
+            parameters.Add("@FechaFin", request.FechaFin);
+            parameters.Add("@EmpresaId", request.EmpresaId);
+            parameters.Add("@CodigoCampania", request.CodigoCampania);
+            parameters.Add("@EstadoId", request.EstadoId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -58,6 +58,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@SerieComprobante", ServicioPlanta.SerieComprobante);
             parameters.Add("@NumeroComprobante", ServicioPlanta.NumeroComprobante);
             parameters.Add("@FechaDocumento", ServicioPlanta.FechaDocumento);
+            parameters.Add("@FechaComprobante", ServicioPlanta.FechaComprobante);
             parameters.Add("@SerieDocumento", ServicioPlanta.SerieDocumento);
             parameters.Add("@NumeroDocumento", ServicioPlanta.NumeroDocumento);
             parameters.Add("@UnidadMedidaId", ServicioPlanta.UnidadMedidaId);
@@ -121,6 +122,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@SerieComprobante", ServicioPlanta.SerieComprobante);
             parameters.Add("@NumeroComprobante", ServicioPlanta.NumeroComprobante);
             parameters.Add("@FechaDocumento", ServicioPlanta.FechaDocumento);
+            parameters.Add("@FechaComprobante", ServicioPlanta.FechaComprobante);
             parameters.Add("@SerieDocumento", ServicioPlanta.SerieDocumento);
             parameters.Add("@NumeroDocumento", ServicioPlanta.NumeroDocumento);
             parameters.Add("@UnidadMedidaId", ServicioPlanta.UnidadMedidaId);

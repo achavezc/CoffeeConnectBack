@@ -69,6 +69,12 @@ namespace CoffeeConnect.Models
 		{ get; set; }
 
 		/// <summary>
+		/// Gets or sets the FechaComprobante value.
+		/// </summary>
+		public DateTime FechaComprobante
+		{ get; set; }
+
+		/// <summary>
 		/// Gets or sets the SerieDocumento value.
 		/// </summary>
 		public string SerieDocumento
