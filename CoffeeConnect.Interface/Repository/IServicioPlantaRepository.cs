@@ -16,5 +16,11 @@ namespace CoffeeConnect.Interface.Repository
         int Actualizar(ServicioPlanta ServicioPlanta);
         int ServicioActualizarTotalImporteProcesado(ServicioActualizarTotalImporteProcesado ServicioPlanta2);
 
+        
+
+        int ActualizarServicioPlantaEstado(int ServicioPlantaId, DateTime fecha, string usuario, string estadoId);
+
+        int ActualizarServicioPlantaEstadoMontos(int ServicioPlantaId, DateTime fecha, string usuario, string estadoId, decimal importe);
+
     }
 }

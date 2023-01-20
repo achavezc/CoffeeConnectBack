@@ -20,6 +20,43 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
+        public int ActualizarServicioPlantaEstadoMontos(int ServicioPlantaId, DateTime fecha, string usuario, string estadoId, decimal importe)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ServicioPlantaId", ServicioPlantaId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspServicioPlantaActualizarEstadoMontos", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        public int ActualizarServicioPlantaEstado(int ServicioPlantaId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ServicioPlantaId", ServicioPlantaId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspServicioPlantaActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+
         public IEnumerable<ConsultaServicioPlantaBE> ConsultarServicioPlanta(ConsultaServicioPlantaRequestDTO request)
         {
             var parameters = new DynamicParameters();
@@ -169,6 +206,7 @@ namespace CoffeeConnect.Repository
             }
             return result;
         }
+
 
         /*
 

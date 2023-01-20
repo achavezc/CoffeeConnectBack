@@ -20,6 +20,24 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
+        public int AnularPagoServicioPlanta(int PagoServicioPlantaId, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@PagoServicioPlantaId", PagoServicioPlantaId);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspPagoServicioPlantaActualizarEstado", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
 
         public int Insertar(PagoServicioPlanta PagoServicioPlanta)
         {

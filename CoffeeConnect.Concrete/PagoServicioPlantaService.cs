@@ -38,6 +38,21 @@ namespace CoffeeConnect.Service
             _IMaestroRepository = maestroRepository;
         }
 
+        public int AnularPagoServicioPlanta(PagoServicioPlantaAnularRequestDTO request)
+        {
+            int affected = _IPagoServicioPlantaRepository.AnularPagoServicioPlanta(request.PagoServicioPlantaId, DateTime.Now, request.Usuario, PagoServicioPlantaEstados.Anulado);
+
+            _IServicioPlantaRepository.ActualizarServicioPlantaEstadoMontos(request.ServicioPlantaId, DateTime.Now, request.Usuario, ServicioPlantaEstados.Deuda, request.Importe);
+            //List<NotaSalidaAlmacenDetalle> notaSalidaAlmacenDetalle = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenDetallePorId(request.NotaSalidaAlmacenId).ToList();
+
+            //notaSalidaAlmacenDetalle.ForEach(notaSalidaDetalle =>
+            //{
+            //    _LoteRepository.ActualizarEstado(notaSalidaDetalle.LoteId, DateTime.Now, request.Usuario, LoteEstados.Analizado);
+            //});
+
+            return affected;
+        }
+
         public List<ConsultaPagoServicioPlantaBE> ConsultarPagoServicioPlanta(ConsultaPagoServicioPlantaRequestDTO request)
         {
             var list = _IPagoServicioPlantaRepository.ConsultarPagoServicioPlanta(request);            

@@ -14,6 +14,7 @@ namespace CoffeeConnect.Interface.Service
 
         int ActualizarPagoServicioPlanta(RegistrarActualizarPagoServicioPlantaRequestDTO request);
 
+        int AnularPagoServicioPlanta(PagoServicioPlantaAnularRequestDTO request);
 
         ConsultaPagoServicioPlantaPorIdBE ConsultarPagoServicioPlantaPorId(ConsultaPagoServicioPlantaPorIdRequestDTO request);
     }

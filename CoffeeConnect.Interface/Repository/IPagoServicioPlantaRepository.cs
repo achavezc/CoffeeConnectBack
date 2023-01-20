@@ -12,5 +12,7 @@ namespace CoffeeConnect.Interface.Repository
         int Insertar(PagoServicioPlanta PagoServicioPlanta);
         ConsultaPagoServicioPlantaPorIdBE ConsultarPagoServicioPlantaPorId(int PagoServicioPlantaId);
         int Actualizar(PagoServicioPlanta PagoServicioPlanta);
+
+        int AnularPagoServicioPlanta(int PagoServicioPlantaId, DateTime fecha, string usuario, string estadoId);
     }
 }
