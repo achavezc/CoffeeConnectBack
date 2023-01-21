@@ -29,6 +29,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
             parameters.Add("@EstadoId", estadoId);
+            parameters.Add("@TotalImporteProcesado", importe);
+             
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
