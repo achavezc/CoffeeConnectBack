@@ -63,7 +63,6 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("@Numero", request.Numero);
-           // parameters.Add("@NumeroOperacionRelacionada", request.NumeroOperacionRelacionada);
             parameters.Add("@TipoServicioId", request.TipoServicioId);
             parameters.Add("@TipoComprobanteId", request.TipoComprobanteId);
             parameters.Add("@SerieComprobante", request.SerieComprobante);
@@ -91,7 +90,6 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", ServicioPlanta.EmpresaId);
             parameters.Add("@EmpresaClienteId", ServicioPlanta.EmpresaClienteId);
             parameters.Add("@Numero", ServicioPlanta.Numero);
-           // parameters.Add("@NumeroOperacionRelacionada", ServicioPlanta.NumeroOperacionRelacionada);
             parameters.Add("@TipoServicioId", ServicioPlanta.TipoServicioId);
             parameters.Add("@TipoComprobanteId", ServicioPlanta.TipoComprobanteId);
             parameters.Add("@SerieComprobante", ServicioPlanta.SerieComprobante);
@@ -155,7 +153,6 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaId", ServicioPlanta.EmpresaId);
             parameters.Add("@EmpresaClienteId", ServicioPlanta.EmpresaClienteId);
             parameters.Add("@Numero", ServicioPlanta.Numero);
-          //  parameters.Add("@NumeroOperacionRelacionada", ServicioPlanta.NumeroOperacionRelacionada);
             parameters.Add("@TipoServicioId", ServicioPlanta.TipoServicioId);
             parameters.Add("@TipoComprobanteId", ServicioPlanta.TipoComprobanteId);
             parameters.Add("@SerieComprobante", ServicioPlanta.SerieComprobante);

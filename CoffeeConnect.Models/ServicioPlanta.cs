@@ -32,11 +32,7 @@ namespace CoffeeConnect.Models
 		public string RazonSocialEmpresaCliente { get; set; }
 
 		public string RucEmpresaCliente { get; set; }
-		/// <summary>
-		/// Gets or sets the NumeroOperacionRelacionada value.
-		/// </summary>
-		//public string NumeroOperacionRelacionada
-		//{ get; set; }
+
 
 		/// <summary>
 		/// Gets or sets the TipoServicioId value.

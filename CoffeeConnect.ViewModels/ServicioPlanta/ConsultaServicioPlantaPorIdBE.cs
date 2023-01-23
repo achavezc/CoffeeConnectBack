@@ -31,7 +31,6 @@ namespace CoffeeConnect.DTO
 
         public decimal? Saldo { get; set; }
 
-       // public string NumeroOperacionRelacionada { get; set; }
 
         public string TipoServicioId { get; set; }
 
