@@ -12,7 +12,7 @@ namespace CoffeeConnect.DTO
         }
 
         public string Numero { get; set; }
-        public string NumeroOperacionRelacionada { get; set; }
+      //  public string NumeroOperacionRelacionada { get; set; }
         
         public string TipoServicioId { get; set; }
 

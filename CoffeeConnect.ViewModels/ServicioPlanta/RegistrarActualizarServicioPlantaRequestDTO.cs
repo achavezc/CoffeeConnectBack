@@ -39,8 +39,8 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the NumeroOperacionRelacionada value.
 		/// </summary>
-		public string NumeroOperacionRelacionada
-		{ get; set; }
+		//public string NumeroOperacionRelacionada
+		//{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the TipoServicioId value.
