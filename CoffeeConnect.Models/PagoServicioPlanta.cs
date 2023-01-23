@@ -71,6 +71,7 @@ namespace CoffeeConnect.Models
 		public string Observaciones
 		{ get; set; }
 
+
 		/// <summary>
 		/// Gets or sets the EstadoId value.
 		/// </summary>

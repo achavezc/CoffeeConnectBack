@@ -18,6 +18,8 @@ namespace CoffeeConnect.DTO
         public decimal Importe { get; set; }
 
         public string Usuario { get; set; }
+
+        public string ObservacionAnulacion { get; set; }
         
         
     }

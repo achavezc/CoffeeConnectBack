@@ -40,7 +40,7 @@ namespace CoffeeConnect.Service
 
         public int AnularPagoServicioPlanta(PagoServicioPlantaAnularRequestDTO request)
         {
-            int affected = _IPagoServicioPlantaRepository.AnularPagoServicioPlanta(request.PagoServicioPlantaId, DateTime.Now, request.Usuario, PagoServicioPlantaEstados.Anulado);
+            int affected = _IPagoServicioPlantaRepository.AnularPagoServicioPlanta(request.PagoServicioPlantaId, DateTime.Now, request.Usuario, PagoServicioPlantaEstados.Anulado, request.ObservacionAnulacion);
 
             _IServicioPlantaRepository.ActualizarServicioPlantaEstadoMontos(request.ServicioPlantaId, DateTime.Now, request.Usuario, ServicioPlantaEstados.Deuda, request.Importe);
             //List<NotaSalidaAlmacenDetalle> notaSalidaAlmacenDetalle = _INotaSalidaAlmacenPlantaRepository.ConsultarNotaSalidaAlmacenDetallePorId(request.NotaSalidaAlmacenId).ToList();

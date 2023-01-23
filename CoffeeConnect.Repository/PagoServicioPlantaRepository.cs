@@ -20,7 +20,7 @@ namespace CoffeeConnect.Repository
             _connectionString = connectionString;
         }
 
-        public int AnularPagoServicioPlanta(int PagoServicioPlantaId, DateTime fecha, string usuario, string estadoId)
+        public int AnularPagoServicioPlanta(int PagoServicioPlantaId, DateTime fecha, string usuario, string estadoId,string Observacion)
         {
             int affected = 0;
 
@@ -29,6 +29,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@Fecha", fecha);
             parameters.Add("@Usuario", usuario);
             parameters.Add("@EstadoId", estadoId);
+            parameters.Add("@ObservacionAnulacion", Observacion);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
