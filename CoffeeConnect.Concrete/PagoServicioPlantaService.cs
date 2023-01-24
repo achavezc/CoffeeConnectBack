@@ -85,7 +85,7 @@ namespace CoffeeConnect.Service
                 servicioActualizarTotalImporteProcesado.TotalImporteProcesado = request.Importe;
             }
 
-            decimal total = 0;
+            decimal total;
 
             if (servicioPlanta.TotalImporte != null)
             {
@@ -95,6 +95,11 @@ namespace CoffeeConnect.Service
                 total = servicioActualizarTotalImporteProcesado.TotalImporteProcesado;
             }
 
+            if (servicioActualizarTotalImporteProcesado.TotalImporteProcesado > servicioPlanta.TotalImporte.Value)
+            {
+                return 0;
+            }
+            
 
 
             //var to decimal = servicioPlanta.TotalImporte - servicioActualizarTotalImporteProcesado.TotalImporteProcesado
