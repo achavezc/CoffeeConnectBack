@@ -14,6 +14,8 @@ namespace CoffeeConnect.Interface.Service
 
         ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorId(ConsultaServicioPlantaPorIdRequestDTO request);
 
-        int ActualizarServicioPlanta(RegistrarActualizarServicioPlantaRequestDTO request);  
+        int ActualizarServicioPlanta(RegistrarActualizarServicioPlantaRequestDTO request);
+
+        int AnularServicioPlanta(ServicioPlantaAnularRequestDTO request);
     }
 }

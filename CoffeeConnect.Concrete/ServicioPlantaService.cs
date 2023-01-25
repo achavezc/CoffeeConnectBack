@@ -94,6 +94,15 @@ namespace CoffeeConnect.Service
             return affected;
         }
 
-        
+        public int AnularServicioPlanta(ServicioPlantaAnularRequestDTO request)
+        {
+            int affected = _IServicioPlantaRepository.ActualizarServicioPlantaEstado(request.ServicioPlantaId, DateTime.Now, request.Usuario, ServicioPlantaEstados.Anulado);
+
+            
+
+            return affected;
+        }
+
+
     }
 }

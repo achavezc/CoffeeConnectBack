@@ -61,6 +61,36 @@ namespace CoffeeConnect.API.Controllers
             return Ok(response);
         }
 
+
+        [Route("Anular")]
+        [HttpPost]
+        public IActionResult Anular(ServicioPlantaAnularRequestDTO request)
+        {
+            Guid guid = Guid.NewGuid();
+            // _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(request)}");
+
+            AnularServicioPlantaResponseDTO response = new AnularServicioPlantaResponseDTO();
+            try
+            {
+
+                response.Result.Data = ServicioPlantaService.AnularServicioPlanta(request);
+                response.Result.Success = true;
+            }
+            catch (ResultException ex)
+            {
+                response.Result = new Result() { Success = true, ErrCode = ex.Result.ErrCode, Message = ex.Result.Message };
+            }
+            catch (Exception ex)
+            {
+                response.Result = new Result() { Success = false, Message = "Ocurrio un problema en el servicio, intentelo nuevamente." };
+                _log.RegistrarEvento(ex, guid.ToString());
+            }
+
+            _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(response)}");
+
+            return Ok(response);
+        }
+
         [Route("Registrar")]
         [HttpPost]
         public IActionResult Registrar([FromBody] RegistrarActualizarServicioPlantaRequestDTO request)                    
