@@ -55,6 +55,23 @@ namespace CoffeeConnect.DTO
         public string UnidadMedida { get; set; }
 
 
+        public int? LiquidacionProcesoPlantaId
+        { get; set; }
+
+
+        public string NumeroLiquidacionProcesoPlanta
+        { get; set; }
+
+        public DateTime? FechaInicioLiquidacionProcesoPlanta
+        { get; set; }
+
+        public DateTime? FechaFinLiquidacionProcesoPlanta
+        { get; set; }
+
+        
+
+
+
         public decimal? Cantidad
         { get; set; }
 

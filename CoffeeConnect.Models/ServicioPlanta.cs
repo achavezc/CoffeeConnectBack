@@ -150,6 +150,10 @@ namespace CoffeeConnect.Models
 		public string UsuarioRegistro
 		{ get; set; }
 
+		public int? LiquidacionProcesoPlantaId
+		{ get; set; }
+		
+
 		/// <summary>
 		/// Gets or sets the FechaUltimaActualizacion value.
 		/// </summary>

@@ -47,6 +47,10 @@ namespace CoffeeConnect.DTO
         { get; set; }
 
 
+        public string ServicioPagoEstadoId { get; set; }
+
+        public string ServicioPagoEstado { get; set; }
+
         public string Departamento
         { get; set; }
 

@@ -17,6 +17,10 @@ namespace CoffeeConnect.DTO
 		public int EmpresaId
 		{ get; set; }
 
+
+		public int? LiquidacionProcesoPlantaId
+		{ get; set; }
+
 		/// <summary>
 		/// Gets or sets the EmpresaClienteId value.
 		/// </summary>

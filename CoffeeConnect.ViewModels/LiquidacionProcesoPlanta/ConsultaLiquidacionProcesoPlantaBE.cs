@@ -29,7 +29,13 @@ namespace CoffeeConnect.DTO
         
         public int OrganizacionId { get; set; }
         public string TipoProcesoId { get; set; }
-        
+
+        public string ServicioPagoEstadoId { get; set; }
+
+        public string ServicioPagoEstado { get; set; }
+
+
+
         public string Numero { get; set; }
 
         
