@@ -59,15 +59,17 @@ namespace CoffeeConnect.DTO
         { get; set; }
 
 
-        public string NumeroLiquidacionProcesoPlanta
+        public decimal? KilosNetosLiquidacionProcesoPlanta
         { get; set; }
 
-        public DateTime? FechaInicioLiquidacionProcesoPlanta
+        public string NumeroLiquidacionProcesoPlanta
         { get; set; }
+ 
 
         public DateTime? FechaFinLiquidacionProcesoPlanta
         { get; set; }
 
+ 
         
 
 

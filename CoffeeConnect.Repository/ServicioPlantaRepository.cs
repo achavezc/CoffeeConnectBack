@@ -112,7 +112,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UsuarioRegistro", ServicioPlanta.UsuarioRegistro);
 
             parameters.Add("@LiquidacionProcesoPlantaId", ServicioPlanta.LiquidacionProcesoPlantaId);
-           
+            parameters.Add("@NumeroLiquidacionProcesoPlanta", ServicioPlanta.NumeroLiquidacionProcesoPlanta);
+             
+            parameters.Add("@FechaFinLiquidacionProcesoPlanta", ServicioPlanta.FechaFinLiquidacionProcesoPlanta);
+            parameters.Add("@KilosNetosLiquidacionProcesoPlanta", ServicioPlanta.KilosNetosLiquidacionProcesoPlanta);
 
 
             parameters.Add("@ServicioPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -177,7 +180,10 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaUltimaActualizacion", ServicioPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", ServicioPlanta.UsuarioUltimaActualizacion);
             parameters.Add("@LiquidacionProcesoPlantaId", ServicioPlanta.LiquidacionProcesoPlantaId);
-
+            parameters.Add("@NumeroLiquidacionProcesoPlanta", ServicioPlanta.NumeroLiquidacionProcesoPlanta);
+             
+            parameters.Add("@FechaFinLiquidacionProcesoPlanta", ServicioPlanta.FechaFinLiquidacionProcesoPlanta);
+            parameters.Add("@KilosNetosLiquidacionProcesoPlanta", ServicioPlanta.KilosNetosLiquidacionProcesoPlanta);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
