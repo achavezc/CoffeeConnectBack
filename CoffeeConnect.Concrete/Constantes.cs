@@ -95,6 +95,8 @@ namespace CoffeeConnect.Service
 
         public static string ServicioPlanta { get { return "ServicioPlanta"; } }
 
+        public static string PrestamoPlanta { get { return "PrestamoPlanta"; } }
+
 
         /// campo nuevo >
 
@@ -256,7 +258,14 @@ namespace CoffeeConnect.Service
 
     }
 
-    
+    public static class PrestamoPlantaEstados
+    {
+        public static string Deuda { get { return "01"; } }
+        public static string Anulado { get { return "00"; } }
+
+        public static string Cancelado { get { return "02"; } }
+
+    }
 
 
 

@@ -169,6 +169,10 @@ namespace CoffeeConnect.API
             services.AddTransient<IServicioPlantaRepository, ServicioPlantaRepository>();
 
 
+            services.AddTransient<IPrestamoPlantaService, PrestamoPlantaService>();
+            services.AddTransient<IPrestamoPlantaRepository, PrestamoPlantaRepository>();
+
+
             services.AddTransient<INotaIngresoAlmacenService, NotaIngresoAlmacenService>();
             services.AddTransient<INotaIngresoAlmacenRepository, NotaIngresoAlmacenRepository>();
 
