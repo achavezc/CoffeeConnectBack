@@ -22,5 +22,7 @@ namespace CoffeeConnect.Interface.Repository
 
         int ActualizarPrestamoPlantaEstadoMontos(int PrestamoPlantaId, DateTime fecha, string usuario, string estadoId, decimal importe);
 
+        int PrestamoPlantaActualizarImporteProcesado(PrestamoPlantaActualizarImporteProcesado PrestamoPlanta);
+
     }
 }

@@ -151,10 +151,27 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
-        //public int ServicioActualizarTotalImporteProcesado(ServicioActualizarTotalImporteProcesado PrestamoPlanta2)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public int PrestamoPlantaActualizarImporteProcesado(PrestamoPlantaActualizarImporteProcesado PrestamoPlanta)
+        {
+            int result = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@PrestamoPlantaId", PrestamoPlanta.PrestamoPlantaId);
+            parameters.Add("@EstadoId", PrestamoPlanta.EstadoId);
+            parameters.Add("@ImporteProcesado", PrestamoPlanta.ImporteProcesado);
+            parameters.Add("@FechaUltimaActualizacion", PrestamoPlanta.FechaUltimaActualizacion);
+            parameters.Add("@UsuarioUltimaActualizacion", PrestamoPlanta.UsuarioUltimaActualizacion);
+
+
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                result = db.Execute("uspPrestamoPlantaActualizarTotalImporteProcesado", parameters, commandType: CommandType.StoredProcedure);
+            }
+            return result;
+        }
     }
 
 

@@ -49,6 +49,15 @@ namespace CoffeeConnect.Service
        
     }
 
+    public static class DevolucionPrestamoPlantaEstados
+    {
+        public static string Registrado { get { return "01"; } }
+
+        public static string Anulado { get { return "00"; } }
+
+
+    }
+
 
 
     public static class ProductoTipo
@@ -87,6 +96,9 @@ namespace CoffeeConnect.Service
     {
         public static string GuiaRecepcion { get { return "GuiaRecepcion"; } }
         public static string NotaCompra { get { return "NotaCompra"; } }
+
+        public static string DevolucionPrestamoPlanta { get { return "DevolucionPrestamoPlanta"; } }
+        
         public static string NotaIngresoAlmacen { get { return "NotaIngresoAlmacen"; } }
         public static string Lote { get { return "Lote"; } }
         public static string Productor { get { return "Productor"; } }
