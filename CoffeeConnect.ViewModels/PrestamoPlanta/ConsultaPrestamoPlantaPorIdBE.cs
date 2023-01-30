@@ -21,6 +21,8 @@ namespace CoffeeConnect.DTO
 
         public string FondoPrestamo { get; set; }
 
+        public string DetallePrestamo { get; set; }
+
         public decimal Saldo
         { get; set; }
 
