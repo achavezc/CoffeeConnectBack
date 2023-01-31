@@ -45,8 +45,7 @@ namespace CoffeeConnect.Repository
             int result = 0;
 
             var parameters = new DynamicParameters();
-            
-            parameters.Add("@DevolucionPrestamoPlantaId", DevolucionPrestamoPlanta.DevolucionPrestamoPlantaId);
+                         
             parameters.Add("@EmpresaId", DevolucionPrestamoPlanta.EmpresaId);
             parameters.Add("@PrestamoPlantaId", DevolucionPrestamoPlanta.PrestamoPlantaId);
             parameters.Add("@Numero", DevolucionPrestamoPlanta.Numero);
@@ -60,6 +59,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EstadoId", DevolucionPrestamoPlanta.EstadoId);
             parameters.Add("@FechaRegistro", DevolucionPrestamoPlanta.FechaRegistro);
             parameters.Add("@UsuarioRegistro", DevolucionPrestamoPlanta.UsuarioRegistro);
+            parameters.Add("@DevolucionPrestamoPlantaId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
@@ -86,6 +86,7 @@ namespace CoffeeConnect.Repository
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
+
                 return db.Query<ConsultaDevolucionPrestamoPlantaBE>("uspDevolucionPrestamoPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
         }
