@@ -12,6 +12,7 @@ namespace CoffeeConnect.DTO
         }
 
         public string Numero { get; set; }
+        public int PrestamoPlantaId { get; set; }
 
         
         public string DestinoDevolucionId { get; set; }
