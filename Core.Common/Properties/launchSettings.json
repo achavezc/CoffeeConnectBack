@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Core.Common": {
+      "commandName": "Project"
+    },
+    "CoffeeConnect.API": {
+      "commandName": "Project"
+    }
+  }
+}
