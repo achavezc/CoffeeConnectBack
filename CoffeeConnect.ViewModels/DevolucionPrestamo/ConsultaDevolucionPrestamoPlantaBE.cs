@@ -46,6 +46,8 @@ namespace CoffeeConnect.DTO
         public string Observaciones
         { get; set; }
 
+        public string ObservacionAnulacion { get; set; }
+
         public string EstadoId
         { get; set; }
           
