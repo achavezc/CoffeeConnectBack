@@ -126,8 +126,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@MonedaId", DevolucionPrestamoPlanta.MonedaId);
             parameters.Add("@Importe", DevolucionPrestamoPlanta.Importe);
             parameters.Add("@ImporteCambio", DevolucionPrestamoPlanta.ImporteCambio);
-            parameters.Add("@Observaciones", DevolucionPrestamoPlanta.Observaciones);
-            parameters.Add("@EstadoId", DevolucionPrestamoPlanta.EstadoId);
+            parameters.Add("@Observaciones", DevolucionPrestamoPlanta.Observaciones);             
             parameters.Add("@FechaUltimaActualizacion", DevolucionPrestamoPlanta.FechaUltimaActualizacion);
             parameters.Add("@UsuarioUltimaActualizacion", DevolucionPrestamoPlanta.UsuarioUltimaActualizacion);
 
