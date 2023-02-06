@@ -16,7 +16,7 @@ namespace CoffeeConnect.DTO
         
         public string FondoPrestamoId { get; set; }
 
-        public string DetallePrestamo { get; set; }
+        public string MonedaId { get; set; }
 
          
 

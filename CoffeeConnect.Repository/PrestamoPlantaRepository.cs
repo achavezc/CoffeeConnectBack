@@ -63,8 +63,8 @@ namespace CoffeeConnect.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("@Numero", request.Numero);
-            parameters.Add("@FondoPrestamoId", request.FondoPrestamoId);
-            parameters.Add("@DetallePrestamo", request.DetallePrestamo);                      
+            parameters.Add("@FondoPrestamoId", request.FondoPrestamoId);             
+            parameters.Add("@MonedaId", request.MonedaId);            
             parameters.Add("@FechaInicio", request.FechaInicio);
             parameters.Add("@FechaFin", request.FechaFin);
             parameters.Add("@EmpresaId", request.EmpresaId);           
