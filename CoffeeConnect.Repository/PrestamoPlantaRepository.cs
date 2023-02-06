@@ -69,6 +69,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@FechaFin", request.FechaFin);
             parameters.Add("@EmpresaId", request.EmpresaId);           
             parameters.Add("@EstadoId", request.EstadoId);
+            parameters.Add("@MonedaId", request.MonedaId);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
