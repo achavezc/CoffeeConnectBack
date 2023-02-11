@@ -24,7 +24,7 @@ namespace CoffeeConnect.DTO
         public DateTime FechaFin { get; set; }      
          
         public string EstadoId { get; set; }
-        public string MonedaId { get; set; }
+
         public int EmpresaId { get; set; }
     }
 }

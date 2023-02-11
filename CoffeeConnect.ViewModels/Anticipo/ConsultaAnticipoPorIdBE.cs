@@ -13,7 +13,9 @@ namespace CoffeeConnect.DTO.Anticipo
         public string RucProveedor { get; set; }
         public string NumeroNotaIngresoPlanta { get; set; }
 
-      
+        public string Destinatario { get; set; }
+        public string RucEmpresa { get; set; }
+
         public string  RazonSocialProveedor { get; set; }
         public string MonedaId { get; set; }
         public decimal Monto { get; set; }
