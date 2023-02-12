@@ -92,12 +92,14 @@ namespace CoffeeConnect.DTO
         public decimal? PrecioNivelFijacion { get; set; }
 
         public decimal? PrecioNivelFijacionCompra { get; set; }
-        public decimal? PUTotalACompra { get; set; }
+        public decimal? PUTotalAContratoCompra { get; set; }
 
         public decimal? Diferencial { get; set; }
         public decimal? DiferencialCompra { get; set; }
 
         public decimal? PUTotalA { get; set; }
+
+        
 
         public decimal? TotalFactura1Compra { get; set; }
 
@@ -131,6 +133,12 @@ namespace CoffeeConnect.DTO
         public DateTime? FechaContratoCompra { get; set; }
         public string RucProductor { get; set; }
         public string Productor { get; set; }
+
+        public string Departamento { get; set; }
+
+        public string Provincia { get; set; }
+
+
         public string Distrito { get; set; }
         public string NumeroContenedor { get; set; }
         public decimal? Cantidad { get; set; }
@@ -148,6 +156,17 @@ namespace CoffeeConnect.DTO
         public DateTime? FechaFacturaCompra { get; set; }
         public string MontoFacturaCompra { get; set; }
         public string MonedaFactura { get; set; }
+
+
+
+        public decimal? KilosNetosQQContratoCompra { get; set; }
+
+        public decimal? KilosNetosLBContratoCompra { get; set; }
+
+        public decimal? PrecioNivelFijacionContratoCompra { get; set; }
+        public decimal? DiferencialContratoCompra { get; set; }
+
+
 
         public decimal? PrecioQQVenta { get; set; }
         public decimal? PrecioQQCompra { get; set; }
