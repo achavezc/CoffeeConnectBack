@@ -19,6 +19,9 @@ namespace CoffeeConnect.DTO
         public string PeriodosCosecha
         { get; set; }
 
+        public string PlantaProcesoAlmacenId
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the ClienteId value.
         /// </summary>

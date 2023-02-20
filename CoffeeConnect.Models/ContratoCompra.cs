@@ -17,6 +17,11 @@ namespace CoffeeConnect.Models
         public string Numero
         { get; set; }
 
+
+        public string PlantaProcesoAlmacenId
+        { get; set; }
+
+
         /// <summary>
         /// Gets or sets the ClienteId value.
         /// </summary>

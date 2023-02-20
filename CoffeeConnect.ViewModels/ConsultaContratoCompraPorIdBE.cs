@@ -36,6 +36,8 @@ namespace CoffeeConnect.DTO
         { get; set; }
 
 
+        
+
         public string PeriodosCosecha
         { get; set; }
 
@@ -47,8 +49,16 @@ namespace CoffeeConnect.DTO
         public string FloId
         { get; set; }
 
-      
-        
+
+        public string PlantaProcesoAlmacenId
+        { get; set; }
+
+        public string PlantaProcesoAlmacen
+        { get; set; }
+
+
+
+
 
 
         /// <summary>

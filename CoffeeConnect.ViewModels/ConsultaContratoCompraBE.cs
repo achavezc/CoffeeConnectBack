@@ -23,6 +23,14 @@ namespace CoffeeConnect.DTO
         public int ProductorId
         { get; set; }
 
+
+        public string PlantaProcesoAlmacenId
+        { get; set; }
+
+        public string PlantaProcesoAlmacen
+        { get; set; }
+
+
         /// <summary>
         /// Gets or sets the TipoDocumentoId value.
         /// </summary>
