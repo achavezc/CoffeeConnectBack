@@ -38,8 +38,8 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("@Numero", request.Numero);
             parameters.Add("@NumeroNotaIngresoPlanta", request.NumeroNotaIngresoPlanta);
-            parameters.Add("@RucProveedor", request.RucProveedor);
-            parameters.Add("@RazonSocialProveedor", request.RazonSocialProveedor);           
+            parameters.Add("@@RucEmpresa", request.RucEmpresa);
+            parameters.Add("@@RazonSocialEmpresa", request.RazonSocialEmpresa);           
             parameters.Add("@EstadoId", request.EstadoId);
             parameters.Add("@EmpresaId", request.EmpresaId);
             parameters.Add("@FechaInicio", request.FechaInicio);

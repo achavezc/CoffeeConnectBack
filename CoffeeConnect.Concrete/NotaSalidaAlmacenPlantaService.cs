@@ -491,7 +491,7 @@ namespace CoffeeConnect.Service
                 cabeceraNotaSalidaAlmacenPlanta.NumeroGuiaRemision = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.Numero) ? consultaImpresionNotaSalidaAlmacenPlanta.Numero.Trim() : String.Empty;
                 cabeceraNotaSalidaAlmacenPlanta.RucDestinatario = !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.RucDestinatario) ? consultaImpresionNotaSalidaAlmacenPlanta.RucDestinatario.Trim() : String.Empty;
                 cabeceraNotaSalidaAlmacenPlanta.FechaEmision = DateTime.Now;
-                cabeceraNotaSalidaAlmacenPlanta.FechaEmisionString = DateTime.Now.ToString("dd/MM/yyyy");
+                cabeceraNotaSalidaAlmacenPlanta.FechaEmisionString = consultaImpresionNotaSalidaAlmacenPlanta.FechaRegistro.ToString("dd/MM/yyyy");
                 cabeceraNotaSalidaAlmacenPlanta.FechaEntregaTransportista = DateTime.Now;
                 cabeceraNotaSalidaAlmacenPlanta.FechaEntregaTransportistaString = DateTime.Now.ToString("dd/MM/yyyy");
                 cabeceraNotaSalidaAlmacenPlanta.CGR = "";// !string.IsNullOrEmpty(consultaImpresionNotaSalidaAlmacenPlanta.NumeroGuiaRemision) ? consultaImpresionNotaSalidaAlmacenPlanta.NumeroGuiaRemision.Trim() : String.Empty;

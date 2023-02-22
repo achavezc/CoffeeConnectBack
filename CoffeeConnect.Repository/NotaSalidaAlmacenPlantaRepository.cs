@@ -158,6 +158,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("@EmpresaIdDestino", request.EmpresaIdDestino);
             parameters.Add("@EmpresaTransporteId", request.EmpresaTransporteId);
             parameters.Add("@AlmacenId", request.AlmacenId);
+            parameters.Add("@CodigoTipoConcepto", request.CodigoTipoConcepto);
+            parameters.Add("@CodigoCampania", request.CodigoCampania);
             parameters.Add("@MotivoSalidaId", request.MotivoSalidaId);
             parameters.Add("@EstadoId", request.EstadoId);
             parameters.Add("@EmpresaId", request.EmpresaId);

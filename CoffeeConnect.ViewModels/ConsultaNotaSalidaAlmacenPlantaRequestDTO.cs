@@ -13,6 +13,8 @@ namespace CoffeeConnect.DTO
         public int? EmpresaIdDestino { get; set; }
         public int? EmpresaTransporteId { get; set; }
         public String AlmacenId { get; set; }
+        public string CodigoTipoConcepto { get; set; }
+        public string CodigoCampania { get; set; }
 
         public String EstadoId { get; set; }
         public String MotivoSalidaId { get; set; }

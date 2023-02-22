@@ -10,9 +10,15 @@ namespace CoffeeConnect.DTO.Anticipo
 
         public string NumeroNotaIngresoPlanta { get; set; }
 
-        public string RucProveedor { get; set; }
+        //    public string RucProveedor { get; set; }
 
-        public string RazonSocialProveedor { get; set; }
+        //  public string RazonSocialProveedor { get; set; }
+
+
+          public string RucEmpresa { get; set; }
+
+         public string RazonSocialEmpresa { get; set; }
+
 
         public string EstadoId { get; set; }
 
