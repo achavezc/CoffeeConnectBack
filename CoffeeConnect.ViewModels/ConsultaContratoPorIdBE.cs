@@ -30,6 +30,13 @@ namespace CoffeeConnect.DTO
         public int ClienteId
         { get; set; }
 
+
+        public decimal TotalSacosAsignados
+        { get; set; }
+
+        public decimal TotalSacosPendientes
+        { get; set; }
+
         public string PeriodosCosecha
         { get; set; }
 

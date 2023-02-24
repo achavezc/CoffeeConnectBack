@@ -34,6 +34,14 @@ namespace CoffeeConnect.DTO
         public decimal? CantidadContenedores
         { get; set; }
 
+
+        public decimal TotalSacosAsignados
+        { get; set; }
+
+        public decimal TotalSacosPendientes
+        { get; set; }
+
+
         public DateTime FechaEmbarque { get; set; }
         public string ProductoId { get; set; }
         public string SubProductoId { get; set; }
