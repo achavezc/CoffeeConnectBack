@@ -177,6 +177,20 @@ namespace CoffeeConnect.DTO
 
 
 
+        public decimal CantidadDisponible
+        { get; set; }
+
+        public decimal KilosNetosDisponibles
+        { get; set; }
+
+
+        public decimal TotalSacosContratoVenta
+        { get; set; }
+
+        public decimal KilosNetosQQContratoVenta
+        { get; set; }
+
+
         /// <summary>
         /// Gets or sets the PreparacionCantidadDefectos value.
         /// </summary>
