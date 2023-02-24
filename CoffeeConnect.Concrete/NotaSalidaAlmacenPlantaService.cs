@@ -107,6 +107,7 @@ namespace CoffeeConnect.Service
                         notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.KilosBrutos;
                         notaSalidaAlmacenPlantaDetalle.KilosNetos = x.KilosNetos;
                         notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
+                        notaSalidaAlmacenPlantaDetalle.Numero = x.Numero;
 
 
                         //lstnotaSalidaAlmacen.Add(obj);
@@ -283,6 +284,7 @@ namespace CoffeeConnect.Service
                         notaSalidaAlmacenPlantaDetalle.KilosBrutos = x.KilosBrutos;
                         notaSalidaAlmacenPlantaDetalle.KilosNetos = x.KilosNetos;
                         notaSalidaAlmacenPlantaDetalle.Tara = x.Tara;
+                        notaSalidaAlmacenPlantaDetalle.Numero = x.Numero;
 
                         //lstnotaSalidaAlmacen.Add(obj);
 

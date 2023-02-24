@@ -18,6 +18,8 @@ namespace CoffeeConnect.Models
 		public int? NotaIngresoAlmacenPlantaId
 		{ get; set; }
 
+		public string Numero { get; set; }
+
 		public int? NotaIngresoProductoTerminadoAlmacenPlantaId
 		{ get; set; }
 
