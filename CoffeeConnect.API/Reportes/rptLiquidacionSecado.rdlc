@@ -2057,7 +2057,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>CERTIFICADORA</Value>
+                <Value>CERTIFICACIÓN</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -2167,7 +2167,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!EntidadCertificadora.Value, "dsLiquidacionProceso")</Value>
+                <Value>=First(Fields!Certificacion.Value, "dsLiquidacionProceso")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -2602,7 +2602,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Trim(First(Fields!FechaRegistroString.Value, "dsLiquidacionProceso"))</Value>
+                  <Value>=Trim(First(Fields!FechaFinProcesoString.Value, "dsLiquidacionProceso"))</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontSize>8pt</FontSize>

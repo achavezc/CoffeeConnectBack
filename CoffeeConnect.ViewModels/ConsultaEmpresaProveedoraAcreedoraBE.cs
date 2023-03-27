@@ -98,6 +98,11 @@ namespace CoffeeConnect.DTO
 		public string Floid
 		{ get; set; }
 
+		public string Vencidos
+		{ get; set; }
+
+		
+
 		#endregion
 	}
 }

@@ -25,6 +25,8 @@ namespace CoffeeConnect.Interface.Repository
         int DesasignarContratoCompra(int contratoVentaId, int contratoCompraId, DateTime fecha, string usuario, string estadoId, string contratoVentaEstadoId);
 
 
+        int ActualizarTotalSacosContratoVenta(int contratoCompraId, decimal totalSacosContratoVenta, decimal kilosNetosQQContratoVenta, DateTime fecha, string usuario, string estadoId);
+
         ConsultaContratoCompraPorIdBE ConsultarContratoCompraPorContratoVentaId(int ContratoVentaId);
 
     }

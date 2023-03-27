@@ -20,7 +20,12 @@ namespace CoffeeConnect.DTO
 		public DateTime FechaContrato
 		{ get; set; }
 
+		public string TipoCertificacionId
+		{ get; set; }
 
+		public string TipoCertificacion
+		{ get; set; }
+		
 
 
 		public int EmpresaAgenciaAduaneraId
@@ -175,6 +180,12 @@ namespace CoffeeConnect.DTO
 
 		public DateTime? FechaFacturacion
 		{ get; set; }
+
+
+		public DateTime? FechaPagoFactura
+		{ get; set; }
+
+		
 
 		/// <summary>
 		/// Gets or sets the EmpresaProductoraId value.

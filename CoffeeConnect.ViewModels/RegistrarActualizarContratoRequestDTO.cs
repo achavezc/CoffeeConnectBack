@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CoffeeConnect.Models;
+using System;
+using System.Collections.Generic;
 
 namespace CoffeeConnect.DTO
 {
@@ -150,6 +152,12 @@ namespace CoffeeConnect.DTO
         public decimal PreparacionCantidadDefectos
         { get; set; }
 
+
+        public decimal? TotalContratosAsignados { get; set; }
+
+        public bool ExistePerdida { get; set; }
+
+
         /// <summary>
         /// Gets or sets the RequiereAprobacionMuestra value.
         /// </summary>
@@ -218,6 +226,13 @@ namespace CoffeeConnect.DTO
         public string NumeroFacturaVenta { get; set; }
         public string MonedaFacturaVenta { get; set; }
         public decimal? MontoFacturaVenta { get; set; }
+
+        public decimal? TotalSacosAsignados { get; set; }
+
+
+        
+
+        public List<ContratoDetalle> ContratoDetalle { get; set; }
 
     }
 }

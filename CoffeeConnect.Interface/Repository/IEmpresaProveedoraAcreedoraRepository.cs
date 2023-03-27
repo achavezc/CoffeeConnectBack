@@ -16,6 +16,7 @@ namespace CoffeeConnect.Interface.Repository
         int Insertar(EmpresaProveedoraAcreedora EmpresaProveedoraAcreedora);
 
         IEnumerable<ConsultaEmpresaProveedoraAcreedoraCertificacionPorIdBE> ConsultarEmpresaProveedoraAcreedoraCertificacionPorId(int empresaProveedoraAcreedoraId);
+        IEnumerable<ConsultaEmpresaProveedoraAcreedoraBE> ValidarEmpresaProveedoraAcreedora(string ruc, int empresaId);
 
         int ActualizarEmpresaProveedoraAcreedoraCertificacion(List<EmpresaProveedoraAcreedoraCertificacionTipo> request, int empresaProveedoraAcreedoraCertificacionId);
 

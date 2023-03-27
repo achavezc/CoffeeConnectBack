@@ -140,6 +140,7 @@ namespace CoffeeConnect.DTO
         /// </summary>
         public string TipoCertificacionId
         { get; set; }
+ 
 
         public string TipoContratoId
         { get; set; }
@@ -306,6 +307,7 @@ namespace CoffeeConnect.DTO
         public decimal? MontoFactura { get; set; }
 
 
+        public List<ContratoDetalleBE> Detalle { get; set; }
 
 
         #endregion

@@ -34,6 +34,19 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<ConsultaEmpresaProveedoraAcreedoraBE> ValidarEmpresaProveedoraAcreedora(string ruc, int empresaId)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("Ruc", ruc);
+            parameters.Add("EmpresaId", empresaId);          
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ConsultaEmpresaProveedoraAcreedoraBE>("uspEmpresaProveedoraAcreedoraValidar", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public int Insertar(EmpresaProveedoraAcreedora EmpresaProveedoraAcreedora)
         {
             int result = 0;

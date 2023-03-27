@@ -3,6 +3,7 @@ using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Repository;
 using CoffeeConnect.Interface.Service;
 using CoffeeConnect.Models;
+using Core.Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,15 @@ namespace CoffeeConnect.Service
             EmpresaProveedoraAcreedora empresaProveedoraAcreedora = _Mapper.Map<EmpresaProveedoraAcreedora>(request);
             empresaProveedoraAcreedora.FechaRegistro = DateTime.Now;
             empresaProveedoraAcreedora.UsuarioRegistro = request.Usuario;
+
+
+            var list = _IEmpresaProveedoraAcreedoraRepository.ValidarEmpresaProveedoraAcreedora(request.Ruc, request.EmpresaId);
+
+            if (list.ToList().Count > 0)
+            {
+                throw new ResultException(new Result { ErrCode = "01", Message = "La Empresa ya se encuentra registrada." });
+            }
+
 
 
             int id = _IEmpresaProveedoraAcreedoraRepository.Insertar(empresaProveedoraAcreedora);

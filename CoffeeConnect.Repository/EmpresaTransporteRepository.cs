@@ -33,6 +33,19 @@ namespace CoffeeConnect.Repository
             }
         }
 
+        public IEnumerable<EmpresaTransporteBE> ValidarEmpresaTransporte(string ruc, int empresaId)
+        {
+            var parameters = new DynamicParameters();
+
+            parameters.Add("Ruc", ruc);
+            parameters.Add("EmpresaId", empresaId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<EmpresaTransporteBE>("uspEmpresaTransporteValidar", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public IEnumerable<ConsultaTransportistaBE> ConsultarTransportista(ConsultaTransportistaRequestDTO request)
         {
             var parameters = new DynamicParameters();

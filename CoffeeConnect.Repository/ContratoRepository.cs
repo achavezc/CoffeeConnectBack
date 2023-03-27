@@ -121,6 +121,9 @@ namespace CoffeeConnect.Repository
             parameters.Add("@NumeroFactura", contrato.NumeroFacturaVenta);
             parameters.Add("@MonedaIdFactura", contrato.MonedaFacturaVenta);
             parameters.Add("@MontoFactura", contrato.MontoFacturaVenta);
+            
+
+           
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -201,11 +204,14 @@ namespace CoffeeConnect.Repository
             parameters.Add("@pTotalFacturar3", contrato.TotalFacturar3);
             parameters.Add("@EstadoPagoFacturaId", contrato.EstadoPagoFacturaId);
             parameters.Add("@FechaPagoFactura", contrato.FechaPagoFactura);
+            parameters.Add("@TotalContratosAsignados", contrato.TotalContratosAsignados);
+            parameters.Add("@ExistePerdida", contrato.ExistePerdida);
 
             parameters.Add("@NumeroFactura", contrato.NumeroFacturaVenta);
             parameters.Add("@MonedaIdFactura", contrato.MonedaFacturaVenta);
             parameters.Add("@MontoFactura", contrato.MontoFacturaVenta);
-
+            parameters.Add("@TotalSacosAsignados", contrato.TotalSacosAsignados);
+            parameters.Add("@GananciaNeta", contrato.GananciaNeta);
 
             using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
             {
@@ -430,6 +436,64 @@ namespace CoffeeConnect.Repository
 
             return cantidadContratos;
         }
+
+
+        public int InsertarContratoDetalle(ContratoDetalle contratoDetalle)
+        {
+            int result = 0;
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", contratoDetalle.ContratoId);
+            parameters.Add("@ContratoCompraId", contratoDetalle.ContratoCompraId);
+            parameters.Add("@Cantidad", contratoDetalle.Cantidad);
+            parameters.Add("@CantidadContenedores", contratoDetalle.CantidadContenedores);
+            parameters.Add("@Comision", contratoDetalle.Comision);
+            parameters.Add("@TotalFacturar1", contratoDetalle.TotalFacturar1);
+            parameters.Add("@PrecioQQVenta", contratoDetalle.PrecioQQVenta);
+            parameters.Add("@PrecioQQCompra", contratoDetalle.PrecioQQCompra);
+            parameters.Add("@UtilidadBruta", contratoDetalle.UtilidadBruta);
+            parameters.Add("@UtilidadNeta", contratoDetalle.UtilidadNeta);
+            parameters.Add("@GananciaNeta", contratoDetalle.GananciaNeta);
+            parameters.Add("@KilosNetosQQ", contratoDetalle.KilosNetosQQ);
+            
+
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                db.Execute("uspContratoDetalleInsertar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return result;
+        }
+
+
+        public int EliminarContratoDetalle(int contratoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", contratoId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspContratoDetalleEliminar", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
+        public IEnumerable<ContratoDetalleBE> ConsultarContratoDetallePorId(int ContratoId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoId", ContratoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                return db.Query<ContratoDetalleBE>("uspContratoDetalleConsultaPorId", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
 
     }
 }

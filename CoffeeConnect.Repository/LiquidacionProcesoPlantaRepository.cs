@@ -93,7 +93,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@ProductoIdTerminado", liquidacionProcesoPlanta.ProductoIdTerminado);
             parameters.Add("@EntidadCertificadoraId", liquidacionProcesoPlanta.EntidadCertificadoraId);
             parameters.Add("@FechaInicioProceso", liquidacionProcesoPlanta.FechaInicioProceso);
-            parameters.Add("@FechaFinProceso", liquidacionProcesoPlanta.FechaInicioProceso);
+            parameters.Add("@FechaFinProceso", liquidacionProcesoPlanta.FechaFinProceso);
             parameters.Add("@EmpaqueId", liquidacionProcesoPlanta.EmpaqueId);
             parameters.Add("@TipoId", liquidacionProcesoPlanta.TipoId);
             parameters.Add("@CertificacionId", liquidacionProcesoPlanta.CertificacionId);

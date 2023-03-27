@@ -129,7 +129,7 @@ namespace CoffeeConnect.Service
 
                 DateTime? fechaRegistro=null;
 
-                if (OrdenProcesoPlanta.TipoProcesoId =="03") //Reproceso
+                if (OrdenProcesoPlanta.TipoProcesoId =="03" || OrdenProcesoPlanta.TipoProcesoId == "04") //Reproceso o Transformacion (Resultado Secado)
                 {
                     ConsultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE consultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE =_INotaIngresoProductoTerminadoAlmacenPlantaRepository.ConsultarNotaIngresoProductoTerminadoAlmacenPlantaPorId(detalle.NotaIngresoAlmacenPlantaId);
                     cantidadOrdenProceso = consultaNotaIngresoProductoTerminadoAlmacenPlantaPorIdBE.CantidadOrdenProceso;
@@ -146,7 +146,6 @@ namespace CoffeeConnect.Service
                     }
 
                     _INotaIngresoProductoTerminadoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoAlmacenPlantaId, cantidadOrdenProceso + detalle.Cantidad, kilosNetosOrdenProceso + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
-
                 }
                 else
                 {
@@ -165,7 +164,6 @@ namespace CoffeeConnect.Service
                     }
 
                     _INotaIngresoAlmacenPlantaRepository.ActualizarCantidadOrdenProcesoEstado(detalle.NotaIngresoAlmacenPlantaId, cantidadOrdenProceso + detalle.Cantidad, kilosNetosOrdenProceso + detalle.KilosNetos, DateTime.Now, request.Usuario, estado);
-
                 }
 
 

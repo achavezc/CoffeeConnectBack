@@ -216,6 +216,27 @@ namespace CoffeeConnect.Repository
             return result;
         }
 
+
+        public int ActualizarTotalSacosContratoVenta(int contratoCompraId, decimal totalSacosContratoVenta, decimal kilosNetosQQContratoVenta, DateTime fecha, string usuario, string estadoId)
+        {
+            int affected = 0;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@ContratoCompraId", contratoCompraId);
+            parameters.Add("@TotalSacosContratoVenta", totalSacosContratoVenta);
+            parameters.Add("@KilosNetosQQContratoVenta", kilosNetosQQContratoVenta);
+            parameters.Add("@Fecha", fecha);
+            parameters.Add("@Usuario", usuario);
+            parameters.Add("@EstadoId", estadoId);
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                affected = db.Execute("uspContratoCompraActualizarTotalSacosContratoVentaEstado", parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return affected;
+        }
+
         public int ActualizarEstado(int ContratoCompraId, DateTime fecha, string usuario, string estadoId)
         {
             int affected = 0;

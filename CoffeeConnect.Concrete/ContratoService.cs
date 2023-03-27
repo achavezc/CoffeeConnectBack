@@ -110,7 +110,10 @@ namespace CoffeeConnect.Service
             contrato.UsuarioRegistro = request.Usuario;
             //contrato.Numero = _ICorrelativoRepository.Obtener(null, Documentos.Contrato);
 
-            var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
+
+            
+
+                var AdjuntoBl = new AdjuntarArchivosBL(_fileServerSettings);
             byte[] fileBytes = null;
 
             if (file != null)
@@ -174,6 +177,8 @@ namespace CoffeeConnect.Service
                 throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionContratoExistente.Label" });
 
             }
+
+            
 
             int affected = _IContratoRepository.Insertar(contrato);
 
@@ -245,6 +250,9 @@ namespace CoffeeConnect.Service
                     });
 
                     contrato.PathArchivo = _fileServerSettings.Value.Contrato + "\\" + response.ficheroReal;
+
+
+
                 }
             }
 
@@ -270,14 +278,132 @@ namespace CoffeeConnect.Service
             //        contrato.PathArchivo = _fileServerSettings.Value.FincasCertificacion + "\\" + response.ficheroReal;
             //    }
             //}
+
+            if (request.EmpresaId != 1)
+            {
+                List<ContratoDetalleBE> contratoDetalleActual = _IContratoRepository.ConsultarContratoDetallePorId(request.ContratoId).ToList();
+
+
+                foreach (ContratoDetalleBE detalle in contratoDetalleActual)
+                {
+                    ConsultaContratoCompraPorIdBE consultaContratoCompraPorIdBE = _IContratoCompraRepository.ConsultarContratoCompraPorId(detalle.ContratoCompraId);
+
+                    
+
+                    string estado = ContratoCompraEstados.Asignado;
+
+                    if (consultaContratoCompraPorIdBE.TotalSacosContratoVenta - detalle.Cantidad == 0)
+                    {
+                        estado = ContratoCompraEstados.Activo;
+                    }
+
+                    _IContratoCompraRepository.ActualizarTotalSacosContratoVenta(detalle.ContratoCompraId, consultaContratoCompraPorIdBE.TotalSacosContratoVenta - detalle.Cantidad, consultaContratoCompraPorIdBE.KilosNetosQQContratoVenta - detalle.KilosNetosQQ,DateTime.Now, request.Usuario, estado);
+
+                   
+                }
+
+
+
+                _IContratoRepository.EliminarContratoDetalle(request.ContratoId);
+                
+
+                if (request.ContratoDetalle != null && request.ContratoDetalle.Count > 0)
+                {
+                    contrato.TotalContratosAsignados = request.ContratoDetalle.Count;
+
+                    bool existePerdida = false;
+
+                    decimal gananciaNeta = 0;
+
+                    foreach (ContratoDetalle contratoDetalle in request.ContratoDetalle)
+                    {
+                        decimal totalSacosContratoVenta = 0;
+                        decimal kilosNetosQQContratoVenta = 0;
+                        decimal totalSacosDisponibles = 0;
+
+                        gananciaNeta = gananciaNeta + contratoDetalle.GananciaNeta;
+
+                        if (contratoDetalle.GananciaNeta < 0)
+                        {
+                            existePerdida = true;                            
+                        }
+                          
+
+                        ConsultaContratoCompraPorIdBE consultaContratoCompraPorIdBE = _IContratoCompraRepository.ConsultarContratoCompraPorId(contratoDetalle.ContratoCompraId);
+                        totalSacosContratoVenta = consultaContratoCompraPorIdBE.TotalSacosContratoVenta;
+                        kilosNetosQQContratoVenta = consultaContratoCompraPorIdBE.KilosNetosQQContratoVenta;
+
+                        totalSacosDisponibles = consultaContratoCompraPorIdBE.TotalSacos - totalSacosContratoVenta;
+                        
+                       
+
+                        string estado = ContratoCompraEstados.Asignado;
+
+                        if (contratoDetalle.Cantidad >= totalSacosDisponibles)
+                        {
+                            estado = ContratoCompraEstados.Completado;
+                        }
+
+                        _IContratoCompraRepository.ActualizarTotalSacosContratoVenta(contratoDetalle.ContratoCompraId, totalSacosContratoVenta + contratoDetalle.Cantidad, kilosNetosQQContratoVenta + contratoDetalle.KilosNetosQQ, DateTime.Now, request.Usuario, estado);
+
+
+                    }
+                    contrato.ExistePerdida = existePerdida;
+                    contrato.GananciaNeta = gananciaNeta;
+
+                    if (contrato.TotalSacos - contrato.TotalSacosAsignados == 0)
+                    {
+                        contrato.EstadoId = ContratoEstados.Completado;
+                    }
+                    else
+                    {
+                        contrato.EstadoId = ContratoEstados.Asignado;
+                    }
+                }
+                else
+                {
+                    contrato.TotalContratosAsignados = 0;
+                    contrato.ExistePerdida = false;
+                    contrato.EstadoId = ContratoEstados.Activo;
+                }
+
+            }
+
             int affected = _IContratoRepository.Actualizar(contrato);
+
+            
+
+            if (request.EmpresaId != 1 && request.ContratoDetalle != null && request.ContratoDetalle.Count > 0)
+            {
+                foreach (ContratoDetalle contratoDetalle in request.ContratoDetalle)
+                {
+                    contratoDetalle.ContratoId = request.ContratoId;
+
+                    _IContratoRepository.InsertarContratoDetalle(contratoDetalle);
+
+                   // _IContratoCompraRepository.ActualizarEstado(contratoDetalle.ContratoCompraId, DateTime.Now, request.Usuario, ContratoCompraEstados.Asignado);
+                }
+            }
 
             return affected;
         }
 
         public ConsultaContratoPorIdBE ConsultarContratoPorId(ConsultaContratoPorIdRequestDTO request)
         {
-            return _IContratoRepository.ConsultarContratoPorId(request.ContratoId);
+            ConsultaContratoPorIdBE ConsultaContratoPorIdBE = _IContratoRepository.ConsultarContratoPorId(request.ContratoId);
+
+
+            
+
+
+
+
+            if (ConsultaContratoPorIdBE.EmpresaId != 1)
+            {
+                ConsultaContratoPorIdBE.Detalle = _IContratoRepository.ConsultarContratoDetallePorId(request.ContratoId).ToList();
+            }
+
+            return ConsultaContratoPorIdBE;
         }
 
         public int AnularContrato(AnularContratoRequestDTO request)
@@ -312,6 +438,31 @@ namespace CoffeeConnect.Service
         public ConsultarTrackingContratoPorContratoIdBE ConsultarTrackingContratoPorContratoId(ConsultaTrackingContratoPorContratoIdRequestDTO request)
         {
             ConsultarTrackingContratoPorContratoIdBE consultarTrackingContratoPorContratoIdBE =  _IContratoRepository.ConsultarTrackingContratoPorContratoId(request.ContratoId,request.Idioma);
+
+            string[] certificacionesIds = consultarTrackingContratoPorContratoIdBE.TipoCertificacionId.Split('|');
+
+            string certificacionLabel = string.Empty;
+
+            List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(consultarTrackingContratoPorContratoIdBE.EmpresaId, String.Empty).ToList();
+
+            if (certificacionesIds.Length > 0)
+            {
+                List<ConsultaDetalleTablaBE> certificaciones = lista.Where(a => a.CodigoTabla.Trim().Equals("TipoCertificacion")).ToList();
+
+                foreach (string certificacionId in certificacionesIds)
+                {
+
+                    ConsultaDetalleTablaBE certificacion = certificaciones.Where(a => a.Codigo == certificacionId).FirstOrDefault();
+
+                    if (certificacion != null)
+                    {
+                        certificacionLabel = certificacionLabel + certificacion.Label + " ";
+                    }
+                }
+
+                consultarTrackingContratoPorContratoIdBE.TipoCertificacion = certificacionLabel;
+
+            }
 
             consultarTrackingContratoPorContratoIdBE.Cargamentos = _IContratoRepository.ConsultarTrackingContratoCargamentoPorContratoId(request.ContratoId, request.Idioma).ToList();
 

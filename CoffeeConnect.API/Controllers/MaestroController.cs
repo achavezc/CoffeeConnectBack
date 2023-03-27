@@ -63,17 +63,20 @@ namespace Integracion.Deuda.Controller
                     DateTime fin = DateTime.Now.AddMonths(1);
                     DateTime inicio = DateTime.Now.AddYears(-2);
                     DateTime temp = inicio;
+                    int cont = 0;
                     while (temp <= fin) 
                     {
                         ConsultaDetalleTablaBE consultaDetalleTablaBE = new ConsultaDetalleTablaBE();
-                        consultaDetalleTablaBE.Mnemonico = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(temp.ToString("MMMM", CultureInfo.CreateSpecificCulture("en-US"))) + " " + temp.Year.ToString();
-                        consultaDetalleTablaBE.Label = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(temp.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-Mx"))) + " " + temp.Year.ToString();
+                        consultaDetalleTablaBE.Mnemonico = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(temp.ToString("MM", CultureInfo.CreateSpecificCulture("en-US"))) + "/" + temp.Year.ToString();
+                        consultaDetalleTablaBE.Label = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(temp.ToString("MM", CultureInfo.CreateSpecificCulture("es-Mx"))) + "/" + temp.Year.ToString();
                         consultaDetalleTablaBE.Codigo = temp.Month.ToString() + "-" + temp.Year.ToString();
+                        consultaDetalleTablaBE.IdCatalogoPadre = cont;
+                        cont = cont + 1;
                         lista.Add(consultaDetalleTablaBE);
                         temp = temp.AddMonths(1);
                     }
-
-                        response.Result.Data = lista;
+                   
+                    response.Result.Data = lista.OrderByDescending(x => x.IdCatalogoPadre).ToList();
                 }
                 else
                 {

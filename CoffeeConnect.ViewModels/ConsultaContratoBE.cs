@@ -38,6 +38,18 @@ namespace CoffeeConnect.DTO
         public decimal TotalSacosAsignados
         { get; set; }
 
+        public decimal TotalContratosAsignados
+        { get; set; }
+
+
+        public bool ExistePerdida
+        { get; set; }
+
+        public string ExistePerdidaLabel
+        { get; set; }
+
+
+
         public decimal TotalSacosPendientes
         { get; set; }
 

@@ -117,7 +117,8 @@ namespace CoffeeConnect.Service
             liquidacionProcesoPlanta.ProductoIdTerminado = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
             liquidacionProcesoPlanta.EntidadCertificadoraId = consultaOrdenProcesoPlantaPorIdBE.EntidadCertificadoraId;
             liquidacionProcesoPlanta.FechaInicioProceso = consultaOrdenProcesoPlantaPorIdBE.FechaInicioProceso.Value;
-            liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
+            //liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
+            liquidacionProcesoPlanta.FechaFinProceso = request.FechaFinProceso;
             liquidacionProcesoPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
             liquidacionProcesoPlanta.EmpaqueId = consultaOrdenProcesoPlantaPorIdBE.EmpaqueId;
             liquidacionProcesoPlanta.CertificacionId = consultaOrdenProcesoPlantaPorIdBE.CertificacionId;
@@ -198,7 +199,8 @@ namespace CoffeeConnect.Service
             liquidacionProcesoPlanta.ProductoIdTerminado = consultaOrdenProcesoPlantaPorIdBE.ProductoIdTerminado;
             liquidacionProcesoPlanta.EntidadCertificadoraId = consultaOrdenProcesoPlantaPorIdBE.EntidadCertificadoraId;
             liquidacionProcesoPlanta.FechaInicioProceso = consultaOrdenProcesoPlantaPorIdBE.FechaInicioProceso.Value;
-            liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
+            //liquidacionProcesoPlanta.FechaFinProceso = DateTime.Now;
+            liquidacionProcesoPlanta.FechaFinProceso = request.FechaFinProceso;
             liquidacionProcesoPlanta.EmpaqueId = consultaOrdenProcesoPlantaPorIdBE.EmpaqueId;
             liquidacionProcesoPlanta.TipoId = consultaOrdenProcesoPlantaPorIdBE.TipoId;
 

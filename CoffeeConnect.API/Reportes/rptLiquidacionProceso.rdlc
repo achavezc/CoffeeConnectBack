@@ -471,7 +471,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.25in</Top>
+        <Top>0.24167in</Top>
         <Left>6.02271in</Left>
         <Height>0.18in</Height>
         <Width>3.51395in</Width>
@@ -1894,7 +1894,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!EnvasesProductos.Value, "dsLiquidacionProceso")</Value>
+                <Value />
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1928,7 +1928,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!TrabajosRealizados.Value, "dsLiquidacionProceso")</Value>
+                <Value />
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -1962,7 +1962,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!Observacion.Value, "dsLiquidacionProceso")</Value>
+                <Value />
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>8pt</FontSize>
@@ -2301,7 +2301,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Trim(First(Fields!RazonSocial.Value, "dsLiquidacionProceso"))</Value>
+                  <Value>=First(Fields!RazonSocial.Value, "dsLiquidacionProceso")</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontSize>8pt</FontSize>
@@ -2333,7 +2333,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Trim(First(Fields!Direccion.Value, "dsLiquidacionProceso"))</Value>
+                  <Value>=First(Fields!Direccion.Value, "dsLiquidacionProceso")</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontSize>8pt</FontSize>
@@ -2406,7 +2406,7 @@
                   </Style>
                 </TextRun>
                 <TextRun>
-                  <Value>=Trim(First(Fields!Ruc.Value, "dsLiquidacionProceso"))</Value>
+                  <Value>=First(Fields!Ruc.Value, "dsLiquidacionProceso")</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontSize>8pt</FontSize>
@@ -2474,7 +2474,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Trim(First(Fields!Numero.Value, "dsLiquidacionProceso"))</Value>
+                  <Value>=First(Fields!Numero.Value, "dsLiquidacionProceso")</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontSize>8pt</FontSize>
@@ -2546,7 +2546,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Trim(First(Fields!FechaRegistroString.Value, "dsLiquidacionProceso"))</Value>
+                  <Value>=First(Fields!FechaFinProcesoString.Value, "dsLiquidacionProceso")</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontSize>8pt</FontSize>

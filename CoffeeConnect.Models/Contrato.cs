@@ -76,7 +76,7 @@ namespace CoffeeConnect.Models
 
         public string TipoContratoId
         { get; set; }
-        
+
 
 
         public string SubProductoId
@@ -149,7 +149,7 @@ namespace CoffeeConnect.Models
         public decimal? CantidadContenedores
         { get; set; }
 
-        
+
 
 
         public decimal? PesoKilos
@@ -278,6 +278,19 @@ namespace CoffeeConnect.Models
         public string NumeroFacturaVenta { get; set; }
         public string MonedaFacturaVenta { get; set; }
         public decimal? MontoFacturaVenta { get; set; }
+
+        public decimal? TotalSacosAsignados { get; set; }
+
+        public decimal? GananciaNeta { get; set; }
+
+        
+
+        public decimal? TotalContratosAsignados { get; set; }
+
+        public bool ExistePerdida { get; set; }
+
+
+
 
         #endregion
     }

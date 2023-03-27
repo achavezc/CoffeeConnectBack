@@ -18,5 +18,7 @@ namespace CoffeeConnect.Interface.Repository
         int Actualizar(EmpresaTransporte empresaTransporte);
         int Insertar(EmpresaTransporte empresaTransporte);
 
+        IEnumerable<EmpresaTransporteBE> ValidarEmpresaTransporte(string ruc, int empresaId);
+
     }
 }
