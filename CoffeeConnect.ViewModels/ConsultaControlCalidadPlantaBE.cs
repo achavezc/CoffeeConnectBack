@@ -18,7 +18,11 @@ namespace CoffeeConnect.DTO
 
         public int EmpresaOrigenId { get; set; }
 
-        public string RazonSocial { get; set; }
+        public string TieneDefectosGrave { get; set; }
+        
+
+
+       
         public string TipoProduccionId { get; set; }
         public string TipoProduccion { get; set; }
 
