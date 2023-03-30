@@ -218,6 +218,18 @@ public string Ruc
 		{ get; set; }
 
 		/// <summary>
+		/// Gets or sets the FechaPesado value.
+		/// </summary>
+		public DateTime FechaPesado
+		{ get; set; }
+
+		/// <summary>
+		/// Gets or sets the UsuarioPesado value.
+		/// </summary>
+		public string UsuarioPesado
+		{ get; set; }
+
+		/// <summary>
 		/// Gets or sets the RendimientoPorcentaje value.
 		/// </summary>
 		public decimal? RendimientoPorcentaje
