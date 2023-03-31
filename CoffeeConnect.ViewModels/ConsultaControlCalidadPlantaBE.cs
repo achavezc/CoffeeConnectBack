@@ -23,6 +23,9 @@ namespace CoffeeConnect.DTO
         public string TieneDefectosGrave { get; set; }
 
 
+        public string TieneDefectosOlor { get; set; }
+        public string TieneDefectosColor { get; set; }
+
 
 
         public string TipoProduccionId { get; set; }
