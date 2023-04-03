@@ -230,15 +230,17 @@ namespace CoffeeConnect.Service
                 NotaIngresoPlanta.Tara = tara;
             }
 
-            
+
+            if (NotaIngresoPlanta.MotivoIngresoId == NotaIngresoAlmacenPlantaMotivos.Pesaje)
+            {
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+            }
 
             int notaIngresoPlantaId = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
 
             if(NotaIngresoPlanta.MotivoIngresoId== NotaIngresoAlmacenPlantaMotivos.Pesaje)
             {
-                ServicioPlanta ServicioPlanta = new ServicioPlanta();
-
-                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+                ServicioPlanta ServicioPlanta = new ServicioPlanta();                
 
                 decimal precio = 0;
 
