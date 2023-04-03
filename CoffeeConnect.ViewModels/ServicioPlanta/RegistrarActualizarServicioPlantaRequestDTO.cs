@@ -91,7 +91,7 @@ namespace CoffeeConnect.DTO
 		/// <summary>
 		/// Gets or sets the FechaComprobante value.
 		/// </summary>
-		public DateTime FechaComprobante
+		public DateTime? FechaComprobante
 		{ get; set; }
 		/// <summary>
 		/// Gets or sets the SerieDocumento value.
