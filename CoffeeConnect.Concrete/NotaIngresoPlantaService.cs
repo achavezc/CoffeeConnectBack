@@ -25,10 +25,18 @@ namespace CoffeeConnect.Service
 
         private INotaIngresoProductoTerminadoAlmacenPlantaRepository _INotaIngresoProductoTerminadoAlmacenPlantaRepository;
 
-        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, INotaIngresoProductoTerminadoAlmacenPlantaRepository notaIngresoProductoTerminadoAlmacenPlantaRepository, ICorrelativoRepository correlativoRepository,
+
+        private IServicioPlantaRepository _IServicioPlantaRepository;
+
+        private IPagoServicioPlantaRepository _IPagoServicioPlantaRepository;
+
+
+        public NotaIngresoPlantaService(INotaIngresoPlantaRepository NotaIngresoPlanta, IPagoServicioPlantaRepository PagoServicioPlantaRepository,  IServicioPlantaRepository ServicioPlantaRepository,  INotaIngresoProductoTerminadoAlmacenPlantaRepository notaIngresoProductoTerminadoAlmacenPlantaRepository, ICorrelativoRepository correlativoRepository,
         IOptions<ParametrosSettings> parametrosSettings, IMapper mapper, IMaestroRepository maestroRepository, IControlCalidadPlantaRepository controlCalidadRepository)
         {
             _INotaIngresoPlantaRepository = NotaIngresoPlanta;
+            _IServicioPlantaRepository = ServicioPlantaRepository;
+            _IPagoServicioPlantaRepository = PagoServicioPlantaRepository;
             _ICorrelativoRepository = correlativoRepository;
             _ParametrosSettings = parametrosSettings;
             _Mapper = mapper;
@@ -86,6 +94,18 @@ namespace CoffeeConnect.Service
         {
             int affected = _INotaIngresoPlantaRepository.ActualizarEstado(request.NotaIngresoPlantaId, DateTime.Now, request.Usuario, NotaIngresoPlantaEstados.Anulado);
 
+            ConsultaNotaIngresoPlantaPorIdBE consultaNotaIngresoPlantaPorIdBE = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaPorId(request.NotaIngresoPlantaId);
+
+            if (consultaNotaIngresoPlantaPorIdBE != null)
+            {
+                if (consultaNotaIngresoPlantaPorIdBE.MotivoIngresoId == NotaIngresoAlmacenPlantaMotivos.Pesaje)
+                {
+                    //_IServicioPlantaRepository.ConsultarServicioPlantaPorId();
+                    //_IServicioPlantaRepository.ActualizarServicioPlantaEstado();
+                    //_IPagoServicioPlantaRepository.AnularPagoServicioPlanta();
+                }
+            }               
+
             return affected;
         }
 
@@ -141,7 +161,7 @@ namespace CoffeeConnect.Service
 
             if (consultaNotaIngresoPlantaPorIdBE != null)
             {
-                if (consultaNotaIngresoPlantaPorIdBE.EstadoId != NotaIngresoPlantaEstados.Pesado)
+                if (consultaNotaIngresoPlantaPorIdBE.EstadoId != NotaIngresoPlantaEstados.Registrado)
                 {
                     consultaNotaIngresoPlantaPorIdBE.AnalisisFisicoColorDetalle = _INotaIngresoPlantaRepository.ConsultarNotaIngresoPlantaAnalisisFisicoColorDetallePorId(NotaIngresoPlantaId).ToList();
 
@@ -185,7 +205,7 @@ namespace CoffeeConnect.Service
             
 
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
-            NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+            NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Registrado;
             NotaIngresoPlanta.FechaRegistro = DateTime.Now;
             NotaIngresoPlanta.UsuarioRegistro = request.UsuarioPesado;
 
@@ -214,6 +234,57 @@ namespace CoffeeConnect.Service
 
             int notaIngresoPlantaId = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
 
+            if(NotaIngresoPlanta.MotivoIngresoId== NotaIngresoAlmacenPlantaMotivos.Pesaje)
+            {
+                ServicioPlanta ServicioPlanta = new ServicioPlanta();
+
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+
+                decimal precio = 0;
+
+                List<ConsultaDetalleTablaBE> lista = _IMaestroRepository.ConsultarDetalleTablaDeTablas(request.EmpresaId, String.Empty).ToList();
+                 
+                List<ConsultaDetalleTablaBE> precios = lista.Where(a => a.CodigoTabla.Trim().Equals("RangoPreciosServicioPlanta")).ToList();
+
+                ServicioPlanta.Cantidad = request.KilosBrutos;
+
+                if (precios.Count > 0)
+                {
+                    var precioConfiguracion = precios.Where(p => Convert.ToDecimal(p.Val2) >= ServicioPlanta.Cantidad && Convert.ToDecimal(p.Val1) <= ServicioPlanta.Cantidad).FirstOrDefault();
+
+                    if(precioConfiguracion!=null)
+                    {
+                        precio = Convert.ToDecimal(precioConfiguracion.Codigo);
+                    }                    
+                }
+
+                ServicioPlanta.Numero = _ICorrelativoRepository.Obtener(request.EmpresaId, Documentos.ServicioPlanta);
+                ServicioPlanta.CodigoCampania = request.CodigoCampania;
+                ServicioPlanta.EmpresaId = request.EmpresaId;
+                ServicioPlanta.EmpresaClienteId = request.EmpresaOrigenId;
+                ServicioPlanta.TipoServicioId = ServicioPlantaTipos.Pesaje;
+                ServicioPlanta.FechaDocumento = DateTime.Now;
+                ServicioPlanta.NumeroDocumento = request.NumeroGuiaRemision;
+                ServicioPlanta.UnidadMedidaId = UhidadMedidaTipoServiciosPlanta.KGS;
+                
+                ServicioPlanta.PorcentajeTIRB = 0;
+                
+
+                ServicioPlanta.EstadoId = ServicioPlantaEstados.Deuda;
+                ServicioPlanta.NotaIngresoPlantaId = notaIngresoPlantaId;
+                ServicioPlanta.NumeroLiquidacionProcesoPlanta = NotaIngresoPlanta.Numero;
+                ServicioPlanta.SerieDocumento = "";
+                ServicioPlanta.FechaInicioLiquidacionProcesoPlanta = request.FechaGuiaRemision;
+                ServicioPlanta.FechaRegistro = DateTime.Now;
+                ServicioPlanta.UsuarioRegistro = request.UsuarioPesado;
+                ServicioPlanta.MonedaId = Moneda.Soles;
+                ServicioPlanta.PrecioUnitario = precio;
+                ServicioPlanta.Importe = precio;
+                ServicioPlanta.TotalImporte = precio;
+                _IServicioPlantaRepository.InsertarServicioPlanta(ServicioPlanta);
+
+            }
+                
 
             if(request.NotaIngresoPlantaDetalle!=null && request.NotaIngresoPlantaDetalle.Count>0)
             {
@@ -348,7 +419,7 @@ namespace CoffeeConnect.Service
                 NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Analizado;
             }
             else {
-                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Registrado;
             }
             NotaIngresoPlanta.FechaCalidad = DateTime.Now;
             NotaIngresoPlanta.Taza = request.Taza;

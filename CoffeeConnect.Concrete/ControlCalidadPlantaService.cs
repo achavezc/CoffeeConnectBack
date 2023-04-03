@@ -78,7 +78,7 @@ namespace CoffeeConnect.Service
             int result = 0;
             if (request.ControlCalidadPlantaId > 0)
             {
-                result = _IControlCalidadPlantaRepository.AnularControlCalidadPlanta(request.ControlCalidadPlantaId,request.NotaIngresoPlantaId,NotaIngresoPlantaEstados.Pesado, DateTime.Now, request.Usuario, OrdenProcesoEstados.Anulado);
+                result = _IControlCalidadPlantaRepository.AnularControlCalidadPlanta(request.ControlCalidadPlantaId,request.NotaIngresoPlantaId,NotaIngresoPlantaEstados.Registrado, DateTime.Now, request.Usuario, OrdenProcesoEstados.Anulado);
             }
             return result;
         }
