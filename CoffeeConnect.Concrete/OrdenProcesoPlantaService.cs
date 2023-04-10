@@ -43,8 +43,8 @@ namespace CoffeeConnect.Service
         {
             var timeSpan = request.FechaFin - request.FechaInicio;
 
-            if (timeSpan.Days > 730)
-                throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionRangoFechaMayor2anios.Label" });
+           /* if (timeSpan.Days > 730)
+                throw new ResultException(new Result { ErrCode = "02", Message = "Comercial.Contrato.ValidacionRangoFechaMayor2anios.Label" });*/
 
             var list = _IOrdenProcesoPlantaRepository.ConsultarOrdenProcesoPlanta(request);
 
