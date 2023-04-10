@@ -34,10 +34,13 @@ namespace CoffeeConnect.Service
 
     public static class NotaIngresoPlantaEstados
     {
-        public static string Pesado { get { return "01"; } }
+        public static string Pesado { get { return "05"; } }
         public static string Analizado { get { return "02"; } }
         public static string EnviadoAlmacen { get { return "03"; } }
         public static string Anulado { get { return "00"; } }
+
+
+        public static string Registrado { get { return "01"; } }
     }
 
     public static class PagoServicioPlantaEstados
@@ -67,6 +70,13 @@ namespace CoffeeConnect.Service
 
     }
 
+    public static class Moneda
+    {
+        public static string Soles { get { return "01"; } }
+        public static string Dolares { get { return "02"; } }
+
+    }
+
     public static class SubProductoTipo
     {
         public static string Humedo { get { return "05"; } }
@@ -74,7 +84,14 @@ namespace CoffeeConnect.Service
     }
 
 
+    public static class UhidadMedidaTipoServiciosPlanta
+    {
+        public static string KGS { get { return "01"; } }
+        public static string QQ { get { return "02"; } }
+        public static string UND { get { return "03"; } }
 
+
+    }
 
     public static class ControlCalidadEstados
     {
@@ -233,6 +250,11 @@ namespace CoffeeConnect.Service
 
         public static string LiquidacionReproceso { get { return "08"; } }
 
+        public static string Transferencia { get { return "09"; } }
+
+        public static string Pesaje { get { return "10"; } }
+
+
 
 
     }
@@ -258,6 +280,15 @@ namespace CoffeeConnect.Service
         public static string Anulado { get { return "00"; } }
 
         public static string Liquidado { get { return "02"; } }
+
+    }
+
+    public static class ServicioPlantaTipos
+    {
+        public static string Almacenaje { get { return "01"; } }
+        public static string LiqProceso { get { return "02"; } }
+
+        public static string Pesaje { get { return "09"; } }
 
     }
 

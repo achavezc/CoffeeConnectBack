@@ -112,6 +112,7 @@ namespace CoffeeConnect.Repository
             parameters.Add("@UsuarioRegistro", ServicioPlanta.UsuarioRegistro);
 
             parameters.Add("@LiquidacionProcesoPlantaId", ServicioPlanta.LiquidacionProcesoPlantaId);
+            parameters.Add("@NotaIngresoPlantaId", ServicioPlanta.NotaIngresoPlantaId);
             parameters.Add("@NumeroLiquidacionProcesoPlanta", ServicioPlanta.NumeroLiquidacionProcesoPlanta);
              
             parameters.Add("@FechaFinLiquidacionProcesoPlanta", ServicioPlanta.FechaFinLiquidacionProcesoPlanta);

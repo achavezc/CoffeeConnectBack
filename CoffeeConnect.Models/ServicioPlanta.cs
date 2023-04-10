@@ -67,7 +67,7 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the FechaComprobante value.
 		/// </summary>
-		public DateTime FechaComprobante
+		public DateTime? FechaComprobante
 		{ get; set; }
 
 		/// <summary>
@@ -152,6 +152,11 @@ namespace CoffeeConnect.Models
 
 		public int? LiquidacionProcesoPlantaId
 		{ get; set; }
+
+		public int? NotaIngresoPlantaId
+		{ get; set; }
+
+		
 
 		public decimal? KilosNetosLiquidacionProcesoPlanta
 		{ get; set; }

@@ -15,6 +15,11 @@ namespace CoffeeConnect.DTO
 
         public int EmpresaId { get; set; }
 
+        public int? NotaIngresoPlantaId
+        { get; set; }
+
+
+
         public int EmpresaClienteId { get; set; }
 
         public decimal? TotalImporteProcesado { get; set; }
@@ -50,7 +55,7 @@ namespace CoffeeConnect.DTO
 
         public DateTime FechaDocumento { get; set; }
 
-        public DateTime FechaComprobante { get; set; }
+        public DateTime? FechaComprobante { get; set; }
 
         public string UnidadMedida { get; set; }
 
