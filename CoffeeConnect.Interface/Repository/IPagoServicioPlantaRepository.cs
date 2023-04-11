@@ -14,5 +14,8 @@ namespace CoffeeConnect.Interface.Repository
         int Actualizar(PagoServicioPlanta PagoServicioPlanta);
 
         int AnularPagoServicioPlanta(int PagoServicioPlantaId, DateTime fecha, string usuario, string estadoId,string Observacion);
+
+        IEnumerable<ConsultaPagoServicioPlantaBE> ConsultarPagoServicioPlantaPorServicioPlantaId(int servicioPlantaId);
+
     }
 }

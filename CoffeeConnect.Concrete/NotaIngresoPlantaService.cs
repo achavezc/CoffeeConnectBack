@@ -100,9 +100,20 @@ namespace CoffeeConnect.Service
             {
                 if (consultaNotaIngresoPlantaPorIdBE.MotivoIngresoId == NotaIngresoAlmacenPlantaMotivos.Pesaje)
                 {
-                    //_IServicioPlantaRepository.ConsultarServicioPlantaPorId();
-                    //_IServicioPlantaRepository.ActualizarServicioPlantaEstado();
-                    //_IPagoServicioPlantaRepository.AnularPagoServicioPlanta();
+                    ConsultaServicioPlantaPorIdBE consultaServicioPlantaPorIdBE = _IServicioPlantaRepository.ConsultarServicioPlantaPorNotaIngresoPlantaId(consultaNotaIngresoPlantaPorIdBE.NotaIngresoPlantaId);
+
+                    if (consultaServicioPlantaPorIdBE != null)
+                    {
+                        List<ConsultaPagoServicioPlantaBE> pagosServicio = _IPagoServicioPlantaRepository.ConsultarPagoServicioPlantaPorServicioPlantaId(consultaServicioPlantaPorIdBE.ServicioPlantaId).ToList();
+
+                        foreach(ConsultaPagoServicioPlantaBE pago in pagosServicio)
+                        {
+                            _IPagoServicioPlantaRepository.AnularPagoServicioPlanta(pago.PagoServicioPlantaId,DateTime.Now,request.Usuario, PagoServicioPlantaEstados.Anulado, "");
+                        }
+                    }
+                        
+                    _IServicioPlantaRepository.ActualizarServicioPlantaEstado(consultaServicioPlantaPorIdBE.ServicioPlantaId,DateTime.Now,request.Usuario, ServicioPlantaEstados.Anulado);
+                    
                 }
             }               
 
