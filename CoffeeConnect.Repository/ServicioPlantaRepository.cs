@@ -152,6 +152,27 @@ namespace CoffeeConnect.Repository
         }
 
 
+
+        public ConsultaServicioPlantaPorIdBE ConsultarServicioPlantaPorNotaIngresoPlantaId(int NotaIngresoPlantaId)
+        {
+            ConsultaServicioPlantaPorIdBE itemBE = null;
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@NotaIngresoPlantaId", NotaIngresoPlantaId);
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+            {
+                var list = db.Query<ConsultaServicioPlantaPorIdBE>("uspServicioPlantaConsultaPorNotaIngresoPlantaId", parameters, commandType: CommandType.StoredProcedure);
+
+                if (list.Any())
+                    itemBE = list.First();
+            }
+
+            return itemBE;
+        }
+
+
         public int Actualizar(ServicioPlanta ServicioPlanta)
         {
             int result = 0;

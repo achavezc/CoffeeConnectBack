@@ -78,8 +78,8 @@ namespace CoffeeConnect.Repository
             parameters.Add("BancoId", request.BancoId);
             parameters.Add("MonedaId", request.MonedaId);
             parameters.Add("ServicioPlantaId", request.ServicioPlantaId);
-            parameters.Add("EstadoId", request.EstadoId);            
-            parameters.Add("EmpresaId", request.EmpresaId);           
+            parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);
 
@@ -88,7 +88,22 @@ namespace CoffeeConnect.Repository
             {
                 return db.Query<ConsultaPagoServicioPlantaBE>("uspPagoServicioPlantaConsulta", parameters, commandType: CommandType.StoredProcedure);
             }
+
         }
+            public IEnumerable<ConsultaPagoServicioPlantaBE> ConsultarPagoServicioPlantaPorServicioPlantaId(int servicioPlantaId)
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("ServicioPlantaId", servicioPlantaId);               
+
+
+                using (IDbConnection db = new SqlConnection(_connectionString.Value.CoffeeConnectDB))
+                {
+                    return db.Query<ConsultaPagoServicioPlantaBE>("uspPagoServicioPlantaConsultaPorServicioPlantaId", parameters, commandType: CommandType.StoredProcedure);
+                }
+            }
+
+
+            
 
 
         public ConsultaPagoServicioPlantaPorIdBE ConsultarPagoServicioPlantaPorId(int PagoServicioPlantaId)
