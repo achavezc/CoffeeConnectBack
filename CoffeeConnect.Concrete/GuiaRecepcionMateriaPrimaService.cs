@@ -38,10 +38,11 @@ namespace CoffeeConnect.Service
 
             var timeSpan = request.FechaFin - request.FechaInicio;
 
-            if (timeSpan.Days > 730)
-            {
-                throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionRangoFechaMayor2anios.Label" });
-            }
+            //if (timeSpan.Days > 730)
+           // {
+           //     throw new ResultException(new Result { ErrCode = "02", Message = "Acopio.GuiaRecepcionMateriaPrima.ValidacionRangoFechaMayor2anios.Label" });
+           // } 
+            
 
             var list = _IGuiaRecepcionMateriaPrimaRepository.ConsultarGuiaRecepcionMateriaPrima(request);
             return list.ToList();
