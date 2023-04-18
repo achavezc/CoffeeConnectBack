@@ -1,4 +1,4 @@
-﻿using AspNetCore.Reporting;
+﻿//using AspNetCore.Reporting;
 using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adjunto;
 using CoffeeConnect.Interface.Service;
@@ -7,6 +7,7 @@ using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Reporting.NETCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,10 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
+using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
+using Tmds.Utils;
 
 namespace CoffeeConnect.API.Controllers
 {
@@ -31,6 +35,7 @@ namespace CoffeeConnect.API.Controllers
             _log = log;
             this.LiquidacionProcesoPlantaService = LiquidacionProcesoPlantaService;
             _webHostEnvironment = webHostEnvironment;
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
         [Route("Consultar")]
@@ -481,6 +486,12 @@ namespace CoffeeConnect.API.Controllers
         [HttpGet]
         public IActionResult GenerarPDFLiquidacionProceso(int id, int empresaId)
         {
+            /*
+            LifetimeServices.LeaseTime = TimeSpan.FromSeconds(5);
+            LifetimeServices.LeaseManagerPollTime = TimeSpan.FromSeconds(5);
+            LifetimeServices.RenewOnCallTime = TimeSpan.FromSeconds(1);
+            LifetimeServices.SponsorshipTimeout = TimeSpan.FromSeconds(5);
+            */
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
 
@@ -555,36 +566,50 @@ namespace CoffeeConnect.API.Controllers
 
                     
                 }
-
                 DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
 
                 DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
 
-                LocalReport lr = new LocalReport(path);
+                
+                //LocalReport lr = new LocalReport(path);
+                
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
                 string mimetype = "";
                 int extension = 1;
 
-
-                
-
-
                 if (listaLiquidacionProcesoPlanta.Count > 0)
                 {
-                    lr.AddDataSource("dsLiquidacionProceso", dsLiquidacionProceso);
+                   // lr.AddDataSource("dsLiquidacionProceso", dsLiquidacionProceso);
                 }
                 if (response != null && response.data.Detalle != null)
                 {
-                    lr.AddDataSource("dsLiquidProcesoDetalle", dsLiquidProcesoDetalle);
+                    //lr.AddDataSource("dsLiquidProcesoDetalle", dsLiquidProcesoDetalle);
                 }
                 if (response != null && response.data.Resultado != null)
                 {
-                    lr.AddDataSource("dsLiquidProcesoResultado", dsLiquidProcesoResultado);
+                   // lr.AddDataSource("dsLiquidProcesoResultado", dsLiquidProcesoResultado);
                 }
-                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
-                return File(result.MainStream, "application/pdf");
+                //var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+                //return File(result.MainStream, "application/pdf");
+                
+
+               // using var fs = new FileStream(path, FileMode.Open);
+                
+                using (var fs = System.IO.File.Open(path,FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    LocalReport report = new LocalReport();
+                    report.LoadReportDefinition(fs);
+                    report.DataSources.Add(new ReportDataSource("dsLiquidacionProceso", dsLiquidacionProceso));
+                    report.DataSources.Add(new ReportDataSource("dsLiquidProcesoDetalle", dsLiquidProcesoDetalle));
+                    report.DataSources.Add(new ReportDataSource("dsLiquidProcesoResultado", dsLiquidProcesoResultado));
+                    byte[] bytes = report.Render("PDF");
+
+                    fs.Close();
+                    return File(bytes, "application/pdf");
+                }
+               
             }
             catch (ResultException ex)
             {
@@ -600,5 +625,8 @@ namespace CoffeeConnect.API.Controllers
 
             return Ok(response);
         }
+
+
+    
     }
 }

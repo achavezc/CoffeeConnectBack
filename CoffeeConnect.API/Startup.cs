@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
+
 namespace CoffeeConnect.API
 {
     public class Startup
@@ -47,7 +48,15 @@ namespace CoffeeConnect.API
             {
                 options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
                         .WithExposedHeaders("X-Pagination").Build());
-            });
+            }); 
+
+            /*
+            services.AddControllersWithViews();
+            services.AddDevExpressControls();
+            services.ConfigureReportingServices(x => x.ConfigureReportDesigner(reportDesignerConfigurator => {
+                reportDesignerConfigurator.RegisterObjectDataSourceWizardTypeProvider<CustomObjectDataSourceWizardTypeProvider>();
+            }));
+            */
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options =>
@@ -269,6 +278,8 @@ namespace CoffeeConnect.API
             services.AddMvc(setupAction => { setupAction.EnableEndpointRouting = false; })
                     .AddJsonOptions(jsonOptions => { jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null; })
                     .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
