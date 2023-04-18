@@ -18,8 +18,6 @@ using System.Net.Mime;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Tmds.Utils;
-
 namespace CoffeeConnect.API.Controllers
 {
     [Route("api/[controller]")]
@@ -35,7 +33,6 @@ namespace CoffeeConnect.API.Controllers
             _log = log;
             this.LiquidacionProcesoPlantaService = LiquidacionProcesoPlantaService;
             _webHostEnvironment = webHostEnvironment;
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
         [Route("Consultar")]

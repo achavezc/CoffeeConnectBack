@@ -95,7 +95,6 @@
     <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
     <PackageReference Include="System.CodeDom" Version="5.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-    <PackageReference Include="Tmds.ExecFunction" Version="0.6.0" />
   </ItemGroup>
 
   <ItemGroup>
