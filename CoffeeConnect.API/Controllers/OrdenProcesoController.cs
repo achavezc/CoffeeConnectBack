@@ -1,4 +1,4 @@
-﻿using AspNetCore.Reporting;
+﻿
 using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adjunto;
 using CoffeeConnect.Interface.Service;
@@ -7,6 +7,7 @@ using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Reporting.NETCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -189,7 +190,7 @@ namespace CoffeeConnect.API.Controllers
                 ConsultarImpresionOrdenProcesoResponseDTO resImpresion = ordenProcesoService.ConsultarImpresionOrdenProceso(request);
 
                 var path = $"{this._webHostEnvironment.ContentRootPath}\\Reportes\\rptOrdenProceso.rdlc";
-
+                /*
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
@@ -199,6 +200,18 @@ namespace CoffeeConnect.API.Controllers
                 var result = lr.Execute(RenderType.Pdf, 1, parameters, "");
 
                 return File(result.MainStream, "application/pdf");
+                */
+                using (var fs = System.IO.File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    LocalReport report = new LocalReport();
+                    report.LoadReportDefinition(fs);
+                    report.DataSources.Add(new ReportDataSource("dsOrdenProceso", resImpresion.listOrdenProceso.ToList()));
+                    report.DataSources.Add(new ReportDataSource("dsDetalleOrdenProceso", resImpresion.listDetalleOrdenProceso.ToList()));
+                    byte[] bytes = report.Render("PDF");
+                    fs.Close();
+                    return File(bytes, "application/pdf");
+                }
+
             }
             catch (ResultException ex)
             {

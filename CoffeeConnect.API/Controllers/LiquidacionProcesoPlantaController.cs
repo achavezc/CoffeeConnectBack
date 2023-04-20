@@ -483,16 +483,11 @@ namespace CoffeeConnect.API.Controllers
         [HttpGet]
         public IActionResult GenerarPDFLiquidacionProceso(int id, int empresaId)
         {
-            /*
-            LifetimeServices.LeaseTime = TimeSpan.FromSeconds(5);
-            LifetimeServices.LeaseManagerPollTime = TimeSpan.FromSeconds(5);
-            LifetimeServices.RenewOnCallTime = TimeSpan.FromSeconds(1);
-            LifetimeServices.SponsorshipTimeout = TimeSpan.FromSeconds(5);
-            */
+      
             Guid guid = Guid.NewGuid();
             _log.RegistrarEvento($"{guid}{Environment.NewLine}{JsonConvert.SerializeObject(id)}");
 
-            //ES MOMENTANEO SE DEBE ELIMINAR
+        
             GenerarPDFLiquidacionProcesoResponseDTO response = new GenerarPDFLiquidacionProcesoResponseDTO(); ;
 
             try
@@ -506,11 +501,6 @@ namespace CoffeeConnect.API.Controllers
                 });
 
                 var path = "";
-
-               
-
-               
-
                 DataTable dsLiquidProcesoDetalle = null;
 
                 if (response != null && response.data != null)
@@ -556,53 +546,32 @@ namespace CoffeeConnect.API.Controllers
                              
                         }
                     }
-
-
-
                     listaLiquidacionProcesoPlanta.Add(response.data);
-
-                    
                 }
                 DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
-
                 DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
-
-                
-                //LocalReport lr = new LocalReport(path);
-                
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
-                string mimetype = "";
-                int extension = 1;
+                using (var fs = System.IO.File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
 
-                if (listaLiquidacionProcesoPlanta.Count > 0)
-                {
-                   // lr.AddDataSource("dsLiquidacionProceso", dsLiquidacionProceso);
-                }
-                if (response != null && response.data.Detalle != null)
-                {
-                    //lr.AddDataSource("dsLiquidProcesoDetalle", dsLiquidProcesoDetalle);
-                }
-                if (response != null && response.data.Resultado != null)
-                {
-                   // lr.AddDataSource("dsLiquidProcesoResultado", dsLiquidProcesoResultado);
-                }
-
-                //var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
-                //return File(result.MainStream, "application/pdf");
-                
-
-               // using var fs = new FileStream(path, FileMode.Open);
-                
-                using (var fs = System.IO.File.Open(path,FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                {
                     LocalReport report = new LocalReport();
                     report.LoadReportDefinition(fs);
-                    report.DataSources.Add(new ReportDataSource("dsLiquidacionProceso", dsLiquidacionProceso));
-                    report.DataSources.Add(new ReportDataSource("dsLiquidProcesoDetalle", dsLiquidProcesoDetalle));
-                    report.DataSources.Add(new ReportDataSource("dsLiquidProcesoResultado", dsLiquidProcesoResultado));
-                    byte[] bytes = report.Render("PDF");
 
+                    if (listaLiquidacionProcesoPlanta.Count > 0)
+                    {
+                        report.DataSources.Add(new ReportDataSource("dsLiquidacionProceso", dsLiquidacionProceso));
+                    }
+                    if (response != null && response.data.Detalle != null)
+                    {
+                        report.DataSources.Add(new ReportDataSource("dsLiquidProcesoDetalle", dsLiquidProcesoDetalle));
+                    }
+                    if (response != null && response.data.Resultado != null)
+                    {
+                        report.DataSources.Add(new ReportDataSource("dsLiquidProcesoResultado", dsLiquidProcesoResultado));
+                    }
+
+                    byte[] bytes = report.Render("PDF");
                     fs.Close();
                     return File(bytes, "application/pdf");
                 }

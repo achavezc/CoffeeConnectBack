@@ -1,4 +1,4 @@
-﻿using AspNetCore.Reporting;
+﻿
 using CoffeeConnect.DTO;
 using CoffeeConnect.DTO.Adjunto;
 using CoffeeConnect.Interface.Service;
@@ -7,6 +7,7 @@ using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Reporting.NETCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -428,41 +429,40 @@ namespace CoffeeConnect.API.Controllers
                     listaLiquidacionProcesoPlanta.Add(consultaOrdenProcesoPlantaPorIdBE);
                 }
 
-                string mimetype = "";
-                int extension = 1;
+                //string mimetype = "";
+                //int extension = 1;
                 var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptOrdenProcesoPlanta.rdlc";
 
-                LocalReport lr = new LocalReport(path);
-                Dictionary<string, string> parameters = new Dictionary<string, string>();
-
-                DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
-                DataTable dsLiquidProcesoDetalle = Util.ToDataTable(consultaOrdenProcesoPlantaPorIdBE.detalle, true);
-                //DataTable dsLiquidProcesoResultado = Util.ToDataTable(response.data.Resultado, true);
-                
-
-
-                DataTable dsLiquidProcesoResultado = Util.ToDataTable(tiposCafeProcesado, true);
-
-
-
-
-                if (listaLiquidacionProcesoPlanta.Count > 0)
+                //LocalReport lr = new LocalReport(path);
+                //Dictionary<string, string> parameters = new Dictionary<string, string>();
+                using (var fs = System.IO.File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
-                    lr.AddDataSource("dsOrdenProceso", dsLiquidacionProceso);
-                    lr.AddDataSource("dsOrdenProcesoDetalle", dsLiquidProcesoDetalle);
-                    lr.AddDataSource("dsOrdenProcesoResultado", dsLiquidProcesoResultado);
+                    LocalReport report = new LocalReport();
+                    report.LoadReportDefinition(fs);
 
+                    DataTable dsLiquidacionProceso = Util.ToDataTable(listaLiquidacionProcesoPlanta, true);
+                    DataTable dsLiquidProcesoDetalle = Util.ToDataTable(consultaOrdenProcesoPlantaPorIdBE.detalle, true);
+                    DataTable dsLiquidProcesoResultado = Util.ToDataTable(tiposCafeProcesado, true);
 
+                    if (listaLiquidacionProcesoPlanta.Count > 0)
+                    {
+                        //lr.AddDataSource("dsOrdenProceso", dsLiquidacionProceso);
+                        //lr.AddDataSource("dsOrdenProcesoDetalle", dsLiquidProcesoDetalle);
+                        //lr.AddDataSource("dsOrdenProcesoResultado", dsLiquidProcesoResultado);
+
+                        report.DataSources.Add(new ReportDataSource("dsOrdenProceso", dsLiquidacionProceso));
+                        report.DataSources.Add(new ReportDataSource("dsOrdenProcesoDetalle", dsLiquidProcesoDetalle));
+                        report.DataSources.Add(new ReportDataSource("dsOrdenProcesoResultado", dsLiquidProcesoResultado));
+                    }
+                    //var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
+
+                    //return File(result.MainStream, "application/pdf");
+
+                    byte[] bytes = report.Render("PDF");
+                    fs.Close();
+                    return File(bytes, "application/pdf");
                 }
-                if (listaLiquidacionProcesoPlanta.Count >0 && consultaOrdenProcesoPlantaPorIdBE.detalle != null)
-                {
-                }
-                //if (response != null && response.data.Resultado != null)
-                //{
-                //}
-                var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
-                return File(result.MainStream, "application/pdf");
             }
             catch (ResultException ex)
             {

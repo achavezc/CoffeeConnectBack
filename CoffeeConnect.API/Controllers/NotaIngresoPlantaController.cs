@@ -1,12 +1,14 @@
-﻿using AspNetCore.Reporting;
+﻿
 using CoffeeConnect.DTO;
 using CoffeeConnect.Interface.Service;
 using Core.Common;
 using Core.Common.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Reporting.NETCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Integracion.Deuda.Controller
 {
@@ -222,10 +224,10 @@ namespace Integracion.Deuda.Controller
             try
             {
                 
-                string mimetype = "";
-                int extension = 1;
+               // string mimetype = "";
+               // int extension = 1;
                 var path = $"{_webHostEnvironment.ContentRootPath}\\Reportes\\rptNotaIngreso.rdlc";
-
+                /*
                 LocalReport lr = new LocalReport(path);
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
 
@@ -235,6 +237,20 @@ namespace Integracion.Deuda.Controller
                 var result = lr.Execute(RenderType.Pdf, extension, parameters, mimetype);
 
                 return File(result.MainStream, "application/pdf");
+                */
+
+                using (var fs = System.IO.File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    LocalReport report = new LocalReport();
+                    report.LoadReportDefinition(fs);
+                    report.DataSources.Add(new ReportDataSource("dsGRCabecera", response.Cabecera));
+                    report.DataSources.Add(new ReportDataSource("dsGRListaDetalle", response.listaDetalleGM));
+                    report.DataSources.Add(new ReportDataSource("dsGRDetalle", response.detalleGM));
+                    byte[] bytes = report.Render("PDF");
+                    fs.Close();
+                    return File(bytes, "application/pdf");
+                }
+
             }
             catch (ResultException ex)
             {
