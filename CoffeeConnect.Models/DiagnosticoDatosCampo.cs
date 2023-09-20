@@ -32,31 +32,31 @@ namespace CoffeeConnect.Models
 		/// <summary>
 		/// Gets or sets the Variedad value.
 		/// </summary>
-		public decimal? Variedad
+		public string Variedad
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the Edad value.
 		/// </summary>
-		public decimal? Edad
+		public string Edad
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the CosechaPergaminoAnioActual value.
 		/// </summary>
-		public decimal? CosechaPergaminoAnioActual
+		public string CosechaPergaminoAnioActual
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the CosechaMeses value.
 		/// </summary>
-		public decimal? CosechaMeses
+		public string CosechaMeses
 		{ get; set; }
 
 		/// <summary>
 		/// Gets or sets the CosechaPergaminoAnioAnterior value.
 		/// </summary>
-		public decimal? CosechaPergaminoAnioAnterior
+		public string CosechaPergaminoAnioAnterior
 		{ get; set; }
 
 		#endregion
