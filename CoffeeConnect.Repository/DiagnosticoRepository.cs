@@ -26,6 +26,7 @@ namespace CoffeeConnect.Repository
             var parameters = new DynamicParameters();
             parameters.Add("Numero", request.Numero);           
             parameters.Add("EstadoId", request.EstadoId);
+            parameters.Add("SocioFincaId", request.SocioFincaId);
             parameters.Add("EmpresaId", request.EmpresaId);
             parameters.Add("FechaInicio", request.FechaInicio);
             parameters.Add("FechaFin", request.FechaFin);

@@ -246,6 +246,14 @@ namespace CoffeeConnect.Service
             {
                 NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
             }
+            else
+            {
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Registrado;
+            }
+
+          
+            
+
 
             int notaIngresoPlantaId = _INotaIngresoPlantaRepository.InsertarPesado(NotaIngresoPlanta);
 
@@ -329,7 +337,18 @@ namespace CoffeeConnect.Service
             NotaIngresoPlanta.FechaPesado = DateTime.Now;
             NotaIngresoPlanta.UsuarioPesado = request.UsuarioPesado;
 
-            NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+
+            if (request.MotivoIngresoId == NotaIngresoAlmacenPlantaMotivos.Pesaje)
+            {
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+            }
+            else
+            {
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Registrado;
+            }
+
+
+            //NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
             NotaIngresoPlanta.FechaUltimaActualizacion = DateTime.Now;
             NotaIngresoPlanta.UsuarioUltimaActualizacion = request.UsuarioPesado;
 

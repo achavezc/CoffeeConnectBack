@@ -168,6 +168,15 @@ namespace CoffeeConnect.Service
                         notaIngresoProductoTerminadoAlmacenPlanta.KGN = detalle.KGN.HasValue ? detalle.KGN.Value : 0;
                     }
                     
+                    string AlmacenId = "02"; // Almacen 2 (Productos Terminados);
+
+                    if(detalle.TipoId == "14") //CASCARILLA - MERMA
+                    {
+                        AlmacenId = "04"; //	Almacen 4 (Merma-cascarilla)
+                    }
+
+                    //TiposCafeProcesado	14	CASCARILLA - MERMA
+
                     notaIngresoProductoTerminadoAlmacenPlanta.MotivoIngresoId = motivoIngresoAlmacenId;  
                     notaIngresoProductoTerminadoAlmacenPlanta.TipoId = detalle.TipoId;
                     notaIngresoProductoTerminadoAlmacenPlanta.EmpaqueId = detalle.EmpaqueId;
@@ -175,7 +184,7 @@ namespace CoffeeConnect.Service
                     notaIngresoProductoTerminadoAlmacenPlanta.EstadoId = NotaIngresoProductoTerminadoAlmacenPlantaEstados.Ingresado;
                     notaIngresoProductoTerminadoAlmacenPlanta.FechaRegistro = DateTime.Now;
                     notaIngresoProductoTerminadoAlmacenPlanta.UsuarioRegistro = request.Usuario;
-                    notaIngresoProductoTerminadoAlmacenPlanta.AlmacenId = "02"; // Almacen 2 (Productos Terminados)
+                    notaIngresoProductoTerminadoAlmacenPlanta.AlmacenId = AlmacenId; 
 
                     _INotaIngresoProductoTerminadoAlmacenPlantaRepository.Insertar(notaIngresoProductoTerminadoAlmacenPlanta);
                 }

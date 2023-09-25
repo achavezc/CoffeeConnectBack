@@ -140,10 +140,20 @@ namespace CoffeeConnect.Service
         {
             ControlCalidadPlanta NotaIngresoPlanta = _Mapper.Map<ControlCalidadPlanta>(request);
 
-            NotaIngresoPlanta.FechaPesado = DateTime.Now;
-            NotaIngresoPlanta.UsuarioPesado = request.UsuarioPesado;
 
-            NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+            if (request.MotivoIngresoId == NotaIngresoAlmacenPlantaMotivos.Pesaje)
+            {
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Pesado;
+                NotaIngresoPlanta.FechaPesado = DateTime.Now;
+                NotaIngresoPlanta.UsuarioPesado = request.UsuarioPesado;
+
+            }
+            else
+            {
+                NotaIngresoPlanta.EstadoId = NotaIngresoPlantaEstados.Registrado;
+            }
+
+            
             NotaIngresoPlanta.FechaUltimaActualizacion = DateTime.Now;
             NotaIngresoPlanta.UsuarioUltimaActualizacion = request.UsuarioPesado;
 
