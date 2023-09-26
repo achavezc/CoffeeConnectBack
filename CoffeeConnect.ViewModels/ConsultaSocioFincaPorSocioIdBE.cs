@@ -22,8 +22,8 @@ namespace CoffeeConnect.DTO
         /// <summary>
         /// Gets or sets the Nombre value.
         /// </summary>
-        public string Precipitacion
-        { get; set; }
+        //public string Precipitacion
+        //{ get; set; }
 
         /// <summary>
         /// Gets or sets the DepartamentoId value.
