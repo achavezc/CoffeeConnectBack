@@ -15,10 +15,14 @@ namespace CoffeeConnect.DTO
         public int ProductorFincaId
         { get; set; }
 
+
+        public string Nombre
+        { get; set; }
+
         /// <summary>
         /// Gets or sets the Nombre value.
         /// </summary>
-        public string Nombre
+        public string Precipitacion
         { get; set; }
 
         /// <summary>
