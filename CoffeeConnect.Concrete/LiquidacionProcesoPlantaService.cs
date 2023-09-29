@@ -125,7 +125,7 @@ namespace CoffeeConnect.Service
 
             int LiquidacionProcesoPlantaId = _ILiquidacionProcesoPlantaRepository.Insertar(liquidacionProcesoPlanta);
 
-            _IOrdenProcesoPlantaRepository.ActualizarEstadoLiquidado(request.OrdenProcesoPlantaId, DateTime.Now, request.Usuario, OrdenProcesoPlantaEstados.Liquidado, DateTime.Now);
+            _IOrdenProcesoPlantaRepository.ActualizarEstadoLiquidado(request.OrdenProcesoPlantaId, DateTime.Now, request.Usuario, OrdenProcesoPlantaEstados.Liquidado, request.FechaFinProceso);
 
             foreach (LiquidacionProcesoPlantaDetalle detalle in request.LiquidacionProcesoPlantaDetalle)
             {
@@ -170,7 +170,7 @@ namespace CoffeeConnect.Service
                     
                     string AlmacenId = "02"; // Almacen 2 (Productos Terminados);
 
-                    if(detalle.TipoId == "14") //CASCARILLA - MERMA
+                    if(detalle.ReferenciaId == "14") //CASCARILLA - MERMA
                     {
                         AlmacenId = "04"; //	Almacen 4 (Merma-cascarilla)
                     }
